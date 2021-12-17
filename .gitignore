@@ -1,0 +1,8 @@
+guard_ios.xcworkspace/xcuserdata
+Guard/Guard.xcodeproj/xcuserdata
+GuardDemo/GuardDemo.xcodeproj/xcuserdata
+.build
+OneAuth/OneAuth.xcodeproj/project.xcworkspace/xcuserdata
+OneAuth/OneAuth.xcodeproj/xcuserdata
+OneAuth/build
+OneAuth/Frameworks

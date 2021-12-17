@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:GuardDemo/GuardDemo.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:OneAuth/OneAuth.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Guard/Guard.xcodeproj">
+   </FileRef>
+</Workspace>
