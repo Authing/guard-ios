@@ -37,8 +37,7 @@ class SampleListViewController: UITableViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.row == 2 {
             let vc = AppAuthViewController(nibName: "AppAuth", bundle: nil)
-            vc.modalPresentationStyle = .fullScreen
-            present(vc, animated: true, completion: nil)
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     

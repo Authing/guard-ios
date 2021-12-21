@@ -26,8 +26,8 @@ public class AuthClient {
     
     public static func loginByOneAuth(token: String, accessToken: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         Authing.getConfig { config in
-//            let url: String = "https://" + (config?.identifier)! + "." + Authing.getHost() + "/api/v2/login/account";
-            let url: String = "https://developer-beta.authing.cn/stats/ydtoken"
+            let url: String = "https://" + (config?.identifier)! + "." + Authing.getHost() + "/api/v2/ecConn/oneAuth/login";
+//            let url: String = "https://developer-beta.authing.cn/stats/ydtoken"
             let body: NSDictionary = ["token" : token, "accessToken" : accessToken]
             Guardian.post(urlString: url, body: body) { code, message, data in
                 if (code == 200) {

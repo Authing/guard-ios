@@ -69,10 +69,14 @@ public class Guardian {
                     return
                 }
                 
-                let code: Int = json["code"] as! Int
-                let message: String? = json["message"] as? String
-                let jsonData: NSDictionary? = json["data"] as? NSDictionary
-                completion(code, message, jsonData)
+                if (json["code"] as? Int == nil) {
+                    completion(200, nil, json)
+                } else {
+                    let code: Int = json["code"] as! Int
+                    let message: String? = json["message"] as? String
+                    let jsonData: NSDictionary? = json["data"] as? NSDictionary
+                    completion(code, message, jsonData)
+                }
             } catch {
                 print("parsing json error when requesting \(urlString)")
                 completion(500, urlString, nil)

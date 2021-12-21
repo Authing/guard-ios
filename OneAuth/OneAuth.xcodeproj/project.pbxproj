@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		7E568B5327708BF700EC45C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E568B5227708BF700EC45C7 /* Images.xcassets */; };
 		7E7566E22769D25100C3872F /* OneAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E7566D62769D25100C3872F /* OneAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7E7566EC2769D2D200C3872F /* OneAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7566EB2769D2D200C3872F /* OneAuth.swift */; };
 		7E7567012769D44D00C3872F /* Guard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E7567002769D44D00C3872F /* Guard.framework */; };
@@ -61,6 +62,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7E568B5227708BF700EC45C7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7E7566D32769D25100C3872F /* OneAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OneAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E7566D62769D25100C3872F /* OneAuth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OneAuth.h; sourceTree = "<group>"; };
 		7E7566EB2769D2D200C3872F /* OneAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneAuth.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 		7E7566C92769D25100C3872F = {
 			isa = PBXGroup;
 			children = (
+				7E568B5227708BF700EC45C7 /* Images.xcassets */,
 				7E7566D52769D25100C3872F /* OneAuth */,
 				7E7566D42769D25100C3872F /* Products */,
 				7E7566EF2769D44900C3872F /* Frameworks */,
@@ -222,6 +225,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E568B5327708BF700EC45C7 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

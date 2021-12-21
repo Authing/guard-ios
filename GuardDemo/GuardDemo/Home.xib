@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -62,19 +62,17 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cln-cP-NKb">
-                    <rect key="frame" x="324" y="94" width="70" height="32"/>
+                    <rect key="frame" x="130" y="94" width="264" height="32"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="32" id="Qxc-oz-i3s"/>
-                        <constraint firstAttribute="width" constant="70" id="Y6p-Cm-Yaw"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLZ-iR-h8C">
-                    <rect key="frame" x="324" y="143" width="70" height="32"/>
+                    <rect key="frame" x="130" y="143" width="264" height="32"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="70" id="fww-Ux-qur"/>
                         <constraint firstAttribute="height" constant="32" id="mDV-8K-uzg"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -96,9 +94,8 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8U-cK-NNv">
-                    <rect key="frame" x="324" y="192" width="70" height="32"/>
+                    <rect key="frame" x="130" y="192" width="264" height="32"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="70" id="jGR-bW-fqn"/>
                         <constraint firstAttribute="height" constant="32" id="kbV-ph-cX3"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -109,8 +106,10 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="N8U-cK-NNv" firstAttribute="leading" secondItem="6aF-wX-JuS" secondAttribute="trailing" constant="8" symbolic="YES" id="1ii-iT-HUh"/>
                 <constraint firstItem="nGU-x2-yst" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="3Y2-uV-yv2"/>
                 <constraint firstItem="Cyh-9d-XWP" firstAttribute="top" secondItem="WmU-1c-umV" secondAttribute="bottom" constant="8" symbolic="YES" id="8hf-Bu-d3Y"/>
+                <constraint firstItem="cln-cP-NKb" firstAttribute="leading" secondItem="WmU-1c-umV" secondAttribute="trailing" constant="8" symbolic="YES" id="8jk-KI-pVD"/>
                 <constraint firstItem="N8U-cK-NNv" firstAttribute="top" secondItem="mWe-1D-JvR" secondAttribute="bottom" constant="8" symbolic="YES" id="Aah-lW-BHQ"/>
                 <constraint firstItem="6aF-wX-JuS" firstAttribute="top" secondItem="mWe-1D-JvR" secondAttribute="bottom" constant="8" symbolic="YES" id="EOg-CF-Sn4"/>
                 <constraint firstItem="OV9-Kr-30H" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Ibc-Dd-pFZ"/>
@@ -125,6 +124,7 @@
                 <constraint firstItem="vLZ-iR-h8C" firstAttribute="top" secondItem="Cyh-9d-XWP" secondAttribute="bottom" constant="8" symbolic="YES" id="lsH-ZP-1Vi"/>
                 <constraint firstItem="OV9-Kr-30H" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="nCJ-Vq-OkC"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="vLZ-iR-h8C" secondAttribute="trailing" constant="20" id="oAw-3S-WhE"/>
+                <constraint firstItem="vLZ-iR-h8C" firstAttribute="leading" secondItem="nGU-x2-yst" secondAttribute="trailing" constant="8" symbolic="YES" id="pjg-CO-Y8K"/>
                 <constraint firstItem="mWe-1D-JvR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="sYp-Py-Nrx"/>
                 <constraint firstItem="cln-cP-NKb" firstAttribute="top" secondItem="OV9-Kr-30H" secondAttribute="bottom" constant="8" symbolic="YES" id="uHt-Wt-vkq"/>
                 <constraint firstItem="WmU-1c-umV" firstAttribute="top" secondItem="OV9-Kr-30H" secondAttribute="bottom" constant="8" symbolic="YES" id="ubB-k1-dso"/>

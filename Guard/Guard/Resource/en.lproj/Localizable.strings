@@ -5,3 +5,4 @@
 "authing_email" = "email";
 "authing_phone" = "phone number";
 "authing_password" = "password";
+"authing_other_login_methods" = "Other login methods";

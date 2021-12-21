@@ -7,6 +7,7 @@
 
 import UIKit
 import Guard
+import OneAuth
 import AppAuth
 
 @main
@@ -16,7 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        Authing.start(appid: "60caaf41df670b771fd08937");
+        OneAuth.bizId = "74ae90bd84f74b69a88b578bbbbcdcfd"
+        Authing.setHost(host: "dev2.authing-inc.co")
+        Authing.start(appid: "61bc28f7f0ebba772a42f609");
         return true
     }
 

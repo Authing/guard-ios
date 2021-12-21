@@ -2,7 +2,9 @@
 
 1. 添加依赖
 
-
+```json
+http://github.com/Authing/guard-ios
+```
 
 2. 在应用启动（如 AppDelegate）里面初始化 Authing：
 

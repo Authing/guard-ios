@@ -20,12 +20,22 @@ class OneClickViewController: UIViewController {
     }
     
     @IBAction func onClick(_ sender: UIButton, forEvent event: UIEvent) {
-        OneAuth.start { code, message, userInfo in
-            if (code == 200 && userInfo != nil) {
-                
-            } else {
-                self.errorLabel.text = message
+        OneAuth.start(self) { code, message, userInfo in
+            DispatchQueue.main.async() {
+                if (code == 200 && userInfo != nil) {
+                    self.navigationController?.popViewController(animated: true)
+                    self.finishAndGoHome(userInfo)
+                } else {
+                    self.errorLabel.text = message
+                }
             }
         }
+    }
+    
+    func finishAndGoHome(_ userInfo: UserInfo?) {
+        self.navigationController?.popViewController(animated: true)
+        let vc: MainViewController = MainViewController(nibName: "Home", bundle: nil)
+        vc.userInfo = userInfo
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

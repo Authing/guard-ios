@@ -26,9 +26,6 @@ public class Config {
     }
     
     public func getLogoUrl() -> String? {
-        if (logo != nil) {
-            return logo
-        }
-        return userpoolLogo
+        return logo ?? userpoolLogo
     }
 }
