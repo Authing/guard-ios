@@ -12,7 +12,7 @@ open class OneAuth {
     
     public static var bizId: String?
     
-    public static func start(_ vc: UIViewController, businessId: String? = nil, model: NTESQuickLoginModel? = nil, completion: @escaping(Int, String?, UserInfo?)->Void) {
+    public static func start(_ vc: UIViewController, businessId: String? = nil, model: Any? = nil, completion: @escaping(Int, String?, UserInfo?)->Void) {
         if (businessId != nil) {
             bizId = businessId!
         }
@@ -46,7 +46,7 @@ open class OneAuth {
         model.navBarHidden = true
 
         /// logo
-        let url = NSURL(string: (config?.getLogoUrl())!)
+        let url = URL(string: (config?.getLogoUrl())!)
         let data = try? Data(contentsOf: url! as URL)
         model.logoImg = UIImage(data: data!)!
         model.logoWidth = 52;

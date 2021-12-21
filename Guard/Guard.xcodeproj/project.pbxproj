@@ -6,6 +6,20 @@
 	objectVersion = 55;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		7EB02F042771AC57007CFF86 /* GuardXCFramework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 7EB02F072771AC57007CFF86 /* Build configuration list for PBXAggregateTarget "GuardXCFramework" */;
+			buildPhases = (
+				7EB02F082771AC5D007CFF86 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = GuardXCFramework;
+			productName = GuardXCFramework;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		7E7566782766F91500C3872F /* AppName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7566772766F91500C3872F /* AppName.swift */; };
 		7E75667B2766F9C400C3872F /* AuthingLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E75667A2766F9C400C3872F /* AuthingLogin.xib */; };
@@ -296,6 +310,9 @@
 					7E9593D9274C813B001459C5 = {
 						CreatedOnToolsVersion = 13.1;
 					};
+					7EB02F042771AC57007CFF86 = {
+						CreatedOnToolsVersion = 13.2;
+					};
 				};
 			};
 			buildConfigurationList = 7E9593CC274C813A001459C5 /* Build configuration list for PBXProject "Guard" */;
@@ -314,6 +331,7 @@
 			targets = (
 				7E9593D1274C813A001459C5 /* Guard */,
 				7E9593D9274C813B001459C5 /* GuardTests */,
+				7EB02F042771AC57007CFF86 /* GuardXCFramework */,
 			);
 		};
 /* End PBXProject section */
@@ -336,6 +354,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7EB02F082771AC5D007CFF86 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "FWK_NAME=Guard\n\nrm -rf \"${BUILD_DIR}/${FWK_NAME}.xcframework.zip\"\nrm -rf \"${BUILD_DIR}/${FWK_NAME}.xcframework\"\n\nxcodebuild -create-xcframework -framework \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${FWK_NAME}.framework\" -framework \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${FWK_NAME}.framework\" -output \"${BUILD_DIR}/${FWK_NAME}.xcframework\" \n\npushd \"${BUILD_DIR}\"\nzip -r -X \"${FWK_NAME}.xcframework.zip\" \"${FWK_NAME}.xcframework/\"\npopd\n\nshasum -a 256 \"${BUILD_DIR}/${FWK_NAME}.xcframework.zip\" > \"${BUILD_DIR}/guard.txt\"\n\nopen \"${BUILD_DIR}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7E9593CE274C813A001459C5 /* Sources */ = {
@@ -629,6 +667,24 @@
 			};
 			name = Release;
 		};
+		7EB02F052771AC57007CFF86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N7MT678JXL;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7EB02F062771AC57007CFF86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N7MT678JXL;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -655,6 +711,15 @@
 			buildConfigurations = (
 				7E9593E8274C813B001459C5 /* Debug */,
 				7E9593E9274C813B001459C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7EB02F072771AC57007CFF86 /* Build configuration list for PBXAggregateTarget "GuardXCFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7EB02F052771AC57007CFF86 /* Debug */,
+				7EB02F062771AC57007CFF86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
