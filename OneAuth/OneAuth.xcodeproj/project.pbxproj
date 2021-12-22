@@ -247,7 +247,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nrm -rf \"${BUILD_DIR}/OneAuth.xcframework.zip\"\nrm -rf \"${BUILD_DIR}/OneAuth.xcframework\"\n\nxcodebuild -create-xcframework -framework \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/OneAuth.framework\" -framework \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/OneAuth.framework\" -output \"${BUILD_DIR}/OneAuth.xcframework\" \n\npushd \"${BUILD_DIR}\"\nzip -r -X \"OneAuth.xcframework.zip\" \"OneAuth.xcframework/\"\npopd\n\nshasum -a 256 \"${BUILD_DIR}/OneAuth.xcframework.zip\" > \"${BUILD_DIR}/1.txt\"\n\nopen \"${BUILD_DIR}\"\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nrm -rf \"${BUILD_DIR}/OneAuth.xcframework.zip\"\nrm -rf \"${BUILD_DIR}/OneAuth.xcframework\"\n\nxcodebuild -create-xcframework -framework \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/OneAuth.framework\" -framework \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/OneAuth.framework\" -output \"${BUILD_DIR}/OneAuth.xcframework\" \n\npushd \"${BUILD_DIR}\"\nzip -r -X \"OneAuth.xcframework.zip\" \"OneAuth.xcframework/\"\npopd\n\nshasum -a 256 \"${BUILD_DIR}/OneAuth.xcframework.zip\" > \"${BUILD_DIR}/oneauth.txt\"\n\nopen \"${BUILD_DIR}\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
