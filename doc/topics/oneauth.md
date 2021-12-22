@@ -1,6 +1,6 @@
 # 接入步骤
 
-> 注意：iOS 仍在 beta 版本。功能可以用，但样式以及 API 接口还在完善中
+> 注意：iOS 仍在 beta 阶段。功能可以用，但样式以及 API 接口还在完善中
 
 1. 通过 Swift Package Manager，添加 2 个依赖
 
@@ -12,7 +12,7 @@ https://github.com/Authing/guard-ios-oneauth
 
 ![](./images/add_one_auth.png)
 
-2. 在应用启动（如 AppDelegate）里面初始化 Authing：
+2. 在应用启动（如 AppDelegate）时初始化 Authing：
 
 ```swift
 Authing.start("your_authing_app_id");
