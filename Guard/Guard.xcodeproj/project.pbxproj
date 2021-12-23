@@ -371,7 +371,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "FWK_NAME=Guard\n\nrm -rf \"${BUILD_DIR}/${FWK_NAME}.xcframework.zip\"\nrm -rf \"${BUILD_DIR}/${FWK_NAME}.xcframework\"\n\nxcodebuild -create-xcframework -framework \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${FWK_NAME}.framework\" -framework \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${FWK_NAME}.framework\" -output \"${BUILD_DIR}/${FWK_NAME}.xcframework\" \n\npushd \"${BUILD_DIR}\"\nzip -r -X \"${FWK_NAME}.xcframework.zip\" \"${FWK_NAME}.xcframework/\"\npopd\n\nshasum -a 256 \"${BUILD_DIR}/${FWK_NAME}.xcframework.zip\" > \"${BUILD_DIR}/guard.txt\"\n\nopen \"${BUILD_DIR}\"\n";
+			shellScript = "FWK_NAME=Guard\nFRAMEWORK_CONFIG=Release\nWORK_DIR=build\n\nrm -rf \"${WORK_DIR}\"\n\nxcodebuild -configuration \"${FRAMEWORK_CONFIG}\" -target \"${FWK_NAME}\" -sdk iphoneos\nxcodebuild -configuration \"${FRAMEWORK_CONFIG}\" -target \"${FWK_NAME}\" -sdk iphonesimulator\n\nxcodebuild -create-xcframework -framework \"${WORK_DIR}/${FRAMEWORK_CONFIG}-iphoneos/${FWK_NAME}.framework\" -framework \"${WORK_DIR}/${FRAMEWORK_CONFIG}-iphonesimulator/${FWK_NAME}.framework\" -output \"${WORK_DIR}/${FWK_NAME}.xcframework\" \n\npushd \"${WORK_DIR}\"\nzip -r -X \"${FWK_NAME}.xcframework.zip\" \"${FWK_NAME}.xcframework/\"\npopd\n\nshasum -a 256 \"${WORK_DIR}/${FWK_NAME}.xcframework.zip\" > \"${WORK_DIR}/guard.txt\"\n\nopen \"${WORK_DIR}\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

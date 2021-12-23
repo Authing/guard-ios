@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         OneAuth.bizId = "74ae90bd84f74b69a88b578bbbbcdcfd"
         Authing.setHost(host: "dev2.authing-inc.co")
-        Authing.start(appid: "61bc28f7f0ebba772a42f609");
+        Authing.start(appid: "61c297a8e8592dfe2f24be91");
         return true
     }
 

@@ -28,38 +28,15 @@
 		7E7567062769D77400C3872F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E7567052769D77400C3872F /* libz.tbd */; };
 		7E7567082769D77900C3872F /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E7567072769D77900C3872F /* libc++.1.tbd */; };
 		7E7567092769DE0B00C3872F /* NTESBaseComponent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E7566F42769D44A00C3872F /* NTESBaseComponent.framework */; };
-		7E75670A2769DE0C00C3872F /* NTESBaseComponent.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7E7566F42769D44A00C3872F /* NTESBaseComponent.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7E75670C2769DE0D00C3872F /* NTESQuickPass.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E7566F02769D44900C3872F /* NTESQuickPass.framework */; };
-		7E75670D2769DE0D00C3872F /* NTESQuickPass.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7E7566F02769D44900C3872F /* NTESQuickPass.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7E75670E2769DE0F00C3872F /* WYEAccountApiSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E7566F12769D44900C3872F /* WYEAccountApiSDK.framework */; };
-		7E75670F2769DE0F00C3872F /* WYEAccountApiSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7E7566F12769D44900C3872F /* WYEAccountApiSDK.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7E7567102769DE1000C3872F /* WYOAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E7566F22769D44900C3872F /* WYOAuth.framework */; };
-		7E7567112769DE1000C3872F /* WYOAuth.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7E7566F22769D44900C3872F /* WYOAuth.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7E7567122769DE1100C3872F /* WYTYRZUISDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E7566F32769D44A00C3872F /* WYTYRZUISDK.framework */; };
-		7E7567132769DE1100C3872F /* WYTYRZUISDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7E7566F32769D44A00C3872F /* WYTYRZUISDK.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7EB50A2A276B38F900D39E7A /* NTESQuickPassManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EB50A26276B38F900D39E7A /* NTESQuickPassManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7EB50A2B276B38F900D39E7A /* NTESQuickLoginModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EB50A27276B38F900D39E7A /* NTESQuickLoginModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7EB50A2C276B38F900D39E7A /* NTESQuickPass.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EB50A28276B38F900D39E7A /* NTESQuickPass.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7EB50A2D276B38F900D39E7A /* NTESQuickLoginManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EB50A29276B38F900D39E7A /* NTESQuickLoginManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		7E75670B2769DE0C00C3872F /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				7E7567132769DE1100C3872F /* WYTYRZUISDK.framework in Embed Frameworks */,
-				7E75670F2769DE0F00C3872F /* WYEAccountApiSDK.framework in Embed Frameworks */,
-				7E75670A2769DE0C00C3872F /* NTESBaseComponent.framework in Embed Frameworks */,
-				7E7567112769DE1000C3872F /* WYOAuth.framework in Embed Frameworks */,
-				7E75670D2769DE0D00C3872F /* NTESQuickPass.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7E568B5227708BF700EC45C7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -171,7 +148,6 @@
 				7E7566CF2769D25100C3872F /* Sources */,
 				7E7566D02769D25100C3872F /* Frameworks */,
 				7E7566D12769D25100C3872F /* Resources */,
-				7E75670B2769DE0C00C3872F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

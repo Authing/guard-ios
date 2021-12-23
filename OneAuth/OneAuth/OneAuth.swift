@@ -45,18 +45,22 @@ open class OneAuth {
         }
         model.navBarHidden = true
 
+        let offsetY: CGFloat = 100
+        
         /// logo
         let url = URL(string: (config?.getLogoUrl())!)
         let data = try? Data(contentsOf: url! as URL)
         model.logoImg = UIImage(data: data!)!
         model.logoWidth = 52;
         model.logoHeight = 52;
+        model.logoOffsetTopY = offsetY;
         model.logoHidden = false;
 
         /// 手机号码
 //        model.numberFont = [UIFont fontWithName:@"PingFangSC-Semibold" size:18];
         model.numberOffsetX = 0;
         model.numberHeight = 27;
+        model.numberOffsetTopY = 100 + offsetY
 
         ///  品牌
 //        model.brandFont = [UIFont fontWithName:@"PingFangSC-Regular" size:12];
@@ -64,6 +68,7 @@ open class OneAuth {
         model.brandBackgroundColor = UIColor.clear
         model.brandHeight = 20;
         model.brandOffsetX = 0;
+        model.brandOffsetTopY = 150 + offsetY
 
             /// 登录按钮
 //        model.logBtnTextFont = [UIFont systemFontOfSize:14];
@@ -71,6 +76,7 @@ open class OneAuth {
         model.logBtnText = "确定登录";
         model.logBtnRadius = 8;
         model.logBtnHeight = 44;
+        model.logBtnOffsetTopY = 200 + offsetY
         model.startPoint = CGPoint(x:0, y:0.5);
         model.endPoint = CGPoint(x:1, y:0.5);
         model.logBtnUsableBGColor = Const.Color_Authing_Main
@@ -110,7 +116,7 @@ open class OneAuth {
             otherLoginButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
             otherLoginButton.leadingAnchor.constraint(equalTo: customView!.leadingAnchor, constant: 40).isActive = true
             otherLoginButton.trailingAnchor.constraint(equalTo: customView!.trailingAnchor, constant: -40).isActive = true
-            otherLoginButton.topAnchor.constraint(equalTo: customView!.topAnchor, constant: 256).isActive = true
+            otherLoginButton.topAnchor.constraint(equalTo: customView!.topAnchor, constant: 256 + offsetY).isActive = true
         }
 
         /**返回按钮点击事件回调*/
