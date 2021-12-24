@@ -20,11 +20,16 @@ open class AppLogo: UIImageView {
 
     private func setup() {
         Authing.getConfig { config in
+            guard config != nil else {
+                return
+            }
             let url = NSURL(string: (config?.getLogoUrl())!)
             DispatchQueue.global().async {
                 let data = try? Data(contentsOf: url! as URL)
                 DispatchQueue.main.async() { [weak self] in
-                    self?.image = UIImage(data: data!)
+                    if (data != nil) {
+                        self?.image = UIImage(data: data!)
+                    }
                 }
             }
         }

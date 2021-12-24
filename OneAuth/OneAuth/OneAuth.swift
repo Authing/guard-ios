@@ -82,13 +82,11 @@ open class OneAuth {
         model.logBtnUsableBGColor = Const.Color_Authing_Main
 
             /// 隐私协议
-        model.appPrivacyText = "登录即同意《默认》并授权《用户协议》和《隐私协议》获得本机号码";
-        model.appFPrivacyText = "《用户协议》";
+//        model.appPrivacyText = "登录即同意《默认》并授权《用户协议》和《隐私协议》获得本机号码";
+//        model.appFPrivacyText = "《用户协议》";
         model.appPrivacyOriginBottomMargin = 50;
-        model.appFPrivacyURL = "https://support.dun.163.com/documents/287305921855672320?docId=429869784953151488";
-        model.appSPrivacyText = "《隐私协议》";
-        model.appFPrivacyURL = "https://support.dun.163.com/documents/287305921855672320?docId=429869784953151488";
         model.shouldHiddenPrivacyMarks = true;
+        model.protocolColor = Const.Color_Authing_Main
         model.uncheckedImg = UIImage(named: "unchecked", in: Bundle(for: OneAuth.self), compatibleWith: nil)!
         model.checkedImg = UIImage(named: "checked", in: Bundle(for: OneAuth.self), compatibleWith: nil)!
         model.checkboxWH = 11;

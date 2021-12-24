@@ -37,6 +37,7 @@ public class Guardian {
         if (config != nil && config?.userPoolId != nil) {
             request.addValue((config?.userPoolId)!, forHTTPHeaderField: "x-authing-userpool-id")
         }
+        request.timeoutInterval = 60
         request.addValue(Authing.getAppId(), forHTTPHeaderField: "x-authing-app-id")
         request.addValue("Guard@iOS@" + Const.SDK_VERSION, forHTTPHeaderField: "x-authing-request-from")
         request.addValue(Util.getLangHeader(), forHTTPHeaderField: "x-authing-lang")

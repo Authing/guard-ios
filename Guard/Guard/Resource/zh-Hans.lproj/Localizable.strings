@@ -6,3 +6,5 @@
 "authing_phone" = "手机号";
 "authing_password" = "密码";
 "authing_other_login_methods" = "其他方式登录";
+"authing_login_by_phone_code" = "验证码登录";
+"authing_login_by_password" = "密码登录";

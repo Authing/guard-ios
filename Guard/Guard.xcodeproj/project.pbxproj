@@ -43,6 +43,11 @@
 		7ECF8AC52759FE8D004F8FC5 /* SDKUsageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF8AC42759FE8D004F8FC5 /* SDKUsageTask.swift */; };
 		7ECF8AC72759FF17004F8FC5 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF8AC62759FF17004F8FC5 /* Const.swift */; };
 		7ECF8ACA275A022D004F8FC5 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF8AC9275A022D004F8FC5 /* Util.swift */; };
+		7ED434C92775653100893EDD /* LoginMethodTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED434C82775653100893EDD /* LoginMethodTab.swift */; };
+		7ED434CC277569DF00893EDD /* LoginMethodTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED434CB277569DF00893EDD /* LoginMethodTabItem.swift */; };
+		7ED434CE27757E4B00893EDD /* LoginContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED434CD27757E4B00893EDD /* LoginContainer.swift */; };
+		7ED434D02775AB8500893EDD /* PhoneNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED434CF2775AB8500893EDD /* PhoneNumberTextField.swift */; };
+		7ED434D22775ABA000893EDD /* TextFieldLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED434D12775ABA000893EDD /* TextFieldLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +85,11 @@
 		7ECF8AC42759FE8D004F8FC5 /* SDKUsageTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDKUsageTask.swift; sourceTree = "<group>"; };
 		7ECF8AC62759FF17004F8FC5 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		7ECF8AC9275A022D004F8FC5 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		7ED434C82775653100893EDD /* LoginMethodTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMethodTab.swift; sourceTree = "<group>"; };
+		7ED434CB277569DF00893EDD /* LoginMethodTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMethodTabItem.swift; sourceTree = "<group>"; };
+		7ED434CD27757E4B00893EDD /* LoginContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContainer.swift; sourceTree = "<group>"; };
+		7ED434CF2775AB8500893EDD /* PhoneNumberTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberTextField.swift; sourceTree = "<group>"; };
+		7ED434D12775ABA000893EDD /* TextFieldLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,11 +114,15 @@
 		7E7566762766F90200C3872F /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				7ED434CA277569D100893EDD /* Internal */,
 				7E7566772766F91500C3872F /* AppName.swift */,
 				7E75668A276746AF00C3872F /* AppLogo.swift */,
 				7E75668C276837E700C3872F /* AccountTextField.swift */,
 				7E75668E276838C600C3872F /* PasswordTextField.swift */,
+				7ED434CF2775AB8500893EDD /* PhoneNumberTextField.swift */,
 				7E7566902768399E00C3872F /* LoginButton.swift */,
+				7ED434C82775653100893EDD /* LoginMethodTab.swift */,
+				7ED434CD27757E4B00893EDD /* LoginContainer.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -241,6 +255,15 @@
 				7ECF8AC9275A022D004F8FC5 /* Util.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		7ED434CA277569D100893EDD /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				7ED434CB277569DF00893EDD /* LoginMethodTabItem.swift */,
+				7ED434D12775ABA000893EDD /* TextFieldLayout.swift */,
+			);
+			path = Internal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,9 +403,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ED434C92775653100893EDD /* LoginMethodTab.swift in Sources */,
+				7ED434CC277569DF00893EDD /* LoginMethodTabItem.swift in Sources */,
 				7ECF8AC52759FE8D004F8FC5 /* SDKUsageTask.swift in Sources */,
 				7E7566A027684A5E00C3872F /* AuthClient.swift in Sources */,
 				7ECF8AC72759FF17004F8FC5 /* Const.swift in Sources */,
+				7ED434D22775ABA000893EDD /* TextFieldLayout.swift in Sources */,
 				7E7566A22768801E00C3872F /* UIView+Authing.swift in Sources */,
 				7E75668B276746AF00C3872F /* AppLogo.swift in Sources */,
 				7E7566B22768A7CC00C3872F /* UserInfo.swift in Sources */,
@@ -395,8 +421,10 @@
 				7E7566912768399E00C3872F /* LoginButton.swift in Sources */,
 				7E75668F276838C600C3872F /* PasswordTextField.swift in Sources */,
 				7E75668727672C8D00C3872F /* Config.swift in Sources */,
+				7ED434D02775AB8500893EDD /* PhoneNumberTextField.swift in Sources */,
 				7E7566782766F91500C3872F /* AppName.swift in Sources */,
 				7E959441274CEECF001459C5 /* Authing.swift in Sources */,
+				7ED434CE27757E4B00893EDD /* LoginContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

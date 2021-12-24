@@ -136,6 +136,23 @@ public class Util {
         }
     }
     
+    public static func findViews<T: UIView>(_ current: UIView, viewClass: AnyClass) -> Array<T> {
+        let rootView: UIView = getRootView(current)
+        var views: Array<T> = []
+        _findViews(rootView, viewClass: viewClass, result: &views)
+        return views
+    }
+    
+    public static func _findViews<T: UIView>(_ parent: UIView, viewClass: AnyClass, result: inout Array<T>) {
+        for child: UIView in parent.subviews {
+            _findViews(child, viewClass: viewClass, result: &result)
+            
+            if (type(of: child) == viewClass) {
+                result.append(child as! T)
+            }
+        }
+    }
+    
     public static func findView(_ current: UIView, viewClass: AnyClass) -> UIView? {
         let rootView: UIView = getRootView(current)
         return _findView(rootView, viewClass: viewClass)

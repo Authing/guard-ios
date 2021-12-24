@@ -1,13 +1,13 @@
 //
-//  PasswordTextField.swift
+//  PhoneNumberTextField.swift
 //  Guard
 //
-//  Created by Lance Mao on 2021/12/14.
+//  Created by Lance Mao on 2021/12/24.
 //
 
 import UIKit
 
-open class PasswordTextField: TextFieldLayout {
+open class PhoneNumberTextField: TextFieldLayout {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -19,11 +19,10 @@ open class PasswordTextField: TextFieldLayout {
     }
 
     private func setup() {
-        self.isSecureTextEntry = true
         let sInput: String = NSLocalizedString("authing_please_input", bundle: Bundle(for: Self.self), comment: "")
-        let sPassword: String = NSLocalizedString("authing_password", bundle: Bundle(for: Self.self), comment: "")
+        let sPhone: String = NSLocalizedString("authing_phone", bundle: Bundle(for: Self.self), comment: "")
         Authing.getConfig { config in
-            self.placeholder = "\(sInput)\(sPassword)"
+            self.placeholder = "\(sInput)\(sPhone)"
         }
     }
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class AccountTextField: UITextField {
+open class AccountTextField: TextFieldLayout {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
