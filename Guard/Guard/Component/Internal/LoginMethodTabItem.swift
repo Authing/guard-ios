@@ -31,12 +31,10 @@ public class LoginMethodTabItem: UIView {
         
         button = UIButton(frame: CGRect(x: 0, y: 0, width: width, height: height-2))
         button?.isUserInteractionEnabled = false
-        button?.setTitleColor(UIColor(white: 0.8, alpha: 1), for: .normal)
         button?.titleLabel?.font = button?.titleLabel?.font.withSize(14)
         addSubview(button!)
         
         underLine = UIView(frame: CGRect(x: 0, y: height - 2, width: width, height: 2))
-        underLine?.backgroundColor = UIColor(white: 0.8, alpha: 1)
         addSubview(underLine!)
     }
     
@@ -62,6 +60,6 @@ public class LoginMethodTabItem: UIView {
     
     public func loseFocus() {
         button?.setTitleColor(UIColor(white: 0.8, alpha: 1), for: .normal)
-        underLine?.backgroundColor = UIColor(white: 0.8, alpha: 1)
+        underLine?.backgroundColor = UIColor(white: 1, alpha: 0)
     }
 }

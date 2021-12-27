@@ -1,13 +1,13 @@
 //
-//  PasswordTextField.swift
+//  VerifyCodeTextField.swift
 //  Guard
 //
-//  Created by Lance Mao on 2021/12/14.
+//  Created by Lance Mao on 2021/12/27.
 //
 
 import UIKit
 
-open class PasswordTextField: TextFieldLayout {
+open class VerifyCodeTextField: TextFieldLayout {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -19,9 +19,9 @@ open class PasswordTextField: TextFieldLayout {
     }
 
     private func setup() {
-        self.isSecureTextEntry = true
+        self.keyboardType = .numberPad
         let sInput: String = NSLocalizedString("authing_please_input", bundle: Bundle(for: Self.self), comment: "")
-        let sPassword: String = NSLocalizedString("authing_password", bundle: Bundle(for: Self.self), comment: "")
-        self.placeholder = "\(sInput)\(sPassword)"
+        let sVerifyCode: String = NSLocalizedString("authing_verify_code", bundle: Bundle(for: Self.self), comment: "")
+        self.placeholder = "\(sInput)\(sVerifyCode)"
     }
 }

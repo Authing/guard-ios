@@ -153,17 +153,17 @@ public class Util {
         }
     }
     
-    public static func findView(_ current: UIView, viewClass: AnyClass) -> UIView? {
+    public static func findView<T: UIView>(_ current: UIView, viewClass: AnyClass) -> T? {
         let rootView: UIView = getRootView(current)
         return _findView(rootView, viewClass: viewClass)
     }
     
-    public static func _findView(_ parent: UIView, viewClass: AnyClass) -> UIView? {
-        if (type(of: parent) == viewClass) {
-            return parent
+    public static func _findView<T: UIView>(_ parent: UIView, viewClass: AnyClass) -> T? {
+        if (type(of: parent) == viewClass && isVisible(parent)) {
+            return parent as? T
         }
         for child in parent.subviews {
-            let result: UIView? = _findView(child, viewClass: viewClass)
+            let result: T? = _findView(child, viewClass: viewClass)
             if (result != nil) {
                 return result
             }
@@ -177,5 +177,24 @@ public class Util {
             v = v.superview!
         }
         return v
+    }
+    
+    public static func isVisible(_ view: UIView?) -> Bool {
+        if (view == nil) {
+            return true
+        }
+        if (view!.isHidden) {
+            return false
+        }
+        return isVisible(view!.superview)
+    }
+    
+    public static func setError(_ current: UIView, _ text: String?) {
+        DispatchQueue.main.async() {
+            let errorView = Util.findView(current, viewClass: ErrorLabel.self)
+            if (errorView != nil) {
+                (errorView as! ErrorLabel).text = text
+            }
+        }
     }
 }

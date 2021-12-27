@@ -21,8 +21,14 @@ open class PhoneNumberTextField: TextFieldLayout {
     private func setup() {
         let sInput: String = NSLocalizedString("authing_please_input", bundle: Bundle(for: Self.self), comment: "")
         let sPhone: String = NSLocalizedString("authing_phone", bundle: Bundle(for: Self.self), comment: "")
-        Authing.getConfig { config in
-            self.placeholder = "\(sInput)\(sPhone)"
+        self.placeholder = "\(sInput)\(sPhone)"
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let tfCode: VerifyCodeTextField? = Util.findView(self, viewClass: VerifyCodeTextField.self)
+        if (tfCode != nil) {
+            tfCode?.becomeFirstResponder()
         }
+        return true
     }
 }

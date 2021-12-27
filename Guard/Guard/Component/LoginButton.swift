@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class LoginButton: UIButton {
+open class LoginButton: LoadingButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -34,21 +34,32 @@ open class LoginButton: UIButton {
             return
         }
         
-        let tfAccountView: UIView? = Util.findView(self, viewClass: AccountTextField.self)
-        let tfPasswordView: UIView? = Util.findView(self, viewClass: PasswordTextField.self)
-        if (tfAccountView != nil && tfPasswordView != nil) {
-            let tfAccount: AccountTextField = tfAccountView as! AccountTextField
-            let tfPassword: PasswordTextField = tfPasswordView as! PasswordTextField
-            let account: String? = tfAccount.text
-            let password: String? = tfPassword.text
+        let tfPhone: PhoneNumberTextField? = Util.findView(self, viewClass: PhoneNumberTextField.self)
+        let tfCode: VerifyCodeTextField? = Util.findView(self, viewClass: VerifyCodeTextField.self)
+        if (tfPhone != nil && tfCode != nil) {
+            let phone: String? = tfPhone!.text
+            let code: String? = tfCode!.text
+            if (!phone!.isEmpty && !code!.isEmpty) {
+                loginByPhoneCode(phone!, code!)
+            }
+            return
+        }
+        
+        let tfAccount: AccountTextField? = Util.findView(self, viewClass: AccountTextField.self)
+        let tfPassword: PasswordTextField? = Util.findView(self, viewClass: PasswordTextField.self)
+        if (tfAccount != nil && tfPassword != nil) {
+            let account: String? = tfAccount!.text
+            let password: String? = tfPassword!.text
             if (!account!.isEmpty && !password!.isEmpty) {
                 loginByAccount(account!, password!)
             }
         }
     }
     
-    private func loginByAccount(_ account: String, _ password: String) {
-        AuthClient.loginByAccount(account: account, password: password) { code, message, userInfo in
+    private func loginByPhoneCode(_ phone: String, _ code: String) {
+        startLoading()
+        AuthClient.loginByPhoneCode(phone: phone, code: code) { code, message, userInfo in
+            self.stopLoading()
             if (code == 200) {
                 DispatchQueue.main.async() {
                     let vc: AuthViewController? = self.viewController
@@ -58,6 +69,27 @@ open class LoginButton: UIButton {
                     
                     vc?.complete(userInfo)
                 }
+            } else {
+                Util.setError(self, message)
+            }
+        }
+    }
+    
+    private func loginByAccount(_ account: String, _ password: String) {
+        startLoading()
+        AuthClient.loginByAccount(account: account, password: password) { code, message, userInfo in
+            self.stopLoading()
+            if (code == 200) {
+                DispatchQueue.main.async() {
+                    let vc: AuthViewController? = self.viewController
+                    if (vc == nil) {
+                        return
+                    }
+                    
+                    vc?.complete(userInfo)
+                }
+            } else {
+                Util.setError(self, message)
             }
         }
     }

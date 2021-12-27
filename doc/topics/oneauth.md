@@ -1,7 +1,5 @@
 # 接入步骤
 
-> 注意：iOS 仍在 beta 阶段。功能可以用，但样式以及 API 接口还在完善中
-
 1. 通过 Swift Package Manager，添加 2 个依赖
 
 https://github.com/Authing/guard_ios

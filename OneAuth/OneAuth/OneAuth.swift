@@ -44,6 +44,7 @@ open class OneAuth {
             model.presentDirectionType = NTESPresentDirection.push;
         }
         model.navBarHidden = true
+        model.privacyNavReturnImg = UIImage(named: "back", in: Bundle(for: OneAuth.self), compatibleWith: nil)!
 
         let offsetY: CGFloat = 100
         

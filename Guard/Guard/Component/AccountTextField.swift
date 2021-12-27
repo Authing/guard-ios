@@ -27,4 +27,12 @@ open class AccountTextField: TextFieldLayout {
             self.placeholder = "\(sInput)\(sUsername) / \(sEmail) / \(sPhone)"
         }
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let tf: PasswordTextField? = Util.findView(self, viewClass: PasswordTextField.self)
+        if (tf != nil) {
+            tf?.becomeFirstResponder()
+        }
+        return true
+    }
 }

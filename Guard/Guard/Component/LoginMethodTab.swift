@@ -30,7 +30,7 @@ open class LoginMethodTab: UIView {
             let underLine: UIView = UIView(frame: CGRect())
             self.addSubview(underLine)
             underLine.translatesAutoresizingMaskIntoConstraints = false
-            underLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
+            underLine.heightAnchor.constraint(equalToConstant: 1/UIScreen.main.scale).isActive = true
             underLine.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
             underLine.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
             underLine.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
@@ -52,6 +52,8 @@ open class LoginMethodTab: UIView {
                 item.addGestureRecognizer(gesture)
                 if (method == config?.defaultLoginMethod) {
                     item.gainFocus()
+                } else {
+                    item.loseFocus()
                 }
                 self.addSubview(item)
                 self.items.append(item)
@@ -73,6 +75,7 @@ open class LoginMethodTab: UIView {
     }
     
     @objc private func onClick(sender: UITapGestureRecognizer) {
+        Util.setError(self, nil)
         items.forEach { item in
             if (item == sender.view) {
                 item.gainFocus()

@@ -48,6 +48,11 @@
 		7ED434CE27757E4B00893EDD /* LoginContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED434CD27757E4B00893EDD /* LoginContainer.swift */; };
 		7ED434D02775AB8500893EDD /* PhoneNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED434CF2775AB8500893EDD /* PhoneNumberTextField.swift */; };
 		7ED434D22775ABA000893EDD /* TextFieldLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED434D12775ABA000893EDD /* TextFieldLayout.swift */; };
+		7ED434DA2779509100893EDD /* VerifyCodeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED434D92779509100893EDD /* VerifyCodeTextField.swift */; };
+		7ED434DC277950AC00893EDD /* GetVerifyCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED434DB277950AC00893EDD /* GetVerifyCodeButton.swift */; };
+		7ED434DE2779554B00893EDD /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED434DD2779554B00893EDD /* LoadingButton.swift */; };
+		7ED434E0277980B100893EDD /* ErrorLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED434DF277980B100893EDD /* ErrorLabel.swift */; };
+		7ED434E52779B28B00893EDD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7ED434E42779B28B00893EDD /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +95,11 @@
 		7ED434CD27757E4B00893EDD /* LoginContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContainer.swift; sourceTree = "<group>"; };
 		7ED434CF2775AB8500893EDD /* PhoneNumberTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberTextField.swift; sourceTree = "<group>"; };
 		7ED434D12775ABA000893EDD /* TextFieldLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldLayout.swift; sourceTree = "<group>"; };
+		7ED434D92779509100893EDD /* VerifyCodeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyCodeTextField.swift; sourceTree = "<group>"; };
+		7ED434DB277950AC00893EDD /* GetVerifyCodeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVerifyCodeButton.swift; sourceTree = "<group>"; };
+		7ED434DD2779554B00893EDD /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
+		7ED434DF277980B100893EDD /* ErrorLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLabel.swift; sourceTree = "<group>"; };
+		7ED434E42779B28B00893EDD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,9 +130,12 @@
 				7E75668C276837E700C3872F /* AccountTextField.swift */,
 				7E75668E276838C600C3872F /* PasswordTextField.swift */,
 				7ED434CF2775AB8500893EDD /* PhoneNumberTextField.swift */,
+				7ED434D92779509100893EDD /* VerifyCodeTextField.swift */,
 				7E7566902768399E00C3872F /* LoginButton.swift */,
 				7ED434C82775653100893EDD /* LoginMethodTab.swift */,
 				7ED434CD27757E4B00893EDD /* LoginContainer.swift */,
+				7ED434DB277950AC00893EDD /* GetVerifyCodeButton.swift */,
+				7ED434DF277980B100893EDD /* ErrorLabel.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -173,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				7E75669D27683F5300C3872F /* Localizable.strings */,
+				7ED434E42779B28B00893EDD /* Images.xcassets */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -180,7 +194,6 @@
 		7E9593C8274C813A001459C5 = {
 			isa = PBXGroup;
 			children = (
-				7E959439274CE1F5001459C5 /* image */,
 				7E9593D4274C813A001459C5 /* Guard */,
 				7E9593DE274C813B001459C5 /* GuardTests */,
 				7E9593D3274C813A001459C5 /* Products */,
@@ -224,14 +237,6 @@
 			path = GuardTests;
 			sourceTree = "<group>";
 		};
-		7E959439274CE1F5001459C5 /* image */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = image;
-			path = Guard/image;
-			sourceTree = "<group>";
-		};
 		7ECF8AC02759F819004F8FC5 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +267,7 @@
 			children = (
 				7ED434CB277569DF00893EDD /* LoginMethodTabItem.swift */,
 				7ED434D12775ABA000893EDD /* TextFieldLayout.swift */,
+				7ED434DD2779554B00893EDD /* LoadingButton.swift */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -364,6 +370,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ED434E52779B28B00893EDD /* Images.xcassets in Resources */,
 				7E75667B2766F9C400C3872F /* AuthingLogin.xib in Resources */,
 				7E75669B27683F5300C3872F /* Localizable.strings in Resources */,
 			);
@@ -405,11 +412,14 @@
 			files = (
 				7ED434C92775653100893EDD /* LoginMethodTab.swift in Sources */,
 				7ED434CC277569DF00893EDD /* LoginMethodTabItem.swift in Sources */,
+				7ED434DE2779554B00893EDD /* LoadingButton.swift in Sources */,
 				7ECF8AC52759FE8D004F8FC5 /* SDKUsageTask.swift in Sources */,
 				7E7566A027684A5E00C3872F /* AuthClient.swift in Sources */,
 				7ECF8AC72759FF17004F8FC5 /* Const.swift in Sources */,
+				7ED434DA2779509100893EDD /* VerifyCodeTextField.swift in Sources */,
 				7ED434D22775ABA000893EDD /* TextFieldLayout.swift in Sources */,
 				7E7566A22768801E00C3872F /* UIView+Authing.swift in Sources */,
+				7ED434E0277980B100893EDD /* ErrorLabel.swift in Sources */,
 				7E75668B276746AF00C3872F /* AppLogo.swift in Sources */,
 				7E7566B22768A7CC00C3872F /* UserInfo.swift in Sources */,
 				7E75668D276837E700C3872F /* AccountTextField.swift in Sources */,
@@ -418,6 +428,7 @@
 				7E7566812766FA1A00C3872F /* AuthFlow.swift in Sources */,
 				7E75667E2766F9DD00C3872F /* AuthViewController.swift in Sources */,
 				7ECF8AC22759F82D004F8FC5 /* Guardian.swift in Sources */,
+				7ED434DC277950AC00893EDD /* GetVerifyCodeButton.swift in Sources */,
 				7E7566912768399E00C3872F /* LoginButton.swift in Sources */,
 				7E75668F276838C600C3872F /* PasswordTextField.swift in Sources */,
 				7E75668727672C8D00C3872F /* Config.swift in Sources */,
