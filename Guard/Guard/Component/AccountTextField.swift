@@ -19,13 +19,48 @@ open class AccountTextField: TextFieldLayout {
     }
 
     private func setup() {
-        let sInput: String = NSLocalizedString("authing_please_input", bundle: Bundle(for: Self.self), comment: "")
+        Authing.getConfig { config in
+            if (config != nil) {
+                self.setup(config!)
+            }
+        }
+    }
+    
+    private func setup(_ config: Config) {
+        self.placeholder = NSLocalizedString("authing_please_input", bundle: Bundle(for: Self.self), comment: "")
+        
+        var i: Int = 0
+        if (config.enabledLoginMethods != nil) {
+            for method in config.enabledLoginMethods! {
+                self.placeholder! += getMethodText(method)
+                if (i < config.enabledLoginMethods!.count - 1) {
+                    self.placeholder! += " / "
+                }
+                i += 1
+            }
+        }
+        
+        if (config.enabledLoginMethods!.count == 1) {
+            if (config.enabledLoginMethods![0] == "email-password") {
+                keyboardType = .emailAddress
+            } else if (config.enabledLoginMethods![0] == "phone-password") {
+                keyboardType = .phonePad
+            }
+        }
+    }
+    
+    private func getMethodText(_ method: String) -> String {
         let sUsername: String = NSLocalizedString("authing_username", bundle: Bundle(for: Self.self), comment: "")
         let sEmail: String = NSLocalizedString("authing_email", bundle: Bundle(for: Self.self), comment: "")
         let sPhone: String = NSLocalizedString("authing_phone", bundle: Bundle(for: Self.self), comment: "")
-        Authing.getConfig { config in
-            self.placeholder = "\(sInput)\(sUsername) / \(sEmail) / \(sPhone)"
+        if (method == "username-password") {
+            return sUsername
+        } else if (method == "email-password") {
+            return sEmail
+        } else if (method == "phone-password") {
+            return sPhone
         }
+        return ""
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

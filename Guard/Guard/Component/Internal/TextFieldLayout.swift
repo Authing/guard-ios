@@ -20,15 +20,17 @@ open class TextFieldLayout: UITextField, UITextFieldDelegate {
 
     private func setup() {
         self.delegate = self
-    }
-    
-    public func textFieldDidBeginEditing(_ textField: UITextField) {
         layer.cornerRadius = 4
         layer.borderWidth = 1
+        layer.borderColor = UIColor(white: 0.9, alpha: 1).cgColor
+    }
+    
+    public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         layer.borderColor = Const.Color_Authing_Main.cgColor
+        return true
     }
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
-        layer.borderWidth = 0
+        layer.borderColor = UIColor(white: 0.9, alpha: 1).cgColor
     }
 }

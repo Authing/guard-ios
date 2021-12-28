@@ -41,18 +41,6 @@
                         <constraint firstAttribute="height" constant="64" id="l8H-BD-BgL"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DMA-tf-9bk">
-                    <rect key="frame" x="0.0" y="44" width="77" height="31"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="31" id="jQj-lv-MeD"/>
-                        <constraint firstAttribute="width" constant="77" id="yk3-6e-XDb"/>
-                    </constraints>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" title="Close"/>
-                    <connections>
-                        <action selector="onCloseClick:forEvent:" destination="-1" eventType="touchUpInside" id="sOd-6e-0jQ"/>
-                    </connections>
-                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="txj-YQ-JVh" customClass="LoginMethodTab" customModule="Guard" customModuleProvider="target">
                     <rect key="frame" x="20" y="208" width="374" height="48"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -173,6 +161,18 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DMA-tf-9bk">
+                    <rect key="frame" x="20" y="44" width="31" height="31"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="31" id="jQj-lv-MeD"/>
+                        <constraint firstAttribute="width" secondItem="DMA-tf-9bk" secondAttribute="height" multiplier="1:1" id="kbC-eo-yDb"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" backgroundImage="authing_close"/>
+                    <connections>
+                        <action selector="onCloseClick:forEvent:" destination="-1" eventType="touchUpInside" id="sOd-6e-0jQ"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -188,7 +188,7 @@
                 <constraint firstItem="uxM-Eg-q9m" firstAttribute="leading" secondItem="E2M-Lp-3aM" secondAttribute="leading" id="DzH-2y-drU"/>
                 <constraint firstItem="E2M-Lp-3aM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="HGL-mq-sfI"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="jkG-vF-ihh" secondAttribute="trailing" constant="20" id="I7z-hd-Uo5"/>
-                <constraint firstItem="DMA-tf-9bk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="PPu-uI-RRv"/>
+                <constraint firstItem="DMA-tf-9bk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="PPu-uI-RRv"/>
                 <constraint firstItem="WHE-LW-cSI" firstAttribute="leading" secondItem="uxM-Eg-q9m" secondAttribute="trailing" constant="8" id="RoC-RN-vb2"/>
                 <constraint firstItem="gFZ-Xj-lJ9" firstAttribute="top" secondItem="txj-YQ-JVh" secondAttribute="bottom" constant="16" id="RtW-cc-hVO"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="7BN-be-d2t" secondAttribute="trailing" constant="20" id="TD6-pL-cBb"/>
@@ -208,11 +208,15 @@
         </view>
     </objects>
     <designables>
+        <designable name="4WY-fs-Tha">
+            <size key="intrinsicContentSize" width="103" height="15"/>
+        </designable>
         <designable name="jkG-vF-ihh">
             <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
     </designables>
     <resources>
+        <image name="authing_close" width="40" height="40"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -15,6 +15,7 @@ public class Config {
     var userpoolLogo: String?
     var loginMethods: [String]?
     var defaultLoginMethod: String?
+    var enabledLoginMethods: [String]?
     
     public static func parse(data: NSDictionary?) -> Config? {
         guard data != nil else {
@@ -39,6 +40,10 @@ public class Config {
                 }
                 i+=1
             })
+        }
+        let passwordTabConfig: NSDictionary? = data!["passwordTabConfig"] as? NSDictionary
+        if (passwordTabConfig != nil) {
+            config.enabledLoginMethods = passwordTabConfig?["enabledLoginMethods"] as? [String]
         }
         return config
     }

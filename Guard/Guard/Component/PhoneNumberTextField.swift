@@ -19,6 +19,7 @@ open class PhoneNumberTextField: TextFieldLayout {
     }
 
     private func setup() {
+        self.keyboardType = .phonePad
         let sInput: String = NSLocalizedString("authing_please_input", bundle: Bundle(for: Self.self), comment: "")
         let sPhone: String = NSLocalizedString("authing_phone", bundle: Bundle(for: Self.self), comment: "")
         self.placeholder = "\(sInput)\(sPhone)"

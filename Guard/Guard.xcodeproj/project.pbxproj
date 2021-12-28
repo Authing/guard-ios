@@ -53,6 +53,7 @@
 		7ED434DE2779554B00893EDD /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED434DD2779554B00893EDD /* LoadingButton.swift */; };
 		7ED434E0277980B100893EDD /* ErrorLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED434DF277980B100893EDD /* ErrorLabel.swift */; };
 		7ED434E52779B28B00893EDD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7ED434E42779B28B00893EDD /* Images.xcassets */; };
+		7EF66C56277B157100FCBBEB /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C55277B157100FCBBEB /* PrimaryButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		7ED434DD2779554B00893EDD /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
 		7ED434DF277980B100893EDD /* ErrorLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLabel.swift; sourceTree = "<group>"; };
 		7ED434E42779B28B00893EDD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7EF66C55277B157100FCBBEB /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,6 +270,7 @@
 				7ED434CB277569DF00893EDD /* LoginMethodTabItem.swift */,
 				7ED434D12775ABA000893EDD /* TextFieldLayout.swift */,
 				7ED434DD2779554B00893EDD /* LoadingButton.swift */,
+				7EF66C55277B157100FCBBEB /* PrimaryButton.swift */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				7E7566812766FA1A00C3872F /* AuthFlow.swift in Sources */,
 				7E75667E2766F9DD00C3872F /* AuthViewController.swift in Sources */,
 				7ECF8AC22759F82D004F8FC5 /* Guardian.swift in Sources */,
+				7EF66C56277B157100FCBBEB /* PrimaryButton.swift in Sources */,
 				7ED434DC277950AC00893EDD /* GetVerifyCodeButton.swift in Sources */,
 				7E7566912768399E00C3872F /* LoginButton.swift in Sources */,
 				7E75668F276838C600C3872F /* PasswordTextField.swift in Sources */,

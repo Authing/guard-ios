@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class LoginButton: LoadingButton {
+open class LoginButton: PrimaryButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -19,12 +19,8 @@ open class LoginButton: LoadingButton {
     }
 
     private func setup() {
-        self.backgroundColor = Const.Color_Authing_Main
-        self.setTitleColor(UIColor.white, for: .normal)
-        self.setTitleColor(UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1), for: .highlighted)
         let loginText = NSLocalizedString("authing_login", bundle: Bundle(for: Self.self), comment: "")
         self.setTitle(loginText, for: .normal)
-        
         self.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
     }
     
