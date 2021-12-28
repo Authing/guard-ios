@@ -4,7 +4,7 @@
 
 https://github.com/Authing/guard_ios
 
-![](./images/add_guard.png)
+![](./../images/add_guard.png)
 
 https://github.com/Authing/guard-ios-oneauth
 
