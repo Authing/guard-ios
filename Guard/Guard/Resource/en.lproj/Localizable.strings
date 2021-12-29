@@ -10,3 +10,11 @@
 "authing_login_by_phone_code" = "Phone code";
 "authing_login_by_password" = "Password";
 "authing_get_verify_code" = "Get verify code";
+"authing_register" = "Register";
+"authing_no_account" = "No account?";
+"authing_register_now" = "Register now";
+"authing_welcome_to" = "Welcome to";
+"authing_register_by_phone" = "Phone";
+"authing_register_by_email" = "Email";
+"authing_password_confirm_hint" = "Confirm password";
+"authing_password_do_not_match" = "Password and confirm password do not match";

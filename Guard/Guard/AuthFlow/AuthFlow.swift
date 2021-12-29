@@ -8,17 +8,22 @@
 import UIKit
 
 public class AuthFlow {
-    public static func start(nibName: String? = nil, authCompletion: AuthViewController.AuthCompletion? = nil) {
-        var vc: AuthViewController? = nil
+    public static func start(nibName: String? = nil, authCompletion: AuthNavigationController.AuthCompletion? = nil) {
+        var vc: IndexAuthViewController? = nil
         if (nibName == nil) {
-            let bundle = Bundle(for: Self.self)
-            vc = AuthViewController(nibName: "AuthingLogin", bundle: bundle)
+            vc = IndexAuthViewController(nibName: "AuthingLogin", bundle: Bundle(for: Self.self))
         } else {
-            vc = AuthViewController(nibName: nibName, bundle: nil)
+            vc = IndexAuthViewController(nibName: nibName, bundle: nil)
         }
-        vc?.setAuthCompletion(authCompletion)
         
-        vc!.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-        UIApplication.topViewController()!.present(vc!, animated: true, completion: nil)
+        guard vc != nil else {
+            return
+        }
+
+        let nav: AuthNavigationController = AuthNavigationController(rootViewController: vc!)
+        nav.setNavigationBarHidden(true, animated: false)
+        nav.setAuthCompletion(authCompletion)
+        nav.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+        UIApplication.topViewController()!.present(nav, animated: true, completion: nil)
     }
 }

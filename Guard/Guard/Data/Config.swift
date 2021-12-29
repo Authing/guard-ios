@@ -16,6 +16,8 @@ public class Config {
     var loginMethods: [String]?
     var defaultLoginMethod: String?
     var enabledLoginMethods: [String]?
+    var registerMethods: [String]?
+    var defaultRegisterMethod: String?
     
     public static func parse(data: NSDictionary?) -> Config? {
         guard data != nil else {
@@ -44,6 +46,20 @@ public class Config {
         let passwordTabConfig: NSDictionary? = data!["passwordTabConfig"] as? NSDictionary
         if (passwordTabConfig != nil) {
             config.enabledLoginMethods = passwordTabConfig?["enabledLoginMethods"] as? [String]
+        }
+        let registerTabs: NSDictionary? = data!["registerTabs"] as? NSDictionary
+        if (registerTabs != nil) {
+            config.registerMethods = registerTabs!["list"] as? [String]
+            config.defaultRegisterMethod = registerTabs!["default"] as? String
+            var i: Int = 0
+            config.registerMethods?.forEach({ method in
+                if (method == config.defaultRegisterMethod) {
+                    config.registerMethods?.remove(at: i)
+                    config.registerMethods?.insert(method, at: 0)
+                    return
+                }
+                i+=1
+            })
         }
         return config
     }

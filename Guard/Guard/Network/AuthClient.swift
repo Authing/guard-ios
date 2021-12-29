@@ -82,6 +82,54 @@ public class AuthClient {
         }
     }
     
+    public static func registerByPhoneCode(phone: String, password: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        Authing.getConfig { config in
+            guard config != nil else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+                return
+            }
+            let url: String = "https://" + (config?.identifier)! + "." + Authing.getHost() + "/api/v2/register/phone-code";
+            let encryptedPassword = Util.encryptPassword(password)
+            let body: NSDictionary = ["phone" : phone, "password" : encryptedPassword, "code" : code]
+            Guardian.post(urlString: url, body: body) { code, message, data in
+                if (code == 200) {
+                    let userInfo: UserInfo = createUserInfo(data!)
+                    completion(code, message, userInfo)
+                } else {
+                    completion(code, message, nil)
+                }
+            }
+        }
+    }
+    
+    public static func registerByEmail(email: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        Authing.getConfig { config in
+            guard config != nil else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+                return
+            }
+            let url: String = "https://" + (config?.identifier)! + "." + Authing.getHost() + "/api/v2/register/email";
+            let encryptedPassword = Util.encryptPassword(password)
+            let body: NSDictionary = ["email" : email, "password" : encryptedPassword]
+            Guardian.post(urlString: url, body: body) { code, message, data in
+                if (code == 200) {
+                    let loginUrl: String = "https://" + (config?.identifier)! + "." + Authing.getHost() + "/api/v2/login/account";
+                    let loginBody: NSDictionary = ["account" : email, "password" : encryptedPassword]
+                    Guardian.post(urlString: loginUrl, body: loginBody) { code, message, data in
+                        if (code == 200) {
+                            let userInfo: UserInfo = createUserInfo(data!)
+                            completion(code, message, userInfo)
+                        } else {
+                            completion(code, message, nil)
+                        }
+                    }
+                } else {
+                    completion(code, message, nil)
+                }
+            }
+        }
+    }
+    
     public static func createUserInfo(_ data: NSDictionary) -> UserInfo {
         let userInfo: UserInfo = UserInfo.parse(data: data)
         return userInfo

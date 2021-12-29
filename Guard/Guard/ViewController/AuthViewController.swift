@@ -7,27 +7,20 @@
 
 import UIKit
 
-public class AuthViewController: UIViewController {
+open class AuthViewController: UIViewController {
+    
+    public override func viewDidLoad() {
+        navigationController?.setNavigationBarHidden(false, animated: true)
+//        let backImage = UIImage(named: "authing_back", in: Bundle(for: Self.self), compatibleWith: nil)
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(onBack))
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
 
-    public typealias AuthCompletion = (UserInfo?) -> Void
-    
-    private var authCompletion: AuthCompletion?
-    
-    public func setAuthCompletion(_ completion: AuthCompletion?) {
-        self.authCompletion = completion
-    }
-    
-    public func getAuthCompletion() -> AuthCompletion? {
-        return self.authCompletion
-    }
-    
     @IBAction func onCloseClick(_ sender: UIButton, forEvent event: UIEvent) {
-        dismiss(animated: true, completion: nil)
+        self.navigationController?.dismiss(animated: true, completion: nil)
     }
     
-    public func complete(_ userInfo: UserInfo?) {
-        dismiss(animated: true) {
-            self.authCompletion?(userInfo)
-        }
+    @objc private func onBack(sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
     }
 }

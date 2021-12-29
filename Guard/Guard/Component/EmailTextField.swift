@@ -1,13 +1,13 @@
 //
-//  PasswordTextField.swift
+//  EmailTextField.swift
 //  Guard
 //
-//  Created by Lance Mao on 2021/12/14.
+//  Created by Lance Mao on 2021/12/29.
 //
 
 import UIKit
 
-open class PasswordTextField: BasePasswordTextField {
+open class EmailTextField: AccountTextField {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -19,8 +19,9 @@ open class PasswordTextField: BasePasswordTextField {
     }
 
     private func setup() {
+        keyboardType = .emailAddress
         let sInput: String = NSLocalizedString("authing_please_input", bundle: Bundle(for: Self.self), comment: "")
-        let sPassword: String = NSLocalizedString("authing_password", bundle: Bundle(for: Self.self), comment: "")
-        self.placeholder = "\(sInput)\(sPassword)"
+        let text: String = NSLocalizedString("authing_email", bundle: Bundle(for: Self.self), comment: "")
+        self.placeholder = "\(sInput)\(text)"
     }
 }

@@ -8,24 +8,8 @@
 import UIKit
 
 @IBDesignable open class LoginContainer: UIView {
-    
-    enum LoginType {
-        case byPhoneCode
-        case byPassword
-    }
-    
+
+    // 0 by phone code; 1 by password
     @IBInspectable var type: Int = 0
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-    
-    required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
-    }
-    
-    private func setup() {
-    }
 }

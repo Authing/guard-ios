@@ -10,3 +10,11 @@
 "authing_login_by_phone_code" = "验证码登录";
 "authing_login_by_password" = "密码登录";
 "authing_get_verify_code" = "获取验证码";
+"authing_register" = "注册";
+"authing_no_account" = "没有帐号？";
+"authing_register_now" = "立即注册";
+"authing_welcome_to" = "欢迎加入";
+"authing_register_by_phone" = "手机号注册";
+"authing_register_by_email" = "邮箱注册";
+"authing_password_confirm_hint" = "请再次输入密码";
+"authing_password_do_not_match" = "两次输入的密码必须一致";

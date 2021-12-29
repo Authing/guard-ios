@@ -8,6 +8,9 @@
 import UIKit
 
 open class TextFieldLayout: UITextField, UITextFieldDelegate {
+    
+    var border: TextFieldBorder? = nil
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -20,17 +23,24 @@ open class TextFieldLayout: UITextField, UITextFieldDelegate {
 
     private func setup() {
         self.delegate = self
-        layer.cornerRadius = 4
-        layer.borderWidth = 1
-        layer.borderColor = UIColor(white: 0.9, alpha: 1).cgColor
+        layer.borderWidth = 0
+        clipsToBounds = false
+        layer.borderColor = UIColor.clear.cgColor
+        border = TextFieldBorder()
+        addSubview(border!)
+        border?.translatesAutoresizingMaskIntoConstraints = false
+        border?.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: -2).isActive = true
+        border?.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 2).isActive = true
+        border?.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 2).isActive = true
+        border?.topAnchor.constraint(equalTo: self.topAnchor, constant: -2).isActive = true
     }
     
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        layer.borderColor = Const.Color_Authing_Main.cgColor
+        border?.setHighlight(true)
         return true
     }
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
-        layer.borderColor = UIColor(white: 0.9, alpha: 1).cgColor
+        border?.setHighlight(false)
     }
 }

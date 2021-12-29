@@ -54,6 +54,22 @@
 		7ED434E0277980B100893EDD /* ErrorLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED434DF277980B100893EDD /* ErrorLabel.swift */; };
 		7ED434E52779B28B00893EDD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7ED434E42779B28B00893EDD /* Images.xcassets */; };
 		7EF66C56277B157100FCBBEB /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C55277B157100FCBBEB /* PrimaryButton.swift */; };
+		7EF66C58277B3F8900FCBBEB /* TextFieldBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C57277B3F8900FCBBEB /* TextFieldBorder.swift */; };
+		7EF66C5B277BEE7300FCBBEB /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C5A277BEE7300FCBBEB /* Animator.swift */; };
+		7EF66C5D277BF8B700FCBBEB /* AuthingRegister.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF66C5C277BF8B700FCBBEB /* AuthingRegister.xib */; };
+		7EF66C5F277BFB7100FCBBEB /* LocalizeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C5E277BFB7100FCBBEB /* LocalizeHelper.swift */; };
+		7EF66C61277BFD0900FCBBEB /* GoRegisterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C60277BFD0900FCBBEB /* GoRegisterButton.swift */; };
+		7EF66C63277BFD5B00FCBBEB /* GoSomewhereButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C62277BFD5B00FCBBEB /* GoSomewhereButton.swift */; };
+		7EF66C65277C0B6F00FCBBEB /* AuthNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C64277C0B6F00FCBBEB /* AuthNavigationController.swift */; };
+		7EF66C67277C119800FCBBEB /* IndexAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C66277C119800FCBBEB /* IndexAuthViewController.swift */; };
+		7EF66C69277C197900FCBBEB /* RegisterMethodTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C68277C197900FCBBEB /* RegisterMethodTab.swift */; };
+		7EF66C6B277C1BF600FCBBEB /* MethodTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C6A277C1BF600FCBBEB /* MethodTabItem.swift */; };
+		7EF66C6D277C1C6E00FCBBEB /* RegisterMethodTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C6C277C1C6E00FCBBEB /* RegisterMethodTabItem.swift */; };
+		7EF66C6F277C1CCB00FCBBEB /* RegisterContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C6E277C1CCB00FCBBEB /* RegisterContainer.swift */; };
+		7EF66C71277C371E00FCBBEB /* EmailTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C70277C371E00FCBBEB /* EmailTextField.swift */; };
+		7EF66C73277C37A500FCBBEB /* PasswordConfirmTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C72277C37A500FCBBEB /* PasswordConfirmTextField.swift */; };
+		7EF66C75277C37CE00FCBBEB /* BasePasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C74277C37CE00FCBBEB /* BasePasswordTextField.swift */; };
+		7EF66C77277C38DB00FCBBEB /* RegisterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C76277C38DB00FCBBEB /* RegisterButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +118,22 @@
 		7ED434DF277980B100893EDD /* ErrorLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLabel.swift; sourceTree = "<group>"; };
 		7ED434E42779B28B00893EDD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7EF66C55277B157100FCBBEB /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		7EF66C57277B3F8900FCBBEB /* TextFieldBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldBorder.swift; sourceTree = "<group>"; };
+		7EF66C5A277BEE7300FCBBEB /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
+		7EF66C5C277BF8B700FCBBEB /* AuthingRegister.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingRegister.xib; sourceTree = "<group>"; };
+		7EF66C5E277BFB7100FCBBEB /* LocalizeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizeHelper.swift; sourceTree = "<group>"; };
+		7EF66C60277BFD0900FCBBEB /* GoRegisterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoRegisterButton.swift; sourceTree = "<group>"; };
+		7EF66C62277BFD5B00FCBBEB /* GoSomewhereButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoSomewhereButton.swift; sourceTree = "<group>"; };
+		7EF66C64277C0B6F00FCBBEB /* AuthNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNavigationController.swift; sourceTree = "<group>"; };
+		7EF66C66277C119800FCBBEB /* IndexAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexAuthViewController.swift; sourceTree = "<group>"; };
+		7EF66C68277C197900FCBBEB /* RegisterMethodTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterMethodTab.swift; sourceTree = "<group>"; };
+		7EF66C6A277C1BF600FCBBEB /* MethodTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodTabItem.swift; sourceTree = "<group>"; };
+		7EF66C6C277C1C6E00FCBBEB /* RegisterMethodTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterMethodTabItem.swift; sourceTree = "<group>"; };
+		7EF66C6E277C1CCB00FCBBEB /* RegisterContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterContainer.swift; sourceTree = "<group>"; };
+		7EF66C70277C371E00FCBBEB /* EmailTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailTextField.swift; sourceTree = "<group>"; };
+		7EF66C72277C37A500FCBBEB /* PasswordConfirmTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordConfirmTextField.swift; sourceTree = "<group>"; };
+		7EF66C74277C37CE00FCBBEB /* BasePasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePasswordTextField.swift; sourceTree = "<group>"; };
+		7EF66C76277C38DB00FCBBEB /* RegisterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,11 +165,17 @@
 				7E75668E276838C600C3872F /* PasswordTextField.swift */,
 				7ED434CF2775AB8500893EDD /* PhoneNumberTextField.swift */,
 				7ED434D92779509100893EDD /* VerifyCodeTextField.swift */,
+				7EF66C70277C371E00FCBBEB /* EmailTextField.swift */,
 				7E7566902768399E00C3872F /* LoginButton.swift */,
 				7ED434C82775653100893EDD /* LoginMethodTab.swift */,
 				7ED434CD27757E4B00893EDD /* LoginContainer.swift */,
 				7ED434DB277950AC00893EDD /* GetVerifyCodeButton.swift */,
 				7ED434DF277980B100893EDD /* ErrorLabel.swift */,
+				7EF66C60277BFD0900FCBBEB /* GoRegisterButton.swift */,
+				7EF66C68277C197900FCBBEB /* RegisterMethodTab.swift */,
+				7EF66C6E277C1CCB00FCBBEB /* RegisterContainer.swift */,
+				7EF66C72277C37A500FCBBEB /* PasswordConfirmTextField.swift */,
+				7EF66C76277C38DB00FCBBEB /* RegisterButton.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -146,6 +184,8 @@
 			isa = PBXGroup;
 			children = (
 				7E75667A2766F9C400C3872F /* AuthingLogin.xib */,
+				7EF66C5C277BF8B700FCBBEB /* AuthingRegister.xib */,
+				7EF66C5E277BFB7100FCBBEB /* LocalizeHelper.swift */,
 			);
 			path = Nib;
 			sourceTree = "<group>";
@@ -153,7 +193,9 @@
 		7E75667C2766F9CE00C3872F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				7EF66C64277C0B6F00FCBBEB /* AuthNavigationController.swift */,
 				7E75667D2766F9DD00C3872F /* AuthViewController.swift */,
+				7EF66C66277C119800FCBBEB /* IndexAuthViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -214,6 +256,7 @@
 		7E9593D4274C813A001459C5 /* Guard */ = {
 			isa = PBXGroup;
 			children = (
+				7EF66C59277BEE5100FCBBEB /* Animation */,
 				7E75669227683E4700C3872F /* Resource */,
 				7E959440274CEECF001459C5 /* Authing.swift */,
 				7ECF8AC62759FF17004F8FC5 /* Const.swift */,
@@ -267,12 +310,25 @@
 		7ED434CA277569D100893EDD /* Internal */ = {
 			isa = PBXGroup;
 			children = (
+				7EF66C6A277C1BF600FCBBEB /* MethodTabItem.swift */,
 				7ED434CB277569DF00893EDD /* LoginMethodTabItem.swift */,
+				7EF66C6C277C1C6E00FCBBEB /* RegisterMethodTabItem.swift */,
 				7ED434D12775ABA000893EDD /* TextFieldLayout.swift */,
+				7EF66C57277B3F8900FCBBEB /* TextFieldBorder.swift */,
 				7ED434DD2779554B00893EDD /* LoadingButton.swift */,
 				7EF66C55277B157100FCBBEB /* PrimaryButton.swift */,
+				7EF66C62277BFD5B00FCBBEB /* GoSomewhereButton.swift */,
+				7EF66C74277C37CE00FCBBEB /* BasePasswordTextField.swift */,
 			);
 			path = Internal;
+			sourceTree = "<group>";
+		};
+		7EF66C59277BEE5100FCBBEB /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				7EF66C5A277BEE7300FCBBEB /* Animator.swift */,
+			);
+			path = Animation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -374,6 +430,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7ED434E52779B28B00893EDD /* Images.xcassets in Resources */,
+				7EF66C5D277BF8B700FCBBEB /* AuthingRegister.xib in Resources */,
 				7E75667B2766F9C400C3872F /* AuthingLogin.xib in Resources */,
 				7E75669B27683F5300C3872F /* Localizable.strings in Resources */,
 			);
@@ -414,31 +471,46 @@
 			buildActionMask = 2147483647;
 			files = (
 				7ED434C92775653100893EDD /* LoginMethodTab.swift in Sources */,
+				7EF66C6B277C1BF600FCBBEB /* MethodTabItem.swift in Sources */,
 				7ED434CC277569DF00893EDD /* LoginMethodTabItem.swift in Sources */,
+				7EF66C73277C37A500FCBBEB /* PasswordConfirmTextField.swift in Sources */,
 				7ED434DE2779554B00893EDD /* LoadingButton.swift in Sources */,
 				7ECF8AC52759FE8D004F8FC5 /* SDKUsageTask.swift in Sources */,
 				7E7566A027684A5E00C3872F /* AuthClient.swift in Sources */,
 				7ECF8AC72759FF17004F8FC5 /* Const.swift in Sources */,
+				7EF66C5B277BEE7300FCBBEB /* Animator.swift in Sources */,
+				7EF66C69277C197900FCBBEB /* RegisterMethodTab.swift in Sources */,
 				7ED434DA2779509100893EDD /* VerifyCodeTextField.swift in Sources */,
 				7ED434D22775ABA000893EDD /* TextFieldLayout.swift in Sources */,
 				7E7566A22768801E00C3872F /* UIView+Authing.swift in Sources */,
 				7ED434E0277980B100893EDD /* ErrorLabel.swift in Sources */,
 				7E75668B276746AF00C3872F /* AppLogo.swift in Sources */,
 				7E7566B22768A7CC00C3872F /* UserInfo.swift in Sources */,
+				7EF66C67277C119800FCBBEB /* IndexAuthViewController.swift in Sources */,
 				7E75668D276837E700C3872F /* AccountTextField.swift in Sources */,
 				7ECF8ACA275A022D004F8FC5 /* Util.swift in Sources */,
 				7E7566842766FD5D00C3872F /* UIApplication+Authing.swift in Sources */,
 				7E7566812766FA1A00C3872F /* AuthFlow.swift in Sources */,
 				7E75667E2766F9DD00C3872F /* AuthViewController.swift in Sources */,
+				7EF66C5F277BFB7100FCBBEB /* LocalizeHelper.swift in Sources */,
+				7EF66C63277BFD5B00FCBBEB /* GoSomewhereButton.swift in Sources */,
+				7EF66C77277C38DB00FCBBEB /* RegisterButton.swift in Sources */,
 				7ECF8AC22759F82D004F8FC5 /* Guardian.swift in Sources */,
+				7EF66C75277C37CE00FCBBEB /* BasePasswordTextField.swift in Sources */,
+				7EF66C6D277C1C6E00FCBBEB /* RegisterMethodTabItem.swift in Sources */,
+				7EF66C61277BFD0900FCBBEB /* GoRegisterButton.swift in Sources */,
 				7EF66C56277B157100FCBBEB /* PrimaryButton.swift in Sources */,
+				7EF66C58277B3F8900FCBBEB /* TextFieldBorder.swift in Sources */,
 				7ED434DC277950AC00893EDD /* GetVerifyCodeButton.swift in Sources */,
 				7E7566912768399E00C3872F /* LoginButton.swift in Sources */,
 				7E75668F276838C600C3872F /* PasswordTextField.swift in Sources */,
 				7E75668727672C8D00C3872F /* Config.swift in Sources */,
 				7ED434D02775AB8500893EDD /* PhoneNumberTextField.swift in Sources */,
 				7E7566782766F91500C3872F /* AppName.swift in Sources */,
+				7EF66C6F277C1CCB00FCBBEB /* RegisterContainer.swift in Sources */,
+				7EF66C71277C371E00FCBBEB /* EmailTextField.swift in Sources */,
 				7E959441274CEECF001459C5 /* Authing.swift in Sources */,
+				7EF66C65277C0B6F00FCBBEB /* AuthNavigationController.swift in Sources */,
 				7ED434CE27757E4B00893EDD /* LoginContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

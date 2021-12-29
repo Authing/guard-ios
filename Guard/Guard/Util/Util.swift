@@ -154,7 +154,7 @@ public class Util {
     }
     
     public static func findView<T: UIView>(_ current: UIView, viewClass: AnyClass) -> T? {
-        let rootView: UIView = getRootView(current)
+        let rootView: UIView = current.viewController?.view ?? getRootView(current)
         return _findView(rootView, viewClass: viewClass)
     }
     

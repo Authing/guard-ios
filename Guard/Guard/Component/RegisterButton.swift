@@ -1,13 +1,13 @@
 //
-//  LoginButton.swift
+//  RegisterButton.swift
 //  Guard
 //
-//  Created by Lance Mao on 2021/12/14.
+//  Created by Lance Mao on 2021/12/29.
 //
 
 import UIKit
 
-open class LoginButton: PrimaryButton {
+open class RegisterButton: PrimaryButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -19,8 +19,8 @@ open class LoginButton: PrimaryButton {
     }
 
     private func setup() {
-        let loginText = NSLocalizedString("authing_login", bundle: Bundle(for: Self.self), comment: "")
-        self.setTitle(loginText, for: .normal)
+        let text = NSLocalizedString("authing_register", bundle: Bundle(for: Self.self), comment: "")
+        self.setTitle(text, for: .normal)
         self.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
     }
     
@@ -33,28 +33,30 @@ open class LoginButton: PrimaryButton {
         let tfPhone: PhoneNumberTextField? = Util.findView(self, viewClass: PhoneNumberTextField.self)
         let tfCode: VerifyCodeTextField? = Util.findView(self, viewClass: VerifyCodeTextField.self)
         if (tfPhone != nil && tfCode != nil) {
-            let phone: String? = tfPhone!.text
-            let code: String? = tfCode!.text
-            if (!phone!.isEmpty && !code!.isEmpty) {
-                loginByPhoneCode(phone!, code!)
+            let tfPassword: PasswordTextField? = Util.findView(self, viewClass: PasswordTextField.self)
+            let phone: String? = tfPhone?.text
+            let password: String? = tfPassword?.text
+            let code: String? = tfCode?.text
+            if (!phone!.isEmpty && !password!.isEmpty && !code!.isEmpty) {
+                registerByPhoneCode(phone!, password!, code!)
             }
             return
         }
         
-        let tfAccount: AccountTextField? = Util.findView(self, viewClass: AccountTextField.self)
+        let tfEmail: EmailTextField? = Util.findView(self, viewClass: EmailTextField.self)
         let tfPassword: PasswordTextField? = Util.findView(self, viewClass: PasswordTextField.self)
-        if (tfAccount != nil && tfPassword != nil) {
-            let account: String? = tfAccount!.text
+        if (tfEmail != nil && tfPassword != nil) {
+            let email: String? = tfEmail!.text
             let password: String? = tfPassword!.text
-            if (!account!.isEmpty && !password!.isEmpty) {
-                loginByAccount(account!, password!)
+            if (!email!.isEmpty && !password!.isEmpty) {
+                registerByEmail(email!, password!)
             }
         }
     }
     
-    private func loginByPhoneCode(_ phone: String, _ code: String) {
+    private func registerByPhoneCode(_ phone: String, _ password: String, _ code: String) {
         startLoading()
-        AuthClient.loginByPhoneCode(phone: phone, code: code) { code, message, userInfo in
+        AuthClient.registerByPhoneCode(phone: phone, password: password, code: code) { code, message, userInfo in
             self.stopLoading()
             if (code == 200) {
                 DispatchQueue.main.async() {
@@ -71,9 +73,9 @@ open class LoginButton: PrimaryButton {
         }
     }
     
-    private func loginByAccount(_ account: String, _ password: String) {
+    private func registerByEmail(_ email: String, _ password: String) {
         startLoading()
-        AuthClient.loginByAccount(account: account, password: password) { code, message, userInfo in
+        AuthClient.registerByEmail(email: email, password: password) { code, message, userInfo in
             self.stopLoading()
             if (code == 200) {
                 DispatchQueue.main.async() {

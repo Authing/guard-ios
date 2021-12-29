@@ -1,5 +1,5 @@
 //
-//  LoginMethodTab.swift
+//  RegisterMethodTab.swift
 //  Guard
 //
 //  Created by Lance Mao on 2021/12/24.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-open class LoginMethodTab: UIView {
+open class RegisterMethodTab: UIView {
     
     private static let ITEM_WIDTH: CGFloat = 120
     
-    var items = [LoginMethodTabItem]()
+    var items = [RegisterMethodTabItem]()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,27 +37,26 @@ open class LoginMethodTab: UIView {
             underLine.backgroundColor = UIColor(white: 0.8, alpha: 1)
             
             var i: CGFloat = 0
-            config?.loginMethods?.forEach({ method in
-                let frame = CGRect(x: i * LoginMethodTab.ITEM_WIDTH, y: 0, width: LoginMethodTab.ITEM_WIDTH, height: frame.height)
-                let item = LoginMethodTabItem(frame: frame)
-                if (method == "phone-code") {
-                    item.setText(NSLocalizedString("authing_login_by_phone_code", bundle: Bundle(for: Self.self), comment: ""))
+            config?.registerMethods?.forEach({ method in
+                let frame = CGRect(x: i * RegisterMethodTab.ITEM_WIDTH, y: 0, width: RegisterMethodTab.ITEM_WIDTH, height: frame.height)
+                let item = RegisterMethodTabItem(frame: frame)
+                if (method == "phone") {
+                    item.setText(NSLocalizedString("authing_register_by_phone", bundle: Bundle(for: Self.self), comment: ""))
                     item.type = 0
-                } else if (method == "password") {
-                    item.setText(NSLocalizedString("authing_login_by_password", bundle: Bundle(for: Self.self), comment: ""))
+                } else if (method == "email") {
+                    item.setText(NSLocalizedString("authing_register_by_email", bundle: Bundle(for: Self.self), comment: ""))
                     item.type = 1
                 }
                 let gesture:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.onClick))
                 gesture.numberOfTapsRequired = 1
                 item.addGestureRecognizer(gesture)
-                if (method == config?.defaultLoginMethod) {
+                self.addSubview(item)
+                self.items.append(item)
+                if (method == config?.defaultRegisterMethod) {
                     item.gainFocus()
                 } else {
                     item.loseFocus()
                 }
-                self.addSubview(item)
-                self.items.append(item)
-                
                 i += 1
             })
             
@@ -68,7 +67,7 @@ open class LoginMethodTab: UIView {
     private func setItemFrame() {
         var i: CGFloat = 0
         items.forEach { item in
-            let frame = CGRect(x: i * LoginMethodTab.ITEM_WIDTH, y: 0, width: LoginMethodTab.ITEM_WIDTH, height: frame.height)
+            let frame = CGRect(x: i * RegisterMethodTab.ITEM_WIDTH, y: 0, width: RegisterMethodTab.ITEM_WIDTH, height: frame.height)
             item.frame = frame
             i += 1
         }
