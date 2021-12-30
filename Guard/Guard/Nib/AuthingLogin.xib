@@ -165,7 +165,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jkG-vF-ihh" customClass="LoginButton" customModule="Guard" customModuleProvider="target">
+                <button contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jkG-vF-ihh" userLabel="Login button" customClass="LoginButton" customModule="Guard" customModuleProvider="target">
                     <rect key="frame" x="20" y="412" width="374" height="42"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="42" id="sow-Ep-phF"/>
@@ -186,11 +186,19 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="authing_no_account"/>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2g3-pt-3FB" customClass="GoRegisterButton" customModule="Guard" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2g3-pt-3FB" userLabel="Go register button" customClass="GoRegisterButton" customModule="Guard" customModuleProvider="target">
                     <rect key="frame" x="364" y="462" width="30" height="31"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="31" id="PNq-4D-i2y"/>
                     </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal">
+                        <color key="titleColor" red="0.224" green="0.41599999999999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qfp-Ru-dGn" userLabel="Go forgot password button" customClass="GoForgotPasswordButton" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="20" y="462" width="30" height="31"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal">
@@ -215,6 +223,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="jkG-vF-ihh" secondAttribute="trailing" constant="20" id="I7z-hd-Uo5"/>
                 <constraint firstItem="2g3-pt-3FB" firstAttribute="leading" secondItem="NTZ-xL-T1d" secondAttribute="trailing" constant="8" symbolic="YES" id="J5V-ye-q8w"/>
                 <constraint firstItem="DMA-tf-9bk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="PPu-uI-RRv"/>
+                <constraint firstItem="Qfp-Ru-dGn" firstAttribute="top" secondItem="2g3-pt-3FB" secondAttribute="top" id="QWK-0n-XSj"/>
                 <constraint firstItem="WHE-LW-cSI" firstAttribute="leading" secondItem="uxM-Eg-q9m" secondAttribute="trailing" constant="8" id="RoC-RN-vb2"/>
                 <constraint firstItem="gFZ-Xj-lJ9" firstAttribute="top" secondItem="txj-YQ-JVh" secondAttribute="bottom" constant="16" id="RtW-cc-hVO"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="7BN-be-d2t" secondAttribute="trailing" constant="20" id="TD6-pL-cBb"/>
@@ -229,9 +238,11 @@
                 <constraint firstItem="jkG-vF-ihh" firstAttribute="top" secondItem="7BN-be-d2t" secondAttribute="bottom" constant="8" symbolic="YES" id="iTH-vf-r9X"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="gFZ-Xj-lJ9" secondAttribute="trailing" constant="20" id="otb-XN-NpR"/>
                 <constraint firstItem="WHE-LW-cSI" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="pg9-Kx-9lC"/>
+                <constraint firstItem="Qfp-Ru-dGn" firstAttribute="leading" secondItem="jkG-vF-ihh" secondAttribute="leading" id="spr-xX-Tzf"/>
                 <constraint firstItem="E2M-Lp-3aM" firstAttribute="top" secondItem="DMA-tf-9bk" secondAttribute="bottom" constant="12" id="tf3-9u-48z"/>
                 <constraint firstItem="NTZ-xL-T1d" firstAttribute="bottom" secondItem="2g3-pt-3FB" secondAttribute="bottom" id="uLG-fh-j2W"/>
                 <constraint firstItem="Nmk-Ef-ukz" firstAttribute="top" secondItem="txj-YQ-JVh" secondAttribute="bottom" constant="16" id="ywh-BJ-Ndn"/>
+                <constraint firstItem="Qfp-Ru-dGn" firstAttribute="bottom" secondItem="2g3-pt-3FB" secondAttribute="bottom" id="zZi-c9-an0"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="124.55357142857142"/>
         </view>

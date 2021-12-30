@@ -27,6 +27,9 @@ open class AccountTextField: TextFieldLayout {
     }
     
     private func setup(_ config: Config) {
+        spellCheckingType = .no
+        autocorrectionType = .no
+        
         self.placeholder = NSLocalizedString("authing_please_input", bundle: Bundle(for: Self.self), comment: "")
         
         var i: Int = 0
@@ -46,6 +49,10 @@ open class AccountTextField: TextFieldLayout {
             } else if (config.enabledLoginMethods![0] == "phone-password") {
                 keyboardType = .phonePad
             }
+        }
+        
+        DispatchQueue.main.async() {
+            self.syncData()
         }
     }
     
@@ -69,5 +76,10 @@ open class AccountTextField: TextFieldLayout {
             tf?.becomeFirstResponder()
         }
         return true
+    }
+    
+    func syncData() {
+        let account: String? = AuthFlow.getAccount(current: self)
+        text = account
     }
 }

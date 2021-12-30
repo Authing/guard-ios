@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class PhoneNumberTextField: TextFieldLayout {
+open class PhoneNumberTextField: AccountTextField {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -25,11 +25,18 @@ open class PhoneNumberTextField: TextFieldLayout {
         self.placeholder = "\(sInput)\(sPhone)"
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let tfCode: VerifyCodeTextField? = Util.findView(self, viewClass: VerifyCodeTextField.self)
         if (tfCode != nil) {
             tfCode?.becomeFirstResponder()
         }
         return true
+    }
+    
+    override func syncData() {
+        let account: String? = AuthFlow.getAccount(current: self)
+        if (account != nil && Validator.isValidPhone(phone: account)) {
+            text = account
+        }
     }
 }

@@ -70,6 +70,13 @@
 		7EF66C73277C37A500FCBBEB /* PasswordConfirmTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C72277C37A500FCBBEB /* PasswordConfirmTextField.swift */; };
 		7EF66C75277C37CE00FCBBEB /* BasePasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C74277C37CE00FCBBEB /* BasePasswordTextField.swift */; };
 		7EF66C77277C38DB00FCBBEB /* RegisterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C76277C38DB00FCBBEB /* RegisterButton.swift */; };
+		7EF66C7D277D471D00FCBBEB /* GoForgotPasswordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C7C277D471D00FCBBEB /* GoForgotPasswordButton.swift */; };
+		7EF66C7F277D478700FCBBEB /* AuthingForgotPassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF66C7E277D478700FCBBEB /* AuthingForgotPassword.xib */; };
+		7EF66C81277D49B400FCBBEB /* ResetPasswordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C80277D49B400FCBBEB /* ResetPasswordButton.swift */; };
+		7EF66C85277D548B00FCBBEB /* AuthingResetPasswordByPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF66C84277D548B00FCBBEB /* AuthingResetPasswordByPhone.xib */; };
+		7EF66C87277D54A600FCBBEB /* AuthingResetPasswordByEmail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF66C86277D54A600FCBBEB /* AuthingResetPasswordByEmail.xib */; };
+		7EF66C8B277D5A7100FCBBEB /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C8A277D5A7100FCBBEB /* Validator.swift */; };
+		7EF66C8D277DA96200FCBBEB /* GetEmailCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C8C277DA96200FCBBEB /* GetEmailCodeButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +141,13 @@
 		7EF66C72277C37A500FCBBEB /* PasswordConfirmTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordConfirmTextField.swift; sourceTree = "<group>"; };
 		7EF66C74277C37CE00FCBBEB /* BasePasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePasswordTextField.swift; sourceTree = "<group>"; };
 		7EF66C76277C38DB00FCBBEB /* RegisterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterButton.swift; sourceTree = "<group>"; };
+		7EF66C7C277D471D00FCBBEB /* GoForgotPasswordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoForgotPasswordButton.swift; sourceTree = "<group>"; };
+		7EF66C7E277D478700FCBBEB /* AuthingForgotPassword.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingForgotPassword.xib; sourceTree = "<group>"; };
+		7EF66C80277D49B400FCBBEB /* ResetPasswordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordButton.swift; sourceTree = "<group>"; };
+		7EF66C84277D548B00FCBBEB /* AuthingResetPasswordByPhone.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingResetPasswordByPhone.xib; sourceTree = "<group>"; };
+		7EF66C86277D54A600FCBBEB /* AuthingResetPasswordByEmail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingResetPasswordByEmail.xib; sourceTree = "<group>"; };
+		7EF66C8A277D5A7100FCBBEB /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		7EF66C8C277DA96200FCBBEB /* GetEmailCodeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEmailCodeButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,12 +184,15 @@
 				7ED434C82775653100893EDD /* LoginMethodTab.swift */,
 				7ED434CD27757E4B00893EDD /* LoginContainer.swift */,
 				7ED434DB277950AC00893EDD /* GetVerifyCodeButton.swift */,
+				7EF66C8C277DA96200FCBBEB /* GetEmailCodeButton.swift */,
 				7ED434DF277980B100893EDD /* ErrorLabel.swift */,
 				7EF66C60277BFD0900FCBBEB /* GoRegisterButton.swift */,
 				7EF66C68277C197900FCBBEB /* RegisterMethodTab.swift */,
 				7EF66C6E277C1CCB00FCBBEB /* RegisterContainer.swift */,
 				7EF66C72277C37A500FCBBEB /* PasswordConfirmTextField.swift */,
 				7EF66C76277C38DB00FCBBEB /* RegisterButton.swift */,
+				7EF66C7C277D471D00FCBBEB /* GoForgotPasswordButton.swift */,
+				7EF66C80277D49B400FCBBEB /* ResetPasswordButton.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -185,6 +202,9 @@
 			children = (
 				7E75667A2766F9C400C3872F /* AuthingLogin.xib */,
 				7EF66C5C277BF8B700FCBBEB /* AuthingRegister.xib */,
+				7EF66C7E277D478700FCBBEB /* AuthingForgotPassword.xib */,
+				7EF66C84277D548B00FCBBEB /* AuthingResetPasswordByPhone.xib */,
+				7EF66C86277D54A600FCBBEB /* AuthingResetPasswordByEmail.xib */,
 				7EF66C5E277BFB7100FCBBEB /* LocalizeHelper.swift */,
 			);
 			path = Nib;
@@ -303,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				7ECF8AC9275A022D004F8FC5 /* Util.swift */,
+				7EF66C8A277D5A7100FCBBEB /* Validator.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -429,10 +450,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EF66C7F277D478700FCBBEB /* AuthingForgotPassword.xib in Resources */,
+				7EF66C87277D54A600FCBBEB /* AuthingResetPasswordByEmail.xib in Resources */,
 				7ED434E52779B28B00893EDD /* Images.xcassets in Resources */,
 				7EF66C5D277BF8B700FCBBEB /* AuthingRegister.xib in Resources */,
 				7E75667B2766F9C400C3872F /* AuthingLogin.xib in Resources */,
 				7E75669B27683F5300C3872F /* Localizable.strings in Resources */,
+				7EF66C85277D548B00FCBBEB /* AuthingResetPasswordByPhone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +494,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EF66C7D277D471D00FCBBEB /* GoForgotPasswordButton.swift in Sources */,
 				7ED434C92775653100893EDD /* LoginMethodTab.swift in Sources */,
 				7EF66C6B277C1BF600FCBBEB /* MethodTabItem.swift in Sources */,
 				7ED434CC277569DF00893EDD /* LoginMethodTabItem.swift in Sources */,
@@ -487,14 +512,17 @@
 				7E75668B276746AF00C3872F /* AppLogo.swift in Sources */,
 				7E7566B22768A7CC00C3872F /* UserInfo.swift in Sources */,
 				7EF66C67277C119800FCBBEB /* IndexAuthViewController.swift in Sources */,
+				7EF66C8D277DA96200FCBBEB /* GetEmailCodeButton.swift in Sources */,
 				7E75668D276837E700C3872F /* AccountTextField.swift in Sources */,
 				7ECF8ACA275A022D004F8FC5 /* Util.swift in Sources */,
 				7E7566842766FD5D00C3872F /* UIApplication+Authing.swift in Sources */,
 				7E7566812766FA1A00C3872F /* AuthFlow.swift in Sources */,
+				7EF66C81277D49B400FCBBEB /* ResetPasswordButton.swift in Sources */,
 				7E75667E2766F9DD00C3872F /* AuthViewController.swift in Sources */,
 				7EF66C5F277BFB7100FCBBEB /* LocalizeHelper.swift in Sources */,
 				7EF66C63277BFD5B00FCBBEB /* GoSomewhereButton.swift in Sources */,
 				7EF66C77277C38DB00FCBBEB /* RegisterButton.swift in Sources */,
+				7EF66C8B277D5A7100FCBBEB /* Validator.swift in Sources */,
 				7ECF8AC22759F82D004F8FC5 /* Guardian.swift in Sources */,
 				7EF66C75277C37CE00FCBBEB /* BasePasswordTextField.swift in Sources */,
 				7EF66C6D277C1C6E00FCBBEB /* RegisterMethodTabItem.swift in Sources */,

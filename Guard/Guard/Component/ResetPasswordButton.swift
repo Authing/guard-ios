@@ -1,0 +1,123 @@
+//
+//  ResetPasswordButton.swift
+//  Guard
+//
+//  Created by Lance Mao on 2021/12/30.
+//
+
+import UIKit
+
+open class ResetPasswordButton: PrimaryButton {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+
+    private func setup() {
+        let loginText = NSLocalizedString("authing_reset_password", bundle: Bundle(for: Self.self), comment: "")
+        self.setTitle(loginText, for: .normal)
+        self.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
+    }
+    
+    @objc private func onClick(sender: UIButton) {
+        let vc: AuthViewController? = viewController
+        if (vc == nil) {
+            return
+        }
+        
+        let tfPassword: PasswordTextField? = Util.findView(self, viewClass: PasswordTextField.self)
+        if (tfPassword != nil) {
+            handleResetPassword(tfPassword?.text)
+            return
+        }
+        
+        let tf: AccountTextField? = Util.findView(self, viewClass: AccountTextField.self)
+        guard tf != nil else {
+            return
+        }
+        
+        let account: String? = tf!.text
+        guard account != nil else {
+            return
+        }
+        
+        if (Validator.isValidPhone(phone: tf!.text)) {
+            next("AuthingResetPasswordByPhone", account!)
+        } else if (Validator.isValidEmail(email: tf!.text)) {
+            next("AuthingResetPasswordByEmail", account!)
+        }
+    }
+    
+    func handleResetPassword(_ password: String?) {
+        let tfPhone: PhoneNumberTextField? = Util.findView(self, viewClass: PhoneNumberTextField.self)
+        if (tfPhone != nil) {
+            resetPasswordByPhone(tfPhone?.text, password)
+            return
+        }
+        
+        let tfEmail: EmailTextField? = Util.findView(self, viewClass: EmailTextField.self)
+        if (tfEmail != nil) {
+            resetPasswordByEmail(tfEmail?.text, password)
+        }
+    }
+    
+    func resetPasswordByPhone(_ phone: String?, _ password: String?) {
+        let tfPasswordConfirm: PasswordConfirmTextField? = Util.findView(self, viewClass: PasswordConfirmTextField.self)
+        let vCode: String? = Util.getVerifyCode(self)
+        guard phone != nil && password != nil && vCode != nil
+                && tfPasswordConfirm != nil && tfPasswordConfirm?.text == password else {
+            return
+        }
+
+        startLoading()
+        AuthClient.resetPasswordByPhone(phone: phone!, newPassword: password!, code: vCode!) { code, message in
+            DispatchQueue.main.async() {
+                if (code == 200) {
+                    self.gotoLogin()
+                } else {
+                    Util.setError(self, message)
+                }
+                self.stopLoading()
+            }
+        }
+    }
+    
+    func resetPasswordByEmail(_ email: String?, _ password: String?) {
+        let tfPasswordConfirm: PasswordConfirmTextField? = Util.findView(self, viewClass: PasswordConfirmTextField.self)
+        let vCode: String? = Util.getVerifyCode(self)
+        guard email != nil && password != nil && vCode != nil
+                && tfPasswordConfirm != nil && tfPasswordConfirm?.text == password else {
+            return
+        }
+
+        startLoading()
+        AuthClient.resetPasswordByEmail(email: email!, newPassword: password!, code: vCode!) { code, message in
+            DispatchQueue.main.async() {
+                if (code == 200) {
+                    self.gotoLogin()
+                } else {
+                    Util.setError(self, message)
+                }
+                self.stopLoading()
+            }
+        }
+    }
+    
+    func next(_ nibName: String, _ account: String) {
+        let vc: AuthViewController? = AuthViewController(nibName: nibName, bundle: Bundle(for: Self.self))
+        vc?.authFlow?.data.setValue(account, forKey: AuthFlow.KEY_ACCOUNT)
+        self.viewController?.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    func gotoLogin() {
+        if let vc = self.viewController?.navigationController?.viewControllers.first as? AuthViewController {
+            vc.authFlow = self.viewController?.authFlow?.copy() as? AuthFlow
+        }
+        self.viewController?.navigationController?.popToRootViewController(animated: true)
+    }
+}

@@ -19,3 +19,12 @@ extension UILabel: XIBLocalizable {
         }
     }
 }
+
+extension UITextField {
+    @IBInspectable var localizedHint: String? {
+        get { return nil }
+        set(key) {
+            placeholder = NSLocalizedString(key!, bundle: Bundle(for: Authing.self), comment: "")
+        }
+    }
+}

@@ -10,6 +10,7 @@ import Foundation
 typealias ConfigCompletion = (Config?) -> Void
 
 public class Authing {
+    private static var sSchema = "https"
     private static var sHost = "authing.cn"
     private static var sAppId = ""
     private static var sConfig: Config? = nil
@@ -24,6 +25,14 @@ public class Authing {
     
     public static func getAppId() -> String {
         return sAppId
+    }
+    
+    public static func setSchema(schema: String) {
+        sSchema = schema
+    }
+    
+    public static func getSchema() -> String {
+        return sSchema
     }
     
     public static func setHost(host: String) {

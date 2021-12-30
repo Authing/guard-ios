@@ -197,4 +197,16 @@ public class Util {
             }
         }
     }
+    
+    public static func getVerifyCode(_ current: UIView) -> String? {
+        let tfVerifyCode: VerifyCodeTextField? = Util.findView(current, viewClass: VerifyCodeTextField.self)
+        if (tfVerifyCode != nil) {
+            return tfVerifyCode?.text
+        }
+        return nil
+    }
+    
+    public static func getHost(_ config: Config) -> String {
+        return "\(config.identifier!).\(Authing.getHost())"
+    }
 }
