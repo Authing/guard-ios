@@ -12,12 +12,15 @@ open class UserInfo {
     var email: String?
     var phone: String?
     
+    var token: String?
+    
     public static func parse(data: NSDictionary?) -> UserInfo {
-        var userInfo: UserInfo
-        userInfo = UserInfo()
-        userInfo.username = data!["username"] as? String
-        userInfo.email = data!["email"] as? String
-        userInfo.phone = data!["phone"] as? String
+        let userInfo = UserInfo()
+        userInfo.username = data?["username"] as? String
+        userInfo.email = data?["email"] as? String
+        userInfo.phone = data?["phone"] as? String
+        
+        userInfo.token = data?["token"] as? String
         return userInfo
     }
     

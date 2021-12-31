@@ -21,6 +21,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		7E12D7B6277DE9EF00703FC1 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E12D7B5277DE9EF00703FC1 /* UserManager.swift */; };
+		7E12D7B8277DECB900703FC1 /* AuthingUserProfile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E12D7B7277DECB900703FC1 /* AuthingUserProfile.xib */; };
+		7E12D7BA277DEE6F00703FC1 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E12D7B9277DEE6F00703FC1 /* UserProfileViewController.swift */; };
 		7E7566782766F91500C3872F /* AppName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7566772766F91500C3872F /* AppName.swift */; };
 		7E75667B2766F9C400C3872F /* AuthingLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E75667A2766F9C400C3872F /* AuthingLogin.xib */; };
 		7E75667E2766F9DD00C3872F /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E75667D2766F9DD00C3872F /* AuthViewController.swift */; };
@@ -90,6 +93,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7E12D7B5277DE9EF00703FC1 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		7E12D7B7277DECB900703FC1 /* AuthingUserProfile.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingUserProfile.xib; sourceTree = "<group>"; };
+		7E12D7B9277DEE6F00703FC1 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		7E7566772766F91500C3872F /* AppName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppName.swift; sourceTree = "<group>"; };
 		7E75667A2766F9C400C3872F /* AuthingLogin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingLogin.xib; sourceTree = "<group>"; };
 		7E75667D2766F9DD00C3872F /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
@@ -205,6 +211,7 @@
 				7EF66C7E277D478700FCBBEB /* AuthingForgotPassword.xib */,
 				7EF66C84277D548B00FCBBEB /* AuthingResetPasswordByPhone.xib */,
 				7EF66C86277D54A600FCBBEB /* AuthingResetPasswordByEmail.xib */,
+				7E12D7B7277DECB900703FC1 /* AuthingUserProfile.xib */,
 				7EF66C5E277BFB7100FCBBEB /* LocalizeHelper.swift */,
 			);
 			path = Nib;
@@ -216,6 +223,7 @@
 				7EF66C64277C0B6F00FCBBEB /* AuthNavigationController.swift */,
 				7E75667D2766F9DD00C3872F /* AuthViewController.swift */,
 				7EF66C66277C119800FCBBEB /* IndexAuthViewController.swift */,
+				7E12D7B9277DEE6F00703FC1 /* UserProfileViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -242,6 +250,7 @@
 			children = (
 				7E75668627672C8D00C3872F /* Config.swift */,
 				7E7566B12768A7CC00C3872F /* UserInfo.swift */,
+				7E12D7B5277DE9EF00703FC1 /* UserManager.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -457,6 +466,7 @@
 				7E75667B2766F9C400C3872F /* AuthingLogin.xib in Resources */,
 				7E75669B27683F5300C3872F /* Localizable.strings in Resources */,
 				7EF66C85277D548B00FCBBEB /* AuthingResetPasswordByPhone.xib in Resources */,
+				7E12D7B8277DECB900703FC1 /* AuthingUserProfile.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,6 +529,7 @@
 				7E7566812766FA1A00C3872F /* AuthFlow.swift in Sources */,
 				7EF66C81277D49B400FCBBEB /* ResetPasswordButton.swift in Sources */,
 				7E75667E2766F9DD00C3872F /* AuthViewController.swift in Sources */,
+				7E12D7BA277DEE6F00703FC1 /* UserProfileViewController.swift in Sources */,
 				7EF66C5F277BFB7100FCBBEB /* LocalizeHelper.swift in Sources */,
 				7EF66C63277BFD5B00FCBBEB /* GoSomewhereButton.swift in Sources */,
 				7EF66C77277C38DB00FCBBEB /* RegisterButton.swift in Sources */,
@@ -540,6 +551,7 @@
 				7E959441274CEECF001459C5 /* Authing.swift in Sources */,
 				7EF66C65277C0B6F00FCBBEB /* AuthNavigationController.swift in Sources */,
 				7ED434CE27757E4B00893EDD /* LoginContainer.swift in Sources */,
+				7E12D7B6277DE9EF00703FC1 /* UserManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

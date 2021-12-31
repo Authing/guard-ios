@@ -21,12 +21,17 @@ Authing.start(appid: "your_authing_app_id");
 3. 在需要启动认证流程的 ViewController（如闪屏）上，调用：
 
 ```swift
-// self is current view controller
-OneAuth.start(self) { code, message, userInfo in
-    if (code == 200 && userInfo != nil) {
+AuthFlow.start { userInfo in
+    if (userInfo != nil) {
         // logged in
     } else {
         // handle error
     }
 }
+```
+
+4. 访问受保护资源时，带上用户的 access token：
+
+```swift
+request.addValue("Bearer \(userInfo.token!)", forHTTPHeaderField: "Authorization")
 ```

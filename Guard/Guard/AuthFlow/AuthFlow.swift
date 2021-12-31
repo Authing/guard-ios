@@ -20,6 +20,14 @@ public class AuthFlow {
         self.data = data.mutableCopy() as! NSDictionary
     }
     
+    public static func showUserProfile() {
+        let vc = UserProfileViewController(nibName: "AuthingUserProfile", bundle: Bundle(for: Self.self))
+        let nav: AuthNavigationController = AuthNavigationController(rootViewController: vc)
+        nav.setNavigationBarHidden(true, animated: false)
+        nav.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+        UIApplication.topViewController()!.present(nav, animated: true, completion: nil)
+    }
+    
     public static func start(nibName: String? = nil, authCompletion: AuthNavigationController.AuthCompletion? = nil) {
         var vc: IndexAuthViewController? = nil
         if (nibName == nil) {

@@ -30,6 +30,6 @@ public class RegisterMethodTabItem: MethodTabItem {
                 label.superview?.removeConstraint(constraint)
             }
         })
-        label.topAnchor.constraint(equalTo: container.bottomAnchor, constant: 0).isActive = true
+        label.topAnchor.constraint(equalTo: container.bottomAnchor, constant: 8).isActive = true
     }
 }

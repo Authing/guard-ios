@@ -33,7 +33,7 @@ public class AuthClient {
             let body: NSDictionary = ["phone" : phone, "code" : code]
             Guardian.post(urlString: url, body: body) { code, message, data in
                 if (code == 200) {
-                    let userInfo: UserInfo = createUserInfo(data!)
+                    let userInfo = createUserInfo(data)
                     completion(code, message, userInfo)
                 } else {
                     completion(code, message, nil)
@@ -53,7 +53,7 @@ public class AuthClient {
             let body: NSDictionary = ["account" : account, "password" : encryptedPassword]
             Guardian.post(urlString: url, body: body) { code, message, data in
                 if (code == 200) {
-                    let userInfo: UserInfo = createUserInfo(data!)
+                    let userInfo = createUserInfo(data)
                     completion(code, message, userInfo)
                 } else {
                     completion(code, message, nil)
@@ -69,11 +69,10 @@ public class AuthClient {
                 return
             }
             let url: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/ecConn/oneAuth/login";
-//            let url: String = "https://developer-beta.authing.cn/stats/ydtoken"
             let body: NSDictionary = ["token" : token, "accessToken" : accessToken]
             Guardian.post(urlString: url, body: body) { code, message, data in
                 if (code == 200) {
-                    let userInfo: UserInfo = createUserInfo(data!)
+                    let userInfo = createUserInfo(data)
                     completion(code, message, userInfo)
                 } else {
                     completion(code, message, nil)
@@ -93,7 +92,7 @@ public class AuthClient {
             let body: NSDictionary = ["phone" : phone, "password" : encryptedPassword, "code" : code]
             Guardian.post(urlString: url, body: body) { code, message, data in
                 if (code == 200) {
-                    let userInfo: UserInfo = createUserInfo(data!)
+                    let userInfo = createUserInfo(data)
                     completion(code, message, userInfo)
                 } else {
                     completion(code, message, nil)
@@ -117,7 +116,7 @@ public class AuthClient {
                     let loginBody: NSDictionary = ["account" : email, "password" : encryptedPassword]
                     Guardian.post(urlString: loginUrl, body: loginBody) { code, message, data in
                         if (code == 200) {
-                            let userInfo: UserInfo = createUserInfo(data!)
+                            let userInfo = createUserInfo(data)
                             completion(code, message, userInfo)
                         } else {
                             completion(code, message, nil)
@@ -181,9 +180,47 @@ public class AuthClient {
             }
         }
     }
+    
+    public static func getCurrentUserInfo(completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        Authing.getConfig { config in
+            guard config != nil else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+                return
+            }
+            let url: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/users/me";
+            Guardian.get(urlString: url) { code, message, data in
+                if (code == 200) {
+                    let userInfo = createUserInfo(data)
+                    completion(code, message, userInfo)
+                } else {
+                    completion(code, message, nil)
+                }
+            }
+        }
+    }
+    
+    public static func logout(completion: @escaping(Int, String?) -> Void) {
+        Authing.getConfig { config in
+            guard config != nil else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())")
+                return
+            }
+            
+            UserManager.removeUser()
+            HTTPCookieStorage.shared.cookies?.forEach(HTTPCookieStorage.shared.deleteCookie)
+            completion(200, "ok")
+        }
+    }
 
-    public static func createUserInfo(_ data: NSDictionary) -> UserInfo {
+    public static func createUserInfo(_ data: NSDictionary?, _ save: Bool = true) -> UserInfo? {
+        guard data != nil else {
+            return nil
+        }
+        
         let userInfo: UserInfo = UserInfo.parse(data: data)
+        if (save) {
+            UserManager.saveUser(userInfo)
+        }
         return userInfo
     }
 }
