@@ -211,6 +211,25 @@ public class AuthClient {
             completion(200, "ok")
         }
     }
+    
+    public static func loginByWechat(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        Authing.getConfig { config in
+            guard config != nil else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+                return
+            }
+  
+            let url: String = "\(Authing.getSchema())://\(Util.getHost(config!))/connection/social/wechat:mobile/\(config!.userPoolId!)/callback?code=\(code)&app_id=\(Authing.getAppId())";
+            Guardian.get(urlString: url) { code, message, data in
+                if (code == 200) {
+                    let userInfo = createUserInfo(data)
+                    completion(code, message, userInfo)
+                } else {
+                    completion(code, message, nil)
+                }
+            }
+        }
+    }
 
     public static func createUserInfo(_ data: NSDictionary?, _ save: Bool = true) -> UserInfo? {
         guard data != nil else {

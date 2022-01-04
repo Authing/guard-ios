@@ -205,6 +205,14 @@
                         <color key="titleColor" red="0.224" green="0.41599999999999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3e-jG-G1E" customClass="WechatButton" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="185" y="754" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="CKy-PQ-cPM"/>
+                        <constraint firstAttribute="width" secondItem="j3e-jG-G1E" secondAttribute="height" id="zCV-Ei-dLg"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -217,8 +225,10 @@
                 <constraint firstItem="WHE-LW-cSI" firstAttribute="top" secondItem="uxM-Eg-q9m" secondAttribute="top" id="7xf-N4-B5t"/>
                 <constraint firstItem="Nmk-Ef-ukz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="9Ie-cd-VDi"/>
                 <constraint firstItem="7BN-be-d2t" firstAttribute="top" secondItem="Nmk-Ef-ukz" secondAttribute="bottom" constant="8" symbolic="YES" id="AC4-x0-xNL"/>
+                <constraint firstItem="j3e-jG-G1E" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ADD-qJ-8pC"/>
                 <constraint firstItem="uxM-Eg-q9m" firstAttribute="top" secondItem="E2M-Lp-3aM" secondAttribute="bottom" constant="8" symbolic="YES" id="Cuf-It-odx"/>
                 <constraint firstItem="uxM-Eg-q9m" firstAttribute="leading" secondItem="E2M-Lp-3aM" secondAttribute="leading" id="DzH-2y-drU"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="j3e-jG-G1E" secondAttribute="bottom" constant="64" id="Fa8-Im-BfG"/>
                 <constraint firstItem="E2M-Lp-3aM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="HGL-mq-sfI"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="jkG-vF-ihh" secondAttribute="trailing" constant="20" id="I7z-hd-Uo5"/>
                 <constraint firstItem="2g3-pt-3FB" firstAttribute="leading" secondItem="NTZ-xL-T1d" secondAttribute="trailing" constant="8" symbolic="YES" id="J5V-ye-q8w"/>

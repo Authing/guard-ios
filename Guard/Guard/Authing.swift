@@ -17,6 +17,9 @@ public class Authing {
     private static var isGettingConfig: Bool = false
     private static var configListeners = [ConfigCompletion]()
     
+    // set to nil after usage
+    static var wechatDelegate: WXApiDelegate? = nil
+    
     public static func start(appid: String) {
         sAppId = appid
         requestPublicConfig()
@@ -54,6 +57,21 @@ public class Authing {
             configListeners.removeAll()
             completion(sConfig)
         }
+    }
+    
+    public static func setupWechat(_ appid: String, universalLink: String) {
+        let ret = WXApi.registerApp(appid, universalLink: universalLink)
+        if (!ret) {
+            print("set up wechat failed!")
+        }
+    }
+    
+    public static func handleWechatCallback(userActivity: NSUserActivity) {
+        WXApi.handleOpenUniversalLink(userActivity, delegate: wechatDelegate)
+    }
+    
+    public static func handleOpen(url: URL) {
+        WXApi.handleOpen(url, delegate: wechatDelegate)
     }
     
     private static func requestPublicConfig() {

@@ -24,6 +24,13 @@
 		7E12D7B6277DE9EF00703FC1 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E12D7B5277DE9EF00703FC1 /* UserManager.swift */; };
 		7E12D7B8277DECB900703FC1 /* AuthingUserProfile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E12D7B7277DECB900703FC1 /* AuthingUserProfile.xib */; };
 		7E12D7BA277DEE6F00703FC1 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E12D7B9277DEE6F00703FC1 /* UserProfileViewController.swift */; };
+		7E1998D22783D3D5002C6F81 /* WechatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1998D12783D3D5002C6F81 /* WechatButton.swift */; };
+		7E199D072783DE9E002C6F81 /* WXApi.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E199D032783DE9E002C6F81 /* WXApi.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7E199D082783DE9E002C6F81 /* WXApiObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E199D042783DE9E002C6F81 /* WXApiObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7E199D092783DE9E002C6F81 /* WechatAuthSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E199D052783DE9E002C6F81 /* WechatAuthSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7E199D0A2783DE9E002C6F81 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E199D062783DE9E002C6F81 /* libWeChatSDK.a */; };
+		7E199D0D2783DFC0002C6F81 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E199D0C2783DFC0002C6F81 /* WebKit.framework */; };
+		7E199D112783F8E1002C6F81 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E199D102783F8E1002C6F81 /* libc++.tbd */; };
 		7E7566782766F91500C3872F /* AppName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7566772766F91500C3872F /* AppName.swift */; };
 		7E75667B2766F9C400C3872F /* AuthingLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E75667A2766F9C400C3872F /* AuthingLogin.xib */; };
 		7E75667E2766F9DD00C3872F /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E75667D2766F9DD00C3872F /* AuthViewController.swift */; };
@@ -96,6 +103,13 @@
 		7E12D7B5277DE9EF00703FC1 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		7E12D7B7277DECB900703FC1 /* AuthingUserProfile.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingUserProfile.xib; sourceTree = "<group>"; };
 		7E12D7B9277DEE6F00703FC1 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		7E1998D12783D3D5002C6F81 /* WechatButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WechatButton.swift; sourceTree = "<group>"; };
+		7E199D032783DE9E002C6F81 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		7E199D042783DE9E002C6F81 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		7E199D052783DE9E002C6F81 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		7E199D062783DE9E002C6F81 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		7E199D0C2783DFC0002C6F81 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/iOSSupport/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
+		7E199D102783F8E1002C6F81 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
 		7E7566772766F91500C3872F /* AppName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppName.swift; sourceTree = "<group>"; };
 		7E75667A2766F9C400C3872F /* AuthingLogin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingLogin.xib; sourceTree = "<group>"; };
 		7E75667D2766F9DD00C3872F /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
@@ -161,6 +175,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E199D112783F8E1002C6F81 /* libc++.tbd in Frameworks */,
+				7E199D0D2783DFC0002C6F81 /* WebKit.framework in Frameworks */,
+				7E199D0A2783DE9E002C6F81 /* libWeChatSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,9 +192,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E1998D02783D3B9002C6F81 /* Social */ = {
+			isa = PBXGroup;
+			children = (
+				7E1998D12783D3D5002C6F81 /* WechatButton.swift */,
+			);
+			path = Social;
+			sourceTree = "<group>";
+		};
+		7E199D022783DE9E002C6F81 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				7E199D032783DE9E002C6F81 /* WXApi.h */,
+				7E199D042783DE9E002C6F81 /* WXApiObject.h */,
+				7E199D052783DE9E002C6F81 /* WechatAuthSDK.h */,
+				7E199D062783DE9E002C6F81 /* libWeChatSDK.a */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		7E199D0B2783DFBF002C6F81 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7E199D102783F8E1002C6F81 /* libc++.tbd */,
+				7E199D0C2783DFC0002C6F81 /* WebKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7E7566762766F90200C3872F /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				7E1998D02783D3B9002C6F81 /* Social */,
 				7ED434CA277569D100893EDD /* Internal */,
 				7E7566772766F91500C3872F /* AppName.swift */,
 				7E75668A276746AF00C3872F /* AppLogo.swift */,
@@ -267,9 +313,11 @@
 		7E9593C8274C813A001459C5 = {
 			isa = PBXGroup;
 			children = (
+				7E199D022783DE9E002C6F81 /* Library */,
 				7E9593D4274C813A001459C5 /* Guard */,
 				7E9593DE274C813B001459C5 /* GuardTests */,
 				7E9593D3274C813A001459C5 /* Products */,
+				7E199D0B2783DFBF002C6F81 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -368,6 +416,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E199D072783DE9E002C6F81 /* WXApi.h in Headers */,
+				7E199D092783DE9E002C6F81 /* WechatAuthSDK.h in Headers */,
+				7E199D082783DE9E002C6F81 /* WXApiObject.h in Headers */,
 				7E9593E1274C813B001459C5 /* Guard.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -515,6 +566,7 @@
 				7ECF8AC72759FF17004F8FC5 /* Const.swift in Sources */,
 				7EF66C5B277BEE7300FCBBEB /* Animator.swift in Sources */,
 				7EF66C69277C197900FCBBEB /* RegisterMethodTab.swift in Sources */,
+				7E1998D22783D3D5002C6F81 /* WechatButton.swift in Sources */,
 				7ED434DA2779509100893EDD /* VerifyCodeTextField.swift in Sources */,
 				7ED434D22775ABA000893EDD /* TextFieldLayout.swift in Sources */,
 				7E7566A22768801E00C3872F /* UIView+Authing.swift in Sources */,
@@ -721,6 +773,11 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				EXCLUDED_ARCHS = armv7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Release-iphonesimulator",
+					"$(PROJECT_DIR)/build/Release-iphoneos",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -730,8 +787,16 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Guard.build/Release-iphonesimulator/Guard.build/Objects-normal/i386/Binary",
+					"$(PROJECT_DIR)/build/Guard.build/Release-iphonesimulator/Guard.build/Objects-normal/arm64/Binary",
+					"$(PROJECT_DIR)/build/Guard.build/Release-iphonesimulator/Guard.build/Objects-normal/x86_64/Binary",
+					"$(PROJECT_DIR)$(LOCAL_LIBRARY_DIR)",
+				);
 				MARKETING_VERSION = 1.0;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.authing.Guard;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -756,7 +821,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EXCLUDED_ARCHS = armv7;
+				EXCLUDED_ARCHS = "i386 armv7";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "i386 arm64";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Release-iphonesimulator",
+					"$(PROJECT_DIR)/build/Release-iphoneos",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -766,8 +837,16 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Guard.build/Release-iphonesimulator/Guard.build/Objects-normal/i386/Binary",
+					"$(PROJECT_DIR)/build/Guard.build/Release-iphonesimulator/Guard.build/Objects-normal/arm64/Binary",
+					"$(PROJECT_DIR)/build/Guard.build/Release-iphonesimulator/Guard.build/Objects-normal/x86_64/Binary",
+					"$(PROJECT_DIR)$(LOCAL_LIBRARY_DIR)",
+				);
 				MARKETING_VERSION = 1.0;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.authing.Guard;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

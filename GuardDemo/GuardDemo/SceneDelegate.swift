@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Guard
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -48,5 +49,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
 
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        Authing.handleWechatCallback(userActivity: userActivity)
+    }
 }
 
