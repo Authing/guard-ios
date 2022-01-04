@@ -20,7 +20,7 @@ public class Authing {
     // set to nil after usage
     static var wechatDelegate: WXApiDelegate? = nil
     
-    public static func start(appid: String) {
+    public static func start(_ appid: String) {
         sAppId = appid
         requestPublicConfig()
         SDKUsageTask.report();
