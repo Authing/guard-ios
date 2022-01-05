@@ -2,7 +2,7 @@
 
 1. 通过 Swift Package Manager，添加 2 个依赖
 
-https://github.com/Authing/guard_ios
+https://github.com/Authing/guard-ios
 
 ![](./../images/add_guard.png)
 

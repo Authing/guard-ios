@@ -8,7 +8,7 @@ Authing guard is a UI component library for identity applications. It provides s
 
 1. add Swift Package
 
-https://github.com/Authing/guard_ios
+https://github.com/Authing/guard-ios
 
 ![](./images/add_guard.png)
 

@@ -8,7 +8,7 @@ Authing guard 是一个面向身份认证领域的业务组件库，该组件库
 
 1. 通过 Swift Package Manager 引入依赖
 
-https://github.com/Authing/guard_ios
+https://github.com/Authing/guard-ios
 
 ![](./images/add_guard.png)
 
