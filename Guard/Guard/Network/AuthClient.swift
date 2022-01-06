@@ -230,6 +230,26 @@ public class AuthClient {
             }
         }
     }
+    
+    public static func loginByAlipay(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        Authing.getConfig { config in
+            guard config != nil else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+                return
+            }
+  
+            let url: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/ecConn/alipay/authByCode";
+            let body: NSDictionary = ["connId" : "61ae0aba55b1d0e464f695bf", "code" : code]
+            Guardian.post(urlString: url, body: body) { code, message, data in
+                if (code == 200) {
+                    let userInfo = createUserInfo(data)
+                    completion(code, message, userInfo)
+                } else {
+                    completion(code, message, nil)
+                }
+            }
+        }
+    }
 
     public static func createUserInfo(_ data: NSDictionary?, _ save: Bool = true) -> UserInfo? {
         guard data != nil else {

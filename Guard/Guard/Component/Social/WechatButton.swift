@@ -21,10 +21,10 @@ open class WechatButton: UIButton, WXApiDelegate {
     private func setup() {
         setBackgroundImage(UIImage(named: "authing_wechat", in: Bundle(for: WechatButton.self), compatibleWith: nil), for: .normal)
         self.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.wechatLoginOK(notification:)), name: Notification.Name("wechatLoginOK"), object: nil)
     }
     
     @objc private func onClick(sender: UIButton) {
-        Authing.wechatDelegate = self
         let req: SendAuthReq = SendAuthReq()
         req.scope = "snsapi_userinfo"
         req.state = "123"
@@ -32,10 +32,20 @@ open class WechatButton: UIButton, WXApiDelegate {
             print("wechat auth req result:\(success)")
         }
     }
+    
+    @objc func wechatLoginOK(notification: Notification) {
+        let userActivity = notification.object as? NSUserActivity
+        if (userActivity != nil) {
+            WXApi.handleOpenUniversalLink(userActivity!, delegate: self)
+        } else {
+            let url = notification.object as? URL
+            if (url != nil) {
+                WXApi.handleOpen(url!, delegate: self)
+            }
+        }
+    }
 
     public func onResp(_ resp: BaseResp) {
-        Authing.wechatDelegate = nil
-        
         let authResp = resp as? SendAuthResp
         let code = authResp?.code
         

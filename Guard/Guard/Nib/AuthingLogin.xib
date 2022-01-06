@@ -213,6 +213,14 @@
                     </constraints>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vgE-1X-5Bz" customClass="AlipayButton" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="253" y="754" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="0nz-PO-hmF"/>
+                        <constraint firstAttribute="width" secondItem="vgE-1X-5Bz" secondAttribute="height" id="aAQ-j1-3oG"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -241,6 +249,8 @@
                 <constraint firstItem="txj-YQ-JVh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="XXG-Mn-ys9"/>
                 <constraint firstItem="txj-YQ-JVh" firstAttribute="top" secondItem="uxM-Eg-q9m" secondAttribute="bottom" constant="24" id="Xzy-Kl-uY3"/>
                 <constraint firstItem="gFZ-Xj-lJ9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="ZHj-rB-6A9"/>
+                <constraint firstItem="vgE-1X-5Bz" firstAttribute="centerY" secondItem="j3e-jG-G1E" secondAttribute="centerY" id="cGK-o8-GFn"/>
+                <constraint firstItem="vgE-1X-5Bz" firstAttribute="leading" secondItem="j3e-jG-G1E" secondAttribute="trailing" constant="24" id="czr-Ms-hnu"/>
                 <constraint firstItem="2g3-pt-3FB" firstAttribute="top" secondItem="jkG-vF-ihh" secondAttribute="bottom" constant="8" symbolic="YES" id="dia-qS-TBr"/>
                 <constraint firstItem="WHE-LW-cSI" firstAttribute="bottom" secondItem="uxM-Eg-q9m" secondAttribute="bottom" id="eVG-r0-PgI"/>
                 <constraint firstItem="DMA-tf-9bk" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="hzL-29-msk"/>

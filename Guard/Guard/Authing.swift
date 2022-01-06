@@ -17,9 +17,6 @@ public class Authing {
     private static var isGettingConfig: Bool = false
     private static var configListeners = [ConfigCompletion]()
     
-    // set to nil after usage
-    static var wechatDelegate: WXApiDelegate? = nil
-    
     public static func start(_ appid: String) {
         sAppId = appid
         requestPublicConfig()
@@ -66,12 +63,9 @@ public class Authing {
         }
     }
     
-    public static func handleWechatCallback(userActivity: NSUserActivity) {
-        WXApi.handleOpenUniversalLink(userActivity, delegate: wechatDelegate)
-    }
-    
-    public static func handleOpen(url: URL) {
-        WXApi.handleOpen(url, delegate: wechatDelegate)
+    public static func setupAlipay(_ appid: String, customScheme: String) {
+        AlipayButton.appid = appid
+        AlipayButton.customScheme = customScheme
     }
     
     private static func requestPublicConfig() {
