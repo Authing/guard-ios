@@ -15,17 +15,17 @@ https://github.com/Authing/guard-ios
 ```swift
 import Guard
 
-Authing.setupAlipay("2021003110654882", customScheme: "cn.guard")
+Authing.setupAlipay("your_alipay_appid", customScheme: "cn.guard")
 ```
 
 >第一个参数为支付宝应用 id；customScheme 和第 2 步填入 Info.plist 的值必须一致
 
 4. 初始化 Authing：
 ```swift
-// appId 是 authing 的应用 id，可以在 authing 控制台里面获取
+//  参数为 authing 的应用 id，可以在 authing 控制台里面获取
 Authing.start("your_authing_appid");
 ```
-5. 支付宝返回应用后，如果使用了 SceneDelegate，则需要在里面重载下面的函数：
+5. 支付宝返回应用后，如果使用了 SceneDelegate，则需要在 SceneDelegate.swift 里面重载下面的函数：
 
 ```swift
 func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
