@@ -43,10 +43,10 @@ open class AccountTextField: TextFieldLayout {
             }
         }
         
-        if (config.enabledLoginMethods!.count == 1) {
-            if (config.enabledLoginMethods![0] == "email-password") {
+        if (config.enabledLoginMethods?.count == 1) {
+            if (config.enabledLoginMethods?[0] == "email-password") {
                 keyboardType = .emailAddress
-            } else if (config.enabledLoginMethods![0] == "phone-password") {
+            } else if (config.enabledLoginMethods?[0] == "phone-password") {
                 keyboardType = .phonePad
             }
         }

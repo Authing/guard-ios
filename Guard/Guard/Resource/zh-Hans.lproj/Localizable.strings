@@ -22,3 +22,6 @@
 "authing_find_password_back" = "找回密码";
 "authing_reset_password" = "重置密码";
 "authing_input_phone_or_email" = "请输入手机号或邮箱";
+"authing_password_strength1" = "密码长度至少为 6 位";
+"authing_password_strength2" = "密码长度至少为 6 位，且要包含英文、数字与符号中的两种";
+"authing_password_strength3" = "密码长度至少为 6 位，且要包含英文、数字与符号";

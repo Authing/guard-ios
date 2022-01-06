@@ -238,8 +238,14 @@ public class AuthClient {
                 return
             }
   
+            let conId: String? = config?.getAlipayConnectionId()
+            guard conId != nil else {
+                completion(500, "No alipay connection. Please set up in console for \(Authing.getAppId())", nil)
+                return
+            }
+            
             let url: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/ecConn/alipay/authByCode";
-            let body: NSDictionary = ["connId" : "61ae0aba55b1d0e464f695bf", "code" : code]
+            let body: NSDictionary = ["connId" : conId as Any, "code" : code]
             Guardian.post(urlString: url, body: body) { code, message, data in
                 if (code == 200) {
                     let userInfo = createUserInfo(data)

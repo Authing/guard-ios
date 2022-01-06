@@ -30,7 +30,7 @@ AuthFlow.start { userInfo in
 }
 ```
 
-4. Add access token (userInfo.token) to your resource request as Authorization header. e.g.
+4. Add token (userInfo.token) to your resource request as Authorization header. e.g.
 
 ```swift
 request.addValue("Bearer \(userInfo.token!)", forHTTPHeaderField: "Authorization")

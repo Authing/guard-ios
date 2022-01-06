@@ -19,4 +19,19 @@ open class Validator {
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: email)
     }
+    
+    public static func hasEnglish(_ s: String?) -> Bool {
+        let range = s?.rangeOfCharacter(from: .letters)
+        return range != nil
+    }
+    
+    public static func hasNumber(_ s: String?) -> Bool {
+        let range = s?.rangeOfCharacter(from: .decimalDigits)
+        return range != nil
+    }
+    
+    public static func hasSpecialCharacter(_ s: String?) -> Bool {
+        let characterset = CharacterSet(charactersIn: "!@#$%&*()_+=|<>?{}~-[]")
+        return s?.rangeOfCharacter(from: characterset) != nil
+    }
 }

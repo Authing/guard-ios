@@ -32,6 +32,7 @@ class SampleListViewController: UITableViewController {
             AuthFlow.start { [weak self] userInfo in
                 self?.goHome(userInfo: userInfo)
             }
+//            AuthFlow.showUserProfile()
         } else if indexPath.row == 1 {
             let vc = OneClickViewController(nibName: "OneClick", bundle: nil)
             self.navigationController?.pushViewController(vc, animated: true)

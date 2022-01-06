@@ -30,7 +30,7 @@ AuthFlow.start { userInfo in
 }
 ```
 
-4. 访问受保护资源时，带上用户的 access token：
+4. 访问受保护资源时，带上用户的 token：
 
 ```swift
 request.addValue("Bearer \(userInfo.token!)", forHTTPHeaderField: "Authorization")

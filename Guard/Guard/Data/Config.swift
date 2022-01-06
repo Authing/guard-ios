@@ -8,63 +8,81 @@
 import Foundation
 
 public class Config {
-    var userPoolId: String?
-    var identifier: String?
-    var name: String?
-    var logo: String?
-    var userpoolLogo: String?
+    
+    var data: NSDictionary? {
+        didSet {
+            let loginTabs: NSDictionary? = data?["loginTabs"] as? NSDictionary
+            if (loginTabs != nil) {
+                loginMethods = loginTabs!["list"] as? [String]
+                defaultLoginMethod = loginTabs!["default"] as? String
+                var i: Int = 0
+                loginMethods?.forEach({ method in
+                    if (method == defaultLoginMethod) {
+                        loginMethods?.remove(at: i)
+                        loginMethods?.insert(method, at: 0)
+                        return
+                    }
+                    i+=1
+                })
+            }
+            
+            let passwordTabConfig: NSDictionary? = data?["passwordTabConfig"] as? NSDictionary
+            if (passwordTabConfig != nil) {
+                enabledLoginMethods = passwordTabConfig?["enabledLoginMethods"] as? [String]
+            }
+            let registerTabs: NSDictionary? = data?["registerTabs"] as? NSDictionary
+            if (registerTabs != nil) {
+                registerMethods = registerTabs!["list"] as? [String]
+                defaultRegisterMethod = registerTabs!["default"] as? String
+                var i: Int = 0
+                registerMethods?.forEach({ method in
+                    if (method == defaultRegisterMethod) {
+                        registerMethods?.remove(at: i)
+                        registerMethods?.insert(method, at: 0)
+                        return
+                    }
+                    i+=1
+                })
+            }
+        }
+    }
+    
+    var userPoolId: String? {
+        get { return data?["userPoolId"] as? String }
+    }
+    var identifier: String? {
+        get { return data?["identifier"] as? String }
+    }
+    var name: String? {
+        get { return data?["name"] as? String }
+    }
+    var logo: String? {
+        get { return data?["logo"] as? String }
+    }
+    var userpoolLogo: String? {
+        get { return data?["userpoolLogo"] as? String }
+    }
+    public func getLogoUrl() -> String? {
+        return logo ?? userpoolLogo
+    }
     var loginMethods: [String]?
     var defaultLoginMethod: String?
     var enabledLoginMethods: [String]?
     var registerMethods: [String]?
     var defaultRegisterMethod: String?
-    
-    public static func parse(data: NSDictionary?) -> Config? {
-        guard data != nil else {
-            return nil
-        }
-        let config: Config = Config()
-        config.userPoolId = data!["userPoolId"] as? String
-        config.identifier = data!["identifier"] as? String
-        config.name = data!["name"] as? String
-        config.logo = data!["logo"] as? String
-        config.userpoolLogo = data!["userpoolLogo"] as? String
-        let loginTabs: NSDictionary? = data!["loginTabs"] as? NSDictionary
-        if (loginTabs != nil) {
-            config.loginMethods = loginTabs!["list"] as? [String]
-            config.defaultLoginMethod = loginTabs!["default"] as? String
-            var i: Int = 0
-            config.loginMethods?.forEach({ method in
-                if (method == config.defaultLoginMethod) {
-                    config.loginMethods?.remove(at: i)
-                    config.loginMethods?.insert(method, at: 0)
-                    return
-                }
-                i+=1
-            })
-        }
-        let passwordTabConfig: NSDictionary? = data!["passwordTabConfig"] as? NSDictionary
-        if (passwordTabConfig != nil) {
-            config.enabledLoginMethods = passwordTabConfig?["enabledLoginMethods"] as? [String]
-        }
-        let registerTabs: NSDictionary? = data!["registerTabs"] as? NSDictionary
-        if (registerTabs != nil) {
-            config.registerMethods = registerTabs!["list"] as? [String]
-            config.defaultRegisterMethod = registerTabs!["default"] as? String
-            var i: Int = 0
-            config.registerMethods?.forEach({ method in
-                if (method == config.defaultRegisterMethod) {
-                    config.registerMethods?.remove(at: i)
-                    config.registerMethods?.insert(method, at: 0)
-                    return
-                }
-                i+=1
-            })
-        }
-        return config
+    var passwordStrength: Int? {
+        get { return data?["passwordStrength"] as? Int }
     }
     
-    public func getLogoUrl() -> String? {
-        return logo ?? userpoolLogo
+    var socialConnections: [NSDictionary]?
+    public func getAlipayConnectionId() -> String? {
+        let connections: [NSDictionary]? = data?["socialConnections"] as? [NSDictionary]
+        var cid: String? = nil
+        connections?.forEach({ connection in
+            if connection["provider"] as? String == "alipay" {
+                cid = connection["id"] as? String
+            }
+        })
+        return cid
     }
 }

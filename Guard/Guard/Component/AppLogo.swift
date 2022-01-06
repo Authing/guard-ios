@@ -23,7 +23,14 @@ open class AppLogo: UIImageView {
             guard config != nil else {
                 return
             }
+            guard config?.getLogoUrl() != nil else {
+                return
+            }
+            
             let url = NSURL(string: (config?.getLogoUrl())!)
+            if (url == nil) {
+                return
+            }
             DispatchQueue.global().async {
                 let data = try? Data(contentsOf: url! as URL)
                 DispatchQueue.main.async() { [weak self] in

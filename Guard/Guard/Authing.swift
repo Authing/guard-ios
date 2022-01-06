@@ -74,7 +74,9 @@ public class Authing {
         let url = "https://console." + sHost + "/api/v2/applications/" + sAppId + "/public-config"
         Guardian.request(config: nil, urlString: url, method: "get", body: nil) { code, message, jsonData in
             if (code == 200) {
-                sConfig = Config.parse(data: jsonData)
+                sConfig = Config()
+                sConfig!.data = jsonData
+
                 fireCallback()
             } else {
                 print("error when getting public cofig:\(message!)")
