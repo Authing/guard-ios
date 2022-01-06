@@ -64,8 +64,8 @@ public class Authing {
     }
     
     public static func setupAlipay(_ appid: String, customScheme: String) {
-        AlipayButton.appid = appid
-        AlipayButton.customScheme = customScheme
+        Alipay.appid = appid
+        Alipay.customScheme = customScheme
     }
     
     private static func requestPublicConfig() {

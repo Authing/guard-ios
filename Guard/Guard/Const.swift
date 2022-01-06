@@ -7,6 +7,8 @@
 
 import UIKit
 
+typealias AuthCallback = (Int, String?, UserInfo?) -> Void
+
 public class Const {
     public static let SDK_VERSION: String = "1.0.2"
     

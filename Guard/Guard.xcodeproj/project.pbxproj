@@ -51,6 +51,7 @@
 		7E9593E0274C813B001459C5 /* GuardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9593DF274C813B001459C5 /* GuardTests.swift */; };
 		7E9593E1274C813B001459C5 /* Guard.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E9593D5274C813A001459C5 /* Guard.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7E959441274CEECF001459C5 /* Authing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E959440274CEECF001459C5 /* Authing.swift */; };
+		7EB2D2FF2786CFA300A819B3 /* Alipay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB2D2FE2786CFA300A819B3 /* Alipay.swift */; };
 		7ECF8AC22759F82D004F8FC5 /* Guardian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF8AC12759F82D004F8FC5 /* Guardian.swift */; };
 		7ECF8AC52759FE8D004F8FC5 /* SDKUsageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF8AC42759FE8D004F8FC5 /* SDKUsageTask.swift */; };
 		7ECF8AC72759FF17004F8FC5 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF8AC62759FF17004F8FC5 /* Const.swift */; };
@@ -134,6 +135,7 @@
 		7E9593DA274C813B001459C5 /* GuardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GuardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E9593DF274C813B001459C5 /* GuardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardTests.swift; sourceTree = "<group>"; };
 		7E959440274CEECF001459C5 /* Authing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authing.swift; sourceTree = "<group>"; };
+		7EB2D2FE2786CFA300A819B3 /* Alipay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alipay.swift; sourceTree = "<group>"; };
 		7ECF8AC12759F82D004F8FC5 /* Guardian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guardian.swift; sourceTree = "<group>"; };
 		7ECF8AC42759FE8D004F8FC5 /* SDKUsageTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDKUsageTask.swift; sourceTree = "<group>"; };
 		7ECF8AC62759FF17004F8FC5 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 			children = (
 				7E1998D12783D3D5002C6F81 /* WechatButton.swift */,
 				7E199D7127853EF5002C6F81 /* AlipayButton.swift */,
+				7EB2D2FE2786CFA300A819B3 /* Alipay.swift */,
 			);
 			path = Social;
 			sourceTree = "<group>";
@@ -618,6 +621,7 @@
 				7EF66C71277C371E00FCBBEB /* EmailTextField.swift in Sources */,
 				7E959441274CEECF001459C5 /* Authing.swift in Sources */,
 				7EF66C65277C0B6F00FCBBEB /* AuthNavigationController.swift in Sources */,
+				7EB2D2FF2786CFA300A819B3 /* Alipay.swift in Sources */,
 				7ED434CE27757E4B00893EDD /* LoginContainer.swift in Sources */,
 				7E12D7B6277DE9EF00703FC1 /* UserManager.swift in Sources */,
 			);

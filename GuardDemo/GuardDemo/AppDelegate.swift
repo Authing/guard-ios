@@ -14,7 +14,8 @@ import AppAuth
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var currentAuthorizationFlow: OIDExternalUserAgentSession?
-
+    var window:UIWindow?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         OneAuth.bizId = "74ae90bd84f74b69a88b578bbbbcdcfd"
@@ -39,7 +40,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "wechatLoginOK"), object: url)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "alipayLoginOK"), object: url)
+        return true
+    }
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "wechatLoginOK"), object: userActivity)
         return true
     }
 }
