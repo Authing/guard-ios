@@ -14,15 +14,13 @@ open class Alipay {
     public static var appid: String? = nil
     public static var customScheme: String? = nil
     
-    init() {
-        NotificationCenter.default.addObserver(self, selector: #selector(self.alipayLoginOK(notification:)), name: Notification.Name("alipayLoginOK"), object: nil)
-    }
-    
     func login(_ completion: @escaping AuthCallback) {
         guard Alipay.appid != nil && Alipay.customScheme != nil else {
             print("Alipay error appid and customScheme cannot be empty")
             return
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.alipayLoginOK(notification:)), name: Notification.Name("alipayLoginOK"), object: nil)
         
         callback = completion
         
@@ -32,21 +30,30 @@ open class Alipay {
     }
     
     @objc func alipayLoginOK(notification: Notification) {
-        let url = notification.object as! URL
-        let urlS = url.absoluteString
-        let idx = urlS.firstIndex(of: "?")
-        guard idx != nil else {
-            return
-        }
-        let idx1 = urlS.index(idx!, offsetBy: 1)
-        let code = urlS.suffix(from: idx1)
-        print(code)
+        // has to manually remove it. don't trust the doc which says observer will be removed automatically
+        NotificationCenter.default.removeObserver(self)
         
-        AuthClient.loginByAlipay(String(code)) { code, message, userInfo in
-            guard self.callback != nil else {
-                return
+        let url = notification.object as? URL
+
+        // only call it twice can trigger callback
+        AFServiceCenter.handleResponseURL(url) { resp in
+        }
+        
+        AFServiceCenter.handleResponseURL(url) { resp in
+            if let data = resp?.result {
+                if let code = data["auth_code"] as? String {
+                    // sleep. otherwise will sometimes get -1005
+                    // guess it's due to background networking
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        AuthClient.loginByAlipay(code) { code, message, userInfo in
+                            guard self.callback != nil else {
+                                return
+                            }
+                            self.callback!(code, message, userInfo)
+                        }
+                    }
+                }
             }
-            self.callback!(code, message, userInfo)
         }
     }
 }

@@ -45,7 +45,7 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplication.Op
 6. 如果使用我们提供的语义化的认证流程，则只需要在 xib 里面放置一个）：
 
 ```swift
-AlipayButton
+AlipayLoginButton
 ```
 
 所有的逻辑由我们语义化引擎自动处理

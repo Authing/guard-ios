@@ -205,19 +205,25 @@
                         <color key="titleColor" red="0.224" green="0.41599999999999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3e-jG-G1E" customClass="WechatButton" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="185" y="754" width="44" height="44"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3e-jG-G1E" userLabel="WechatLoginButton" customClass="WechatLoginButton" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="117" y="754" width="44" height="44"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="CKy-PQ-cPM"/>
                         <constraint firstAttribute="width" secondItem="j3e-jG-G1E" secondAttribute="height" id="zCV-Ei-dLg"/>
                     </constraints>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vgE-1X-5Bz" customClass="AlipayButton" customModule="Guard" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vgE-1X-5Bz" userLabel="AlipayButton" customClass="AlipayLoginButton" customModule="Guard" customModuleProvider="target">
                     <rect key="frame" x="253" y="754" width="44" height="44"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="0nz-PO-hmF"/>
                         <constraint firstAttribute="width" secondItem="vgE-1X-5Bz" secondAttribute="height" id="aAQ-j1-3oG"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qIS-Ca-2ZW" customClass="AppleLoginButton" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="185" y="754" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="Dx7-3s-U1Y"/>
+                        <constraint firstAttribute="width" secondItem="qIS-Ca-2ZW" secondAttribute="height" id="EX1-F4-JUh"/>
                     </constraints>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                 </button>
@@ -226,6 +232,7 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="7BN-be-d2t" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="3Rg-X0-ueY"/>
+                <constraint firstItem="vgE-1X-5Bz" firstAttribute="centerY" secondItem="qIS-Ca-2ZW" secondAttribute="centerY" id="4XF-AV-9N8"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="2g3-pt-3FB" secondAttribute="trailing" constant="20" id="4eI-iu-FSL"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="txj-YQ-JVh" secondAttribute="trailing" constant="20" id="4wz-ry-aUz"/>
                 <constraint firstItem="jkG-vF-ihh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="6xY-W2-rPB"/>
@@ -233,13 +240,16 @@
                 <constraint firstItem="WHE-LW-cSI" firstAttribute="top" secondItem="uxM-Eg-q9m" secondAttribute="top" id="7xf-N4-B5t"/>
                 <constraint firstItem="Nmk-Ef-ukz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="9Ie-cd-VDi"/>
                 <constraint firstItem="7BN-be-d2t" firstAttribute="top" secondItem="Nmk-Ef-ukz" secondAttribute="bottom" constant="8" symbolic="YES" id="AC4-x0-xNL"/>
-                <constraint firstItem="j3e-jG-G1E" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ADD-qJ-8pC"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="qIS-Ca-2ZW" secondAttribute="bottom" constant="64" id="BMU-fL-shi"/>
                 <constraint firstItem="uxM-Eg-q9m" firstAttribute="top" secondItem="E2M-Lp-3aM" secondAttribute="bottom" constant="8" symbolic="YES" id="Cuf-It-odx"/>
                 <constraint firstItem="uxM-Eg-q9m" firstAttribute="leading" secondItem="E2M-Lp-3aM" secondAttribute="leading" id="DzH-2y-drU"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="j3e-jG-G1E" secondAttribute="bottom" constant="64" id="Fa8-Im-BfG"/>
+                <constraint firstItem="qIS-Ca-2ZW" firstAttribute="leading" secondItem="j3e-jG-G1E" secondAttribute="trailing" constant="24" id="HDP-Oz-5t7"/>
                 <constraint firstItem="E2M-Lp-3aM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="HGL-mq-sfI"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="jkG-vF-ihh" secondAttribute="trailing" constant="20" id="I7z-hd-Uo5"/>
                 <constraint firstItem="2g3-pt-3FB" firstAttribute="leading" secondItem="NTZ-xL-T1d" secondAttribute="trailing" constant="8" symbolic="YES" id="J5V-ye-q8w"/>
+                <constraint firstItem="j3e-jG-G1E" firstAttribute="height" secondItem="qIS-Ca-2ZW" secondAttribute="height" id="JBY-qg-vq8"/>
+                <constraint firstItem="j3e-jG-G1E" firstAttribute="centerY" secondItem="qIS-Ca-2ZW" secondAttribute="centerY" id="KnA-YS-C5P"/>
+                <constraint firstItem="vgE-1X-5Bz" firstAttribute="height" secondItem="qIS-Ca-2ZW" secondAttribute="height" id="LnN-rg-oqJ"/>
                 <constraint firstItem="DMA-tf-9bk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="PPu-uI-RRv"/>
                 <constraint firstItem="Qfp-Ru-dGn" firstAttribute="top" secondItem="2g3-pt-3FB" secondAttribute="top" id="QWK-0n-XSj"/>
                 <constraint firstItem="WHE-LW-cSI" firstAttribute="leading" secondItem="uxM-Eg-q9m" secondAttribute="trailing" constant="8" id="RoC-RN-vb2"/>
@@ -249,8 +259,6 @@
                 <constraint firstItem="txj-YQ-JVh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="XXG-Mn-ys9"/>
                 <constraint firstItem="txj-YQ-JVh" firstAttribute="top" secondItem="uxM-Eg-q9m" secondAttribute="bottom" constant="24" id="Xzy-Kl-uY3"/>
                 <constraint firstItem="gFZ-Xj-lJ9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="ZHj-rB-6A9"/>
-                <constraint firstItem="vgE-1X-5Bz" firstAttribute="centerY" secondItem="j3e-jG-G1E" secondAttribute="centerY" id="cGK-o8-GFn"/>
-                <constraint firstItem="vgE-1X-5Bz" firstAttribute="leading" secondItem="j3e-jG-G1E" secondAttribute="trailing" constant="24" id="czr-Ms-hnu"/>
                 <constraint firstItem="2g3-pt-3FB" firstAttribute="top" secondItem="jkG-vF-ihh" secondAttribute="bottom" constant="8" symbolic="YES" id="dia-qS-TBr"/>
                 <constraint firstItem="WHE-LW-cSI" firstAttribute="bottom" secondItem="uxM-Eg-q9m" secondAttribute="bottom" id="eVG-r0-PgI"/>
                 <constraint firstItem="DMA-tf-9bk" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="hzL-29-msk"/>
@@ -261,6 +269,8 @@
                 <constraint firstItem="Qfp-Ru-dGn" firstAttribute="leading" secondItem="jkG-vF-ihh" secondAttribute="leading" id="spr-xX-Tzf"/>
                 <constraint firstItem="E2M-Lp-3aM" firstAttribute="top" secondItem="DMA-tf-9bk" secondAttribute="bottom" constant="12" id="tf3-9u-48z"/>
                 <constraint firstItem="NTZ-xL-T1d" firstAttribute="bottom" secondItem="2g3-pt-3FB" secondAttribute="bottom" id="uLG-fh-j2W"/>
+                <constraint firstItem="vgE-1X-5Bz" firstAttribute="leading" secondItem="qIS-Ca-2ZW" secondAttribute="trailing" constant="24" id="uul-V5-f3e"/>
+                <constraint firstItem="qIS-Ca-2ZW" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="w1R-7d-9zb"/>
                 <constraint firstItem="Nmk-Ef-ukz" firstAttribute="top" secondItem="txj-YQ-JVh" secondAttribute="bottom" constant="16" id="ywh-BJ-Ndn"/>
                 <constraint firstItem="Qfp-Ru-dGn" firstAttribute="bottom" secondItem="2g3-pt-3FB" secondAttribute="bottom" id="zZi-c9-an0"/>
             </constraints>

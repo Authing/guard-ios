@@ -219,7 +219,7 @@ public class AuthClient {
                 return
             }
   
-            let url: String = "\(Authing.getSchema())://\(Util.getHost(config!))/connection/social/wechat:mobile/\(config!.userPoolId!)/callback?code=\(code)&app_id=\(Authing.getAppId())";
+            let url: String = "\(Authing.getSchema())://\(Util.getHost(config!))/connection/social/wechatmobile/\(config!.userPoolId!)/callback?code=\(code)&app_id=\(Authing.getAppId())";
             Guardian.get(urlString: url) { code, message, data in
                 if (code == 200) {
                     let userInfo = createUserInfo(data)
@@ -245,7 +245,28 @@ public class AuthClient {
             }
             
             let url: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/ecConn/alipay/authByCode";
-            let body: NSDictionary = ["connId" : conId as Any, "code" : code]
+            let body: NSDictionary = ["connId" : conId!, "code" : code]
+            Guardian.post(urlString: url, body: body) { code, message, data in
+                if (code == 200) {
+                    let userInfo = createUserInfo(data)
+                    completion(code, message, userInfo)
+                } else {
+                    completion(code, message, nil)
+                }
+            }
+        }
+    }
+    
+    public static func loginByApple(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        Authing.getConfig { config in
+            guard config != nil else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+                return
+            }
+  
+            let userPoolId: String? = config?.userPoolId
+            let url: String = "\(Authing.getSchema())://\(Util.getHost(config!))/connection/social/apple/\(userPoolId!)/callback?app_id=\(Authing.getAppId())";
+            let body: NSDictionary = ["code" : code]
             Guardian.post(urlString: url, body: body) { code, message, data in
                 if (code == 200) {
                     let userInfo = createUserInfo(data)

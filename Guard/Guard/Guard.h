@@ -17,4 +17,4 @@ FOUNDATION_EXPORT const unsigned char GuardVersionString[];
 
 #import "WxApi.h"
 
-#import <AFServiceSDK/AFServiceSDK.h>
+#import "AFServiceSDK.h"

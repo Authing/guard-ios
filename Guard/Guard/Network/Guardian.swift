@@ -72,7 +72,8 @@ public class Guardian {
                 let statusCode: Int = (httpResponse?.statusCode)!
                 guard statusCode == 200 || statusCode == 201 else {
                     print("Guardian request network error. Status code:" + statusCode.description)
-                    completion(statusCode, "Network Error", json)
+                    let message: String? = json["message"] as? String
+                    completion(statusCode, message ?? "Network Error", json)
                     return
                 }
                 

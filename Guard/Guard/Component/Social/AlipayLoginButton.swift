@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class AlipayButton: UIButton {
+open class AlipayLoginButton: SocialLoginButton {
 
     let alipay: Alipay = Alipay()
     
@@ -22,23 +22,22 @@ open class AlipayButton: UIButton {
     }
 
     private func setup() {
-        setBackgroundImage(UIImage(named: "authing_alipay", in: Bundle(for: WechatButton.self), compatibleWith: nil), for: .normal)
+        setBackgroundImage(UIImage(named: "authing_alipay", in: Bundle(for: WechatLoginButton.self), compatibleWith: nil), for: .normal)
         self.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
     }
     
     @objc private func onClick(sender: UIButton) {
+        loading?.startAnimating()
         alipay.login { code, message, userInfo in
-            if (code == 200) {
-                DispatchQueue.main.async() {
-                    let vc = self.viewController?.navigationController as? AuthNavigationController
-                    if (vc == nil) {
-                        return
+            DispatchQueue.main.async() {
+                self.loading?.stopAnimating()
+                if (code == 200) {
+                    if let vc = self.viewController?.navigationController as? AuthNavigationController {
+                        vc.complete(userInfo)
                     }
-                    
-                    vc?.complete(userInfo)
+                } else {
+                    Util.setError(self, message)
                 }
-            } else {
-                Util.setError(self, message)
             }
         }
     }
