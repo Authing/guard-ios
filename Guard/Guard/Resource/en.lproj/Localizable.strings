@@ -25,3 +25,12 @@
 "authing_password_strength1" = "Password must be at least 6 characters long";
 "authing_password_strength2" = "Password must be at least 6 characters long, and must contain two of English, numbers and symbols";
 "authing_password_strength3" = "Password must be at least 6 characters long, and must contain English, numbers and symbols";
+"authing_choose_mfa_tip" = "Please select verify method";
+"authing_bind" = "Bind";
+"authing_bind_phone" = "Bind phone";
+"authing_bind_email" = "Bind email";
+"authing_mfa_verify_phone" = "Verify by phone";
+"authing_mfa_verify_email" = "Verify by email";
+"authing_mfa_verify_code" = "Verify by security code";
+"authing_please_input_verify_code" = "Please input verify code";
+"authing_phone_number_already_bound" = "The phone number has been bound";

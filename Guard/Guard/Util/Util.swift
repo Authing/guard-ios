@@ -209,4 +209,21 @@ public class Util {
     public static func getHost(_ config: Config) -> String {
         return "\(config.identifier!).\(Authing.getHost())"
     }
+    
+    public static func isNull(_ s: String?) -> Bool {
+        return s == nil || s?.count == 0 || s == "null"
+    }
+    
+    public static func getPhoneNumber(_ current: UIView) -> String? {
+        if let tfPhone: PhoneNumberTextField = Util.findView(current, viewClass: PhoneNumberTextField.self) {
+            return tfPhone.text
+        }
+        
+        let phone: String? = current.viewController?.authFlow?.data[AuthFlow.KEY_MFA_PHONE] as? String
+        if (phone != nil) {
+            return phone
+        }
+        
+        return current.viewController?.authFlow?.data[AuthFlow.KEY_ACCOUNT] as? String
+    }
 }

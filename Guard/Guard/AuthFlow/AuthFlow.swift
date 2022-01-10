@@ -10,6 +10,8 @@ import UIKit
 public class AuthFlow {
     
     public static let KEY_ACCOUNT: String = "account"
+    public static let KEY_MFA_PHONE: String = "mfa_phone"
+    public static let KEY_MFA_EMAIL: String = "mfa_email"
     
     public var data: NSDictionary = NSMutableDictionary()
     

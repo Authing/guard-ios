@@ -29,18 +29,15 @@ open class GetVerifyCodeButton: LoadingButton {
         self.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
     }
     
-    @objc private func onClick(sender: UIButton) {  
-        let tf: PhoneNumberTextField? = Util.findView(self, viewClass: PhoneNumberTextField.self)
-        if (tf != nil) {
-            let phone: String? = tf!.text
-            if (!phone!.isEmpty) {
-                sendSms(phone!)
-            }
+    @objc private func onClick(sender: UIButton) {
+        if let phone = Util.getPhoneNumber(self) {
+            sendSms(phone)
         }
     }
     
     private func sendSms(_ phone: String) {
         startLoading()
+        Util.setError(self, "")
         AuthClient.sendSms(phone: phone) { code, message in
             self.stopLoading()
             if (code != 200) {

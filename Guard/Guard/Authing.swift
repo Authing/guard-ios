@@ -16,6 +16,7 @@ public class Authing {
     private static var sConfig: Config? = nil
     private static var isGettingConfig: Bool = false
     private static var configListeners = [ConfigCompletion]()
+    private static var sCurrentUser: UserInfo?
     
     public static func start(_ appid: String) {
         sAppId = appid
@@ -66,6 +67,15 @@ public class Authing {
     public static func setupAlipay(_ appid: String, customScheme: String) {
         Alipay.appid = appid
         Alipay.customScheme = customScheme
+    }
+    
+    public static func getCurrentUser() -> UserInfo? {
+        return sCurrentUser
+    }
+    
+    public static func saveUser(_ userInfo: UserInfo?) {
+        sCurrentUser = userInfo
+        // TODO save to user defaults then Core Data
     }
     
     private static func requestPublicConfig() {

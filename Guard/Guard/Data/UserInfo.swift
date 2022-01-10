@@ -8,19 +8,40 @@
 import Foundation
 
 open class UserInfo {
-    var username: String?
-    var email: String?
-    var phone: String?
     
-    var token: String?
+    public var raw: NSDictionary?
+    public var mfaData: NSDictionary?
     
+    public var username: String?
+    public var email: String?
+    public var phone: String?
+    public var token: String?
+    public var mfaToken: String? {
+        get {
+            return mfaData?["mfaToken"] as? String
+        }
+    }
+    public var mfaPhone: String? {
+        get {
+            return mfaData?["phone"] as? String
+        }
+    }
+    public var mfaEmail: String? {
+        get {
+            return mfaData?["email"] as? String
+        }
+    }
+
     public static func parse(data: NSDictionary?) -> UserInfo {
         let userInfo = UserInfo()
+        
+        userInfo.raw = data
+        
         userInfo.username = data?["username"] as? String
         userInfo.email = data?["email"] as? String
         userInfo.phone = data?["phone"] as? String
-        
         userInfo.token = data?["token"] as? String
+        
         return userInfo
     }
     

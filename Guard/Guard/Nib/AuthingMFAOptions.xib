@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AuthViewController" customModule="Guard" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="iN0-l3-epB" id="qtp-SX-i6h"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRB-HR-rOz" customClass="MFATableView" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="20" y="185" width="374" height="677"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYb-Hb-kVb">
+                    <rect key="frame" x="20" y="108" width="374" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="29" id="MXt-Ig-LPp"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="authing_choose_mfa_tip"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="IRB-HR-rOz" firstAttribute="top" secondItem="VYb-Hb-kVb" secondAttribute="bottom" constant="48" id="8JT-CF-Ix8"/>
+                <constraint firstItem="IRB-HR-rOz" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="GYm-jy-azH"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="VYb-Hb-kVb" secondAttribute="trailing" constant="20" id="Lbg-Pz-fE0"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="IRB-HR-rOz" secondAttribute="trailing" constant="20" id="Twk-HY-FA4"/>
+                <constraint firstItem="VYb-Hb-kVb" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="64" id="Vty-M8-vZU"/>
+                <constraint firstItem="VYb-Hb-kVb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="dYn-e2-rbb"/>
+                <constraint firstItem="IRB-HR-rOz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="xTI-fq-uhV"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

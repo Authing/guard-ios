@@ -56,17 +56,8 @@ open class LoginButton: PrimaryButton {
         startLoading()
         AuthClient.loginByPhoneCode(phone: phone, code: code) { code, message, userInfo in
             self.stopLoading()
-            if (code == 200) {
-                DispatchQueue.main.async() {
-                    let vc = self.viewController?.navigationController as? AuthNavigationController
-                    if (vc == nil) {
-                        return
-                    }
-                    
-                    vc?.complete(userInfo)
-                }
-            } else {
-                Util.setError(self, message)
+            DispatchQueue.main.async() {
+                self.handleLogin(code, message: message, userInfo: userInfo)
             }
         }
     }
@@ -75,18 +66,22 @@ open class LoginButton: PrimaryButton {
         startLoading()
         AuthClient.loginByAccount(account: account, password: password) { code, message, userInfo in
             self.stopLoading()
-            if (code == 200) {
-                DispatchQueue.main.async() {
-                    let vc = self.viewController?.navigationController as? AuthNavigationController
-                    if (vc == nil) {
-                        return
-                    }
-                    
-                    vc?.complete(userInfo)
-                }
-            } else {
-                Util.setError(self, message)
+            DispatchQueue.main.async() {
+                self.handleLogin(code, message: message, userInfo: userInfo)
             }
+        }
+    }
+    
+    private func handleLogin(_ code: Int, message: String?, userInfo: UserInfo?) {
+        if (code == 200) {
+            if let vc = self.viewController?.navigationController as? AuthNavigationController {
+                vc.complete(userInfo)
+            }
+        } else if (code == Const.EC_MFA_REQUIRED) {
+            let vc: AuthViewController? = AuthViewController(nibName: "AuthingMFAOptions", bundle: Bundle(for: Self.self))
+            self.viewController?.navigationController?.pushViewController(vc!, animated: true)
+        } else {
+            Util.setError(self, message)
         }
     }
 }

@@ -32,12 +32,7 @@ public class AuthClient {
             let url: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/login/phone-code";
             let body: NSDictionary = ["phone" : phone, "code" : code]
             Guardian.post(urlString: url, body: body) { code, message, data in
-                if (code == 200) {
-                    let userInfo = createUserInfo(data)
-                    completion(code, message, userInfo)
-                } else {
-                    completion(code, message, nil)
-                }
+                createUserInfo(code, message, data, completion: completion)
             }
         }
     }
@@ -52,12 +47,7 @@ public class AuthClient {
             let encryptedPassword = Util.encryptPassword(password)
             let body: NSDictionary = ["account" : account, "password" : encryptedPassword]
             Guardian.post(urlString: url, body: body) { code, message, data in
-                if (code == 200) {
-                    let userInfo = createUserInfo(data)
-                    completion(code, message, userInfo)
-                } else {
-                    completion(code, message, nil)
-                }
+                createUserInfo(code, message, data, completion: completion)
             }
         }
     }
@@ -71,12 +61,7 @@ public class AuthClient {
             let url: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/ecConn/oneAuth/login";
             let body: NSDictionary = ["token" : token, "accessToken" : accessToken]
             Guardian.post(urlString: url, body: body) { code, message, data in
-                if (code == 200) {
-                    let userInfo = createUserInfo(data)
-                    completion(code, message, userInfo)
-                } else {
-                    completion(code, message, nil)
-                }
+                createUserInfo(code, message, data, completion: completion)
             }
         }
     }
@@ -91,12 +76,7 @@ public class AuthClient {
             let encryptedPassword = Util.encryptPassword(password)
             let body: NSDictionary = ["phone" : phone, "password" : encryptedPassword, "code" : code]
             Guardian.post(urlString: url, body: body) { code, message, data in
-                if (code == 200) {
-                    let userInfo = createUserInfo(data)
-                    completion(code, message, userInfo)
-                } else {
-                    completion(code, message, nil)
-                }
+                createUserInfo(code, message, data, completion: completion)
             }
         }
     }
@@ -115,12 +95,7 @@ public class AuthClient {
                     let loginUrl: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/login/account";
                     let loginBody: NSDictionary = ["account" : email, "password" : encryptedPassword]
                     Guardian.post(urlString: loginUrl, body: loginBody) { code, message, data in
-                        if (code == 200) {
-                            let userInfo = createUserInfo(data)
-                            completion(code, message, userInfo)
-                        } else {
-                            completion(code, message, nil)
-                        }
+                        createUserInfo(code, message, data, completion: completion)
                     }
                 } else {
                     completion(code, message, nil)
@@ -189,12 +164,7 @@ public class AuthClient {
             }
             let url: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/users/me";
             Guardian.get(urlString: url) { code, message, data in
-                if (code == 200) {
-                    let userInfo = createUserInfo(data)
-                    completion(code, message, userInfo)
-                } else {
-                    completion(code, message, nil)
-                }
+                createUserInfo(code, message, data, completion: completion)
             }
         }
     }
@@ -221,12 +191,7 @@ public class AuthClient {
   
             let url: String = "\(Authing.getSchema())://\(Util.getHost(config!))/connection/social/wechatmobile/\(config!.userPoolId!)/callback?code=\(code)&app_id=\(Authing.getAppId())";
             Guardian.get(urlString: url) { code, message, data in
-                if (code == 200) {
-                    let userInfo = createUserInfo(data)
-                    completion(code, message, userInfo)
-                } else {
-                    completion(code, message, nil)
-                }
+                createUserInfo(code, message, data, completion: completion)
             }
         }
     }
@@ -247,12 +212,7 @@ public class AuthClient {
             let url: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/ecConn/alipay/authByCode";
             let body: NSDictionary = ["connId" : conId!, "code" : code]
             Guardian.post(urlString: url, body: body) { code, message, data in
-                if (code == 200) {
-                    let userInfo = createUserInfo(data)
-                    completion(code, message, userInfo)
-                } else {
-                    completion(code, message, nil)
-                }
+                createUserInfo(code, message, data, completion: completion)
             }
         }
     }
@@ -268,25 +228,56 @@ public class AuthClient {
             let url: String = "\(Authing.getSchema())://\(Util.getHost(config!))/connection/social/apple/\(userPoolId!)/callback?app_id=\(Authing.getAppId())";
             let body: NSDictionary = ["code" : code]
             Guardian.post(urlString: url, body: body) { code, message, data in
-                if (code == 200) {
-                    let userInfo = createUserInfo(data)
-                    completion(code, message, userInfo)
-                } else {
-                    completion(code, message, nil)
-                }
+                createUserInfo(code, message, data, completion: completion)
+            }
+        }
+    }
+    
+    public static func mfaCheck(phone: String?, email: String?, completion: @escaping(Int, String?, Bool?) -> Void) {
+        Authing.getConfig { config in
+            guard config != nil else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", false)
+                return
+            }
+            let url: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/applications/mfa/check";
+            var body: NSDictionary? = nil
+            if (phone != nil) {
+                body = ["phone" : phone!]
+            } else if (email != nil) {
+                body = ["email" : email!]
+            }
+            Guardian.post(urlString: url, body: body) { code, message, data in
+                completion(code, message, data?["data"] as? Bool)
+            }
+        }
+    }
+    
+    public static func mfaVerifyByPhone(phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        Authing.getConfig { config in
+            guard config != nil else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+                return
+            }
+            let url: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/applications/mfa/sms/verify";
+            let body: NSDictionary = ["phone" : phone, "code" : code]
+            Guardian.post(urlString: url, body: body) { code, message, data in
+                createUserInfo(code, message, data, completion: completion)
             }
         }
     }
 
-    public static func createUserInfo(_ data: NSDictionary?, _ save: Bool = true) -> UserInfo? {
-        guard data != nil else {
-            return nil
+    public static func createUserInfo(_ code: Int, _ message: String?, _ data: NSDictionary?, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        if (code == 200) {
+            let userInfo: UserInfo = UserInfo.parse(data: data)
+            Authing.saveUser(userInfo)
+            completion(code, message, userInfo)
+        } else if (code == Const.EC_MFA_REQUIRED) {
+            let userInfo: UserInfo = UserInfo()
+            Authing.saveUser(userInfo)
+            userInfo.mfaData = data
+            completion(code, message, userInfo)
+        } else {
+            completion(code, message, nil)
         }
-        
-        let userInfo: UserInfo = UserInfo.parse(data: data)
-        if (save) {
-            UserManager.saveUser(userInfo)
-        }
-        return userInfo
     }
 }

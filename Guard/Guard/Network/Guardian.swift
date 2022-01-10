@@ -37,9 +37,14 @@ public class Guardian {
         if (config != nil && config?.userPoolId != nil) {
             request.addValue((config?.userPoolId)!, forHTTPHeaderField: "x-authing-userpool-id")
         }
-        let token = UserManager.getUser()?.token
-        if (token != nil) {
-            request.addValue("Bearer \(token!)", forHTTPHeaderField: "Authorization")
+        let currentUser = Authing.getCurrentUser()
+        if (currentUser != nil) {
+            let token = currentUser!.token
+            if (token != nil) {
+                request.addValue("Bearer \(token!)", forHTTPHeaderField: "Authorization")
+            } else if (currentUser!.mfaToken != nil) {
+                request.addValue("Bearer \(currentUser!.mfaToken!)", forHTTPHeaderField: "Authorization")
+            }
         }
         request.timeoutInterval = 60
         request.addValue(Authing.getAppId(), forHTTPHeaderField: "x-authing-app-id")
@@ -83,7 +88,16 @@ public class Guardian {
                     let code: Int = json["code"] as! Int
                     let message: String? = json["message"] as? String
                     let jsonData: NSDictionary? = json["data"] as? NSDictionary
-                    completion(code, message, jsonData)
+                    if (jsonData == nil) {
+                        let result = json["data"]
+                        if (result == nil) {
+                            completion(code, message, nil)
+                        } else {
+                            completion(code, message, ["data": result!])
+                        }
+                    } else {
+                        completion(code, message, jsonData)
+                    }
                 }
             } catch {
                 print("parsing json error when requesting \(urlString)")

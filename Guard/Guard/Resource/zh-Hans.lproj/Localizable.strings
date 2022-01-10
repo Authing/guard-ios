@@ -25,3 +25,12 @@
 "authing_password_strength1" = "密码长度至少为 6 位";
 "authing_password_strength2" = "密码长度至少为 6 位，且要包含英文、数字与符号中的两种";
 "authing_password_strength3" = "密码长度至少为 6 位，且要包含英文、数字与符号";
+"authing_choose_mfa_tip" = "请选择验证方式";
+"authing_bind" = "绑定";
+"authing_bind_phone" = "绑定手机号";
+"authing_bind_email" = "绑定邮箱";
+"authing_mfa_verify_phone" = "手机验证";
+"authing_mfa_verify_email" = "邮箱验证";
+"authing_mfa_verify_code" = "安全码验证";
+"authing_please_input_verify_code" = "请输入验证码";
+"authing_phone_number_already_bound" = "手机号码已经被绑定";

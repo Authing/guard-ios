@@ -18,4 +18,7 @@ public class Const {
     public static let Color_Error = UIColor(red: 1, green: 0.31, blue: 0.31, alpha: 1)
     
     public static let ONEPX = 1 / UIScreen.main.scale
+    
+    public static let EC_MFA_REQUIRED = 1636;
+    public static let EC_FIRST_TIME_LOGIN = 1639;
 }

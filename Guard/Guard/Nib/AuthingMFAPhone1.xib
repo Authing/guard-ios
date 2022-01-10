@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AuthViewController" customModule="Guard" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="iN0-l3-epB" id="aDj-pf-1Ou"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAk-wR-Ikm">
+                    <rect key="frame" x="20" y="44" width="374" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="29" id="DxH-kJ-dkp"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="authing_please_input_verify_code"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Mxx-8q-US8" customClass="VerifyCodeTextField" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="20" y="91" width="263" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="1i8-uL-gLH"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="llX-L7-8Vb" customClass="GetVerifyCodeButton" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="291" y="91" width="103" height="44"/>
+                    <color key="backgroundColor" red="0.92549019610000005" green="0.94117647059999998" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="3Y2-ib-iDh"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Get verify code"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="loadingColor">
+                            <color key="value" red="0.224" green="0.41599999999999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="loadingLocation">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vi6-Ws-T8k" customClass="MFAPhoneButton" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="20" y="168" width="374" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="F2e-iO-Qrc"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqG-p8-1vM" userLabel="Error Label" customClass="ErrorLabel" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="20" y="143" width="374" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="ezD-nu-lXO"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="kAk-wR-Ikm" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="3K5-zP-D91"/>
+                <constraint firstItem="kAk-wR-Ikm" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="46a-Oj-kgV"/>
+                <constraint firstItem="fqG-p8-1vM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="CzN-MO-RYz"/>
+                <constraint firstItem="vi6-Ws-T8k" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="Niw-37-Nqo"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="vi6-Ws-T8k" secondAttribute="trailing" constant="20" id="TA0-s4-QS4"/>
+                <constraint firstItem="llX-L7-8Vb" firstAttribute="top" secondItem="kAk-wR-Ikm" secondAttribute="bottom" constant="18" id="TeN-Wg-IfZ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="kAk-wR-Ikm" secondAttribute="trailing" constant="20" id="YJk-R4-PSH"/>
+                <constraint firstItem="Mxx-8q-US8" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="f6q-hm-zxH"/>
+                <constraint firstItem="llX-L7-8Vb" firstAttribute="leading" secondItem="Mxx-8q-US8" secondAttribute="trailing" constant="8" symbolic="YES" id="gjo-gA-G9x"/>
+                <constraint firstItem="fqG-p8-1vM" firstAttribute="top" secondItem="Mxx-8q-US8" secondAttribute="bottom" constant="8" symbolic="YES" id="hvv-U3-vbb"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="llX-L7-8Vb" secondAttribute="trailing" constant="20" id="jOe-9M-G5y"/>
+                <constraint firstItem="vi6-Ws-T8k" firstAttribute="top" secondItem="fqG-p8-1vM" secondAttribute="bottom" constant="8" symbolic="YES" id="rOC-e4-91W"/>
+                <constraint firstItem="Mxx-8q-US8" firstAttribute="top" secondItem="kAk-wR-Ikm" secondAttribute="bottom" constant="18" id="uKb-Cr-j17"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fqG-p8-1vM" secondAttribute="trailing" constant="20" id="xDN-93-ctP"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="138"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="llX-L7-8Vb">
+            <size key="intrinsicContentSize" width="103" height="15"/>
+        </designable>
+        <designable name="vi6-Ws-T8k">
+            <size key="intrinsicContentSize" width="30" height="30"/>
+        </designable>
+    </designables>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
