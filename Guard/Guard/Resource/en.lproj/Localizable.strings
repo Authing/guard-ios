@@ -34,3 +34,6 @@
 "authing_mfa_verify_code" = "Verify by security code";
 "authing_please_input_verify_code" = "Please input verify code";
 "authing_phone_number_already_bound" = "The phone number has been bound";
+"authing_email_already_bound" = "The email has been bound";
+"authing_account_login_verify" = "Login verification";
+"authing_security_code_tip" = "Please enter 6 digits security number";

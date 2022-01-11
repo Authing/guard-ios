@@ -62,6 +62,11 @@ public class Config {
     var userpoolLogo: String? {
         get { return data?["userpoolLogo"] as? String }
     }
+    
+    var verifyCodeLength: Int? {
+        get { return data?["verifyCodeLength"] as? Int }
+    }
+    
     public func getLogoUrl() -> String? {
         return logo ?? userpoolLogo
     }

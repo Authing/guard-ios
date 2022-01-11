@@ -83,7 +83,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5uU-rs-UFc" customClass="VerifyCodeTextField" customModule="Guard" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="180" width="263" height="44"/>
+                            <rect key="frame" x="0.0" y="180" width="350" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="vQE-ol-6DW"/>
                             </constraints>
@@ -91,7 +91,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oj4-7h-ssi" customClass="GetVerifyCodeButton" customModule="Guard" customModuleProvider="target">
-                            <rect key="frame" x="271" y="180" width="103" height="44"/>
+                            <rect key="frame" x="358" y="180" width="16" height="44"/>
                             <color key="backgroundColor" red="0.92549019610000005" green="0.94117647059999998" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="Meq-G7-TbC"/>
@@ -99,7 +99,6 @@
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" title="Get verify code"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="color" keyPath="loadingColor">
                                     <color key="value" red="0.224" green="0.41599999999999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -107,6 +106,13 @@
                                 <userDefinedRuntimeAttribute type="number" keyPath="loadingLocation">
                                     <integer key="value" value="1"/>
                                 </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="0.224" green="0.41599999999999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                             </userDefinedRuntimeAttributes>
                         </button>
                     </subviews>
@@ -240,7 +246,7 @@
     </objects>
     <designables>
         <designable name="oj4-7h-ssi">
-            <size key="intrinsicContentSize" width="103" height="15"/>
+            <size key="intrinsicContentSize" width="16" height="15"/>
         </designable>
         <designable name="voS-Jy-wQm">
             <size key="intrinsicContentSize" width="30" height="33"/>

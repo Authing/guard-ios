@@ -20,6 +20,15 @@ extension UILabel: XIBLocalizable {
     }
 }
 
+extension UIButton {
+    @IBInspectable var xibLocText: String? {
+        get { return nil }
+        set(key) {
+            setTitle(NSLocalizedString(key!, bundle: Bundle(for: Authing.self), comment: ""), for: .normal)
+        }
+    }
+}
+
 extension UITextField {
     @IBInspectable var localizedHint: String? {
         get { return nil }

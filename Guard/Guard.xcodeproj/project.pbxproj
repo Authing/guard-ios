@@ -66,6 +66,11 @@
 		7EB32808278C1870008639AA /* BindPhoneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB32807278C1870008639AA /* BindPhoneButton.swift */; };
 		7EB3280A278C20D5008639AA /* MFAData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB32809278C20D5008639AA /* MFAData.swift */; };
 		7EB3280C278C299A008639AA /* AuthingMFAPhone1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB3280B278C299A008639AA /* AuthingMFAPhone1.xib */; };
+		7EB3280E278D10B7008639AA /* MFAEmailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3280D278D10B7008639AA /* MFAEmailButton.swift */; };
+		7EB32810278D116F008639AA /* AuthingMFAEmail1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB3280F278D116F008639AA /* AuthingMFAEmail1.xib */; };
+		7EB32812278D1DF9008639AA /* AuthingMFAOTP.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB32811278D1DF9008639AA /* AuthingMFAOTP.xib */; };
+		7EB32814278D1FDC008639AA /* MFAOTPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB32813278D1FDC008639AA /* MFAOTPButton.swift */; };
+		7EB32816278D5DD4008639AA /* FramedVerifyCodeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB32815278D5DD4008639AA /* FramedVerifyCodeTextField.swift */; };
 		7ECF8AC22759F82D004F8FC5 /* Guardian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF8AC12759F82D004F8FC5 /* Guardian.swift */; };
 		7ECF8AC52759FE8D004F8FC5 /* SDKUsageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF8AC42759FE8D004F8FC5 /* SDKUsageTask.swift */; };
 		7ECF8AC72759FF17004F8FC5 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF8AC62759FF17004F8FC5 /* Const.swift */; };
@@ -164,6 +169,11 @@
 		7EB32807278C1870008639AA /* BindPhoneButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindPhoneButton.swift; sourceTree = "<group>"; };
 		7EB32809278C20D5008639AA /* MFAData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFAData.swift; sourceTree = "<group>"; };
 		7EB3280B278C299A008639AA /* AuthingMFAPhone1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingMFAPhone1.xib; sourceTree = "<group>"; };
+		7EB3280D278D10B7008639AA /* MFAEmailButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFAEmailButton.swift; sourceTree = "<group>"; };
+		7EB3280F278D116F008639AA /* AuthingMFAEmail1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingMFAEmail1.xib; sourceTree = "<group>"; };
+		7EB32811278D1DF9008639AA /* AuthingMFAOTP.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingMFAOTP.xib; sourceTree = "<group>"; };
+		7EB32813278D1FDC008639AA /* MFAOTPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFAOTPButton.swift; sourceTree = "<group>"; };
+		7EB32815278D5DD4008639AA /* FramedVerifyCodeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FramedVerifyCodeTextField.swift; sourceTree = "<group>"; };
 		7ECF8AC12759F82D004F8FC5 /* Guardian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guardian.swift; sourceTree = "<group>"; };
 		7ECF8AC42759FE8D004F8FC5 /* SDKUsageTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDKUsageTask.swift; sourceTree = "<group>"; };
 		7ECF8AC62759FF17004F8FC5 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
@@ -281,6 +291,7 @@
 				7EF66C72277C37A500FCBBEB /* PasswordConfirmTextField.swift */,
 				7ED434CF2775AB8500893EDD /* PhoneNumberTextField.swift */,
 				7ED434D92779509100893EDD /* VerifyCodeTextField.swift */,
+				7EB32815278D5DD4008639AA /* FramedVerifyCodeTextField.swift */,
 				7EF66C70277C371E00FCBBEB /* EmailTextField.swift */,
 				7E7566902768399E00C3872F /* LoginButton.swift */,
 				7ED434C82775653100893EDD /* LoginMethodTab.swift */,
@@ -311,6 +322,8 @@
 				7EB32800278BE056008639AA /* AuthingMFAPhone0.xib */,
 				7EB3280B278C299A008639AA /* AuthingMFAPhone1.xib */,
 				7EB32802278BEE0F008639AA /* AuthingMFAEmail0.xib */,
+				7EB3280F278D116F008639AA /* AuthingMFAEmail1.xib */,
+				7EB32811278D1DF9008639AA /* AuthingMFAOTP.xib */,
 				7EF66C5E277BFB7100FCBBEB /* LocalizeHelper.swift */,
 			);
 			path = Nib;
@@ -432,6 +445,8 @@
 				7EB327FC278BD473008639AA /* MFATableView.swift */,
 				7EB327FE278BD737008639AA /* MFATableItem.swift */,
 				7EB32804278C17B3008639AA /* MFAPhoneButton.swift */,
+				7EB3280D278D10B7008639AA /* MFAEmailButton.swift */,
+				7EB32813278D1FDC008639AA /* MFAOTPButton.swift */,
 			);
 			path = MFA;
 			sourceTree = "<group>";
@@ -603,9 +618,11 @@
 				7ED434E52779B28B00893EDD /* Images.xcassets in Resources */,
 				7EF66C5D277BF8B700FCBBEB /* AuthingRegister.xib in Resources */,
 				7EB32803278BEE0F008639AA /* AuthingMFAEmail0.xib in Resources */,
+				7EB32810278D116F008639AA /* AuthingMFAEmail1.xib in Resources */,
 				7E75667B2766F9C400C3872F /* AuthingLogin.xib in Resources */,
 				7E75669B27683F5300C3872F /* Localizable.strings in Resources */,
 				7EF66C85277D548B00FCBBEB /* AuthingResetPasswordByPhone.xib in Resources */,
+				7EB32812278D1DF9008639AA /* AuthingMFAOTP.xib in Resources */,
 				7EB3280C278C299A008639AA /* AuthingMFAPhone1.xib in Resources */,
 				7EB32801278BE056008639AA /* AuthingMFAPhone0.xib in Resources */,
 				7E12D7B8277DECB900703FC1 /* AuthingUserProfile.xib in Resources */,
@@ -659,6 +676,7 @@
 				7ECF8AC52759FE8D004F8FC5 /* SDKUsageTask.swift in Sources */,
 				7EB32808278C1870008639AA /* BindPhoneButton.swift in Sources */,
 				7EB32805278C17B3008639AA /* MFAPhoneButton.swift in Sources */,
+				7EB3280E278D10B7008639AA /* MFAEmailButton.swift in Sources */,
 				7E7566A027684A5E00C3872F /* AuthClient.swift in Sources */,
 				7ECF8AC72759FF17004F8FC5 /* Const.swift in Sources */,
 				7EF66C5B277BEE7300FCBBEB /* Animator.swift in Sources */,
@@ -668,6 +686,7 @@
 				7ED434D22775ABA000893EDD /* TextFieldLayout.swift in Sources */,
 				7E7566A22768801E00C3872F /* UIView+Authing.swift in Sources */,
 				7ED434E0277980B100893EDD /* ErrorLabel.swift in Sources */,
+				7EB32816278D5DD4008639AA /* FramedVerifyCodeTextField.swift in Sources */,
 				7E75668B276746AF00C3872F /* AppLogo.swift in Sources */,
 				7E7566B22768A7CC00C3872F /* UserInfo.swift in Sources */,
 				7EF66C67277C119800FCBBEB /* IndexAuthViewController.swift in Sources */,
@@ -682,6 +701,7 @@
 				7E12D7BA277DEE6F00703FC1 /* UserProfileViewController.swift in Sources */,
 				7EF66C5F277BFB7100FCBBEB /* LocalizeHelper.swift in Sources */,
 				7EF66C63277BFD5B00FCBBEB /* GoSomewhereButton.swift in Sources */,
+				7EB32814278D1FDC008639AA /* MFAOTPButton.swift in Sources */,
 				7EF66C77277C38DB00FCBBEB /* RegisterButton.swift in Sources */,
 				7EF66C8B277D5A7100FCBBEB /* Validator.swift in Sources */,
 				7EB2D30127871E2A00A819B3 /* AppleLoginButton.swift in Sources */,

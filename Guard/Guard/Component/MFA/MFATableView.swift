@@ -41,5 +41,15 @@ open class MFATableView: UIView {
         mfaEmail.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
         mfaEmail.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
         mfaEmail.topAnchor.constraint(equalTo: mfaPhone.bottomAnchor, constant: 16).isActive = true
+        
+        let mfaOTP: MFATableItem = MFATableItem()
+        mfaOTP.mfaType = .totp
+        addSubview(mfaOTP)
+        
+        mfaOTP.translatesAutoresizingMaskIntoConstraints = false
+        mfaOTP.heightAnchor.constraint(equalToConstant: ITEM_HEIGHT).isActive = true
+        mfaOTP.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
+        mfaOTP.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
+        mfaOTP.topAnchor.constraint(equalTo: mfaEmail.bottomAnchor, constant: 16).isActive = true
     }
 }

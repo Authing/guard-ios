@@ -199,9 +199,12 @@ public class Util {
     }
     
     public static func getVerifyCode(_ current: UIView) -> String? {
-        let tfVerifyCode: VerifyCodeTextField? = Util.findView(current, viewClass: VerifyCodeTextField.self)
-        if (tfVerifyCode != nil) {
-            return tfVerifyCode?.text
+        if let tfVerifyCode: VerifyCodeTextField = Util.findView(current, viewClass: VerifyCodeTextField.self) {
+            return tfVerifyCode.text
+        }
+        
+        if let tfVerifyCode: FramedVerifyCodeTextField = Util.findView(current, viewClass: FramedVerifyCodeTextField.self) {
+            return tfVerifyCode.getText()
         }
         return nil
     }
@@ -216,12 +219,41 @@ public class Util {
     
     public static func getPhoneNumber(_ current: UIView) -> String? {
         if let tfPhone: PhoneNumberTextField = Util.findView(current, viewClass: PhoneNumberTextField.self) {
-            return tfPhone.text
+            if (Validator.isValidPhone(phone: tfPhone.text)) {
+                return tfPhone.text
+            }
+        }
+        
+        if let tfAccount: AccountTextField = Util.findView(current, viewClass: AccountTextField.self) {
+            if (Validator.isValidPhone(phone: tfAccount.text)) {
+                return tfAccount.text
+            }
         }
         
         let phone: String? = current.viewController?.authFlow?.data[AuthFlow.KEY_MFA_PHONE] as? String
         if (phone != nil) {
             return phone
+        }
+        
+        return current.viewController?.authFlow?.data[AuthFlow.KEY_ACCOUNT] as? String
+    }
+    
+    public static func getEmail(_ current: UIView) -> String? {
+        if let tfEmail: EmailTextField = Util.findView(current, viewClass: EmailTextField.self) {
+            if (Validator.isValidEmail(email: tfEmail.text)) {
+                return tfEmail.text
+            }
+        }
+        
+        if let tfAccount: AccountTextField = Util.findView(current, viewClass: AccountTextField.self) {
+            if (Validator.isValidEmail(email: tfAccount.text)) {
+                return tfAccount.text
+            }
+        }
+        
+        let email: String? = current.viewController?.authFlow?.data[AuthFlow.KEY_MFA_EMAIL] as? String
+        if (email != nil) {
+            return email
         }
         
         return current.viewController?.authFlow?.data[AuthFlow.KEY_ACCOUNT] as? String

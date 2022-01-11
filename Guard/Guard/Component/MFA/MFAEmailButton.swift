@@ -1,13 +1,13 @@
 //
-//  MFAPhoneButton.swift
+//  MFAEmailButton.swift
 //  Guard
 //
-//  Created by Lance Mao on 2022/1/10.
+//  Created by Lance Mao on 2022/1/11.
 //
 
 import UIKit
 
-open class MFAPhoneButton: PrimaryButton {
+open class MFAEmailButton: PrimaryButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -24,10 +24,10 @@ open class MFAPhoneButton: PrimaryButton {
         self.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
         
         DispatchQueue.main.async() {
-            if let phone = self.viewController?.authFlow?.data[AuthFlow.KEY_MFA_PHONE] as? String {
+            if let email = self.viewController?.authFlow?.data[AuthFlow.KEY_MFA_EMAIL] as? String {
                 self.startLoading()
                 self.setTitle(NSLocalizedString("authing_login", bundle: Bundle(for: Self.self), comment: ""), for: .normal)
-                AuthClient.sendSms(phone: phone) { code, message in
+                AuthClient.sendMFAEmail(email: email) { code, message in
                     self.stopLoading()
                     if (code != 200) {
                         Util.setError(self, message)
@@ -39,40 +39,39 @@ open class MFAPhoneButton: PrimaryButton {
     
     @objc private func onClick(sender: UIButton) {
         if let code = Util.getVerifyCode(self) {
-            if let phone = Util.getPhoneNumber(self) {
+            if let email = Util.getEmail(self) {
                 startLoading()
-                AuthClient.mfaVerifyByPhone(phone: phone, code: code) { code, message, userInfo in
+                AuthClient.mfaVerifyByEmail(email: email, code: code) { code, message, userInfo in
                     self.done(code, message, userInfo)
                 }
             }
         } else {
-            if let tfPhone: PhoneNumberTextField = Util.findView(self, viewClass: PhoneNumberTextField.self) {
-                checkPhone(tfPhone.text)
+            if let tfEmail: EmailTextField = Util.findView(self, viewClass: EmailTextField.self) {
+                checkEmail(tfEmail.text)
             }
         }
     }
     
-    private func checkPhone(_ phone: String?) {
+    private func checkEmail(_ email: String?) {
         startLoading()
-        AuthClient.mfaCheck(phone: phone, email: nil) { code, message, result in
+        AuthClient.mfaCheck(phone: nil, email: email) { code, message, result in
+            self.stopLoading()
             if (code == 200) {
                 if (result != nil && result!) {
-                    self.next(phone)
+                    self.next(email)
                 } else {
-                    self.stopLoading()
-                    Util.setError(self, NSLocalizedString("authing_phone_number_already_bound", bundle: Bundle(for: Self.self), comment: ""))
+                    Util.setError(self, NSLocalizedString("authing_email_already_bound", bundle: Bundle(for: Self.self), comment: ""))
                 }
             } else {
-                self.stopLoading()
                 Util.setError(self, message)
             }
         }
     }
     
-    private func next(_ phone: String?) {
+    private func next(_ email: String?) {
         DispatchQueue.main.async() {
-            let vc: AuthViewController? = AuthViewController(nibName: "AuthingMFAPhone1", bundle: Bundle(for: Self.self))
-            vc?.authFlow?.data.setValue(phone, forKey: AuthFlow.KEY_MFA_PHONE)
+            let vc: AuthViewController? = AuthViewController(nibName: "AuthingMFAEmail1", bundle: Bundle(for: Self.self))
+            vc?.authFlow?.data.setValue(email, forKey: AuthFlow.KEY_MFA_EMAIL)
             self.viewController?.navigationController?.pushViewController(vc!, animated: true)
         }
     }

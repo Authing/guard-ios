@@ -32,17 +32,55 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="authing_bind_email"/>
                     </userDefinedRuntimeAttributes>
                 </label>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jLL-zT-lsC" customClass="EmailTextField" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="20" y="105" width="374" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="1CS-Cz-3W8"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oL7-kg-mbL" userLabel="Error Label" customClass="ErrorLabel" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="20" y="157" width="374" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="sym-FK-Amd"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zgb-9F-l4t" customClass="MFAEmailButton" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="20" y="182" width="374" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="gK2-A0-qEu"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Yr2-PL-GTc" secondAttribute="trailing" constant="20" id="2l1-H5-4jx"/>
+                <constraint firstItem="oL7-kg-mbL" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="2qD-Me-TWv"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="jLL-zT-lsC" secondAttribute="trailing" constant="20" id="BVy-l4-1sj"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Zgb-9F-l4t" secondAttribute="trailing" constant="20" id="I2R-p2-FN9"/>
+                <constraint firstItem="jLL-zT-lsC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="Ot4-ac-gmz"/>
+                <constraint firstItem="Zgb-9F-l4t" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="RQw-UT-50H"/>
+                <constraint firstItem="oL7-kg-mbL" firstAttribute="top" secondItem="jLL-zT-lsC" secondAttribute="bottom" constant="8" id="W3P-Sl-fRI"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="oL7-kg-mbL" secondAttribute="trailing" constant="20" id="aWy-qU-ykB"/>
                 <constraint firstItem="Yr2-PL-GTc" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="b72-8n-ZWI"/>
                 <constraint firstItem="Yr2-PL-GTc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="hi1-50-du0"/>
+                <constraint firstItem="Zgb-9F-l4t" firstAttribute="top" secondItem="oL7-kg-mbL" secondAttribute="bottom" constant="8" id="wMB-p2-xwL"/>
+                <constraint firstItem="jLL-zT-lsC" firstAttribute="top" secondItem="Yr2-PL-GTc" secondAttribute="bottom" constant="32" id="xhh-L7-2PL"/>
             </constraints>
             <point key="canvasLocation" x="139" y="138"/>
         </view>
     </objects>
+    <designables>
+        <designable name="Zgb-9F-l4t">
+            <size key="intrinsicContentSize" width="30" height="30"/>
+        </designable>
+    </designables>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

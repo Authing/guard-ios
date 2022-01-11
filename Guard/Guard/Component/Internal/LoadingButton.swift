@@ -16,6 +16,12 @@ import UIKit
     var isLoading: Bool = false
     var tick: Int = 0
     
+    @IBInspectable var borderColor: UIColor? {
+        didSet {
+            layer.borderColor = borderColor?.cgColor
+            layer.borderWidth = 1 / UIScreen.main.scale
+        }
+    }
     @IBInspectable var loadingColor: UIColor? = UIColor.white
     @IBInspectable var loadingLocation: Int = 0 // 0 left; 1 over;
     

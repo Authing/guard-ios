@@ -265,6 +265,34 @@ public class AuthClient {
             }
         }
     }
+    
+    public static func mfaVerifyByEmail(email: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        Authing.getConfig { config in
+            guard config != nil else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+                return
+            }
+            let url: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/applications/mfa/email/verify";
+            let body: NSDictionary = ["email" : email, "code" : code]
+            Guardian.post(urlString: url, body: body) { code, message, data in
+                createUserInfo(code, message, data, completion: completion)
+            }
+        }
+    }
+    
+    public static func mfaVerifyByOTP(code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        Authing.getConfig { config in
+            guard config != nil else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+                return
+            }
+            let url: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/mfa/totp/verify";
+            let body: NSDictionary = ["authenticatorType" : "totp", "totp" : code]
+            Guardian.post(urlString: url, body: body) { code, message, data in
+                createUserInfo(code, message, data, completion: completion)
+            }
+        }
+    }
 
     public static func createUserInfo(_ code: Int, _ message: String?, _ data: NSDictionary?, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         if (code == 200) {

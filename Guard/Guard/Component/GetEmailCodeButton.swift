@@ -19,8 +19,10 @@ open class GetEmailCodeButton: LoadingButton {
     }
 
     private func setup() {
-        let text: String = NSLocalizedString("authing_get_verify_code", bundle: Bundle(for: Self.self), comment: "")
-        setTitle(text, for: .normal)
+        if (title(for: .normal) == nil) {
+            let text: String = NSLocalizedString("authing_get_verify_code", bundle: Bundle(for: Self.self), comment: "")
+            setTitle(text, for: .normal)
+        }
         
         layer.cornerRadius = 4
         layer.borderWidth = 1/UIScreen.main.scale
@@ -30,21 +32,13 @@ open class GetEmailCodeButton: LoadingButton {
     }
     
     @objc private func onClick(sender: UIButton) {
-        let tf: EmailTextField? = Util.findView(self, viewClass: EmailTextField.self)
-        if (tf != nil) {
-            let email: String? = tf!.text
-            if (!email!.isEmpty && Validator.isValidEmail(email: email)) {
-                getEmailCode(email!)
-            }
-        }
-    }
-    
-    private func getEmailCode(_ email: String) {
-        startLoading()
-        AuthClient.sendResetPasswordEmail(email: email) { code, message in
-            self.stopLoading()
-            if (code != 200) {
-                Util.setError(self, message)
+        if let email = Util.getEmail(self) {
+            startLoading()
+            AuthClient.sendResetPasswordEmail(email: email) { code, message in
+                self.stopLoading()
+                if (code != 200) {
+                    Util.setError(self, message)
+                }
             }
         }
     }

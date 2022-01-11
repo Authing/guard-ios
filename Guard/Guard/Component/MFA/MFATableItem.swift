@@ -45,6 +45,7 @@ open class MFATableItem: UIView {
         self.addGestureRecognizer(tap)
 
         label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 14)
         addSubview(label)
         
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -64,9 +65,14 @@ open class MFATableItem: UIView {
                 vc = AuthViewController(nibName: "AuthingMFAPhone0", bundle: Bundle(for: Self.self))
             }
         } else if (mfaType == .email) {
-            vc = AuthViewController(nibName: "AuthingMFAEmail0", bundle: Bundle(for: Self.self))
+            if let email = Authing.getCurrentUser()?.mfaEmail {
+                vc = AuthViewController(nibName: "AuthingMFAEmail1", bundle: Bundle(for: Self.self))
+                vc?.authFlow?.data.setValue(email, forKey: AuthFlow.KEY_MFA_EMAIL)
+            } else {
+                vc = AuthViewController(nibName: "AuthingMFAEmail0", bundle: Bundle(for: Self.self))
+            }
         } else if (mfaType == .totp) {
-            vc = AuthViewController(nibName: "AuthingMFACode0", bundle: Bundle(for: Self.self))
+            vc = AuthViewController(nibName: "AuthingMFAOTP", bundle: Bundle(for: Self.self))
         }
         self.viewController?.navigationController?.pushViewController(vc!, animated: true)
     }
