@@ -15,7 +15,7 @@ class AppAuthViewController: UIViewController {
     
     let authorizationEndpoint = URL(string: "https://lrb31s-demo.authing.cn/oidc/auth")!
     let tokenEndpoint = URL(string: "https://lrb31s-demo.authing.cn/oidc/token")!
-    let redirectURL: URL? = URL(string: "cn.guard://redirect");
+    let redirectURL: URL? = URL(string: "cn.guard://authing.cn/redirect");
     
     private var authState: OIDAuthState?
 

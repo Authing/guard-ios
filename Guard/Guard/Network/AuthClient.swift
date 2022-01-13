@@ -156,6 +156,21 @@ public class AuthClient {
         }
     }
     
+    public static func resetPasswordByFirstTimeLoginToken(token: String, password: String, completion: @escaping(Int, String?) -> Void) {
+        Authing.getConfig { config in
+            guard config != nil else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())")
+                return
+            }
+            let url: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/users/password/reset-by-first-login-token";
+            let encryptedPassword = Util.encryptPassword(password)
+            let body: NSDictionary = ["token" : token, "password" : encryptedPassword]
+            Guardian.post(urlString: url, body: body) { code, message, data in
+                completion(code, message)
+            }
+        }
+    }
+    
     public static func getCurrentUserInfo(completion: @escaping(Int, String?, UserInfo?) -> Void) {
         Authing.getConfig { config in
             guard config != nil else {
@@ -303,6 +318,10 @@ public class AuthClient {
             let userInfo: UserInfo = UserInfo()
             Authing.saveUser(userInfo)
             userInfo.mfaData = data
+            completion(code, message, userInfo)
+        } else if (code == Const.EC_FIRST_TIME_LOGIN) {
+            let userInfo: UserInfo = UserInfo()
+            userInfo.firstTimeLoginToken = data?["token"] as? String
             completion(code, message, userInfo)
         } else {
             completion(code, message, nil)

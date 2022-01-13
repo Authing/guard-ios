@@ -49,6 +49,7 @@
 		7E7566B22768A7CC00C3872F /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7566B12768A7CC00C3872F /* UserInfo.swift */; };
 		7E7D1F6F278EB49F005AAD39 /* EmailLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7D1F6E278EB49F005AAD39 /* EmailLabel.swift */; };
 		7E7D1F71278ECC73005AAD39 /* PhoneLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7D1F70278ECC73005AAD39 /* PhoneLabel.swift */; };
+		7E7D1F73278FC44F005AAD39 /* AuthingFirstTimeLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E7D1F72278FC44F005AAD39 /* AuthingFirstTimeLogin.xib */; };
 		7E8AECB62787D5AF0030D27B /* AFServiceSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E8AECB32787D5AF0030D27B /* AFServiceSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7E8AECB72787D5AF0030D27B /* AFServiceCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E8AECB42787D5AF0030D27B /* AFServiceCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7E8AECB82787D5AF0030D27B /* AFServiceResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E8AECB52787D5AF0030D27B /* AFServiceResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -152,6 +153,7 @@
 		7E7566B12768A7CC00C3872F /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		7E7D1F6E278EB49F005AAD39 /* EmailLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLabel.swift; sourceTree = "<group>"; };
 		7E7D1F70278ECC73005AAD39 /* PhoneLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneLabel.swift; sourceTree = "<group>"; };
+		7E7D1F72278FC44F005AAD39 /* AuthingFirstTimeLogin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingFirstTimeLogin.xib; sourceTree = "<group>"; };
 		7E8AECB32787D5AF0030D27B /* AFServiceSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFServiceSDK.h; sourceTree = "<group>"; };
 		7E8AECB42787D5AF0030D27B /* AFServiceCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFServiceCenter.h; sourceTree = "<group>"; };
 		7E8AECB52787D5AF0030D27B /* AFServiceResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFServiceResponse.h; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 				7EB32802278BEE0F008639AA /* AuthingMFAEmail0.xib */,
 				7EB3280F278D116F008639AA /* AuthingMFAEmail1.xib */,
 				7EB32811278D1DF9008639AA /* AuthingMFAOTP.xib */,
+				7E7D1F72278FC44F005AAD39 /* AuthingFirstTimeLogin.xib */,
 				7EF66C5E277BFB7100FCBBEB /* LocalizeHelper.swift */,
 			);
 			path = Nib;
@@ -621,6 +624,7 @@
 				7ED434E52779B28B00893EDD /* Images.xcassets in Resources */,
 				7EF66C5D277BF8B700FCBBEB /* AuthingRegister.xib in Resources */,
 				7EB32803278BEE0F008639AA /* AuthingMFAEmail0.xib in Resources */,
+				7E7D1F73278FC44F005AAD39 /* AuthingFirstTimeLogin.xib in Resources */,
 				7EB32810278D116F008639AA /* AuthingMFAEmail1.xib in Resources */,
 				7E75667B2766F9C400C3872F /* AuthingLogin.xib in Resources */,
 				7E75669B27683F5300C3872F /* Localizable.strings in Resources */,

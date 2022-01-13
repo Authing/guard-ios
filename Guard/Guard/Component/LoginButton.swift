@@ -80,6 +80,15 @@ open class LoginButton: PrimaryButton {
         } else if (code == Const.EC_MFA_REQUIRED) {
             let vc: AuthViewController? = AuthViewController(nibName: "AuthingMFAOptions", bundle: Bundle(for: Self.self))
             self.viewController?.navigationController?.pushViewController(vc!, animated: true)
+        } else if (code == Const.EC_FIRST_TIME_LOGIN) {
+            // clear password text field
+            if let tfPassword: PasswordTextField = Util.findView(self, viewClass: PasswordTextField.self) {
+                tfPassword.text = ""
+            }
+            
+            let vc: AuthViewController? = AuthViewController(nibName: "AuthingFirstTimeLogin", bundle: Bundle(for: Self.self))
+            vc?.authFlow?.data.setValue(userInfo, forKey: AuthFlow.KEY_USER_INFO)
+            self.viewController?.navigationController?.pushViewController(vc!, animated: true)
         } else {
             Util.setError(self, message)
         }

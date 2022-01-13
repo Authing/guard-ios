@@ -54,6 +54,15 @@ open class ResetPasswordButton: PrimaryButton {
     }
     
     func handleResetPassword(_ password: String?) {
+        let vc: AuthViewController? = viewController
+        let userInfo: UserInfo? = vc?.authFlow?.data.value(forKey: AuthFlow.KEY_USER_INFO) as? UserInfo
+        if (userInfo != nil) {
+            if let firstTimeToken: String = userInfo!.firstTimeLoginToken {
+                resetPasswordFirstTimeLogin(firstTimeToken, password)
+                return
+            }
+        }
+        
         let tfPhone: PhoneNumberTextField? = Util.findView(self, viewClass: PhoneNumberTextField.self)
         if (tfPhone != nil) {
             resetPasswordByPhone(tfPhone?.text, password)
@@ -63,6 +72,25 @@ open class ResetPasswordButton: PrimaryButton {
         let tfEmail: EmailTextField? = Util.findView(self, viewClass: EmailTextField.self)
         if (tfEmail != nil) {
             resetPasswordByEmail(tfEmail?.text, password)
+        }
+    }
+    
+    func resetPasswordFirstTimeLogin(_ token: String?, _ password: String?) {
+        let tfPasswordConfirm: PasswordConfirmTextField? = Util.findView(self, viewClass: PasswordConfirmTextField.self)
+        guard password != nil && tfPasswordConfirm != nil && tfPasswordConfirm?.text == password else {
+            return
+        }
+
+        startLoading()
+        AuthClient.resetPasswordByFirstTimeLoginToken(token: token!, password: password!) { code, message in
+            DispatchQueue.main.async() {
+                if (code == 200) {
+                    self.gotoLogin()
+                } else {
+                    Util.setError(self, message)
+                }
+                self.stopLoading()
+            }
         }
     }
     

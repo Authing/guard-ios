@@ -40,6 +40,8 @@ open class UserInfo {
         }
     }
     public var mfaPolicy: [String]? = []
+    
+    public var firstTimeLoginToken: String? = nil
 
     public static func parse(data: NSDictionary?) -> UserInfo {
         let userInfo = UserInfo()

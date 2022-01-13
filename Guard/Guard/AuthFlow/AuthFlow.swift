@@ -9,6 +9,7 @@ import UIKit
 
 public class AuthFlow {
     
+    public static let KEY_USER_INFO: String = "user_info"
     public static let KEY_ACCOUNT: String = "account"
     public static let KEY_MFA_PHONE: String = "mfa_phone"
     public static let KEY_MFA_EMAIL: String = "mfa_email"

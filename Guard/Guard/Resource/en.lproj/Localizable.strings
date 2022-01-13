@@ -38,3 +38,5 @@
 "authing_account_login_verify" = "Login verification";
 "authing_security_code_tip" = "Please enter 6 digits security number";
 "authing_code_sent_to" = "Code was sent to";
+"authing_first_time_login_tip" = "To secure your account, please reset password";
+"authing_first_time_login_count_down" = "Please reset password within 10 minutes";
