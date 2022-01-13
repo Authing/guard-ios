@@ -37,3 +37,4 @@
 "authing_email_already_bound" = "邮箱已经被绑定";
 "authing_account_login_verify" = "帐号登录验证";
 "authing_security_code_tip" = "请输入获取的 6 位数字安全码";
+"authing_code_sent_to" = "验证码已发送至";

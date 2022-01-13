@@ -47,6 +47,8 @@
 		7E7566A027684A5E00C3872F /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E75669F27684A5E00C3872F /* AuthClient.swift */; };
 		7E7566A22768801E00C3872F /* UIView+Authing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7566A12768801E00C3872F /* UIView+Authing.swift */; };
 		7E7566B22768A7CC00C3872F /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7566B12768A7CC00C3872F /* UserInfo.swift */; };
+		7E7D1F6F278EB49F005AAD39 /* EmailLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7D1F6E278EB49F005AAD39 /* EmailLabel.swift */; };
+		7E7D1F71278ECC73005AAD39 /* PhoneLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7D1F70278ECC73005AAD39 /* PhoneLabel.swift */; };
 		7E8AECB62787D5AF0030D27B /* AFServiceSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E8AECB32787D5AF0030D27B /* AFServiceSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7E8AECB72787D5AF0030D27B /* AFServiceCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E8AECB42787D5AF0030D27B /* AFServiceCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7E8AECB82787D5AF0030D27B /* AFServiceResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E8AECB52787D5AF0030D27B /* AFServiceResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -64,7 +66,6 @@
 		7EB32803278BEE0F008639AA /* AuthingMFAEmail0.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB32802278BEE0F008639AA /* AuthingMFAEmail0.xib */; };
 		7EB32805278C17B3008639AA /* MFAPhoneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB32804278C17B3008639AA /* MFAPhoneButton.swift */; };
 		7EB32808278C1870008639AA /* BindPhoneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB32807278C1870008639AA /* BindPhoneButton.swift */; };
-		7EB3280A278C20D5008639AA /* MFAData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB32809278C20D5008639AA /* MFAData.swift */; };
 		7EB3280C278C299A008639AA /* AuthingMFAPhone1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB3280B278C299A008639AA /* AuthingMFAPhone1.xib */; };
 		7EB3280E278D10B7008639AA /* MFAEmailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3280D278D10B7008639AA /* MFAEmailButton.swift */; };
 		7EB32810278D116F008639AA /* AuthingMFAEmail1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB3280F278D116F008639AA /* AuthingMFAEmail1.xib */; };
@@ -149,6 +150,8 @@
 		7E7566A3276888C300C3872F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7E7566A4276888ED00C3872F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		7E7566B12768A7CC00C3872F /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		7E7D1F6E278EB49F005AAD39 /* EmailLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLabel.swift; sourceTree = "<group>"; };
+		7E7D1F70278ECC73005AAD39 /* PhoneLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneLabel.swift; sourceTree = "<group>"; };
 		7E8AECB32787D5AF0030D27B /* AFServiceSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFServiceSDK.h; sourceTree = "<group>"; };
 		7E8AECB42787D5AF0030D27B /* AFServiceCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFServiceCenter.h; sourceTree = "<group>"; };
 		7E8AECB52787D5AF0030D27B /* AFServiceResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFServiceResponse.h; sourceTree = "<group>"; };
@@ -167,7 +170,6 @@
 		7EB32802278BEE0F008639AA /* AuthingMFAEmail0.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingMFAEmail0.xib; sourceTree = "<group>"; };
 		7EB32804278C17B3008639AA /* MFAPhoneButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFAPhoneButton.swift; sourceTree = "<group>"; };
 		7EB32807278C1870008639AA /* BindPhoneButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindPhoneButton.swift; sourceTree = "<group>"; };
-		7EB32809278C20D5008639AA /* MFAData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFAData.swift; sourceTree = "<group>"; };
 		7EB3280B278C299A008639AA /* AuthingMFAPhone1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingMFAPhone1.xib; sourceTree = "<group>"; };
 		7EB3280D278D10B7008639AA /* MFAEmailButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFAEmailButton.swift; sourceTree = "<group>"; };
 		7EB3280F278D116F008639AA /* AuthingMFAEmail1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingMFAEmail1.xib; sourceTree = "<group>"; };
@@ -305,6 +307,8 @@
 				7EF66C76277C38DB00FCBBEB /* RegisterButton.swift */,
 				7EF66C7C277D471D00FCBBEB /* GoForgotPasswordButton.swift */,
 				7EF66C80277D49B400FCBBEB /* ResetPasswordButton.swift */,
+				7E7D1F6E278EB49F005AAD39 /* EmailLabel.swift */,
+				7E7D1F70278ECC73005AAD39 /* PhoneLabel.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -363,7 +367,6 @@
 				7E75668627672C8D00C3872F /* Config.swift */,
 				7E7566B12768A7CC00C3872F /* UserInfo.swift */,
 				7E12D7B5277DE9EF00703FC1 /* UserManager.swift */,
-				7EB32809278C20D5008639AA /* MFAData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -665,12 +668,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EF66C7D277D471D00FCBBEB /* GoForgotPasswordButton.swift in Sources */,
+				7E7D1F71278ECC73005AAD39 /* PhoneLabel.swift in Sources */,
 				7ED434C92775653100893EDD /* LoginMethodTab.swift in Sources */,
 				7EF66C6B277C1BF600FCBBEB /* MethodTabItem.swift in Sources */,
 				7ED434CC277569DF00893EDD /* LoginMethodTabItem.swift in Sources */,
 				7EF66C73277C37A500FCBBEB /* PasswordConfirmTextField.swift in Sources */,
 				7ED434DE2779554B00893EDD /* LoadingButton.swift in Sources */,
-				7EB3280A278C20D5008639AA /* MFAData.swift in Sources */,
 				7EB327FD278BD473008639AA /* MFATableView.swift in Sources */,
 				7E8AECBC27882D2D0030D27B /* SocialLoginButton.swift in Sources */,
 				7ECF8AC52759FE8D004F8FC5 /* SDKUsageTask.swift in Sources */,
@@ -714,6 +717,7 @@
 				7ED434DC277950AC00893EDD /* GetVerifyCodeButton.swift in Sources */,
 				7E7566912768399E00C3872F /* LoginButton.swift in Sources */,
 				7E75668F276838C600C3872F /* PasswordTextField.swift in Sources */,
+				7E7D1F6F278EB49F005AAD39 /* EmailLabel.swift in Sources */,
 				7E75668727672C8D00C3872F /* Config.swift in Sources */,
 				7ED434D02775AB8500893EDD /* PhoneNumberTextField.swift in Sources */,
 				7E7566782766F91500C3872F /* AppName.swift in Sources */,

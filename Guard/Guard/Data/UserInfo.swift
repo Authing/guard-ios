@@ -10,7 +10,15 @@ import Foundation
 open class UserInfo {
     
     public var raw: NSDictionary?
-    public var mfaData: NSDictionary?
+    public var mfaData: NSDictionary? {
+        didSet {
+            if let mfas = mfaData?["applicationMfa"] as? [NSDictionary] {
+                for mfa in mfas {
+                    mfaPolicy?.append((mfa["mfaPolicy"] as? String)!)
+                }
+            }
+        }
+    }
     
     public var username: String?
     public var email: String?
@@ -31,6 +39,7 @@ open class UserInfo {
             return mfaData?["email"] as? String
         }
     }
+    public var mfaPolicy: [String]? = []
 
     public static func parse(data: NSDictionary?) -> UserInfo {
         let userInfo = UserInfo()

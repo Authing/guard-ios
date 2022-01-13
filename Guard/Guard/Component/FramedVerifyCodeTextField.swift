@@ -12,6 +12,7 @@ open class FramedVerifyCodeTextField: UIView, UITextFieldDelegate {
     @IBInspectable var boxWidth: CGFloat = 44
     @IBInspectable var boxHeight: CGFloat = 52
     @IBInspectable var boxSpacing: CGFloat = 12
+    @IBInspectable var hyphen: Bool = true
     @IBInspectable var digit: Int = 0 {
         didSet {
             setup()
@@ -19,6 +20,7 @@ open class FramedVerifyCodeTextField: UIView, UITextFieldDelegate {
     }
     
     var textFields: [TextFieldLayout]? = []
+    var hyphenView: UIView? = nil
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -56,19 +58,35 @@ open class FramedVerifyCodeTextField: UIView, UITextFieldDelegate {
                 tf.delegate = self
                 self.textFields?.append(tf)
                 self.addSubview(tf)
+                
+                if (self.hyphen && i == self.digit / 2) {
+                    self.hyphenView = UIView()
+                    self.hyphenView?.backgroundColor = UIColor(white: 0.9, alpha: 1)
+                    self.addSubview(self.hyphenView!)
+                }
                 i += 1
             }
         }
     }
     
     open override func layoutSubviews() {
+        let hyphenWidth = CGFloat(12)
+        let hyphenSpace = self.hyphenView != nil ? hyphenWidth + boxSpacing : 0
         let w = self.frame.width
         let h = self.frame.height
-        let x = (w - boxWidth * CGFloat(Float(digit)) - boxSpacing * CGFloat((digit - 1))) / 2
+        let x = (w - hyphenSpace - boxWidth * CGFloat(Float(digit)) - boxSpacing * CGFloat((digit - 1))) / 2
         var i = 0
         for tf in textFields! {
-            tf.frame = CGRect(x: x + CGFloat(i) * (boxWidth + boxSpacing), y: 0, width: boxWidth, height: h)
+            if (i < digit / 2) {
+                tf.frame = CGRect(x: x + CGFloat(i) * (boxWidth + boxSpacing), y: 0, width: boxWidth, height: h)
+            } else {
+                tf.frame = CGRect(x: x + hyphenSpace + CGFloat(i) * (boxWidth + boxSpacing), y: 0, width: boxWidth, height: h)
+            }
             i += 1
+        }
+        
+        if (hyphenView != nil) {
+            hyphenView?.frame = CGRect(x: (w - hyphenWidth) / 2, y: h/2, width: hyphenWidth, height: 1)
         }
     }
     

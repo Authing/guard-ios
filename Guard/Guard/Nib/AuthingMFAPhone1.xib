@@ -32,20 +32,19 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T2e-iI-LnZ" customClass="FramedVerifyCodeTextField" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="20" y="81" width="374" height="52"/>
+                    <rect key="frame" x="20" y="118" width="374" height="52"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="52" id="NwR-23-MBg"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="52" id="l7g-QP-SX3"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="boxSpacing">
-                            <real key="value" value="24"/>
+                            <real key="value" value="16"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n4u-h1-pjv" customClass="GetVerifyCodeButton" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="155.5" y="149" width="103" height="26"/>
+                    <rect key="frame" x="155.5" y="186" width="103" height="26"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="103" id="SK4-Iv-yXH"/>
@@ -68,15 +67,8 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vi6-Ws-T8k" customClass="MFAPhoneButton" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="20" y="208" width="374" height="44"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="F2e-iO-Qrc"/>
-                    </constraints>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqG-p8-1vM" userLabel="Error Label" customClass="ErrorLabel" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="20" y="183" width="374" height="17"/>
+                    <rect key="frame" x="20" y="220" width="374" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="ezD-nu-lXO"/>
                     </constraints>
@@ -84,6 +76,44 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vi6-Ws-T8k" customClass="MFAPhoneButton" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="20" y="245" width="374" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="F2e-iO-Qrc"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="afE-J7-NC2">
+                    <rect key="frame" x="203" y="81" width="8" height="29"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Kd-al-OFx">
+                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="29"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" systemColor="systemGray2Color"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="authing_code_sent_to"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpy-wY-pyz" customClass="PhoneLabel" customModule="Guard" customModuleProvider="target">
+                            <rect key="frame" x="8" y="0.0" width="0.0" height="29"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" systemColor="systemGray2Color"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="bpy-wY-pyz" secondAttribute="bottom" id="2AB-Gz-H7S"/>
+                        <constraint firstItem="bpy-wY-pyz" firstAttribute="top" secondItem="afE-J7-NC2" secondAttribute="top" id="6LQ-IS-zEO"/>
+                        <constraint firstAttribute="bottom" secondItem="7Kd-al-OFx" secondAttribute="bottom" id="EJa-CW-nUD"/>
+                        <constraint firstItem="bpy-wY-pyz" firstAttribute="leading" secondItem="7Kd-al-OFx" secondAttribute="trailing" constant="8" id="OsI-i4-wxA"/>
+                        <constraint firstItem="7Kd-al-OFx" firstAttribute="leading" secondItem="afE-J7-NC2" secondAttribute="leading" id="boK-bX-IId"/>
+                        <constraint firstItem="7Kd-al-OFx" firstAttribute="top" secondItem="afE-J7-NC2" secondAttribute="top" id="ctJ-LV-2a8"/>
+                        <constraint firstAttribute="height" constant="29" id="fAo-EX-FoO"/>
+                        <constraint firstAttribute="trailing" secondItem="bpy-wY-pyz" secondAttribute="trailing" id="nTK-gP-MkV"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -95,15 +125,17 @@
                 <constraint firstItem="vi6-Ws-T8k" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="Niw-37-Nqo"/>
                 <constraint firstItem="n4u-h1-pjv" firstAttribute="centerX" secondItem="T2e-iI-LnZ" secondAttribute="centerX" id="Row-03-dtZ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="vi6-Ws-T8k" secondAttribute="trailing" constant="20" id="TA0-s4-QS4"/>
+                <constraint firstItem="afE-J7-NC2" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="UD4-If-V3T"/>
                 <constraint firstItem="T2e-iI-LnZ" firstAttribute="trailing" secondItem="kAk-wR-Ikm" secondAttribute="trailing" id="X1A-E0-aK1"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="kAk-wR-Ikm" secondAttribute="trailing" constant="20" id="YJk-R4-PSH"/>
+                <constraint firstItem="T2e-iI-LnZ" firstAttribute="top" secondItem="afE-J7-NC2" secondAttribute="bottom" constant="8" id="iPS-fS-kCI"/>
                 <constraint firstItem="vi6-Ws-T8k" firstAttribute="top" secondItem="fqG-p8-1vM" secondAttribute="bottom" constant="8" symbolic="YES" id="rOC-e4-91W"/>
-                <constraint firstItem="T2e-iI-LnZ" firstAttribute="top" secondItem="kAk-wR-Ikm" secondAttribute="bottom" constant="8" symbolic="YES" id="wol-TU-5N4"/>
+                <constraint firstItem="afE-J7-NC2" firstAttribute="top" secondItem="kAk-wR-Ikm" secondAttribute="bottom" constant="8" symbolic="YES" id="vWM-WG-tU1"/>
                 <constraint firstItem="fqG-p8-1vM" firstAttribute="top" secondItem="n4u-h1-pjv" secondAttribute="bottom" constant="8" symbolic="YES" id="wyY-7U-29t"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fqG-p8-1vM" secondAttribute="trailing" constant="20" id="xDN-93-ctP"/>
                 <constraint firstItem="T2e-iI-LnZ" firstAttribute="leading" secondItem="kAk-wR-Ikm" secondAttribute="leading" id="zA6-6W-Rb1"/>
             </constraints>
-            <point key="canvasLocation" x="139" y="138"/>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
         </view>
     </objects>
     <designables>
@@ -117,6 +149,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

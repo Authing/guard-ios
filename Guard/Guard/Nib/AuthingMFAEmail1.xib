@@ -31,20 +31,51 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="authing_please_input_verify_code"/>
                     </userDefinedRuntimeAttributes>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rWd-R8-4VK">
+                    <rect key="frame" x="203" y="81" width="8" height="29"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3o-qh-Itq">
+                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="29"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" systemColor="systemGray2Color"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="authing_code_sent_to"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBo-c4-Rfg" customClass="EmailLabel" customModule="Guard" customModuleProvider="target">
+                            <rect key="frame" x="8" y="0.0" width="0.0" height="29"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" systemColor="systemGray2Color"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="OBo-c4-Rfg" secondAttribute="bottom" id="6Ww-BJ-2tn"/>
+                        <constraint firstItem="T3o-qh-Itq" firstAttribute="leading" secondItem="rWd-R8-4VK" secondAttribute="leading" id="NgC-ZR-jR2"/>
+                        <constraint firstAttribute="trailing" secondItem="OBo-c4-Rfg" secondAttribute="trailing" id="OAS-Ia-Iym"/>
+                        <constraint firstItem="OBo-c4-Rfg" firstAttribute="leading" secondItem="T3o-qh-Itq" secondAttribute="trailing" constant="8" id="ODT-sv-pZ9"/>
+                        <constraint firstItem="T3o-qh-Itq" firstAttribute="top" secondItem="rWd-R8-4VK" secondAttribute="top" id="RYF-ZK-baf"/>
+                        <constraint firstAttribute="bottom" secondItem="T3o-qh-Itq" secondAttribute="bottom" id="kBH-xF-P6w"/>
+                        <constraint firstItem="OBo-c4-Rfg" firstAttribute="top" secondItem="rWd-R8-4VK" secondAttribute="top" id="kOv-ND-4gV"/>
+                        <constraint firstAttribute="height" constant="29" id="neQ-6r-V6W"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sGF-U1-gbl" customClass="FramedVerifyCodeTextField" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="20" y="89" width="374" height="52"/>
+                    <rect key="frame" x="20" y="118" width="374" height="52"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="52" id="cPx-Qg-88I"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="boxSpacing">
-                            <real key="value" value="24"/>
+                            <real key="value" value="16"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5d9-Zy-1Db" customClass="GetEmailCodeButton" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="155.5" y="157" width="103" height="26"/>
+                    <rect key="frame" x="155.5" y="186" width="103" height="26"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="103" id="P2t-0M-a3t"/>
@@ -68,14 +99,14 @@
                     </userDefinedRuntimeAttributes>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MsS-uG-DWL" customClass="MFAEmailButton" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="20" y="216" width="374" height="44"/>
+                    <rect key="frame" x="20" y="245" width="374" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="uGS-NR-M8g"/>
                     </constraints>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esC-VY-I5k" userLabel="Error Label" customClass="ErrorLabel" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="20" y="191" width="374" height="17"/>
+                    <rect key="frame" x="20" y="220" width="374" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="JQp-fj-UF4"/>
                     </constraints>
@@ -88,13 +119,15 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="esC-VY-I5k" firstAttribute="top" secondItem="5d9-Zy-1Db" secondAttribute="bottom" constant="8" symbolic="YES" id="1df-n4-nui"/>
+                <constraint firstItem="sGF-U1-gbl" firstAttribute="top" secondItem="rWd-R8-4VK" secondAttribute="bottom" constant="8" id="2TJ-G8-doB"/>
                 <constraint firstItem="MsS-uG-DWL" firstAttribute="trailing" secondItem="esC-VY-I5k" secondAttribute="trailing" id="3T9-nz-gbA"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="RFh-zO-z9s" secondAttribute="trailing" constant="20" id="D6h-uD-rHU"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="sGF-U1-gbl" secondAttribute="trailing" constant="20" id="ED5-XO-e9i"/>
                 <constraint firstItem="5d9-Zy-1Db" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="H0x-FE-w7B"/>
+                <constraint firstItem="rWd-R8-4VK" firstAttribute="top" secondItem="RFh-zO-z9s" secondAttribute="bottom" constant="8" symbolic="YES" id="QUz-2D-TJ2"/>
                 <constraint firstItem="RFh-zO-z9s" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="THr-cX-8hu"/>
                 <constraint firstItem="5d9-Zy-1Db" firstAttribute="top" secondItem="sGF-U1-gbl" secondAttribute="bottom" constant="16" id="b88-kK-EaQ"/>
-                <constraint firstItem="sGF-U1-gbl" firstAttribute="top" secondItem="RFh-zO-z9s" secondAttribute="bottom" constant="16" id="edh-eM-Vog"/>
+                <constraint firstItem="rWd-R8-4VK" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="dlR-hj-mgg"/>
                 <constraint firstItem="RFh-zO-z9s" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="iVn-uz-wHU"/>
                 <constraint firstItem="MsS-uG-DWL" firstAttribute="top" secondItem="esC-VY-I5k" secondAttribute="bottom" constant="8" symbolic="YES" id="nid-wf-9HV"/>
                 <constraint firstItem="sGF-U1-gbl" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="oA4-GL-8k3"/>
@@ -116,6 +149,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -22,34 +22,34 @@ open class MFATableView: UIView {
     }
 
     private func setup() {
-        let mfaPhone: MFATableItem = MFATableItem()
-        mfaPhone.mfaType = .phone
-        addSubview(mfaPhone)
-        
-        mfaPhone.translatesAutoresizingMaskIntoConstraints = false
-        mfaPhone.heightAnchor.constraint(equalToConstant: ITEM_HEIGHT).isActive = true
-        mfaPhone.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
-        mfaPhone.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
-        mfaPhone.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
-        
-        let mfaEmail: MFATableItem = MFATableItem()
-        mfaEmail.mfaType = .email
-        addSubview(mfaEmail)
-        
-        mfaEmail.translatesAutoresizingMaskIntoConstraints = false
-        mfaEmail.heightAnchor.constraint(equalToConstant: ITEM_HEIGHT).isActive = true
-        mfaEmail.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
-        mfaEmail.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
-        mfaEmail.topAnchor.constraint(equalTo: mfaPhone.bottomAnchor, constant: 16).isActive = true
-        
-        let mfaOTP: MFATableItem = MFATableItem()
-        mfaOTP.mfaType = .totp
-        addSubview(mfaOTP)
-        
-        mfaOTP.translatesAutoresizingMaskIntoConstraints = false
-        mfaOTP.heightAnchor.constraint(equalToConstant: ITEM_HEIGHT).isActive = true
-        mfaOTP.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
-        mfaOTP.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
-        mfaOTP.topAnchor.constraint(equalTo: mfaEmail.bottomAnchor, constant: 16).isActive = true
+        if let mfaPolicy = Authing.getCurrentUser()?.mfaPolicy {
+            var i = 0, last: UIView? = nil
+            for policy in mfaPolicy {
+                let mfaItem: MFATableItem = MFATableItem()
+                if (policy == "SMS") {
+                    mfaItem.mfaType = .phone
+                } else if (policy == "EMAIL") {
+                    mfaItem.mfaType = .email
+                } else if (policy == "OTP") {
+                    mfaItem.mfaType = .totp
+                } else {
+                    continue
+                }
+                addSubview(mfaItem)
+                
+                mfaItem.translatesAutoresizingMaskIntoConstraints = false
+                mfaItem.heightAnchor.constraint(equalToConstant: ITEM_HEIGHT).isActive = true
+                mfaItem.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
+                mfaItem.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
+                if (i == 0) {
+                    mfaItem.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
+                } else {
+                    mfaItem.topAnchor.constraint(equalTo: last!.bottomAnchor, constant: 16).isActive = true
+                }
+
+                last = mfaItem
+                i += 1
+            }
+        }
     }
 }

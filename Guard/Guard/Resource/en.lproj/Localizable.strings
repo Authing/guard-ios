@@ -37,3 +37,4 @@
 "authing_email_already_bound" = "The email has been bound";
 "authing_account_login_verify" = "Login verification";
 "authing_security_code_tip" = "Please enter 6 digits security number";
+"authing_code_sent_to" = "Code was sent to";
