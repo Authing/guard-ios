@@ -29,9 +29,10 @@ class SampleListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            AuthFlow.start { [weak self] userInfo in
+            let authFlow = AuthFlow.start { [weak self] userInfo in
                 self?.goHome(userInfo: userInfo)
             }
+//            authFlow?.resetPasswordFirstTimeLoginXibName = "Test"
 //            AuthFlow.showUserProfile()
         } else if indexPath.row == 1 {
             let vc = OneClickViewController(nibName: "OneClick", bundle: nil)

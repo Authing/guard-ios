@@ -20,20 +20,10 @@ open class GoSomewhereButton: UIButton {
 
     private func setup() {
         let text = getText()
-        self.setTitle(text, for: .normal)
-        self.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
+        setTitle(text, for: .normal)
     }
     
     func getText() -> String {
         return ""
-    }
-    
-    func getNibName() -> String {
-        return ""
-    }
-    
-    @objc private func onClick(sender: UIButton) {
-        let vc: AuthViewController? = AuthViewController(nibName: getNibName(), bundle: Bundle(for: Self.self))
-        self.viewController?.navigationController?.pushViewController(vc!, animated: true)
     }
 }

@@ -16,6 +16,20 @@ public class AuthFlow {
     
     public var data: NSDictionary = NSMutableDictionary()
     
+    // nil means Authing default. don't set value otherwise engine won't know from which bundle to load xib
+    public var loginXibName: String? = nil
+    public var registerXibName: String? = nil
+    public var forgotPasswordXibName: String? = nil
+    public var resetPasswordByEmailXibName: String? = nil
+    public var resetPasswordByPhoneXibName: String? = nil
+    
+    // MFA
+    public var mfaPhoneXibName: [String]? = nil
+    public var mfaEmailXibName: [String]? = nil
+    public var mfaOTPXibName: String? = nil
+    
+    public var resetPasswordFirstTimeLoginXibName: String? = nil
+    
     init() {
     }
     
@@ -31,23 +45,27 @@ public class AuthFlow {
         UIApplication.topViewController()!.present(nav, animated: true, completion: nil)
     }
     
-    public static func start(nibName: String? = nil, authCompletion: AuthNavigationController.AuthCompletion? = nil) {
+    public static func start(nibName: String? = nil, authCompletion: AuthNavigationController.AuthCompletion? = nil) -> AuthFlow? {
         var vc: IndexAuthViewController? = nil
         if (nibName == nil) {
             vc = IndexAuthViewController(nibName: "AuthingLogin", bundle: Bundle(for: Self.self))
         } else {
-            vc = IndexAuthViewController(nibName: nibName, bundle: nil)
+            vc = IndexAuthViewController(nibName: nibName, bundle: Bundle.main)
         }
         
         guard vc != nil else {
-            return
+            return nil
         }
 
+        let authFlow = AuthFlow()
+        authFlow.loginXibName = nibName
+        vc?.authFlow = authFlow
         let nav: AuthNavigationController = AuthNavigationController(rootViewController: vc!)
         nav.setNavigationBarHidden(true, animated: false)
         nav.setAuthCompletion(authCompletion)
         nav.modalPresentationStyle = UIModalPresentationStyle.fullScreen
         UIApplication.topViewController()!.present(nav, animated: true, completion: nil)
+        return authFlow
     }
     
     public static func getAccount(current: UIView) -> String? {
@@ -68,6 +86,15 @@ public class AuthFlow {
     
     func copy(with zone: NSZone? = nil) -> Any {
         let copy = AuthFlow(data)
+        copy.loginXibName = self.loginXibName
+        copy.registerXibName = self.registerXibName
+        copy.forgotPasswordXibName = self.forgotPasswordXibName
+        copy.resetPasswordByPhoneXibName = self.resetPasswordByPhoneXibName
+        copy.resetPasswordByEmailXibName = self.resetPasswordByEmailXibName
+        copy.mfaPhoneXibName = self.mfaPhoneXibName
+        copy.mfaEmailXibName = self.mfaEmailXibName
+        copy.mfaOTPXibName = self.mfaOTPXibName
+        copy.resetPasswordFirstTimeLoginXibName = self.resetPasswordFirstTimeLoginXibName
         return copy
     }
 }

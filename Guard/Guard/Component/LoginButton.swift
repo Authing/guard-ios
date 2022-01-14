@@ -86,9 +86,17 @@ open class LoginButton: PrimaryButton {
                 tfPassword.text = ""
             }
             
-            let vc: AuthViewController? = AuthViewController(nibName: "AuthingFirstTimeLogin", bundle: Bundle(for: Self.self))
-            vc?.authFlow?.data.setValue(userInfo, forKey: AuthFlow.KEY_USER_INFO)
-            self.viewController?.navigationController?.pushViewController(vc!, animated: true)
+            var nextVC: AuthViewController? = nil
+            if let vc = viewController {
+                if (vc.authFlow?.resetPasswordFirstTimeLoginXibName == nil) {
+                    nextVC = AuthViewController(nibName: "AuthingFirstTimeLogin", bundle: Bundle(for: Self.self))
+                } else {
+                    nextVC = AuthViewController(nibName: vc.authFlow?.resetPasswordFirstTimeLoginXibName!, bundle: Bundle.main)
+                }
+                vc.authFlow?.data.setValue(userInfo, forKey: AuthFlow.KEY_USER_INFO)
+                nextVC?.authFlow = vc.authFlow?.copy() as? AuthFlow
+            }
+            self.viewController?.navigationController?.pushViewController(nextVC!, animated: true)
         } else {
             Util.setError(self, message)
         }

@@ -8,6 +8,12 @@
 import UIKit
 
 open class ResetPasswordButton: PrimaryButton {
+    
+    enum resetType {
+        case byPhone
+        case byEmail
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -47,9 +53,9 @@ open class ResetPasswordButton: PrimaryButton {
         }
         
         if (Validator.isValidPhone(phone: tf!.text)) {
-            next("AuthingResetPasswordByPhone", account!)
+            next(.byPhone, account!)
         } else if (Validator.isValidEmail(email: tf!.text)) {
-            next("AuthingResetPasswordByEmail", account!)
+            next(.byEmail, account!)
         }
     }
     
@@ -136,10 +142,29 @@ open class ResetPasswordButton: PrimaryButton {
         }
     }
     
-    func next(_ nibName: String, _ account: String) {
-        let vc: AuthViewController? = AuthViewController(nibName: nibName, bundle: Bundle(for: Self.self))
-        vc?.authFlow?.data.setValue(account, forKey: AuthFlow.KEY_ACCOUNT)
-        self.viewController?.navigationController?.pushViewController(vc!, animated: true)
+    func next(_ type: resetType, _ account: String) {
+        var nextVC: AuthViewController? = nil
+        if (type == .byPhone) {
+            if let vc = viewController {
+                if (vc.authFlow?.resetPasswordByPhoneXibName == nil) {
+                    nextVC = AuthViewController(nibName: "AuthingResetPasswordByPhone", bundle: Bundle(for: Self.self))
+                } else {
+                    nextVC = AuthViewController(nibName: vc.authFlow?.resetPasswordByPhoneXibName!, bundle: Bundle.main)
+                }
+                nextVC?.authFlow = vc.authFlow?.copy() as? AuthFlow
+            }
+        } else if (type == .byEmail) {
+            if let vc = viewController {
+                if (vc.authFlow?.resetPasswordByEmailXibName == nil) {
+                    nextVC = AuthViewController(nibName: "AuthingResetPasswordByEmail", bundle: Bundle(for: Self.self))
+                } else {
+                    nextVC = AuthViewController(nibName: vc.authFlow?.resetPasswordByEmailXibName!, bundle: Bundle.main)
+                }
+                nextVC?.authFlow = vc.authFlow?.copy() as? AuthFlow
+            }
+        }
+        nextVC?.authFlow?.data.setValue(account, forKey: AuthFlow.KEY_ACCOUNT)
+        self.viewController?.navigationController?.pushViewController(nextVC!, animated: true)
     }
     
     func gotoLogin() {

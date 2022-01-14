@@ -25,6 +25,7 @@
 		7E95943F274CEA63001459C5 /* AppAuth.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E95943E274CEA63001459C5 /* AppAuth.xib */; };
 		7E959447274D063B001459C5 /* Guard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E959443274CEF11001459C5 /* Guard.framework */; };
 		7E959448274D063B001459C5 /* Guard.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7E959443274CEF11001459C5 /* Guard.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7EACD00227915AAC005CBB2E /* Test.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EACD00127915AAC005CBB2E /* Test.xib */; };
 		7ED434D52775BA7000893EDD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7ED434D72775BA7000893EDD /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		7E959437274CDEBA001459C5 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		7E95943E274CEA63001459C5 /* AppAuth.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppAuth.xib; sourceTree = "<group>"; };
 		7E959443274CEF11001459C5 /* Guard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Guard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7EACD00127915AAC005CBB2E /* Test.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Test.xib; sourceTree = "<group>"; };
 		7ED434D62775BA7000893EDD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7ED434D82775BA7E00893EDD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,6 +133,7 @@
 				7E959421274CB4E7001459C5 /* Assets.xcassets */,
 				7E959426274CB4E7001459C5 /* Info.plist */,
 				7ED434D72775BA7000893EDD /* Localizable.strings */,
+				7EACD00127915AAC005CBB2E /* Test.xib */,
 			);
 			path = GuardDemo;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 			files = (
 				7E959425274CB4E7001459C5 /* LaunchScreen.storyboard in Resources */,
 				7E7566B02768A35300C3872F /* Home.xib in Resources */,
+				7EACD00227915AAC005CBB2E /* Test.xib in Resources */,
 				7E959422274CB4E7001459C5 /* Assets.xcassets in Resources */,
 				7ED434D52775BA7000893EDD /* Localizable.strings in Resources */,
 				7E959420274CB4E2001459C5 /* Main.storyboard in Resources */,

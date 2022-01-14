@@ -19,6 +19,7 @@ open class GoRegisterButton: GoSomewhereButton {
     }
     
     private func setup() {
+        self.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
         Authing.getConfig { config in
             if (config?.registerMethods == nil || config?.registerMethods?.count == 0) {
                 self.isHidden = true
@@ -30,7 +31,16 @@ open class GoRegisterButton: GoSomewhereButton {
         return NSLocalizedString("authing_register_now", bundle: Bundle(for: Self.self), comment: "")
     }
     
-    override func getNibName() -> String {
-        return "AuthingRegister"
+    @objc private func onClick(sender: UIButton) {
+        var nextVC: AuthViewController? = nil
+        if let vc = viewController {
+            if (vc.authFlow?.registerXibName == nil) {
+                nextVC = AuthViewController(nibName: "AuthingRegister", bundle: Bundle(for: Self.self))
+            } else {
+                nextVC = AuthViewController(nibName: vc.authFlow?.registerXibName!, bundle: Bundle.main)
+            }
+            nextVC?.authFlow = vc.authFlow?.copy() as? AuthFlow
+        }
+        self.viewController?.navigationController?.pushViewController(nextVC!, animated: true)
     }
 }

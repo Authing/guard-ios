@@ -57,38 +57,27 @@ open class RegisterButton: PrimaryButton {
     private func registerByPhoneCode(_ phone: String, _ password: String, _ code: String) {
         startLoading()
         AuthClient.registerByPhoneCode(phone: phone, password: password, code: code) { code, message, userInfo in
-            self.stopLoading()
-            if (code == 200) {
-                DispatchQueue.main.async() {
-                    let vc = self.viewController?.navigationController as? AuthNavigationController
-                    if (vc == nil) {
-                        return
-                    }
-                    
-                    vc?.complete(userInfo)
-                }
-            } else {
-                Util.setError(self, message)
-            }
+            self.done(code: code, message: message, userInfo: userInfo)
         }
     }
     
     private func registerByEmail(_ email: String, _ password: String) {
         startLoading()
         AuthClient.registerByEmail(email: email, password: password) { code, message, userInfo in
-            self.stopLoading()
-            if (code == 200) {
-                DispatchQueue.main.async() {
-                    let vc = self.viewController?.navigationController as? AuthNavigationController
-                    if (vc == nil) {
-                        return
-                    }
-                    
-                    vc?.complete(userInfo)
+            self.done(code: code, message: message, userInfo: userInfo)
+        }
+    }
+    
+    private func done(code: Int, message: String?, userInfo: UserInfo?) {
+        self.stopLoading()
+        if (code == 200) {
+            DispatchQueue.main.async() {
+                if let vc = self.viewController?.navigationController as? AuthNavigationController {
+                    vc.complete(userInfo)
                 }
-            } else {
-                Util.setError(self, message)
             }
+        } else {
+            Util.setError(self, message)
         }
     }
 }
