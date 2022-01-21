@@ -204,8 +204,15 @@ public class AuthClient {
                 return
             }
   
-            let url: String = "\(Authing.getSchema())://\(Util.getHost(config!))/connection/social/wechatmobile/\(config!.userPoolId!)/callback?code=\(code)&app_id=\(Authing.getAppId())";
-            Guardian.get(urlString: url) { code, message, data in
+            let conId: String? = config?.getConnectionId(type: "wechat:mobile")
+            guard conId != nil else {
+                completion(500, "No wechat connection. Please set up in console for \(Authing.getAppId())", nil)
+                return
+            }
+            
+            let url: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/ecConn/wechatMobile/authByCode";
+            let body: NSDictionary = ["connId" : conId!, "code" : code]
+            Guardian.post(urlString: url, body: body) { code, message, data in
                 createUserInfo(code, message, data, completion: completion)
             }
         }
@@ -218,7 +225,7 @@ public class AuthClient {
                 return
             }
   
-            let conId: String? = config?.getAlipayConnectionId()
+            let conId: String? = config?.getConnectionId(type: "alipay")
             guard conId != nil else {
                 completion(500, "No alipay connection. Please set up in console for \(Authing.getAppId())", nil)
                 return

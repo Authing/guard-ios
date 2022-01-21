@@ -15,12 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var currentAuthorizationFlow: OIDExternalUserAgentSession?
     var window:UIWindow?
-    
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         OneAuth.bizId = "74ae90bd84f74b69a88b578bbbbcdcfd"
         Authing.setupWechat("wx1cddb15e280c0f67", universalLink: "https://developer-beta.authing.cn/app/")
-        Authing.setupAlipay("2021003110654882", customScheme: "cn.guard")
+        Authing.setupAlipay("2021003110682357", customScheme: "cn.guard")
         Authing.start("60caaf41df670b771fd08937");
         return true
     }

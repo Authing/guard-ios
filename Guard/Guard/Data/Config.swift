@@ -80,11 +80,11 @@ public class Config {
     }
     
     var socialConnections: [NSDictionary]?
-    public func getAlipayConnectionId() -> String? {
-        let connections: [NSDictionary]? = data?["socialConnections"] as? [NSDictionary]
+    public func getConnectionId(type: String) -> String? {
+        let connections: [NSDictionary]? = data?["ecConnections"] as? [NSDictionary]
         var cid: String? = nil
         connections?.forEach({ connection in
-            if connection["provider"] as? String == "alipay" {
+            if connection["type"] as? String == type {
                 cid = connection["id"] as? String
             }
         })
