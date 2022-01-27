@@ -48,7 +48,8 @@ public class Guardian {
         }
         request.timeoutInterval = 60
         request.addValue(Authing.getAppId(), forHTTPHeaderField: "x-authing-app-id")
-        request.addValue("Guard@iOS@" + Const.SDK_VERSION, forHTTPHeaderField: "x-authing-request-from")
+        request.addValue("guard-ios", forHTTPHeaderField: "x-authing-request-from")
+        request.addValue(Const.SDK_VERSION, forHTTPHeaderField: "x-authing-sdk-version")
         request.addValue(Util.getLangHeader(), forHTTPHeaderField: "x-authing-lang")
         
         request.httpShouldHandleCookies = false
