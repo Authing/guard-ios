@@ -18,6 +18,13 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F0M-JR-WfC" customClass="AppLogo" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="20" y="88" width="64" height="64"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="64" id="b1O-8l-OeX"/>
+                        <constraint firstAttribute="height" constant="64" id="uvS-Ak-wNm"/>
+                    </constraints>
+                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bg-kp-aeY">
                     <rect key="frame" x="20" y="160" width="0.0" height="29"/>
                     <constraints>
@@ -36,13 +43,6 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F0M-JR-WfC" customClass="AppLogo" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="20" y="88" width="64" height="64"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="64" id="b1O-8l-OeX"/>
-                        <constraint firstAttribute="height" constant="64" id="uvS-Ak-wNm"/>
-                    </constraints>
-                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vB5-a9-UJW" customClass="RegisterMethodTab" customModule="Guard" customModuleProvider="target">
                     <rect key="frame" x="20" y="213" width="374" height="48"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

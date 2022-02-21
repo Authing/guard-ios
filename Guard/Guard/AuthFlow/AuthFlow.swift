@@ -11,6 +11,7 @@ public class AuthFlow {
     
     public static let KEY_USER_INFO: String = "user_info"
     public static let KEY_ACCOUNT: String = "account"
+    public static let KEY_EXTENDED_FIELDS: String = "extended_fields"
     public static let KEY_MFA_PHONE: String = "mfa_phone"
     public static let KEY_MFA_EMAIL: String = "mfa_email"
     
@@ -82,6 +83,25 @@ public class AuthFlow {
             }
         }
         return account
+    }
+    
+    public static func missingField(config: Config?, userInfo: UserInfo?) -> Array<NSDictionary> {
+        var missing: Array<NSDictionary> = []
+        guard config != nil && userInfo != nil else {
+            return missing
+        }
+        
+        if let extendedFields = config!.extendedFields {
+            for dic: NSDictionary in extendedFields {
+                let name: String? = dic["name"] as? String
+                let value: String? = userInfo!.raw?[name as Any] as? String
+                if (Util.isNull(value) || ("gender" == name && "U" == value)) {
+                    missing.append(dic)
+                }
+            }
+        }
+        
+        return missing
     }
     
     func copy(with zone: NSZone? = nil) -> Any {

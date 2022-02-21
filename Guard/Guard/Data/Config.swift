@@ -44,6 +44,8 @@ public class Config {
                     i+=1
                 })
             }
+            completeFieldsPlace = data?["complateFiledsPlace"] as? [String]
+            extendedFields = data?["extendsFields"] as? [NSDictionary]
         }
     }
     
@@ -90,4 +92,7 @@ public class Config {
         })
         return cid
     }
+    
+    var completeFieldsPlace: [String]?
+    var extendedFields: [NSDictionary]? // user info complete
 }

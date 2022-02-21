@@ -9,7 +9,7 @@ import UIKit
 import Guard
 
 class SampleListViewController: UITableViewController {
-    let from = ["Authing 登录", "手机号一键登录", "MFA", "AppAuth"]
+    let from = ["Authing 登录", "手机号一键登录", "MFA", "用户信息补全", "AppAuth"]
     let reuseIdentifier = "cell"
     
     override func viewDidLoad() {
@@ -43,6 +43,11 @@ class SampleListViewController: UITableViewController {
                 self?.goHome(userInfo: userInfo)
             }
         } else if indexPath.row == 3 {
+            Authing.start("61ae0c9807451d6f30226bd4")
+            AuthFlow.start { [weak self] userInfo in
+                self?.goHome(userInfo: userInfo)
+            }
+        } else if indexPath.row == 4 {
             let vc = AppAuthViewController(nibName: "AppAuth", bundle: nil)
             self.navigationController?.pushViewController(vc, animated: true)
         }

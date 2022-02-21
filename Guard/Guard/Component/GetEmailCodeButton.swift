@@ -8,6 +8,9 @@
 import UIKit
 
 open class GetEmailCodeButton: LoadingButton {
+    
+    public var scene: String = "RESET_PASSWORD"
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -34,7 +37,7 @@ open class GetEmailCodeButton: LoadingButton {
     @objc private func onClick(sender: UIButton) {
         if let email = Util.getEmail(self) {
             startLoading()
-            AuthClient.sendResetPasswordEmail(email: email) { code, message in
+            AuthClient.sendEmail(email: email, scene: self.scene) { code, message in
                 self.stopLoading()
                 if (code != 200) {
                     Util.setError(self, message)

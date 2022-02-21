@@ -74,8 +74,19 @@ open class LoginButton: PrimaryButton {
     
     private func handleLogin(_ code: Int, message: String?, userInfo: UserInfo?) {
         if (code == 200) {
-            if let vc = self.viewController?.navigationController as? AuthNavigationController {
-                vc.complete(userInfo)
+            Authing.getConfig { config in
+                let missingFields: Array<NSDictionary> = AuthFlow.missingField(config: config, userInfo: userInfo)
+                if (config?.completeFieldsPlace != nil
+                    && config!.completeFieldsPlace!.contains("login")
+                    && missingFields.count > 0) {
+                    let vc: AuthViewController? = AuthViewController(nibName: "AuthingUserInfoComplete", bundle: Bundle(for: Self.self))
+                    vc?.authFlow?.data.setValue(missingFields, forKey: AuthFlow.KEY_EXTENDED_FIELDS)
+                    self.viewController?.navigationController?.pushViewController(vc!, animated: true)
+                } else {
+                    if let vc = self.viewController?.navigationController as? AuthNavigationController {
+                        vc.complete(userInfo)
+                    }
+                }
             }
         } else if (code == Const.EC_MFA_REQUIRED) {
             let vc: AuthViewController? = AuthViewController(nibName: "AuthingMFAOptions", bundle: Bundle(for: Self.self))

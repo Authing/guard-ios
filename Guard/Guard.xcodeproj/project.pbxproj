@@ -21,6 +21,10 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		7E02F46727950C35007FA048 /* UserInfoCompleteContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02F46627950C35007FA048 /* UserInfoCompleteContainer.swift */; };
+		7E02F46927950C57007FA048 /* UserInfoFieldForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02F46827950C57007FA048 /* UserInfoFieldForm.swift */; };
+		7E02F46B27950C6F007FA048 /* UserInfoCompleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02F46A27950C6F007FA048 /* UserInfoCompleteButton.swift */; };
+		7E02F46D27950C99007FA048 /* AuthingUserInfoComplete.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E02F46C27950C99007FA048 /* AuthingUserInfoComplete.xib */; };
 		7E12D7B6277DE9EF00703FC1 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E12D7B5277DE9EF00703FC1 /* UserManager.swift */; };
 		7E12D7B8277DECB900703FC1 /* AuthingUserProfile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E12D7B7277DECB900703FC1 /* AuthingUserProfile.xib */; };
 		7E12D7BA277DEE6F00703FC1 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E12D7B9277DEE6F00703FC1 /* UserProfileViewController.swift */; };
@@ -87,6 +91,8 @@
 		7ED434DE2779554B00893EDD /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED434DD2779554B00893EDD /* LoadingButton.swift */; };
 		7ED434E0277980B100893EDD /* ErrorLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED434DF277980B100893EDD /* ErrorLabel.swift */; };
 		7ED434E52779B28B00893EDD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7ED434E42779B28B00893EDD /* Images.xcassets */; };
+		7EDFB6C127C379EC00B77DEE /* UserInfoCompleteFieldEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDFB6C027C379EC00B77DEE /* UserInfoCompleteFieldEmail.swift */; };
+		7EDFB6C327C3AABB00B77DEE /* UserInfoCompleteContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDFB6C227C3AABB00B77DEE /* UserInfoCompleteContentView.swift */; };
 		7EF66C56277B157100FCBBEB /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C55277B157100FCBBEB /* PrimaryButton.swift */; };
 		7EF66C58277B3F8900FCBBEB /* TextFieldBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C57277B3F8900FCBBEB /* TextFieldBorder.swift */; };
 		7EF66C5B277BEE7300FCBBEB /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C5A277BEE7300FCBBEB /* Animator.swift */; };
@@ -124,6 +130,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7E02F46627950C35007FA048 /* UserInfoCompleteContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCompleteContainer.swift; sourceTree = "<group>"; };
+		7E02F46827950C57007FA048 /* UserInfoFieldForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoFieldForm.swift; sourceTree = "<group>"; };
+		7E02F46A27950C6F007FA048 /* UserInfoCompleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCompleteButton.swift; sourceTree = "<group>"; };
+		7E02F46C27950C99007FA048 /* AuthingUserInfoComplete.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingUserInfoComplete.xib; sourceTree = "<group>"; };
 		7E12D7B5277DE9EF00703FC1 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		7E12D7B7277DECB900703FC1 /* AuthingUserProfile.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingUserProfile.xib; sourceTree = "<group>"; };
 		7E12D7B9277DEE6F00703FC1 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
@@ -192,6 +202,8 @@
 		7ED434DD2779554B00893EDD /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
 		7ED434DF277980B100893EDD /* ErrorLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLabel.swift; sourceTree = "<group>"; };
 		7ED434E42779B28B00893EDD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7EDFB6C027C379EC00B77DEE /* UserInfoCompleteFieldEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCompleteFieldEmail.swift; sourceTree = "<group>"; };
+		7EDFB6C227C3AABB00B77DEE /* UserInfoCompleteContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCompleteContentView.swift; sourceTree = "<group>"; };
 		7EF66C55277B157100FCBBEB /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		7EF66C57277B3F8900FCBBEB /* TextFieldBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldBorder.swift; sourceTree = "<group>"; };
 		7EF66C5A277BEE7300FCBBEB /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
@@ -331,6 +343,7 @@
 				7EB3280F278D116F008639AA /* AuthingMFAEmail1.xib */,
 				7EB32811278D1DF9008639AA /* AuthingMFAOTP.xib */,
 				7E7D1F72278FC44F005AAD39 /* AuthingFirstTimeLogin.xib */,
+				7E02F46C27950C99007FA048 /* AuthingUserInfoComplete.xib */,
 				7EF66C5E277BFB7100FCBBEB /* LocalizeHelper.swift */,
 			);
 			path = Nib;
@@ -461,6 +474,11 @@
 			isa = PBXGroup;
 			children = (
 				7EB32807278C1870008639AA /* BindPhoneButton.swift */,
+				7EDFB6C227C3AABB00B77DEE /* UserInfoCompleteContentView.swift */,
+				7E02F46627950C35007FA048 /* UserInfoCompleteContainer.swift */,
+				7E02F46A27950C6F007FA048 /* UserInfoCompleteButton.swift */,
+				7E02F46827950C57007FA048 /* UserInfoFieldForm.swift */,
+				7EDFB6C027C379EC00B77DEE /* UserInfoCompleteFieldEmail.swift */,
 			);
 			path = UserProfile;
 			sourceTree = "<group>";
@@ -619,6 +637,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E02F46D27950C99007FA048 /* AuthingUserInfoComplete.xib in Resources */,
 				7EF66C7F277D478700FCBBEB /* AuthingForgotPassword.xib in Resources */,
 				7EF66C87277D54A600FCBBEB /* AuthingResetPasswordByEmail.xib in Resources */,
 				7ED434E52779B28B00893EDD /* Images.xcassets in Resources */,
@@ -692,6 +711,7 @@
 				7ED434DA2779509100893EDD /* VerifyCodeTextField.swift in Sources */,
 				7ED434D22775ABA000893EDD /* TextFieldLayout.swift in Sources */,
 				7E7566A22768801E00C3872F /* UIView+Authing.swift in Sources */,
+				7E02F46927950C57007FA048 /* UserInfoFieldForm.swift in Sources */,
 				7ED434E0277980B100893EDD /* ErrorLabel.swift in Sources */,
 				7EB32816278D5DD4008639AA /* FramedVerifyCodeTextField.swift in Sources */,
 				7E75668B276746AF00C3872F /* AppLogo.swift in Sources */,
@@ -710,9 +730,11 @@
 				7EF66C63277BFD5B00FCBBEB /* GoSomewhereButton.swift in Sources */,
 				7EB32814278D1FDC008639AA /* MFAOTPButton.swift in Sources */,
 				7EF66C77277C38DB00FCBBEB /* RegisterButton.swift in Sources */,
+				7EDFB6C127C379EC00B77DEE /* UserInfoCompleteFieldEmail.swift in Sources */,
 				7EF66C8B277D5A7100FCBBEB /* Validator.swift in Sources */,
 				7EB2D30127871E2A00A819B3 /* AppleLoginButton.swift in Sources */,
 				7ECF8AC22759F82D004F8FC5 /* Guardian.swift in Sources */,
+				7EDFB6C327C3AABB00B77DEE /* UserInfoCompleteContentView.swift in Sources */,
 				7EF66C75277C37CE00FCBBEB /* BasePasswordTextField.swift in Sources */,
 				7EF66C6D277C1C6E00FCBBEB /* RegisterMethodTabItem.swift in Sources */,
 				7EF66C61277BFD0900FCBBEB /* GoRegisterButton.swift in Sources */,
@@ -727,12 +749,14 @@
 				7E7566782766F91500C3872F /* AppName.swift in Sources */,
 				7EF66C6F277C1CCB00FCBBEB /* RegisterContainer.swift in Sources */,
 				7EB327FF278BD737008639AA /* MFATableItem.swift in Sources */,
+				7E02F46B27950C6F007FA048 /* UserInfoCompleteButton.swift in Sources */,
 				7EF66C71277C371E00FCBBEB /* EmailTextField.swift in Sources */,
 				7E959441274CEECF001459C5 /* Authing.swift in Sources */,
 				7EF66C65277C0B6F00FCBBEB /* AuthNavigationController.swift in Sources */,
 				7EB2D2FF2786CFA300A819B3 /* Alipay.swift in Sources */,
 				7ED434CE27757E4B00893EDD /* LoginContainer.swift in Sources */,
 				7E12D7B6277DE9EF00703FC1 /* UserManager.swift in Sources */,
+				7E02F46727950C35007FA048 /* UserInfoCompleteContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

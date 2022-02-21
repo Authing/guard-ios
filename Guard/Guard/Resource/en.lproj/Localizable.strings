@@ -40,3 +40,6 @@
 "authing_code_sent_to" = "Code was sent to";
 "authing_first_time_login_tip" = "To secure your account, please reset password";
 "authing_first_time_login_count_down" = "Please reset password within 10 minutes";
+"authing_user_info_complete" = "Fill up information";
+"authing_complete_tip" = "in order to have a better experience, please improve your information first";
+"authing_submit" = "Submit";
