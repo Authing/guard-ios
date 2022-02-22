@@ -43,3 +43,11 @@
 "authing_user_info_complete" = "完善帐号信息";
 "authing_complete_tip" = "为了更好的使用体验，请先完善您的资料信息";
 "authing_submit" = "提交";
+"authing_email_cannot_be_empty" = "邮箱不能为空";
+"authing_email_code_cannot_be_empty" = "邮件验证码不能为空";
+"authing_phone_cannot_be_empty" = "手机号不能为空";
+"authing_phone_code_cannot_be_empty" = "短信验证码不能为空";
+"authing_is_required" = "为必填项";
+"authing_sex_male" = "男";
+"authing_sex_female" = "女";
+"authing_sex_unspecified" = "保密";

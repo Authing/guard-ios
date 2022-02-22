@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class UserInfoCompleteFieldEmail: UserInfoFieldForm {
+open class UserInfoCompleteFieldEmail: UserInfoCompleteFieldForm {
     
     var emailTextField: EmailTextField = EmailTextField()
     var emailCodeTextField: VerifyCodeTextField = VerifyCodeTextField()
@@ -23,20 +23,22 @@ open class UserInfoCompleteFieldEmail: UserInfoFieldForm {
         setup()
     }
 
-    private func setup() {
+    override func setup() {
+        super.setup()
+        
         getCodeButton.scene = "CHANGE_EMAIL"
         
         addSubview(emailTextField)
         addSubview(emailCodeTextField)
         addSubview(getCodeButton)
-        
+
         emailTextField.borderStyle = .roundedRect
         emailTextField.font = UIFont.systemFont(ofSize: 14)
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
         emailTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
         emailTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
         emailTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
-        emailTextField.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
+        emailTextField.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 2).isActive = true
         
         emailCodeTextField.borderStyle = .roundedRect
         emailCodeTextField.font = UIFont.systemFont(ofSize: 14)
@@ -44,7 +46,7 @@ open class UserInfoCompleteFieldEmail: UserInfoFieldForm {
         emailCodeTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
         emailCodeTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
         emailCodeTextField.trailingAnchor.constraint(equalTo: getCodeButton.leadingAnchor, constant: -8).isActive = true
-        emailCodeTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 16).isActive = true
+        emailCodeTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 12).isActive = true
         
         getCodeButton.backgroundColor = Const.Color_Button_Gray
         getCodeButton.loadingLocation = 1
@@ -54,14 +56,13 @@ open class UserInfoCompleteFieldEmail: UserInfoFieldForm {
         getCodeButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
         getCodeButton.translatesAutoresizingMaskIntoConstraints = false
         getCodeButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        getCodeButton.leadingAnchor.constraint(equalTo: emailCodeTextField.trailingAnchor, constant: 0).isActive = true
         getCodeButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
-        getCodeButton .topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 16).isActive = true
+        getCodeButton.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 12).isActive = true
         getCodeButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
     }
     
     public override func getHeight() ->CGFloat {
-        return 104
+        return 128
     }
     
     public func getEmail() -> String? {
@@ -70,5 +71,9 @@ open class UserInfoCompleteFieldEmail: UserInfoFieldForm {
     
     public func getCode() -> String? {
         return emailCodeTextField.text
+    }
+    
+    public override func setFormData(_ data: NSDictionary) {
+        super.setFormData(data)
     }
 }

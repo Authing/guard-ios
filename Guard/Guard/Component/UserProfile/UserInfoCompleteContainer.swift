@@ -40,17 +40,23 @@ open class UserInfoCompleteContainer: UIView {
     private func getHeight(_ missingFields: Array<NSDictionary>) -> CGFloat {
         var height: CGFloat = 0
         for f in missingFields {
-            let form = getForm(f["name"] as? String)
+            let form = getForm(f["inputType"] as? String)
             height += form.getHeight()
         }
         return height
     }
     
-    private func getForm(_ name : String?) -> UserInfoFieldForm {
-        if ("email" == name) {
+    private func getForm(_ inputType : String?) -> UserInfoCompleteFieldForm {
+        if ("email" == inputType) {
             return UserInfoCompleteFieldEmail()
+        } else if ("phone" == inputType) {
+            return UserInfoCompleteFieldPhone()
+        } else if ("select" == inputType) {
+            return UserInfoCompleteFieldFormSelect()
+        } else if ("datetime" == inputType) {
+            return UserInfoCompleteFieldFormDateTime()
         } else {
-            return UserInfoFieldForm()
+            return UserInfoCompleteFieldFormText()
         }
     }
     
@@ -64,16 +70,10 @@ open class UserInfoCompleteContainer: UIView {
         var i = 0, last: UIView? = nil
         let count = missingFields?.count ?? 0
         while (i < count) {
-            let missingField = missingFields![i]
-            var v: UserInfoFieldForm? = nil
-            if ("email" == missingField["name"] as? String) {
-                v = UserInfoCompleteFieldEmail()
-            } else {
-                v = UserInfoFieldForm()
-                v!.backgroundColor = UIColor(white: 0.8, alpha: 1)
-            }
+            let missingField: NSDictionary = missingFields![i]
+            let form: UserInfoCompleteFieldForm = getForm(missingField["inputType"] as? String)
+            form.setFormData(missingField)
             
-            let form: UserInfoFieldForm = v!
             addSubview(form)
             
             form.translatesAutoresizingMaskIntoConstraints = false

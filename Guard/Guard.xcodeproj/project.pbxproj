@@ -22,7 +22,7 @@
 
 /* Begin PBXBuildFile section */
 		7E02F46727950C35007FA048 /* UserInfoCompleteContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02F46627950C35007FA048 /* UserInfoCompleteContainer.swift */; };
-		7E02F46927950C57007FA048 /* UserInfoFieldForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02F46827950C57007FA048 /* UserInfoFieldForm.swift */; };
+		7E02F46927950C57007FA048 /* UserInfoCompleteFieldForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02F46827950C57007FA048 /* UserInfoCompleteFieldForm.swift */; };
 		7E02F46B27950C6F007FA048 /* UserInfoCompleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02F46A27950C6F007FA048 /* UserInfoCompleteButton.swift */; };
 		7E02F46D27950C99007FA048 /* AuthingUserInfoComplete.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E02F46C27950C99007FA048 /* AuthingUserInfoComplete.xib */; };
 		7E12D7B6277DE9EF00703FC1 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E12D7B5277DE9EF00703FC1 /* UserManager.swift */; };
@@ -93,6 +93,10 @@
 		7ED434E52779B28B00893EDD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7ED434E42779B28B00893EDD /* Images.xcassets */; };
 		7EDFB6C127C379EC00B77DEE /* UserInfoCompleteFieldEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDFB6C027C379EC00B77DEE /* UserInfoCompleteFieldEmail.swift */; };
 		7EDFB6C327C3AABB00B77DEE /* UserInfoCompleteContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDFB6C227C3AABB00B77DEE /* UserInfoCompleteContentView.swift */; };
+		7EDFB6C527C4826100B77DEE /* UserInfoCompleteFieldPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDFB6C427C4826100B77DEE /* UserInfoCompleteFieldPhone.swift */; };
+		7EDFB6C727C4873A00B77DEE /* UserInfoCompleteFieldFormText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDFB6C627C4873A00B77DEE /* UserInfoCompleteFieldFormText.swift */; };
+		7EDFB6C927C4D1C500B77DEE /* UserInfoCompleteFieldFormSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDFB6C827C4D1C500B77DEE /* UserInfoCompleteFieldFormSelect.swift */; };
+		7EDFB6CB27C4DB9300B77DEE /* UserInfoCompleteFieldFormDateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDFB6CA27C4DB9300B77DEE /* UserInfoCompleteFieldFormDateTime.swift */; };
 		7EF66C56277B157100FCBBEB /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C55277B157100FCBBEB /* PrimaryButton.swift */; };
 		7EF66C58277B3F8900FCBBEB /* TextFieldBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C57277B3F8900FCBBEB /* TextFieldBorder.swift */; };
 		7EF66C5B277BEE7300FCBBEB /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C5A277BEE7300FCBBEB /* Animator.swift */; };
@@ -131,7 +135,7 @@
 
 /* Begin PBXFileReference section */
 		7E02F46627950C35007FA048 /* UserInfoCompleteContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCompleteContainer.swift; sourceTree = "<group>"; };
-		7E02F46827950C57007FA048 /* UserInfoFieldForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoFieldForm.swift; sourceTree = "<group>"; };
+		7E02F46827950C57007FA048 /* UserInfoCompleteFieldForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCompleteFieldForm.swift; sourceTree = "<group>"; };
 		7E02F46A27950C6F007FA048 /* UserInfoCompleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCompleteButton.swift; sourceTree = "<group>"; };
 		7E02F46C27950C99007FA048 /* AuthingUserInfoComplete.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingUserInfoComplete.xib; sourceTree = "<group>"; };
 		7E12D7B5277DE9EF00703FC1 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
@@ -204,6 +208,10 @@
 		7ED434E42779B28B00893EDD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7EDFB6C027C379EC00B77DEE /* UserInfoCompleteFieldEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCompleteFieldEmail.swift; sourceTree = "<group>"; };
 		7EDFB6C227C3AABB00B77DEE /* UserInfoCompleteContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCompleteContentView.swift; sourceTree = "<group>"; };
+		7EDFB6C427C4826100B77DEE /* UserInfoCompleteFieldPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCompleteFieldPhone.swift; sourceTree = "<group>"; };
+		7EDFB6C627C4873A00B77DEE /* UserInfoCompleteFieldFormText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCompleteFieldFormText.swift; sourceTree = "<group>"; };
+		7EDFB6C827C4D1C500B77DEE /* UserInfoCompleteFieldFormSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCompleteFieldFormSelect.swift; sourceTree = "<group>"; };
+		7EDFB6CA27C4DB9300B77DEE /* UserInfoCompleteFieldFormDateTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCompleteFieldFormDateTime.swift; sourceTree = "<group>"; };
 		7EF66C55277B157100FCBBEB /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		7EF66C57277B3F8900FCBBEB /* TextFieldBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldBorder.swift; sourceTree = "<group>"; };
 		7EF66C5A277BEE7300FCBBEB /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
@@ -477,8 +485,12 @@
 				7EDFB6C227C3AABB00B77DEE /* UserInfoCompleteContentView.swift */,
 				7E02F46627950C35007FA048 /* UserInfoCompleteContainer.swift */,
 				7E02F46A27950C6F007FA048 /* UserInfoCompleteButton.swift */,
-				7E02F46827950C57007FA048 /* UserInfoFieldForm.swift */,
+				7E02F46827950C57007FA048 /* UserInfoCompleteFieldForm.swift */,
+				7EDFB6C627C4873A00B77DEE /* UserInfoCompleteFieldFormText.swift */,
 				7EDFB6C027C379EC00B77DEE /* UserInfoCompleteFieldEmail.swift */,
+				7EDFB6C427C4826100B77DEE /* UserInfoCompleteFieldPhone.swift */,
+				7EDFB6C827C4D1C500B77DEE /* UserInfoCompleteFieldFormSelect.swift */,
+				7EDFB6CA27C4DB9300B77DEE /* UserInfoCompleteFieldFormDateTime.swift */,
 			);
 			path = UserProfile;
 			sourceTree = "<group>";
@@ -695,6 +707,8 @@
 				7ED434C92775653100893EDD /* LoginMethodTab.swift in Sources */,
 				7EF66C6B277C1BF600FCBBEB /* MethodTabItem.swift in Sources */,
 				7ED434CC277569DF00893EDD /* LoginMethodTabItem.swift in Sources */,
+				7EDFB6C727C4873A00B77DEE /* UserInfoCompleteFieldFormText.swift in Sources */,
+				7EDFB6CB27C4DB9300B77DEE /* UserInfoCompleteFieldFormDateTime.swift in Sources */,
 				7EF66C73277C37A500FCBBEB /* PasswordConfirmTextField.swift in Sources */,
 				7ED434DE2779554B00893EDD /* LoadingButton.swift in Sources */,
 				7EB327FD278BD473008639AA /* MFATableView.swift in Sources */,
@@ -711,7 +725,7 @@
 				7ED434DA2779509100893EDD /* VerifyCodeTextField.swift in Sources */,
 				7ED434D22775ABA000893EDD /* TextFieldLayout.swift in Sources */,
 				7E7566A22768801E00C3872F /* UIView+Authing.swift in Sources */,
-				7E02F46927950C57007FA048 /* UserInfoFieldForm.swift in Sources */,
+				7E02F46927950C57007FA048 /* UserInfoCompleteFieldForm.swift in Sources */,
 				7ED434E0277980B100893EDD /* ErrorLabel.swift in Sources */,
 				7EB32816278D5DD4008639AA /* FramedVerifyCodeTextField.swift in Sources */,
 				7E75668B276746AF00C3872F /* AppLogo.swift in Sources */,
@@ -723,11 +737,13 @@
 				7ECF8ACA275A022D004F8FC5 /* Util.swift in Sources */,
 				7E7566842766FD5D00C3872F /* UIApplication+Authing.swift in Sources */,
 				7E7566812766FA1A00C3872F /* AuthFlow.swift in Sources */,
+				7EDFB6C927C4D1C500B77DEE /* UserInfoCompleteFieldFormSelect.swift in Sources */,
 				7EF66C81277D49B400FCBBEB /* ResetPasswordButton.swift in Sources */,
 				7E75667E2766F9DD00C3872F /* AuthViewController.swift in Sources */,
 				7E12D7BA277DEE6F00703FC1 /* UserProfileViewController.swift in Sources */,
 				7EF66C5F277BFB7100FCBBEB /* LocalizeHelper.swift in Sources */,
 				7EF66C63277BFD5B00FCBBEB /* GoSomewhereButton.swift in Sources */,
+				7EDFB6C527C4826100B77DEE /* UserInfoCompleteFieldPhone.swift in Sources */,
 				7EB32814278D1FDC008639AA /* MFAOTPButton.swift in Sources */,
 				7EF66C77277C38DB00FCBBEB /* RegisterButton.swift in Sources */,
 				7EDFB6C127C379EC00B77DEE /* UserInfoCompleteFieldEmail.swift in Sources */,

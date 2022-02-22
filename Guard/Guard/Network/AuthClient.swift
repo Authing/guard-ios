@@ -171,6 +171,34 @@ public class AuthClient {
         }
     }
     
+    public static func bindPhone(phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        Authing.getConfig { config in
+            guard config != nil else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+                return
+            }
+            let url: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/users/phone/bind";
+            let body: NSDictionary = ["phone" : phone, "phoneCode" : code]
+            Guardian.post(urlString: url, body: body) { code, message, data in
+                createUserInfo(code, message, data, completion: completion)
+            }
+        }
+    }
+    
+    public static func unbindPhone(completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        Authing.getConfig { config in
+            guard config != nil else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+                return
+            }
+            let url: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/users/phone/unbind";
+            let body: NSDictionary = [:]
+            Guardian.post(urlString: url, body: body) { code, message, data in
+                createUserInfo(code, message, data, completion: completion)
+            }
+        }
+    }
+    
     public static func bindEmail(email: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         Authing.getConfig { config in
             guard config != nil else {
@@ -185,6 +213,20 @@ public class AuthClient {
         }
     }
     
+    public static func unbindEmail(completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        Authing.getConfig { config in
+            guard config != nil else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+                return
+            }
+            let url: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/users/email/unbind";
+            let body: NSDictionary = [:]
+            Guardian.post(urlString: url, body: body) { code, message, data in
+                createUserInfo(code, message, data, completion: completion)
+            }
+        }
+    }
+    
     public static func getCurrentUserInfo(completion: @escaping(Int, String?, UserInfo?) -> Void) {
         Authing.getConfig { config in
             guard config != nil else {
@@ -193,6 +235,20 @@ public class AuthClient {
             }
             let url: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/users/me";
             Guardian.get(urlString: url) { code, message, data in
+                createUserInfo(code, message, data, completion: completion)
+            }
+        }
+    }
+    
+    public static func updateProfile(_ object: NSDictionary, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        Authing.getConfig { config in
+            guard config != nil else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+                return
+            }
+            
+            let url: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/users/profile/update";
+            Guardian.post(urlString: url, body: object) { code, message, data in
                 createUserInfo(code, message, data, completion: completion)
             }
         }

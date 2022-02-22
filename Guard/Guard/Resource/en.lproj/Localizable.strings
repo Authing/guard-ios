@@ -43,3 +43,11 @@
 "authing_user_info_complete" = "Fill up information";
 "authing_complete_tip" = "in order to have a better experience, please improve your information first";
 "authing_submit" = "Submit";
+"authing_email_cannot_be_empty" = "Email address cannot be empty";
+"authing_email_code_cannot_be_empty" = "Email verify code cannot be empty";
+"authing_phone_cannot_be_empty" = "Phone number cannot be empty";
+"authing_phone_code_cannot_be_empty" = "SMS verify code cannot be empty";
+"authing_is_required" = " is required";
+"authing_sex_male" = "M";
+"authing_sex_female" = "F";
+"authing_sex_unspecified" = "U";
