@@ -74,7 +74,7 @@ public class AuthClient {
             }
             let url: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/register/phone-code";
             let encryptedPassword = Util.encryptPassword(password)
-            let body: NSDictionary = ["phone" : phone, "password" : encryptedPassword, "code" : code]
+            let body: NSDictionary = ["phone" : phone, "password" : encryptedPassword, "code" : code, "forceLogin" : true]
             Guardian.post(urlString: url, body: body) { code, message, data in
                 createUserInfo(code, message, data, completion: completion)
             }
@@ -89,17 +89,9 @@ public class AuthClient {
             }
             let url: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/register/email";
             let encryptedPassword = Util.encryptPassword(password)
-            let body: NSDictionary = ["email" : email, "password" : encryptedPassword]
+            let body: NSDictionary = ["email" : email, "password" : encryptedPassword, "forceLogin" : true]
             Guardian.post(urlString: url, body: body) { code, message, data in
-                if (code == 200) {
-                    let loginUrl: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/login/account";
-                    let loginBody: NSDictionary = ["account" : email, "password" : encryptedPassword]
-                    Guardian.post(urlString: loginUrl, body: loginBody) { code, message, data in
-                        createUserInfo(code, message, data, completion: completion)
-                    }
-                } else {
-                    completion(code, message, nil)
-                }
+                createUserInfo(code, message, data, completion: completion)
             }
         }
     }

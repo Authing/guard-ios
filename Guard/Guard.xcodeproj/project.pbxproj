@@ -97,6 +97,7 @@
 		7EDFB6C727C4873A00B77DEE /* UserInfoCompleteFieldFormText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDFB6C627C4873A00B77DEE /* UserInfoCompleteFieldFormText.swift */; };
 		7EDFB6C927C4D1C500B77DEE /* UserInfoCompleteFieldFormSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDFB6C827C4D1C500B77DEE /* UserInfoCompleteFieldFormSelect.swift */; };
 		7EDFB6CB27C4DB9300B77DEE /* UserInfoCompleteFieldFormDateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDFB6CA27C4DB9300B77DEE /* UserInfoCompleteFieldFormDateTime.swift */; };
+		7EDFB6CD27C7390A00B77DEE /* PrivacyConfirmBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDFB6CC27C7390A00B77DEE /* PrivacyConfirmBox.swift */; };
 		7EF66C56277B157100FCBBEB /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C55277B157100FCBBEB /* PrimaryButton.swift */; };
 		7EF66C58277B3F8900FCBBEB /* TextFieldBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C57277B3F8900FCBBEB /* TextFieldBorder.swift */; };
 		7EF66C5B277BEE7300FCBBEB /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C5A277BEE7300FCBBEB /* Animator.swift */; };
@@ -212,6 +213,7 @@
 		7EDFB6C627C4873A00B77DEE /* UserInfoCompleteFieldFormText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCompleteFieldFormText.swift; sourceTree = "<group>"; };
 		7EDFB6C827C4D1C500B77DEE /* UserInfoCompleteFieldFormSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCompleteFieldFormSelect.swift; sourceTree = "<group>"; };
 		7EDFB6CA27C4DB9300B77DEE /* UserInfoCompleteFieldFormDateTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCompleteFieldFormDateTime.swift; sourceTree = "<group>"; };
+		7EDFB6CC27C7390A00B77DEE /* PrivacyConfirmBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyConfirmBox.swift; sourceTree = "<group>"; };
 		7EF66C55277B157100FCBBEB /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		7EF66C57277B3F8900FCBBEB /* TextFieldBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldBorder.swift; sourceTree = "<group>"; };
 		7EF66C5A277BEE7300FCBBEB /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 				7EF66C80277D49B400FCBBEB /* ResetPasswordButton.swift */,
 				7E7D1F6E278EB49F005AAD39 /* EmailLabel.swift */,
 				7E7D1F70278ECC73005AAD39 /* PhoneLabel.swift */,
+				7EDFB6CC27C7390A00B77DEE /* PrivacyConfirmBox.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -749,6 +752,7 @@
 				7EDFB6C127C379EC00B77DEE /* UserInfoCompleteFieldEmail.swift in Sources */,
 				7EF66C8B277D5A7100FCBBEB /* Validator.swift in Sources */,
 				7EB2D30127871E2A00A819B3 /* AppleLoginButton.swift in Sources */,
+				7EDFB6CD27C7390A00B77DEE /* PrivacyConfirmBox.swift in Sources */,
 				7ECF8AC22759F82D004F8FC5 /* Guardian.swift in Sources */,
 				7EDFB6C327C3AABB00B77DEE /* UserInfoCompleteContentView.swift in Sources */,
 				7EF66C75277C37CE00FCBBEB /* BasePasswordTextField.swift in Sources */,

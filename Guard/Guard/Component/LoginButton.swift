@@ -25,9 +25,34 @@ open class LoginButton: PrimaryButton {
     }
     
     @objc private func onClick(sender: UIButton) {
-        let vc: AuthViewController? = viewController
-        if (vc == nil) {
-            return
+        Util.setError(self, "")
+        Authing.getConfig { config in
+            self._onClick(config)
+        }
+    }
+    
+    private func _onClick(_ config: Config?) {
+        let privacyBox = Util.findView(self, viewClass: PrivacyConfirmBox.self) as? PrivacyConfirmBox
+        if (privacyBox != nil && !privacyBox!.isHidden) {
+            let lang = Util.getLangHeader()
+            if let agreements = config?.agreements {
+                for agreement in agreements {
+                    if (lang == agreement["lang"] as? String) {
+                        let availableAt = agreement["availableAt"] as? Int
+                        if (availableAt == nil) {
+                            continue
+                        }
+                        if (availableAt! == 2 || availableAt! == 1) {
+                            let warning = NSLocalizedString("authing_agree_privacy_first", bundle: Bundle(for: LoginButton.self), comment: "")
+                            if (agreement["required"] as? Bool == true && !privacyBox!.isChecked) {
+                                Util.setError(self, warning)
+                                return;
+                            }
+                            break
+                        }
+                    }
+                }
+            }
         }
         
         let tfPhone: PhoneNumberTextField? = Util.findView(self, viewClass: PhoneNumberTextField.self)
