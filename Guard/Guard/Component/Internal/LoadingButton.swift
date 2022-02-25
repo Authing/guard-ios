@@ -25,7 +25,7 @@ import UIKit
     @IBInspectable var loadingColor: UIColor? = UIColor.white
     @IBInspectable var loadingLocation: Int = 0 // 0 left; 1 over;
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }

@@ -13,7 +13,7 @@ open class UserInfoCompleteFieldEmail: UserInfoCompleteFieldForm {
     var emailCodeTextField: VerifyCodeTextField = VerifyCodeTextField()
     let getCodeButton: GetEmailCodeButton = GetEmailCodeButton()
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }

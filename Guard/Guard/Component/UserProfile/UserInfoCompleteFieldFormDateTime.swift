@@ -11,7 +11,7 @@ open class UserInfoCompleteFieldFormDateTime: UserInfoCompleteFieldForm {
     var textField: UITextField = UITextField()
     let datePickerView:UIDatePicker = UIDatePicker()
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }

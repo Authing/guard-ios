@@ -13,7 +13,7 @@ open class BasePasswordTextField: TextFieldLayout {
     let eyeImage = UIImage(named: "authing_eye", in: Bundle(for: WechatLoginButton.self), compatibleWith: nil)
     let eyeOffImage = UIImage(named: "authing_eye_off", in: Bundle(for: WechatLoginButton.self), compatibleWith: nil)
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }

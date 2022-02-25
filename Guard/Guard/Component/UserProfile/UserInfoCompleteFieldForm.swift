@@ -15,7 +15,7 @@ open class UserInfoCompleteFieldForm: UIView {
     var labelAsterisk: UILabel = UILabel()
     var data: NSDictionary? = nil
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }

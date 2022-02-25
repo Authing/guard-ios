@@ -12,7 +12,7 @@ open class TextFieldBorder: UIView {
     var highlight: Bool = false
     var animator: Animator = Animator()
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }

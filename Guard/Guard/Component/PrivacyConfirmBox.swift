@@ -17,7 +17,7 @@ open class PrivacyConfirmBox: UIView, UITextViewDelegate {
     
     public var isChecked: Bool = false
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }

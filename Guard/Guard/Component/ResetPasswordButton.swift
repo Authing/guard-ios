@@ -14,7 +14,7 @@ open class ResetPasswordButton: PrimaryButton {
         case byEmail
     }
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }

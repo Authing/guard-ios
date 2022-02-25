@@ -11,7 +11,7 @@ open class TextFieldLayout: UITextField, UITextFieldDelegate {
     
     var border: TextFieldBorder? = nil
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }

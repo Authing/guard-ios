@@ -11,7 +11,7 @@ open class UserInfoCompleteContainer: UIView {
     
     private let ITEM_TOP_SPACE: CGFloat = 16
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }

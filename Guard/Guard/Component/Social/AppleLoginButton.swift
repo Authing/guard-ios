@@ -10,7 +10,7 @@ import AuthenticationServices
 
 open class AppleLoginButton: SocialLoginButton, ASAuthorizationControllerDelegate {
 
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }

@@ -8,7 +8,7 @@
 import UIKit
 
 open class LoginButton: PrimaryButton {
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }

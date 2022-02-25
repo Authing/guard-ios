@@ -10,7 +10,7 @@ import UIKit
 open class UserInfoCompleteFieldFormText: UserInfoCompleteFieldForm {
     var textField: UITextField = UITextField()
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }

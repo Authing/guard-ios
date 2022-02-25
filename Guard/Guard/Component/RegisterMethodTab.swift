@@ -13,7 +13,7 @@ open class RegisterMethodTab: UIView {
     
     var items = [RegisterMethodTabItem]()
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup(frame)
     }

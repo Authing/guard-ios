@@ -22,7 +22,7 @@ open class FramedVerifyCodeTextField: UIView, UITextFieldDelegate {
     var textFields: [TextFieldLayout]? = []
     var hyphenView: UIView? = nil
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }

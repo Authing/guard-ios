@@ -11,7 +11,7 @@ open class GetEmailCodeButton: LoadingButton {
     
     public var scene: String = "RESET_PASSWORD"
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }

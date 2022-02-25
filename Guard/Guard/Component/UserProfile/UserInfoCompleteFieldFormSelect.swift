@@ -10,7 +10,7 @@ import UIKit
 open class UserInfoCompleteFieldFormSelect: UserInfoCompleteFieldForm {
     var segment: UISegmentedControl = UISegmentedControl()
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }

@@ -13,7 +13,7 @@ public class MethodTabItem: UIView {
     private var underLine: UIView?
     var type: Int = 0
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup(frame)
     }
