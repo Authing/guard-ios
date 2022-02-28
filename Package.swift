@@ -17,7 +17,11 @@ let package = Package(
     targets: [
         .target(
             name: "Guard",
-            path: "Guard"
+            path: "Guard",
+            cSettings: [
+                .headerSearchPath("Guard/Library"),
+                .headerSearchPath("Guard/Frameworks/Headers")
+            ]
         )
     ]
 )
