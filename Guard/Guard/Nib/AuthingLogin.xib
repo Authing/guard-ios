@@ -206,28 +206,6 @@
                         <color key="titleColor" red="0.224" green="0.41599999999999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3e-jG-G1E" userLabel="WechatLoginButton" customClass="WechatLoginButton" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="117" y="754" width="44" height="44"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="j3e-jG-G1E" secondAttribute="height" id="zCV-Ei-dLg"/>
-                    </constraints>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vgE-1X-5Bz" userLabel="AlipayButton" customClass="AlipayLoginButton" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="253" y="754" width="44" height="44"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="vgE-1X-5Bz" secondAttribute="height" id="aAQ-j1-3oG"/>
-                    </constraints>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qIS-Ca-2ZW" customClass="AppleLoginButton" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="185" y="754" width="44" height="44"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="Dx7-3s-U1Y"/>
-                        <constraint firstAttribute="width" secondItem="qIS-Ca-2ZW" secondAttribute="height" id="EX1-F4-JUh"/>
-                    </constraints>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                </button>
                 <button contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jkG-vF-ihh" userLabel="Login button" customClass="LoginButton" customModule="Guard" customModuleProvider="target">
                     <rect key="frame" x="20" y="439" width="374" height="42"/>
                     <constraints>
@@ -240,12 +218,18 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d9m-aA-3Gf" customClass="SocialLoginListView" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="20" y="754" width="374" height="44"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="7P3-i0-bKN"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="7BN-be-d2t" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="3Rg-X0-ueY"/>
-                <constraint firstItem="vgE-1X-5Bz" firstAttribute="centerY" secondItem="qIS-Ca-2ZW" secondAttribute="centerY" id="4XF-AV-9N8"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="2g3-pt-3FB" secondAttribute="trailing" constant="20" id="4eI-iu-FSL"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="txj-YQ-JVh" secondAttribute="trailing" constant="20" id="4wz-ry-aUz"/>
                 <constraint firstItem="jkG-vF-ihh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="6xY-W2-rPB"/>
@@ -253,16 +237,12 @@
                 <constraint firstItem="WHE-LW-cSI" firstAttribute="top" secondItem="uxM-Eg-q9m" secondAttribute="top" id="7xf-N4-B5t"/>
                 <constraint firstItem="Nmk-Ef-ukz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="9Ie-cd-VDi"/>
                 <constraint firstItem="7BN-be-d2t" firstAttribute="top" secondItem="Nmk-Ef-ukz" secondAttribute="bottom" constant="8" symbolic="YES" id="AC4-x0-xNL"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="qIS-Ca-2ZW" secondAttribute="bottom" constant="64" id="BMU-fL-shi"/>
                 <constraint firstItem="uxM-Eg-q9m" firstAttribute="top" secondItem="E2M-Lp-3aM" secondAttribute="bottom" constant="8" symbolic="YES" id="Cuf-It-odx"/>
                 <constraint firstItem="uxM-Eg-q9m" firstAttribute="leading" secondItem="E2M-Lp-3aM" secondAttribute="leading" id="DzH-2y-drU"/>
-                <constraint firstItem="qIS-Ca-2ZW" firstAttribute="leading" secondItem="j3e-jG-G1E" secondAttribute="trailing" constant="24" id="HDP-Oz-5t7"/>
                 <constraint firstItem="E2M-Lp-3aM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="HGL-mq-sfI"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="jkG-vF-ihh" secondAttribute="trailing" constant="20" id="I7z-hd-Uo5"/>
+                <constraint firstItem="d9m-aA-3Gf" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="ITi-KQ-tdk"/>
                 <constraint firstItem="2g3-pt-3FB" firstAttribute="leading" secondItem="NTZ-xL-T1d" secondAttribute="trailing" constant="8" symbolic="YES" id="J5V-ye-q8w"/>
-                <constraint firstItem="j3e-jG-G1E" firstAttribute="height" secondItem="qIS-Ca-2ZW" secondAttribute="height" id="JBY-qg-vq8"/>
-                <constraint firstItem="j3e-jG-G1E" firstAttribute="centerY" secondItem="qIS-Ca-2ZW" secondAttribute="centerY" id="KnA-YS-C5P"/>
-                <constraint firstItem="vgE-1X-5Bz" firstAttribute="height" secondItem="qIS-Ca-2ZW" secondAttribute="height" id="LnN-rg-oqJ"/>
                 <constraint firstItem="les-eR-d4D" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="MLr-vP-BBb"/>
                 <constraint firstItem="DMA-tf-9bk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="PPu-uI-RRv"/>
                 <constraint firstItem="Qfp-Ru-dGn" firstAttribute="top" secondItem="2g3-pt-3FB" secondAttribute="top" id="QWK-0n-XSj"/>
@@ -281,11 +261,11 @@
                 <constraint firstItem="jkG-vF-ihh" firstAttribute="top" secondItem="les-eR-d4D" secondAttribute="bottom" constant="16" id="jfc-NT-qjP"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="gFZ-Xj-lJ9" secondAttribute="trailing" constant="20" id="otb-XN-NpR"/>
                 <constraint firstItem="WHE-LW-cSI" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="pg9-Kx-9lC"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="d9m-aA-3Gf" secondAttribute="bottom" constant="64" id="sSB-6Z-u4m"/>
                 <constraint firstItem="Qfp-Ru-dGn" firstAttribute="leading" secondItem="jkG-vF-ihh" secondAttribute="leading" id="spr-xX-Tzf"/>
                 <constraint firstItem="E2M-Lp-3aM" firstAttribute="top" secondItem="DMA-tf-9bk" secondAttribute="bottom" constant="12" id="tf3-9u-48z"/>
                 <constraint firstItem="NTZ-xL-T1d" firstAttribute="bottom" secondItem="2g3-pt-3FB" secondAttribute="bottom" id="uLG-fh-j2W"/>
-                <constraint firstItem="vgE-1X-5Bz" firstAttribute="leading" secondItem="qIS-Ca-2ZW" secondAttribute="trailing" constant="24" id="uul-V5-f3e"/>
-                <constraint firstItem="qIS-Ca-2ZW" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="w1R-7d-9zb"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="d9m-aA-3Gf" secondAttribute="trailing" constant="20" id="xDT-JU-Hyb"/>
                 <constraint firstItem="Nmk-Ef-ukz" firstAttribute="top" secondItem="txj-YQ-JVh" secondAttribute="bottom" constant="16" id="ywh-BJ-Ndn"/>
                 <constraint firstItem="Qfp-Ru-dGn" firstAttribute="bottom" secondItem="2g3-pt-3FB" secondAttribute="bottom" id="zZi-c9-an0"/>
             </constraints>
