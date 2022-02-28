@@ -65,7 +65,13 @@ public class AuthFlow {
         nav.setNavigationBarHidden(true, animated: false)
         nav.setAuthCompletion(authCompletion)
         nav.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-        UIApplication.topViewController()!.present(nav, animated: true, completion: nil)
+        if let topVC = UIApplication.topViewController() {
+            topVC.present(nav, animated: true, completion: nil)
+        } else {
+            DispatchQueue.main.async() {
+                UIApplication.topViewController()?.present(nav, animated: true, completion: nil)
+            }
+        }
         return authFlow
     }
     
