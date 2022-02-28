@@ -15,13 +15,10 @@ let package = Package(
     dependencies: [
     ],
     targets: [
-        .target(
+        .binaryTarget(
             name: "Guard",
-            path: "Guard",
-            cSettings: [
-                .headerSearchPath("Guard/Library"),
-                .headerSearchPath("Guard/Frameworks/Headers")
-            ]
+            url: "https://github.com/Authing/guard-ios/releases/download/1.0.3/Guard.xcframework.zip",
+            checksum: "5faab7fec7b8fb1582656f327d8b4cd5220c662c2726fc5c22370b830fe3283a"
         )
     ]
 )
