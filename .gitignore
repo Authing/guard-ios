@@ -8,6 +8,4 @@ OneAuth/build
 OneAuth/Frameworks
 .swiftpm
 Guard/build
-Guard/Library
-Guard/Frameworks
 guard-ios.xcworkspace/xcuserdata
