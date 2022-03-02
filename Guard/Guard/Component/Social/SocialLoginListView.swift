@@ -13,7 +13,7 @@ open class SocialLoginListView: UIView {
     let HEIGHT = CGFloat(44)
     let SPACE = CGFloat(24)
     
-    @IBInspectable var src: String = "wechat|apple" {
+    @IBInspectable var src: String = "auto" {
         didSet {
             setSource(src)
         }
@@ -40,7 +40,11 @@ open class SocialLoginListView: UIView {
                     if ("wechat:mobile" == type) {
                         self.addSubview(WechatLoginButton())
                     } else if ("apple" == type) {
-                        self.addSubview(AppleLoginButton())
+                        if #available(iOS 13.0, *) {
+                            self.addSubview(AppleLoginButton())
+                        } else {
+                            // Fallback on earlier versions
+                        }
                     } else if ("alipay" == type) {
                         self.addSubview(AlipayLoginButton())
                     }
@@ -65,13 +69,22 @@ open class SocialLoginListView: UIView {
             v.removeFromSuperview()
         }
         
+        if ("auto" == src) {
+            setup()
+            return
+        }
+        
         let srcs = src.split(separator: "|")
         for s in srcs {
             let trimmed = s.trimmingCharacters(in: .whitespacesAndNewlines)
             if ("wechat" == trimmed) {
                 self.addSubview(WechatLoginButton())
             } else if ("apple" == trimmed) {
-                self.addSubview(AppleLoginButton())
+                if #available(iOS 13.0, *) {
+                    self.addSubview(AppleLoginButton())
+                } else {
+                    // Fallback on earlier versions
+                }
             } else if ("alipay" == trimmed) {
                 self.addSubview(AlipayLoginButton())
             }

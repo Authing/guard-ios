@@ -9,7 +9,7 @@ import Foundation
 
 open class UserInfo {
     
-    public var raw: NSDictionary?
+    public var raw: NSMutableDictionary?
     public var mfaData: NSDictionary? {
         didSet {
             if let mfas = mfaData?["applicationMfa"] as? [NSDictionary] {
@@ -19,7 +19,9 @@ open class UserInfo {
             }
         }
     }
+    public var customData: [NSMutableDictionary]?
     
+    public var userId: String?
     public var username: String?
     public var email: String?
     public var phone: String?
@@ -43,19 +45,26 @@ open class UserInfo {
     
     public var firstTimeLoginToken: String? = nil
 
-    public static func parse(data: NSDictionary?) -> UserInfo {
-        let userInfo = UserInfo()
+    open func parse(data: NSDictionary?) {
+        if (raw == nil) {
+            raw = data?.mutableCopy() as? NSMutableDictionary
+        } else {
+            if let dic = data {
+                for (key, value) in dic {
+                    if let k = key as? String {
+                        raw!.setValue(value, forKey: k)
+                    }
+                }
+            }
+        }
         
-        userInfo.raw = data
-        
-        userInfo.username = data?["username"] as? String
-        userInfo.email = data?["email"] as? String
-        userInfo.phone = data?["phone"] as? String
-        userInfo.token = data?["token"] as? String
-        
-        return userInfo
+        userId = raw?["id"] as? String
+        username = raw?["username"] as? String
+        email = raw?["email"] as? String
+        phone = raw?["phone"] as? String
+        token = raw?["token"] as? String
     }
-    
+
     public func getUserName() -> String? {
         return username
     }

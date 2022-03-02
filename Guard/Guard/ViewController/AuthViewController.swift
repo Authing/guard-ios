@@ -11,7 +11,8 @@ open class AuthViewController: UIViewController {
     
     public var authFlow: AuthFlow? = AuthFlow()
     
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
+        super.viewDidLoad()
         navigationController?.setNavigationBarHidden(false, animated: true)
 //        let backImage = UIImage(named: "authing_back", in: Bundle(for: Self.self), compatibleWith: nil)
 //        navigationItem.leftBarButtonItem = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(onBack))
@@ -19,6 +20,7 @@ open class AuthViewController: UIViewController {
     }
     
     open override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         let tf: AccountTextField? = Util.findView(view, viewClass: AccountTextField.self)
         if (tf != nil) {
             tf?.syncData()

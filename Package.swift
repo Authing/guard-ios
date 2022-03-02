@@ -5,7 +5,7 @@ let package = Package(
     name: "Guard",
     defaultLocalization: "en",
     platforms: [
-        .macOS(.v10_14), .iOS(.v13), .tvOS(.v13)
+        .macOS(.v10_14), .iOS(.v11), .tvOS(.v13)
     ],
     products: [
         .library(

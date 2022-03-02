@@ -34,8 +34,7 @@ class OneClickViewController: UIViewController {
     
     func finishAndGoHome(_ userInfo: UserInfo?) {
         self.navigationController?.popViewController(animated: true)
-        let vc: MainViewController = MainViewController(nibName: "Home", bundle: nil)
-        vc.userInfo = userInfo
+        let vc: MainViewController = MainViewController(nibName: "AuthingUserProfile", bundle: Bundle(for: UserProfileViewController.self))
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

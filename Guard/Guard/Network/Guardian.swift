@@ -9,17 +9,21 @@ import Foundation
 
 public class Guardian {
     
-    public static func get(urlString: String, completion: @escaping (Int, String?, NSDictionary?) -> Void) {
-        request(urlString: urlString, method: "GET", body: nil, completion: completion)
+    public static func get(_ endPoint: String, completion: @escaping (Int, String?, NSDictionary?) -> Void) {
+        request(endPoint: endPoint, method: "GET", body: nil, completion: completion)
     }
     
-    public static func post(urlString: String, body: NSDictionary?, completion: @escaping (Int, String?, NSDictionary?) -> Void) {
-        request(urlString: urlString, method: "POST", body: body, completion: completion)
+    public static func post(_ endPoint: String, _ body: NSDictionary?, completion: @escaping (Int, String?, NSDictionary?) -> Void) {        request(endPoint: endPoint, method: "POST", body: body, completion: completion)
     }
     
-    private static func request(urlString: String, method: String, body: NSDictionary?, completion: @escaping (Int, String?, NSDictionary?) -> Void) {
+    private static func request(endPoint: String, method: String, body: NSDictionary?, completion: @escaping (Int, String?, NSDictionary?) -> Void) {
         Authing.getConfig { config in
-            request(config: config, urlString: urlString, method: method, body: body, completion: completion)
+            if (config != nil) {
+                let urlString: String = "\(Authing.getSchema())://\(Util.getHost(config!))\(endPoint)";
+                request(config: config, urlString: urlString, method: method, body: body, completion: completion)
+            } else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+            }
         }
     }
     
@@ -68,16 +72,26 @@ public class Guardian {
             }
             
             do {
-                guard let json = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary else {
+                let httpResponse = response as? HTTPURLResponse
+                let statusCode: Int = (httpResponse?.statusCode)!
+                
+                // some API e.g. getCustomUserData returns json array
+                if (statusCode == 200 || statusCode == 201) {
+                    if let jsonArray = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSArray {
+                        let res: NSDictionary = ["result": jsonArray]
+                        completion(200, "", res)
+                        return
+                    }
+                }
+                
+                guard let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary else {
                     print("data is not json when requesting \(urlString)")
                     completion(500, "only accept json data", nil)
                     return
                 }
                 
-                let httpResponse = response as? HTTPURLResponse
-                let statusCode: Int = (httpResponse?.statusCode)!
                 guard statusCode == 200 || statusCode == 201 else {
-                    print("Guardian request network error. Status code:" + statusCode.description)
+                    print("Guardian request network error. Status code:\(statusCode.description). url:\(urlString)")
                     let message: String? = json["message"] as? String
                     completion(statusCode, message ?? "Network Error", json)
                     return
@@ -105,5 +119,83 @@ public class Guardian {
                 completion(500, urlString, nil)
             }
         }.resume()
+    }
+    
+    public static func uploadImage(_ image: UIImage, completion: @escaping (Int, String?) -> Void) {
+        Authing.getConfig { config in
+            if (config != nil) {
+                let urlString: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/upload?folder=photos";
+                _uploadImage(urlString, image, completion: completion)
+            } else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())")
+            }
+        }
+    }
+    
+    public static func _uploadImage(_ urlString: String, _ image: UIImage, completion: @escaping (Int, String?) -> Void) {
+        let url = URL(string: urlString)
+
+        // generate boundary string using a unique per-app string
+        let boundary = UUID().uuidString
+
+        let session = URLSession.shared
+
+        // Set the URLRequest to POST and to the specified URL
+        var urlRequest = URLRequest(url: url!)
+        urlRequest.httpMethod = "POST"
+
+        // Set Content-Type Header to multipart/form-data, this is equivalent to submitting form data with file upload in a web browser
+        // And the boundary is also set here
+        urlRequest.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+
+        var data = Data()
+
+        // Add the image data to the raw http request data
+        data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
+        data.append("Content-Disposition: form-data; name=\"file\"; filename=\"aPhone\"\r\n".data(using: .utf8)!)
+        data.append("Content-Type: image/png\r\n\r\n".data(using: .utf8)!)
+        data.append(image.pngData()!)
+        data.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
+        
+        // Send a POST request to the URL, with the data we created earlier
+        session.uploadTask(with: urlRequest, from: data, completionHandler: { responseData, response, error in
+            guard error == nil else {
+                completion(500, "network error \(url!)")
+                return
+            }
+            
+            let jsonData = try? JSONSerialization.jsonObject(with: responseData!, options: .allowFragments)
+            guard jsonData != nil else {
+                completion(500, "response not json \(url!)")
+                return
+            }
+            
+            guard let json = jsonData as? [String: Any] else {
+                completion(500, "illegal json \(url!)")
+                return
+            }
+            
+            guard let code = json["code"] as? Int else {
+                completion(500, "no response code \(url!)")
+                return
+            }
+            
+            guard code == 200 else {
+                completion(code, json["message"] as? String)
+                return
+            }
+            
+            guard let data = json["data"] as? NSDictionary else {
+                completion(500, "no response data \(url!)")
+                return
+            }
+            
+            if let u = data["url"] as? String {
+                completion(200, u)
+            } else {
+                completion(500, "response data has no url field \(url!)")
+                return
+            }
+        }).resume()
     }
 }

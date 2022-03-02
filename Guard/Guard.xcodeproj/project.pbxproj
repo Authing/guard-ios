@@ -54,6 +54,10 @@
 		7E7D1F6F278EB49F005AAD39 /* EmailLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7D1F6E278EB49F005AAD39 /* EmailLabel.swift */; };
 		7E7D1F71278ECC73005AAD39 /* PhoneLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7D1F70278ECC73005AAD39 /* PhoneLabel.swift */; };
 		7E7D1F73278FC44F005AAD39 /* AuthingFirstTimeLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E7D1F72278FC44F005AAD39 /* AuthingFirstTimeLogin.xib */; };
+		7E87A1BE27CCF8C800E52D5A /* UserProfileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87A1BD27CCF8C800E52D5A /* UserProfileTextField.swift */; };
+		7E87A1C227CDBAEF00E52D5A /* LogoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87A1C127CDBAEF00E52D5A /* LogoutButton.swift */; };
+		7E87A1C427CDBF2600E52D5A /* UserProfileField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87A1C327CDBF2600E52D5A /* UserProfileField.swift */; };
+		7E87A1C627CE330800E52D5A /* UserProfileAvatarField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87A1C527CE330800E52D5A /* UserProfileAvatarField.swift */; };
 		7E8AECB62787D5AF0030D27B /* AFServiceSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E8AECB32787D5AF0030D27B /* AFServiceSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7E8AECB72787D5AF0030D27B /* AFServiceCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E8AECB42787D5AF0030D27B /* AFServiceCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7E8AECB82787D5AF0030D27B /* AFServiceResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E8AECB52787D5AF0030D27B /* AFServiceResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -63,6 +67,7 @@
 		7E9593E1274C813B001459C5 /* Guard.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E9593D5274C813A001459C5 /* Guard.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7E959441274CEECF001459C5 /* Authing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E959440274CEECF001459C5 /* Authing.swift */; };
 		7EA2DD3C27CC84CB00B3E19D /* SocialLoginListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA2DD3B27CC84CB00B3E19D /* SocialLoginListView.swift */; };
+		7EA2DD7D27CCF40200B3E19D /* UserProfileContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA2DD7C27CCF40200B3E19D /* UserProfileContainer.swift */; };
 		7EB2D2FF2786CFA300A819B3 /* Alipay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB2D2FE2786CFA300A819B3 /* Alipay.swift */; };
 		7EB2D30127871E2A00A819B3 /* AppleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB2D30027871E2A00A819B3 /* AppleLoginButton.swift */; };
 		7EB327FA278BD2EB008639AA /* AuthingMFAOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB327F9278BD2EB008639AA /* AuthingMFAOptions.xib */; };
@@ -170,6 +175,10 @@
 		7E7D1F6E278EB49F005AAD39 /* EmailLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLabel.swift; sourceTree = "<group>"; };
 		7E7D1F70278ECC73005AAD39 /* PhoneLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneLabel.swift; sourceTree = "<group>"; };
 		7E7D1F72278FC44F005AAD39 /* AuthingFirstTimeLogin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingFirstTimeLogin.xib; sourceTree = "<group>"; };
+		7E87A1BD27CCF8C800E52D5A /* UserProfileTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileTextField.swift; sourceTree = "<group>"; };
+		7E87A1C127CDBAEF00E52D5A /* LogoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutButton.swift; sourceTree = "<group>"; };
+		7E87A1C327CDBF2600E52D5A /* UserProfileField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileField.swift; sourceTree = "<group>"; };
+		7E87A1C527CE330800E52D5A /* UserProfileAvatarField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileAvatarField.swift; sourceTree = "<group>"; };
 		7E8AECB32787D5AF0030D27B /* AFServiceSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFServiceSDK.h; sourceTree = "<group>"; };
 		7E8AECB42787D5AF0030D27B /* AFServiceCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFServiceCenter.h; sourceTree = "<group>"; };
 		7E8AECB52787D5AF0030D27B /* AFServiceResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFServiceResponse.h; sourceTree = "<group>"; };
@@ -180,6 +189,7 @@
 		7E9593DF274C813B001459C5 /* GuardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardTests.swift; sourceTree = "<group>"; };
 		7E959440274CEECF001459C5 /* Authing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authing.swift; sourceTree = "<group>"; };
 		7EA2DD3B27CC84CB00B3E19D /* SocialLoginListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginListView.swift; sourceTree = "<group>"; };
+		7EA2DD7C27CCF40200B3E19D /* UserProfileContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileContainer.swift; sourceTree = "<group>"; };
 		7EB2D2FE2786CFA300A819B3 /* Alipay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alipay.swift; sourceTree = "<group>"; };
 		7EB2D30027871E2A00A819B3 /* AppleLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginButton.swift; sourceTree = "<group>"; };
 		7EB327F9278BD2EB008639AA /* AuthingMFAOptions.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingMFAOptions.xib; sourceTree = "<group>"; };
@@ -309,7 +319,8 @@
 		7E7566762766F90200C3872F /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				7EB32806278C185E008639AA /* UserProfile */,
+				7EA2DD7B27CCF3ED00B3E19D /* UserProfile */,
+				7EB32806278C185E008639AA /* UserComplete */,
 				7EB327FB278BD455008639AA /* MFA */,
 				7E1998D02783D3B9002C6F81 /* Social */,
 				7ED434CA277569D100893EDD /* Internal */,
@@ -337,6 +348,7 @@
 				7E7D1F6E278EB49F005AAD39 /* EmailLabel.swift */,
 				7E7D1F70278ECC73005AAD39 /* PhoneLabel.swift */,
 				7EDFB6CC27C7390A00B77DEE /* PrivacyConfirmBox.swift */,
+				7E87A1C127CDBAEF00E52D5A /* LogoutButton.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -472,6 +484,17 @@
 			path = GuardTests;
 			sourceTree = "<group>";
 		};
+		7EA2DD7B27CCF3ED00B3E19D /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				7EA2DD7C27CCF40200B3E19D /* UserProfileContainer.swift */,
+				7E87A1C327CDBF2600E52D5A /* UserProfileField.swift */,
+				7E87A1C527CE330800E52D5A /* UserProfileAvatarField.swift */,
+				7E87A1BD27CCF8C800E52D5A /* UserProfileTextField.swift */,
+			);
+			path = UserProfile;
+			sourceTree = "<group>";
+		};
 		7EB327FB278BD455008639AA /* MFA */ = {
 			isa = PBXGroup;
 			children = (
@@ -484,7 +507,7 @@
 			path = MFA;
 			sourceTree = "<group>";
 		};
-		7EB32806278C185E008639AA /* UserProfile */ = {
+		7EB32806278C185E008639AA /* UserComplete */ = {
 			isa = PBXGroup;
 			children = (
 				7EB32807278C1870008639AA /* BindPhoneButton.swift */,
@@ -498,7 +521,7 @@
 				7EDFB6C827C4D1C500B77DEE /* UserInfoCompleteFieldFormSelect.swift */,
 				7EDFB6CA27C4DB9300B77DEE /* UserInfoCompleteFieldFormDateTime.swift */,
 			);
-			path = UserProfile;
+			path = UserComplete;
 			sourceTree = "<group>";
 		};
 		7ECF8AC02759F819004F8FC5 /* Network */ = {
@@ -720,6 +743,7 @@
 				7EB327FD278BD473008639AA /* MFATableView.swift in Sources */,
 				7E8AECBC27882D2D0030D27B /* SocialLoginButton.swift in Sources */,
 				7ECF8AC52759FE8D004F8FC5 /* SDKUsageTask.swift in Sources */,
+				7E87A1C627CE330800E52D5A /* UserProfileAvatarField.swift in Sources */,
 				7EB32808278C1870008639AA /* BindPhoneButton.swift in Sources */,
 				7EB32805278C17B3008639AA /* MFAPhoneButton.swift in Sources */,
 				7EB3280E278D10B7008639AA /* MFAEmailButton.swift in Sources */,
@@ -752,10 +776,13 @@
 				7EDFB6C527C4826100B77DEE /* UserInfoCompleteFieldPhone.swift in Sources */,
 				7EB32814278D1FDC008639AA /* MFAOTPButton.swift in Sources */,
 				7EF66C77277C38DB00FCBBEB /* RegisterButton.swift in Sources */,
+				7EA2DD7D27CCF40200B3E19D /* UserProfileContainer.swift in Sources */,
+				7E87A1BE27CCF8C800E52D5A /* UserProfileTextField.swift in Sources */,
 				7EDFB6C127C379EC00B77DEE /* UserInfoCompleteFieldEmail.swift in Sources */,
 				7EF66C8B277D5A7100FCBBEB /* Validator.swift in Sources */,
 				7EB2D30127871E2A00A819B3 /* AppleLoginButton.swift in Sources */,
 				7EDFB6CD27C7390A00B77DEE /* PrivacyConfirmBox.swift in Sources */,
+				7E87A1C427CDBF2600E52D5A /* UserProfileField.swift in Sources */,
 				7ECF8AC22759F82D004F8FC5 /* Guardian.swift in Sources */,
 				7EDFB6C327C3AABB00B77DEE /* UserInfoCompleteContentView.swift in Sources */,
 				7EF66C75277C37CE00FCBBEB /* BasePasswordTextField.swift in Sources */,
@@ -781,6 +808,7 @@
 				7ED434CE27757E4B00893EDD /* LoginContainer.swift in Sources */,
 				7E12D7B6277DE9EF00703FC1 /* UserManager.swift in Sources */,
 				7E02F46727950C35007FA048 /* UserInfoCompleteContainer.swift in Sources */,
+				7E87A1C227CDBAEF00E52D5A /* LogoutButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -959,7 +987,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1010,7 +1038,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

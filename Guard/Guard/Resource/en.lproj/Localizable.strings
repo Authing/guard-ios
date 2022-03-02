@@ -52,3 +52,11 @@
 "authing_sex_male" = "M";
 "authing_sex_female" = "F";
 "authing_sex_unspecified" = "U";
+
+// user profile
+"authing_user_profile" = "User profile";
+"authing_undefined" = "Undefined";
+"authing_avatar" = "Avatar";
+"authing_nickname" = "Nickname";
+"authing_name" = "Name";
+"authing_logout" = "Logout";

@@ -8,6 +8,7 @@
 import UIKit
 import AuthenticationServices
 
+@available(iOS 13.0, *)
 open class AppleLoginButton: SocialLoginButton, ASAuthorizationControllerDelegate {
 
     public override init(frame: CGRect) {

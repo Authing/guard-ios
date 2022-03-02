@@ -31,10 +31,10 @@ public class AuthFlow {
     
     public var resetPasswordFirstTimeLoginXibName: String? = nil
     
-    init() {
+    public init() {
     }
     
-    init(_ data: NSDictionary) {
+    public init(_ data: NSDictionary) {
         self.data = data.mutableCopy() as! NSDictionary
     }
     

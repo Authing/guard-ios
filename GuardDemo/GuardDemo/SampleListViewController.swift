@@ -54,8 +54,8 @@ class SampleListViewController: UITableViewController {
     }
     
     private func goHome(userInfo: UserInfo?) {
-        let vc: MainViewController = MainViewController(nibName: "Home", bundle: nil)
-        vc.userInfo = userInfo
+        let vc = MainViewController(nibName: "AuthingUserProfile", bundle: Bundle(for: UserProfileViewController.self))
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

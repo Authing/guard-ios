@@ -52,3 +52,11 @@
 "authing_sex_male" = "男";
 "authing_sex_female" = "女";
 "authing_sex_unspecified" = "保密";
+
+// user profile
+"authing_user_profile" = "个人中心";
+"authing_undefined" = "未定义";
+"authing_avatar" = "头像";
+"authing_nickname" = "昵称";
+"authing_name" = "姓名";
+"authing_logout" = "退出登录";

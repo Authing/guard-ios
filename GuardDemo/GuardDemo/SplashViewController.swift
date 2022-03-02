@@ -5,19 +5,40 @@
 //  Created by Lance Mao on 2021/11/23.
 //
 
-import UIKit
+import Guard
 
 class SplashViewController: UIViewController {
 
     @IBOutlet weak var logoView: UIImageView!
+    var flag: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Authing.autoLogin() { code, message, userInfo in
+            DispatchQueue.main.async() {
+                self.next(1)
+            }
+        }
+        
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { (timer) in
-            let rootVC = SampleListViewController(style: .plain)
+            self.next(2)
+        }
+    }
+    
+    func next(_ f: Int) {
+        flag |= f
+        
+        if (flag == 3) {
+            var root: UIViewController? = nil
+            if (Authing.getCurrentUser() != nil) {
+                root = MainViewController(nibName: "AuthingUserProfile", bundle: Bundle(for: UserProfileViewController.self))
+            } else {
+                root = SampleListViewController(style: .plain)
+            }
+            
             let keyWindow = UIApplication.shared.windows.first
-            let nav: UINavigationController = UINavigationController(rootViewController: rootVC)
+            let nav: UINavigationController = UINavigationController(rootViewController: root!)
             keyWindow?.rootViewController = nav
         }
     }

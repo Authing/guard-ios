@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7E7566AE2768A30400C3872F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7566AD2768A30400C3872F /* MainViewController.swift */; };
-		7E7566B02768A35300C3872F /* Home.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E7566AF2768A35300C3872F /* Home.xib */; };
 		7E7566BD2769957800C3872F /* OneClickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7566BC2769957800C3872F /* OneClickViewController.swift */; };
 		7E7566BF276995C500C3872F /* OneClick.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E7566BE276995C500C3872F /* OneClick.xib */; };
 		7E7566EE2769D40E00C3872F /* OneAuth.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7E7566ED2769D40E00C3872F /* OneAuth.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -46,7 +45,6 @@
 
 /* Begin PBXFileReference section */
 		7E7566AD2768A30400C3872F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		7E7566AF2768A35300C3872F /* Home.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Home.xib; sourceTree = "<group>"; };
 		7E7566B42769950E00C3872F /* WYOAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WYOAuth.framework; path = GuardDemo/OneClick/WYOAuth.framework; sourceTree = "<group>"; };
 		7E7566B52769950E00C3872F /* NTESQuickPass.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NTESQuickPass.framework; path = GuardDemo/OneClick/NTESQuickPass.framework; sourceTree = "<group>"; };
 		7E7566B62769950E00C3872F /* WYEAccountApiSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WYEAccountApiSDK.framework; path = GuardDemo/OneClick/WYEAccountApiSDK.framework; sourceTree = "<group>"; };
@@ -129,7 +127,6 @@
 				7E7566AD2768A30400C3872F /* MainViewController.swift */,
 				7E959423274CB4E7001459C5 /* LaunchScreen.storyboard */,
 				7E95941E274CB4E2001459C5 /* Main.storyboard */,
-				7E7566AF2768A35300C3872F /* Home.xib */,
 				7E959421274CB4E7001459C5 /* Assets.xcassets */,
 				7E959426274CB4E7001459C5 /* Info.plist */,
 				7ED434D72775BA7000893EDD /* Localizable.strings */,
@@ -232,7 +229,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E959425274CB4E7001459C5 /* LaunchScreen.storyboard in Resources */,
-				7E7566B02768A35300C3872F /* Home.xib in Resources */,
 				7EACD00227915AAC005CBB2E /* Test.xib in Resources */,
 				7E959422274CB4E7001459C5 /* Assets.xcassets in Resources */,
 				7ED434D52775BA7000893EDD /* Localizable.strings in Resources */,

@@ -69,13 +69,33 @@ public class Authing {
         Alipay.customScheme = customScheme
     }
     
+    public static func autoLogin(completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        if (getCurrentUser() == nil) {
+            completion(500, "no user logged in", nil)
+        } else {
+            AuthClient.getCurrentUser { code, message, userInfo in
+                if (code != 200) {
+                    UserManager.removeUser()
+                    sCurrentUser = nil
+                    completion(code, message, nil)
+                } else {
+                    AuthClient.updateIdToken(completion: completion)
+                }
+            }
+        }
+    }
+    
     public static func getCurrentUser() -> UserInfo? {
+        if (sCurrentUser == nil) {
+            sCurrentUser = UserManager.getUser()
+        }
         return sCurrentUser
     }
     
     public static func saveUser(_ userInfo: UserInfo?) {
         sCurrentUser = userInfo
         // TODO save to user defaults then Core Data
+        UserManager.saveUser(sCurrentUser)
     }
     
     private static func requestPublicConfig() {
