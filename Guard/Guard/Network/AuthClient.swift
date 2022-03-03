@@ -9,6 +9,7 @@ import Foundation
 
 public class AuthClient {
     
+    // MARK: Basic authentication APIs
     public static func registerByEmail(email: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let encryptedPassword = Util.encryptPassword(password)
         let body: NSDictionary = ["email" : email, "password" : encryptedPassword, "forceLogin" : true]
@@ -37,6 +38,22 @@ public class AuthClient {
         let encryptedPassword = Util.encryptPassword(password)
         let body: NSDictionary = ["account" : account, "password" : encryptedPassword]
         Guardian.post("/api/v2/login/account", body) { code, message, data in
+            createUserInfo(code, message, data, completion: completion)
+        }
+    }
+    
+    public static func loginByLDAP(username: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        let encryptedPassword = Util.encryptPassword(password)
+        let body: NSDictionary = ["username" : username, "password" : encryptedPassword]
+        Guardian.post("/api/v2/login/ldap", body) { code, message, data in
+            createUserInfo(code, message, data, completion: completion)
+        }
+    }
+    
+    public static func loginByAD(username: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        let encryptedPassword = Util.encryptPassword(password)
+        let body: NSDictionary = ["username" : username, "password" : encryptedPassword]
+        Guardian.post("/api/v2/login/ad", body) { code, message, data in
             createUserInfo(code, message, data, completion: completion)
         }
     }
@@ -146,6 +163,22 @@ public class AuthClient {
         }
     }
     
+    public static func updateProfile(_ object: NSDictionary, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        Guardian.post("/api/v2/users/profile/update", object) { code, message, data in
+            createUserInfo(code, message, data, completion: completion)
+        }
+    }
+    
+    public static func updatePassword(_ newPassword: String, _ oldPassword: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        let body: NSMutableDictionary = ["newPassword" : Util.encryptPassword(newPassword)]
+        if (oldPassword != nil) {
+            body.setValue(Util.encryptPassword(oldPassword!), forKey: "oldPassword")
+        }
+        Guardian.post("/api/v2/password/update", body) { code, message, data in
+            createUserInfo(code, message, data, completion: completion)
+        }
+    }
+    
     public static func bindPhone(phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let body: NSDictionary = ["phone" : phone, "phoneCode" : code]
         Guardian.post("/api/v2/users/phone/bind", body) { code, message, data in
@@ -172,18 +205,69 @@ public class AuthClient {
         }
     }
     
-    public static func updateProfile(_ object: NSDictionary, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        Guardian.post("/api/v2/users/profile/update", object) { code, message, data in
-            createUserInfo(code, message, data, completion: completion)
-        }
-    }
-    
     public static func updateIdToken(completion: @escaping(Int, String?, UserInfo?) -> Void) {
         Guardian.post("/api/v2/users/refresh-token", [:]) { code, message, data in
             createUserInfo(Authing.getCurrentUser(), code, message, data, completion: completion)
         }
     }
     
+    public static func getSecurityLevel(completion: @escaping(Int, String?, NSDictionary?) -> Void) {
+        Guardian.get("/api/v2/users/me/security-level", completion: completion)
+    }
+    
+    public static func listApplications(page: Int = 1, limit: Int = 10, completion: @escaping(Int, String?, NSArray?) -> Void) {
+        Guardian.get("/api/v2/users/me/applications/allowed?page=\(String(page))&limit=\(String(limit))") { code, message, data in
+            if (code == 200) {
+                completion(code, message, data?["list"] as? NSArray)
+            } else {
+                completion(code, message, nil)
+            }
+        }
+    }
+    
+    public static func listOrgs(page: Int = 1, limit: Int = 10, completion: @escaping(Int, String?, NSArray?) -> Void) {
+        if let userId = Authing.getCurrentUser()?.userId {
+            Guardian.get("/api/v2/users/\(userId)/orgs") { code, message, data in
+                if (code == 200) {
+                    completion(code, message, data?["data"] as? NSArray)
+                } else {
+                    completion(code, message, nil)
+                }
+            }
+        } else {
+            completion(2020, "not logged in", nil)
+        }
+    }
+    
+    public static func listRoles(namespace: String? = nil, completion: @escaping(Int, String?, NSArray?) -> Void) {
+        Guardian.get("/api/v2/users/me/roles\(namespace == nil ? "" : "?namespace=" + namespace!)") { code, message, data in
+            if (code == 200) {
+                completion(code, message, data?["data"] as? NSArray)
+            } else {
+                completion(code, message, nil)
+            }
+        }
+    }
+    
+    public static func listAuthorizedResources(namespace: String = "default", resourceType: String? = nil, completion: @escaping(Int, String?, NSArray?) -> Void) {
+        let body: NSDictionary = ["namespace" : namespace]
+        if (resourceType != nil) {
+            body.setValue(Util.encryptPassword(resourceType!), forKey: "resourceType")
+        }
+        Guardian.post("/api/v2/users/resource/authorized", body) { code, message, data in
+            if (code == 200) {
+                completion(code, message, data?["list"] as? NSArray)
+            } else {
+                completion(code, message, nil)
+            }
+        }
+    }
+    
+    public static func deleteAccount(completion: @escaping(Int, String?, NSDictionary?) -> Void) {
+        Guardian.delete("/api/v2/users/delete", completion: completion)
+    }
+    
+    // MARK: Social APIs
     public static func loginByWechat(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         Authing.getConfig { config in
             guard config != nil else {
@@ -240,6 +324,7 @@ public class AuthClient {
         }
     }
     
+    // MARK: MFA APIs
     public static func mfaCheck(phone: String?, email: String?, completion: @escaping(Int, String?, Bool?) -> Void) {
         var body: NSDictionary? = nil
         if (phone != nil) {
@@ -272,26 +357,33 @@ public class AuthClient {
             createUserInfo(code, message, data, completion: completion)
         }
     }
+    
+    // MARK: Scan APIs
+    public static func markQRCodeScanned(ticket: String, completion: @escaping(Int, String?, NSDictionary?) -> Void) {
+        Guardian.post("/api/v2/qrcode/scanned", ["random" : ticket], completion: completion)
+    }
+    
+    public static func loginByScannedTicket(ticket: String, completion: @escaping(Int, String?, NSDictionary?) -> Void) {
+        Guardian.post("/api/v2/qrcode/confirm", ["random" : ticket], completion: completion)
+    }
 
+    // MARK: Util APIs
     public static func createUserInfo(_ code: Int, _ message: String?, _ data: NSDictionary?, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         createUserInfo(nil, code, message, data, completion: completion)
     }
         
     public static func createUserInfo(_ user: UserInfo?, _ code: Int, _ message: String?, _ data: NSDictionary?, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        var userInfo: UserInfo? = user
-        if (userInfo == nil) {
-            userInfo = UserInfo()
-        }
+        let userInfo = user ?? UserInfo()
         if (code == 200) {
-            userInfo!.parse(data: data)
+            userInfo.parse(data: data)
             Authing.saveUser(userInfo)
-            getCustomUserData(userInfo: userInfo!, completion: completion)
+            getCustomUserData(userInfo: userInfo, completion: completion)
         } else if (code == Const.EC_MFA_REQUIRED) {
             Authing.saveUser(userInfo)
-            userInfo?.mfaData = data
+            userInfo.mfaData = data
             completion(code, message, userInfo)
         } else if (code == Const.EC_FIRST_TIME_LOGIN) {
-            userInfo?.firstTimeLoginToken = data?["token"] as? String
+            userInfo.firstTimeLoginToken = data?["token"] as? String
             completion(code, message, userInfo)
         } else {
             completion(code, message, nil)

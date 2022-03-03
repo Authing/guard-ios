@@ -258,4 +258,14 @@ public class Util {
         
         return current.viewController?.authFlow?.data[AuthFlow.KEY_ACCOUNT] as? String
     }
+    
+    public static func randomString(length: Int) -> String {
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String((0..<length).map{ _ in letters.randomElement()! })
+    }
+    
+    public static func getQueryStringParameter(url: URL, param: String) -> String? {
+        guard let url = URLComponents(url: url, resolvingAgainstBaseURL: true) else { return nil }
+        return url.queryItems?.first(where: { $0.name == param })?.value
+    }
 }

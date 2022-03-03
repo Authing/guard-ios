@@ -16,6 +16,9 @@ public class Guardian {
     public static func post(_ endPoint: String, _ body: NSDictionary?, completion: @escaping (Int, String?, NSDictionary?) -> Void) {        request(endPoint: endPoint, method: "POST", body: body, completion: completion)
     }
     
+    public static func delete(_ endPoint: String, _ body: NSDictionary? = nil, completion: @escaping (Int, String?, NSDictionary?) -> Void) {        request(endPoint: endPoint, method: "DELETE", body: body, completion: completion)
+    }
+    
     private static func request(endPoint: String, method: String, body: NSDictionary?, completion: @escaping (Int, String?, NSDictionary?) -> Void) {
         Authing.getConfig { config in
             if (config != nil) {
@@ -41,13 +44,11 @@ public class Guardian {
         if (config != nil && config?.userPoolId != nil) {
             request.addValue((config?.userPoolId)!, forHTTPHeaderField: "x-authing-userpool-id")
         }
-        let currentUser = Authing.getCurrentUser()
-        if (currentUser != nil) {
-            let token = currentUser!.token
-            if (token != nil) {
-                request.addValue("Bearer \(token!)", forHTTPHeaderField: "Authorization")
-            } else if (currentUser!.mfaToken != nil) {
-                request.addValue("Bearer \(currentUser!.mfaToken!)", forHTTPHeaderField: "Authorization")
+        if let currentUser = Authing.getCurrentUser() {
+            if let token = currentUser.idToken {
+                request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+            } else if let mfaToken = currentUser.mfaToken {
+                request.addValue("Bearer \(mfaToken)", forHTTPHeaderField: "Authorization")
             }
         }
         request.timeoutInterval = 60
@@ -132,32 +133,22 @@ public class Guardian {
         }
     }
     
-    public static func _uploadImage(_ urlString: String, _ image: UIImage, completion: @escaping (Int, String?) -> Void) {
+    private static func _uploadImage(_ urlString: String, _ image: UIImage, completion: @escaping (Int, String?) -> Void) {
         let url = URL(string: urlString)
-
-        // generate boundary string using a unique per-app string
         let boundary = UUID().uuidString
-
         let session = URLSession.shared
-
-        // Set the URLRequest to POST and to the specified URL
+        
         var urlRequest = URLRequest(url: url!)
         urlRequest.httpMethod = "POST"
-
-        // Set Content-Type Header to multipart/form-data, this is equivalent to submitting form data with file upload in a web browser
-        // And the boundary is also set here
         urlRequest.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
 
         var data = Data()
-
-        // Add the image data to the raw http request data
         data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
         data.append("Content-Disposition: form-data; name=\"file\"; filename=\"aPhone\"\r\n".data(using: .utf8)!)
         data.append("Content-Type: image/png\r\n\r\n".data(using: .utf8)!)
         data.append(image.pngData()!)
         data.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
         
-        // Send a POST request to the URL, with the data we created earlier
         session.uploadTask(with: urlRequest, from: data, completionHandler: { responseData, response, error in
             guard error == nil else {
                 completion(500, "network error \(url!)")

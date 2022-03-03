@@ -17,7 +17,7 @@ open class UserManager {
         }
         
         let defaults = UserDefaults.standard
-        defaults.set(userInfo?.token, forKey: KEY_USER_TOKEN)
+        defaults.set(userInfo?.idToken, forKey: KEY_USER_TOKEN)
     }
     
     public static func getUser() -> UserInfo? {

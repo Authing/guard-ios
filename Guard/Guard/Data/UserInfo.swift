@@ -25,7 +25,27 @@ open class UserInfo {
     public var username: String?
     public var email: String?
     public var phone: String?
+    public var photo: String? {
+        get {
+            return raw?["photo"] as? String ?? raw?["picture"] as? String
+        }
+    }
     public var token: String?
+    public var idToken: String? { // used as id token
+        get {
+            return token ?? raw?["id_token"] as? String
+        }
+    }
+    public var accessToken: String? {
+        get {
+            return raw?["access_token"] as? String
+        }
+    }
+    public var refreshToken: String? {
+        get {
+            return raw?["refresh_token"] as? String
+        }
+    }
     public var mfaToken: String? {
         get {
             return mfaData?["mfaToken"] as? String

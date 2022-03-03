@@ -58,6 +58,8 @@
 		7E87A1C227CDBAEF00E52D5A /* LogoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87A1C127CDBAEF00E52D5A /* LogoutButton.swift */; };
 		7E87A1C427CDBF2600E52D5A /* UserProfileField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87A1C327CDBF2600E52D5A /* UserProfileField.swift */; };
 		7E87A1C627CE330800E52D5A /* UserProfileAvatarField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87A1C527CE330800E52D5A /* UserProfileAvatarField.swift */; };
+		7E87A1C827CF52C100E52D5A /* AuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87A1C727CF52C100E52D5A /* AuthRequest.swift */; };
+		7E87A1CA27CF603B00E52D5A /* OIDCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87A1C927CF603B00E52D5A /* OIDCClient.swift */; };
 		7E8AECB62787D5AF0030D27B /* AFServiceSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E8AECB32787D5AF0030D27B /* AFServiceSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7E8AECB72787D5AF0030D27B /* AFServiceCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E8AECB42787D5AF0030D27B /* AFServiceCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7E8AECB82787D5AF0030D27B /* AFServiceResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E8AECB52787D5AF0030D27B /* AFServiceResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -179,6 +181,8 @@
 		7E87A1C127CDBAEF00E52D5A /* LogoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutButton.swift; sourceTree = "<group>"; };
 		7E87A1C327CDBF2600E52D5A /* UserProfileField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileField.swift; sourceTree = "<group>"; };
 		7E87A1C527CE330800E52D5A /* UserProfileAvatarField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileAvatarField.swift; sourceTree = "<group>"; };
+		7E87A1C727CF52C100E52D5A /* AuthRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequest.swift; sourceTree = "<group>"; };
+		7E87A1C927CF603B00E52D5A /* OIDCClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OIDCClient.swift; sourceTree = "<group>"; };
 		7E8AECB32787D5AF0030D27B /* AFServiceSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFServiceSDK.h; sourceTree = "<group>"; };
 		7E8AECB42787D5AF0030D27B /* AFServiceCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFServiceCenter.h; sourceTree = "<group>"; };
 		7E8AECB52787D5AF0030D27B /* AFServiceResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFServiceResponse.h; sourceTree = "<group>"; };
@@ -529,6 +533,8 @@
 			children = (
 				7ECF8AC12759F82D004F8FC5 /* Guardian.swift */,
 				7E75669F27684A5E00C3872F /* AuthClient.swift */,
+				7E87A1C727CF52C100E52D5A /* AuthRequest.swift */,
+				7E87A1C927CF603B00E52D5A /* OIDCClient.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -756,6 +762,8 @@
 				7ED434D22775ABA000893EDD /* TextFieldLayout.swift in Sources */,
 				7E7566A22768801E00C3872F /* UIView+Authing.swift in Sources */,
 				7E02F46927950C57007FA048 /* UserInfoCompleteFieldForm.swift in Sources */,
+				7E87A1CA27CF603B00E52D5A /* OIDCClient.swift in Sources */,
+				7E87A1C827CF52C100E52D5A /* AuthRequest.swift in Sources */,
 				7ED434E0277980B100893EDD /* ErrorLabel.swift in Sources */,
 				7EB32816278D5DD4008639AA /* FramedVerifyCodeTextField.swift in Sources */,
 				7E75668B276746AF00C3872F /* AppLogo.swift in Sources */,
