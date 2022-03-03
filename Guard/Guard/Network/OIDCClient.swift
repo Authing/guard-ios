@@ -19,7 +19,7 @@ public class OIDCClient {
                 + "&nonce=" + authRequest.nonce
                 + "&redirect_uri=" + authRequest.redirect_uri
                 + "&response_type=" + authRequest.response_type
-                + "&scope=" + authRequest.scopeURLEncoded
+                + "&scope=" + authRequest.scope.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
                 + "&prompt=consent"
                 + "&state=" + authRequest.state
                 + "&code_challenge=" + authRequest.codeChallenge!
@@ -54,7 +54,7 @@ public class OIDCClient {
         }
     }
     
-    public static func getNewAccessTokenByRefreshToken(userInfo: UserInfo?, authRequest: AuthRequest, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public static func getNewAccessTokenByRefreshToken(userInfo: UserInfo?, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let rt = userInfo?.refreshToken ?? ""
         let body = "client_id=" + Authing.getAppId() + "&grant_type=refresh_token" + "&refresh_token=" + rt;
         request(userInfo: nil, endPoint: "/oidc/token", method: "POST", body: body) { code, message, data in

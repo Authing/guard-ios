@@ -15,7 +15,7 @@ https://github.com/Authing/guard-ios
 2. 在应用启动（如 AppDelegate.swift）里面调用：
 
 ```swift
-Authing.start(appid: "your_authing_app_id");
+Authing.start("your_authing_app_id");
 ```
 
 3. 在需要启动认证流程的 ViewController（如闪屏）上，调用：

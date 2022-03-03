@@ -98,7 +98,11 @@ open class FramedVerifyCodeTextField: UIView, UITextFieldDelegate {
     }
     
     public func textFieldDidBeginEditing(_ textField: UITextField) {
-        UIMenuController.shared.hideMenu()
+        if #available(iOS 13.0, *) {
+            UIMenuController.shared.hideMenu()
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     public func textFieldDidEndEditing(_ textField: UITextField) {

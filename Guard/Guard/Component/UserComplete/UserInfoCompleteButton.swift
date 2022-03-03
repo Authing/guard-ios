@@ -209,7 +209,7 @@ open class UserInfoCompleteButton: PrimaryButton {
             }
         }
         
-        AuthClient.updateProfile(updatedInfo, completion: { code, message, userInfo in
+        AuthClient.updateProfile(object: updatedInfo, completion: { code, message, userInfo in
             if (code == 200) {
                 completion(true, userInfo)
             } else {

@@ -81,7 +81,7 @@ open class RegisterButton: PrimaryButton {
     
     private func registerByPhoneCode(_ phone: String, _ password: String, _ code: String) {
         startLoading()
-        AuthClient.registerByPhoneCode(phone: phone, password: password, code: code) { code, message, userInfo in
+        AuthClient.registerByPhoneCode(phone: phone, code: code, password: password) { code, message, userInfo in
             self.done(code: code, message: message, userInfo: userInfo)
         }
     }

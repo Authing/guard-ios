@@ -13,7 +13,6 @@ open class AuthRequest {
     public var redirect_uri: String
     public var response_type: String
     public var scope: String
-    public var scopeURLEncoded: String
     public var nonce: String
     public var state: String
     public var uuid: String? = nil
@@ -26,7 +25,6 @@ open class AuthRequest {
         redirect_uri = "https://console.authing.cn/console/get-started/\(client_id)";
         response_type = "code";
         scope = "openid profile email phone username address offline_access role extended_fields";
-        scopeURLEncoded = scope.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
         nonce = Util.randomString(length: 10)
         state = Util.randomString(length: 10)
         codeVerifier = Util.randomString(length: 43)

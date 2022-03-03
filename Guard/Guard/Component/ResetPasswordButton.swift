@@ -109,7 +109,7 @@ open class ResetPasswordButton: PrimaryButton {
         }
 
         startLoading()
-        AuthClient.resetPasswordByPhone(phone: phone!, newPassword: password!, code: vCode!) { code, message in
+        AuthClient.resetPasswordByPhone(phone: phone!, code: vCode!, newPassword: password!) { code, message in
             DispatchQueue.main.async() {
                 if (code == 200) {
                     self.gotoLogin()
@@ -130,7 +130,7 @@ open class ResetPasswordButton: PrimaryButton {
         }
 
         startLoading()
-        AuthClient.resetPasswordByEmail(email: email!, newPassword: password!, code: vCode!) { code, message in
+        AuthClient.resetPasswordByEmail(email: email!, code: vCode!, newPassword: password!) { code, message in
             DispatchQueue.main.async() {
                 if (code == 200) {
                     self.gotoLogin()

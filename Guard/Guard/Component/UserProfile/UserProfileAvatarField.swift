@@ -57,13 +57,12 @@ open class UserProfileAvatarField: UserProfileField, UINavigationControllerDeleg
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             let picker = UIImagePickerController()
             picker.delegate = self
             picker.allowsEditing = true
             picker.sourceType = UIImagePickerController.SourceType.photoLibrary
             self.viewController?.present(picker, animated: true, completion: nil)
-            
         } else {
             print("read photo library error")
         }

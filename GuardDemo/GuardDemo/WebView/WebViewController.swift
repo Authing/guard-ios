@@ -16,8 +16,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         webView = WKWebView()
         webView?.navigationDelegate = self
         view = webView
-        
-        
+
         OIDCClient.buildAuthorizeUrl(authRequest: authRequest) { url in
             if url != nil {
                 self.webView?.load(URLRequest(url: url!))
@@ -27,22 +26,25 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        if let url = navigationAction.request.url {
-            if url.absoluteString.hasPrefix(authRequest.redirect_uri) == true {
-                if let authCode = Util.getQueryStringParameter(url: url, param: "code") {
-                    OIDCClient.authByCode(code: authCode, authRequest: authRequest) { code, message, userInfo in
-                        if (code == 200) {
-                            OIDCClient.getNewAccessTokenByRefreshToken(userInfo: userInfo, authRequest: self.authRequest) { code, message, userInfo in
-                                self.goHome()
-                            }
-                        }
+        guard let url = navigationAction.request.url,
+                url.absoluteString.hasPrefix(authRequest.redirect_uri) == true else {
+            decisionHandler(.allow)
+            return
+        }
+        
+        if let authCode = Util.getQueryStringParameter(url: url, param: "code") {
+            OIDCClient.authByCode(code: authCode, authRequest: authRequest) { code, message, userInfo in
+                if (code == 200) {
+                    OIDCClient.getNewAccessTokenByRefreshToken(userInfo: userInfo) { code, message, userInfo in
+                        print("\(userInfo?.accessToken ?? "")")
+                        print("\(userInfo?.idToken ?? "")")
+                        print("\(userInfo?.refreshToken ?? "")")
+                        self.goHome()
                     }
                 }
-                decisionHandler(.cancel)
-                return
             }
         }
-        decisionHandler(.allow)
+        decisionHandler(.cancel)
     }
     
     private func goHome() {

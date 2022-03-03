@@ -26,7 +26,7 @@ public class AuthClient {
         }
     }
     
-    public static func registerByPhoneCode(phone: String, password: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public static func registerByPhoneCode(phone: String, code: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let encryptedPassword = Util.encryptPassword(password)
         let body: NSDictionary = ["phone" : phone, "password" : encryptedPassword, "code" : code, "forceLogin" : true]
         Guardian.post("/api/v2/register/phone-code", body) { code, message, data in
@@ -38,6 +38,13 @@ public class AuthClient {
         let encryptedPassword = Util.encryptPassword(password)
         let body: NSDictionary = ["account" : account, "password" : encryptedPassword]
         Guardian.post("/api/v2/login/account", body) { code, message, data in
+            createUserInfo(code, message, data, completion: completion)
+        }
+    }
+    
+    public static func loginByPhoneCode(phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        let body: NSDictionary = ["phone" : phone, "code" : code]
+        Guardian.post("/api/v2/login/phone-code", body) { code, message, data in
             createUserInfo(code, message, data, completion: completion)
         }
     }
@@ -54,13 +61,6 @@ public class AuthClient {
         let encryptedPassword = Util.encryptPassword(password)
         let body: NSDictionary = ["username" : username, "password" : encryptedPassword]
         Guardian.post("/api/v2/login/ad", body) { code, message, data in
-            createUserInfo(code, message, data, completion: completion)
-        }
-    }
-    
-    public static func loginByPhoneCode(phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        let body: NSDictionary = ["phone" : phone, "code" : code]
-        Guardian.post("/api/v2/login/phone-code", body) { code, message, data in
             createUserInfo(code, message, data, completion: completion)
         }
     }
@@ -86,8 +86,12 @@ public class AuthClient {
         }
     }
     
-    public static func sendSms(phone: String, completion: @escaping(Int, String?) -> Void) {
-        Guardian.post("/api/v2/sms/send", ["phone" : phone]) { code, message, data in
+    public static func sendSms(phone: String, phoneCountryCode: String? = nil, completion: @escaping(Int, String?) -> Void) {
+        let body: NSMutableDictionary = ["phone" : phone]
+        if phoneCountryCode != nil {
+            body.setValue(phoneCountryCode, forKey: "phoneCountryCode")
+        }
+        Guardian.post("/api/v2/sms/send", body) { code, message, data in
             completion(code, message)
         }
     }
@@ -132,25 +136,25 @@ public class AuthClient {
     public static func uploadAvatar(image: UIImage, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         Guardian.uploadImage(image, completion: { code, result in
             if (code == 200 && result != nil) {
-                AuthClient.updateProfile(["photo" : result!], completion: completion)
+                AuthClient.updateProfile(object: ["photo" : result!], completion: completion)
             } else {
                 completion(code, result, nil)
             }
         })
     }
     
-    public static func resetPasswordByEmail(email: String, newPassword: String, code: String, completion: @escaping(Int, String?) -> Void) {
+    public static func resetPasswordByPhone(phone: String, code: String, newPassword: String, completion: @escaping(Int, String?) -> Void) {
         let encryptedPassword = Util.encryptPassword(newPassword)
-        let body: NSDictionary = ["email" : email, "code" : code, "newPassword" : encryptedPassword]
-        Guardian.post("/api/v2/password/reset/email", body) { code, message, data in
+        let body: NSDictionary = ["phone" : phone, "code" : code, "newPassword" : encryptedPassword]
+        Guardian.post("/api/v2/password/reset/sms", body) { code, message, data in
             completion(code, message)
         }
     }
     
-    public static func resetPasswordByPhone(phone: String, newPassword: String, code: String, completion: @escaping(Int, String?) -> Void) {
+    public static func resetPasswordByEmail(email: String, code: String, newPassword: String, completion: @escaping(Int, String?) -> Void) {
         let encryptedPassword = Util.encryptPassword(newPassword)
-        let body: NSDictionary = ["phone" : phone, "code" : code, "newPassword" : encryptedPassword]
-        Guardian.post("/api/v2/password/reset/sms", body) { code, message, data in
+        let body: NSDictionary = ["email" : email, "code" : code, "newPassword" : encryptedPassword]
+        Guardian.post("/api/v2/password/reset/email", body) { code, message, data in
             completion(code, message)
         }
     }
@@ -163,13 +167,13 @@ public class AuthClient {
         }
     }
     
-    public static func updateProfile(_ object: NSDictionary, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public static func updateProfile(object: NSDictionary, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         Guardian.post("/api/v2/users/profile/update", object) { code, message, data in
             createUserInfo(code, message, data, completion: completion)
         }
     }
     
-    public static func updatePassword(_ newPassword: String, _ oldPassword: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public static func updatePassword(newPassword: String, oldPassword: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let body: NSMutableDictionary = ["newPassword" : Util.encryptPassword(newPassword)]
         if (oldPassword != nil) {
             body.setValue(Util.encryptPassword(oldPassword!), forKey: "oldPassword")
@@ -225,7 +229,7 @@ public class AuthClient {
         }
     }
     
-    public static func listOrgs(page: Int = 1, limit: Int = 10, completion: @escaping(Int, String?, NSArray?) -> Void) {
+    public static func listOrgs(completion: @escaping(Int, String?, NSArray?) -> Void) {
         if let userId = Authing.getCurrentUser()?.userId {
             Guardian.get("/api/v2/users/\(userId)/orgs") { code, message, data in
                 if (code == 200) {
@@ -354,6 +358,13 @@ public class AuthClient {
     public static func mfaVerifyByOTP(code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let body: NSDictionary = ["authenticatorType" : "totp", "totp" : code]
         Guardian.post("/api/v2/mfa/totp/verify", body) { code, message, data in
+            createUserInfo(code, message, data, completion: completion)
+        }
+    }
+    
+    public static func mfaVerifyByRecoveryCode(code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        let body: NSDictionary = ["authenticatorType" : "totp", "recoveryCode" : code]
+        Guardian.post("/api/v2/mfa/totp/recovery", body) { code, message, data in
             createUserInfo(code, message, data, completion: completion)
         }
     }
