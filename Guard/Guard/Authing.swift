@@ -80,9 +80,8 @@ public class Authing {
     }
     
     public static func autoLogin(completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        if (getCurrentUser() == nil) {
-            completion(500, "no user logged in", nil)
-        } else {
+        sCurrentUser = UserManager.getUser()
+        if sCurrentUser != nil {
             AuthClient.getCurrentUser { code, message, userInfo in
                 if (code != 200) {
                     UserManager.removeUser()
@@ -92,13 +91,12 @@ public class Authing {
                     AuthClient.updateIdToken(completion: completion)
                 }
             }
+        } else {
+            completion(500, "no user logged in", nil)
         }
     }
     
     public static func getCurrentUser() -> UserInfo? {
-        if (sCurrentUser == nil) {
-            sCurrentUser = UserManager.getUser()
-        }
         return sCurrentUser
     }
     

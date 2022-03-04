@@ -154,7 +154,6 @@ class GuardTests: XCTestCase {
     }
     
     func testComputePasswordSecurityLevel() throws {
-        let res = Util.computePasswordSecurityLevel(password: "a")
         XCTAssert(Util.computePasswordSecurityLevel(password: "a") == .weak)
         XCTAssert(Util.computePasswordSecurityLevel(password: "helloworld123") == .medium)
         XCTAssert(Util.computePasswordSecurityLevel(password: "helloworld123!") == .strong)

@@ -60,3 +60,8 @@
 "authing_nickname" = "Nickname";
 "authing_name" = "Name";
 "authing_logout" = "Logout";
+"authing_logout_tip" = "Are you sure to logout?";
+"authing_delete_account" = "Delete account";
+"authing_delete_account_tip" = "Are you sure to delete current account? This is unrecoverable";
+"authing_cancel" = "Cancel";
+"authing_not_login" = "Not login yet";

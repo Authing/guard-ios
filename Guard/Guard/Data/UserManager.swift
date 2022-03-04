@@ -12,12 +12,12 @@ open class UserManager {
     private static let KEY_USER_TOKEN = "authing_user_token"
     
     public static func saveUser(_ userInfo: UserInfo?) {
-        guard userInfo != nil else {
-            return
+        if (userInfo == nil) {
+            removeUser()
+        } else {
+            let defaults = UserDefaults.standard
+            defaults.set(userInfo?.idToken, forKey: KEY_USER_TOKEN)
         }
-        
-        let defaults = UserDefaults.standard
-        defaults.set(userInfo?.idToken, forKey: KEY_USER_TOKEN)
     }
     
     public static func getUser() -> UserInfo? {

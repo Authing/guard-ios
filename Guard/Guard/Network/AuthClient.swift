@@ -80,7 +80,7 @@ public class AuthClient {
     
     public static func logout(completion: @escaping(Int, String?) -> Void) {
         Guardian.get("/api/v2/logout?app_id=\(Authing.getAppId())") { code, message, data in
-            UserManager.removeUser()
+            Authing.saveUser(nil)
             HTTPCookieStorage.shared.cookies?.forEach(HTTPCookieStorage.shared.deleteCookie)
             completion(200, "ok")
         }
@@ -267,8 +267,14 @@ public class AuthClient {
         }
     }
     
-    public static func deleteAccount(completion: @escaping(Int, String?, NSDictionary?) -> Void) {
-        Guardian.delete("/api/v2/users/delete", completion: completion)
+    public static func deleteAccount(completion: @escaping(Int, String?) -> Void) {
+        Guardian.delete("/api/v2/users/delete") { code, message, data in
+            if (code == 200) {
+                Authing.saveUser(nil)
+                HTTPCookieStorage.shared.cookies?.forEach(HTTPCookieStorage.shared.deleteCookie)
+            }
+            completion(code, message)
+        }
     }
     
     // MARK: Social APIs

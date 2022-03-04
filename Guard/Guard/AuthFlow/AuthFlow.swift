@@ -46,20 +46,19 @@ public class AuthFlow {
         UIApplication.topViewController()!.present(nav, animated: true, completion: nil)
     }
     
-    public static func start(nibName: String? = nil, authCompletion: AuthNavigationController.AuthCompletion? = nil) -> AuthFlow? {
+    public static func start(authFlow: AuthFlow? = nil, authCompletion: AuthNavigationController.AuthCompletion? = nil) {
         var vc: IndexAuthViewController? = nil
-        if (nibName == nil) {
-            vc = IndexAuthViewController(nibName: "AuthingLogin", bundle: Bundle(for: Self.self))
-        } else {
+        if let nibName = authFlow?.loginXibName {
             vc = IndexAuthViewController(nibName: nibName, bundle: Bundle.main)
+        } else {
+            vc = IndexAuthViewController(nibName: "AuthingLogin", bundle: Bundle(for: Self.self))
         }
         
         guard vc != nil else {
-            return nil
+            return
         }
 
         let authFlow = AuthFlow()
-        authFlow.loginXibName = nibName
         vc?.authFlow = authFlow
         let nav: AuthNavigationController = AuthNavigationController(rootViewController: vc!)
         nav.setNavigationBarHidden(true, animated: false)
@@ -72,7 +71,6 @@ public class AuthFlow {
                 UIApplication.topViewController()?.present(nav, animated: true, completion: nil)
             }
         }
-        return authFlow
     }
     
     public static func getAccount(current: UIView) -> String? {

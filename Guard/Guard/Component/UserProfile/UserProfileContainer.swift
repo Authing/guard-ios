@@ -17,39 +17,60 @@ open class UserProfileContainer: UIScrollView {
     
     @IBInspectable var fields: String = "all" {
         didSet {
-            setup()
+            refersh()
         }
     }
     
     let logoutButton = LogoutButton()
+    let deleteAccountButton = DeleteAccountButton()
+    
+    let notLoginTip = UILabel()
+    let startLoginButton = PrimaryButton()
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
+        refersh()
     }
 
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setup()
+        refersh()
     }
 
-    private func setup() {
+    open func refersh() {
         for v in subviews {
             v.removeFromSuperview()
         }
         
         fieldsViews.removeAll()
         
-        if ("all" == fields) {
-            addAvatarField()
-            addTextField("nickname")
-            addTextField("name")
-            addTextField("username")
-            addTextField("phone")
-            addTextField("email")
+        if Authing.getCurrentUser() != nil {
+            if ("all" == fields) {
+                addAvatarField()
+                addTextField("nickname")
+                addTextField("name")
+                addTextField("username")
+                addTextField("phone")
+                addTextField("email")
+            }
+            
+            logoutButton.onLogout = { code, message in
+                self.refersh()
+            }
+            deleteAccountButton.onDeleteAccount = { code, message in
+                self.refersh()
+            }
+            addSubview(logoutButton)
+            addSubview(deleteAccountButton)
+        } else {
+            notLoginTip.textColor = UIColor.darkGray
+            notLoginTip.text = NSLocalizedString("authing_not_login", bundle: Bundle(for: Self.self), comment: "")
+            addSubview(notLoginTip)
+            
+            startLoginButton.setTitle(NSLocalizedString("authing_login", bundle: Bundle(for: Self.self), comment: ""), for: .normal)
+            startLoginButton.addTarget(self, action:#selector(startLogin(sender:)), for: .touchUpInside)
+            addSubview(startLoginButton)
         }
-        
-        addSubview(logoutButton)
     }
     
     private func addAvatarField() {
@@ -67,13 +88,31 @@ open class UserProfileContainer: UIScrollView {
     }
     
     open override func layoutSubviews() {
-        var y = 0.0
-        for v in fieldsViews {
-            v.frame = CGRect(x: 0, y: y, width: frame.width, height: TEXT_HEIGHT)
-            y += v.frame.height
+        if Authing.getCurrentUser() != nil {
+            var y = 0.0
+            for v in fieldsViews {
+                v.frame = CGRect(x: 0, y: y, width: frame.width, height: TEXT_HEIGHT)
+                y += v.frame.height
+            }
+            
+            y += 4
+            logoutButton.frame = CGRect(x: 0, y: y, width: frame.width, height: BUTTON_HEIGHT)
+            
+            y += 4 + BUTTON_HEIGHT
+            deleteAccountButton.frame = CGRect(x: 0, y: y, width: frame.width, height: BUTTON_HEIGHT)
+        } else {
+            var y = 20.0
+            let w = notLoginTip.intrinsicContentSize.width
+            notLoginTip.frame = CGRect(x: MARGIN_X, y: y, width: w, height: BUTTON_HEIGHT)
+            
+            y += BUTTON_HEIGHT
+            startLoginButton.frame = CGRect(x: MARGIN_X, y: y, width: frame.width - 2 * MARGIN_X, height: BUTTON_HEIGHT)
         }
-        
-        y += 4
-        logoutButton.frame = CGRect(x: 0, y: y, width: frame.width, height: BUTTON_HEIGHT)
+    }
+    
+    @objc private func startLogin(sender: UIButton) {
+        AuthFlow.start { userInfo in
+            self.refersh()
+        }
     }
 }

@@ -12,18 +12,24 @@ class MainViewController: UserProfileViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let v = Util.findView(view, viewClass: LogoutButton.self) as? LogoutButton {
-            v.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
+            v.onLogout = { code, message in
+                self.goSampleList()
+            }
+        }
+        
+        if let v = Util.findView(view, viewClass: DeleteAccountButton.self) as? DeleteAccountButton {
+            v.onDeleteAccount = { code, message in
+                self.goSampleList()
+            }
         }
     }
     
-    @objc private func onClick(sender: UIButton) {
-        AuthClient.logout { code, message in
-            DispatchQueue.main.async() {
-                let root = SampleListViewController(style: .plain)
-                let keyWindow = UIApplication.shared.windows.first
-                let nav: UINavigationController = UINavigationController(rootViewController: root)
-                keyWindow?.rootViewController = nav
-            }
+    private func goSampleList() {
+        DispatchQueue.main.async() {
+            let root = SampleListViewController(style: .plain)
+            let keyWindow = UIApplication.shared.windows.first
+            let nav: UINavigationController = UINavigationController(rootViewController: root)
+            keyWindow?.rootViewController = nav
         }
     }
 }

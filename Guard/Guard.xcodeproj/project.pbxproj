@@ -85,6 +85,7 @@
 		7EB32812278D1DF9008639AA /* AuthingMFAOTP.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB32811278D1DF9008639AA /* AuthingMFAOTP.xib */; };
 		7EB32814278D1FDC008639AA /* MFAOTPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB32813278D1FDC008639AA /* MFAOTPButton.swift */; };
 		7EB32816278D5DD4008639AA /* FramedVerifyCodeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB32815278D5DD4008639AA /* FramedVerifyCodeTextField.swift */; };
+		7EB5CE5627D1EE3200BE3252 /* DeleteAccountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5CE5527D1EE3200BE3252 /* DeleteAccountButton.swift */; };
 		7ECF8AC22759F82D004F8FC5 /* Guardian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF8AC12759F82D004F8FC5 /* Guardian.swift */; };
 		7ECF8AC52759FE8D004F8FC5 /* SDKUsageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF8AC42759FE8D004F8FC5 /* SDKUsageTask.swift */; };
 		7ECF8AC72759FF17004F8FC5 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF8AC62759FF17004F8FC5 /* Const.swift */; };
@@ -209,6 +210,7 @@
 		7EB32811278D1DF9008639AA /* AuthingMFAOTP.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingMFAOTP.xib; sourceTree = "<group>"; };
 		7EB32813278D1FDC008639AA /* MFAOTPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFAOTPButton.swift; sourceTree = "<group>"; };
 		7EB32815278D5DD4008639AA /* FramedVerifyCodeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FramedVerifyCodeTextField.swift; sourceTree = "<group>"; };
+		7EB5CE5527D1EE3200BE3252 /* DeleteAccountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountButton.swift; sourceTree = "<group>"; };
 		7ECF8AC12759F82D004F8FC5 /* Guardian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guardian.swift; sourceTree = "<group>"; };
 		7ECF8AC42759FE8D004F8FC5 /* SDKUsageTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDKUsageTask.swift; sourceTree = "<group>"; };
 		7ECF8AC62759FF17004F8FC5 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
@@ -353,6 +355,7 @@
 				7E7D1F70278ECC73005AAD39 /* PhoneLabel.swift */,
 				7EDFB6CC27C7390A00B77DEE /* PrivacyConfirmBox.swift */,
 				7E87A1C127CDBAEF00E52D5A /* LogoutButton.swift */,
+				7EB5CE5527D1EE3200BE3252 /* DeleteAccountButton.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -809,6 +812,7 @@
 				7EB327FF278BD737008639AA /* MFATableItem.swift in Sources */,
 				7E02F46B27950C6F007FA048 /* UserInfoCompleteButton.swift in Sources */,
 				7EF66C71277C371E00FCBBEB /* EmailTextField.swift in Sources */,
+				7EB5CE5627D1EE3200BE3252 /* DeleteAccountButton.swift in Sources */,
 				7EA2DD3C27CC84CB00B3E19D /* SocialLoginListView.swift in Sources */,
 				7E959441274CEECF001459C5 /* Authing.swift in Sources */,
 				7EF66C65277C0B6F00FCBBEB /* AuthNavigationController.swift in Sources */,
