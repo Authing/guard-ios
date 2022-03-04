@@ -152,6 +152,13 @@ class GuardTests: XCTestCase {
         }
         wait(for: [expectation], timeout: TIMEOUT)
     }
+    
+    func testComputePasswordSecurityLevel() throws {
+        let res = Util.computePasswordSecurityLevel(password: "a")
+        XCTAssert(Util.computePasswordSecurityLevel(password: "a") == .weak)
+        XCTAssert(Util.computePasswordSecurityLevel(password: "helloworld123") == .medium)
+        XCTAssert(Util.computePasswordSecurityLevel(password: "helloworld123!") == .strong)
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
@@ -159,5 +166,4 @@ class GuardTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
 }

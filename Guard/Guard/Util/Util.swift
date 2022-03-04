@@ -9,6 +9,13 @@ import Foundation
 import UIKit
 
 public class Util {
+    
+    public enum PasswordStrength {
+        case weak
+        case medium
+        case strong
+    }
+    
     enum KeychainError: Error {
         // Attempted read for an item that does not exist.
         case itemNotFound
@@ -266,5 +273,25 @@ public class Util {
     public static func getQueryStringParameter(url: URL, param: String) -> String? {
         guard let url = URLComponents(url: url, resolvingAgainstBaseURL: true) else { return nil }
         return url.queryItems?.first(where: { $0.name == param })?.value
+    }
+    
+    public static func computePasswordSecurityLevel(password: String) -> PasswordStrength {
+        let length = password.count
+        if (length < 6) {
+            return .weak
+        }
+
+        let hasEnglish = Validator.hasEnglish(password)
+        let hasNumber = Validator.hasNumber(password)
+        let hasSpecialChar = Validator.hasSpecialCharacter(password)
+        if (hasEnglish && hasNumber && hasSpecialChar) {
+            return .strong
+        } else if ((hasEnglish && hasNumber) ||
+                (hasEnglish && hasSpecialChar) ||
+                (hasNumber && hasSpecialChar)) {
+            return .medium
+        } else {
+            return .weak
+        }
     }
 }
