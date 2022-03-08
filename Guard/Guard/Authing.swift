@@ -10,10 +10,13 @@ import Foundation
 typealias ConfigCompletion = (Config?) -> Void
 
 public class Authing {
+    
+    public static let DEFAULT_PUBLIC_KEY = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC4xKeUgQ+Aoz7TLfAfs9+paePb5KIofVthEopwrXFkp8OCeocaTHt9ICjTT2QeJh6cZaDaArfZ873GPUn00eOIZ7Ae+TiA2BKHbCvloW3w5Lnqm70iSsUi5Fmu9/2+68GZRH9L7Mlh8cFksCicW2Y2W2uMGKl64GDcIq3au+aqJQIDAQAB"
+    
     private static var sSchema = "https"
     private static var sHost = "authing.cn"
     private static var sAppId = ""
-    private static var sPublicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC4xKeUgQ+Aoz7TLfAfs9+paePb5KIofVthEopwrXFkp8OCeocaTHt9ICjTT2QeJh6cZaDaArfZ873GPUn00eOIZ7Ae+TiA2BKHbCvloW3w5Lnqm70iSsUi5Fmu9/2+68GZRH9L7Mlh8cFksCicW2Y2W2uMGKl64GDcIq3au+aqJQIDAQAB"
+    private static var sPublicKey = DEFAULT_PUBLIC_KEY
     private static var sConfig: Config? = nil
     private static var isGettingConfig: Bool = false
     private static var configListeners = [ConfigCompletion]()

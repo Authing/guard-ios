@@ -105,7 +105,7 @@ class GuardTests: XCTestCase {
         AuthClient.registerByUserName(username: "iOSCI", password: "111111") { code, message, userInfo in
             XCTAssert(code == 200)
             
-            AuthClient.deleteAccount() { code, message, data in
+            AuthClient.deleteAccount() { code, message in
                 XCTAssert(code == 200)
                 
                 AuthClient.loginByAccount(account: "iOSCI", password: "111111") { code, message, userInfo in
@@ -153,12 +153,6 @@ class GuardTests: XCTestCase {
         wait(for: [expectation], timeout: TIMEOUT)
     }
     
-    func testComputePasswordSecurityLevel() throws {
-        XCTAssert(Util.computePasswordSecurityLevel(password: "a") == .weak)
-        XCTAssert(Util.computePasswordSecurityLevel(password: "helloworld123") == .medium)
-        XCTAssert(Util.computePasswordSecurityLevel(password: "helloworld123!") == .strong)
-    }
-
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {

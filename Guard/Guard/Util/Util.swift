@@ -215,8 +215,17 @@ public class Util {
         return nil
     }
     
+    public static func isIp(_ str: String) -> Bool {
+        let reg = "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$"
+        return str.range(of: reg, options: .regularExpression, range: nil, locale: nil) != nil
+    }
+    
     public static func getHost(_ config: Config) -> String {
-        return "\(config.identifier!).\(Authing.getHost())"
+        if Util.isIp(Authing.getHost()) {
+            return Authing.getHost()
+        } else {
+            return "\(config.identifier!).\(Authing.getHost())"
+        }
     }
     
     public static func isNull(_ s: String?) -> Bool {
