@@ -29,7 +29,7 @@ class SampleListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            let authFlow = AuthFlow.start { [weak self] userInfo in
+            AuthFlow.start { [weak self] code, message, userInfo in
                 self?.goHome(userInfo: userInfo)
             }
 //            authFlow?.resetPasswordFirstTimeLoginXibName = "Test"
@@ -39,12 +39,12 @@ class SampleListViewController: UITableViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.row == 2 {
             Authing.start("61c173ada0e3aec651b1a1d1")
-            AuthFlow.start { [weak self] userInfo in
+            AuthFlow.start { [weak self] code, message, userInfo in
                 self?.goHome(userInfo: userInfo)
             }
         } else if indexPath.row == 3 {
             Authing.start("61ae0c9807451d6f30226bd4")
-            AuthFlow.start { [weak self] userInfo in
+            AuthFlow.start { [weak self] code, message, userInfo in
                 self?.goHome(userInfo: userInfo)
             }
         } else if indexPath.row == 4 {

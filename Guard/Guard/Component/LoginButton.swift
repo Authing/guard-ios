@@ -98,7 +98,12 @@ open class LoginButton: PrimaryButton {
     }
     
     private func handleLogin(_ code: Int, message: String?, userInfo: UserInfo?) {
-        if (code == 200) {
+        if (authCompletion != nil) {
+            if (code != 200 && code != Const.EC_MFA_REQUIRED && code != Const.EC_FIRST_TIME_LOGIN) {
+                Util.setError(self, message)
+            }
+            authCompletion?(code, message, userInfo)
+        } else if (code == 200) {
             Authing.getConfig { config in
                 let missingFields: Array<NSDictionary> = AuthFlow.missingField(config: config, userInfo: userInfo)
                 if (config?.completeFieldsPlace != nil
@@ -109,7 +114,7 @@ open class LoginButton: PrimaryButton {
                     self.viewController?.navigationController?.pushViewController(vc!, animated: true)
                 } else {
                     if let vc = self.viewController?.navigationController as? AuthNavigationController {
-                        vc.complete(userInfo)
+                        vc.complete(code, message, userInfo)
                     }
                 }
             }

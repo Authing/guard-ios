@@ -35,8 +35,6 @@
 		7E199D0A2783DE9E002C6F81 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E199D062783DE9E002C6F81 /* libWeChatSDK.a */; };
 		7E199D0D2783DFC0002C6F81 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E199D0C2783DFC0002C6F81 /* WebKit.framework */; };
 		7E199D112783F8E1002C6F81 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E199D102783F8E1002C6F81 /* libc++.tbd */; };
-		7E199D7227853EF5002C6F81 /* AlipayLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E199D7127853EF5002C6F81 /* AlipayLoginButton.swift */; };
-		7E199D7527854459002C6F81 /* AFServiceSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E199D7427854459002C6F81 /* AFServiceSDK.framework */; };
 		7E7566782766F91500C3872F /* AppName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7566772766F91500C3872F /* AppName.swift */; };
 		7E75667B2766F9C400C3872F /* AuthingLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E75667A2766F9C400C3872F /* AuthingLogin.xib */; };
 		7E75667E2766F9DD00C3872F /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E75667D2766F9DD00C3872F /* AuthViewController.swift */; };
@@ -60,9 +58,6 @@
 		7E87A1C627CE330800E52D5A /* UserProfileAvatarField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87A1C527CE330800E52D5A /* UserProfileAvatarField.swift */; };
 		7E87A1C827CF52C100E52D5A /* AuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87A1C727CF52C100E52D5A /* AuthRequest.swift */; };
 		7E87A1CA27CF603B00E52D5A /* OIDCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87A1C927CF603B00E52D5A /* OIDCClient.swift */; };
-		7E8AECB62787D5AF0030D27B /* AFServiceSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E8AECB32787D5AF0030D27B /* AFServiceSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7E8AECB72787D5AF0030D27B /* AFServiceCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E8AECB42787D5AF0030D27B /* AFServiceCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7E8AECB82787D5AF0030D27B /* AFServiceResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E8AECB52787D5AF0030D27B /* AFServiceResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7E8AECBC27882D2D0030D27B /* SocialLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8AECBB27882D2D0030D27B /* SocialLoginButton.swift */; };
 		7E9593DB274C813B001459C5 /* Guard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9593D2274C813A001459C5 /* Guard.framework */; };
 		7E9593E0274C813B001459C5 /* GuardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9593DF274C813B001459C5 /* GuardTests.swift */; };
@@ -70,7 +65,6 @@
 		7E959441274CEECF001459C5 /* Authing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E959440274CEECF001459C5 /* Authing.swift */; };
 		7EA2DD3C27CC84CB00B3E19D /* SocialLoginListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA2DD3B27CC84CB00B3E19D /* SocialLoginListView.swift */; };
 		7EA2DD7D27CCF40200B3E19D /* UserProfileContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA2DD7C27CCF40200B3E19D /* UserProfileContainer.swift */; };
-		7EB2D2FF2786CFA300A819B3 /* Alipay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB2D2FE2786CFA300A819B3 /* Alipay.swift */; };
 		7EB2D30127871E2A00A819B3 /* AppleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB2D30027871E2A00A819B3 /* AppleLoginButton.swift */; };
 		7EB327FA278BD2EB008639AA /* AuthingMFAOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB327F9278BD2EB008639AA /* AuthingMFAOptions.xib */; };
 		7EB327FD278BD473008639AA /* MFATableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB327FC278BD473008639AA /* MFATableView.swift */; };
@@ -159,8 +153,6 @@
 		7E199D062783DE9E002C6F81 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		7E199D0C2783DFC0002C6F81 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/iOSSupport/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
 		7E199D102783F8E1002C6F81 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
-		7E199D7127853EF5002C6F81 /* AlipayLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlipayLoginButton.swift; sourceTree = "<group>"; };
-		7E199D7427854459002C6F81 /* AFServiceSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AFServiceSDK.framework; sourceTree = "<group>"; };
 		7E7566772766F91500C3872F /* AppName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppName.swift; sourceTree = "<group>"; };
 		7E75667A2766F9C400C3872F /* AuthingLogin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingLogin.xib; sourceTree = "<group>"; };
 		7E75667D2766F9DD00C3872F /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
@@ -185,9 +177,6 @@
 		7E87A1C527CE330800E52D5A /* UserProfileAvatarField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileAvatarField.swift; sourceTree = "<group>"; };
 		7E87A1C727CF52C100E52D5A /* AuthRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequest.swift; sourceTree = "<group>"; };
 		7E87A1C927CF603B00E52D5A /* OIDCClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OIDCClient.swift; sourceTree = "<group>"; };
-		7E8AECB32787D5AF0030D27B /* AFServiceSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFServiceSDK.h; sourceTree = "<group>"; };
-		7E8AECB42787D5AF0030D27B /* AFServiceCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFServiceCenter.h; sourceTree = "<group>"; };
-		7E8AECB52787D5AF0030D27B /* AFServiceResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFServiceResponse.h; sourceTree = "<group>"; };
 		7E8AECBB27882D2D0030D27B /* SocialLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginButton.swift; sourceTree = "<group>"; };
 		7E9593D2274C813A001459C5 /* Guard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Guard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E9593D5274C813A001459C5 /* Guard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Guard.h; sourceTree = "<group>"; };
@@ -196,7 +185,6 @@
 		7E959440274CEECF001459C5 /* Authing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authing.swift; sourceTree = "<group>"; };
 		7EA2DD3B27CC84CB00B3E19D /* SocialLoginListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginListView.swift; sourceTree = "<group>"; };
 		7EA2DD7C27CCF40200B3E19D /* UserProfileContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileContainer.swift; sourceTree = "<group>"; };
-		7EB2D2FE2786CFA300A819B3 /* Alipay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alipay.swift; sourceTree = "<group>"; };
 		7EB2D30027871E2A00A819B3 /* AppleLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginButton.swift; sourceTree = "<group>"; };
 		7EB327F9278BD2EB008639AA /* AuthingMFAOptions.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingMFAOptions.xib; sourceTree = "<group>"; };
 		7EB327FC278BD473008639AA /* MFATableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFATableView.swift; sourceTree = "<group>"; };
@@ -265,7 +253,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E199D7527854459002C6F81 /* AFServiceSDK.framework in Frameworks */,
 				7E199D112783F8E1002C6F81 /* libc++.tbd in Frameworks */,
 				7E199D0D2783DFC0002C6F81 /* WebKit.framework in Frameworks */,
 				7E199D0A2783DE9E002C6F81 /* libWeChatSDK.a in Frameworks */,
@@ -289,8 +276,6 @@
 				7EA2DD3B27CC84CB00B3E19D /* SocialLoginListView.swift */,
 				7E8AECBB27882D2D0030D27B /* SocialLoginButton.swift */,
 				7E1998D12783D3D5002C6F81 /* WechatLoginButton.swift */,
-				7E199D7127853EF5002C6F81 /* AlipayLoginButton.swift */,
-				7EB2D2FE2786CFA300A819B3 /* Alipay.swift */,
 				7EB2D30027871E2A00A819B3 /* AppleLoginButton.swift */,
 			);
 			path = Social;
@@ -319,7 +304,6 @@
 		7E199D7327854459002C6F81 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7E199D7427854459002C6F81 /* AFServiceSDK.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -431,21 +415,9 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
-		7E8AECB22787D5AF0030D27B /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				7E8AECB32787D5AF0030D27B /* AFServiceSDK.h */,
-				7E8AECB42787D5AF0030D27B /* AFServiceCenter.h */,
-				7E8AECB52787D5AF0030D27B /* AFServiceResponse.h */,
-			);
-			name = Headers;
-			path = Frameworks/Headers;
-			sourceTree = "<group>";
-		};
 		7E9593C8274C813A001459C5 = {
 			isa = PBXGroup;
 			children = (
-				7E8AECB22787D5AF0030D27B /* Headers */,
 				7E199D7327854459002C6F81 /* Frameworks */,
 				7E199D022783DE9E002C6F81 /* Library */,
 				7E9593D4274C813A001459C5 /* Guard */,
@@ -596,9 +568,6 @@
 				7E199D072783DE9E002C6F81 /* WXApi.h in Headers */,
 				7E199D092783DE9E002C6F81 /* WechatAuthSDK.h in Headers */,
 				7E199D082783DE9E002C6F81 /* WXApiObject.h in Headers */,
-				7E8AECB62787D5AF0030D27B /* AFServiceSDK.h in Headers */,
-				7E8AECB72787D5AF0030D27B /* AFServiceCenter.h in Headers */,
-				7E8AECB82787D5AF0030D27B /* AFServiceResponse.h in Headers */,
 				7E9593E1274C813B001459C5 /* Guard.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -777,7 +746,6 @@
 				7EF66C67277C119800FCBBEB /* IndexAuthViewController.swift in Sources */,
 				7EF66C8D277DA96200FCBBEB /* GetEmailCodeButton.swift in Sources */,
 				7E75668D276837E700C3872F /* AccountTextField.swift in Sources */,
-				7E199D7227853EF5002C6F81 /* AlipayLoginButton.swift in Sources */,
 				7ECF8ACA275A022D004F8FC5 /* Util.swift in Sources */,
 				7E7566842766FD5D00C3872F /* UIApplication+Authing.swift in Sources */,
 				7E7566812766FA1A00C3872F /* AuthFlow.swift in Sources */,
@@ -819,7 +787,6 @@
 				7EA2DD3C27CC84CB00B3E19D /* SocialLoginListView.swift in Sources */,
 				7E959441274CEECF001459C5 /* Authing.swift in Sources */,
 				7EF66C65277C0B6F00FCBBEB /* AuthNavigationController.swift in Sources */,
-				7EB2D2FF2786CFA300A819B3 /* Alipay.swift in Sources */,
 				7ED434CE27757E4B00893EDD /* LoginContainer.swift in Sources */,
 				7E12D7B6277DE9EF00703FC1 /* UserManager.swift in Sources */,
 				7E02F46727950C35007FA048 /* UserInfoCompleteContainer.swift in Sources */,

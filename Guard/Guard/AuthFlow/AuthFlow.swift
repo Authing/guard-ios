@@ -46,7 +46,7 @@ public class AuthFlow {
         UIApplication.topViewController()!.present(nav, animated: true, completion: nil)
     }
     
-    public static func start(authFlow: AuthFlow? = nil, authCompletion: AuthNavigationController.AuthCompletion? = nil) {
+    public static func start(authFlow: AuthFlow? = nil, authCompletion: Authing.AuthCompletion? = nil) {
         var vc: IndexAuthViewController? = nil
         if let nibName = authFlow?.loginXibName {
             vc = IndexAuthViewController(nibName: nibName, bundle: Bundle.main)

@@ -63,12 +63,12 @@ open class UserInfoCompleteButton: PrimaryButton {
                 }
             }
         } else if (step == 2) {
-            updateInfo(container: container, userInfo: userInfo) { goon, user in
-                if (goon) {
+            updateInfo(container: container, userInfo: userInfo) { code, message, user in
+                if (code == 200) {
                     if (user != nil) {
-                        self.done(user)
+                        self.done(code, message, user)
                     } else {
-                        self.done(userInfo)
+                        self.done(code, message, userInfo)
                     }
                 } else {
                     self.cancel()
@@ -167,7 +167,7 @@ open class UserInfoCompleteButton: PrimaryButton {
         }
     }
     
-    private func updateInfo(container: UserInfoCompleteContainer?, userInfo: UserInfo?, completion: @escaping(Bool, UserInfo?) -> Void) {
+    private func updateInfo(container: UserInfoCompleteContainer?, userInfo: UserInfo?, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         if (container == nil) {
             return
         }
@@ -186,7 +186,7 @@ open class UserInfoCompleteButton: PrimaryButton {
         }
         
         if (forms.count == 0) {
-            completion(true, userInfo)
+            completion(200, nil, userInfo)
             return
         }
         
@@ -199,7 +199,7 @@ open class UserInfoCompleteButton: PrimaryButton {
             
             if (required && Util.isNull(value)) {
                 Util.setError(self, "\(label!)\(NSLocalizedString("authing_is_required", bundle: Bundle(for: Authing.self), comment: ""))")
-                completion(false, nil)
+                completion(500, nil, nil)
                 return
             }
             
@@ -211,10 +211,10 @@ open class UserInfoCompleteButton: PrimaryButton {
         
         AuthClient.updateProfile(object: updatedInfo, completion: { code, message, userInfo in
             if (code == 200) {
-                completion(true, userInfo)
+                completion(200, message, userInfo)
             } else {
                 Util.setError(self, message)
-                completion(false, nil)
+                completion(code, message, nil)
             }
         })
     }
@@ -223,10 +223,10 @@ open class UserInfoCompleteButton: PrimaryButton {
         stopLoading()
     }
     
-    private func done(_ userInfo: UserInfo?) {
+    private func done(_ code: Int, _ message: String?, _ userInfo: UserInfo?) {
         DispatchQueue.main.async() {
             if let vc = self.viewController?.navigationController as? AuthNavigationController {
-                vc.complete(userInfo)
+                vc.complete(code, message, userInfo)
             }
         }
     }

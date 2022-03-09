@@ -111,7 +111,7 @@ open class UserProfileContainer: UIScrollView {
     }
     
     @objc private func startLogin(sender: UIButton) {
-        AuthFlow.start { userInfo in
+        AuthFlow.start { code, message, userInfo in
             self.refersh()
         }
     }

@@ -206,7 +206,7 @@ open class OneAuth {
         }
         
         @objc func clicked() {
-            AuthFlow.start { [weak self] userInfo in
+            AuthFlow.start { [weak self] code, message, userInfo in
                 if (userInfo != nil && self?.callback != nil) {
                     self?.callback!(200, nil, userInfo)
                 }

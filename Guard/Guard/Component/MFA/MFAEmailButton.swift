@@ -81,7 +81,7 @@ open class MFAEmailButton: PrimaryButton {
             self.stopLoading()
             if (code == 200) {
                 if let vc = self.viewController?.navigationController as? AuthNavigationController {
-                    vc.complete(userInfo)
+                    vc.complete(code, message, userInfo)
                 }
             } else {
                 Util.setError(self, message)

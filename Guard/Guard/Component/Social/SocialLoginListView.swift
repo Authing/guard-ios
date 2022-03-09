@@ -45,8 +45,6 @@ open class SocialLoginListView: UIView {
                         } else {
                             // Fallback on earlier versions
                         }
-                    } else if ("alipay" == type) {
-                        self.addSubview(AlipayLoginButton())
                     }
                 }
             }
@@ -85,8 +83,6 @@ open class SocialLoginListView: UIView {
                 } else {
                     // Fallback on earlier versions
                 }
-            } else if ("alipay" == trimmed) {
-                self.addSubview(AlipayLoginButton())
             }
         }
     }

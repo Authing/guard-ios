@@ -197,9 +197,8 @@ public class Util {
     
     public static func setError(_ current: UIView, _ text: String?) {
         DispatchQueue.main.async() {
-            let errorView = Util.findView(current, viewClass: ErrorLabel.self)
-            if (errorView != nil) {
-                (errorView as! ErrorLabel).text = text
+            if let errorView: ErrorLabel = Util.findView(current, viewClass: ErrorLabel.self) {
+                errorView.text = text
             }
         }
     }

@@ -9,21 +9,19 @@ import UIKit
 
 open class AuthNavigationController: UINavigationController {
     
-    public typealias AuthCompletion = (UserInfo?) -> Void
+    private var authCompletion: Authing.AuthCompletion?
     
-    private var authCompletion: AuthCompletion?
-    
-    public func setAuthCompletion(_ completion: AuthCompletion?) {
+    public func setAuthCompletion(_ completion: Authing.AuthCompletion?) {
         self.authCompletion = completion
     }
     
-    public func getAuthCompletion() -> AuthCompletion? {
+    public func getAuthCompletion() -> Authing.AuthCompletion? {
         return self.authCompletion
     }
     
-    public func complete(_ userInfo: UserInfo?, animated: Bool = true) {
+    public func complete(_ code: Int, _ message: String?, _ userInfo: UserInfo?, animated: Bool = true) {
         dismiss(animated: animated) {
-            self.authCompletion?(userInfo)
+            self.authCompletion?(code, message, userInfo)
         }
     }
 }

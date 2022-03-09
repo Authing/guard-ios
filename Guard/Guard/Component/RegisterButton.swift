@@ -95,10 +95,12 @@ open class RegisterButton: PrimaryButton {
     
     private func done(code: Int, message: String?, userInfo: UserInfo?) {
         self.stopLoading()
-        if (code == 200) {
+        if (authCompletion != nil) {
+            authCompletion?(code, message, userInfo)
+        } else if (code == 200) {
             DispatchQueue.main.async() {
                 if let vc = self.viewController?.navigationController as? AuthNavigationController {
-                    vc.complete(userInfo)
+                    vc.complete(code, message, userInfo)
                 }
             }
         } else {

@@ -298,25 +298,25 @@ public class AuthClient {
         }
     }
     
-    public static func loginByAlipay(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        Authing.getConfig { config in
-            guard config != nil else {
-                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
-                return
-            }
-  
-            let conId: String? = config?.getConnectionId(type: "alipay")
-            guard conId != nil else {
-                completion(500, "No alipay connection. Please set up in console for \(Authing.getAppId())", nil)
-                return
-            }
-            
-            let body: NSDictionary = ["connId" : conId!, "code" : code]
-            Guardian.post("/api/v2/ecConn/alipay/authByCode", body) { code, message, data in
-                createUserInfo(code, message, data, completion: completion)
-            }
-        }
-    }
+//    public static func loginByAlipay(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+//        Authing.getConfig { config in
+//            guard config != nil else {
+//                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+//                return
+//            }
+//  
+//            let conId: String? = config?.getConnectionId(type: "alipay")
+//            guard conId != nil else {
+//                completion(500, "No alipay connection. Please set up in console for \(Authing.getAppId())", nil)
+//                return
+//            }
+//            
+//            let body: NSDictionary = ["connId" : conId!, "code" : code]
+//            Guardian.post("/api/v2/ecConn/alipay/authByCode", body) { code, message, data in
+//                createUserInfo(code, message, data, completion: completion)
+//            }
+//        }
+//    }
     
     public static func loginByApple(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         Authing.getConfig { config in
