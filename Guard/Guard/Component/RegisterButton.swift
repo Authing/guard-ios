@@ -58,12 +58,10 @@ open class RegisterButton: PrimaryButton {
         let tfPhone: PhoneNumberTextField? = Util.findView(self, viewClass: PhoneNumberTextField.self)
         let tfCode: VerifyCodeTextField? = Util.findView(self, viewClass: VerifyCodeTextField.self)
         if (tfPhone != nil && tfCode != nil) {
-            let tfPassword: PasswordTextField? = Util.findView(self, viewClass: PasswordTextField.self)
             let phone: String? = tfPhone?.text
-            let password: String? = tfPassword?.text
             let code: String? = tfCode?.text
-            if (!phone!.isEmpty && !password!.isEmpty && !code!.isEmpty) {
-                registerByPhoneCode(phone!, password!, code!)
+            if (!phone!.isEmpty && !code!.isEmpty) {
+                registerByPhoneCode(phone!, code!)
             }
             return
         }
@@ -79,9 +77,9 @@ open class RegisterButton: PrimaryButton {
         }
     }
     
-    private func registerByPhoneCode(_ phone: String, _ password: String, _ code: String) {
+    private func registerByPhoneCode(_ phone: String, _ code: String) {
         startLoading()
-        AuthClient.registerByPhoneCode(phone: phone, code: code, password: password) { code, message, userInfo in
+        AuthClient.registerByPhoneCode(phone: phone, code: code) { code, message, userInfo in
             self.done(code: code, message: message, userInfo: userInfo)
         }
     }

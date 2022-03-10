@@ -26,9 +26,11 @@ public class AuthClient {
         }
     }
     
-    public static func registerByPhoneCode(phone: String, code: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        let encryptedPassword = Util.encryptPassword(password)
-        let body: NSDictionary = ["phone" : phone, "password" : encryptedPassword, "code" : code, "forceLogin" : true]
+    public static func registerByPhoneCode(phone: String, code: String, password: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        let body: NSMutableDictionary = ["phone" : phone, "code" : code, "forceLogin" : true]
+        if password != nil {
+            body.setValue(Util.encryptPassword(password!), forKey: "password")
+        }
         Guardian.post("/api/v2/register/phone-code", body) { code, message, data in
             createUserInfo(code, message, data, completion: completion)
         }

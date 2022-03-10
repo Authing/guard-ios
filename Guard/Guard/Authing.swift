@@ -72,6 +72,10 @@ public class Authing {
         }
     }
     
+    public static func getConfigObject() -> Config? {
+        return sConfig
+    }
+    
     public static func setupWechat(_ appid: String, universalLink: String) {
         let ret = WXApi.registerApp(appid, universalLink: universalLink)
         if (!ret) {
