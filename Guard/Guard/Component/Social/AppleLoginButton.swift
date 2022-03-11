@@ -22,7 +22,7 @@ open class AppleLoginButton: SocialLoginButton, ASAuthorizationControllerDelegat
     }
 
     private func setup() {
-        setBackgroundImage(UIImage(named: "authing_apple", in: Bundle(for: WechatLoginButton.self), compatibleWith: nil), for: .normal)
+        setBackgroundImage(UIImage(named: "authing_apple", in: Bundle(for: AppleLoginButton.self), compatibleWith: nil), for: .normal)
         self.addTarget(self, action: #selector(onClick), for: .touchUpInside)
     }
     

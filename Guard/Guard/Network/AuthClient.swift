@@ -5,7 +5,7 @@
 //  Created by Lance Mao on 2021/12/14.
 //
 
-import Foundation
+import UIKit
 
 public class AuthClient {
     

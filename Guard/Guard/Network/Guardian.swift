@@ -5,7 +5,7 @@
 //  Created by Lance Mao on 2021/12/3.
 //
 
-import Foundation
+import UIKit
 
 public class Guardian {
     

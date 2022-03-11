@@ -17,6 +17,15 @@ open class AuthViewController: UIViewController {
 //        let backImage = UIImage(named: "authing_back", in: Bundle(for: Self.self), compatibleWith: nil)
 //        navigationItem.leftBarButtonItem = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(onBack))
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        // make navigation bar clear
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        
+        // tap anywhere to dismiss keyboard
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
     }
     
     open override func viewWillAppear(_ animated: Bool) {
