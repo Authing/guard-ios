@@ -93,6 +93,10 @@ open class RegisterButton: PrimaryButton {
     
     private func done(code: Int, message: String?, userInfo: UserInfo?) {
         self.stopLoading()
+        if (code != 200) {
+            Util.setError(self, message)
+        }
+        
         if (authCompletion != nil) {
             authCompletion?(code, message, userInfo)
         } else if (code == 200) {
@@ -101,8 +105,6 @@ open class RegisterButton: PrimaryButton {
                     vc.complete(code, message, userInfo)
                 }
             }
-        } else {
-            Util.setError(self, message)
         }
     }
 }
