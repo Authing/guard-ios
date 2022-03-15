@@ -60,16 +60,9 @@ class SampleListViewController: UITableViewController {
             self.navigationController?.pushViewController(vc, animated: true)
             return
         case "OIDCClient":
-            
-            OIDCClient.loginByAccount(account: "test", password: "111111") { [weak self] code,  msg,  userInfo in
-                if code == 200{
-                    print("\(userInfo?.accessToken ?? "")")
-                    print("\(userInfo?.idToken ?? "")")
-                    print("\(userInfo?.refreshToken ?? "")")
-                    DispatchQueue.main.async() {
-                        self?.goHome(userInfo: userInfo)
-                    }
-                }
+            Authing.start("60caaf41df670b771fd08937");
+            AuthFlow.start(authProtocol: .EOIDC)  { [weak self] code, message, userInfo in
+                self?.goHome(userInfo: userInfo)
             }
             return
         default:

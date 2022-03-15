@@ -7,6 +7,11 @@
 
 import UIKit
 
+public enum AuthProtocol {
+    case EInHouse
+    case EOIDC
+}
+
 public class AuthFlow {
     
     public static let KEY_USER_INFO: String = "user_info"
@@ -31,6 +36,8 @@ public class AuthFlow {
     
     public var resetPasswordFirstTimeLoginXibName: String? = nil
     
+    public var authProtocol: AuthProtocol = .EInHouse
+    
     public init() {
     }
     
@@ -46,7 +53,7 @@ public class AuthFlow {
         UIApplication.topViewController()!.present(nav, animated: true, completion: nil)
     }
     
-    public static func start(authFlow: AuthFlow? = nil, authCompletion: Authing.AuthCompletion? = nil) {
+    public static func start(authProtocol: AuthProtocol? = nil, authFlow: AuthFlow? = nil, authCompletion: Authing.AuthCompletion? = nil) {
         var vc: IndexAuthViewController? = nil
         if let nibName = authFlow?.loginXibName {
             vc = IndexAuthViewController(nibName: nibName, bundle: Bundle.main)
@@ -60,6 +67,7 @@ public class AuthFlow {
 
         let authFlow = AuthFlow()
         vc?.authFlow = authFlow
+        vc?.authFlow?.authProtocol = authProtocol ?? .EInHouse
         let nav: AuthNavigationController = AuthNavigationController(rootViewController: vc!)
         nav.setNavigationBarHidden(true, animated: false)
         nav.setAuthCompletion(authCompletion)
@@ -121,4 +129,5 @@ public class AuthFlow {
         copy.resetPasswordFirstTimeLoginXibName = self.resetPasswordFirstTimeLoginXibName
         return copy
     }
+    
 }

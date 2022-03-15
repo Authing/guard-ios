@@ -79,20 +79,40 @@ open class LoginButton: PrimaryButton {
     
     private func loginByPhoneCode(_ phone: String, _ code: String) {
         startLoading()
-        AuthClient().loginByPhoneCode(phone: phone, code: code) { code, message, userInfo in
-            self.stopLoading()
-            DispatchQueue.main.async() {
-                self.handleLogin(code, message: message, userInfo: userInfo)
+                
+        if self.viewController?.authFlow?.authProtocol == .EInHouse{
+            AuthClient().loginByPhoneCode(phone: phone, code: code) { code, message, userInfo in
+                self.stopLoading()
+                DispatchQueue.main.async() {
+                    self.handleLogin(code, message: message, userInfo: userInfo)
+                }
+            }
+        }else{
+            OIDCClient.loginByPhoneCode(phone: phone, code: code) { code, message, userInfo in
+                self.stopLoading()
+                DispatchQueue.main.async() {
+                    self.handleLogin(code, message: message, userInfo: userInfo)
+                }
             }
         }
     }
     
     private func loginByAccount(_ account: String, _ password: String) {
         startLoading()
-        AuthClient().loginByAccount(account: account, password: password) { code, message, userInfo in
-            self.stopLoading()
-            DispatchQueue.main.async() {
-                self.handleLogin(code, message: message, userInfo: userInfo)
+        
+        if self.viewController?.authFlow?.authProtocol == .EInHouse{
+            AuthClient().loginByAccount(account: account, password: password) { code, message, userInfo in
+                self.stopLoading()
+                DispatchQueue.main.async() {
+                    self.handleLogin(code, message: message, userInfo: userInfo)
+                }
+            }
+        }else{
+            OIDCClient.loginByAccount(account: account, password: password) { code,  message,  userInfo in
+                self.stopLoading()
+                DispatchQueue.main.async() {
+                    self.handleLogin(code, message: message, userInfo: userInfo)
+                }
             }
         }
     }
