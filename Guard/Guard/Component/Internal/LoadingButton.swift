@@ -22,8 +22,8 @@ import UIKit
             layer.borderWidth = 1 / UIScreen.main.scale
         }
     }
-    @IBInspectable var loadingColor: UIColor? = UIColor.white
-    @IBInspectable var loadingLocation: Int = 0 // 0 left; 1 over;
+    @IBInspectable open var loadingColor: UIColor? = UIColor.white
+    @IBInspectable open var loadingLocation: Int = 0 // 0 left; 1 over;
     
     public override init(frame: CGRect) {
         super.init(frame: frame)

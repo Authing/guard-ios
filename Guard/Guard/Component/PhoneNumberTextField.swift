@@ -19,10 +19,12 @@ open class PhoneNumberTextField: AccountTextField {
     }
 
     private func setup() {
-        self.keyboardType = .phonePad
-        let sInput: String = NSLocalizedString("authing_please_input", bundle: Bundle(for: Self.self), comment: "")
-        let sPhone: String = NSLocalizedString("authing_phone", bundle: Bundle(for: Self.self), comment: "")
-        self.placeholder = "\(sInput)\(sPhone)"
+        Authing.getConfig { config in
+            self.keyboardType = .phonePad
+            let sInput: String = NSLocalizedString("authing_please_input", bundle: Bundle(for: Self.self), comment: "")
+            let sPhone: String = NSLocalizedString("authing_phone", bundle: Bundle(for: Self.self), comment: "")
+            self.placeholder = "\(sInput)\(sPhone)"
+        }
     }
     
     override func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -13,7 +13,7 @@ open class SocialLoginListView: UIView {
     let HEIGHT = CGFloat(44)
     let SPACE = CGFloat(24)
     
-    @IBInspectable var src: String = "auto" {
+    @IBInspectable open var src: String = "auto" {
         didSet {
             setSource(src)
         }
@@ -31,6 +31,10 @@ open class SocialLoginListView: UIView {
 
     private func setup() {
         Authing.getConfig { config in
+            if (self.src != "auto") {
+                return
+            }
+            
             let connections: [NSDictionary]? = config?.data?["ecConnections"] as? [NSDictionary]
             if (connections == nil) {
                 return

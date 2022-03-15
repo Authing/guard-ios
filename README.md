@@ -12,8 +12,6 @@
 
 <br>
 
-[重新定义认证流程构建方式](./doc/index_zh.md)
-
-[Re-define the way you build Auth Flow](./doc/index_en.md)
+[重新定义认证流程构建方式](https://docs.authing.cn/v2/reference/sdk-for-ios/)
 
 </div>

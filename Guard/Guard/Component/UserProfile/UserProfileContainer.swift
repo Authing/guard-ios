@@ -11,6 +11,7 @@ open class UserProfileContainer: UIScrollView {
     
     let MARGIN_X = CGFloat(20)
     let TEXT_HEIGHT = CGFloat(52)
+    let NOT_LOGIN_AVATAR_LENGTH = CGFloat(64)
     let BUTTON_HEIGHT = CGFloat(44)
     
     var fieldsViews = Array<UserProfileField>()
@@ -24,6 +25,7 @@ open class UserProfileContainer: UIScrollView {
     let logoutButton = LogoutButton()
     let deleteAccountButton = DeleteAccountButton()
     
+    let accountImageView = UIImageView()
     let notLoginTip = UILabel()
     let startLoginButton = PrimaryButton()
     
@@ -63,10 +65,17 @@ open class UserProfileContainer: UIScrollView {
             addSubview(logoutButton)
             addSubview(deleteAccountButton)
         } else {
+            accountImageView.image = UIImage(named: "authing_account", in: Bundle(for: Self.self), compatibleWith: nil)// (named: "authing_account", bun)
+            addSubview(accountImageView)
+            
             notLoginTip.textColor = UIColor.darkGray
+            notLoginTip.font = UIFont.systemFont(ofSize: 14)
             notLoginTip.text = NSLocalizedString("authing_not_login", bundle: Bundle(for: Self.self), comment: "")
             addSubview(notLoginTip)
             
+            startLoginButton.setTitleColor(UIColor.white, for: .normal)
+            startLoginButton.layer.cornerRadius = 4
+            startLoginButton.layer.masksToBounds = true
             startLoginButton.setTitle(NSLocalizedString("authing_login", bundle: Bundle(for: Self.self), comment: ""), for: .normal)
             startLoginButton.addTarget(self, action:#selector(startLogin(sender:)), for: .touchUpInside)
             addSubview(startLoginButton)
@@ -101,12 +110,16 @@ open class UserProfileContainer: UIScrollView {
             y += 4 + BUTTON_HEIGHT
             deleteAccountButton.frame = CGRect(x: 0, y: y, width: frame.width, height: BUTTON_HEIGHT)
         } else {
-            var y = 20.0
-            let w = notLoginTip.intrinsicContentSize.width
-            notLoginTip.frame = CGRect(x: MARGIN_X, y: y, width: w, height: BUTTON_HEIGHT)
+            var y = 80.0
+            accountImageView.frame = CGRect(x: (frame.width - NOT_LOGIN_AVATAR_LENGTH) / 2, y: y, width: NOT_LOGIN_AVATAR_LENGTH, height: NOT_LOGIN_AVATAR_LENGTH)
             
-            y += BUTTON_HEIGHT
-            startLoginButton.frame = CGRect(x: MARGIN_X, y: y, width: frame.width - 2 * MARGIN_X, height: BUTTON_HEIGHT)
+            y += NOT_LOGIN_AVATAR_LENGTH + 8
+            let labelWidth = notLoginTip.intrinsicContentSize.width
+            notLoginTip.frame = CGRect(x: (frame.width - labelWidth) / 2, y: y, width: labelWidth, height: BUTTON_HEIGHT)
+            
+            y += BUTTON_HEIGHT + 8
+            let btnW = 128.0
+            startLoginButton.frame = CGRect(x: (frame.width - btnW) / 2, y: y, width: btnW, height: BUTTON_HEIGHT)
         }
     }
     

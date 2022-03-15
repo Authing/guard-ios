@@ -8,6 +8,21 @@
 import UIKit
 
 open class GetVerifyCodeButton: LoadingButton {
+    
+    override open var loadingColor: UIColor? {
+        get {
+            return Const.Color_Authing_Main
+        }
+        set {}
+    }
+    
+    override open var loadingLocation: Int {
+        get {
+            return 1
+        }
+        set {}
+    }
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -35,7 +50,7 @@ open class GetVerifyCodeButton: LoadingButton {
         if let phone = Util.getPhoneNumber(self) {
             startLoading()
             Util.setError(self, "")
-            AuthClient.sendSms(phone: phone) { code, message in
+            AuthClient().sendSms(phone: phone) { code, message in
                 self.stopLoading()
                 if (code != 200) {
                     Util.setError(self, message)

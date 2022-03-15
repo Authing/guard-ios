@@ -10,6 +10,6 @@ import UIKit
 @IBDesignable open class LoginContainer: UIView {
 
     // 0 by phone code; 1 by password
-    @IBInspectable var type: Int = 0
+    @IBInspectable open var type: Int = 0
     
 }

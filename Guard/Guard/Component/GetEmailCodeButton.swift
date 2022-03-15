@@ -37,7 +37,7 @@ open class GetEmailCodeButton: LoadingButton {
     @objc private func onClick(sender: UIButton) {
         if let email = Util.getEmail(self) {
             startLoading()
-            AuthClient.sendEmail(email: email, scene: self.scene) { code, message in
+            AuthClient().sendEmail(email: email, scene: self.scene) { code, message in
                 self.stopLoading()
                 if (code != 200) {
                     Util.setError(self, message)

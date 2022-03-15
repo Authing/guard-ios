@@ -78,7 +78,7 @@ public class OIDCClient: NSObject {
             if let conf = config{
                 prepareLogin(config: conf) { code, message, authRequest  in
                     if code == 200{
-                        AuthClient.loginByAccount(authData: authRequest ,account: account, password: password, completion: completion);
+                        AuthClient().loginByAccount(authData: authRequest ,account: account, password: password, completion: completion);
                     }else{
                         completion(code, message, nil)
                     }
@@ -94,7 +94,7 @@ public class OIDCClient: NSObject {
             if let conf = config{
                 prepareLogin(config: conf) { statuCode, message, authRequest  in
                     if statuCode == 200{
-                        AuthClient.loginByPhoneCode(authData: authRequest, phone: phone, code: code, completion: completion)
+                        AuthClient().loginByPhoneCode(authData: authRequest, phone: phone, code: code, completion: completion)
                     }else{
                         completion(statuCode, message, nil)
                     }
@@ -214,7 +214,7 @@ public class OIDCClient: NSObject {
                     + "&redirect_uri=" + authRequest.redirect_uri
         request(userInfo: nil, endPoint: "/oidc/token", method: "POST", body: body) { code, message, data in
             if (code == 200) {
-                AuthClient.createUserInfo(code, message, data) { code, message, userInfo in
+                AuthClient().createUserInfo(code, message, data) { code, message, userInfo in
                     getUserInfoByAccessToken(userInfo: userInfo, completion: completion)
                 }
             } else {
@@ -225,7 +225,7 @@ public class OIDCClient: NSObject {
     
     public static func getUserInfoByAccessToken(userInfo: UserInfo?, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         request(userInfo: userInfo, endPoint: "/oidc/me", method: "GET", body: nil) { code, message, data in
-            AuthClient.createUserInfo(userInfo, code, message, data, completion: completion)
+            AuthClient().createUserInfo(userInfo, code, message, data, completion: completion)
         }
     }
     
@@ -234,7 +234,7 @@ public class OIDCClient: NSObject {
         let body = "client_id=" + Authing.getAppId() + "&grant_type=refresh_token" + "&refresh_token=" + rt;
         request(userInfo: nil, endPoint: "/oidc/token", method: "POST", body: body) { code, message, data in
             if (code == 200) {
-                AuthClient.createUserInfo(userInfo, code, message, data, completion: completion)
+                AuthClient().createUserInfo(userInfo, code, message, data, completion: completion)
             } else {
                 completion(code, message, nil)
             }

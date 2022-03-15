@@ -110,7 +110,7 @@ open class UserInfoCompleteButton: PrimaryButton {
             return
         }
         
-        AuthClient.bindEmail(email: email!.lowercased(), code: code!) { code, message, user in
+        AuthClient().bindEmail(email: email!.lowercased(), code: code!) { code, message, user in
             if (code == 200) {
                 completion(true, user)
             } else if (required) {
@@ -155,7 +155,7 @@ open class UserInfoCompleteButton: PrimaryButton {
             return
         }
         
-        AuthClient.bindPhone(phone: phone!, code: code!) { code, message, user in
+        AuthClient().bindPhone(phone: phone!, code: code!) { code, message, user in
             if (code == 200) {
                 completion(true, user)
             } else if (required) {
@@ -209,7 +209,7 @@ open class UserInfoCompleteButton: PrimaryButton {
             }
         }
         
-        AuthClient.updateProfile(object: updatedInfo, completion: { code, message, userInfo in
+        AuthClient().updateProfile(object: updatedInfo, completion: { code, message, userInfo in
             if (code == 200) {
                 completion(200, message, userInfo)
             } else {
