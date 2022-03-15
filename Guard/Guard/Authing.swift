@@ -91,13 +91,13 @@ public class Authing {
     public static func autoLogin(completion: @escaping(Int, String?, UserInfo?) -> Void) {
         sCurrentUser = UserManager.getUser()
         if sCurrentUser != nil {
-            AuthClient.getCurrentUser { code, message, userInfo in
+            AuthClient().getCurrentUser { code, message, userInfo in
                 if (code != 200) {
                     UserManager.removeUser()
                     sCurrentUser = nil
                     completion(code, message, nil)
                 } else {
-                    AuthClient.updateIdToken(completion: completion)
+                    AuthClient().updateIdToken(completion: completion)
                 }
             }
         } else {
@@ -119,7 +119,7 @@ public class Authing {
         isGettingConfig = true
         sConfig = nil
         let url = "https://console." + sHost + "/api/v2/applications/" + sAppId + "/public-config"
-        Guardian.request(config: nil, urlString: url, method: "get", body: nil) { code, message, jsonData in
+        AuthClient().request(config: nil, urlString: url, method: "get", body: nil) { code, message, jsonData in
             if (code == 200) {
                 sConfig = Config()
                 sConfig!.data = jsonData

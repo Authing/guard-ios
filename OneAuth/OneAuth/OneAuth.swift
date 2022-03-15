@@ -190,7 +190,7 @@ open class OneAuth {
     }
     
     private static func getAuthingToken(_ token: String, _ ak: String, _ completion: @escaping(Int, String?, UserInfo?)->Void) {
-        AuthClient.loginByOneAuth(token: token, accessToken: ak) { code, message, userInfo in
+        AuthClient().loginByOneAuth(token: token, accessToken: ak) { code, message, userInfo in
             completion(code, message, userInfo)
         }
     }

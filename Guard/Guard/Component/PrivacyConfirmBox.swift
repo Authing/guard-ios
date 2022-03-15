@@ -9,6 +9,8 @@ import UIKit
 
 open class PrivacyConfirmBox: UIView, UITextViewDelegate {
     
+    let size = 15.0
+    
     let imageUnchecked = UIImage(named: "authing_checkbox_unchecked", in: Bundle(for: PrivacyConfirmBox.self), compatibleWith: nil)
     let imageChecked = UIImage(named: "authing_checkbox_checked", in: Bundle(for: PrivacyConfirmBox.self), compatibleWith: nil)
     let checkBox: UIButton = UIButton()
@@ -35,10 +37,10 @@ open class PrivacyConfirmBox: UIView, UITextViewDelegate {
         
         checkBoxImageView.image = imageUnchecked
         checkBoxImageView.translatesAutoresizingMaskIntoConstraints = false
-        checkBoxImageView.widthAnchor.constraint(equalToConstant: 15).isActive = true
-        checkBoxImageView.heightAnchor.constraint(equalToConstant: 15).isActive = true
+        checkBoxImageView.widthAnchor.constraint(equalToConstant: size).isActive = true
+        checkBoxImageView.heightAnchor.constraint(equalToConstant: size).isActive = true
         checkBoxImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
-        checkBoxImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
+        checkBoxImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
         
         checkBox.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
         checkBox.translatesAutoresizingMaskIntoConstraints = false
@@ -48,7 +50,6 @@ open class PrivacyConfirmBox: UIView, UITextViewDelegate {
         checkBox.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
         
         label.delegate = self
-        label.font = UIFont.systemFont(ofSize: 15)
         label.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.leadingAnchor.constraint(equalTo: checkBox.trailingAnchor, constant: 0).isActive = true
@@ -123,5 +124,9 @@ open class PrivacyConfirmBox: UIView, UITextViewDelegate {
     public func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         UIApplication.shared.open(URL)
         return false
+    }
+    
+    public func textViewDidChangeSelection(_ textView: UITextView) {
+        label.selectedTextRange = nil
     }
 }

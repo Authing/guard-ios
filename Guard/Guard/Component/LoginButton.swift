@@ -79,7 +79,7 @@ open class LoginButton: PrimaryButton {
     
     private func loginByPhoneCode(_ phone: String, _ code: String) {
         startLoading()
-        AuthClient.loginByPhoneCode(phone: phone, code: code) { code, message, userInfo in
+        AuthClient().loginByPhoneCode(phone: phone, code: code) { code, message, userInfo in
             self.stopLoading()
             DispatchQueue.main.async() {
                 self.handleLogin(code, message: message, userInfo: userInfo)
@@ -89,7 +89,7 @@ open class LoginButton: PrimaryButton {
     
     private func loginByAccount(_ account: String, _ password: String) {
         startLoading()
-        AuthClient.loginByAccount(account: account, password: password) { code, message, userInfo in
+        AuthClient().loginByAccount(account: account, password: password) { code, message, userInfo in
             self.stopLoading()
             DispatchQueue.main.async() {
                 self.handleLogin(code, message: message, userInfo: userInfo)

@@ -27,7 +27,7 @@ open class MFAEmailButton: PrimaryButton {
             if let email = self.viewController?.authFlow?.data[AuthFlow.KEY_MFA_EMAIL] as? String {
                 self.startLoading()
                 self.setTitle(NSLocalizedString("authing_login", bundle: Bundle(for: Self.self), comment: ""), for: .normal)
-                AuthClient.sendMFAEmail(email: email) { code, message in
+                AuthClient().sendMFAEmail(email: email) { code, message in
                     self.stopLoading()
                     if (code != 200) {
                         Util.setError(self, message)
@@ -41,7 +41,7 @@ open class MFAEmailButton: PrimaryButton {
         if let code = Util.getVerifyCode(self) {
             if let email = Util.getEmail(self) {
                 startLoading()
-                AuthClient.mfaVerifyByEmail(email: email, code: code) { code, message, userInfo in
+                AuthClient().mfaVerifyByEmail(email: email, code: code) { code, message, userInfo in
                     self.done(code, message, userInfo)
                 }
             }
@@ -54,7 +54,7 @@ open class MFAEmailButton: PrimaryButton {
     
     private func checkEmail(_ email: String?) {
         startLoading()
-        AuthClient.mfaCheck(phone: nil, email: email) { code, message, result in
+        AuthClient().mfaCheck(phone: nil, email: email) { code, message, result in
             self.stopLoading()
             if (code == 200) {
                 if (result != nil && result!) {

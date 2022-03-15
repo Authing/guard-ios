@@ -36,7 +36,7 @@ open class LogoutButton: UIButton {
         let alert = UIAlertController(title: nil, message: tip, preferredStyle: UIAlertController.Style.alert)
 
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
-            AuthClient.logout { code, message in
+            AuthClient().logout { code, message in
                 DispatchQueue.main.async() {
                     self.onLogout?(code, message)
                 }

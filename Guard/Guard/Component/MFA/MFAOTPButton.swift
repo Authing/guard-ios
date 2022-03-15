@@ -27,7 +27,7 @@ open class MFAOTPButton: PrimaryButton {
     @objc private func onClick(sender: UIButton) {
         if let code = Util.getVerifyCode(self) {
             startLoading()
-            AuthClient.mfaVerifyByOTP(code: code) { code, message, userInfo in
+            AuthClient().mfaVerifyByOTP(code: code) { code, message, userInfo in
                 self.done(code, message, userInfo)
             }
         }

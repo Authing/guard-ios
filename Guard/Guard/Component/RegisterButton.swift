@@ -79,14 +79,14 @@ open class RegisterButton: PrimaryButton {
     
     private func registerByPhoneCode(_ phone: String, _ code: String) {
         startLoading()
-        AuthClient.registerByPhoneCode(phone: phone, code: code) { code, message, userInfo in
+        AuthClient().registerByPhoneCode(phone: phone, code: code) { code, message, userInfo in
             self.done(code: code, message: message, userInfo: userInfo)
         }
     }
     
     private func registerByEmail(_ email: String, _ password: String) {
         startLoading()
-        AuthClient.registerByEmail(email: email, password: password) { code, message, userInfo in
+        AuthClient().registerByEmail(email: email, password: password) { code, message, userInfo in
             self.done(code: code, message: message, userInfo: userInfo)
         }
     }

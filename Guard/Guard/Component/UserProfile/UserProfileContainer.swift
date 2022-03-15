@@ -12,7 +12,7 @@ open class UserProfileContainer: UIScrollView {
     let MARGIN_X = CGFloat(20)
     let TEXT_HEIGHT = CGFloat(52)
     let NOT_LOGIN_AVATAR_LENGTH = CGFloat(64)
-    let BUTTON_HEIGHT = CGFloat(32)
+    let BUTTON_HEIGHT = CGFloat(44)
     
     var fieldsViews = Array<UserProfileField>()
     

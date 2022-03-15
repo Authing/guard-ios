@@ -25,6 +25,8 @@ open class UserProfileAvatarField: UserProfileField, UINavigationControllerDeleg
     }
     
     private func setup() {
+        imageView.layer.cornerRadius = 6.0
+        imageView.clipsToBounds = true
         addSubview(imageView)
         imageView.addSubview(loading)
         loading.startAnimating()
@@ -71,7 +73,7 @@ open class UserProfileAvatarField: UserProfileField, UINavigationControllerDeleg
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.editedImage] as? UIImage {
             loading.startAnimating()
-            AuthClient.uploadAvatar(image: image) { code, message, userInfo in
+            AuthClient().uploadAvatar(image: image) { code, message, userInfo in
                 DispatchQueue.main.async() { [weak self] in
                     self?.loading.stopAnimating()
                     if (code == 200) {
