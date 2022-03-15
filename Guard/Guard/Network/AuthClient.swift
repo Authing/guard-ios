@@ -37,17 +37,47 @@ public class AuthClient {
     }
     
     public static func loginByAccount(account: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        loginByAccount(authData: nil, account: account, password: password, completion: completion)
+    }
+    
+    public static func loginByAccount(authData: AuthRequest?, account: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let encryptedPassword = Util.encryptPassword(password)
         let body: NSDictionary = ["account" : account, "password" : encryptedPassword]
         Guardian.post("/api/v2/login/account", body) { code, message, data in
-            createUserInfo(code, message, data, completion: completion)
+            if authData == nil{
+                createUserInfo(code, message, data, completion: completion)
+            }else{
+                createUserInfo(code, message, data) { code, msg, userInfo in
+                    if code == 200{
+                        authData?.token = userInfo?.token
+                        OIDCClient.oidcInteraction(authData: authData, completion: completion)
+                    }else{
+                        completion(code, message, userInfo)
+                    }
+                }
+            }
         }
     }
     
     public static func loginByPhoneCode(phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        loginByPhoneCode(authData: nil, phone: phone, code: code, completion: completion)
+    }
+    
+    public static func loginByPhoneCode(authData: AuthRequest?, phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let body: NSDictionary = ["phone" : phone, "code" : code]
         Guardian.post("/api/v2/login/phone-code", body) { code, message, data in
-            createUserInfo(code, message, data, completion: completion)
+            if authData == nil{
+                createUserInfo(code, message, data, completion: completion)
+            }else{
+                createUserInfo(code, message, data) { code, msg, userInfo in
+                    if code == 200{
+                        authData?.token = userInfo?.token
+                        OIDCClient.oidcInteraction(authData: authData, completion: completion)
+                    }else{
+                        completion(code, message, userInfo)
+                    }
+                }
+            }
         }
     }
     
