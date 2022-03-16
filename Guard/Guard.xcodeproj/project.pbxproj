@@ -63,6 +63,9 @@
 		7E9593E0274C813B001459C5 /* GuardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9593DF274C813B001459C5 /* GuardTests.swift */; };
 		7E9593E1274C813B001459C5 /* Guard.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E9593D5274C813A001459C5 /* Guard.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7E959441274CEECF001459C5 /* Authing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E959440274CEECF001459C5 /* Authing.swift */; };
+		7E96039227E08B2B007C87EB /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E96039127E08B2B007C87EB /* Parser.swift */; };
+		7E96039927E0AF49007C87EB /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E96039827E0AF49007C87EB /* Layout.swift */; };
+		7E96039D27E0C48C007C87EB /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E96039C27E0C48C007C87EB /* RootView.swift */; };
 		7EA2DD3C27CC84CB00B3E19D /* SocialLoginListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA2DD3B27CC84CB00B3E19D /* SocialLoginListView.swift */; };
 		7EA2DD7D27CCF40200B3E19D /* UserProfileContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA2DD7C27CCF40200B3E19D /* UserProfileContainer.swift */; };
 		7EB2D30127871E2A00A819B3 /* AppleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB2D30027871E2A00A819B3 /* AppleLoginButton.swift */; };
@@ -182,6 +185,9 @@
 		7E9593DA274C813B001459C5 /* GuardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GuardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E9593DF274C813B001459C5 /* GuardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardTests.swift; sourceTree = "<group>"; };
 		7E959440274CEECF001459C5 /* Authing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authing.swift; sourceTree = "<group>"; };
+		7E96039127E08B2B007C87EB /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		7E96039827E0AF49007C87EB /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
+		7E96039C27E0C48C007C87EB /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		7EA2DD3B27CC84CB00B3E19D /* SocialLoginListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginListView.swift; sourceTree = "<group>"; };
 		7EA2DD7C27CCF40200B3E19D /* UserProfileContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileContainer.swift; sourceTree = "<group>"; };
 		7EB2D30027871E2A00A819B3 /* AppleLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginButton.swift; sourceTree = "<group>"; };
@@ -437,6 +443,7 @@
 		7E9593D4274C813A001459C5 /* Guard */ = {
 			isa = PBXGroup;
 			children = (
+				7E96039027E08B17007C87EB /* Parser */,
 				7EF66C59277BEE5100FCBBEB /* Animation */,
 				7E75669227683E4700C3872F /* Resource */,
 				7E959440274CEECF001459C5 /* Authing.swift */,
@@ -462,6 +469,16 @@
 				7EB5CE5727D5ECBF00BE3252 /* UtiTests.swift */,
 			);
 			path = GuardTests;
+			sourceTree = "<group>";
+		};
+		7E96039027E08B17007C87EB /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				7E96039127E08B2B007C87EB /* Parser.swift */,
+				7E96039827E0AF49007C87EB /* Layout.swift */,
+				7E96039C27E0C48C007C87EB /* RootView.swift */,
+			);
+			path = Parser;
 			sourceTree = "<group>";
 		};
 		7EA2DD7B27CCF3ED00B3E19D /* UserProfile */ = {
@@ -723,9 +740,11 @@
 				7ECF8AC52759FE8D004F8FC5 /* SDKUsageTask.swift in Sources */,
 				7E87A1C627CE330800E52D5A /* UserProfileAvatarField.swift in Sources */,
 				7EB32808278C1870008639AA /* BindPhoneButton.swift in Sources */,
+				7E96039D27E0C48C007C87EB /* RootView.swift in Sources */,
 				7EB32805278C17B3008639AA /* MFAPhoneButton.swift in Sources */,
 				7EB3280E278D10B7008639AA /* MFAEmailButton.swift in Sources */,
 				7E7566A027684A5E00C3872F /* AuthClient.swift in Sources */,
+				7E96039927E0AF49007C87EB /* Layout.swift in Sources */,
 				7ECF8AC72759FF17004F8FC5 /* Const.swift in Sources */,
 				7EF66C5B277BEE7300FCBBEB /* Animator.swift in Sources */,
 				7EF66C69277C197900FCBBEB /* RegisterMethodTab.swift in Sources */,
@@ -739,6 +758,7 @@
 				7ED434E0277980B100893EDD /* ErrorLabel.swift in Sources */,
 				7EB32816278D5DD4008639AA /* FramedVerifyCodeTextField.swift in Sources */,
 				7E75668B276746AF00C3872F /* AppLogo.swift in Sources */,
+				7E96039227E08B2B007C87EB /* Parser.swift in Sources */,
 				7E7566B22768A7CC00C3872F /* UserInfo.swift in Sources */,
 				7EF66C67277C119800FCBBEB /* IndexAuthViewController.swift in Sources */,
 				7EF66C8D277DA96200FCBBEB /* GetEmailCodeButton.swift in Sources */,

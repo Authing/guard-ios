@@ -1,0 +1,23 @@
+<Layout align-items="center">
+    <AppLogo width="64" height="64" margin-top="12" />
+    <AppName margin-top="16" />
+    
+<!--    <LoginMethodTab width="match" height="48" margin-top="16" margin-left="20" margin-right="20" />-->
+    
+    <LoginContainer type="1" width="match" margin-top="16" margin-left="20" margin-right="20">
+        <AccountTextField width="match" height="44"  />
+        <PasswordTextField width="match" height="44" margin-top="16" />
+    </LoginContainer>
+    
+    <LoginContainer width="match" margin-top="16" margin-left="20" margin-right="20">
+        <PhoneNumberTextField width="match" height="44"  />
+        <Layout direction="row" height="44" margin-top="16">
+            <VerifyCodeTextField width="fill" height="match" />
+            <GetVerifyCodeButton width="88" height="match" margin-left="8" />
+        </Layout>
+    </LoginContainer>
+    
+    <ErrorLabel width="match" margin-top="8" margin-left="20" margin-right="20" />
+    <LoginButton width="match" height="44" margin-top="8" margin-left="20" margin-right="20"/>
+    
+</Layout>

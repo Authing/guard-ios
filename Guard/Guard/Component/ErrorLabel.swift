@@ -10,6 +10,8 @@ import UIKit
 open class ErrorLabel: UILabel {
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        font = UIFont.systemFont(ofSize: 14)
+        numberOfLines = 2
         setup()
     }
 
@@ -19,6 +21,9 @@ open class ErrorLabel: UILabel {
     }
 
     private func setup() {
+        if Util.isNull(text) {
+            text = " "
+        }
         textColor = Const.Color_Error
     }
 }

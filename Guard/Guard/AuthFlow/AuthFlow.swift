@@ -65,8 +65,7 @@ public class AuthFlow {
             return
         }
 
-        let authFlow = AuthFlow()
-        vc?.authFlow = authFlow
+        vc?.authFlow = authFlow ?? AuthFlow()
         vc?.authFlow?.authProtocol = authProtocol ?? .EInHouse
         let nav: AuthNavigationController = AuthNavigationController(rootViewController: vc!)
         nav.setNavigationBarHidden(true, animated: false)

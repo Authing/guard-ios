@@ -9,7 +9,16 @@ import UIKit
 import Guard
 
 class SampleListViewController: UITableViewController {
-    let from = ["Authing 登录", "手机号一键登录", "MFA", "用户信息补全", "WebView", "AppAuth", "OIDCClient"]
+
+    let from = ["Authing 登录",
+                "手机号一键登录",
+                "MFA",
+                "用户信息补全",
+                "WebView",
+                "AppAuth",
+                "OIDCClient",
+                "AML Parser"]
+
     let reuseIdentifier = "cell"
     
     override func viewDidLoad() {
@@ -64,6 +73,15 @@ class SampleListViewController: UITableViewController {
             AuthFlow.start(authProtocol: .EOIDC)  { [weak self] code, message, userInfo in
                 self?.goHome(userInfo: userInfo)
             }
+            return
+        case "AML Parser":
+            let parser = Parser()
+            let root = parser.parse(appid: "61ae0c9807451d6f30226bd4")
+            
+            let vc: AuthViewController = AuthViewController()
+            vc.view = root
+
+            self.navigationController?.pushViewController(vc, animated: true)
             return
         default:
             return

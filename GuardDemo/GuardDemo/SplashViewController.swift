@@ -34,7 +34,7 @@ class SplashViewController: UIViewController {
             if (Authing.getCurrentUser() != nil) {
                 root = MainViewController(nibName: "AuthingUserProfile", bundle: Bundle(for: UserProfileViewController.self))
             } else {
-                root = SampleListViewController(style: .plain)
+                root = SampleListViewController()
             }
             
             let keyWindow = UIApplication.shared.windows.first

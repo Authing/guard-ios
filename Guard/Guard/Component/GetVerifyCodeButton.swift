@@ -25,6 +25,8 @@ open class GetVerifyCodeButton: LoadingButton {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        setTitleColor(Const.Color_Authing_Main, for: .normal)
+        titleLabel?.font = UIFont.systemFont(ofSize: 14)
         setup()
     }
 
