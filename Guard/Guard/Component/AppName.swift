@@ -10,6 +10,7 @@ import UIKit
 open class AppName: UILabel {
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        font = UIFont.boldSystemFont(ofSize: 20)
         setup()
     }
 

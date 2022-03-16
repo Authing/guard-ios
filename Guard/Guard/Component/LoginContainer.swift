@@ -7,9 +7,14 @@
 
 import UIKit
 
-@IBDesignable open class LoginContainer: UIView {
+@IBDesignable open class LoginContainer: Layout {
 
     // 0 by phone code; 1 by password
     @IBInspectable open var type: Int = 0
     
+    override func setAttribute(key: String, value: String) {
+        if ("type" == key) {
+            type = Int(value) ?? 0
+        }
+    }
 }

@@ -58,8 +58,7 @@ public class AuthFlow {
             return
         }
 
-        let authFlow = AuthFlow()
-        vc?.authFlow = authFlow
+        vc?.authFlow = authFlow ?? AuthFlow()
         let nav: AuthNavigationController = AuthNavigationController(rootViewController: vc!)
         nav.setNavigationBarHidden(true, animated: false)
         nav.setAuthCompletion(authCompletion)

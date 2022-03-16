@@ -13,6 +13,11 @@ open class TextFieldLayout: UITextField, UITextFieldDelegate {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        let paddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: 0))
+        leftView = paddingView
+        leftViewMode = .always
+        clearButtonMode = .whileEditing
+        font = UIFont.systemFont(ofSize: 14)
         setup()
     }
 
