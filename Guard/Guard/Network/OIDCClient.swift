@@ -32,7 +32,7 @@ public class OIDCClient: NSObject {
     
     public static func prepareLogin(config: Config, completion: @escaping(Int, String?, AuthRequest?) -> Void) {
     
-        let authRequest  = AuthRequest()
+        let authRequest = AuthRequest()
         if config.redirectUris?.count ?? 0 > 0{
             if let url = config.redirectUris?.first { authRequest.redirect_uri = url }
         }
@@ -67,7 +67,7 @@ public class OIDCClient: NSObject {
                 authRequest.uuid = uuid
 
                 completion(200, "", authRequest)
-            }else{
+            } else {
                 completion(statusCode, String(decoding: data!, as: UTF8.self), nil)
             }
         }.resume()
@@ -76,10 +76,10 @@ public class OIDCClient: NSObject {
     public static func loginByAccount(account: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         Authing.getConfig { config in
             if let conf = config{
-                prepareLogin(config: conf) { code, message, authRequest  in
+                prepareLogin(config: conf) { code, message, authRequest in
                     if code == 200{
                         AuthClient().loginByAccount(authData: authRequest ,account: account, password: password, completion: completion);
-                    }else{
+                    } else {
                         completion(code, message, nil)
                     }
                 }
@@ -92,10 +92,10 @@ public class OIDCClient: NSObject {
     public static func loginByPhoneCode(phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         Authing.getConfig { config in
             if let conf = config{
-                prepareLogin(config: conf) { statuCode, message, authRequest  in
+                prepareLogin(config: conf) { statuCode, message, authRequest in
                     if statuCode == 200{
                         AuthClient().loginByPhoneCode(authData: authRequest, phone: phone, code: code, completion: completion)
-                    }else{
+                    } else {
                         completion(statuCode, message, nil)
                     }
                 }
@@ -105,7 +105,7 @@ public class OIDCClient: NSObject {
         }
     }
     
-    public static func oidcInteraction(authData: AuthRequest?,  completion: @escaping(Int, String?, UserInfo?) -> Void){
+    public static func oidcInteraction(authData: AuthRequest?, completion: @escaping(Int, String?, UserInfo?) -> Void){
         Authing.getConfig { config in
             if let conf = config, let data = authData{
                 let url = "\(Authing.getSchema())://\(Util.getHost(conf))/interaction/oidc/\(data.uuid!)/login"
@@ -117,7 +117,7 @@ public class OIDCClient: NSObject {
         }
     }
     
-    private static func _oidcInteraction(authData: AuthRequest?, url: String, body: String,  completion: @escaping(Int, String?, UserInfo?) -> Void){
+    private static func _oidcInteraction(authData: AuthRequest?, url: String, body: String, completion: @escaping(Int, String?, UserInfo?) -> Void){
     
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
@@ -136,13 +136,13 @@ public class OIDCClient: NSObject {
             if statusCode == 302{
                 let location: String = httpResponse?.allHeaderFields["Location"] as? String ?? ""
                 oidcLogin(authData: authData, url: location, completion: completion)
-            }else{
+            } else {
                 completion(statusCode, String(decoding: data!, as: UTF8.self), nil)
             }
         }.resume()
     }
 
-    public static func oidcLogin(authData: AuthRequest?, url: String,  completion: @escaping(Int, String?, UserInfo?) -> Void){
+    public static func oidcLogin(authData: AuthRequest?, url: String, completion: @escaping(Int, String?, UserInfo?) -> Void){
         
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "GET"
@@ -159,7 +159,7 @@ public class OIDCClient: NSObject {
             if statusCode == 302{
                 
                 let location: String = httpResponse?.allHeaderFields["Location"] as? String ?? ""
-                let authCode = getQueryStringParameter(url: location, param: "code")
+                let authCode = Util.getQueryStringParameter(url: URL.init(string: location)!, param: "code")
                 if authCode != nil{
                     authByCode(code: authCode!, authRequest: authData ?? AuthRequest(), completion: completion)
                 } else if URL(string: location)?.lastPathComponent == "authz" {
@@ -167,12 +167,12 @@ public class OIDCClient: NSObject {
                         let requsetUrl = "\(scheme)://\(host)/interaction/oidc/\(uuid)/confirm"
                         _oidcInteractionScopeConfirm(authData: authData, url: requsetUrl, completion: completion)
                     }
-                } else{
+                } else {
                     let requsetUrl = (request.url?.scheme ?? "") + "://" + (request.url?.host ?? "") + location
                     oidcLogin(authData: authData, url: requsetUrl, completion: completion)
                 }
                 
-            }else{
+            } else {
                 completion(statusCode, String(decoding: data!, as: UTF8.self), nil)
             }
         }.resume()
@@ -198,7 +198,7 @@ public class OIDCClient: NSObject {
             if statusCode == 302{
                 let location: String = httpResponse?.allHeaderFields["Location"] as? String ?? ""
                 oidcLogin(authData: authData, url: location, completion: completion)
-            }else{
+            } else {
                 completion(statusCode, String(decoding: data!, as: UTF8.self), nil)
             }
         }.resume()
@@ -297,10 +297,3 @@ extension OIDCClient: URLSessionTaskDelegate{
     }
 }
 
-//MARK: ---------- Util ----------
-extension OIDCClient{
-    private static func getQueryStringParameter(url: String, param: String) -> String? {
-      guard let url = URLComponents(string: url) else { return nil }
-      return url.queryItems?.first(where: { $0.name == param })?.value
-    }
-}
