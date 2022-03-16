@@ -47,4 +47,21 @@ open class AuthRequest {
         }
         return nil
     }
+    
+    public func getScopesAsConsentBody() -> String{
+        let scopes: [Substring] = scope.split(separator: " ")
+        let scopesStrs: [String] = scopes.compactMap { "\($0)" }
+        if scopes.count == 0{
+            return scope
+        }
+        
+        var scopeStr = ""
+        for str: String in scopesStrs {
+            scopeStr.append("consent[acceptedScopes][]=")
+            scopeStr.append(str)
+            scopeStr.append("&")
+        }
+        
+        return scopeStr
+    }
 }

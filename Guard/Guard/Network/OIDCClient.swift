@@ -7,7 +7,8 @@
 
 import Foundation
 
-public class OIDCClient {
+public class OIDCClient: NSObject {
+        
     public static func buildAuthorizeUrl(authRequest: AuthRequest, completion: @escaping (URL?) -> Void) {
         Authing.getConfig { config in
             if (config == nil) {
@@ -27,6 +28,180 @@ public class OIDCClient {
                 completion(URL(string: url))
             }
         }
+    }
+    
+    public static func prepareLogin(config: Config, completion: @escaping(Int, String?, AuthRequest?) -> Void) {
+    
+        let authRequest  = AuthRequest()
+        if config.redirectUris?.count ?? 0 > 0{
+            if let url = config.redirectUris?.first { authRequest.redirect_uri = url }
+        }
+        
+        let url = "\(Authing.getSchema())://\(Util.getHost(config))/oidc/auth?_authing_lang=\(Util.getLangHeader())"
+        + "&app_id=" + authRequest.client_id
+        + "&client_id=" + authRequest.client_id
+        + "&nonce=" + authRequest.nonce
+        + "&redirect_uri=" + authRequest.redirect_uri
+        + "&response_type=" + authRequest.response_type
+        + "&scope=" + authRequest.scope.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        + "&prompt=consent"
+        + "&state=" + authRequest.state
+        + "&code_challenge=" + authRequest.codeChallenge!
+        + "&code_challenge_method=S256"
+        
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "GET"
+        
+        let session = URLSession.init(configuration: URLSessionConfiguration.default, delegate: OIDCClient(), delegateQueue: nil)
+        session.dataTask(with: request) { (data, response, error) in
+            guard error == nil else {
+                completion(500, "network error \(url) \n\(error!)", authRequest)
+                return
+            }
+            
+            let httpResponse = response as? HTTPURLResponse
+            let statusCode: Int = httpResponse?.statusCode ?? 0
+            if statusCode == 302{
+                let location: String = httpResponse?.allHeaderFields["Location"] as? String ?? ""
+                let uuid = URL(string: location)?.lastPathComponent
+                authRequest.uuid = uuid
+
+                completion(200, "", authRequest)
+            }else{
+                completion(statusCode, String(decoding: data!, as: UTF8.self), nil)
+            }
+        }.resume()
+    }
+
+    public static func loginByAccount(account: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        Authing.getConfig { config in
+            if let conf = config{
+                prepareLogin(config: conf) { code, message, authRequest  in
+                    if code == 200{
+                        AuthClient().loginByAccount(authData: authRequest ,account: account, password: password, completion: completion);
+                    }else{
+                        completion(code, message, nil)
+                    }
+                }
+            } else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+            }
+        }
+    }
+    
+    public static func loginByPhoneCode(phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        Authing.getConfig { config in
+            if let conf = config{
+                prepareLogin(config: conf) { statuCode, message, authRequest  in
+                    if statuCode == 200{
+                        AuthClient().loginByPhoneCode(authData: authRequest, phone: phone, code: code, completion: completion)
+                    }else{
+                        completion(statuCode, message, nil)
+                    }
+                }
+            } else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+            }
+        }
+    }
+    
+    public static func oidcInteraction(authData: AuthRequest?,  completion: @escaping(Int, String?, UserInfo?) -> Void){
+        Authing.getConfig { config in
+            if let conf = config, let data = authData{
+                let url = "\(Authing.getSchema())://\(Util.getHost(conf))/interaction/oidc/\(data.uuid!)/login"
+                let body = "token=" + data.token!
+                _oidcInteraction(authData: authData, url: url, body: body, completion: completion)
+            }else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+            }
+        }
+    }
+    
+    private static func _oidcInteraction(authData: AuthRequest?, url: String, body: String,  completion: @escaping(Int, String?, UserInfo?) -> Void){
+    
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "POST"
+        request.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.httpBody = body.data(using: .utf8)
+        
+        let session = URLSession.init(configuration: URLSessionConfiguration.default, delegate: OIDCClient(), delegateQueue: nil)
+        session.dataTask(with: request) { (data, response, error) in
+            guard error == nil else {
+                completion(500, "network error \(url) \n\(error!)", nil)
+                return
+            }
+            
+            let httpResponse = response as? HTTPURLResponse
+            let statusCode: Int = httpResponse?.statusCode ?? 0
+            if statusCode == 302{
+                let location: String = httpResponse?.allHeaderFields["Location"] as? String ?? ""
+                oidcLogin(authData: authData, url: location, completion: completion)
+            }else{
+                completion(statusCode, String(decoding: data!, as: UTF8.self), nil)
+            }
+        }.resume()
+    }
+
+    public static func oidcLogin(authData: AuthRequest?, url: String,  completion: @escaping(Int, String?, UserInfo?) -> Void){
+        
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "GET"
+        
+        let session = URLSession.init(configuration: URLSessionConfiguration.default, delegate: OIDCClient(), delegateQueue: nil)
+        session.dataTask(with: request) { (data, response, error) in
+            guard error == nil else {
+                completion(500, "network error \(url) \n\(error!)", nil)
+                return
+            }
+            
+            let httpResponse = response as? HTTPURLResponse
+            let statusCode: Int = httpResponse?.statusCode ?? 0
+            if statusCode == 302{
+                
+                let location: String = httpResponse?.allHeaderFields["Location"] as? String ?? ""
+                let authCode = getQueryStringParameter(url: location, param: "code")
+                if authCode != nil{
+                    authByCode(code: authCode!, authRequest: authData ?? AuthRequest(), completion: completion)
+                } else if URL(string: location)?.lastPathComponent == "authz" {
+                    if let scheme = request.url?.scheme, let host = request.url?.host, let uuid = authData?.uuid{
+                        let requsetUrl = "\(scheme)://\(host)/interaction/oidc/\(uuid)/confirm"
+                        _oidcInteractionScopeConfirm(authData: authData, url: requsetUrl, completion: completion)
+                    }
+                } else{
+                    let requsetUrl = (request.url?.scheme ?? "") + "://" + (request.url?.host ?? "") + location
+                    oidcLogin(authData: authData, url: requsetUrl, completion: completion)
+                }
+                
+            }else{
+                completion(statusCode, String(decoding: data!, as: UTF8.self), nil)
+            }
+        }.resume()
+    }
+    
+    private static func _oidcInteractionScopeConfirm(authData: AuthRequest?, url: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "POST"
+        request.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        let body = authData?.getScopesAsConsentBody()
+        request.httpBody = body?.data(using: .utf8)
+
+        let session = URLSession.init(configuration: URLSessionConfiguration.default, delegate: OIDCClient(), delegateQueue: nil)
+        
+        session.dataTask(with: request) { (data, response, error) in
+            guard error == nil else {
+                completion(500, "network error \(url) \n\(error!)", nil)
+                return
+            }
+            
+            let httpResponse = response as? HTTPURLResponse
+            let statusCode: Int = httpResponse?.statusCode ?? 0
+            if statusCode == 302{
+                let location: String = httpResponse?.allHeaderFields["Location"] as? String ?? ""
+                oidcLogin(authData: authData, url: location, completion: completion)
+            }else{
+                completion(statusCode, String(decoding: data!, as: UTF8.self), nil)
+            }
+        }.resume()
     }
     
     public static func authByCode(code: String, authRequest: AuthRequest, completion: @escaping(Int, String?, UserInfo?) -> Void) {
@@ -91,6 +266,7 @@ public class OIDCClient {
             }
         }
         
+        
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard error == nil else {
                 completion(500, "network error \(url!) \n\(error!)", nil)
@@ -110,5 +286,21 @@ public class OIDCClient {
                 completion(statusCode, "", nil)
             }
         }.resume()
+    }
+}
+
+//MARK: ---------- URLSessionTaskDelegate ----------
+extension OIDCClient: URLSessionTaskDelegate{
+    
+    public func urlSession(_ session: URLSession, task: URLSessionTask, willPerformHTTPRedirection response: HTTPURLResponse, newRequest request: URLRequest, completionHandler: @escaping (URLRequest?) -> Void) {
+        completionHandler(nil)
+    }
+}
+
+//MARK: ---------- Util ----------
+extension OIDCClient{
+    private static func getQueryStringParameter(url: String, param: String) -> String? {
+      guard let url = URLComponents(string: url) else { return nil }
+      return url.queryItems?.first(where: { $0.name == param })?.value
     }
 }

@@ -9,7 +9,16 @@ import UIKit
 import Guard
 
 class SampleListViewController: UITableViewController {
-    let from = ["Authing 登录", "手机号一键登录", "MFA", "用户信息补全", "WebView", "AppAuth", "Parser"]
+
+    let from = ["Authing 登录",
+                "手机号一键登录",
+                "MFA",
+                "用户信息补全",
+                "WebView",
+                "AppAuth",
+                "OIDCClient",
+                "AML Parser"]
+
     let reuseIdentifier = "cell"
     
     override func viewDidLoad() {
@@ -28,32 +37,44 @@ class SampleListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
+        
+        switch from[indexPath.row] {
+        case "Authing 登录":
             AuthFlow.start { [weak self] code, message, userInfo in
                 self?.goHome(userInfo: userInfo)
             }
-//            authFlow?.resetPasswordFirstTimeLoginXibName = "Test"
-//            AuthFlow.showUserProfile()
-        } else if indexPath.row == 1 {
-            let vc = OneClickViewController(nibName: "OneClick", bundle: nil)
-            self.navigationController?.pushViewController(vc, animated: true)
-        } else if indexPath.row == 2 {
-            Authing.start("61c173ada0e3aec651b1a1d1")
-            AuthFlow.start { [weak self] code, message, userInfo in
-                self?.goHome(userInfo: userInfo)
-            }
-        } else if indexPath.row == 3 {
+            return
+        case "手机号一键登录":
+                let vc = OneClickViewController(nibName: "OneClick", bundle: nil)
+                self.navigationController?.pushViewController(vc, animated: true)
+            return
+        case "MFA":
+                Authing.start("61c173ada0e3aec651b1a1d1")
+                AuthFlow.start { [weak self] code, message, userInfo in
+                    self?.goHome(userInfo: userInfo)
+                }
+            return
+        case "用户信息补全":
             Authing.start("61ae0c9807451d6f30226bd4")
             AuthFlow.start { [weak self] code, message, userInfo in
                 self?.goHome(userInfo: userInfo)
             }
-        } else if indexPath.row == 4 {
+            return
+        case "WebView":
             let vc = WebViewController()
             self.navigationController?.pushViewController(vc, animated: true)
-        } else if indexPath.row == 5 {
+            return
+        case "AppAuth":
             let vc = AppAuthViewController(nibName: "AppAuth", bundle: nil)
             self.navigationController?.pushViewController(vc, animated: true)
-        } else if indexPath.row == 6 {
+            return
+        case "OIDCClient":
+            Authing.start("60caaf41df670b771fd08937");
+            AuthFlow.start(authProtocol: .EOIDC)  { [weak self] code, message, userInfo in
+                self?.goHome(userInfo: userInfo)
+            }
+            return
+        case "AML Parser":
             let parser = Parser()
             let root = parser.parse(appid: "61ae0c9807451d6f30226bd4")
             
@@ -61,6 +82,9 @@ class SampleListViewController: UITableViewController {
             vc.view = root
 
             self.navigationController?.pushViewController(vc, animated: true)
+            return
+        default:
+            return
         }
     }
     

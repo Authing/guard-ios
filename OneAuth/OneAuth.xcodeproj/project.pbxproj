@@ -27,15 +27,15 @@
 		7E7567012769D44D00C3872F /* Guard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E7567002769D44D00C3872F /* Guard.framework */; };
 		7E7567062769D77400C3872F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E7567052769D77400C3872F /* libz.tbd */; };
 		7E7567082769D77900C3872F /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E7567072769D77900C3872F /* libc++.1.tbd */; };
-		7E7567092769DE0B00C3872F /* NTESBaseComponent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E7566F42769D44A00C3872F /* NTESBaseComponent.framework */; };
-		7E75670C2769DE0D00C3872F /* NTESQuickPass.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E7566F02769D44900C3872F /* NTESQuickPass.framework */; };
-		7E75670E2769DE0F00C3872F /* WYEAccountApiSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E7566F12769D44900C3872F /* WYEAccountApiSDK.framework */; };
-		7E7567102769DE1000C3872F /* WYOAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E7566F22769D44900C3872F /* WYOAuth.framework */; };
-		7E7567122769DE1100C3872F /* WYTYRZUISDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E7566F32769D44A00C3872F /* WYTYRZUISDK.framework */; };
 		7EB50A2A276B38F900D39E7A /* NTESQuickPassManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EB50A26276B38F900D39E7A /* NTESQuickPassManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7EB50A2B276B38F900D39E7A /* NTESQuickLoginModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EB50A27276B38F900D39E7A /* NTESQuickLoginModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7EB50A2C276B38F900D39E7A /* NTESQuickPass.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EB50A28276B38F900D39E7A /* NTESQuickPass.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7EB50A2D276B38F900D39E7A /* NTESQuickLoginManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EB50A29276B38F900D39E7A /* NTESQuickLoginManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A89F12C027E08FE700E106AF /* WYTYRZUISDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A89F12BB27E08FE700E106AF /* WYTYRZUISDK.framework */; };
+		A89F12C127E08FE700E106AF /* NTESBaseComponent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A89F12BC27E08FE700E106AF /* NTESBaseComponent.framework */; };
+		A89F12C227E08FE700E106AF /* NTESQuickPass.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A89F12BD27E08FE700E106AF /* NTESQuickPass.framework */; };
+		A89F12C327E08FE700E106AF /* WYEAccountApiSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A89F12BE27E08FE700E106AF /* WYEAccountApiSDK.framework */; };
+		A89F12C427E08FE800E106AF /* WYOAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A89F12BF27E08FE700E106AF /* WYOAuth.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,11 +43,6 @@
 		7E7566D32769D25100C3872F /* OneAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OneAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E7566D62769D25100C3872F /* OneAuth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OneAuth.h; sourceTree = "<group>"; };
 		7E7566EB2769D2D200C3872F /* OneAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneAuth.swift; sourceTree = "<group>"; };
-		7E7566F02769D44900C3872F /* NTESQuickPass.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NTESQuickPass.framework; path = Frameworks/NTESQuickPass.framework; sourceTree = "<group>"; };
-		7E7566F12769D44900C3872F /* WYEAccountApiSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WYEAccountApiSDK.framework; path = Frameworks/WYEAccountApiSDK.framework; sourceTree = "<group>"; };
-		7E7566F22769D44900C3872F /* WYOAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WYOAuth.framework; path = Frameworks/WYOAuth.framework; sourceTree = "<group>"; };
-		7E7566F32769D44A00C3872F /* WYTYRZUISDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WYTYRZUISDK.framework; path = Frameworks/WYTYRZUISDK.framework; sourceTree = "<group>"; };
-		7E7566F42769D44A00C3872F /* NTESBaseComponent.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NTESBaseComponent.framework; path = Frameworks/NTESBaseComponent.framework; sourceTree = "<group>"; };
 		7E7567002769D44D00C3872F /* Guard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Guard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E7567052769D77400C3872F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		7E7567072769D77900C3872F /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk/usr/lib/libc++.1.tbd"; sourceTree = DEVELOPER_DIR; };
@@ -55,6 +50,11 @@
 		7EB50A27276B38F900D39E7A /* NTESQuickLoginModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTESQuickLoginModel.h; sourceTree = "<group>"; };
 		7EB50A28276B38F900D39E7A /* NTESQuickPass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTESQuickPass.h; sourceTree = "<group>"; };
 		7EB50A29276B38F900D39E7A /* NTESQuickLoginManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTESQuickLoginManager.h; sourceTree = "<group>"; };
+		A89F12BB27E08FE700E106AF /* WYTYRZUISDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WYTYRZUISDK.framework; path = Framework/WYTYRZUISDK.framework; sourceTree = "<group>"; };
+		A89F12BC27E08FE700E106AF /* NTESBaseComponent.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NTESBaseComponent.framework; path = Framework/NTESBaseComponent.framework; sourceTree = "<group>"; };
+		A89F12BD27E08FE700E106AF /* NTESQuickPass.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NTESQuickPass.framework; path = Framework/NTESQuickPass.framework; sourceTree = "<group>"; };
+		A89F12BE27E08FE700E106AF /* WYEAccountApiSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WYEAccountApiSDK.framework; path = Framework/WYEAccountApiSDK.framework; sourceTree = "<group>"; };
+		A89F12BF27E08FE700E106AF /* WYOAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WYOAuth.framework; path = Framework/WYOAuth.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,14 +62,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A89F12C327E08FE700E106AF /* WYEAccountApiSDK.framework in Frameworks */,
 				7E7567082769D77900C3872F /* libc++.1.tbd in Frameworks */,
-				7E75670C2769DE0D00C3872F /* NTESQuickPass.framework in Frameworks */,
-				7E7567122769DE1100C3872F /* WYTYRZUISDK.framework in Frameworks */,
+				A89F12C227E08FE700E106AF /* NTESQuickPass.framework in Frameworks */,
 				7E7567062769D77400C3872F /* libz.tbd in Frameworks */,
-				7E75670E2769DE0F00C3872F /* WYEAccountApiSDK.framework in Frameworks */,
+				A89F12C027E08FE700E106AF /* WYTYRZUISDK.framework in Frameworks */,
 				7E7567012769D44D00C3872F /* Guard.framework in Frameworks */,
-				7E7567102769DE1000C3872F /* WYOAuth.framework in Frameworks */,
-				7E7567092769DE0B00C3872F /* NTESBaseComponent.framework in Frameworks */,
+				A89F12C427E08FE800E106AF /* WYOAuth.framework in Frameworks */,
+				A89F12C127E08FE700E106AF /* NTESBaseComponent.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,14 +110,14 @@
 		7E7566EF2769D44900C3872F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A89F12BC27E08FE700E106AF /* NTESBaseComponent.framework */,
+				A89F12BD27E08FE700E106AF /* NTESQuickPass.framework */,
+				A89F12BE27E08FE700E106AF /* WYEAccountApiSDK.framework */,
+				A89F12BF27E08FE700E106AF /* WYOAuth.framework */,
+				A89F12BB27E08FE700E106AF /* WYTYRZUISDK.framework */,
 				7E7567072769D77900C3872F /* libc++.1.tbd */,
 				7E7567052769D77400C3872F /* libz.tbd */,
 				7E7567002769D44D00C3872F /* Guard.framework */,
-				7E7566F42769D44A00C3872F /* NTESBaseComponent.framework */,
-				7E7566F02769D44900C3872F /* NTESQuickPass.framework */,
-				7E7566F12769D44900C3872F /* WYEAccountApiSDK.framework */,
-				7E7566F22769D44900C3872F /* WYOAuth.framework */,
-				7E7566F32769D44A00C3872F /* WYTYRZUISDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -378,6 +378,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Framework",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -420,6 +421,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Framework",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";

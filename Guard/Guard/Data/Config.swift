@@ -47,6 +47,7 @@ public class Config {
             completeFieldsPlace = data?["complateFiledsPlace"] as? [String]
             extendedFields = data?["extendsFields"] as? [NSDictionary]
             agreements = data?["agreements"] as? [NSDictionary]
+            redirectUris = data?["redirectUris"] as? [String]
         }
     }
     
@@ -97,4 +98,5 @@ public class Config {
     var completeFieldsPlace: [String]?
     var extendedFields: [NSDictionary]? // user info complete
     var agreements: [NSDictionary]?
+    var redirectUris: [String]?
 }
