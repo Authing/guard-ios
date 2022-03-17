@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class TextFieldLayout: UITextField, UITextFieldDelegate {
+open class TextFieldLayout: UITextField, UITextFieldDelegate, AttributedViewProtocol {
     
     var border: TextFieldBorder? = nil
     
