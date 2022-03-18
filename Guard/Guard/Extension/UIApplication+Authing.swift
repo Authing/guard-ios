@@ -10,11 +10,7 @@ import UIKit
 extension UIApplication {
 
     class func topViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
-<<<<<<< HEAD
-                
-=======
 
->>>>>>> 1.0.6
         if let nav = base as? UINavigationController {
             return topViewController(base: nav.visibleViewController)
 
