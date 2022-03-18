@@ -104,8 +104,25 @@ public class OIDCClient: NSObject {
             }
         }
     }
+
+    public static func authorize(userInfo: UserInfo, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        Authing.getConfig { config in
+            if let conf = config {
+                prepareLogin(config: conf) { code, message, authRequest in
+                    if code == 200 {
+                        authRequest?.token = userInfo.token
+                        OIDCClient.oidcInteraction(authData: authRequest, completion: completion)
+                    } else {
+                        completion(code, message, nil)
+                    }
+                }
+            } else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+            }
+        }
+    }
     
-    public static func oidcInteraction(authData: AuthRequest?, completion: @escaping(Int, String?, UserInfo?) -> Void){
+    public static func oidcInteraction(authData: AuthRequest?, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         Authing.getConfig { config in
             if let conf = config, let data = authData{
                 let url = "\(Authing.getSchema())://\(Util.getHost(conf))/interaction/oidc/\(data.uuid!)/login"
@@ -117,7 +134,7 @@ public class OIDCClient: NSObject {
         }
     }
     
-    private static func _oidcInteraction(authData: AuthRequest?, url: String, body: String, completion: @escaping(Int, String?, UserInfo?) -> Void){
+    private static func _oidcInteraction(authData: AuthRequest?, url: String, body: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
     
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
@@ -142,7 +159,7 @@ public class OIDCClient: NSObject {
         }.resume()
     }
 
-    public static func oidcLogin(authData: AuthRequest?, url: String, completion: @escaping(Int, String?, UserInfo?) -> Void){
+    public static func oidcLogin(authData: AuthRequest?, url: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "GET"

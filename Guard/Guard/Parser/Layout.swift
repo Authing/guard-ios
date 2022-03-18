@@ -165,7 +165,7 @@ open class Layout: UIView, AttributedViewProtocol {
         self.padding = padding
     }
     
-    func setAttribute(key: String, value: String) {
+    public func setAttribute(key: String, value: String) {
         if ("align-items" == key) {
             if ("center" == value) {
                 alignItems = .center

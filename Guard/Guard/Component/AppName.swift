@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class AppName: UILabel {
+open class AppName: UILabel, AttributedViewProtocol {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         font = UIFont.boldSystemFont(ofSize: 20)
@@ -22,6 +22,9 @@ open class AppName: UILabel {
     private func setup() {
         Authing.getConfig { config in
             self.text = config?.name
+            if let root = Util.findView(self, viewClass: RootView.self) {
+                root.setNeedsLayout()
+            }
         }
     }
 }

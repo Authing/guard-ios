@@ -7,7 +7,7 @@
 
 import UIKit
 
-@IBDesignable open class LoadingButton: UIButton {
+@IBDesignable open class LoadingButton: UIButton, AttributedViewProtocol {
     
     static let LoadingPaddingH: CGFloat = CGFloat(16)
     static let LoadingPaddingV: CGFloat = CGFloat(12)
