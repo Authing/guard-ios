@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIView {
-    var viewController: AuthViewController? {
+    public var viewController: AuthViewController? {
         var parentResponder: UIResponder? = self.next
         while parentResponder != nil {
             if let viewController = parentResponder as? AuthViewController {

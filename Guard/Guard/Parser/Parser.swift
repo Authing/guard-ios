@@ -31,6 +31,10 @@ open class Parser: NSObject, XMLParserDelegate {
 
         if let viewType = Bundle(for: Parser.self).classNamed("Guard.\(elementName)") as? UIView.Type {
             let view = viewType.init()
+            
+            if let layout = view as? Layout {
+                layout.activated = true
+            }
 
             for (key, value) in attributeDict {
                 parseAttribute(view: view, key: key, value: value)

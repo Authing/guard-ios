@@ -1,11 +1,11 @@
 import UIKit
 
-enum Orientation {
+public enum Orientation {
     case vertical
     case horizontal
 }
 
-enum Alignment {
+public enum Alignment {
     case none
     case left
     case right
@@ -15,33 +15,33 @@ enum Alignment {
     case middle
 }
 
-enum AlignItems {
+public enum AlignItems {
     case flexStart
     case flexEnd
     case center
 }
 
-struct Edge {
-    var left: CGFloat
-    var right: CGFloat
-    var top: CGFloat
-    var bottom: CGFloat
+public struct Edge {
+    public var left: CGFloat
+    public var right: CGFloat
+    public var top: CGFloat
+    public var bottom: CGFloat
 
-    init(_ all: CGFloat) {
+    public init(_ all: CGFloat) {
         left = all
         right = all
         top = all
         bottom = all
     }
 
-    init(left: CGFloat = 0, top: CGFloat = 0, right: CGFloat = 0, bottom: CGFloat = 0) {
+    public init(left: CGFloat = 0, top: CGFloat = 0, right: CGFloat = 0, bottom: CGFloat = 0) {
         self.left = left
         self.top = top
         self.right = right
         self.bottom = bottom
     }
 
-    init(horizontal: CGFloat = 0, vertical: CGFloat = 0) {
+    public init(horizontal: CGFloat = 0, vertical: CGFloat = 0) {
         left = horizontal
         top = vertical
         right = horizontal
@@ -79,22 +79,22 @@ struct Edge {
     }
 }
 
-var EdgeZero = Edge(0)
+public var EdgeZero = Edge(0)
 
-class LayoutParams {
-    static let matchParent: CGFloat = -1
-    static let wrapContent: CGFloat = -2
+open class LayoutParams {
+    public static let matchParent: CGFloat = -1
+    public static let wrapContent: CGFloat = -2
 
-    var width = wrapContent
-    var height = wrapContent
-    var margin = EdgeZero
-    var minWidth: CGFloat = 0
-    var maxWidth = CGFloat.greatestFiniteMagnitude
-    var minHeight: CGFloat = 0
-    var maxHeight = CGFloat.greatestFiniteMagnitude
+    open var width = wrapContent
+    open var height = wrapContent
+    open var margin = EdgeZero
+    open var minWidth: CGFloat = 0
+    open var maxWidth = CGFloat.greatestFiniteMagnitude
+    open var minHeight: CGFloat = 0
+    open var maxHeight = CGFloat.greatestFiniteMagnitude
     
-    var alignment: Alignment = .none
-    var fill: CGFloat = 0
+    open var alignment: Alignment = .none
+    open var fill: CGFloat = 0
 }
 
 extension UIView {
@@ -127,8 +127,11 @@ extension UIView {
     }
 }
 
-open class Layout: UIView, AttributedViewProtocol {
-    var orientation = Orientation.vertical {
+open class Layout: UIImageView, AttributedViewProtocol {
+    
+    open var activated: Bool = false
+    
+    public var orientation = Orientation.vertical {
         didSet {
             setNeedsLayout()
         }
@@ -140,7 +143,7 @@ open class Layout: UIView, AttributedViewProtocol {
         }
     }
     
-    var alignItems = AlignItems.flexStart {
+    public var alignItems = AlignItems.flexStart {
         didSet {
             setNeedsLayout()
         }
@@ -148,10 +151,12 @@ open class Layout: UIView, AttributedViewProtocol {
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        setup()
     }
 
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        setup()
     }
 
     convenience init(orientation: Orientation, padding: Edge = EdgeZero) {
@@ -163,6 +168,10 @@ open class Layout: UIView, AttributedViewProtocol {
     convenience init(padding: Edge) {
         self.init(frame: CGRect.zero)
         self.padding = padding
+    }
+    
+    private func setup() {
+        contentMode = .scaleAspectFill
     }
     
     public func setAttribute(key: String, value: String) {
@@ -201,12 +210,16 @@ open class Layout: UIView, AttributedViewProtocol {
     }
 
     public override func layoutSubviews() {
-        if orientation == .horizontal {
-            let sizes = calculateHorizontalSizes(frame.size)
-            layoutHorizontally(sizes)
+        if activated == true {
+            if orientation == .horizontal {
+                let sizes = calculateHorizontalSizes(frame.size)
+                layoutHorizontally(sizes)
+            } else {
+                let sizes = calculateVerticalSizes(frame.size)
+                layoutVertically(sizes)
+            }
         } else {
-            let sizes = calculateVerticalSizes(frame.size)
-            layoutVertically(sizes)
+            super.layoutSubviews()
         }
     }
 
