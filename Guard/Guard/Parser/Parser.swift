@@ -9,29 +9,98 @@ import UIKit
 
 open class Parser: NSObject, XMLParserDelegate {
     
+    let TAG = "Parser"
+    
     var viewStack: Array<UIView> = Array()
     var currentView: UIView? = nil
     
-    open func parse(appId: String) -> AppBundle {
-        let root = RootView()
-        root.backgroundColor = UIColor.white
-        viewStack.append(root)
-        
-        currentView = root
-        
-        let appBundle = AppBundle()
-        appBundle.appId = appId
-        appBundle.indexView = root
-        if let url = Bundle.main.resourceURL {
-            let rootDir = url.appendingPathComponent(appId)
-            appBundle.rootDir = rootDir
-            let indexViewPath = rootDir.appendingPathComponent("page").appendingPathComponent("index.xml")
-            if let parser = XMLParser(contentsOf: indexViewPath) {
-                parser.delegate = self
-                parser.parse()
+    open func parse(appId: String) -> AppBundle? {
+        do {
+            let documentRootDir = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+
+            let appBundle = AppBundle()
+            appBundle.appId = appId
+            let appDir = documentRootDir.appendingPathComponent("authing").appendingPathComponent("apps").appendingPathComponent(appId)
+            if !FileManager.default.fileExists(atPath: appDir.path) {
+                let rootDirInMain = Bundle.main.resourceURL!.appendingPathComponent(appId)
+                if !FileManager.default.fileExists(atPath: rootDirInMain.path) {
+                    ALog.e(TAG, "no app bundle found for \(appId)")
+                    return nil
+                } else {
+                    // parse manifest to get version
+                    parseManifest(appBundle, rootDirInMain.appendingPathComponent("manifest.json"))
+                    
+                    // create root folder
+                    try FileManager.default.createDirectory(at: appDir, withIntermediateDirectories: true, attributes: nil)
+                    
+                    // copy to document/authing/apps/{appId}/{version}
+                    let destPath = appDir.appendingPathComponent(String(appBundle.versionCode))
+                    try FileManager.default.copyItem(at: rootDirInMain, to: destPath)
+                }
+            } else {
+                ALog.i(TAG, "loading app bundle from document for \(appId)")
+                
+                // sub directory names are numbers, the highest is current version code
+                // if everything is normal, there should be only one folder
+                let files = try FileManager.default.contentsOfDirectory(at: appDir, includingPropertiesForKeys: nil)
+                if files.count == 0 {
+                    ALog.e(TAG, "corrupted directory for \(appId)")
+                } else {
+                    var versionArray: [Int] = []
+                    for file in files {
+                        let version = file.lastPathComponent as NSString
+                        versionArray.append(Int(version.intValue))
+                    }
+                    versionArray.sort()
+                    if let version = versionArray.last {
+                        appBundle.versionCode = version
+                    } else {
+                        ALog.e(TAG, "corrupted directory for \(appId)")
+                    }
+                }
             }
+            
+            let rootDir = appDir.appendingPathComponent(String(appBundle.versionCode))
+            if FileManager.default.fileExists(atPath: rootDir.path) {
+                let root = RootView()
+                root.backgroundColor = UIColor.white
+                viewStack.append(root)
+                currentView = root
+                appBundle.indexView = root
+                appBundle.rootDir = rootDir
+                let indexViewPath = rootDir.appendingPathComponent("page").appendingPathComponent("index.xml")
+                if let parser = XMLParser(contentsOf: indexViewPath) {
+                    parser.delegate = self
+                    parser.parse()
+                }
+                return appBundle
+            } else {
+                ALog.e(TAG, "unexpected error happen when parsing \(appId)")
+                return nil
+            }
+        } catch {
+            ALog.e(TAG, error.localizedDescription)
+            return nil
         }
-        return appBundle
+    }
+    
+    public func parseManifest(_ appBundle: AppBundle, _ fileURL: URL) {
+        if let data = try? Data(contentsOf: fileURL) {
+            do {
+                if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? NSDictionary {
+                    if let version = json["version"] as? String {
+                        appBundle.versionName = version
+                    }
+                    if let name = json["name"] as? String {
+                        appBundle.name = name
+                    }
+                }
+            } catch {
+                ALog.e(TAG, "parseManifest error")
+            }
+        } else {
+            ALog.e(TAG, "parseManifest error file not exist \(fileURL.path)")
+        }
     }
     
     public func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {

@@ -11,7 +11,7 @@ open class AppBundle {
     open var appId: String? = nil
     open var rootDir: URL? = nil
     open var name: String? = nil
-    open var version: Int = 1
+    open var versionCode: Int = 1
     open var versionName: String? = nil
     open var indexView: UIView? = nil
 }

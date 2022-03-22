@@ -76,12 +76,11 @@ class SampleListViewController: UITableViewController {
             return
         case "HCML Parser":
             let parser = Parser()
-            let appBundle = parser.parse(appId: "61ae0c9807451d6f30226bd4")
-            
-            let vc: AuthViewController = AuthViewController()
-            vc.view = appBundle.indexView
-
-            self.navigationController?.pushViewController(vc, animated: true)
+            if let appBundle = parser.parse(appId: "61ae0c9807451d6f30226bd4") {
+                let vc: AuthViewController = AuthViewController()
+                vc.view = appBundle.indexView
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
             return
         default:
             return
