@@ -17,7 +17,7 @@ class SampleListViewController: UITableViewController {
                 "WebView",
                 "AppAuth",
                 "OIDCClient",
-                "AML Parser"]
+                "HCML Parser"]
 
     let reuseIdentifier = "cell"
     
@@ -74,12 +74,12 @@ class SampleListViewController: UITableViewController {
                 self?.goHome(userInfo: userInfo)
             }
             return
-        case "AML Parser":
+        case "HCML Parser":
             let parser = Parser()
-            let root = parser.parse(appid: "61ae0c9807451d6f30226bd4")
+            let appBundle = parser.parse(appId: "61ae0c9807451d6f30226bd4")
             
             let vc: AuthViewController = AuthViewController()
-            vc.view = root
+            vc.view = appBundle.indexView
 
             self.navigationController?.pushViewController(vc, animated: true)
             return

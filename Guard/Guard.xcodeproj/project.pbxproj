@@ -35,6 +35,7 @@
 		7E199D0A2783DE9E002C6F81 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E199D062783DE9E002C6F81 /* libWeChatSDK.a */; };
 		7E199D0D2783DFC0002C6F81 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E199D0C2783DFC0002C6F81 /* WebKit.framework */; };
 		7E199D112783F8E1002C6F81 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E199D102783F8E1002C6F81 /* libc++.tbd */; };
+		7E20000727E961B20051F590 /* AppBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E20000627E961B20051F590 /* AppBundle.swift */; };
 		7E7566782766F91500C3872F /* AppName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7566772766F91500C3872F /* AppName.swift */; };
 		7E75667B2766F9C400C3872F /* AuthingLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E75667A2766F9C400C3872F /* AuthingLogin.xib */; };
 		7E75667E2766F9DD00C3872F /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E75667D2766F9DD00C3872F /* AuthViewController.swift */; };
@@ -155,6 +156,7 @@
 		7E199D062783DE9E002C6F81 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		7E199D0C2783DFC0002C6F81 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/iOSSupport/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
 		7E199D102783F8E1002C6F81 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
+		7E20000627E961B20051F590 /* AppBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBundle.swift; sourceTree = "<group>"; };
 		7E7566772766F91500C3872F /* AppName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppName.swift; sourceTree = "<group>"; };
 		7E75667A2766F9C400C3872F /* AuthingLogin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingLogin.xib; sourceTree = "<group>"; };
 		7E75667D2766F9DD00C3872F /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
@@ -477,6 +479,7 @@
 				7E96039127E08B2B007C87EB /* Parser.swift */,
 				7E96039827E0AF49007C87EB /* Layout.swift */,
 				7E96039C27E0C48C007C87EB /* RootView.swift */,
+				7E20000627E961B20051F590 /* AppBundle.swift */,
 			);
 			path = Parser;
 			sourceTree = "<group>";
@@ -807,6 +810,7 @@
 				7E12D7B6277DE9EF00703FC1 /* UserManager.swift in Sources */,
 				7E02F46727950C35007FA048 /* UserInfoCompleteContainer.swift in Sources */,
 				7E87A1C227CDBAEF00E52D5A /* LogoutButton.swift in Sources */,
+				7E20000727E961B20051F590 /* AppBundle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

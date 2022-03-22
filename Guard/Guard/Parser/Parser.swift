@@ -12,19 +12,26 @@ open class Parser: NSObject, XMLParserDelegate {
     var viewStack: Array<UIView> = Array()
     var currentView: UIView? = nil
     
-    open func parse(appid: String) -> UIView {
+    open func parse(appId: String) -> AppBundle {
         let root = RootView()
         root.backgroundColor = UIColor.white
         viewStack.append(root)
         
         currentView = root
-        if let path = Bundle.main.url(forResource: "authing_login", withExtension: "xml") {
-            if let parser = XMLParser(contentsOf: path) {
+        
+        let appBundle = AppBundle()
+        appBundle.appId = appId
+        appBundle.indexView = root
+        if let url = Bundle.main.resourceURL {
+            let rootDir = url.appendingPathComponent(appId)
+            appBundle.rootDir = rootDir
+            let indexViewPath = rootDir.appendingPathComponent("page").appendingPathComponent("index.xml")
+            if let parser = XMLParser(contentsOf: indexViewPath) {
                 parser.delegate = self
                 parser.parse()
             }
         }
-        return root
+        return appBundle
     }
     
     public func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {

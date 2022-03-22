@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E20000527E95D9A0051F590 /* 61ae0c9807451d6f30226bd4 in Resources */ = {isa = PBXBuildFile; fileRef = 7E20000427E95D9A0051F590 /* 61ae0c9807451d6f30226bd4 */; };
 		7E7566AE2768A30400C3872F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7566AD2768A30400C3872F /* MainViewController.swift */; };
 		7E7566BD2769957800C3872F /* OneClickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7566BC2769957800C3872F /* OneClickViewController.swift */; };
 		7E7566BF276995C500C3872F /* OneClick.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E7566BE276995C500C3872F /* OneClick.xib */; };
@@ -24,7 +25,6 @@
 		7E95943F274CEA63001459C5 /* AppAuth.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E95943E274CEA63001459C5 /* AppAuth.xib */; };
 		7E959447274D063B001459C5 /* Guard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E959443274CEF11001459C5 /* Guard.framework */; };
 		7E959448274D063B001459C5 /* Guard.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7E959443274CEF11001459C5 /* Guard.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7E96039527E08EB1007C87EB /* authing_login.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7E96039427E08EB1007C87EB /* authing_login.xml */; };
 		7EACD00227915AAC005CBB2E /* Test.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EACD00127915AAC005CBB2E /* Test.xib */; };
 		7EB5CE5427CF70E900BE3252 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5CE5327CF70E900BE3252 /* WebViewController.swift */; };
 		7ED434D52775BA7000893EDD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7ED434D72775BA7000893EDD /* Localizable.strings */; };
@@ -46,6 +46,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7E20000427E95D9A0051F590 /* 61ae0c9807451d6f30226bd4 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 61ae0c9807451d6f30226bd4; sourceTree = "<group>"; };
 		7E7566AD2768A30400C3872F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7E7566B42769950E00C3872F /* WYOAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WYOAuth.framework; path = GuardDemo/OneClick/WYOAuth.framework; sourceTree = "<group>"; };
 		7E7566B52769950E00C3872F /* NTESQuickPass.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NTESQuickPass.framework; path = GuardDemo/OneClick/NTESQuickPass.framework; sourceTree = "<group>"; };
@@ -71,7 +72,6 @@
 		7E959437274CDEBA001459C5 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		7E95943E274CEA63001459C5 /* AppAuth.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppAuth.xib; sourceTree = "<group>"; };
 		7E959443274CEF11001459C5 /* Guard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Guard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7E96039427E08EB1007C87EB /* authing_login.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = authing_login.xml; sourceTree = "<group>"; };
 		7EACD00127915AAC005CBB2E /* Test.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Test.xib; sourceTree = "<group>"; };
 		7EB5CE5327CF70E900BE3252 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		7ED434D62775BA7000893EDD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -170,7 +170,7 @@
 		7E96039327E08E94007C87EB /* Parser */ = {
 			isa = PBXGroup;
 			children = (
-				7E96039427E08EB1007C87EB /* authing_login.xml */,
+				7E20000427E95D9A0051F590 /* 61ae0c9807451d6f30226bd4 */,
 			);
 			path = Parser;
 			sourceTree = "<group>";
@@ -250,11 +250,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E96039527E08EB1007C87EB /* authing_login.xml in Resources */,
 				7E959425274CB4E7001459C5 /* LaunchScreen.storyboard in Resources */,
 				7EACD00227915AAC005CBB2E /* Test.xib in Resources */,
 				7E959422274CB4E7001459C5 /* Assets.xcassets in Resources */,
 				7ED434D52775BA7000893EDD /* Localizable.strings in Resources */,
+				7E20000527E95D9A0051F590 /* 61ae0c9807451d6f30226bd4 in Resources */,
 				7E959420274CB4E2001459C5 /* Main.storyboard in Resources */,
 				7E95943F274CEA63001459C5 /* AppAuth.xib in Resources */,
 				7E7566BF276995C500C3872F /* OneClick.xib in Resources */,
