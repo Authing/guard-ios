@@ -17,7 +17,8 @@ class SampleListViewController: UITableViewController {
                 "WebView",
                 "AppAuth",
                 "OIDCClient",
-                "HCML Parser"]
+                "HCML Parser",
+                "微信登录"]
 
     let reuseIdentifier = "cell"
     
@@ -76,6 +77,9 @@ class SampleListViewController: UITableViewController {
             AuthFlow().startAppBundle("62345c87ffe7c884acbae53c") { [weak self] code, message, userInfo in
                 self?.goHome(userInfo: userInfo)
             }
+            return
+        case "微信登录":
+            
             return
         default:
             return

@@ -17,6 +17,14 @@ public class Guard {
     
     public static var sConfig: Config? = nil
     
+    public enum NotifyName: String {
+        ///企业微信通知 用于 Guard 向 WeCom 发送点击事件
+        case notify_wecom_register = "RegisterNotificationName"
+        ///企业微信通知 用于 WeCom 向 Guard 返回回调信息
+        case notify_wecom_Receive = "ReceiveNotificationName"
+        case notify_wechat
+    }
+    
     private static var sSchema = "https"
     private static var sHost = "authing.cn"
     private static var sAppId = ""

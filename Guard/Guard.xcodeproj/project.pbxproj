@@ -132,6 +132,8 @@
 		7EF66C87277D54A600FCBBEB /* AuthingResetPasswordByEmail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF66C86277D54A600FCBBEB /* AuthingResetPasswordByEmail.xib */; };
 		7EF66C8B277D5A7100FCBBEB /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C8A277D5A7100FCBBEB /* Validator.swift */; };
 		7EF66C8D277DA96200FCBBEB /* GetEmailCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C8C277DA96200FCBBEB /* GetEmailCodeButton.swift */; };
+		A8541D5827EB4F9400355EC5 /* WeComLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8541D5727EB4F9400355EC5 /* WeComLoginButton.swift */; };
+		A8541D5A27EB51E800355EC5 /* Notification+Authing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8541D5927EB51E800355EC5 /* Notification+Authing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -258,6 +260,8 @@
 		7EF66C86277D54A600FCBBEB /* AuthingResetPasswordByEmail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingResetPasswordByEmail.xib; sourceTree = "<group>"; };
 		7EF66C8A277D5A7100FCBBEB /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		7EF66C8C277DA96200FCBBEB /* GetEmailCodeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEmailCodeButton.swift; sourceTree = "<group>"; };
+		A8541D5727EB4F9400355EC5 /* WeComLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeComLoginButton.swift; sourceTree = "<group>"; };
+		A8541D5927EB51E800355EC5 /* Notification+Authing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notification+Authing.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,6 +292,7 @@
 				7EA2DD3B27CC84CB00B3E19D /* SocialLoginListView.swift */,
 				7E8AECBB27882D2D0030D27B /* SocialLoginButton.swift */,
 				7E1998D12783D3D5002C6F81 /* WechatLoginButton.swift */,
+				A8541D5727EB4F9400355EC5 /* WeComLoginButton.swift */,
 				7EB2D30027871E2A00A819B3 /* AppleLoginButton.swift */,
 			);
 			path = Social;
@@ -412,6 +417,7 @@
 			children = (
 				7E7566832766FD5D00C3872F /* UIApplication+Authing.swift */,
 				7E7566A12768801E00C3872F /* UIView+Authing.swift */,
+				A8541D5927EB51E800355EC5 /* Notification+Authing.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -782,6 +788,7 @@
 				7E96039227E08B2B007C87EB /* Parser.swift in Sources */,
 				7E7566B22768A7CC00C3872F /* UserInfo.swift in Sources */,
 				7EF66C67277C119800FCBBEB /* IndexAuthViewController.swift in Sources */,
+				A8541D5A27EB51E800355EC5 /* Notification+Authing.swift in Sources */,
 				7EF66C8D277DA96200FCBBEB /* GetEmailCodeButton.swift in Sources */,
 				7E75668D276837E700C3872F /* AccountTextField.swift in Sources */,
 				7ECF8ACA275A022D004F8FC5 /* Util.swift in Sources */,
@@ -829,6 +836,7 @@
 				7ED434CE27757E4B00893EDD /* LoginContainer.swift in Sources */,
 				7E12D7B6277DE9EF00703FC1 /* UserManager.swift in Sources */,
 				7E02F46727950C35007FA048 /* UserInfoCompleteContainer.swift in Sources */,
+				A8541D5827EB4F9400355EC5 /* WeComLoginButton.swift in Sources */,
 				7E87A1C227CDBAEF00E52D5A /* LogoutButton.swift in Sources */,
 				7E20000727E961B20051F590 /* AppBundle.swift in Sources */,
 			);

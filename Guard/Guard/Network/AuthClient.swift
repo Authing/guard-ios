@@ -331,6 +331,26 @@ public class AuthClient: Client {
         }
     }
     
+    public func loginByWeCom(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        getConfig { config in
+            guard config != nil else {
+                completion(500, "Cannot get config. app id:\(Guard.getAppId())", nil)
+                return
+            }
+  
+            let conId: String? = config?.getConnectionId(type: "wechatwork:mobile")
+            guard conId != nil else {
+                completion(500, "No wechat connection. Please set up in console for \(Guard.getAppId())", nil)
+                return
+            }
+            
+            let body: NSDictionary = ["connId" : conId!, "code" : code]
+            self.post("/api/v2/ecConn/wechatMobile/authByCode", body) { code, message, data in
+                self.createUserInfo(code, message, data, completion: completion)
+            }
+        }
+    }
+    
 //    public func loginByAlipay(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
 //        Authing.getConfig { config in
 //            guard config != nil else {

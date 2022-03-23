@@ -21,12 +21,16 @@ open class SocialLoginListView: UIView {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
+        self.src = "apple|wecom"
+        self.setSource(self.src)
+//        setup()
     }
 
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setup()
+        self.src = "apple|wecom"
+        self.setSource(self.src)
+//        setup()
     }
 
     private func setup() {
@@ -43,6 +47,8 @@ open class SocialLoginListView: UIView {
                 if let type = conn["type"] as? String {
                     if ("wechat:mobile" == type) {
                         self.addSubview(WechatLoginButton())
+                    } else if ("wechatwork:mobile" == type) {
+                        self.addSubview(WeComLoginButton())
                     } else if ("apple" == type) {
                         if #available(iOS 13.0, *) {
                             self.addSubview(AppleLoginButton())
@@ -81,7 +87,9 @@ open class SocialLoginListView: UIView {
             let trimmed = s.trimmingCharacters(in: .whitespacesAndNewlines)
             if ("wechat" == trimmed) {
                 self.addSubview(WechatLoginButton())
-            } else if ("apple" == trimmed) {
+            } else if ("wecom" == trimmed) {
+                self.addSubview(WeComLoginButton())
+            }else if ("apple" == trimmed) {
                 if #available(iOS 13.0, *) {
                     self.addSubview(AppleLoginButton())
                 } else {
