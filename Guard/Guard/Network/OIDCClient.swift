@@ -10,11 +10,11 @@ import Foundation
 public class OIDCClient: NSObject {
         
     public static func buildAuthorizeUrl(authRequest: AuthRequest, completion: @escaping (URL?) -> Void) {
-        Authing.getConfig { config in
+        Guard.getConfig { config in
             if (config == nil) {
                 completion(nil)
             } else {
-                let url = "\(Authing.getSchema())://\(Util.getHost(config!))/oidc/auth?_authing_lang=\(Util.getLangHeader())"
+                let url = "\(Guard.getSchema())://\(Util.getHost(config!))/oidc/auth?_authing_lang=\(Util.getLangHeader())"
                 + "&app_id=" + authRequest.client_id
                 + "&client_id=" + authRequest.client_id
                 + "&nonce=" + authRequest.nonce
@@ -37,7 +37,7 @@ public class OIDCClient: NSObject {
             if let url = config.redirectUris?.first { authRequest.redirect_uri = url }
         }
         
-        let url = "\(Authing.getSchema())://\(Util.getHost(config))/oidc/auth?_authing_lang=\(Util.getLangHeader())"
+        let url = "\(Guard.getSchema())://\(Util.getHost(config))/oidc/auth?_authing_lang=\(Util.getLangHeader())"
         + "&app_id=" + authRequest.client_id
         + "&client_id=" + authRequest.client_id
         + "&nonce=" + authRequest.nonce
@@ -74,7 +74,7 @@ public class OIDCClient: NSObject {
     }
 
     public static func loginByAccount(account: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        Authing.getConfig { config in
+        Guard.getConfig { config in
             if let conf = config{
                 prepareLogin(config: conf) { code, message, authRequest in
                     if code == 200{
@@ -84,13 +84,13 @@ public class OIDCClient: NSObject {
                     }
                 }
             } else {
-                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+                completion(500, "Cannot get config. app id:\(Guard.getAppId())", nil)
             }
         }
     }
     
     public static func loginByPhoneCode(phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        Authing.getConfig { config in
+        Guard.getConfig { config in
             if let conf = config{
                 prepareLogin(config: conf) { statuCode, message, authRequest in
                     if statuCode == 200{
@@ -100,13 +100,13 @@ public class OIDCClient: NSObject {
                     }
                 }
             } else {
-                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+                completion(500, "Cannot get config. app id:\(Guard.getAppId())", nil)
             }
         }
     }
 
     public static func authorize(userInfo: UserInfo, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        Authing.getConfig { config in
+        Guard.getConfig { config in
             if let conf = config {
                 prepareLogin(config: conf) { code, message, authRequest in
                     if code == 200 {
@@ -117,19 +117,19 @@ public class OIDCClient: NSObject {
                     }
                 }
             } else {
-                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+                completion(500, "Cannot get config. app id:\(Guard.getAppId())", nil)
             }
         }
     }
     
     public static func oidcInteraction(authData: AuthRequest?, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        Authing.getConfig { config in
+        Guard.getConfig { config in
             if let conf = config, let data = authData{
-                let url = "\(Authing.getSchema())://\(Util.getHost(conf))/interaction/oidc/\(data.uuid!)/login"
+                let url = "\(Guard.getSchema())://\(Util.getHost(conf))/interaction/oidc/\(data.uuid!)/login"
                 let body = "token=" + data.token!
                 _oidcInteraction(authData: authData, url: url, body: body, completion: completion)
             }else {
-                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+                completion(500, "Cannot get config. app id:\(Guard.getAppId())", nil)
             }
         }
     }
@@ -222,7 +222,7 @@ public class OIDCClient: NSObject {
     }
     
     public static func authByCode(code: String, authRequest: AuthRequest, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        let body = "client_id="+Authing.getAppId()
+        let body = "client_id="+Guard.getAppId()
                     + "&grant_type=authorization_code"
                     + "&code=" + code
                     + "&scope=" + authRequest.scope
@@ -248,7 +248,7 @@ public class OIDCClient: NSObject {
     
     public static func getNewAccessTokenByRefreshToken(userInfo: UserInfo?, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let rt = userInfo?.refreshToken ?? ""
-        let body = "client_id=" + Authing.getAppId() + "&grant_type=refresh_token" + "&refresh_token=" + rt;
+        let body = "client_id=" + Guard.getAppId() + "&grant_type=refresh_token" + "&refresh_token=" + rt;
         request(userInfo: nil, endPoint: "/oidc/token", method: "POST", body: body) { code, message, data in
             if (code == 200) {
                 AuthClient().createUserInfo(userInfo, code, message, data, completion: completion)
@@ -259,12 +259,12 @@ public class OIDCClient: NSObject {
     }
     
     public static func request(userInfo: UserInfo?, endPoint: String, method: String, body: String?, completion: @escaping (Int, String?, NSDictionary?) -> Void) {
-        Authing.getConfig { config in
+        Guard.getConfig { config in
             if (config != nil) {
-                let urlString: String = "\(Authing.getSchema())://\(Util.getHost(config!))\(endPoint)"
+                let urlString: String = "\(Guard.getSchema())://\(Util.getHost(config!))\(endPoint)"
                 _request(userInfo: userInfo, config: config, urlString: urlString, method: method, body: body, completion: completion)
             } else {
-                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+                completion(500, "Cannot get config. app id:\(Guard.getAppId())", nil)
             }
         }
     }

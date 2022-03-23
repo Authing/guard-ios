@@ -13,7 +13,6 @@ public enum AuthProtocol {
 }
 
 public class AuthFlow {
-    
     public static let KEY_USER_INFO: String = "user_info"
     public static let KEY_ACCOUNT: String = "account"
     public static let KEY_EXTENDED_FIELDS: String = "extended_fields"
@@ -38,7 +37,18 @@ public class AuthFlow {
     
     public var authProtocol: AuthProtocol = .EInHouse
     
+    // if not nil, we are in dynamic mode. the appId in appBundle can be different than Authing.getAppId
+    // which means we are doing some management work e.g. editor
+    public var appBundle: AppBundle? = nil
+    public var config: Config? = nil
+
     public init() {
+    }
+    
+    public init(_ appId: String?) {
+        if let appid = appId {
+            config = Config(appId: appid)
+        }
     }
     
     public init(_ data: NSDictionary) {
@@ -53,9 +63,9 @@ public class AuthFlow {
         UIApplication.topViewController()!.present(nav, animated: true, completion: nil)
     }
     
-    public static func start(authProtocol: AuthProtocol? = nil, authFlow: AuthFlow? = nil, authCompletion: Authing.AuthCompletion? = nil) {
+    public func start(_ appId: String? = nil, authCompletion: Guard.AuthCompletion? = nil) {
         var vc: IndexAuthViewController? = nil
-        if let nibName = authFlow?.loginXibName {
+        if let nibName = loginXibName {
             vc = IndexAuthViewController(nibName: nibName, bundle: Bundle.main)
         } else {
             vc = IndexAuthViewController(nibName: "AuthingLogin", bundle: Bundle(for: Self.self))
@@ -65,8 +75,7 @@ public class AuthFlow {
             return
         }
 
-        vc?.authFlow = authFlow ?? AuthFlow()
-        vc?.authFlow?.authProtocol = authProtocol ?? .EInHouse
+        vc?.authFlow = self
         let nav: AuthNavigationController = AuthNavigationController(rootViewController: vc!)
         nav.setNavigationBarHidden(true, animated: false)
         nav.setAuthCompletion(authCompletion)
@@ -113,6 +122,39 @@ public class AuthFlow {
         }
         
         return missing
+    }
+    
+    public func startAppBundle(_ appId: String, authCompletion: Guard.AuthCompletion? = nil) {
+        config = Config(appId: appId)
+        
+        guard let appBundle = Parser().parse(appId: appId) else {
+            ALog.e(AuthFlow.self, "startAppBundle failed for \(appId)")
+            return
+        }
+        
+        self.appBundle = appBundle
+        let vc = AuthViewController()
+        vc.authFlow = self
+        vc.view = appBundle.indexView
+        DispatchQueue.main.async() {
+            if let topVC = UIApplication.topViewController() {
+                let nav: AuthNavigationController = AuthNavigationController(rootViewController: vc)
+                nav.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                nav.setNavigationBarHidden(true, animated: false)
+                nav.setAuthCompletion(authCompletion)
+                topVC.present(nav, animated: true, completion: nil)
+            } else {
+                ALog.e(AuthFlow.self, "startAppBundle failed for \(appId). No view controller for current app")
+            }
+        }
+    }
+    
+    public func getConfig(completion: @escaping(Config?)->Void) {
+        if let c = config {
+            c.getConfig(completion: completion)
+        } else {
+            completion(nil)
+        }
     }
     
     func copy(with zone: NSZone? = nil) -> Any {

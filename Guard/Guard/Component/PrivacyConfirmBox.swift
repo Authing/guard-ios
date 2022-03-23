@@ -58,7 +58,7 @@ open class PrivacyConfirmBox: UIView, UITextViewDelegate {
         label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
         
         DispatchQueue.main.async() {
-            Authing.getConfig { config in
+            Util.getConfig(self) { config in
                 self._setup(config)
             }
         }

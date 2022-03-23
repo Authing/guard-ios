@@ -39,7 +39,7 @@ open class AppleLoginButton: SocialLoginButton, ASAuthorizationControllerDelegat
     public func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             if let authorizationCode = String(bytes: appleIDCredential.authorizationCode!, encoding: .utf8) {
-                AuthClient().loginByApple(authorizationCode) { code, message, userInfo in
+                Util.getAuthClient(self).loginByApple(authorizationCode) { code, message, userInfo in
                     DispatchQueue.main.async() {
                         self.loading?.stopAnimating()
                         if (code == 200) {

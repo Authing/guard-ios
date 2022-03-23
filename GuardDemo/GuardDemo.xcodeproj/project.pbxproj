@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7E20000527E95D9A0051F590 /* 61ae0c9807451d6f30226bd4 in Resources */ = {isa = PBXBuildFile; fileRef = 7E20000427E95D9A0051F590 /* 61ae0c9807451d6f30226bd4 */; };
+		7E20000527E95D9A0051F590 /* 62345c87ffe7c884acbae53c in Resources */ = {isa = PBXBuildFile; fileRef = 7E20000427E95D9A0051F590 /* 62345c87ffe7c884acbae53c */; };
 		7E7566AE2768A30400C3872F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7566AD2768A30400C3872F /* MainViewController.swift */; };
 		7E7566BD2769957800C3872F /* OneClickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7566BC2769957800C3872F /* OneClickViewController.swift */; };
 		7E7566BF276995C500C3872F /* OneClick.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E7566BE276995C500C3872F /* OneClick.xib */; };
@@ -46,7 +46,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7E20000427E95D9A0051F590 /* 61ae0c9807451d6f30226bd4 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 61ae0c9807451d6f30226bd4; sourceTree = "<group>"; };
+		7E20000427E95D9A0051F590 /* 62345c87ffe7c884acbae53c */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 62345c87ffe7c884acbae53c; sourceTree = "<group>"; };
 		7E7566AD2768A30400C3872F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7E7566B42769950E00C3872F /* WYOAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WYOAuth.framework; path = GuardDemo/OneClick/WYOAuth.framework; sourceTree = "<group>"; };
 		7E7566B52769950E00C3872F /* NTESQuickPass.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NTESQuickPass.framework; path = GuardDemo/OneClick/NTESQuickPass.framework; sourceTree = "<group>"; };
@@ -170,7 +170,7 @@
 		7E96039327E08E94007C87EB /* Parser */ = {
 			isa = PBXGroup;
 			children = (
-				7E20000427E95D9A0051F590 /* 61ae0c9807451d6f30226bd4 */,
+				7E20000427E95D9A0051F590 /* 62345c87ffe7c884acbae53c */,
 			);
 			path = Parser;
 			sourceTree = "<group>";
@@ -254,7 +254,7 @@
 				7EACD00227915AAC005CBB2E /* Test.xib in Resources */,
 				7E959422274CB4E7001459C5 /* Assets.xcassets in Resources */,
 				7ED434D52775BA7000893EDD /* Localizable.strings in Resources */,
-				7E20000527E95D9A0051F590 /* 61ae0c9807451d6f30226bd4 in Resources */,
+				7E20000527E95D9A0051F590 /* 62345c87ffe7c884acbae53c in Resources */,
 				7E959420274CB4E2001459C5 /* Main.storyboard in Resources */,
 				7E95943F274CEA63001459C5 /* AppAuth.xib in Resources */,
 				7E7566BF276995C500C3872F /* OneClick.xib in Resources */,

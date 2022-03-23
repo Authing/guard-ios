@@ -9,24 +9,23 @@ import Foundation
 
 typealias ConfigCompletion = (Config?) -> Void
 
-public class Authing {
+public class Guard {
     
     public static let DEFAULT_PUBLIC_KEY = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC4xKeUgQ+Aoz7TLfAfs9+paePb5KIofVthEopwrXFkp8OCeocaTHt9ICjTT2QeJh6cZaDaArfZ873GPUn00eOIZ7Ae+TiA2BKHbCvloW3w5Lnqm70iSsUi5Fmu9/2+68GZRH9L7Mlh8cFksCicW2Y2W2uMGKl64GDcIq3au+aqJQIDAQAB"
     
     public typealias AuthCompletion = (Int, String?, UserInfo?) -> Void
     
+    public static var sConfig: Config? = nil
+    
     private static var sSchema = "https"
     private static var sHost = "authing.cn"
     private static var sAppId = ""
     private static var sPublicKey = DEFAULT_PUBLIC_KEY
-    private static var sConfig: Config? = nil
-    private static var isGettingConfig: Bool = false
-    private static var configListeners = [ConfigCompletion]()
     private static var sCurrentUser: UserInfo?
     
     public static func start(_ appid: String) {
         sAppId = appid
-        requestPublicConfig()
+        sConfig = Config(appId: appid)
         SDKUsageTask.report();
     }
     
@@ -60,15 +59,10 @@ public class Authing {
     }
     
     public static func getConfig(completion: @escaping(Config?)->Void) {
-        // add listener first. otherwise callback might be fired in the other thread
-        // and this listener is missed
-        if (isGettingConfig) {
-            configListeners.append(completion);
-        }
-        
-        if (sConfig != nil) {
-            configListeners.removeAll()
-            completion(sConfig)
+        if let c = sConfig {
+            c.getConfig(completion: completion)
+        } else {
+            completion(nil)
         }
     }
     
@@ -113,32 +107,5 @@ public class Authing {
         sCurrentUser = userInfo
         // TODO save to user defaults then Core Data
         UserManager.saveUser(sCurrentUser)
-    }
-    
-    private static func requestPublicConfig() {
-        isGettingConfig = true
-        sConfig = nil
-        let url = "https://console." + sHost + "/api/v2/applications/" + sAppId + "/public-config"
-        AuthClient().request(config: nil, urlString: url, method: "get", body: nil) { code, message, jsonData in
-            if (code == 200) {
-                sConfig = Config()
-                sConfig!.data = jsonData
-
-                fireCallback()
-            } else {
-                print("error when getting public cofig:\(message!)")
-                fireCallback()
-            }
-        }
-    }
-    
-    private static func fireCallback() {
-        DispatchQueue.main.async() {
-            for completion in configListeners {
-                completion(sConfig)
-            }
-            isGettingConfig = false
-            configListeners.removeAll()
-        }
     }
 }

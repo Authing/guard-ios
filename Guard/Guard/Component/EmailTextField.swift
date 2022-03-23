@@ -19,7 +19,7 @@ open class EmailTextField: AccountTextField {
     }
 
     private func setup() {
-        Authing.getConfig { config in
+        Util.getConfig(self) { config in
             self.keyboardType = .emailAddress
             let sInput: String = NSLocalizedString("authing_please_input", bundle: Bundle(for: Self.self), comment: "")
             let text: String = NSLocalizedString("authing_email", bundle: Bundle(for: Self.self), comment: "")

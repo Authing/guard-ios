@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 public class Config {
     
@@ -99,4 +100,49 @@ public class Config {
     var extendedFields: [NSDictionary]? // user info complete
     var agreements: [NSDictionary]?
     var redirectUris: [String]?
+    
+    // MARK: Request
+    var appId: String
+    var isGettingConfig: Bool = false
+    private var configListeners = [ConfigCompletion]()
+    
+    public init(appId: String) {
+        self.appId = appId
+        requestPublicConfig()
+    }
+    
+    private func requestPublicConfig() {
+        isGettingConfig = true
+        let url = "https://console." + Guard.getHost() + "/api/v2/applications/" + appId + "/public-config"
+        AuthClient().request(config: nil, urlString: url, method: "get", body: nil) { code, message, jsonData in
+            if (code == 200) {
+                self.data = jsonData
+            } else {
+                ALog.e(Config.self, "error when getting public cofig:\(message!)")
+            }
+            self.fireCallback()
+        }
+    }
+    
+    private func fireCallback() {
+        DispatchQueue.main.async() {
+            for completion in self.configListeners {
+                completion(self)
+            }
+            self.isGettingConfig = false
+            self.configListeners.removeAll()
+        }
+    }
+    
+    public func getConfig(completion: @escaping(Config?)->Void) {
+        if isGettingConfig {
+            configListeners.append(completion);
+        } else if data != nil {
+            configListeners.removeAll()
+            completion(self)
+        } else {
+            configListeners.append(completion);
+            requestPublicConfig()
+        }
+    }
 }

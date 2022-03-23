@@ -19,7 +19,7 @@ open class AccountTextField: TextFieldLayout {
     }
 
     private func setup() {
-        Authing.getConfig { config in
+        Util.getConfig(self) { config in
             if (config != nil) {
                 self.setup(config!)
             }

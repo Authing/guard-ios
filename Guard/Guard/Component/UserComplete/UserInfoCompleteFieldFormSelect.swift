@@ -51,9 +51,9 @@ open class UserInfoCompleteFieldFormSelect: UserInfoCompleteFieldForm {
     public override func setFormData(_ data: NSDictionary) {
         super.setFormData(data)
         if ("gender" == data["name"] as? String) {
-            let m = NSLocalizedString("authing_sex_male", bundle: Bundle(for: Authing.self), comment: "")
-            let f = NSLocalizedString("authing_sex_female", bundle: Bundle(for: Authing.self), comment: "")
-            let u = NSLocalizedString("authing_sex_unspecified", bundle: Bundle(for: Authing.self), comment: "")
+            let m = NSLocalizedString("authing_sex_male", bundle: Bundle(for: Self.self), comment: "")
+            let f = NSLocalizedString("authing_sex_female", bundle: Bundle(for: Self.self), comment: "")
+            let u = NSLocalizedString("authing_sex_unspecified", bundle: Bundle(for: Self.self), comment: "")
             segment.insertSegment(withTitle: u, at: 0, animated: false)
             segment.insertSegment(withTitle: f, at: 0, animated: false)
             segment.insertSegment(withTitle: m, at: 0, animated: false)

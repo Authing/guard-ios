@@ -33,7 +33,7 @@ class AppAuthViewController: UIViewController {
                                                     tokenEndpoint: tokenEndpoint)
         
         // builds authentication request
-        let clientID = Authing.getAppId();
+        let clientID = Guard.getAppId();
         let request = OIDAuthorizationRequest(configuration: configuration,
                                               clientId: clientID,
                                               scopes: [OIDScopeOpenID, OIDScopeProfile, OIDScopeEmail, OIDScopePhone, "offline_access", "role"],

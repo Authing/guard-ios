@@ -172,6 +172,7 @@ open class Layout: UIImageView, AttributedViewProtocol {
     
     private func setup() {
         contentMode = .scaleAspectFill
+        isUserInteractionEnabled = true
     }
     
     public func setAttribute(key: String, value: String) {

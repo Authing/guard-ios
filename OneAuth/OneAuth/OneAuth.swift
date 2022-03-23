@@ -22,7 +22,7 @@ open class OneAuth {
             let success: Bool = result["success"] as! Bool
             if (success) {
                 let token: String? = result["token"] as? String
-                Authing.getConfig { config in
+                Util.getConfig(vc.view) { config in
                     self.setCustomUI(config, vc, completion: completion)
                     self.startLogin(token, completion)
                 }
@@ -105,7 +105,7 @@ open class OneAuth {
         closeHandler.setCallback(completion: completion)
         model.customViewBlock = { customView in
             let otherLoginButton: UIButton = UIButton()
-            otherLoginButton.setTitle(NSLocalizedString("authing_other_login_methods", bundle: Bundle(for: Authing.self), comment: ""), for: .normal)
+            otherLoginButton.setTitle(NSLocalizedString("authing_other_login_methods", bundle: Bundle(for: Guard.self), comment: ""), for: .normal)
             otherLoginButton.setTitleColor(UIColor(white: 0.35, alpha: 1), for: .normal)
             otherLoginButton.backgroundColor = UIColor(white: 0.9, alpha: 1)
             otherLoginButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
@@ -124,7 +124,7 @@ open class OneAuth {
             
             if (vc.navigationController == nil) {
                 let closeButton: UIButton = UIButton()
-                let img = UIImage(named: "authing_close", in: Bundle(for: Authing.self), compatibleWith: nil)!
+                let img = UIImage(named: "authing_close", in: Bundle(for: Guard.self), compatibleWith: nil)!
                 closeButton.setBackgroundImage(img, for: .normal)
                 closeButton.addTarget(closeHandler, action: #selector(CloseButtonMethodHandler.clicked), for: .touchUpInside)
                 customView?.addSubview(closeButton)
@@ -206,7 +206,7 @@ open class OneAuth {
         }
         
         @objc func clicked() {
-            AuthFlow.start { [weak self] code, message, userInfo in
+            AuthFlow().start { [weak self] code, message, userInfo in
                 if (userInfo != nil && self?.callback != nil) {
                     self?.callback!(200, nil, userInfo)
                 }

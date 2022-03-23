@@ -10,7 +10,7 @@ import Foundation
 class SDKUsageTask {
     static func report() {
         let uuid: String = Util.getDeviceID()
-        let url:URL! = URL(string:"https://developer-beta.authing.cn/stats/sdk-trace/?appid=" + Authing.getAppId()
+        let url:URL! = URL(string:"https://developer-beta.authing.cn/stats/sdk-trace/?appid=" + Guard.getAppId()
                            + "&sdk=ios&version=" + Const.SDK_VERSION
                            + "&ip=" + uuid)
         URLSession.shared.dataTask(with: url) { (objectData, response, error) in

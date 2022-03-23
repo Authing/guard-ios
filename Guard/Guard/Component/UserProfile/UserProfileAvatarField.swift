@@ -43,7 +43,7 @@ open class UserProfileAvatarField: UserProfileField, UINavigationControllerDeleg
     
     override func setField(_ field: String) {
         super.setField(field)
-        if let photo = Authing.getCurrentUser()?.photo {
+        if let photo = Guard.getCurrentUser()?.photo {
             if let url = URL(string: photo) {
                 DispatchQueue.global().async {
                     if let data = try? Data(contentsOf: url) {
@@ -73,7 +73,7 @@ open class UserProfileAvatarField: UserProfileField, UINavigationControllerDeleg
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.editedImage] as? UIImage {
             loading.startAnimating()
-            AuthClient().uploadAvatar(image: image) { code, message, userInfo in
+            Util.getAuthClient(self).uploadAvatar(image: image) { code, message, userInfo in
                 DispatchQueue.main.async() { [weak self] in
                     self?.loading.stopAnimating()
                     if (code == 200) {

@@ -33,7 +33,7 @@ open class FramedVerifyCodeTextField: UIView, UITextFieldDelegate {
     }
     
     private func setup() {
-        Authing.getConfig { config in
+        Util.getConfig(self) { config in
             guard config != nil else {
                 return
             }

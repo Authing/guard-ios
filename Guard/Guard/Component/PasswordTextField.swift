@@ -35,7 +35,7 @@ open class PasswordTextField: BasePasswordTextField {
             return
         }
         
-        Authing.getConfig { config in
+        Util.getConfig(self) { config in
             let strength = config?.passwordStrength
             if (strength == 0) {
                 return

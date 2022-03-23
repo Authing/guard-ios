@@ -30,7 +30,7 @@ open class SocialLoginListView: UIView {
     }
 
     private func setup() {
-        Authing.getConfig { config in
+        Util.getConfig(self) { config in
             if (self.src != "auto") {
                 return
             }

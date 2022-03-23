@@ -27,7 +27,7 @@ open class MFAPhoneButton: PrimaryButton {
             if let phone = self.viewController?.authFlow?.data[AuthFlow.KEY_MFA_PHONE] as? String {
                 self.startLoading()
                 self.setTitle(NSLocalizedString("authing_login", bundle: Bundle(for: Self.self), comment: ""), for: .normal)
-                AuthClient().sendSms(phone: phone) { code, message in
+                Util.getAuthClient(self).sendSms(phone: phone) { code, message in
                     self.stopLoading()
                     if (code != 200) {
                         Util.setError(self, message)
@@ -41,7 +41,7 @@ open class MFAPhoneButton: PrimaryButton {
         if let code = Util.getVerifyCode(self) {
             if let phone = Util.getPhoneNumber(self) {
                 startLoading()
-                AuthClient().mfaVerifyByPhone(phone: phone, code: code) { code, message, userInfo in
+                Util.getAuthClient(self).mfaVerifyByPhone(phone: phone, code: code) { code, message, userInfo in
                     self.done(code, message, userInfo)
                 }
             }
@@ -54,7 +54,7 @@ open class MFAPhoneButton: PrimaryButton {
     
     private func checkPhone(_ phone: String?) {
         startLoading()
-        AuthClient().mfaCheck(phone: phone, email: nil) { code, message, result in
+        Util.getAuthClient(self).mfaCheck(phone: phone, email: nil) { code, message, result in
             if (code == 200) {
                 if (result != nil && result!) {
                     self.next(phone)

@@ -26,7 +26,7 @@ open class LoginButton: PrimaryButton {
     
     @objc private func onClick(sender: UIButton) {
         Util.setError(self, "")
-        Authing.getConfig { config in
+        Util.getConfig(self) { config in
             self._onClick(config)
         }
     }
@@ -81,7 +81,7 @@ open class LoginButton: PrimaryButton {
         startLoading()
                 
         if self.viewController?.authFlow?.authProtocol == .EInHouse{
-            AuthClient().loginByPhoneCode(phone: phone, code: code) { code, message, userInfo in
+            Util.getAuthClient(self).loginByPhoneCode(phone: phone, code: code) { code, message, userInfo in
                 self.stopLoading()
                 DispatchQueue.main.async() {
                     self.handleLogin(code, message: message, userInfo: userInfo)
@@ -101,7 +101,7 @@ open class LoginButton: PrimaryButton {
         startLoading()
         
         if self.viewController?.authFlow?.authProtocol == .EInHouse{
-            AuthClient().loginByAccount(account: account, password: password) { code, message, userInfo in
+            Util.getAuthClient(self).loginByAccount(account: account, password: password) { code, message, userInfo in
                 self.stopLoading()
                 DispatchQueue.main.async() {
                     self.handleLogin(code, message: message, userInfo: userInfo)
@@ -124,7 +124,7 @@ open class LoginButton: PrimaryButton {
             }
             authCompletion?(code, message, userInfo)
         } else if (code == 200) {
-            Authing.getConfig { config in
+            Util.getConfig(self) { config in
                 let missingFields: Array<NSDictionary> = AuthFlow.missingField(config: config, userInfo: userInfo)
                 if (config?.completeFieldsPlace != nil
                     && config!.completeFieldsPlace!.contains("login")

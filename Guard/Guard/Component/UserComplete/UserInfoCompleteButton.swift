@@ -98,19 +98,19 @@ open class UserInfoCompleteButton: PrimaryButton {
         let required: Bool = form!.data?["required"] as! Bool
         let email = form!.getEmail()
         if (required && Util.isNull(email)) {
-            Util.setError(self, NSLocalizedString("authing_email_cannot_be_empty", bundle: Bundle(for: Authing.self), comment: ""))
+            Util.setError(self, NSLocalizedString("authing_email_cannot_be_empty", bundle: Bundle(for: Self.self), comment: ""))
             completion(false, nil)
             return
         }
         
         let code = form!.getCode()
         if (required && Util.isNull(code)) {
-            Util.setError(self, NSLocalizedString("authing_email_code_cannot_be_empty", bundle: Bundle(for: Authing.self), comment: ""))
+            Util.setError(self, NSLocalizedString("authing_email_code_cannot_be_empty", bundle: Bundle(for: Self.self), comment: ""))
             completion(false, nil)
             return
         }
         
-        AuthClient().bindEmail(email: email!.lowercased(), code: code!) { code, message, user in
+        Util.getAuthClient(self).bindEmail(email: email!.lowercased(), code: code!) { code, message, user in
             if (code == 200) {
                 completion(true, user)
             } else if (required) {
@@ -143,19 +143,19 @@ open class UserInfoCompleteButton: PrimaryButton {
         let required: Bool = form!.data?["required"] as! Bool
         let phone = form!.getPhone()
         if (required && Util.isNull(phone)) {
-            Util.setError(self, NSLocalizedString("authing_phone_cannot_be_empty", bundle: Bundle(for: Authing.self), comment: ""))
+            Util.setError(self, NSLocalizedString("authing_phone_cannot_be_empty", bundle: Bundle(for: Self.self), comment: ""))
             completion(false, nil)
             return
         }
         
         let code = form!.getCode()
         if (required && Util.isNull(code)) {
-            Util.setError(self, NSLocalizedString("authing_phone_code_cannot_be_empty", bundle: Bundle(for: Authing.self), comment: ""))
+            Util.setError(self, NSLocalizedString("authing_phone_code_cannot_be_empty", bundle: Bundle(for: Self.self), comment: ""))
             completion(false, nil)
             return
         }
         
-        AuthClient().bindPhone(phone: phone!, code: code!) { code, message, user in
+        Util.getAuthClient(self).bindPhone(phone: phone!, code: code!) { code, message, user in
             if (code == 200) {
                 completion(true, user)
             } else if (required) {
@@ -198,7 +198,7 @@ open class UserInfoCompleteButton: PrimaryButton {
             let value = form.getValue()
             
             if (required && Util.isNull(value)) {
-                Util.setError(self, "\(label!)\(NSLocalizedString("authing_is_required", bundle: Bundle(for: Authing.self), comment: ""))")
+                Util.setError(self, "\(label!)\(NSLocalizedString("authing_is_required", bundle: Bundle(for: Self.self), comment: ""))")
                 completion(500, nil, nil)
                 return
             }
@@ -209,7 +209,7 @@ open class UserInfoCompleteButton: PrimaryButton {
             }
         }
         
-        AuthClient().updateProfile(object: updatedInfo, completion: { code, message, userInfo in
+        Util.getAuthClient(self).updateProfile(object: updatedInfo, completion: { code, message, userInfo in
             if (code == 200) {
                 completion(200, message, userInfo)
             } else {

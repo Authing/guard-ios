@@ -52,7 +52,7 @@ open class GetVerifyCodeButton: LoadingButton {
         if let phone = Util.getPhoneNumber(self) {
             startLoading()
             Util.setError(self, "")
-            AuthClient().sendSms(phone: phone) { code, message in
+            Util.getAuthClient(self).sendSms(phone: phone) { code, message in
                 self.stopLoading()
                 if (code != 200) {
                     Util.setError(self, message)

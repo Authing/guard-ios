@@ -9,8 +9,6 @@ import UIKit
 
 open class Parser: NSObject, XMLParserDelegate {
     
-    let TAG = "Parser"
-    
     var viewStack: Array<UIView> = Array()
     var currentView: UIView? = nil
     
@@ -24,7 +22,7 @@ open class Parser: NSObject, XMLParserDelegate {
             if !FileManager.default.fileExists(atPath: appDir.path) {
                 let rootDirInMain = Bundle.main.resourceURL!.appendingPathComponent(appId)
                 if !FileManager.default.fileExists(atPath: rootDirInMain.path) {
-                    ALog.e(TAG, "no app bundle found for \(appId)")
+                    ALog.e(Parser.self, "no app bundle found for \(appId)")
                     return nil
                 } else {
                     // parse manifest to get version
@@ -38,13 +36,13 @@ open class Parser: NSObject, XMLParserDelegate {
                     try FileManager.default.copyItem(at: rootDirInMain, to: destPath)
                 }
             } else {
-                ALog.i(TAG, "loading app bundle from document for \(appId)")
+                ALog.i(Parser.self, "loading app bundle from document for \(appId)")
                 
                 // sub directory names are numbers, the highest is current version code
                 // if everything is normal, there should be only one folder
                 let files = try FileManager.default.contentsOfDirectory(at: appDir, includingPropertiesForKeys: nil)
                 if files.count == 0 {
-                    ALog.e(TAG, "corrupted directory for \(appId)")
+                    ALog.e(Parser.self, "corrupted directory for \(appId)")
                 } else {
                     var versionArray: [Int] = []
                     for file in files {
@@ -55,13 +53,14 @@ open class Parser: NSObject, XMLParserDelegate {
                     if let version = versionArray.last {
                         appBundle.versionCode = version
                     } else {
-                        ALog.e(TAG, "corrupted directory for \(appId)")
+                        ALog.e(Parser.self, "corrupted directory for \(appId)")
                     }
                 }
             }
             
             let rootDir = appDir.appendingPathComponent(String(appBundle.versionCode))
             if FileManager.default.fileExists(atPath: rootDir.path) {
+                parseManifest(appBundle, rootDir.appendingPathComponent("manifest.json"))
                 let root = RootView()
                 root.backgroundColor = UIColor.white
                 viewStack.append(root)
@@ -73,18 +72,19 @@ open class Parser: NSObject, XMLParserDelegate {
                     parser.delegate = self
                     parser.parse()
                 }
+                root.addSubview(CloseButton())
                 return appBundle
             } else {
-                ALog.e(TAG, "unexpected error happen when parsing \(appId)")
+                ALog.e(Parser.self, "unexpected error happen when parsing \(appId)")
                 return nil
             }
         } catch {
-            ALog.e(TAG, error.localizedDescription)
+            ALog.e(Parser.self, error.localizedDescription)
             return nil
         }
     }
     
-    public func parseManifest(_ appBundle: AppBundle, _ fileURL: URL) {
+    private func parseManifest(_ appBundle: AppBundle, _ fileURL: URL) {
         if let data = try? Data(contentsOf: fileURL) {
             do {
                 if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? NSDictionary {
@@ -96,10 +96,10 @@ open class Parser: NSObject, XMLParserDelegate {
                     }
                 }
             } catch {
-                ALog.e(TAG, "parseManifest error")
+                ALog.e(Parser.self, "parseManifest error")
             }
         } else {
-            ALog.e(TAG, "parseManifest error file not exist \(fileURL.path)")
+            ALog.e(Parser.self, "parseManifest error file not exist \(fileURL.path)")
         }
     }
     

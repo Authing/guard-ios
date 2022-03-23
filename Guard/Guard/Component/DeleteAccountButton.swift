@@ -37,7 +37,7 @@ open class DeleteAccountButton: UIButton {
         let alert = UIAlertController(title: nil, message: tip, preferredStyle: UIAlertController.Style.alert)
 
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
-            AuthClient().deleteAccount { code, message in
+            Util.getAuthClient(self).deleteAccount { code, message in
                 DispatchQueue.main.async() {
                     self.onDeleteAccount?(code, message)
                 }

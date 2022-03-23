@@ -56,7 +56,7 @@ open class WechatLoginButton: SocialLoginButton, WXApiDelegate {
             return
         }
         
-        AuthClient().loginByWechat(code!) { code, message, userInfo in
+        Util.getAuthClient(self).loginByWechat(code!) { code, message, userInfo in
             DispatchQueue.main.async() {
                 self.loading?.stopAnimating()
                 if (code == 200) {

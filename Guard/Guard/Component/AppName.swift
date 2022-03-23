@@ -20,7 +20,7 @@ open class AppName: UILabel, AttributedViewProtocol {
     }
 
     private func setup() {
-        Authing.getConfig { config in
+        Util.getConfig(self) { config in
             self.text = config?.name
             if let root = Util.findView(self, viewClass: RootView.self) {
                 root.setNeedsLayout()

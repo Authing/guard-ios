@@ -20,7 +20,7 @@ open class GoRegisterButton: GoSomewhereButton {
     
     private func setup() {
         self.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
-        Authing.getConfig { config in
+        Util.getConfig(self) { config in
             if (config?.registerMethods == nil || config?.registerMethods?.count == 0) {
                 self.isHidden = true
             }

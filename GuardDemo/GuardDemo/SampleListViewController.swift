@@ -37,10 +37,9 @@ class SampleListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         switch from[indexPath.row] {
         case "Authing 登录":
-            AuthFlow.start { [weak self] code, message, userInfo in
+            AuthFlow("60caaf41df670b771fd08937").start { [weak self] code, message, userInfo in
                 self?.goHome(userInfo: userInfo)
             }
             return
@@ -49,14 +48,12 @@ class SampleListViewController: UITableViewController {
                 self.navigationController?.pushViewController(vc, animated: true)
             return
         case "MFA":
-                Authing.start("61c173ada0e3aec651b1a1d1")
-                AuthFlow.start { [weak self] code, message, userInfo in
+                AuthFlow("61c173ada0e3aec651b1a1d1").start { [weak self] code, message, userInfo in
                     self?.goHome(userInfo: userInfo)
                 }
             return
         case "用户信息补全":
-            Authing.start("61ae0c9807451d6f30226bd4")
-            AuthFlow.start { [weak self] code, message, userInfo in
+            AuthFlow("61ae0c9807451d6f30226bd4").start { [weak self] code, message, userInfo in
                 self?.goHome(userInfo: userInfo)
             }
             return
@@ -69,17 +66,15 @@ class SampleListViewController: UITableViewController {
             self.navigationController?.pushViewController(vc, animated: true)
             return
         case "OIDCClient":
-            Authing.start("60caaf41df670b771fd08937");
-            AuthFlow.start(authProtocol: .EOIDC)  { [weak self] code, message, userInfo in
+            let flow = AuthFlow("60caaf41df670b771fd08937")
+            flow.authProtocol = .EOIDC
+            flow.start()  { [weak self] code, message, userInfo in
                 self?.goHome(userInfo: userInfo)
             }
             return
         case "HCML Parser":
-            let parser = Parser()
-            if let appBundle = parser.parse(appId: "61ae0c9807451d6f30226bd4") {
-                let vc: AuthViewController = AuthViewController()
-                vc.view = appBundle.indexView
-                self.navigationController?.pushViewController(vc, animated: true)
+            AuthFlow().startAppBundle("62345c87ffe7c884acbae53c") { [weak self] code, message, userInfo in
+                self?.goHome(userInfo: userInfo)
             }
             return
         default:

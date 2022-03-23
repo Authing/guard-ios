@@ -19,7 +19,7 @@ open class PhoneNumberTextField: AccountTextField {
     }
 
     private func setup() {
-        Authing.getConfig { config in
+        Util.getConfig(self) { config in
             self.keyboardType = .phonePad
             let sInput: String = NSLocalizedString("authing_please_input", bundle: Bundle(for: Self.self), comment: "")
             let sPhone: String = NSLocalizedString("authing_phone", bundle: Bundle(for: Self.self), comment: "")

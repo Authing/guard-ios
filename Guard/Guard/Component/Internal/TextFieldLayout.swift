@@ -30,6 +30,7 @@ open class TextFieldLayout: UITextField, UITextFieldDelegate, AttributedViewProt
         self.delegate = self
         layer.borderWidth = 0
         clipsToBounds = false
+        autocapitalizationType = .none
         layer.borderColor = UIColor.clear.cgColor
         border = TextFieldBorder()
         addSubview(border!)

@@ -26,7 +26,7 @@ open class LoginMethodTab: UIView {
     private func setup(_ frame: CGRect) {
         isUserInteractionEnabled = true
         
-        Authing.getConfig { config in
+        Util.getConfig(self) { config in
             let underLine: UIView = UIView(frame: CGRect())
             self.addSubview(underLine)
             underLine.translatesAutoresizingMaskIntoConstraints = false

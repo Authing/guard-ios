@@ -8,19 +8,25 @@
 import Foundation
 
 open class ALog {
-    public static func d(_ tag: String, _ msg: String...) {
-        print("📘\(tag):\(msg)")
+    public static func d(_ type: AnyClass, _ msg: String...) {
+        print("📘\(getTag(type)):\(msg)")
     }
     
-    public static func i(_ tag: String, _ msg: String...) {
-        print("📗\(tag):\(msg)")
+    public static func i(_ type: AnyClass, _ msg: String...) {
+        print("📗\(getTag(type)):\(msg)")
     }
     
-    public static func w(_ tag: String, _ msg: String...) {
-        print("📙\(tag):\(msg)")
+    public static func w(_ type: AnyClass, _ msg: String...) {
+        print("📙\(getTag(type)):\(msg)")
     }
     
-    public static func e(_ tag: String, _ msg: String...) {
-        print("📕\(tag):\(msg)")
+    public static func e(_ type: AnyClass, _ msg: String...) {
+        print("📕\(getTag(type)):\(msg)")
+    }
+    
+    private static func getTag(_ type: AnyClass) -> String {
+        let bundleId = Bundle(for: type).bundleIdentifier ?? ""
+        let className = String(describing: type)
+        return "\(bundleId).\(className)"
     }
 }
