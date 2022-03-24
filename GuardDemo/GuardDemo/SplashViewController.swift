@@ -15,7 +15,7 @@ class SplashViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Guard.autoLogin() { code, message, userInfo in
+        Authing.autoLogin() { code, message, userInfo in
             DispatchQueue.main.async() {
                 self.next(1)
             }
@@ -31,7 +31,7 @@ class SplashViewController: UIViewController {
         
         if (flag == 3) {
             var root: UIViewController? = nil
-            if (Guard.getCurrentUser() != nil) {
+            if (Authing.getCurrentUser() != nil) {
                 root = MainViewController(nibName: "AuthingUserProfile", bundle: Bundle(for: UserProfileViewController.self))
             } else {
                 root = SampleListViewController()

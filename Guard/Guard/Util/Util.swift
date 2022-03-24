@@ -108,7 +108,7 @@ public class Util {
     }
     
     public static func encryptPassword(_ message: String) -> String {
-        let data: Data = Data(base64Encoded: Guard.getPublicKey())!
+        let data: Data = Data(base64Encoded: Authing.getPublicKey())!
         
         var attributes: CFDictionary {
             return [kSecAttrKeyType         : kSecAttrKeyTypeRSA,
@@ -220,10 +220,10 @@ public class Util {
     }
     
     public static func getHost(_ config: Config) -> String {
-        if Util.isIp(Guard.getHost()) {
-            return Guard.getHost()
+        if Util.isIp(Authing.getHost()) {
+            return Authing.getHost()
         } else {
-            return "\(config.identifier!).\(Guard.getHost())"
+            return "\(config.identifier!).\(Authing.getHost())"
         }
     }
     
@@ -367,7 +367,7 @@ public class Util {
             if let c = view.viewController?.authFlow?.config {
                 c.getConfig(completion: completion)
             } else {
-                Guard.getConfig(completion: completion)
+                Authing.getConfig(completion: completion)
             }
         }
     }

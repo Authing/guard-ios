@@ -23,7 +23,7 @@ open class UserInfoCompleteContainer: UIView {
 
     private func setup() {
         Util.getConfig(self) { config in
-            let missingFields: Array<NSDictionary> = AuthFlow.missingField(config: config, userInfo: Guard.getCurrentUser())
+            let missingFields: Array<NSDictionary> = AuthFlow.missingField(config: config, userInfo: Authing.getCurrentUser())
             if ((config?.completeFieldsPlace?.contains("login")) != nil && missingFields.count > 0) {
                 let height = CGFloat(missingFields.count - 1) * self.ITEM_TOP_SPACE + self.getHeight(missingFields)
                 self.constraints.first(where: {

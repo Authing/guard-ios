@@ -112,8 +112,8 @@ public class AuthClient: Client {
     }
     
     public func logout(completion: @escaping(Int, String?) -> Void) {
-        get("/api/v2/logout?app_id=\(Guard.getAppId())") { code, message, data in
-            Guard.saveUser(nil)
+        get("/api/v2/logout?app_id=\(Authing.getAppId())") { code, message, data in
+            Authing.saveUser(nil)
             HTTPCookieStorage.shared.cookies?.forEach(HTTPCookieStorage.shared.deleteCookie)
             completion(200, "ok")
         }
@@ -244,7 +244,7 @@ public class AuthClient: Client {
     
     public func updateIdToken(completion: @escaping(Int, String?, UserInfo?) -> Void) {
         post("/api/v2/users/refresh-token", [:]) { code, message, data in
-            self.createUserInfo(Guard.getCurrentUser(), code, message, data, completion: completion)
+            self.createUserInfo(Authing.getCurrentUser(), code, message, data, completion: completion)
         }
     }
     
@@ -263,7 +263,7 @@ public class AuthClient: Client {
     }
     
     public func listOrgs(completion: @escaping(Int, String?, NSArray?) -> Void) {
-        if let userId = Guard.getCurrentUser()?.userId {
+        if let userId = Authing.getCurrentUser()?.userId {
             get("/api/v2/users/\(userId)/orgs") { code, message, data in
                 if (code == 200) {
                     completion(code, message, data?["data"] as? NSArray)
@@ -303,7 +303,7 @@ public class AuthClient: Client {
     public func deleteAccount(completion: @escaping(Int, String?) -> Void) {
         delete("/api/v2/users/delete") { code, message, data in
             if (code == 200) {
-                Guard.saveUser(nil)
+                Authing.saveUser(nil)
                 HTTPCookieStorage.shared.cookies?.forEach(HTTPCookieStorage.shared.deleteCookie)
             }
             completion(code, message)
@@ -314,13 +314,13 @@ public class AuthClient: Client {
     public func loginByWechat(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         getConfig { config in
             guard config != nil else {
-                completion(500, "Cannot get config. app id:\(Guard.getAppId())", nil)
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
                 return
             }
   
             let conId: String? = config?.getConnectionId(type: "wechat:mobile")
             guard conId != nil else {
-                completion(500, "No wechat connection. Please set up in console for \(Guard.getAppId())", nil)
+                completion(500, "No wechat connection. Please set up in console for \(Authing.getAppId())", nil)
                 return
             }
             
@@ -354,12 +354,12 @@ public class AuthClient: Client {
     public func loginByApple(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         getConfig { config in
             guard config != nil else {
-                completion(500, "Cannot get config. app id:\(Guard.getAppId())", nil)
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
                 return
             }
   
             let userPoolId: String? = config?.userPoolId
-            let url: String = "/connection/social/apple/\(userPoolId!)/callback?app_id=\(Guard.getAppId())";
+            let url: String = "/connection/social/apple/\(userPoolId!)/callback?app_id=\(Authing.getAppId())";
             let body: NSDictionary = ["code" : code]
             self.post(url, body) { code, message, data in
                 self.createUserInfo(code, message, data, completion: completion)
@@ -426,10 +426,10 @@ public class AuthClient: Client {
         let userInfo = user ?? UserInfo()
         if (code == 200) {
             userInfo.parse(data: data)
-            Guard.saveUser(userInfo)
+            Authing.saveUser(userInfo)
             getCustomUserData(userInfo: userInfo, completion: completion)
         } else if (code == Const.EC_MFA_REQUIRED) {
-            Guard.saveUser(userInfo)
+            Authing.saveUser(userInfo)
             userInfo.mfaData = data
             completion(code, message, userInfo)
         } else if (code == Const.EC_FIRST_TIME_LOGIN) {
@@ -454,10 +454,10 @@ public class AuthClient: Client {
     private func request(endPoint: String, method: String, body: NSDictionary?, completion: @escaping (Int, String?, NSDictionary?) -> Void) {
         getConfig { config in
             if (config != nil) {
-                let urlString: String = "\(Guard.getSchema())://\(Util.getHost(config!))\(endPoint)";
+                let urlString: String = "\(Authing.getSchema())://\(Util.getHost(config!))\(endPoint)";
                 self.request(config: config, urlString: urlString, method: method, body: body, completion: completion)
             } else {
-                completion(500, "Cannot get config. app id:\(Guard.getAppId())", nil)
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
             }
         }
     }
@@ -473,7 +473,7 @@ public class AuthClient: Client {
             }
         }
 
-        if let currentUser = Guard.getCurrentUser() {
+        if let currentUser = Authing.getCurrentUser() {
             if let token = currentUser.idToken {
                 request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
             } else if let mfaToken = currentUser.mfaToken {
@@ -559,10 +559,10 @@ public class AuthClient: Client {
     public func uploadImage(_ image: UIImage, completion: @escaping (Int, String?) -> Void) {
         getConfig { config in
             if (config != nil) {
-                let urlString: String = "\(Guard.getSchema())://\(Util.getHost(config!))/api/v2/upload?folder=photos";
+                let urlString: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/upload?folder=photos";
                 self._uploadImage(urlString, image, completion: completion)
             } else {
-                completion(500, "Cannot get config. app id:\(Guard.getAppId())")
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())")
             }
         }
     }

@@ -46,7 +46,7 @@ open class UserProfileContainer: UIScrollView {
         
         fieldsViews.removeAll()
         
-        if Guard.getCurrentUser() != nil {
+        if Authing.getCurrentUser() != nil {
             if ("all" == fields) {
                 addAvatarField()
                 addTextField("nickname")
@@ -97,7 +97,7 @@ open class UserProfileContainer: UIScrollView {
     }
     
     open override func layoutSubviews() {
-        if Guard.getCurrentUser() != nil {
+        if Authing.getCurrentUser() != nil {
             var y = 0.0
             for v in fieldsViews {
                 v.frame = CGRect(x: 0, y: y, width: frame.width, height: TEXT_HEIGHT)

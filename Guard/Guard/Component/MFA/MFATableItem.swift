@@ -58,14 +58,14 @@ open class MFATableItem: UIView {
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
         var vc: AuthViewController? = nil
         if (mfaType == .phone) {
-            if let phone = Guard.getCurrentUser()?.mfaPhone {
+            if let phone = Authing.getCurrentUser()?.mfaPhone {
                 vc = AuthViewController(nibName: "AuthingMFAPhone1", bundle: Bundle(for: Self.self))
                 vc?.authFlow?.data.setValue(phone, forKey: AuthFlow.KEY_MFA_PHONE)
             } else {
                 vc = AuthViewController(nibName: "AuthingMFAPhone0", bundle: Bundle(for: Self.self))
             }
         } else if (mfaType == .email) {
-            if let email = Guard.getCurrentUser()?.mfaEmail {
+            if let email = Authing.getCurrentUser()?.mfaEmail {
                 vc = AuthViewController(nibName: "AuthingMFAEmail1", bundle: Bundle(for: Self.self))
                 vc?.authFlow?.data.setValue(email, forKey: AuthFlow.KEY_MFA_EMAIL)
             } else {

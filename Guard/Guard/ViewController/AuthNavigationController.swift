@@ -9,13 +9,13 @@ import UIKit
 
 open class AuthNavigationController: UINavigationController {
     
-    private var authCompletion: Guard.AuthCompletion?
+    private var authCompletion: Authing.AuthCompletion?
     
-    public func setAuthCompletion(_ completion: Guard.AuthCompletion?) {
+    public func setAuthCompletion(_ completion: Authing.AuthCompletion?) {
         self.authCompletion = completion
     }
     
-    public func getAuthCompletion() -> Guard.AuthCompletion? {
+    public func getAuthCompletion() -> Authing.AuthCompletion? {
         return self.authCompletion
     }
     

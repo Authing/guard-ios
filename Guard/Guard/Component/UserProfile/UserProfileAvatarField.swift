@@ -43,7 +43,7 @@ open class UserProfileAvatarField: UserProfileField, UINavigationControllerDeleg
     
     override func setField(_ field: String) {
         super.setField(field)
-        if let photo = Guard.getCurrentUser()?.photo {
+        if let photo = Authing.getCurrentUser()?.photo {
             if let url = URL(string: photo) {
                 DispatchQueue.global().async {
                     if let data = try? Data(contentsOf: url) {

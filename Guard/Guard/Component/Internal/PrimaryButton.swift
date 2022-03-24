@@ -9,7 +9,7 @@ import UIKit
 
 open class PrimaryButton: LoadingButton {
     
-    var authCompletion: Guard.AuthCompletion?
+    var authCompletion: Authing.AuthCompletion?
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,7 +29,7 @@ open class PrimaryButton: LoadingButton {
         self.setTitleColor(UIColor(white: 0.8, alpha: 1), for: .highlighted)
     }
     
-    public func setAuthCompletion(_ completion: Guard.AuthCompletion?) {
+    public func setAuthCompletion(_ completion: Authing.AuthCompletion?) {
         self.authCompletion = completion
     }
 }

@@ -70,7 +70,7 @@
 		7E9593DB274C813B001459C5 /* Guard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9593D2274C813A001459C5 /* Guard.framework */; };
 		7E9593E0274C813B001459C5 /* GuardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9593DF274C813B001459C5 /* GuardTests.swift */; };
 		7E9593E1274C813B001459C5 /* Guard.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E9593D5274C813A001459C5 /* Guard.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7E959441274CEECF001459C5 /* Guard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E959440274CEECF001459C5 /* Guard.swift */; };
+		7E959441274CEECF001459C5 /* Authing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E959440274CEECF001459C5 /* Authing.swift */; };
 		7E96039227E08B2B007C87EB /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E96039127E08B2B007C87EB /* Parser.swift */; };
 		7E96039927E0AF49007C87EB /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E96039827E0AF49007C87EB /* Layout.swift */; };
 		7E96039D27E0C48C007C87EB /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E96039C27E0C48C007C87EB /* RootView.swift */; };
@@ -200,7 +200,7 @@
 		7E9593D5274C813A001459C5 /* Guard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Guard.h; sourceTree = "<group>"; };
 		7E9593DA274C813B001459C5 /* GuardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GuardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E9593DF274C813B001459C5 /* GuardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardTests.swift; sourceTree = "<group>"; };
-		7E959440274CEECF001459C5 /* Guard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guard.swift; sourceTree = "<group>"; };
+		7E959440274CEECF001459C5 /* Authing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authing.swift; sourceTree = "<group>"; };
 		7E96039127E08B2B007C87EB /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		7E96039827E0AF49007C87EB /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		7E96039C27E0C48C007C87EB /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -482,7 +482,7 @@
 				7E96039027E08B17007C87EB /* Parser */,
 				7EF66C59277BEE5100FCBBEB /* Animation */,
 				7E75669227683E4700C3872F /* Resource */,
-				7E959440274CEECF001459C5 /* Guard.swift */,
+				7E959440274CEECF001459C5 /* Authing.swift */,
 				7ECF8AC62759FF17004F8FC5 /* Const.swift */,
 				7E9593D5274C813A001459C5 /* Guard.h */,
 				7ECF8AC32759FE71004F8FC5 /* Analyze */,
@@ -848,7 +848,7 @@
 				7EF66C71277C371E00FCBBEB /* EmailTextField.swift in Sources */,
 				7EB5CE5627D1EE3200BE3252 /* DeleteAccountButton.swift in Sources */,
 				7EA2DD3C27CC84CB00B3E19D /* SocialLoginListView.swift in Sources */,
-				7E959441274CEECF001459C5 /* Guard.swift in Sources */,
+				7E959441274CEECF001459C5 /* Authing.swift in Sources */,
 				7EF66C65277C0B6F00FCBBEB /* AuthNavigationController.swift in Sources */,
 				7ED434CE27757E4B00893EDD /* LoginContainer.swift in Sources */,
 				7E12D7B6277DE9EF00703FC1 /* UserManager.swift in Sources */,

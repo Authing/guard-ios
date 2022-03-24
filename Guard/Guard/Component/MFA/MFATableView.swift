@@ -22,7 +22,7 @@ open class MFATableView: UIView {
     }
 
     private func setup() {
-        if let mfaPolicy = Guard.getCurrentUser()?.mfaPolicy {
+        if let mfaPolicy = Authing.getCurrentUser()?.mfaPolicy {
             var i = 0, last: UIView? = nil
             for policy in mfaPolicy {
                 let mfaItem: MFATableItem = MFATableItem()
