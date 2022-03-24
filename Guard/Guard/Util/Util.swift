@@ -223,7 +223,7 @@ public class Util {
         if Util.isIp(Guard.getHost()) {
             return Guard.getHost()
         } else {
-            return "\(config.identifier!).\(Guard.getHost())"
+            return "\(config.identifier ?? "").\(Guard.getHost())"
         }
     }
     

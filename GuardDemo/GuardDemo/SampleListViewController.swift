@@ -7,6 +7,7 @@
 
 import UIKit
 import Guard
+import WeCom
 
 class SampleListViewController: UITableViewController {
 
@@ -75,7 +76,7 @@ class SampleListViewController: UITableViewController {
         case "HCML Parser":
             AuthFlow().startAppBundle("62345c87ffe7c884acbae53c") { [weak self] code, message, userInfo in
                 self?.goHome(userInfo: userInfo)
-            }
+            }                
             return
         default:
             return
