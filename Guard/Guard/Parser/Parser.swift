@@ -165,12 +165,38 @@ open class Parser: NSObject, XMLParserDelegate {
         } else if ("margin-left" == key) {
             let v = CGFloat((value as NSString).floatValue)
             view.layoutParams.margin.left = v
-        }  else if ("margin-right" == key) {
+        } else if ("margin-right" == key) {
             let v = CGFloat((value as NSString).floatValue)
             view.layoutParams.margin.right = v
-        }  else if ("margin-bottom" == key) {
+        } else if ("margin-bottom" == key) {
             let v = CGFloat((value as NSString).floatValue)
             view.layoutParams.margin.bottom = v
+        } else if ("border-width" == key) {
+            let v = CGFloat((value as NSString).floatValue)
+            view.layer.borderWidth = v
+            view.layer.masksToBounds = true
+        } else if ("border-color" == key) {
+            if let color = Util.parseColor(value) {
+                view.layer.borderColor = color.cgColor
+            }
+        } else if ("border-corner" == key) {
+            let v = CGFloat((value as NSString).floatValue)
+            view.layer.cornerRadius = v
+            view.layer.masksToBounds = true
+        } else if "color" == key, let color = Util.parseColor(value) {
+            if let v = view as? UIButton {
+                v.titleLabel?.textColor = color
+                v.setTitleColor(color, for: .normal)
+                v.setTitleColor(color, for: .disabled)
+            } else if let v = view as? UILabel {
+                v.textColor = color
+            } else if let v = view as? UITextField {
+                v.textColor = color
+            }
+        } else if "hint-color" == key, let color = Util.parseColor(value) {
+            if let v = view as? BaseInput {
+                v.hintColor = color
+            }
         } else {
             if let v = view as? AttributedViewProtocol {
                 v.setAttribute(key: key, value: value)

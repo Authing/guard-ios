@@ -30,7 +30,7 @@ open class AccountTextField: TextFieldLayout {
         spellCheckingType = .no
         autocorrectionType = .no
         
-        self.placeholder = NSLocalizedString("authing_please_input", bundle: Bundle(for: Self.self), comment: "")
+        setHint(NSLocalizedString("authing_please_input", bundle: Bundle(for: Self.self), comment: ""))
         
         var i: Int = 0
         if (config.enabledLoginMethods != nil) {

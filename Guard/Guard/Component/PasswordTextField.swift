@@ -24,7 +24,7 @@ open class PasswordTextField: BasePasswordTextField {
     private func setup() {
         let sInput: String = NSLocalizedString("authing_please_input", bundle: Bundle(for: Self.self), comment: "")
         let sPassword: String = NSLocalizedString("authing_password", bundle: Bundle(for: Self.self), comment: "")
-        self.placeholder = "\(sInput)\(sPassword)"
+        setHint("\(sInput)\(sPassword)")
         addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     

@@ -23,7 +23,7 @@ open class EmailTextField: AccountTextField {
             self.keyboardType = .emailAddress
             let sInput: String = NSLocalizedString("authing_please_input", bundle: Bundle(for: Self.self), comment: "")
             let text: String = NSLocalizedString("authing_email", bundle: Bundle(for: Self.self), comment: "")
-            self.placeholder = "\(sInput)\(text)"
+            self.setHint("\(sInput)\(text)")
         }
     }
 }

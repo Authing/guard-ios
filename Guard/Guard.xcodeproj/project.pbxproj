@@ -39,6 +39,8 @@
 		7E20000A27E9A8320051F590 /* ALog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E20000927E9A8320051F590 /* ALog.swift */; };
 		7E20000C27EAD9AB0051F590 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E20000B27EAD9AB0051F590 /* Client.swift */; };
 		7E20001327EB00100051F590 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E20001227EB00100051F590 /* CloseButton.swift */; };
+		7E20001527EB0FA70051F590 /* Exporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E20001427EB0FA70051F590 /* Exporter.swift */; };
+		7E20001827EB5D5D0051F590 /* BaseInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E20001727EB5D5D0051F590 /* BaseInput.swift */; };
 		7E7566782766F91500C3872F /* AppName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7566772766F91500C3872F /* AppName.swift */; };
 		7E75667B2766F9C400C3872F /* AuthingLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E75667A2766F9C400C3872F /* AuthingLogin.xib */; };
 		7E75667E2766F9DD00C3872F /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E75667D2766F9DD00C3872F /* AuthViewController.swift */; };
@@ -163,6 +165,8 @@
 		7E20000927E9A8320051F590 /* ALog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALog.swift; sourceTree = "<group>"; };
 		7E20000B27EAD9AB0051F590 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		7E20001227EB00100051F590 /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
+		7E20001427EB0FA70051F590 /* Exporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exporter.swift; sourceTree = "<group>"; };
+		7E20001727EB5D5D0051F590 /* BaseInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInput.swift; sourceTree = "<group>"; };
 		7E7566772766F91500C3872F /* AppName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppName.swift; sourceTree = "<group>"; };
 		7E75667A2766F9C400C3872F /* AuthingLogin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingLogin.xib; sourceTree = "<group>"; };
 		7E75667D2766F9DD00C3872F /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
@@ -328,9 +332,18 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		7E20001627EB5D520051F590 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				7E20001727EB5D5D0051F590 /* BaseInput.swift */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
 		7E7566762766F90200C3872F /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				7E20001627EB5D520051F590 /* General */,
 				7EA2DD7B27CCF3ED00B3E19D /* UserProfile */,
 				7EB32806278C185E008639AA /* UserComplete */,
 				7EB327FB278BD455008639AA /* MFA */,
@@ -496,6 +509,7 @@
 				7E96039C27E0C48C007C87EB /* RootView.swift */,
 				7E20000627E961B20051F590 /* AppBundle.swift */,
 				7E20001227EB00100051F590 /* CloseButton.swift */,
+				7E20001427EB0FA70051F590 /* Exporter.swift */,
 			);
 			path = Parser;
 			sourceTree = "<group>";
@@ -784,9 +798,11 @@
 				7EF66C67277C119800FCBBEB /* IndexAuthViewController.swift in Sources */,
 				7EF66C8D277DA96200FCBBEB /* GetEmailCodeButton.swift in Sources */,
 				7E75668D276837E700C3872F /* AccountTextField.swift in Sources */,
+				7E20001527EB0FA70051F590 /* Exporter.swift in Sources */,
 				7ECF8ACA275A022D004F8FC5 /* Util.swift in Sources */,
 				7E7566842766FD5D00C3872F /* UIApplication+Authing.swift in Sources */,
 				7E20001327EB00100051F590 /* CloseButton.swift in Sources */,
+				7E20001827EB5D5D0051F590 /* BaseInput.swift in Sources */,
 				7E7566812766FA1A00C3872F /* AuthFlow.swift in Sources */,
 				7EDFB6C927C4D1C500B77DEE /* UserInfoCompleteFieldFormSelect.swift in Sources */,
 				7EF66C81277D49B400FCBBEB /* ResetPasswordButton.swift in Sources */,

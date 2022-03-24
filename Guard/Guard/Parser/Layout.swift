@@ -95,6 +95,8 @@ open class LayoutParams {
     
     open var alignment: Alignment = .none
     open var fill: CGFloat = 0
+    
+    open var absolute: Bool = false
 }
 
 extension UIView {
@@ -102,7 +104,7 @@ extension UIView {
         static var layoutParamsKey = "layoutParams"
     }
 
-    var layoutParams: LayoutParams {
+    open var layoutParams: LayoutParams {
         get {
             if let lp = objc_getAssociatedObject(self, &Keys.layoutParamsKey) as? LayoutParams {
                 return lp
@@ -234,7 +236,7 @@ open class Layout: UIImageView, AttributedViewProtocol {
         var sizes = [CGSize](repeating: CGSize(width: undefined, height: undefined), count: subviews.count)
 
         for (index, view) in subviews.enumerated() {
-            if view.isHidden {
+            if view.isHidden || view.layoutParams.absolute {
                 sizes[index].width = 0
                 sizes[index].height = 0
                 continue
@@ -271,7 +273,7 @@ open class Layout: UIImageView, AttributedViewProtocol {
         }
 
         for (index, view) in subviews.enumerated() {
-            if !view.isHidden {
+            if !view.isHidden && !view.layoutParams.absolute {
                 let spec = view.layoutParams
                 let margin = spec.margin.top + spec.margin.bottom
 
@@ -319,7 +321,7 @@ open class Layout: UIImageView, AttributedViewProtocol {
         var sizes = [CGSize](repeating: CGSize(width: undefined, height: undefined), count: subviews.count)
 
         for (index, view) in subviews.enumerated() {
-            if view.isHidden {
+            if view.isHidden || view.layoutParams.absolute {
                 sizes[index].width = 0
                 sizes[index].height = 0
                 continue
@@ -356,7 +358,7 @@ open class Layout: UIImageView, AttributedViewProtocol {
         }
 
         for (index, view) in subviews.enumerated() {
-            if !view.isHidden {
+            if !view.isHidden && !view.layoutParams.absolute {
                 let spec = view.layoutParams
                 let margin = spec.margin.left + spec.margin.right
 
@@ -402,7 +404,7 @@ open class Layout: UIImageView, AttributedViewProtocol {
         var left = padding.left
         for (index, size) in sizes.enumerated() {
             let view = subviews[index]
-            if !view.isHidden {
+            if !view.isHidden && !view.layoutParams.absolute {
                 let params = view.layoutParams
                 let margin = params.margin
                 var top: CGFloat
@@ -444,7 +446,7 @@ open class Layout: UIImageView, AttributedViewProtocol {
         var top = padding.top
         for (index, size) in sizes.enumerated() {
             let view = subviews[index]
-            if !view.isHidden {
+            if !view.isHidden && !view.layoutParams.absolute {
                 let params = view.layoutParams
                 let margin = params.margin
                 var left: CGFloat

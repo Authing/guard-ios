@@ -312,19 +312,54 @@ public class Util {
             return nil
         }
 
-        if ((cString.count) != 6) {
-            return nil
+        if cString.count == 6 {
+            var rgbValue:UInt64 = 0
+            Scanner(string: cString).scanHexInt64(&rgbValue)
+
+            return UIColor(
+                red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+                green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+                blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+                alpha: CGFloat(1.0)
+            )
+        } else if cString.count == 8 {
+            var rgbValue:UInt64 = 0
+            Scanner(string: cString).scanHexInt64(&rgbValue)
+
+            return UIColor(
+                red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+                green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+                blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+                alpha: CGFloat((rgbValue & 0xFF0000) >> 24) / 255.0
+            )
         }
-
-        var rgbValue:UInt64 = 0
-        Scanner(string: cString).scanHexInt64(&rgbValue)
-
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
+        return nil
+    }
+    
+    public static func exportColor(_ color: UIColor) -> String? {
+        if let components = color.cgColor.components {
+            var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+            if components.count == 2 {
+                r = components[0]
+                g = components[0]
+                b = components[0]
+                a = components[1]
+            } else if components.count == 4 {
+                r = components[0]
+                g = components[1]
+                b = components[2]
+                a = components[3]
+            }
+            
+            if a == 0 {
+                return nil
+            } else if a == 1 {
+                return String.init(format: "#%02lX%02lX%02lX", lroundf(Float(r * 255)), lroundf(Float(g * 255)), lroundf(Float(b * 255)))
+            } else {
+                return String.init(format: "#%02lX%02lX%02lX%02lX", lroundf(Float(a * 255)), lroundf(Float(r * 255)), lroundf(Float(g * 255)), lroundf(Float(b * 255)))
+            }
+        }
+        return nil
     }
     
     public static func getConfig(_ view: UIView, completion: @escaping(Config?)->Void) {

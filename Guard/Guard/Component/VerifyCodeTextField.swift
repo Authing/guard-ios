@@ -22,6 +22,6 @@ open class VerifyCodeTextField: TextFieldLayout {
         self.keyboardType = .numberPad
         let sInput: String = NSLocalizedString("authing_please_input", bundle: Bundle(for: Self.self), comment: "")
         let sVerifyCode: String = NSLocalizedString("authing_verify_code", bundle: Bundle(for: Self.self), comment: "")
-        self.placeholder = "\(sInput)\(sVerifyCode)"
+        setHint("\(sInput)\(sVerifyCode)")
     }
 }
