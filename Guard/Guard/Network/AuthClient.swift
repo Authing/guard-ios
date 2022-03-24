@@ -345,7 +345,7 @@ public class AuthClient: Client {
             }
             
             let body: NSDictionary = ["connId" : conId!, "code" : code]
-            self.post("/api/v2/ecConn/wechatMobile/authByCode", body) { code, message, data in
+            self.post("/api/v2/ecConn/wechat-work/authByCode", body) { code, message, data in
                 self.createUserInfo(code, message, data, completion: completion)
             }
         }
@@ -475,6 +475,7 @@ public class AuthClient: Client {
         getConfig { config in
             if (config != nil) {
                 let urlString: String = "\(Guard.getSchema())://\(Util.getHost(config!))\(endPoint)";
+            
                 self.request(config: config, urlString: urlString, method: method, body: body, completion: completion)
             } else {
                 completion(500, "Cannot get config. app id:\(Guard.getAppId())", nil)

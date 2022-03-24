@@ -21,16 +21,12 @@ open class SocialLoginListView: UIView {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        self.src = "apple|wecom"
-        self.setSource(self.src)
-//        setup()
+        setup()
     }
 
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.src = "apple|wecom"
-        self.setSource(self.src)
-//        setup()
+        setup()
     }
 
     private func setup() {

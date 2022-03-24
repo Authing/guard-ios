@@ -39,19 +39,30 @@ open class WeCom: NSObject, WWKApiDelegate {
     
     public func onResp(_ resp: WWKBaseResp!) {
         
+        let rawValue = Guard.NotifyName.notify_wecom_Receive.rawValue
+        let name = Notification.Name.init(rawValue: rawValue)
+        
         if resp is WWKSSOResp{
-            print(resp.errCode)
+
             let r: WWKSSOResp = resp as! WWKSSOResp
 
-            let rawValue = Guard.NotifyName.notify_wecom_Receive.rawValue
-            let name = Notification.Name.init(rawValue: rawValue)
 
             AuthClient().loginByWeCom(r.code ?? "") { code, msg, userInfo in
                 NotificationCenter.default.post(name: name, object: ["code" : code,
                                                                      "msg" : msg ?? "",
                                                                      "userInfo" : userInfo as Any])
             }
+        }else{
+            
+            NotificationCenter.default.post(name: name, object: ["code" : resp.errCode,
+                                                                 "msg" : resp.errStr,
+                                                                 "userInfo" : nil])
+            
         }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
 }
