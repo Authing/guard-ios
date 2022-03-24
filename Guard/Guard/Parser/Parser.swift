@@ -73,6 +73,7 @@ open class Parser: NSObject, XMLParserDelegate {
                     parser.parse()
                 }
                 root.addSubview(CloseButton())
+                ALog.i(Parser.self, "app bundle \(appId) loaded. path: \(rootDir)")
                 return appBundle
             } else {
                 ALog.e(Parser.self, "unexpected error happen when parsing \(appId)")
@@ -183,20 +184,6 @@ open class Parser: NSObject, XMLParserDelegate {
             let v = CGFloat((value as NSString).floatValue)
             view.layer.cornerRadius = v
             view.layer.masksToBounds = true
-        } else if "color" == key, let color = Util.parseColor(value) {
-            if let v = view as? UIButton {
-                v.titleLabel?.textColor = color
-                v.setTitleColor(color, for: .normal)
-                v.setTitleColor(color, for: .disabled)
-            } else if let v = view as? UILabel {
-                v.textColor = color
-            } else if let v = view as? UITextField {
-                v.textColor = color
-            }
-        } else if "hint-color" == key, let color = Util.parseColor(value) {
-            if let v = view as? BaseInput {
-                v.hintColor = color
-            }
         } else {
             if let v = view as? AttributedViewProtocol {
                 v.setAttribute(key: key, value: value)

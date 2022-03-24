@@ -55,6 +55,34 @@ extension UIView {
             if let v = self as? BaseInput {
                 return v.hintColor
             }
+        } else if "text" == key {
+            if let v = self as? Label {
+                return v.textValue
+            } else if let v = self as? Button {
+                return v.textValue
+            } else if let v = self as? BaseInput {
+                return v.textValue
+            }
+        } else if "font-size" == key {
+            if let v = self as? Label {
+                return NSString(format: "%.1f", v.font.pointSize)
+            } else if let v = self as? Button {
+                if let font = v.titleLabel?.font {
+                    return NSString(format: "%.1f", font.pointSize)
+                }
+            } else if let v = self as? BaseInput {
+                if let font = v.font {
+                    return NSString(format: "%.1f", font.pointSize)
+                }
+            }
+        } else if "font-weight" == key {
+            if let v = self as? Label {
+                return v.isBold ? "bold" : "normal"
+            } else if let v = self as? Button {
+                return v.isBold ? "bold" : "normal"
+            } else if let v = self as? BaseInput {
+                return v.isBold ? "bold" : "normal"
+            }
         } else if "direction" == key {
             if let v = self as? Layout {
                 if v.orientation == .vertical {
@@ -127,6 +155,36 @@ extension UIView {
         } else if "hint-color" == key, let color = value as? UIColor {
             if let v = self as? BaseInput {
                 v.hintColor = color
+            }
+        } else if "text" == key {
+            if let v = value as? String {
+                if let view = self as? Label {
+                    view.textValue = v
+                } else if let view = self as? Button {
+                    view.textValue = v
+                } else if let view = self as? BaseInput {
+                    view.textValue = v
+                }
+            }
+        } else if "font-size" == key {
+            if let v = value as? NSString {
+                if let view = self as? Label {
+                    view.fontSize = CGFloat(v.floatValue)
+                } else if let view = self as? Button {
+                    view.fontSize = CGFloat(v.floatValue)
+                } else if let view = self as? BaseInput {
+                    view.fontSize = CGFloat(v.floatValue)
+                }
+            }
+        } else if "font-weight" == key {
+            if let v = value as? Bool {
+                if let view = self as? Label {
+                    view.isBold = v
+                } else if let view = self as? Button {
+                    view.isBold = v
+                } else if let view = self as? BaseInput {
+                    view.isBold = v
+                }
             }
         } else if "direction" == key, let index = value as? Int {
             if let v = self as? Layout {
@@ -208,17 +266,37 @@ extension UIView {
             }
         }
         
-        if let view = self as? UILabel {
+        if let view = self as? Label {
             if let color = view.textColor,
                 let hexColor = Util.exportColor(color) {
                 res += " color=\"\(hexColor)\""
             }
+            
+            if let tv = view.textValue {
+                res += " text=\"\(tv)\""
+            }
+            
+            res += " font-size=\"\(view.fontSize)\""
+            
+            if view.isBold {
+                res += " font-weight=\"bold\""
+            }
         }
         
-        if let view = self as? UIButton {
+        if let view = self as? Button {
             if let color = view.titleLabel?.textColor,
                 let hexColor = Util.exportColor(color) {
                 res += " color=\"\(hexColor)\""
+            }
+            
+            if let tv = view.textValue {
+                res += " text=\"\(tv)\""
+            }
+            
+            res += " font-size=\"\(view.fontSize)\""
+            
+            if view.isBold {
+                res += " font-weight=\"bold\""
             }
         }
         
@@ -230,6 +308,16 @@ extension UIView {
             if let color = view.hintColor,
                 let hexColor = Util.exportColor(color) {
                 res += " hint-color=\"\(hexColor)\""
+            }
+            
+            if let tv = view.textValue {
+                res += " text=\"\(tv)\""
+            }
+            
+            res += " font-size=\"\(view.fontSize)\""
+            
+            if view.isBold {
+                res += " font-weight=\"bold\""
             }
         }
         return res

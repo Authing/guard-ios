@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class GoSomewhereButton: UIButton {
+open class GoSomewhereButton: Button {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()

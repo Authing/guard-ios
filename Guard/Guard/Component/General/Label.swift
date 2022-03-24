@@ -1,25 +1,17 @@
 //
-//  BaseInput.swift
+//  Label.swift
 //  Guard
 //
-//  Created by Lance Mao on 2022/3/23.
+//  Created by Lance Mao on 2022/3/24.
 //
 
 import UIKit
 
-open class BaseInput: UITextField, AttributedViewProtocol {
+open class Label: UILabel, AttributedViewProtocol {
     
     open var textValue: String? = nil {
         didSet {
             text = textValue
-        }
-    }
-    
-    var hintColor: UIColor? = nil {
-        didSet {
-            if let hint = placeholder {
-                attributedPlaceholder = NSAttributedString(string: hint, attributes: [NSAttributedString.Key.foregroundColor: hintColor as Any])
-            }
         }
     }
     
@@ -51,18 +43,8 @@ open class BaseInput: UITextField, AttributedViewProtocol {
         super.init(coder: aDecoder)
     }
     
-    public func setHint(_ hint: String) {
-        if let hc = hintColor {
-            attributedPlaceholder = NSAttributedString(string: hint, attributes: [NSAttributedString.Key.foregroundColor: hc])
-        } else {
-            placeholder = hint
-        }
-    }
-    
     public func setAttribute(key: String, value: String) {
-        if ("hint-color" == key) {
-            hintColor = Util.parseColor(value)
-        } else if ("text" == key) {
+        if ("text" == key) {
             textValue = value
         } else if ("color" == key) {
             if let color = Util.parseColor(value) {

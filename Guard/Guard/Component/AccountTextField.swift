@@ -30,18 +30,20 @@ open class AccountTextField: TextFieldLayout {
         spellCheckingType = .no
         autocorrectionType = .no
         
-        setHint(NSLocalizedString("authing_please_input", bundle: Bundle(for: Self.self), comment: ""))
+        var hint = NSLocalizedString("authing_please_input", bundle: Bundle(for: Self.self), comment: "")
         
         var i: Int = 0
         if (config.enabledLoginMethods != nil) {
             for method in config.enabledLoginMethods! {
-                self.placeholder! += getMethodText(method)
+                hint += getMethodText(method)
                 if (i < config.enabledLoginMethods!.count - 1) {
-                    self.placeholder! += " / "
+                    hint += " / "
                 }
                 i += 1
             }
         }
+        
+        setHint(hint)
         
         if (config.enabledLoginMethods?.count == 1) {
             if (config.enabledLoginMethods?[0] == "email-password") {
