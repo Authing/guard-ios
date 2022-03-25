@@ -50,7 +50,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Guard.NotifyName.notify_wechat.rawValue), object: userActivity)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Authing.NotifyName.notify_wechat.rawValue), object: userActivity)
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {

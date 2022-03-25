@@ -37,6 +37,12 @@ open class TextFieldBorder: UIView {
     }
     
     override public func draw(_ rect: CGRect) {
+        if let parent = superview as? TextFieldLayout {
+            if parent.layer.borderWidth > 0 {
+                return
+            }
+        }
+        
         let cornor: CGFloat = 6
         if (highlight) {
             let progress: CGFloat = CGFloat(animator.update())

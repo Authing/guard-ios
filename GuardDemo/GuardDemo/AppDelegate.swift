@@ -20,10 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         OneAuth.bizId = "74ae90bd84f74b69a88b578bbbbcdcfd"
-        Guard.setupWechat("wx1cddb15e280c0f67", universalLink: "https://developer-beta.authing.cn/app/")
-        Guard.start("6204d0a406f0423c78f243ae");
+        Authing.setupWechat("wx1cddb15e280c0f67", universalLink: "https://developer-beta.authing.cn/app/")
+        Authing.start("60caaf41df670b771fd08937");
         WeCom.registerApp(appId: "wwauth803c38cb89ac1d57000002", corpId: "ww803c38cb89ac1d57", agentId: "1000002")
-        
+
         return true
     }
 
@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Guard.NotifyName.notify_wechat.rawValue), object: userActivity)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Authing.NotifyName.notify_wechat.rawValue), object: userActivity)
         return true
     }
     

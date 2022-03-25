@@ -15,12 +15,16 @@ public protocol AttributedViewProtocol {
     
     // for editor
     func setAttribute(key: String, value: Any?)
+    
+    // for exporter
+    func getXMLAttributes() -> String
 }
 
 extension AttributedViewProtocol {
     public func getAttribute(key: String) -> Any? { return nil }
     public func setAttribute(key: String, value: String) {}
     public func setAttribute(key: String, value: Any?) {}
+    public func getXMLAttributes() -> String { return "" }
 }
 
 extension UIView {
@@ -46,6 +50,38 @@ extension UIView {
                 return v.textColor
             } else if let v = self as? UITextField {
                 return v.textColor
+            }
+        } else if "hint-color" == key {
+            if let v = self as? BaseInput {
+                return v.hintColor
+            }
+        } else if "text" == key {
+            if let v = self as? Label {
+                return v.textValue
+            } else if let v = self as? Button {
+                return v.textValue
+            } else if let v = self as? BaseInput {
+                return v.textValue
+            }
+        } else if "font-size" == key {
+            if let v = self as? Label {
+                return NSString(format: "%.1f", v.font.pointSize)
+            } else if let v = self as? Button {
+                if let font = v.titleLabel?.font {
+                    return NSString(format: "%.1f", font.pointSize)
+                }
+            } else if let v = self as? BaseInput {
+                if let font = v.font {
+                    return NSString(format: "%.1f", font.pointSize)
+                }
+            }
+        } else if "font-weight" == key {
+            if let v = self as? Label {
+                return v.isBold ? "bold" : "normal"
+            } else if let v = self as? Button {
+                return v.isBold ? "bold" : "normal"
+            } else if let v = self as? BaseInput {
+                return v.isBold ? "bold" : "normal"
             }
         } else if "direction" == key {
             if let v = self as? Layout {
@@ -96,6 +132,9 @@ extension UIView {
         } else if "border-width" == key {
             if let v = value as? NSString {
                 layer.borderWidth = CGFloat(v.floatValue)
+                if layer.borderWidth > 0 {
+                    layer.masksToBounds = true
+                }
             }
         } else if "border-color" == key, let color = value as? UIColor {
             layer.borderColor = color.cgColor
@@ -112,6 +151,40 @@ extension UIView {
                 v.textColor = color
             } else if let v = self as? UITextField {
                 v.textColor = color
+            }
+        } else if "hint-color" == key, let color = value as? UIColor {
+            if let v = self as? BaseInput {
+                v.hintColor = color
+            }
+        } else if "text" == key {
+            if let v = value as? String {
+                if let view = self as? Label {
+                    view.textValue = v
+                } else if let view = self as? Button {
+                    view.textValue = v
+                } else if let view = self as? BaseInput {
+                    view.textValue = v
+                }
+            }
+        } else if "font-size" == key {
+            if let v = value as? NSString {
+                if let view = self as? Label {
+                    view.fontSize = CGFloat(v.floatValue)
+                } else if let view = self as? Button {
+                    view.fontSize = CGFloat(v.floatValue)
+                } else if let view = self as? BaseInput {
+                    view.fontSize = CGFloat(v.floatValue)
+                }
+            }
+        } else if "font-weight" == key {
+            if let v = value as? Bool {
+                if let view = self as? Label {
+                    view.isBold = v
+                } else if let view = self as? Button {
+                    view.isBold = v
+                } else if let view = self as? BaseInput {
+                    view.isBold = v
+                }
             }
         } else if "direction" == key, let index = value as? Int {
             if let v = self as? Layout {
@@ -133,6 +206,122 @@ extension UIView {
             }
         }
     }
+    
+    public func getXMLAttributes() -> String {
+        var res = ""
+        if let backgroundColor = backgroundColor,
+            let hexColor = Util.exportColor(backgroundColor) {
+            res += " background=\"\(hexColor)\""
+        }
+        let width = layoutParams.width
+        if width == LayoutParams.matchParent {
+            res += " width=\"match\""
+        } else if width >= 0 {
+            res += " width=\"\(width)\""
+        }
+        
+        let height = layoutParams.height
+        if height == LayoutParams.matchParent {
+            res += " height=\"match\""
+        } else if height >= 0 {
+            res += " height=\"\(height)\""
+        }
+        
+        let marginLeft = layoutParams.margin.left
+        if marginLeft != 0 {
+            res += " margin-left=\"\(marginLeft)\""
+        }
+        
+        let marginTop = layoutParams.margin.top
+        if marginTop != 0 {
+            res += " margin-top=\"\(marginTop)\""
+        }
+        
+        let marginRight = layoutParams.margin.right
+        if marginRight != 0 {
+            res += " margin-right=\"\(marginRight)\""
+        }
+        
+        let marginBottom = layoutParams.margin.bottom
+        if marginBottom != 0 {
+            res += " margin-bottom=\"\(marginBottom)\""
+        }
+        
+        let borderWidth = layer.borderWidth
+        if borderWidth > 0 {
+            res += " border-width=\"\(borderWidth)\""
+            if let borderColor = layer.borderColor,
+                let hexColor = Util.exportColor(UIColor(cgColor: borderColor)) {
+                res += " border-color=\"\(hexColor)\""
+            }
+            let cornerRadius = layer.cornerRadius
+            if cornerRadius > 0 {
+                res += " border-corner=\"\(cornerRadius)\""
+            }
+        }
+        
+        if let layout = self as? Layout {
+            if layout.alignItems == AlignItems.center {
+                res += " align-items=\"center\""
+            }
+        }
+        
+        if let view = self as? Label {
+            if let color = view.textColor,
+                let hexColor = Util.exportColor(color) {
+                res += " color=\"\(hexColor)\""
+            }
+            
+            if let tv = view.textValue {
+                res += " text=\"\(tv)\""
+            }
+            
+            res += " font-size=\"\(view.fontSize)\""
+            
+            if view.isBold {
+                res += " font-weight=\"bold\""
+            }
+        }
+        
+        if let view = self as? Button {
+            if let color = view.titleLabel?.textColor,
+                let hexColor = Util.exportColor(color) {
+                res += " color=\"\(hexColor)\""
+            }
+            
+            if let tv = view.textValue {
+                res += " text=\"\(tv)\""
+            }
+            
+            res += " font-size=\"\(view.fontSize)\""
+            
+            if view.isBold {
+                res += " font-weight=\"bold\""
+            }
+        }
+        
+        if let view = self as? BaseInput {
+            if let color = view.textColor,
+                let hexColor = Util.exportColor(color) {
+                res += " color=\"\(hexColor)\""
+            }
+            if let color = view.hintColor,
+                let hexColor = Util.exportColor(color) {
+                res += " hint-color=\"\(hexColor)\""
+            }
+            
+            if let tv = view.textValue {
+                res += " text=\"\(tv)\""
+            }
+            
+            res += " font-size=\"\(view.fontSize)\""
+            
+            if view.isBold {
+                res += " font-weight=\"bold\""
+            }
+        }
+        return res
+    }
 }
 
 open class RootView: UIView, AttributedViewProtocol {
@@ -144,14 +333,14 @@ open class RootView: UIView, AttributedViewProtocol {
         }
     }
     
-//    open override func setNeedsLayout() {
-//        super.setNeedsLayout()
-//        layoutChild()
-//    }
-//    
-//    private func layoutChild() {
-//        if let layout = subviews[0] as? Layout {
-//            layout.layoutSubviews()
-//        }
-//    }
+    open override func setNeedsLayout() {
+        super.setNeedsLayout()
+        layoutChild()
+    }
+    
+    private func layoutChild() {
+        if let layout = subviews[0] as? Layout {
+            layout.layoutSubviews()
+        }
+    }
 }

@@ -73,6 +73,7 @@ open class Parser: NSObject, XMLParserDelegate {
                     parser.parse()
                 }
                 root.addSubview(CloseButton())
+                ALog.i(Parser.self, "app bundle \(appId) loaded. path: \(rootDir)")
                 return appBundle
             } else {
                 ALog.e(Parser.self, "unexpected error happen when parsing \(appId)")
@@ -105,7 +106,7 @@ open class Parser: NSObject, XMLParserDelegate {
     
     public func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
 
-        if let viewType = Bundle(for: Parser.self).classNamed("Guard.\(elementName)") as? UIView.Type {
+        if let viewType = Bundle(for: Parser.self).classNamed("Authing.\(elementName)") as? UIView.Type {
             let view = viewType.init()
             
             if let layout = view as? Layout {
@@ -165,12 +166,24 @@ open class Parser: NSObject, XMLParserDelegate {
         } else if ("margin-left" == key) {
             let v = CGFloat((value as NSString).floatValue)
             view.layoutParams.margin.left = v
-        }  else if ("margin-right" == key) {
+        } else if ("margin-right" == key) {
             let v = CGFloat((value as NSString).floatValue)
             view.layoutParams.margin.right = v
-        }  else if ("margin-bottom" == key) {
+        } else if ("margin-bottom" == key) {
             let v = CGFloat((value as NSString).floatValue)
             view.layoutParams.margin.bottom = v
+        } else if ("border-width" == key) {
+            let v = CGFloat((value as NSString).floatValue)
+            view.layer.borderWidth = v
+            view.layer.masksToBounds = true
+        } else if ("border-color" == key) {
+            if let color = Util.parseColor(value) {
+                view.layer.borderColor = color.cgColor
+            }
+        } else if ("border-corner" == key) {
+            let v = CGFloat((value as NSString).floatValue)
+            view.layer.cornerRadius = v
+            view.layer.masksToBounds = true
         } else {
             if let v = view as? AttributedViewProtocol {
                 v.setAttribute(key: key, value: value)

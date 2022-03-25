@@ -25,6 +25,8 @@
 		7E02F46927950C57007FA048 /* UserInfoCompleteFieldForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02F46827950C57007FA048 /* UserInfoCompleteFieldForm.swift */; };
 		7E02F46B27950C6F007FA048 /* UserInfoCompleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02F46A27950C6F007FA048 /* UserInfoCompleteButton.swift */; };
 		7E02F46D27950C99007FA048 /* AuthingUserInfoComplete.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E02F46C27950C99007FA048 /* AuthingUserInfoComplete.xib */; };
+		7E0FAFB427EC6373006258FC /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0FAFB227EC6372006258FC /* Button.swift */; };
+		7E0FAFB527EC6373006258FC /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0FAFB327EC6373006258FC /* Label.swift */; };
 		7E12D7B6277DE9EF00703FC1 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E12D7B5277DE9EF00703FC1 /* UserManager.swift */; };
 		7E12D7B8277DECB900703FC1 /* AuthingUserProfile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E12D7B7277DECB900703FC1 /* AuthingUserProfile.xib */; };
 		7E12D7BA277DEE6F00703FC1 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E12D7B9277DEE6F00703FC1 /* UserProfileViewController.swift */; };
@@ -39,6 +41,8 @@
 		7E20000A27E9A8320051F590 /* ALog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E20000927E9A8320051F590 /* ALog.swift */; };
 		7E20000C27EAD9AB0051F590 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E20000B27EAD9AB0051F590 /* Client.swift */; };
 		7E20001327EB00100051F590 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E20001227EB00100051F590 /* CloseButton.swift */; };
+		7E20001527EB0FA70051F590 /* Exporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E20001427EB0FA70051F590 /* Exporter.swift */; };
+		7E20001827EB5D5D0051F590 /* BaseInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E20001727EB5D5D0051F590 /* BaseInput.swift */; };
 		7E7566782766F91500C3872F /* AppName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7566772766F91500C3872F /* AppName.swift */; };
 		7E75667B2766F9C400C3872F /* AuthingLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E75667A2766F9C400C3872F /* AuthingLogin.xib */; };
 		7E75667E2766F9DD00C3872F /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E75667D2766F9DD00C3872F /* AuthViewController.swift */; };
@@ -66,7 +70,7 @@
 		7E9593DB274C813B001459C5 /* Guard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9593D2274C813A001459C5 /* Guard.framework */; };
 		7E9593E0274C813B001459C5 /* GuardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9593DF274C813B001459C5 /* GuardTests.swift */; };
 		7E9593E1274C813B001459C5 /* Guard.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E9593D5274C813A001459C5 /* Guard.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7E959441274CEECF001459C5 /* Guard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E959440274CEECF001459C5 /* Guard.swift */; };
+		7E959441274CEECF001459C5 /* Authing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E959440274CEECF001459C5 /* Authing.swift */; };
 		7E96039227E08B2B007C87EB /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E96039127E08B2B007C87EB /* Parser.swift */; };
 		7E96039927E0AF49007C87EB /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E96039827E0AF49007C87EB /* Layout.swift */; };
 		7E96039D27E0C48C007C87EB /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E96039C27E0C48C007C87EB /* RootView.swift */; };
@@ -151,6 +155,8 @@
 		7E02F46827950C57007FA048 /* UserInfoCompleteFieldForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCompleteFieldForm.swift; sourceTree = "<group>"; };
 		7E02F46A27950C6F007FA048 /* UserInfoCompleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCompleteButton.swift; sourceTree = "<group>"; };
 		7E02F46C27950C99007FA048 /* AuthingUserInfoComplete.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingUserInfoComplete.xib; sourceTree = "<group>"; };
+		7E0FAFB227EC6372006258FC /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		7E0FAFB327EC6373006258FC /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		7E12D7B5277DE9EF00703FC1 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		7E12D7B7277DECB900703FC1 /* AuthingUserProfile.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingUserProfile.xib; sourceTree = "<group>"; };
 		7E12D7B9277DEE6F00703FC1 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +171,8 @@
 		7E20000927E9A8320051F590 /* ALog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALog.swift; sourceTree = "<group>"; };
 		7E20000B27EAD9AB0051F590 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		7E20001227EB00100051F590 /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
+		7E20001427EB0FA70051F590 /* Exporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exporter.swift; sourceTree = "<group>"; };
+		7E20001727EB5D5D0051F590 /* BaseInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInput.swift; sourceTree = "<group>"; };
 		7E7566772766F91500C3872F /* AppName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppName.swift; sourceTree = "<group>"; };
 		7E75667A2766F9C400C3872F /* AuthingLogin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingLogin.xib; sourceTree = "<group>"; };
 		7E75667D2766F9DD00C3872F /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
@@ -194,7 +202,7 @@
 		7E9593D5274C813A001459C5 /* Guard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Guard.h; sourceTree = "<group>"; };
 		7E9593DA274C813B001459C5 /* GuardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GuardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E9593DF274C813B001459C5 /* GuardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardTests.swift; sourceTree = "<group>"; };
-		7E959440274CEECF001459C5 /* Guard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guard.swift; sourceTree = "<group>"; };
+		7E959440274CEECF001459C5 /* Authing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authing.swift; sourceTree = "<group>"; };
 		7E96039127E08B2B007C87EB /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		7E96039827E0AF49007C87EB /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		7E96039C27E0C48C007C87EB /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -333,9 +341,20 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		7E20001627EB5D520051F590 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				7E0FAFB327EC6373006258FC /* Label.swift */,
+				7E0FAFB227EC6372006258FC /* Button.swift */,
+				7E20001727EB5D5D0051F590 /* BaseInput.swift */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
 		7E7566762766F90200C3872F /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				7E20001627EB5D520051F590 /* General */,
 				7EA2DD7B27CCF3ED00B3E19D /* UserProfile */,
 				7EB32806278C185E008639AA /* UserComplete */,
 				7EB327FB278BD455008639AA /* MFA */,
@@ -469,7 +488,7 @@
 				7E96039027E08B17007C87EB /* Parser */,
 				7EF66C59277BEE5100FCBBEB /* Animation */,
 				7E75669227683E4700C3872F /* Resource */,
-				7E959440274CEECF001459C5 /* Guard.swift */,
+				7E959440274CEECF001459C5 /* Authing.swift */,
 				7ECF8AC62759FF17004F8FC5 /* Const.swift */,
 				7E9593D5274C813A001459C5 /* Guard.h */,
 				7ECF8AC32759FE71004F8FC5 /* Analyze */,
@@ -502,6 +521,7 @@
 				7E96039C27E0C48C007C87EB /* RootView.swift */,
 				7E20000627E961B20051F590 /* AppBundle.swift */,
 				7E20001227EB00100051F590 /* CloseButton.swift */,
+				7E20001427EB0FA70051F590 /* Exporter.swift */,
 			);
 			path = Parser;
 			sourceTree = "<group>";
@@ -777,6 +797,7 @@
 				7EF66C69277C197900FCBBEB /* RegisterMethodTab.swift in Sources */,
 				7E1998D22783D3D5002C6F81 /* WechatLoginButton.swift in Sources */,
 				7ED434DA2779509100893EDD /* VerifyCodeTextField.swift in Sources */,
+				7E0FAFB527EC6373006258FC /* Label.swift in Sources */,
 				7ED434D22775ABA000893EDD /* TextFieldLayout.swift in Sources */,
 				7E7566A22768801E00C3872F /* UIView+Authing.swift in Sources */,
 				7E02F46927950C57007FA048 /* UserInfoCompleteFieldForm.swift in Sources */,
@@ -791,9 +812,12 @@
 				A8541D5A27EB51E800355EC5 /* Notification+Authing.swift in Sources */,
 				7EF66C8D277DA96200FCBBEB /* GetEmailCodeButton.swift in Sources */,
 				7E75668D276837E700C3872F /* AccountTextField.swift in Sources */,
+				7E20001527EB0FA70051F590 /* Exporter.swift in Sources */,
 				7ECF8ACA275A022D004F8FC5 /* Util.swift in Sources */,
 				7E7566842766FD5D00C3872F /* UIApplication+Authing.swift in Sources */,
 				7E20001327EB00100051F590 /* CloseButton.swift in Sources */,
+				7E20001827EB5D5D0051F590 /* BaseInput.swift in Sources */,
+				7E0FAFB427EC6373006258FC /* Button.swift in Sources */,
 				7E7566812766FA1A00C3872F /* AuthFlow.swift in Sources */,
 				7EDFB6C927C4D1C500B77DEE /* UserInfoCompleteFieldFormSelect.swift in Sources */,
 				7EF66C81277D49B400FCBBEB /* ResetPasswordButton.swift in Sources */,
@@ -831,7 +855,7 @@
 				7EF66C71277C371E00FCBBEB /* EmailTextField.swift in Sources */,
 				7EB5CE5627D1EE3200BE3252 /* DeleteAccountButton.swift in Sources */,
 				7EA2DD3C27CC84CB00B3E19D /* SocialLoginListView.swift in Sources */,
-				7E959441274CEECF001459C5 /* Guard.swift in Sources */,
+				7E959441274CEECF001459C5 /* Authing.swift in Sources */,
 				7EF66C65277C0B6F00FCBBEB /* AuthNavigationController.swift in Sources */,
 				7ED434CE27757E4B00893EDD /* LoginContainer.swift in Sources */,
 				7E12D7B6277DE9EF00703FC1 /* UserManager.swift in Sources */,

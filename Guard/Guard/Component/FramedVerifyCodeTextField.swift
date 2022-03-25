@@ -92,7 +92,7 @@ open class FramedVerifyCodeTextField: UIView, UITextFieldDelegate {
     
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if let tf = textField as? TextFieldLayout {
-            tf.border?.setHighlight(true)
+            tf.border.setHighlight(true)
         }
         return true
     }
@@ -107,7 +107,7 @@ open class FramedVerifyCodeTextField: UIView, UITextFieldDelegate {
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
         if let tf = textField as? TextFieldLayout {
-            tf.border?.setHighlight(false)
+            tf.border.setHighlight(false)
         }
     }
     

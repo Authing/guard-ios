@@ -113,8 +113,7 @@ public class Config {
     
     private func requestPublicConfig() {
         isGettingConfig = true
-        let url = "https://console." + Guard.getHost() + "/api/v2/applications/" + appId + "/public-config"
-
+        let url = "https://console." + Authing.getHost() + "/api/v2/applications/" + appId + "/public-config"
         AuthClient().request(config: nil, urlString: url, method: "get", body: nil) { code, message, jsonData in
             if (code == 200) {
                 self.data = jsonData

@@ -24,7 +24,7 @@ open class WechatLoginButton: SocialLoginButton, WXApiDelegate {
     }
     
     @objc private func onClick(sender: UIButton) {
-        NotificationCenter.default.addObserver(self, selector: #selector(self.wechatLoginOK(notification:)), name: Notification.Name(Guard.NotifyName.notify_wechat.rawValue), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.wechatLoginOK(notification:)), name: Notification.Name(Authing.NotifyName.notify_wechat.rawValue), object: nil)
         let req: SendAuthReq = SendAuthReq()
         req.scope = "snsapi_userinfo"
         req.state = "123"

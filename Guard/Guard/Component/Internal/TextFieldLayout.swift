@@ -7,9 +7,9 @@
 
 import UIKit
 
-open class TextFieldLayout: UITextField, UITextFieldDelegate, AttributedViewProtocol {
+open class TextFieldLayout: BaseInput, UITextFieldDelegate {
     
-    var border: TextFieldBorder? = nil
+    let border = TextFieldBorder()
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,21 +32,21 @@ open class TextFieldLayout: UITextField, UITextFieldDelegate, AttributedViewProt
         clipsToBounds = false
         autocapitalizationType = .none
         layer.borderColor = UIColor.clear.cgColor
-        border = TextFieldBorder()
-        addSubview(border!)
-        border?.translatesAutoresizingMaskIntoConstraints = false
-        border?.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: -2).isActive = true
-        border?.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 2).isActive = true
-        border?.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 2).isActive = true
-        border?.topAnchor.constraint(equalTo: self.topAnchor, constant: -2).isActive = true
+        addSubview(border)
+    }
+    
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        border.frame = CGRect(x: -2, y: -2, width: frame.width + 4, height: frame.height + 4)
+        border.setNeedsDisplay()
     }
     
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        border?.setHighlight(true)
+        border.setHighlight(true)
         return true
     }
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
-        border?.setHighlight(false)
+        border.setHighlight(false)
     }
 }

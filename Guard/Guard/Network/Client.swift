@@ -19,10 +19,10 @@ public class Client {
     public func getConfig(completion: @escaping(Config?)->Void) {
         var c: Config? = config
         if c == nil {
-            c = Guard.sConfig
+            c = Authing.sConfig
         }
         guard c != nil else {
-            ALog.e(AuthClient.self, "Cannot get config. Maybe not calling start(appId)?. app id:\(Guard.getAppId())")
+            ALog.e(AuthClient.self, "Cannot get config. Maybe not calling start(appId)?. app id:\(Authing.getAppId())")
             completion(nil)
             return
         }

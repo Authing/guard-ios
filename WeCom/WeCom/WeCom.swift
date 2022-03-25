@@ -25,7 +25,7 @@ open class WeCom {
      - Parameters:
         - completion: code, message, userInfo
      */
-    public static func login(completion: @escaping Guard.AuthCompletion) -> Void {
+    public static func login(completion: @escaping Authing.AuthCompletion) -> Void {
         WeComDelegate.shared.sendRequest()
         WeComDelegate.shared.receiveCallBack = completion
     }
@@ -46,17 +46,17 @@ class WeComDelegate: NSObject, WWKApiDelegate {
     @objc public static let shared = WeComDelegate()
     private override init() {}
     
-    fileprivate var receiveCallBack: Guard.AuthCompletion?
+    fileprivate var receiveCallBack: Authing.AuthCompletion?
 
     fileprivate func registerApp(appId: String, corpId: String, agentId: String) {
         
-        let rawValue = Guard.NotifyName.notify_wecom_register.rawValue
+        let rawValue = Authing.NotifyName.notify_wecom_register.rawValue
         let name = Notification.Name.init(rawValue: rawValue)
         NotificationCenter.default.addObserver(self, selector: #selector(sendRequest), name: name, object: nil)
         WWKApi.registerApp(appId, corpId: corpId, agentId: agentId)
     }
     
-    fileprivate func login(completion: @escaping Guard.AuthCompletion) -> Void {
+    fileprivate func login(completion: @escaping Authing.AuthCompletion) -> Void {
         self.sendRequest()
         self.receiveCallBack = completion
     }
@@ -72,7 +72,7 @@ class WeComDelegate: NSObject, WWKApiDelegate {
     
     func onResp(_ resp: WWKBaseResp!) {
         
-        let rawValue = Guard.NotifyName.notify_wecom_receive.rawValue
+        let rawValue = Authing.NotifyName.notify_wecom_receive.rawValue
         let name = Notification.Name.init(rawValue: rawValue)
         
         if resp is WWKSSOResp{

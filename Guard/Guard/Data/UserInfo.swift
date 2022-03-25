@@ -79,6 +79,9 @@ open class UserInfo {
         }
         
         userId = raw?["id"] as? String
+        if userId == nil {
+            userId = raw?["sub"] as? String
+        }
         username = raw?["username"] as? String
         email = raw?["email"] as? String
         phone = raw?["phone"] as? String

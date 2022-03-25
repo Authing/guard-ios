@@ -17,11 +17,11 @@ open class ALog {
     }
     
     public static func w(_ type: AnyClass, _ msg: String...) {
-        print("📙\(getTag(type)):\(msg)")
+        print("⚠️\(getTag(type)):\(msg)")
     }
     
     public static func e(_ type: AnyClass, _ msg: String...) {
-        print("📕\(getTag(type)):\(msg)")
+        print("❌\(getTag(type)):\(msg)")
     }
     
     private static func getTag(_ type: AnyClass) -> String {
