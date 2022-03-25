@@ -28,7 +28,7 @@ open class WechatLoginButton: SocialLoginButton, WXApiDelegate {
         let req: SendAuthReq = SendAuthReq()
         req.scope = "snsapi_userinfo"
         req.state = "123"
-        WXApi.sendAuthReq(req, viewController: viewController!, delegate: self) { success in
+        WXApi.sendAuthReq(req, viewController: authViewController!, delegate: self) { success in
             print("wechat auth req result:\(success)")
         }
         
@@ -60,7 +60,7 @@ open class WechatLoginButton: SocialLoginButton, WXApiDelegate {
             DispatchQueue.main.async() {
                 self.loading?.stopAnimating()
                 if (code == 200) {
-                    if let vc = self.viewController?.navigationController as? AuthNavigationController {
+                    if let vc = self.authViewController?.navigationController as? AuthNavigationController {
                         vc.complete(code, message, userInfo)
                     }
                 } else {

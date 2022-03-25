@@ -64,7 +64,7 @@ open class UserProfileAvatarField: UserProfileField, UINavigationControllerDeleg
             picker.delegate = self
             picker.allowsEditing = true
             picker.sourceType = UIImagePickerController.SourceType.photoLibrary
-            self.viewController?.present(picker, animated: true, completion: nil)
+            self.authViewController?.present(picker, animated: true, completion: nil)
         } else {
             print("read photo library error")
         }

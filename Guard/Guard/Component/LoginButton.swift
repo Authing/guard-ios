@@ -79,15 +79,16 @@ open class LoginButton: PrimaryButton {
     
     private func loginByPhoneCode(_ phone: String, _ code: String) {
         startLoading()
-                
-        if self.viewController?.authFlow?.authProtocol == .EInHouse{
+            
+        let authProtocol = authViewController?.authFlow?.authProtocol ?? .EInHouse
+        if authProtocol == .EInHouse {
             Util.getAuthClient(self).loginByPhoneCode(phone: phone, code: code) { code, message, userInfo in
                 self.stopLoading()
                 DispatchQueue.main.async() {
                     self.handleLogin(code, message: message, userInfo: userInfo)
                 }
             }
-        }else{
+        } else {
             OIDCClient.loginByPhoneCode(phone: phone, code: code) { code, message, userInfo in
                 self.stopLoading()
                 DispatchQueue.main.async() {
@@ -100,14 +101,15 @@ open class LoginButton: PrimaryButton {
     private func loginByAccount(_ account: String, _ password: String) {
         startLoading()
         
-        if self.viewController?.authFlow?.authProtocol == .EInHouse{
+        let authProtocol = authViewController?.authFlow?.authProtocol ?? .EInHouse
+        if authProtocol == .EInHouse {
             Util.getAuthClient(self).loginByAccount(account: account, password: password) { code, message, userInfo in
                 self.stopLoading()
                 DispatchQueue.main.async() {
                     self.handleLogin(code, message: message, userInfo: userInfo)
                 }
             }
-        }else{
+        } else {
             OIDCClient.loginByAccount(account: account, password: password) { code,  message,  userInfo in
                 self.stopLoading()
                 DispatchQueue.main.async() {
@@ -131,16 +133,16 @@ open class LoginButton: PrimaryButton {
                     && missingFields.count > 0) {
                     let vc: AuthViewController? = AuthViewController(nibName: "AuthingUserInfoComplete", bundle: Bundle(for: Self.self))
                     vc?.authFlow?.data.setValue(missingFields, forKey: AuthFlow.KEY_EXTENDED_FIELDS)
-                    self.viewController?.navigationController?.pushViewController(vc!, animated: true)
+                    self.authViewController?.navigationController?.pushViewController(vc!, animated: true)
                 } else {
-                    if let vc = self.viewController?.navigationController as? AuthNavigationController {
+                    if let vc = self.authViewController?.navigationController as? AuthNavigationController {
                         vc.complete(code, message, userInfo)
                     }
                 }
             }
         } else if (code == Const.EC_MFA_REQUIRED) {
             let vc: AuthViewController? = AuthViewController(nibName: "AuthingMFAOptions", bundle: Bundle(for: Self.self))
-            self.viewController?.navigationController?.pushViewController(vc!, animated: true)
+            self.authViewController?.navigationController?.pushViewController(vc!, animated: true)
         } else if (code == Const.EC_FIRST_TIME_LOGIN) {
             // clear password text field
             if let tfPassword: PasswordTextField = Util.findView(self, viewClass: PasswordTextField.self) {
@@ -148,7 +150,7 @@ open class LoginButton: PrimaryButton {
             }
             
             var nextVC: AuthViewController? = nil
-            if let vc = viewController {
+            if let vc = authViewController {
                 if (vc.authFlow?.resetPasswordFirstTimeLoginXibName == nil) {
                     nextVC = AuthViewController(nibName: "AuthingFirstTimeLogin", bundle: Bundle(for: Self.self))
                 } else {
@@ -157,7 +159,7 @@ open class LoginButton: PrimaryButton {
                 vc.authFlow?.data.setValue(userInfo, forKey: AuthFlow.KEY_USER_INFO)
                 nextVC?.authFlow = vc.authFlow?.copy() as? AuthFlow
             }
-            self.viewController?.navigationController?.pushViewController(nextVC!, animated: true)
+            self.authViewController?.navigationController?.pushViewController(nextVC!, animated: true)
         } else {
             Util.setError(self, message)
         }

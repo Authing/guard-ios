@@ -101,7 +101,7 @@ open class RegisterButton: PrimaryButton {
             authCompletion?(code, message, userInfo)
         } else if (code == 200) {
             DispatchQueue.main.async() {
-                if let vc = self.viewController?.navigationController as? AuthNavigationController {
+                if let vc = self.authViewController?.navigationController as? AuthNavigationController {
                     vc.complete(code, message, userInfo)
                 }
             }

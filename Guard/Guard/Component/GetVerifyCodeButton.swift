@@ -57,7 +57,7 @@ open class GetVerifyCodeButton: LoadingButton {
                 if (code != 200) {
                     Util.setError(self, message)
                 } else {
-                    print("send sms success")
+                    ALog.i(Self.self, "send sms success")
                 }
             }
         }

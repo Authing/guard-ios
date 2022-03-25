@@ -22,7 +22,7 @@ public class Client {
             c = Authing.sConfig
         }
         guard c != nil else {
-            ALog.e(AuthClient.self, "Cannot get config. Maybe not calling start(appId)?. app id:\(Authing.getAppId())")
+            ALog.e(Self.self, "Cannot get config. Maybe not calling start(appId)?. app id:\(Authing.getAppId())")
             completion(nil)
             return
         }

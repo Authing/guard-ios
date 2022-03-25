@@ -26,6 +26,6 @@ public class CloseButton: UIButton {
     }
     
     @objc private func onClick(sender: UIButton) {
-        viewController?.dismiss(animated: true, completion: nil)
+        authViewController?.dismiss(animated: true, completion: nil)
     }
 }

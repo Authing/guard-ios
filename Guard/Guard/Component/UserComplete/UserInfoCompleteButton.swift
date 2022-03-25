@@ -24,7 +24,7 @@ open class UserInfoCompleteButton: PrimaryButton {
     }
     
     @objc private func onClick(sender: UIButton) {
-        let vc: AuthViewController? = viewController
+        let vc: AuthViewController? = authViewController
         if (vc == nil) {
             return
         }
@@ -225,7 +225,7 @@ open class UserInfoCompleteButton: PrimaryButton {
     
     private func done(_ code: Int, _ message: String?, _ userInfo: UserInfo?) {
         DispatchQueue.main.async() {
-            if let vc = self.viewController?.navigationController as? AuthNavigationController {
+            if let vc = self.authViewController?.navigationController as? AuthNavigationController {
                 vc.complete(code, message, userInfo)
             }
         }

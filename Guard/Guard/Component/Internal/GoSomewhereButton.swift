@@ -8,6 +8,9 @@
 import UIKit
 
 open class GoSomewhereButton: Button {
+    
+    open var target: String? = nil
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -21,9 +24,25 @@ open class GoSomewhereButton: Button {
     private func setup() {
         let text = getText()
         setTitle(text, for: .normal)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.onClick(_:)))
+        self.addGestureRecognizer(tap)
+    }
+    
+    @objc private func onClick(_ sender: UITapGestureRecognizer? = nil) {
+        ALog.d(Self.self, "Going somewhere")
+        if let t = target {
+            
+        } else {
+            goNow()
+        }
     }
     
     func getText() -> String {
         return ""
+    }
+    
+    func goNow() {
+        
     }
 }

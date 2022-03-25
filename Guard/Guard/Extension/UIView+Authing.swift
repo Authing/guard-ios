@@ -8,14 +8,18 @@
 import UIKit
 
 extension UIView {
-    public var viewController: AuthViewController? {
+    public var viewController: UIViewController? {
         var parentResponder: UIResponder? = self.next
         while parentResponder != nil {
-            if let viewController = parentResponder as? AuthViewController {
+            if let viewController = parentResponder as? UIViewController {
                 return viewController
             }
             parentResponder = parentResponder?.next
         }
         return nil
+    }
+    
+    public var authViewController: AuthViewController? {
+        return viewController as? AuthViewController
     }
 }

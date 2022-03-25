@@ -61,7 +61,7 @@ open class UserInfoCompleteContainer: UIView {
     }
     
     private func _setup() {
-        let vc: AuthViewController? = viewController
+        let vc: AuthViewController? = authViewController
         if (vc == nil) {
             return
         }

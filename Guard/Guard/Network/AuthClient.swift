@@ -424,15 +424,19 @@ public class AuthClient: Client {
         
     public func createUserInfo(_ user: UserInfo?, _ code: Int, _ message: String?, _ data: NSDictionary?, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let userInfo = user ?? UserInfo()
-        if (code == 200) {
+        if code == 200 {
             userInfo.parse(data: data)
             Authing.saveUser(userInfo)
-            getCustomUserData(userInfo: userInfo, completion: completion)
-        } else if (code == Const.EC_MFA_REQUIRED) {
+            if userInfo.userId != nil {
+                getCustomUserData(userInfo: userInfo, completion: completion)
+            } else {
+                completion(code, message, userInfo)
+            }
+        } else if code == Const.EC_MFA_REQUIRED {
             Authing.saveUser(userInfo)
             userInfo.mfaData = data
             completion(code, message, userInfo)
-        } else if (code == Const.EC_FIRST_TIME_LOGIN) {
+        } else if code == Const.EC_FIRST_TIME_LOGIN {
             userInfo.firstTimeLoginToken = data?["token"] as? String
             completion(code, message, userInfo)
         } else {

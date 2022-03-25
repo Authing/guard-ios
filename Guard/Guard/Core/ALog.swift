@@ -8,20 +8,27 @@
 import Foundation
 
 open class ALog {
-    public static func d(_ type: AnyClass, _ msg: String...) {
-        print("📘\(getTag(type)):\(msg)")
+    public static func d(_ type: AnyClass, _ msg: Any...) {
+        print("📘 \(getTimestamp()):\(getTag(type)):\(msg)")
     }
     
-    public static func i(_ type: AnyClass, _ msg: String...) {
-        print("📗\(getTag(type)):\(msg)")
+    public static func i(_ type: AnyClass, _ msg: Any...) {
+        print("📗 \(getTimestamp()):\(getTag(type)):\(msg)")
     }
     
-    public static func w(_ type: AnyClass, _ msg: String...) {
-        print("⚠️\(getTag(type)):\(msg)")
+    public static func w(_ type: AnyClass, _ msg: Any...) {
+        print("⚠️ \(getTimestamp()):\(getTag(type)):\(msg)")
     }
     
-    public static func e(_ type: AnyClass, _ msg: String...) {
-        print("❌\(getTag(type)):\(msg)")
+    public static func e(_ type: AnyClass, _ msg: Any...) {
+        print("❌ \(getTimestamp()):\(getTag(type)):\(msg)")
+    }
+    
+    private static func getTimestamp() -> String {
+        let date = Date()
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return df.string(from: date)
     }
     
     private static func getTag(_ type: AnyClass) -> String {

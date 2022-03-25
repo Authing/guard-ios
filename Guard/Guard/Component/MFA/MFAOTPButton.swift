@@ -37,7 +37,7 @@ open class MFAOTPButton: PrimaryButton {
         DispatchQueue.main.async() {
             self.stopLoading()
             if (code == 200) {
-                if let vc = self.viewController?.navigationController as? AuthNavigationController {
+                if let vc = self.authViewController?.navigationController as? AuthNavigationController {
                     vc.complete(code, message, userInfo)
                 }
             } else {

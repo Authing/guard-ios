@@ -24,7 +24,7 @@ open class MFAEmailButton: PrimaryButton {
         self.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
         
         DispatchQueue.main.async() {
-            if let email = self.viewController?.authFlow?.data[AuthFlow.KEY_MFA_EMAIL] as? String {
+            if let email = self.authViewController?.authFlow?.data[AuthFlow.KEY_MFA_EMAIL] as? String {
                 self.startLoading()
                 self.setTitle(NSLocalizedString("authing_login", bundle: Bundle(for: Self.self), comment: ""), for: .normal)
                 Util.getAuthClient(self).sendMFAEmail(email: email) { code, message in
@@ -72,7 +72,7 @@ open class MFAEmailButton: PrimaryButton {
         DispatchQueue.main.async() {
             let vc: AuthViewController? = AuthViewController(nibName: "AuthingMFAEmail1", bundle: Bundle(for: Self.self))
             vc?.authFlow?.data.setValue(email, forKey: AuthFlow.KEY_MFA_EMAIL)
-            self.viewController?.navigationController?.pushViewController(vc!, animated: true)
+            self.authViewController?.navigationController?.pushViewController(vc!, animated: true)
         }
     }
     
@@ -80,7 +80,7 @@ open class MFAEmailButton: PrimaryButton {
         DispatchQueue.main.async() {
             self.stopLoading()
             if (code == 200) {
-                if let vc = self.viewController?.navigationController as? AuthNavigationController {
+                if let vc = self.authViewController?.navigationController as? AuthNavigationController {
                     vc.complete(code, message, userInfo)
                 }
             } else {

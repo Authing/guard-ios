@@ -10,25 +10,19 @@ import UIKit
 open class GoForgotPasswordButton: GoSomewhereButton {
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
     }
 
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setup()
-    }
-    
-    private func setup() {
-        addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
     }
 
     override func getText() -> String {
         return NSLocalizedString("authing_forgot_password", bundle: Bundle(for: Self.self), comment: "")
     }
     
-    @objc private func onClick(sender: UIButton) {
+    override func goNow() {
         var nextVC: AuthViewController? = nil
-        if let vc = viewController {
+        if let vc = authViewController {
             if (vc.authFlow?.forgotPasswordXibName == nil) {
                 nextVC = AuthViewController(nibName: "AuthingForgotPassword", bundle: Bundle(for: Self.self))
             } else {
@@ -37,6 +31,6 @@ open class GoForgotPasswordButton: GoSomewhereButton {
             nextVC?.authFlow = vc.authFlow?.copy() as? AuthFlow
         }
         
-        self.viewController?.navigationController?.pushViewController(nextVC!, animated: true)
+        self.authViewController?.navigationController?.pushViewController(nextVC!, animated: true)
     }
 }

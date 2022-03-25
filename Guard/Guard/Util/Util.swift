@@ -160,7 +160,7 @@ public class Util {
     }
     
     public static func findView<T: UIView>(_ current: UIView, viewClass: AnyClass) -> T? {
-        let rootView: UIView = current.viewController?.view ?? getRootView(current)
+        let rootView: UIView = current.authViewController?.view ?? getRootView(current)
         return _findView(rootView, viewClass: viewClass)
     }
     
@@ -244,12 +244,12 @@ public class Util {
             }
         }
         
-        let phone: String? = current.viewController?.authFlow?.data[AuthFlow.KEY_MFA_PHONE] as? String
+        let phone: String? = current.authViewController?.authFlow?.data[AuthFlow.KEY_MFA_PHONE] as? String
         if (phone != nil) {
             return phone
         }
         
-        return current.viewController?.authFlow?.data[AuthFlow.KEY_ACCOUNT] as? String
+        return current.authViewController?.authFlow?.data[AuthFlow.KEY_ACCOUNT] as? String
     }
     
     public static func getEmail(_ current: UIView) -> String? {
@@ -265,12 +265,12 @@ public class Util {
             }
         }
         
-        let email: String? = current.viewController?.authFlow?.data[AuthFlow.KEY_MFA_EMAIL] as? String
+        let email: String? = current.authViewController?.authFlow?.data[AuthFlow.KEY_MFA_EMAIL] as? String
         if (email != nil) {
             return email
         }
         
-        return current.viewController?.authFlow?.data[AuthFlow.KEY_ACCOUNT] as? String
+        return current.authViewController?.authFlow?.data[AuthFlow.KEY_ACCOUNT] as? String
     }
     
     public static func randomString(length: Int) -> String {
@@ -364,7 +364,7 @@ public class Util {
     
     public static func getConfig(_ view: UIView, completion: @escaping(Config?)->Void) {
         DispatchQueue.main.async() {
-            if let c = view.viewController?.authFlow?.config {
+            if let c = view.authViewController?.authFlow?.config {
                 c.getConfig(completion: completion)
             } else {
                 Authing.getConfig(completion: completion)
@@ -373,7 +373,7 @@ public class Util {
     }
     
     public static func getAuthClient(_ view: UIView) -> AuthClient {
-        if let flow = view.viewController?.authFlow,
+        if let flow = view.authViewController?.authFlow,
            let config = flow.config {
             return AuthClient(config)
         } else {

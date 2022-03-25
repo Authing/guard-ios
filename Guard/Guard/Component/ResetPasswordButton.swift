@@ -31,36 +31,23 @@ open class ResetPasswordButton: PrimaryButton {
     }
     
     @objc private func onClick(sender: UIButton) {
-        let vc: AuthViewController? = viewController
-        if (vc == nil) {
+        if let tfPassword: PasswordTextField = Util.findView(self, viewClass: PasswordTextField.self) {
+            handleResetPassword(tfPassword.text)
             return
         }
-        
-        let tfPassword: PasswordTextField? = Util.findView(self, viewClass: PasswordTextField.self)
-        if (tfPassword != nil) {
-            handleResetPassword(tfPassword?.text)
-            return
-        }
-        
-        let tf: AccountTextField? = Util.findView(self, viewClass: AccountTextField.self)
-        guard tf != nil else {
-            return
-        }
-        
-        let account: String? = tf!.text
-        guard account != nil else {
-            return
-        }
-        
-        if (Validator.isValidPhone(phone: tf!.text)) {
-            next(.byPhone, account!)
-        } else if (Validator.isValidEmail(email: tf!.text)) {
-            next(.byEmail, account!)
+
+        if let tfAccount: AccountTextField = Util.findView(self, viewClass: AccountTextField.self),
+           let account = tfAccount.text {
+            if (Validator.isValidPhone(phone: account)) {
+                next(.byPhone, account)
+            } else if (Validator.isValidEmail(email: account)) {
+                next(.byEmail, account)
+            }
         }
     }
     
     func handleResetPassword(_ password: String?) {
-        let vc: AuthViewController? = viewController
+        let vc: AuthViewController? = authViewController
         let userInfo: UserInfo? = vc?.authFlow?.data.value(forKey: AuthFlow.KEY_USER_INFO) as? UserInfo
         if (userInfo != nil) {
             if let firstTimeToken: String = userInfo!.firstTimeLoginToken {
@@ -90,12 +77,7 @@ open class ResetPasswordButton: PrimaryButton {
         startLoading()
         Util.getAuthClient(self).resetPasswordByFirstTimeLoginToken(token: token!, password: password!) { code, message in
             DispatchQueue.main.async() {
-                if (code == 200) {
-                    self.gotoLogin()
-                } else {
-                    Util.setError(self, message)
-                }
-                self.stopLoading()
+                self.done(code, message)
             }
         }
     }
@@ -111,12 +93,7 @@ open class ResetPasswordButton: PrimaryButton {
         startLoading()
         Util.getAuthClient(self).resetPasswordByPhone(phone: phone!, code: vCode!, newPassword: password!) { code, message in
             DispatchQueue.main.async() {
-                if (code == 200) {
-                    self.gotoLogin()
-                } else {
-                    Util.setError(self, message)
-                }
-                self.stopLoading()
+                self.done(code, message)
             }
         }
     }
@@ -132,20 +109,27 @@ open class ResetPasswordButton: PrimaryButton {
         startLoading()
         Util.getAuthClient(self).resetPasswordByEmail(email: email!, code: vCode!, newPassword: password!) { code, message in
             DispatchQueue.main.async() {
-                if (code == 200) {
-                    self.gotoLogin()
-                } else {
-                    Util.setError(self, message)
-                }
-                self.stopLoading()
+                self.done(code, message)
             }
         }
     }
     
     func next(_ type: resetType, _ account: String) {
+        if type == .byPhone {
+            if let vc = viewController, vc.canPerformSegue(withIdentifier: "phone") {
+                vc.performSegue(withIdentifier: "phone", sender: nil)
+                return
+            }
+        } else if type == .byEmail {
+            if let vc = viewController, vc.canPerformSegue(withIdentifier: "email") {
+                vc.performSegue(withIdentifier: "email", sender: nil)
+                return
+            }
+        }
+        
         var nextVC: AuthViewController? = nil
         if (type == .byPhone) {
-            if let vc = viewController {
+            if let vc = authViewController {
                 if (vc.authFlow?.resetPasswordByPhoneXibName == nil) {
                     nextVC = AuthViewController(nibName: "AuthingResetPasswordByPhone", bundle: Bundle(for: Self.self))
                 } else {
@@ -154,7 +138,7 @@ open class ResetPasswordButton: PrimaryButton {
                 nextVC?.authFlow = vc.authFlow?.copy() as? AuthFlow
             }
         } else if (type == .byEmail) {
-            if let vc = viewController {
+            if let vc = authViewController {
                 if (vc.authFlow?.resetPasswordByEmailXibName == nil) {
                     nextVC = AuthViewController(nibName: "AuthingResetPasswordByEmail", bundle: Bundle(for: Self.self))
                 } else {
@@ -164,13 +148,25 @@ open class ResetPasswordButton: PrimaryButton {
             }
         }
         nextVC?.authFlow?.data.setValue(account, forKey: AuthFlow.KEY_ACCOUNT)
-        self.viewController?.navigationController?.pushViewController(nextVC!, animated: true)
+        self.authViewController?.navigationController?.pushViewController(nextVC!, animated: true)
     }
     
-    func gotoLogin() {
-        if let vc = self.viewController?.navigationController?.viewControllers.first as? AuthViewController {
-            vc.authFlow = self.viewController?.authFlow?.copy() as? AuthFlow
+    private func done(_ code: Int, _ message: String?) {
+        self.stopLoading()
+        if code == 200 {
+            if authCompletion != nil {
+                ALog.i(Self.self, "Reset password success. Fire callback")
+                authCompletion?(200, "", nil)
+            } else {
+                ALog.i(Self.self, "Reset password success. Now go to login")
+                if let vc = self.authViewController?.navigationController?.viewControllers.first as? AuthViewController {
+                    vc.authFlow = self.authViewController?.authFlow?.copy() as? AuthFlow
+                }
+                self.viewController?.navigationController?.popToRootViewController(animated: true)
+            }
+        } else {
+            Util.setError(self, message)
+            authCompletion?(code, message, nil)
         }
-        self.viewController?.navigationController?.popToRootViewController(animated: true)
     }
 }

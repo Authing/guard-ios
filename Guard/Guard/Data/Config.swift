@@ -118,7 +118,7 @@ public class Config {
             if (code == 200) {
                 self.data = jsonData
             } else {
-                ALog.e(Config.self, "error when getting public cofig:\(message!)")
+                ALog.e(Self.self, "error when getting public cofig:\(message!)")
             }
             self.fireCallback()
         }

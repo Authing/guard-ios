@@ -97,7 +97,7 @@ public class AuthFlow {
         }
         
         if (account == nil || account!.isEmpty) {
-            let vc: AuthViewController? = current.viewController
+            let vc: AuthViewController? = current.authViewController
             if (vc != nil) {
                 account = vc?.authFlow?.data[AuthFlow.KEY_ACCOUNT] as? String
             }
@@ -128,7 +128,7 @@ public class AuthFlow {
         config = Config(appId: appId)
         
         guard let appBundle = Parser().parse(appId: appId) else {
-            ALog.e(AuthFlow.self, "startAppBundle failed for \(appId)")
+            ALog.e(Self.self, "startAppBundle failed for \(appId)")
             return
         }
         
@@ -144,7 +144,7 @@ public class AuthFlow {
                 nav.setAuthCompletion(authCompletion)
                 topVC.present(nav, animated: true, completion: nil)
             } else {
-                ALog.e(AuthFlow.self, "startAppBundle failed for \(appId). No view controller for current app")
+                ALog.e(Self.self, "startAppBundle failed for \(appId). No view controller for current app")
             }
         }
     }

@@ -47,6 +47,6 @@ open class LogoutButton: UIButton {
             alert.dismiss(animated: true, completion: nil)
         }))
 
-        viewController?.present(alert, animated: true, completion: nil)
+        authViewController?.present(alert, animated: true, completion: nil)
     }
 }
