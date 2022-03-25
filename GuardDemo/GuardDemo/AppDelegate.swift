@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         OneAuth.bizId = "74ae90bd84f74b69a88b578bbbbcdcfd"
         Guard.setupWechat("wx1cddb15e280c0f67", universalLink: "https://developer-beta.authing.cn/app/")
         Guard.start("6204d0a406f0423c78f243ae");
-        WeCom.shared.registerApp(appId: "wwauth803c38cb89ac1d57000002", corpId: "ww803c38cb89ac1d57", agentId: "1000002")
+        WeCom.registerApp(appId: "wwauth803c38cb89ac1d57000002", corpId: "ww803c38cb89ac1d57", agentId: "1000002")
         
         return true
     }
@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return WeCom.shared.handleOpenURL(url: url)
+        return WeCom.handleOpenURL(url: url)
     }
 
     

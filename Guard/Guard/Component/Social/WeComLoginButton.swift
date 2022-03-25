@@ -24,7 +24,7 @@ open class WeComLoginButton: SocialLoginButton {
         self.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
         
         //添加 WeCom 接收消息通知, 用于接收 WeCom 回调信息
-        NotificationCenter.addObserver(self, selector: #selector(self.weComLoginComplete(notification:)), name: .notify_wecom_Receive, object: nil)
+        NotificationCenter.addObserver(self, selector: #selector(self.weComLoginComplete(notification:)), name: .notify_wecom_receive, object: nil)
     }
     
     @objc private func onClick(sender: UIButton) {

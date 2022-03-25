@@ -7,13 +7,7 @@
 
 import Foundation
 import Guard
-
-open class WeCom: NSObject, WWKApiDelegate {
-        
-    @objc public static let shared = WeCom()
-    private override init() {}
-    
-    private var receiveCallBack: Guard.AuthCompletion?
+open class WeCom {
 
     /**
      - 初始化企业微信配置
@@ -22,7 +16,39 @@ open class WeCom: NSObject, WWKApiDelegate {
         - corpid:  企业微信企业ID
         - agentid:  企业微信企业应用ID
      */
-    public func registerApp(appId: String, corpId: String, agentId: String) {
+    public static func registerApp(appId: String, corpId: String, agentId: String) {
+        WeComDelegate.shared.registerApp(appId: appId, corpId: corpId, agentId: agentId)
+    }
+
+    /**
+     - 不使用 Guard 内置按钮 直接调用登录事件
+     - Parameters:
+        - completion: code, message, userInfo
+     */
+    public static func login(completion: @escaping Guard.AuthCompletion) -> Void {
+        WeComDelegate.shared.sendRequest()
+        WeComDelegate.shared.receiveCallBack = completion
+    }
+    
+    /**
+     - 企业微信启动第三方应用时传递过来的URL
+     - Parameters:
+        - url: 企业微信启动第三方应用时传递过来的URL
+     - returns: 成功返回YES，失败返回NO。
+     */
+    public static func handleOpenURL(url: URL) -> Bool {
+        return WeComDelegate.shared.handleOpenURL(url: url)
+    }
+}
+
+class WeComDelegate: NSObject, WWKApiDelegate {
+        
+    @objc public static let shared = WeComDelegate()
+    private override init() {}
+    
+    fileprivate var receiveCallBack: Guard.AuthCompletion?
+
+    fileprivate func registerApp(appId: String, corpId: String, agentId: String) {
         
         let rawValue = Guard.NotifyName.notify_wecom_register.rawValue
         let name = Notification.Name.init(rawValue: rawValue)
@@ -30,15 +56,7 @@ open class WeCom: NSObject, WWKApiDelegate {
         WWKApi.registerApp(appId, corpId: corpId, agentId: agentId)
     }
     
-    /**
-     - 不使用 Guard 内置按钮 直接调用登录事件
-     - Parameters:
-        - completion:
-        - code
-        - message
-        - userInfo
-     */
-    public func login(completion: @escaping Guard.AuthCompletion) -> Void {
+    fileprivate func login(completion: @escaping Guard.AuthCompletion) -> Void {
         self.sendRequest()
         self.receiveCallBack = completion
     }
@@ -48,13 +66,13 @@ open class WeCom: NSObject, WWKApiDelegate {
         WWKApi.send(req)
     }
     
-    public func handleOpenURL(url: URL) -> Bool {
+    fileprivate func handleOpenURL(url: URL) -> Bool {
         return WWKApi.handleOpen(url, delegate: self)
     }
     
-    public func onResp(_ resp: WWKBaseResp!) {
+    func onResp(_ resp: WWKBaseResp!) {
         
-        let rawValue = Guard.NotifyName.notify_wecom_Receive.rawValue
+        let rawValue = Guard.NotifyName.notify_wecom_receive.rawValue
         let name = Notification.Name.init(rawValue: rawValue)
         
         if resp is WWKSSOResp{
