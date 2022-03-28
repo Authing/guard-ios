@@ -8,6 +8,28 @@
 import Foundation
 
 open class Exporter {
+    
+    public static func exportManifest(_ appBundle: AppBundle) {
+        let dic = ["appId": appBundle.appId,
+                   "name": appBundle.name,
+                   "versionName": appBundle.versionName,
+                   "mainColor": appBundle.mainColor]
+        let encoder = JSONEncoder()
+        if let jsonData = try? encoder.encode(dic) {
+            if let jsonString = String(data: jsonData, encoding: .utf8) {
+                print(jsonString)
+                
+                if let path = appBundle.rootDir?.appendingPathComponent("manifest.json") {
+                    do {
+                        try jsonString.write(to: path, atomically: true, encoding: .utf8)
+                    } catch {
+                        ALog.e(Exporter.self, error.localizedDescription)
+                    }
+                }
+            }
+        }
+    }
+    
     public static func exportXML(_ appBundle: AppBundle, _ view: UIView, _ pageName: String) {
         guard view.subviews.count > 0 else {
             ALog.w(Exporter.self, "skip exporting xml. root view has no child")

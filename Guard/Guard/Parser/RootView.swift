@@ -28,6 +28,40 @@ extension AttributedViewProtocol {
 }
 
 extension UIView {
+    private enum Keys {
+        static var extendedPropertyKey = "extendedProperty"
+    }
+
+    open var extendedProperty: NSDictionary {
+        get {
+            if let ep = objc_getAssociatedObject(self, &Keys.extendedPropertyKey) as? NSDictionary {
+                return ep
+            }
+            let ep = NSMutableDictionary()
+            objc_setAssociatedObject(
+                self,
+                &Keys.extendedPropertyKey,
+                ep,
+                .OBJC_ASSOCIATION_RETAIN_NONATOMIC
+            )
+            return ep
+        }
+        set {
+            objc_setAssociatedObject(
+                self,
+                &Keys.extendedPropertyKey,
+                newValue,
+                .OBJC_ASSOCIATION_RETAIN_NONATOMIC
+            )
+        }
+    }
+    
+    public func refresh() {
+        if let background = extendedProperty["background"] as? UIColor {
+            backgroundColor = background
+        }
+    }
+    
     public func getAttribute(key: String) -> Any? {
         if "background" == key {
             return backgroundColor
@@ -136,8 +170,10 @@ extension UIView {
                     layer.masksToBounds = true
                 }
             }
-        } else if "border-color" == key, let color = value as? UIColor {
-            layer.borderColor = color.cgColor
+        } else if "border-color" == key {
+            if let color = value as? UIColor {
+                layer.borderColor = color.cgColor
+            }
         } else if "border-corner" == key {
             if let v = value as? NSString {
                 layer.cornerRadius = CGFloat(v.floatValue)
@@ -209,7 +245,9 @@ extension UIView {
     
     public func getXMLAttributes() -> String {
         var res = ""
-        if let backgroundColor = backgroundColor,
+        if let colorRef = extendedProperty["background"] {
+            res += " background=\"\(colorRef)\""
+        } else if let backgroundColor = backgroundColor,
             let hexColor = Util.exportColor(backgroundColor) {
             res += " background=\"\(hexColor)\""
         }
@@ -225,6 +263,10 @@ extension UIView {
             res += " height=\"match\""
         } else if height >= 0 {
             res += " height=\"\(height)\""
+        }
+        
+        if layoutParams.fill != 0 {
+            res += " flex=\"\(layoutParams.fill)\""
         }
         
         let marginLeft = layoutParams.margin.left
@@ -250,28 +292,39 @@ extension UIView {
         let borderWidth = layer.borderWidth
         if borderWidth > 0 {
             res += " border-width=\"\(borderWidth)\""
-            if let borderColor = layer.borderColor,
-                let hexColor = Util.exportColor(UIColor(cgColor: borderColor)) {
-                res += " border-color=\"\(hexColor)\""
-            }
-            let cornerRadius = layer.cornerRadius
-            if cornerRadius > 0 {
-                res += " border-corner=\"\(cornerRadius)\""
-            }
+        }
+        
+        if let colorRef = extendedProperty["border-color"] {
+            res += " border-color=\"\(colorRef)\""
+        } else if let borderColor = layer.borderColor,
+            let hexColor = Util.exportColor(UIColor(cgColor: borderColor)) {
+            res += " border-color=\"\(hexColor)\""
+        }
+        
+        let cornerRadius = layer.cornerRadius
+        if cornerRadius > 0 {
+            res += " border-corner=\"\(cornerRadius)\""
         }
         
         if let layout = self as? Layout {
             if layout.alignItems == AlignItems.center {
                 res += " align-items=\"center\""
             }
+            if layout.orientation == .horizontal {
+                res += " direction=\"row\""
+            }
         }
         
-        if let view = self as? Label {
-            if let color = view.textColor,
+        if let colorRef = extendedProperty["color"] {
+            res += " color=\"\(colorRef)\""
+        } else {
+            if let color = getColor(self),
                 let hexColor = Util.exportColor(color) {
                 res += " color=\"\(hexColor)\""
             }
-            
+        }
+        
+        if let view = self as? Label {
             if let tv = view.textValue {
                 res += " text=\"\(tv)\""
             }
@@ -284,11 +337,6 @@ extension UIView {
         }
         
         if let view = self as? Button {
-            if let color = view.titleLabel?.textColor,
-                let hexColor = Util.exportColor(color) {
-                res += " color=\"\(hexColor)\""
-            }
-            
             if let tv = view.textValue {
                 res += " text=\"\(tv)\""
             }
@@ -301,11 +349,9 @@ extension UIView {
         }
         
         if let view = self as? BaseInput {
-            if let color = view.textColor,
-                let hexColor = Util.exportColor(color) {
-                res += " color=\"\(hexColor)\""
-            }
-            if let color = view.hintColor,
+            if let colorRef = extendedProperty["hint-color"] {
+                res += " hint-color=\"\(colorRef)\""
+            } else if let color = view.hintColor,
                 let hexColor = Util.exportColor(color) {
                 res += " hint-color=\"\(hexColor)\""
             }
@@ -321,6 +367,17 @@ extension UIView {
             }
         }
         return res
+    }
+    
+    public func getColor(_ view: UIView) -> UIColor? {
+        if let v = view as? Label {
+            return v.textColor
+        } else if let v = view as? Button {
+            return v.titleLabel?.textColor
+        } else if let v = view as? BaseInput {
+            return v.textColor
+        }
+        return nil
     }
 }
 

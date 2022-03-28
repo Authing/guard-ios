@@ -10,7 +10,8 @@ import UIKit
 open class AppName: Label {
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        font = UIFont.boldSystemFont(ofSize: 20)
+        fontSize = 20
+        isBold = true
         textAlignment = .center
         setup()
     }

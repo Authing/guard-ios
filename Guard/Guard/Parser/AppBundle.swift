@@ -14,4 +14,5 @@ open class AppBundle {
     open var versionCode: Int = 1
     open var versionName: String? = nil
     open var indexView: UIView? = nil
+    open var mainColor: String? = nil   
 }

@@ -303,6 +303,15 @@ public class Util {
         }
     }
     
+    public static func parseColor(_ appBundle: AppBundle?, _ colorString: String) -> UIColor? {
+        if "@mainColor" == colorString {
+            let color = appBundle?.mainColor ?? "#3A69FF"
+            return Util.parseColor(color)
+        } else {
+            return Util.parseColor(colorString)
+        }
+    }
+    
     public static func parseColor(_ colorString: String) -> UIColor? {
         var cString:String = colorString.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
 

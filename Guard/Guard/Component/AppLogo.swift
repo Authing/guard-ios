@@ -20,22 +20,24 @@ open class AppLogo: UIImageView, AttributedViewProtocol {
 
     private func setup() {
         Util.getConfig(self) { config in
-            guard config != nil else {
-                return
-            }
-            guard config?.getLogoUrl() != nil else {
+            
+            guard let appid = config?.appId else {
                 return
             }
             
-            let url = NSURL(string: (config?.getLogoUrl())!)
-            if (url == nil) {
-                return
+            if let image = CacheManager.getImage(appid) {
+                self.image = image
             }
-            DispatchQueue.global().async {
-                let data = try? Data(contentsOf: url! as URL)
-                DispatchQueue.main.async() { [weak self] in
-                    if (data != nil) {
-                        self?.image = UIImage(data: data!)
+            
+            if let logoUrl = config?.getLogoUrl(),
+               let url = URL(string: logoUrl) {
+                DispatchQueue.global().async {
+                    if let data = try? Data(contentsOf: url as URL),
+                       let image = UIImage(data: data) {
+                        CacheManager.putImage(appid, image)
+                        DispatchQueue.main.async() { [weak self] in
+                            self?.image = image
+                        }
                     }
                 }
             }

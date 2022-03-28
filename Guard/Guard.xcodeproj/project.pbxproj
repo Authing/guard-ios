@@ -31,6 +31,7 @@
 		7E12D7B6277DE9EF00703FC1 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E12D7B5277DE9EF00703FC1 /* UserManager.swift */; };
 		7E12D7B8277DECB900703FC1 /* AuthingUserProfile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E12D7B7277DECB900703FC1 /* AuthingUserProfile.xib */; };
 		7E12D7BA277DEE6F00703FC1 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E12D7B9277DEE6F00703FC1 /* UserProfileViewController.swift */; };
+		7E189B0927F13ACD005AC1AC /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E189B0827F13ACD005AC1AC /* CacheManager.swift */; };
 		7E1998D22783D3D5002C6F81 /* WechatLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1998D12783D3D5002C6F81 /* WechatLoginButton.swift */; };
 		7E199D072783DE9E002C6F81 /* WXApi.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E199D032783DE9E002C6F81 /* WXApi.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7E199D082783DE9E002C6F81 /* WXApiObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E199D042783DE9E002C6F81 /* WXApiObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -160,6 +161,7 @@
 		7E12D7B5277DE9EF00703FC1 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		7E12D7B7277DECB900703FC1 /* AuthingUserProfile.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingUserProfile.xib; sourceTree = "<group>"; };
 		7E12D7B9277DEE6F00703FC1 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		7E189B0827F13ACD005AC1AC /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		7E1998D12783D3D5002C6F81 /* WechatLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WechatLoginButton.swift; sourceTree = "<group>"; };
 		7E199D032783DE9E002C6F81 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		7E199D042783DE9E002C6F81 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
@@ -444,6 +446,7 @@
 				7E75668627672C8D00C3872F /* Config.swift */,
 				7E7566B12768A7CC00C3872F /* UserInfo.swift */,
 				7E12D7B5277DE9EF00703FC1 /* UserManager.swift */,
+				7E189B0827F13ACD005AC1AC /* CacheManager.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -782,6 +785,7 @@
 				7E8AECBC27882D2D0030D27B /* SocialLoginButton.swift in Sources */,
 				7ECF8AC52759FE8D004F8FC5 /* SDKUsageTask.swift in Sources */,
 				7E87A1C627CE330800E52D5A /* UserProfileAvatarField.swift in Sources */,
+				7E189B0927F13ACD005AC1AC /* CacheManager.swift in Sources */,
 				7EB32808278C1870008639AA /* BindPhoneButton.swift in Sources */,
 				7E96039D27E0C48C007C87EB /* RootView.swift in Sources */,
 				7EB32805278C17B3008639AA /* MFAPhoneButton.swift in Sources */,

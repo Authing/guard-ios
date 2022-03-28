@@ -125,17 +125,29 @@ public class AuthFlow {
     }
     
     public func startAppBundle(_ appId: String, authCompletion: Authing.AuthCompletion? = nil) {
-        config = Config(appId: appId)
-        
-        guard let appBundle = Parser().parse(appId: appId) else {
-            ALog.e(Self.self, "startAppBundle failed for \(appId)")
+        if let ab = Parser().parse(appId: "62345c87ffe7c884acbae53c") {
+            Parser().inflate(appBundle: ab)
+            AuthFlow().startAppBundle(ab, authCompletion: authCompletion)
+        }
+    }
+    
+    public func startAppBundle(_ appBundle: AppBundle, authCompletion: Authing.AuthCompletion? = nil) {
+        guard let appid = appBundle.appId else {
+            ALog.e(Self.self, "startAppBundle failed. No appid")
             return
         }
         
+        guard let rootView = appBundle.indexView else {
+            ALog.e(Self.self, "startAppBundle failed. App bundle has no index view. appId:\(appid)")
+            return
+        }
+        
+        config = Config(appId: appid)
+
         self.appBundle = appBundle
         let vc = AuthViewController()
         vc.authFlow = self
-        vc.view = appBundle.indexView
+        vc.view = rootView
         DispatchQueue.main.async() {
             if let topVC = UIApplication.topViewController() {
                 let nav: AuthNavigationController = AuthNavigationController(rootViewController: vc)
@@ -144,7 +156,7 @@ public class AuthFlow {
                 nav.setAuthCompletion(authCompletion)
                 topVC.present(nav, animated: true, completion: nil)
             } else {
-                ALog.e(Self.self, "startAppBundle failed for \(appId). No view controller for current app")
+                ALog.e(Self.self, "startAppBundle failed for \(appid). No view controller for current app")
             }
         }
     }

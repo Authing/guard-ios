@@ -9,6 +9,7 @@ import UIKit
 
 open class Parser: NSObject, XMLParserDelegate {
     
+    var appBundle: AppBundle? = nil
     var viewStack: Array<UIView> = Array()
     var currentView: UIView? = nil
     
@@ -26,7 +27,7 @@ open class Parser: NSObject, XMLParserDelegate {
                     return nil
                 } else {
                     // parse manifest to get version
-                    parseManifest(appBundle, rootDirInMain.appendingPathComponent("manifest.json"))
+                    parseManifest(appBundle)
                     
                     // create root folder
                     try FileManager.default.createDirectory(at: appDir, withIntermediateDirectories: true, attributes: nil)
@@ -60,19 +61,8 @@ open class Parser: NSObject, XMLParserDelegate {
             
             let rootDir = appDir.appendingPathComponent(String(appBundle.versionCode))
             if FileManager.default.fileExists(atPath: rootDir.path) {
-                parseManifest(appBundle, rootDir.appendingPathComponent("manifest.json"))
-                let root = RootView()
-                root.backgroundColor = UIColor.white
-                viewStack.append(root)
-                currentView = root
-                appBundle.indexView = root
                 appBundle.rootDir = rootDir
-                let indexViewPath = rootDir.appendingPathComponent("page").appendingPathComponent("index.xml")
-                if let parser = XMLParser(contentsOf: indexViewPath) {
-                    parser.delegate = self
-                    parser.parse()
-                }
-                root.addSubview(CloseButton())
+                parseManifest(appBundle)
                 ALog.i(Parser.self, "app bundle \(appId) loaded. path: \(rootDir)")
                 return appBundle
             } else {
@@ -85,8 +75,9 @@ open class Parser: NSObject, XMLParserDelegate {
         }
     }
     
-    private func parseManifest(_ appBundle: AppBundle, _ fileURL: URL) {
-        if let data = try? Data(contentsOf: fileURL) {
+    public func parseManifest(_ appBundle: AppBundle) {
+        if let fileURL = appBundle.rootDir?.appendingPathComponent("manifest.json"),
+           let data = try? Data(contentsOf: fileURL) {
             do {
                 if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? NSDictionary {
                     if let version = json["version"] as? String {
@@ -95,18 +86,44 @@ open class Parser: NSObject, XMLParserDelegate {
                     if let name = json["name"] as? String {
                         appBundle.name = name
                     }
+                    if let mainColor = json["mainColor"] as? String {
+                        appBundle.mainColor = mainColor
+                    }
                 }
             } catch {
                 ALog.e(Parser.self, "parseManifest error")
             }
         } else {
-            ALog.e(Parser.self, "parseManifest error file not exist \(fileURL.path)")
+            ALog.e(Parser.self, "parseManifest error file not exist")
         }
+    }
+    
+    open func inflate(appBundle: AppBundle) {
+        appBundle.indexView = inflate(appBundle: appBundle, page: "index.xml")
+    }
+    
+    open func inflate(appBundle: AppBundle, page: String) -> UIView {
+        self.appBundle = appBundle
+        let root = RootView()
+        root.backgroundColor = UIColor.white
+        viewStack.append(root)
+        currentView = root
+        if let indexViewPath = appBundle.rootDir?.appendingPathComponent("page").appendingPathComponent(page) {
+            if let parser = XMLParser(contentsOf: indexViewPath) {
+                parser.delegate = self
+                parser.parse()
+            }
+        }
+        if root.subviews.count == 0 {
+            ALog.e(Self.self, "inflate failed. no view in \(page)")
+        }
+        root.addSubview(CloseButton())
+        return root
     }
     
     public func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
 
-        if let viewType = Bundle(for: Parser.self).classNamed("Guard.\(elementName)") as? UIView.Type {
+        if let viewType = Bundle(for: Self.self).classNamed("Guard.\(elementName)") as? UIView.Type {
             let view = viewType.init()
             
             if let layout = view as? Layout {
@@ -133,8 +150,11 @@ open class Parser: NSObject, XMLParserDelegate {
     
     private func parseAttribute(view: UIView, key: String, value: String) {
         if ("background" == key) {
-            if let color = Util.parseColor(value) {
+            if let color = Util.parseColor(appBundle, value) {
                 view.backgroundColor = color
+            }
+            if value.hasPrefix("@") {
+                view.extendedProperty.setValue(value, forKey: key)
             }
         } else if ("width" == key) {
             if ("match" == value) {
@@ -151,15 +171,18 @@ open class Parser: NSObject, XMLParserDelegate {
         } else if ("height" == key) {
             if ("match" == value) {
                 view.layoutParams.height = LayoutParams.matchParent
-            } else if ("fill" == value) {
-                view.layoutParams.fill = 1
             } else if ("wrap" == value) {
                 view.layoutParams.height = LayoutParams.wrapContent
+            } else if ("fill" == value) {
+                view.layoutParams.fill = 1
             } else {
                 let v = CGFloat((value as NSString).floatValue)
                 view.frame = CGRect(origin: view.frame.origin, size: CGSize(width: view.frame.width, height: v))
                 view.layoutParams.height = v
             }
+        } else if ("flex" == key) {
+            let v = CGFloat((value as NSString).floatValue)
+            view.layoutParams.fill = v
         } else if ("margin-top" == key) {
             let v = CGFloat((value as NSString).floatValue)
             view.layoutParams.margin.top = v
@@ -177,8 +200,11 @@ open class Parser: NSObject, XMLParserDelegate {
             view.layer.borderWidth = v
             view.layer.masksToBounds = true
         } else if ("border-color" == key) {
-            if let color = Util.parseColor(value) {
+            if let color = Util.parseColor(appBundle, value) {
                 view.layer.borderColor = color.cgColor
+            }
+            if value.hasPrefix("@") {
+                view.extendedProperty.setValue(value, forKey: key)
             }
         } else if ("border-corner" == key) {
             let v = CGFloat((value as NSString).floatValue)
@@ -186,7 +212,18 @@ open class Parser: NSObject, XMLParserDelegate {
             view.layer.masksToBounds = true
         } else {
             if let v = view as? AttributedViewProtocol {
-                v.setAttribute(key: key, value: value)
+                if value.hasPrefix("@") {
+                    var ref = value
+                    ref.remove(at: ref.startIndex)
+                    if "mainColor" == ref {
+                        if let color: String = appBundle?.mainColor {
+                            v.setAttribute(key: key, value: color)
+                        }
+                    }
+                    view.extendedProperty.setValue(value, forKey: key)
+                } else {
+                    v.setAttribute(key: key, value: value)
+                }
             }
         }
     }
