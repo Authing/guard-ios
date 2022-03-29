@@ -30,8 +30,8 @@ open class UserInfoCompleteFieldPhone: UserInfoCompleteFieldForm {
         addSubview(verifyCodeTextField)
         addSubview(getCodeButton)
         
-        phoneTextField.borderStyle = .roundedRect
-        phoneTextField.font = UIFont.systemFont(ofSize: 14)
+        phoneTextField.textField.borderStyle = .roundedRect
+        phoneTextField.textField.font = UIFont.systemFont(ofSize: 14)
         phoneTextField.translatesAutoresizingMaskIntoConstraints = false
         phoneTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
         phoneTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
@@ -64,7 +64,11 @@ open class UserInfoCompleteFieldPhone: UserInfoCompleteFieldForm {
     }
     
     public func getPhone() -> String? {
-        return phoneTextField.text
+        return phoneTextField.textField.text
+    }
+    
+    public func getCountryCode() -> String? {
+        return "\(phoneTextField.code)"
     }
     
     public func getCode() -> String? {

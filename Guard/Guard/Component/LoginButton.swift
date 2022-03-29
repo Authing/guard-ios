@@ -55,15 +55,20 @@ open class LoginButton: PrimaryButton {
             }
         }
         
-        let tfPhone: PhoneNumberTextField? = Util.findView(self, viewClass: PhoneNumberTextField.self)
-        let tfCode: VerifyCodeTextField? = Util.findView(self, viewClass: VerifyCodeTextField.self)
-        if (tfPhone != nil && tfCode != nil) {
-            let phone: String? = tfPhone!.text
-            let code: String? = tfCode!.text
-            if (!phone!.isEmpty && !code!.isEmpty) {
-                loginByPhoneCode(phone!, code!)
+        if let tfPhone: PhoneNumberTextField = Util.findView(self, viewClass: PhoneNumberTextField.self),
+           let tfCode: VerifyCodeTextField = Util.findView(self, viewClass: VerifyCodeTextField.self) {
+                let phone: String? = tfPhone.textField.text
+                let code: String? = tfCode.text
+                if (!phone!.isEmpty && !code!.isEmpty) {
+                    if let international = config?.internationalSmsConfig{
+                        if international  == true{
+                            loginByPhoneCode("\(tfPhone.code)", phone!, code!)
+                            return
+                        }
+                    }
+                loginByPhoneCode(nil , phone!, code!)
+                return
             }
-            return
         }
         
         let tfAccount: AccountTextField? = Util.findView(self, viewClass: AccountTextField.self)
@@ -74,21 +79,30 @@ open class LoginButton: PrimaryButton {
             if (!account!.isEmpty && !password!.isEmpty) {
                 loginByAccount(account!, password!)
             }
+            return
+        }
+        
+        if let tfEmail: EmailTextField = Util.findView(self, viewClass: EmailTextField.self),
+           let tfEmailCode: VerifyCodeTextField = Util.findView(self, viewClass: VerifyCodeTextField.self) {
+            if let email = tfEmail.text,
+               let code = tfEmailCode.text{
+                   loginByEmail(email, code)
+            }
         }
     }
     
-    private func loginByPhoneCode(_ phone: String, _ code: String) {
+        private func loginByPhoneCode(_ countryCode: String? = nil, _ phone: String, _ code: String) {
         startLoading()
                 
         if self.viewController?.authFlow?.authProtocol == .EInHouse{
-            Util.getAuthClient(self).loginByPhoneCode(phone: phone, code: code) { code, message, userInfo in
+            Util.getAuthClient(self).loginByPhoneCode(phoneCountryCode: countryCode, phone: phone, code: code) { code, message, userInfo in
                 self.stopLoading()
                 DispatchQueue.main.async() {
                     self.handleLogin(code, message: message, userInfo: userInfo)
                 }
             }
         }else{
-            OIDCClient.loginByPhoneCode(phone: phone, code: code) { code, message, userInfo in
+            OIDCClient.loginByPhoneCode(phoneCountryCode: countryCode, phone: phone, code: code) { code, message, userInfo in
                 self.stopLoading()
                 DispatchQueue.main.async() {
                     self.handleLogin(code, message: message, userInfo: userInfo)
@@ -113,6 +127,15 @@ open class LoginButton: PrimaryButton {
                 DispatchQueue.main.async() {
                     self.handleLogin(code, message: message, userInfo: userInfo)
                 }
+            }
+        }
+    }
+    
+    private func loginByEmail(_ email: String, _ code: String) {
+        Util.getAuthClient(self).loginByEmail(email: email, code: code) { code, message, userInfo in
+            self.stopLoading()
+            DispatchQueue.main.async() {
+                self.handleLogin(code, message: message, userInfo: userInfo)
             }
         }
     }

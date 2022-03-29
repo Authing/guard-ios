@@ -8,6 +8,7 @@
 "authing_verify_code" = "verify code";
 "authing_other_login_methods" = "Other login methods";
 "authing_login_by_phone_code" = "Phone code";
+"authing_login_by_email_code" = "Email code";
 "authing_login_by_password" = "Password";
 "authing_get_verify_code" = "Get verify code";
 "authing_register" = "Register";
@@ -65,3 +66,6 @@
 "authing_delete_account_tip" = "Are you sure to delete current account? This is unrecoverable";
 "authing_cancel" = "Cancel";
 "authing_not_login" = "Not login yet";
+
+// country code
+"authing_countrycode_title" = "Region";

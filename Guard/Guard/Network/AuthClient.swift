@@ -26,10 +26,13 @@ public class AuthClient: Client {
         }
     }
     
-    public func registerByPhoneCode(phone: String, code: String, password: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func registerByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, password: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let body: NSMutableDictionary = ["phone" : phone, "code" : code, "forceLogin" : true]
         if password != nil {
             body.setValue(Util.encryptPassword(password!), forKey: "password")
+        }
+        if phoneCountryCode != nil {
+            body.setValue(phoneCountryCode, forKey: "phoneCountryCode")
         }
         post("/api/v2/register/phone-code", body) { code, message, data in
             self.createUserInfo(code, message, data, completion: completion)
@@ -41,8 +44,8 @@ public class AuthClient: Client {
     }
     
 
-    public func loginByPhoneCode(phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        loginByPhoneCode(authData: nil, phone: phone, code: code, completion: completion)
+    public func loginByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        loginByPhoneCode(authData: nil, phoneCountryCode: phoneCountryCode, phone: phone, code: code, completion: completion)
     }
             
     public func loginByAccount(authData: AuthRequest? ,account: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
@@ -64,8 +67,11 @@ public class AuthClient: Client {
         }
     }
     
-    public func loginByPhoneCode(authData: AuthRequest?, phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func loginByPhoneCode(authData: AuthRequest?, phoneCountryCode: String? = nil, phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let body: NSDictionary = ["phone" : phone, "code" : code]
+        if phoneCountryCode != nil {
+            body.setValue(phoneCountryCode, forKey: "phoneCountryCode")
+        }
         post("/api/v2/login/phone-code", body) { code, message, data in
             if authData == nil{
                 self.createUserInfo(code, message, data, completion: completion)
@@ -79,6 +85,13 @@ public class AuthClient: Client {
                     }
                 }
             }
+        }
+    }
+    
+    public func loginByEmail(email: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        let body: NSDictionary = ["email" : email, "code" : code]
+        post("/api/v2/login/email-code", body) { code, message, data in
+                self.createUserInfo(code, message, data, completion: completion)
         }
     }
     
@@ -104,6 +117,7 @@ public class AuthClient: Client {
             self.createUserInfo(code, message, data, completion: completion)
         }
     }
+    
     
     public func getCurrentUser(completion: @escaping(Int, String?, UserInfo?) -> Void) {
         get("/api/v2/users/me") { code, message, data in
@@ -140,6 +154,13 @@ public class AuthClient: Client {
     public func sendEmail(email: String, scene: String, completion: @escaping(Int, String?) -> Void) {
         let body: NSDictionary = ["email" : email, "scene" : scene]
         post("/api/v2/email/send", body) { code, message, data in
+            completion(code, message)
+        }
+    }
+    
+    public func sendLoginEmail(email: String, scene: String, completion: @escaping(Int, String?) -> Void) {
+        let body: NSDictionary = ["email" : email, "scene" : scene]
+        post("/api/v2/email/send-email", body) { code, message, data in
             completion(code, message)
         }
     }
@@ -216,15 +237,22 @@ public class AuthClient: Client {
         }
     }
     
-    public func bindPhone(phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func bindPhone(phoneCountryCode: String? = nil, phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let body: NSDictionary = ["phone" : phone, "phoneCode" : code]
+        if phoneCountryCode != nil {
+            body.setValue(phoneCountryCode, forKey: "phoneCountryCode")
+        }
         post("/api/v2/users/phone/bind", body) { code, message, data in
             self.createUserInfo(code, message, data, completion: completion)
         }
     }
     
-    public func unbindPhone(completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        post("/api/v2/users/phone/unbind", [:]) { code, message, data in
+    public func unbindPhone(phoneCountryCode: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        let body: NSDictionary = [:]
+        if phoneCountryCode != nil {
+            body.setValue(phoneCountryCode, forKey: "phoneCountryCode")
+        }
+        post("/api/v2/users/phone/unbind", body) { code, message, data in
             self.createUserInfo(code, message, data, completion: completion)
         }
     }

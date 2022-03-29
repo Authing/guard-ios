@@ -27,6 +27,7 @@ open class AccountTextField: TextFieldLayout {
     }
     
     private func setup(_ config: Config) {
+
         spellCheckingType = .no
         autocorrectionType = .no
         

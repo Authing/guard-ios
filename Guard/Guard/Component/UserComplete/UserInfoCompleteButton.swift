@@ -155,7 +155,10 @@ open class UserInfoCompleteButton: PrimaryButton {
             return
         }
         
-        Util.getAuthClient(self).bindPhone(phone: phone!, code: code!) { code, message, user in
+        #warning("need to test")
+        let countryCode = form!.getCountryCode()
+
+        Util.getAuthClient(self).bindPhone(phoneCountryCode: countryCode, phone: phone!, code: code!) { code, message, user in
             if (code == 200) {
                 completion(true, user)
             } else if (required) {

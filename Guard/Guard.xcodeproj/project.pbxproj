@@ -136,6 +136,12 @@
 		7EF66C87277D54A600FCBBEB /* AuthingResetPasswordByEmail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF66C86277D54A600FCBBEB /* AuthingResetPasswordByEmail.xib */; };
 		7EF66C8B277D5A7100FCBBEB /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C8A277D5A7100FCBBEB /* Validator.swift */; };
 		7EF66C8D277DA96200FCBBEB /* GetEmailCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C8C277DA96200FCBBEB /* GetEmailCodeButton.swift */; };
+		A82F7D5427F3162C00B47F3B /* CountryCodeSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82F7D5327F3162C00B47F3B /* CountryCodeSearchBar.swift */; };
+		A8D38D1627F1DB4A00942707 /* CountryCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D38D1527F1DB4A00942707 /* CountryCodeViewController.swift */; };
+		A8D38D1A27F1E44700942707 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D38D1827F1E44700942707 /* CountryTableViewCell.swift */; };
+		A8D38D1D27F1E4FF00942707 /* country.json in Resources */ = {isa = PBXBuildFile; fileRef = A8D38D1C27F1E4FF00942707 /* country.json */; };
+		A8D38D2127F2B02D00942707 /* AuthingCountryCode.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D38D2027F2B02D00942707 /* AuthingCountryCode.xib */; };
+		A8D38D2327F2B34100942707 /* CountryCodeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D38D2227F2B34100942707 /* CountryCodeTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -266,6 +272,12 @@
 		7EF66C86277D54A600FCBBEB /* AuthingResetPasswordByEmail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingResetPasswordByEmail.xib; sourceTree = "<group>"; };
 		7EF66C8A277D5A7100FCBBEB /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		7EF66C8C277DA96200FCBBEB /* GetEmailCodeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEmailCodeButton.swift; sourceTree = "<group>"; };
+		A82F7D5327F3162C00B47F3B /* CountryCodeSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CountryCodeSearchBar.swift; path = ../../../../../../../../../Applications/CountryCodeSearchBar.swift; sourceTree = "<group>"; };
+		A8D38D1527F1DB4A00942707 /* CountryCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeViewController.swift; sourceTree = "<group>"; };
+		A8D38D1827F1E44700942707 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
+		A8D38D1C27F1E4FF00942707 /* country.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = country.json; sourceTree = "<group>"; };
+		A8D38D2027F2B02D00942707 /* AuthingCountryCode.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingCountryCode.xib; sourceTree = "<group>"; };
+		A8D38D2227F2B34100942707 /* CountryCodeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -352,6 +364,7 @@
 				7E20001627EB5D520051F590 /* General */,
 				7EA2DD7B27CCF3ED00B3E19D /* UserProfile */,
 				7EB32806278C185E008639AA /* UserComplete */,
+				A8D38D1727F1DF5600942707 /* CountryCode */,
 				7EB327FB278BD455008639AA /* MFA */,
 				7E1998D02783D3B9002C6F81 /* Social */,
 				7ED434CA277569D100893EDD /* Internal */,
@@ -402,6 +415,7 @@
 				7EB32811278D1DF9008639AA /* AuthingMFAOTP.xib */,
 				7E7D1F72278FC44F005AAD39 /* AuthingFirstTimeLogin.xib */,
 				7E02F46C27950C99007FA048 /* AuthingUserInfoComplete.xib */,
+				A8D38D2027F2B02D00942707 /* AuthingCountryCode.xib */,
 				7EF66C5E277BFB7100FCBBEB /* LocalizeHelper.swift */,
 			);
 			path = Nib;
@@ -450,6 +464,7 @@
 			children = (
 				7E75669D27683F5300C3872F /* Localizable.strings */,
 				7ED434E42779B28B00893EDD /* Images.xcassets */,
+				A8D38D1C27F1E4FF00942707 /* country.json */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -612,6 +627,17 @@
 			path = Animation;
 			sourceTree = "<group>";
 		};
+		A8D38D1727F1DF5600942707 /* CountryCode */ = {
+			isa = PBXGroup;
+			children = (
+				A8D38D1527F1DB4A00942707 /* CountryCodeViewController.swift */,
+				A8D38D2227F2B34100942707 /* CountryCodeTableView.swift */,
+				A8D38D1827F1E44700942707 /* CountryTableViewCell.swift */,
+				A82F7D5327F3162C00B47F3B /* CountryCodeSearchBar.swift */,
+			);
+			path = CountryCode;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -719,11 +745,13 @@
 				7ED434E52779B28B00893EDD /* Images.xcassets in Resources */,
 				7EF66C5D277BF8B700FCBBEB /* AuthingRegister.xib in Resources */,
 				7EB32803278BEE0F008639AA /* AuthingMFAEmail0.xib in Resources */,
+				A8D38D1D27F1E4FF00942707 /* country.json in Resources */,
 				7E7D1F73278FC44F005AAD39 /* AuthingFirstTimeLogin.xib in Resources */,
 				7EB32810278D116F008639AA /* AuthingMFAEmail1.xib in Resources */,
 				7E75667B2766F9C400C3872F /* AuthingLogin.xib in Resources */,
 				7E75669B27683F5300C3872F /* Localizable.strings in Resources */,
 				7EF66C85277D548B00FCBBEB /* AuthingResetPasswordByPhone.xib in Resources */,
+				A8D38D2127F2B02D00942707 /* AuthingCountryCode.xib in Resources */,
 				7EB32812278D1DF9008639AA /* AuthingMFAOTP.xib in Resources */,
 				7EB3280C278C299A008639AA /* AuthingMFAPhone1.xib in Resources */,
 				7EB32801278BE056008639AA /* AuthingMFAPhone0.xib in Resources */,
@@ -768,6 +796,7 @@
 			files = (
 				7EF66C7D277D471D00FCBBEB /* GoForgotPasswordButton.swift in Sources */,
 				7E7D1F71278ECC73005AAD39 /* PhoneLabel.swift in Sources */,
+				A8D38D1627F1DB4A00942707 /* CountryCodeViewController.swift in Sources */,
 				7ED434C92775653100893EDD /* LoginMethodTab.swift in Sources */,
 				7EF66C6B277C1BF600FCBBEB /* MethodTabItem.swift in Sources */,
 				7ED434CC277569DF00893EDD /* LoginMethodTabItem.swift in Sources */,
@@ -786,6 +815,7 @@
 				7E7566A027684A5E00C3872F /* AuthClient.swift in Sources */,
 				7E96039927E0AF49007C87EB /* Layout.swift in Sources */,
 				7E20000A27E9A8320051F590 /* ALog.swift in Sources */,
+				A82F7D5427F3162C00B47F3B /* CountryCodeSearchBar.swift in Sources */,
 				7ECF8AC72759FF17004F8FC5 /* Const.swift in Sources */,
 				7EF66C5B277BEE7300FCBBEB /* Animator.swift in Sources */,
 				7EF66C69277C197900FCBBEB /* RegisterMethodTab.swift in Sources */,
@@ -812,6 +842,7 @@
 				7E20001827EB5D5D0051F590 /* BaseInput.swift in Sources */,
 				7E0FAFB427EC6373006258FC /* Button.swift in Sources */,
 				7E7566812766FA1A00C3872F /* AuthFlow.swift in Sources */,
+				A8D38D1A27F1E44700942707 /* CountryTableViewCell.swift in Sources */,
 				7EDFB6C927C4D1C500B77DEE /* UserInfoCompleteFieldFormSelect.swift in Sources */,
 				7EF66C81277D49B400FCBBEB /* ResetPasswordButton.swift in Sources */,
 				7E75667E2766F9DD00C3872F /* AuthViewController.swift in Sources */,
@@ -827,6 +858,7 @@
 				7EDFB6C127C379EC00B77DEE /* UserInfoCompleteFieldEmail.swift in Sources */,
 				7EF66C8B277D5A7100FCBBEB /* Validator.swift in Sources */,
 				7EB2D30127871E2A00A819B3 /* AppleLoginButton.swift in Sources */,
+				A8D38D2327F2B34100942707 /* CountryCodeTableView.swift in Sources */,
 				7EDFB6CD27C7390A00B77DEE /* PrivacyConfirmBox.swift in Sources */,
 				7E87A1C427CDBF2600E52D5A /* UserProfileField.swift in Sources */,
 				7EDFB6C327C3AABB00B77DEE /* UserInfoCompleteContentView.swift in Sources */,

@@ -47,7 +47,7 @@ open class MFAPhoneButton: PrimaryButton {
             }
         } else {
             if let tfPhone: PhoneNumberTextField = Util.findView(self, viewClass: PhoneNumberTextField.self) {
-                checkPhone(tfPhone.text)
+                checkPhone(tfPhone.textField.text)
             }
         }
     }
