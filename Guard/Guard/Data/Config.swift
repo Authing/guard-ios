@@ -12,10 +12,9 @@ public class Config {
     
     var data: NSDictionary? {
         didSet {
-            let loginTabs: NSDictionary? = data?["loginTabs"] as? NSDictionary
-            if (loginTabs != nil) {
-                loginMethods = loginTabs!["list"] as? [String]
-                defaultLoginMethod = loginTabs!["default"] as? String
+            if let loginTabs: NSDictionary = data?["loginTabs"] as? NSDictionary{
+                loginMethods = loginTabs["list"] as? [String]
+                defaultLoginMethod = loginTabs["default"] as? String
                 var i: Int = 0
                 loginMethods?.forEach({ method in
                     if (method == defaultLoginMethod) {
@@ -27,14 +26,21 @@ public class Config {
                 })
             }
             
-            let passwordTabConfig: NSDictionary? = data?["passwordTabConfig"] as? NSDictionary
-            if (passwordTabConfig != nil) {
-                enabledLoginMethods = passwordTabConfig?["enabledLoginMethods"] as? [String]
+            if let verifyCodeTabConfig: NSDictionary = data?["verifyCodeTabConfig"] as? NSDictionary{
+                if let enabledLoginMethods: [String] = verifyCodeTabConfig["enabledLoginMethods"] as? [String]{
+                    enabledLoginMethods.forEach { method in
+                        if method == "email-code" {
+                            loginMethods?.append(method)
+                        }
+                    }
+                }
             }
-            let registerTabs: NSDictionary? = data?["registerTabs"] as? NSDictionary
-            if (registerTabs != nil) {
-                registerMethods = registerTabs!["list"] as? [String]
-                defaultRegisterMethod = registerTabs!["default"] as? String
+            if let passwordTabConfig: NSDictionary = data?["passwordTabConfig"] as? NSDictionary{
+                enabledLoginMethods = passwordTabConfig["enabledLoginMethods"] as? [String]
+            }
+            if let registerTabs: NSDictionary = data?["registerTabs"] as? NSDictionary{
+                registerMethods = registerTabs["list"] as? [String]
+                defaultRegisterMethod = registerTabs["default"] as? String
                 var i: Int = 0
                 registerMethods?.forEach({ method in
                     if (method == defaultRegisterMethod) {
@@ -100,6 +106,10 @@ public class Config {
     var extendedFields: [NSDictionary]? // user info complete
     var agreements: [NSDictionary]?
     var redirectUris: [String]?
+    
+    var internationalSmsConfig: Bool? {
+        return data?["internationalSmsConfig"] as? Bool
+    }
     
     // MARK: Request
     var appId: String

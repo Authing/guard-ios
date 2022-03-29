@@ -9,7 +9,7 @@ import UIKit
 
 @IBDesignable open class LoginContainer: Layout {
 
-    // 0 by phone code; 1 by password
+    // 0 by phone code; 1 by password; 2 by email code
     @IBInspectable open var type: Int = 0
     
     public override func setAttribute(key: String, value: String) {

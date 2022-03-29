@@ -55,13 +55,19 @@ open class RegisterButton: PrimaryButton {
             }
         }
         
-        let tfPhone: PhoneNumberTextField? = Util.findView(self, viewClass: PhoneNumberTextField.self)
-        let tfCode: VerifyCodeTextField? = Util.findView(self, viewClass: VerifyCodeTextField.self)
-        if (tfPhone != nil && tfCode != nil) {
-            let phone: String? = tfPhone?.text
-            let code: String? = tfCode?.text
+        if let tfPhone: PhoneNumberTextField = Util.findView(self, viewClass: PhoneNumberTextField.self),
+           let tfCode: VerifyCodeTextField = Util.findView(self, viewClass: VerifyCodeTextField.self) {
+            let phone: String? = tfPhone.textField.text
+            let code: String? = tfCode.text
             if (!phone!.isEmpty && !code!.isEmpty) {
-                registerByPhoneCode(phone!, code!)
+                if let international = config?.internationalSmsConfig{
+                    if international  == true{
+                        registerByPhoneCode("\(tfPhone.code)", phone!, code!)
+                        return
+                    }
+                }
+                registerByPhoneCode(nil, phone!, code!)
+                return
             }
             return
         }
@@ -77,9 +83,9 @@ open class RegisterButton: PrimaryButton {
         }
     }
     
-    private func registerByPhoneCode(_ phone: String, _ code: String) {
+    private func registerByPhoneCode(_ countryCode: String? = nil, _ phone: String, _ code: String) {
         startLoading()
-        Util.getAuthClient(self).registerByPhoneCode(phone: phone, code: code) { code, message, userInfo in
+        Util.getAuthClient(self).registerByPhoneCode(phoneCountryCode: countryCode, phone: phone, code: code) { code, message, userInfo in
             self.done(code: code, message: message, userInfo: userInfo)
         }
     }

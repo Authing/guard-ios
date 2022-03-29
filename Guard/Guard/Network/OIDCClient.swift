@@ -89,12 +89,12 @@ public class OIDCClient: NSObject {
         }
     }
     
-    public static func loginByPhoneCode(phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public static func loginByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         Authing.getConfig { config in
             if let conf = config{
                 prepareLogin(config: conf) { statuCode, message, authRequest in
                     if statuCode == 200{
-                        AuthClient().loginByPhoneCode(authData: authRequest, phone: phone, code: code, completion: completion)
+                        AuthClient().loginByPhoneCode(authData: authRequest, phoneCountryCode: phoneCountryCode,  phone: phone, code: code, completion: completion)
                     } else {
                         completion(statuCode, message, nil)
                     }

@@ -5,9 +5,9 @@
       location = "group:GuardDemo/GuardDemo.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:OneAuth/OneAuth.xcodeproj">
+      location = "group:Guard/Guard.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Guard/Guard.xcodeproj">
+      location = "group:OneAuth/OneAuth.xcodeproj">
    </FileRef>
 </Workspace>

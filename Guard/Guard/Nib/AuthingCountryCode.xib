@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CountryCodeViewController" customModule="Guard" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="iN0-l3-epB" id="Ega-zo-xa7"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bgI-Yj-QjI" customClass="CountryCodeSearchBar" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="ktj-GZ-Ng1"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gdm-Lk-sOg" customClass="CountryCodeTableView" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="gdm-Lk-sOg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="734-Jo-XfM"/>
+                <constraint firstItem="bgI-Yj-QjI" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Qoy-H2-0Fw"/>
+                <constraint firstItem="bgI-Yj-QjI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="UoG-df-KOf"/>
+                <constraint firstItem="gdm-Lk-sOg" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="aJq-BM-8Kg"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="bgI-Yj-QjI" secondAttribute="trailing" id="g1H-mT-p4V"/>
+                <constraint firstItem="gdm-Lk-sOg" firstAttribute="top" secondItem="bgI-Yj-QjI" secondAttribute="bottom" id="iYV-Mq-1wc"/>
+                <constraint firstItem="gdm-Lk-sOg" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="uIH-Ay-WNe"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="97.767857142857139"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

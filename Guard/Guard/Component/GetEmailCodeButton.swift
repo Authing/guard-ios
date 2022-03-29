@@ -35,6 +35,10 @@ open class GetEmailCodeButton: LoadingButton {
     }
     
     @objc private func onClick(sender: UIButton) {
+        self.sendEmail()
+    }
+    
+    fileprivate func sendEmail() {
         if let email = Util.getEmail(self) {
             startLoading()
             Util.getAuthClient(self).sendEmail(email: email, scene: self.scene) { code, message in
@@ -45,4 +49,25 @@ open class GetEmailCodeButton: LoadingButton {
             }
         }
     }
+}
+
+open class GetEmailVerifyCodeButton: GetEmailCodeButton {
+    
+    public override var scene: String{
+        get { return "VERIFY_CODE" }
+        set { super.scene = newValue }
+    }
+    
+    override func sendEmail() {
+        if let email = Util.getEmail(self) {
+            startLoading()
+            Util.getAuthClient(self).sendLoginEmail(email: email, scene: scene) { code, message in
+                self.stopLoading()
+                if (code != 200) {
+                    Util.setError(self, message)
+                }
+            }
+        }
+    }
+    
 }

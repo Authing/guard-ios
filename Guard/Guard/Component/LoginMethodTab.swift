@@ -46,6 +46,9 @@ open class LoginMethodTab: UIView {
                 } else if (method == "password") {
                     item.setText(NSLocalizedString("authing_login_by_password", bundle: Bundle(for: Self.self), comment: ""))
                     item.type = 1
+                } else if (method == "email-code") {
+                    item.setText(NSLocalizedString("authing_login_by_email_code", bundle: Bundle(for: Self.self), comment: ""))
+                    item.type = 2
                 }
                 let gesture:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.onClick))
                 gesture.numberOfTapsRequired = 1

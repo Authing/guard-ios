@@ -8,6 +8,7 @@
 "authing_verify_code" = "验证码";
 "authing_other_login_methods" = "其他方式登录";
 "authing_login_by_phone_code" = "验证码登录";
+"authing_login_by_email_code" = "邮箱登录";
 "authing_login_by_password" = "密码登录";
 "authing_get_verify_code" = "获取验证码";
 "authing_register" = "注册";
@@ -65,3 +66,6 @@
 "authing_delete_account_tip" = "确定要删除该帐号吗？该帐号将无法恢复";
 "authing_cancel" = "取消";
 "authing_not_login" = "尚未登录";
+
+// country code
+"authing_countrycode_title" = "选择国家和地区";
