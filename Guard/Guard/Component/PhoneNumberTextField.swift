@@ -18,9 +18,9 @@ open class PhoneNumberTextField: UIView {
     public var textField = PhoneNumberText()
     private var countryCodeButton = UIButton()
     
-    open var code: Int = 86 {
+    open var countryCode: Int = 86 {
         didSet {
-            self.countryCodeButton.setTitle("+\(code)", for: .normal)
+            self.countryCodeButton.setTitle("+\(countryCode)", for: .normal)
         }
     }
     
@@ -56,9 +56,7 @@ open class PhoneNumberTextField: UIView {
             self?.border.setHighlight(false)
         }
         
-        Util.getConfig(self) { [self] config in
-
-            
+        Util.getConfig(self) { [self] config in            
             if let international = config?.internationalSmsConfig{
                 if international  == true{
                     self.countryCodeButton.setTitleColor(UIColor.black, for: .normal)
@@ -88,7 +86,7 @@ open class PhoneNumberTextField: UIView {
     @objc func countryCodeButtonAction() {
         let countryCodeVC = CountryCodeViewController(nibName: "AuthingCountryCode", bundle: Bundle(for: CountryCodeViewController.self))
         countryCodeVC.selectCountryCallBack = { model in
-            self.code = model.code ?? 86
+            self.countryCode = model.code ?? 86
         }
         self.viewController?.navigationController?.pushViewController(countryCodeVC, animated: true)
     }

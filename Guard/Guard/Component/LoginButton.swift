@@ -62,7 +62,7 @@ open class LoginButton: PrimaryButton {
                 if (!phone!.isEmpty && !code!.isEmpty) {
                     if let international = config?.internationalSmsConfig{
                         if international  == true{
-                            loginByPhoneCode("\(tfPhone.code)", phone!, code!)
+                            loginByPhoneCode("\(tfPhone.countryCode)", phone!, code!)
                             return
                         }
                     }

@@ -62,7 +62,7 @@ open class RegisterButton: PrimaryButton {
             if (!phone!.isEmpty && !code!.isEmpty) {
                 if let international = config?.internationalSmsConfig{
                     if international  == true{
-                        registerByPhoneCode("\(tfPhone.code)", phone!, code!)
+                        registerByPhoneCode("\(tfPhone.countryCode)", phone!, code!)
                         return
                     }
                 }
