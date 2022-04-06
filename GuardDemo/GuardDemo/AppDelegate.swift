@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         OneAuth.bizId = "74ae90bd84f74b69a88b578bbbbcdcfd"
         Authing.setupWechat("wx1cddb15e280c0f67", universalLink: "https://developer-beta.authing.cn/app/")
-        Authing.start("6204d0abab3c46e6ea96c2b2");
+        Authing.start("60caaf41df670b771fd08937");
         return true
     }
 
