@@ -27,7 +27,8 @@ open class MFAPhoneButton: PrimaryButton {
             if let phone = self.authViewController?.authFlow?.data[AuthFlow.KEY_MFA_PHONE] as? String {
                 self.startLoading()
                 self.setTitle(NSLocalizedString("authing_login", bundle: Bundle(for: Self.self), comment: ""), for: .normal)
-                Util.getAuthClient(self).sendSms(phone: phone) { code, message in
+                let phoneNumberTF: PhoneNumberTextField? = Util.findView(self, viewClass: PhoneNumberTextField.self)
+                Util.getAuthClient(self).sendSms(phone: phone, phoneCountryCode: phoneNumberTF?.countryCode) { code, message in
                     self.stopLoading()
                     if (code != 200) {
                         Util.setError(self, message)

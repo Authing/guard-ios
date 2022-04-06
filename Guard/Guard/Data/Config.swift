@@ -51,6 +51,9 @@ public class Config {
                     i+=1
                 })
             }
+            if let internationalSmsConfig: NSDictionary = data?["internationalSmsConfig"] as? NSDictionary {
+                internationalSmsConfigEnable = internationalSmsConfig["enabled"] as? Bool
+            }
             completeFieldsPlace = data?["complateFiledsPlace"] as? [String]
             extendedFields = data?["extendsFields"] as? [NSDictionary]
             agreements = data?["agreements"] as? [NSDictionary]
@@ -107,9 +110,7 @@ public class Config {
     var agreements: [NSDictionary]?
     var redirectUris: [String]?
     
-    var internationalSmsConfig: Bool? {
-        return data?["internationalSmsConfig"] as? Bool
-    }
+    var internationalSmsConfigEnable: Bool?
     
     // MARK: Request
     var appId: String

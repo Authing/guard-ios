@@ -57,17 +57,10 @@ open class LoginButton: PrimaryButton {
         
         if let tfPhone: PhoneNumberTextField = Util.findView(self, viewClass: PhoneNumberTextField.self),
            let tfCode: VerifyCodeTextField = Util.findView(self, viewClass: VerifyCodeTextField.self) {
-                let phone: String? = tfPhone.textField.text
-                let code: String? = tfCode.text
-                if (!phone!.isEmpty && !code!.isEmpty) {
-                    if let international = config?.internationalSmsConfig{
-                        if international  == true{
-                            loginByPhoneCode("\(tfPhone.countryCode)", phone!, code!)
-                            return
-                        }
-                    }
-                loginByPhoneCode(nil , phone!, code!)
-                return
+                if let phone = tfPhone.textField.text,
+                   let code = tfCode.text {
+                    loginByPhoneCode(tfPhone.countryCode, phone, code)
+                    return
             }
         }
         

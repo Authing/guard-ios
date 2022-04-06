@@ -57,19 +57,12 @@ open class RegisterButton: PrimaryButton {
         
         if let tfPhone: PhoneNumberTextField = Util.findView(self, viewClass: PhoneNumberTextField.self),
            let tfCode: VerifyCodeTextField = Util.findView(self, viewClass: VerifyCodeTextField.self) {
-            let phone: String? = tfPhone.textField.text
-            let code: String? = tfCode.text
-            if (!phone!.isEmpty && !code!.isEmpty) {
-                if let international = config?.internationalSmsConfig{
-                    if international  == true{
-                        registerByPhoneCode("\(tfPhone.countryCode)", phone!, code!)
-                        return
-                    }
-                }
-                registerByPhoneCode(nil, phone!, code!)
+            if let phone = tfPhone.textField.text,
+               let code = tfCode.text {
+
+                registerByPhoneCode(tfPhone.countryCode, phone, code)
                 return
             }
-            return
         }
         
         let tfEmail: EmailTextField? = Util.findView(self, viewClass: EmailTextField.self)

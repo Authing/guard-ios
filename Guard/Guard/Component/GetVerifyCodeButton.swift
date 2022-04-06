@@ -52,7 +52,9 @@ open class GetVerifyCodeButton: LoadingButton {
         if let phone = Util.getPhoneNumber(self) {
             startLoading()
             Util.setError(self, "")
-            Util.getAuthClient(self).sendSms(phone: phone) { code, message in
+            let phoneNumberTF: PhoneNumberTextField? = Util.findView(self, viewClass: PhoneNumberTextField.self)
+            
+            Util.getAuthClient(self).sendSms(phone: phone, phoneCountryCode: phoneNumberTF?.countryCode) { code, message in
                 self.stopLoading()
                 if (code != 200) {
                     Util.setError(self, message)

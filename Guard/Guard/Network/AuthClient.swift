@@ -68,7 +68,7 @@ public class AuthClient: Client {
     }
     
     public func loginByPhoneCode(authData: AuthRequest?, phoneCountryCode: String? = nil, phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        let body: NSDictionary = ["phone" : phone, "code" : code]
+        let body: NSMutableDictionary = ["phone" : phone, "code" : code]
         if phoneCountryCode != nil {
             body.setValue(phoneCountryCode, forKey: "phoneCountryCode")
         }
@@ -238,7 +238,7 @@ public class AuthClient: Client {
     }
     
     public func bindPhone(phoneCountryCode: String? = nil, phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        let body: NSDictionary = ["phone" : phone, "phoneCode" : code]
+        let body: NSMutableDictionary = ["phone" : phone, "phoneCode" : code]
         if phoneCountryCode != nil {
             body.setValue(phoneCountryCode, forKey: "phoneCountryCode")
         }
@@ -247,12 +247,9 @@ public class AuthClient: Client {
         }
     }
     
-    public func unbindPhone(phoneCountryCode: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        let body: NSDictionary = [:]
-        if phoneCountryCode != nil {
-            body.setValue(phoneCountryCode, forKey: "phoneCountryCode")
-        }
-        post("/api/v2/users/phone/unbind", body) { code, message, data in
+    public func unbindPhone(completion: @escaping(Int, String?, UserInfo?) -> Void) {
+
+        post("/api/v2/users/phone/unbind", [:]) { code, message, data in
             self.createUserInfo(code, message, data, completion: completion)
         }
     }
