@@ -13,6 +13,7 @@ open class GoSomewhereButton: Button {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        fontSize = 15
         setup()
     }
 
@@ -31,8 +32,21 @@ open class GoSomewhereButton: Button {
     
     @objc private func onClick(_ sender: UITapGestureRecognizer? = nil) {
         ALog.d(Self.self, "Going somewhere")
-        if let t = target {
-            
+        if let page = target {
+            if let authFlow = authViewController?.authFlow,
+               let appBundle = authFlow.appBundle {
+                let rootView = Parser().inflate(appBundle: appBundle, page: page)
+                let vc = AuthViewController()
+                vc.authFlow = authFlow.copy() as? AuthFlow
+                vc.view = rootView
+                if let mcs = appBundle.mainColor,
+                   let mainColor = Util.parseColor(mcs) {
+                    authViewController?.navigationController?.navigationBar.tintColor = mainColor
+                }
+                authViewController?.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                ALog.e(Self.self, "can't go anywhere. page:\(page)")
+            }
         } else {
             goNow()
         }
@@ -44,5 +58,12 @@ open class GoSomewhereButton: Button {
     
     func goNow() {
         
+    }
+    
+    public override func setAttribute(key: String, value: String) {
+        super.setAttribute(key: key, value: value)
+        if ("target" == key) {
+            target = value
+        }
     }
 }

@@ -42,7 +42,7 @@ open class Exporter {
                 do {
                     try xml.write(to: path, atomically: true, encoding: .utf8)
                 } catch {
-                    ALog.e(Exporter.self, error.localizedDescription)
+                    ALog.e(Self.self, error.localizedDescription)
                 }
             }
         }

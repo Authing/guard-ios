@@ -145,7 +145,7 @@ public class AuthFlow {
         config = Config(appId: appid)
 
         self.appBundle = appBundle
-        let vc = AuthViewController()
+        let vc = IndexAuthViewController()
         vc.authFlow = self
         vc.view = rootView
         DispatchQueue.main.async() {

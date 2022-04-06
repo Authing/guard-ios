@@ -43,6 +43,27 @@ open class BaseInput: UITextField, AttributedViewProtocol {
         }
     }
     
+    open var textAlign = 0 {
+        didSet {
+            if 1 == textAlign {
+                textAlignment = .center
+            } else if 2 == textAlign {
+                textAlignment = .right
+            } else {
+                textAlignment = .left
+            }
+        }
+    }
+    
+    public func getTextAlignAsString() -> String? {
+        if 1 == textAlign {
+            return "center"
+        } else if 2 == textAlign {
+            return "right"
+        }
+        return nil
+    }
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -60,6 +81,7 @@ open class BaseInput: UITextField, AttributedViewProtocol {
     }
     
     public func setAttribute(key: String, value: String) {
+        super.setAttribute(key: key, value: value)
         if ("hint-color" == key) {
             hintColor = Util.parseColor(value)
         } else if ("text" == key) {
@@ -72,6 +94,14 @@ open class BaseInput: UITextField, AttributedViewProtocol {
             fontSize = CGFloat((value as NSString).floatValue)
         } else if ("font-weight" == key) {
             isBold = value == "bold"
+        } else if ("text-align" == key) {
+            if "left" == value {
+                textAlign = 0
+            } else if "center" == value {
+                textAlign = 1
+            } else if "right" == value {
+                textAlign = 2
+            }
         }
     }
 }

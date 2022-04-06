@@ -9,7 +9,7 @@ import UIKit
 
 open class Parser: NSObject, XMLParserDelegate {
     
-    var appBundle: AppBundle? = nil
+    public var appBundle: AppBundle? = nil
     var viewStack: Array<UIView> = Array()
     var currentView: UIView? = nil
     
@@ -102,7 +102,7 @@ open class Parser: NSObject, XMLParserDelegate {
         appBundle.indexView = inflate(appBundle: appBundle, page: "index.xml")
     }
     
-    open func inflate(appBundle: AppBundle, page: String) -> UIView {
+    open func inflate(appBundle: AppBundle, page: String) -> RootView {
         self.appBundle = appBundle
         let root = RootView()
         root.backgroundColor = UIColor.white
@@ -117,7 +117,9 @@ open class Parser: NSObject, XMLParserDelegate {
         if root.subviews.count == 0 {
             ALog.e(Self.self, "inflate failed. no view in \(page)")
         }
-        root.addSubview(CloseButton())
+        if "index.xml" == page {
+            root.addSubview(CloseButton())
+        }
         return root
     }
     
@@ -138,6 +140,8 @@ open class Parser: NSObject, XMLParserDelegate {
             
             viewStack.append(view)
             currentView = view
+        } else {
+            ALog.e(Self.self, "cannot parse \(elementName)")
         }
     }
 
@@ -148,7 +152,7 @@ open class Parser: NSObject, XMLParserDelegate {
         }
     }
     
-    private func parseAttribute(view: UIView, key: String, value: String) {
+    public func parseAttribute(view: UIView, key: String, value: String) {
         if ("background" == key) {
             if let color = Util.parseColor(appBundle, value) {
                 view.backgroundColor = color
