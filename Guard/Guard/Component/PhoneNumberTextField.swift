@@ -21,6 +21,7 @@ open class PhoneNumberTextField: UIView {
     open var countryCode: String = "+86" {
         didSet {
             self.countryCodeButton.setTitle(countryCode, for: .normal)
+            self.countryCodeButton.titleEdgeInsets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: CGFloat(5 * countryCode.count))
         }
     }
     
@@ -40,10 +41,12 @@ open class PhoneNumberTextField: UIView {
         
         self.countryCodeButton = UIButton.init(type: .custom)
         self.countryCodeButton.setTitle(countryCode, for: .normal)
+        self.countryCodeButton.setImage(UIImage.init(named: "authing_down", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
         self.countryCodeButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        self.countryCodeButton.setTitleColor(UIColor.gray, for: .normal)
-        self.countryCodeButton.isEnabled = false
+        self.countryCodeButton.setTitleColor(UIColor.black, for: .normal)
         self.countryCodeButton.addTarget(self, action: #selector(countryCodeButtonAction), for: .touchUpInside)
+        self.countryCodeButton.titleEdgeInsets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: CGFloat(5 * countryCode.count))
+        self.countryCodeButton.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: 60, bottom: 0, right: 0)
         self.addSubview(self.countryCodeButton)
         
         self.addSubview(self.textField)
@@ -56,13 +59,6 @@ open class PhoneNumberTextField: UIView {
             self?.border.setHighlight(false)
         }
         
-        Util.getConfig(self) { [self] config in
-            
-            if config?.internationalSmsConfigEnable == true {
-                self.countryCodeButton.setTitleColor(UIColor.black, for: .normal)
-                self.countryCodeButton.isEnabled = true
-            }
-        }
     }
     
     open override func layoutSubviews() {
@@ -70,15 +66,19 @@ open class PhoneNumberTextField: UIView {
         border.frame = CGRect(x: -2, y: -2, width: frame.width + 4, height: frame.height + 4)
         border.setNeedsDisplay()
         
-        countryCodeButton.frame = CGRect(x: 0, y: 0, width: 80, height: self.frame.height)
-        countryCodeButton.setNeedsDisplay()
-        
-        textField.frame = CGRect(x: self.countryCodeButton.frame.width,
-                                      y: 0,
-                                      width: self.frame.width - 80,
-                                      height: self.frame.height)
-        textField.setNeedsDisplay()
-        
+        Util.getConfig(self) { [self] config in
+            
+            //根据 internationalSmsConfigEnable 判断 true 显示, false 隐藏
+            countryCodeButton.isHidden = !(config?.internationalSmsConfigEnable ?? false)
+            countryCodeButton.frame = CGRect(x: 0, y: 0, width: config?.internationalSmsConfigEnable == true ? 80 : 0, height: self.frame.height)
+            countryCodeButton.setNeedsDisplay()
+            
+            textField.frame = CGRect(x: self.countryCodeButton.frame.width,
+                                          y: 0,
+                                          width: self.frame.width - self.countryCodeButton.frame.width,
+                                          height: self.frame.height)
+            textField.setNeedsDisplay()
+        }
     }
     
     @objc func countryCodeButtonAction() {

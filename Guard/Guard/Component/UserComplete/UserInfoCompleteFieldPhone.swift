@@ -30,8 +30,6 @@ open class UserInfoCompleteFieldPhone: UserInfoCompleteFieldForm {
         addSubview(verifyCodeTextField)
         addSubview(getCodeButton)
         
-        phoneTextField.textField.borderStyle = .roundedRect
-        phoneTextField.textField.font = UIFont.systemFont(ofSize: 14)
         phoneTextField.translatesAutoresizingMaskIntoConstraints = false
         phoneTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
         phoneTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true

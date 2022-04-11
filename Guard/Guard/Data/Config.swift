@@ -81,6 +81,10 @@ public class Config {
         get { return data?["verifyCodeLength"] as? Int }
     }
     
+    var requestHostname: String? {
+        get { return data?["requestHostname"] as? String }
+    }
+    
     public func getLogoUrl() -> String? {
         return logo ?? userpoolLogo
     }

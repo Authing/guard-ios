@@ -223,7 +223,7 @@ public class Util {
         if Util.isIp(Authing.getHost()) {
             return Authing.getHost()
         } else {
-            return "\(config.identifier!).\(Authing.getHost())"
+            return config.requestHostname ?? "\(config.identifier!).\(Authing.getHost())"
         }
     }
     

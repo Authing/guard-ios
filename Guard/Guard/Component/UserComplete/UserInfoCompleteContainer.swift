@@ -66,11 +66,16 @@ open class UserInfoCompleteContainer: UIView {
             return
         }
         
-        let missingFields: Array<NSDictionary>? = vc?.authFlow?.data[AuthFlow.KEY_EXTENDED_FIELDS] as? Array<NSDictionary>
+        let missingFields: Array<NSDictionary> = vc?.authFlow?.data[AuthFlow.KEY_EXTENDED_FIELDS] as? Array<NSDictionary> ?? []
         var i = 0, last: UIView? = nil
-        let count = missingFields?.count ?? 0
+        let count = missingFields.count
+        let height = CGFloat(missingFields.count - 1) * self.ITEM_TOP_SPACE + self.getHeight(missingFields)
+        self.constraints.first(where: {
+            $0.firstAttribute == .height
+        })?.constant = height
+        
         while (i < count) {
-            let missingField: NSDictionary = missingFields![i]
+            let missingField: NSDictionary = missingFields[i]
             let form: UserInfoCompleteFieldForm = getForm(missingField["inputType"] as? String)
             form.setFormData(missingField)
             
@@ -91,6 +96,9 @@ open class UserInfoCompleteContainer: UIView {
         }
 
         if let scrollView: UIScrollView = Util.findView(self, viewClass: UIScrollView.self) {
+            scrollView.setNeedsLayout()
+            scrollView.layoutIfNeeded()
+            
             let contentView: UIView = scrollView.subviews[0]
             var lastH: CGFloat = 0
             var lastY: CGFloat = 0

@@ -377,12 +377,31 @@ public class AuthClient: Client {
 //    }
     
     public func loginByApple(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        
+//        getConfig { config in
+//            guard config != nil else {
+//                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+//                return
+//            }
+//
+//            let conId: String? = config?.getConnectionId(type: "apple")
+//            guard conId != nil else {
+//                completion(500, "No wechat connection. Please set up in console for \(Authing.getAppId())", nil)
+//                return
+//            }
+//
+//            let body: NSDictionary = ["connId" : conId!, "code" : code]
+//            self.post("/api/v2/ecConn/apple/authByCode", body) { code, message, data in
+//                self.createUserInfo(code, message, data, completion: completion)
+//            }
+//        }
+        
         getConfig { config in
             guard config != nil else {
                 completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
                 return
             }
-  
+
             let userPoolId: String? = config?.userPoolId
             let url: String = "/connection/social/apple/\(userPoolId!)/callback?app_id=\(Authing.getAppId())";
             let body: NSDictionary = ["code" : code]

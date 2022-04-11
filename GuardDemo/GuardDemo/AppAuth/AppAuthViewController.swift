@@ -15,7 +15,7 @@ class AppAuthViewController: UIViewController {
     
     let authorizationEndpoint = URL(string: "https://lrb31s-demo.authing.cn/oidc/auth")!
     let tokenEndpoint = URL(string: "https://lrb31s-demo.authing.cn/oidc/token")!
-    let redirectURL: URL? = URL(string: "cn.guard://authing.cn/redirect");
+    let redirectURL = URL(string: "cn.guard://authing.cn/redirect")!;
     
     private var authState: OIDAuthState?
 
@@ -36,11 +36,11 @@ class AppAuthViewController: UIViewController {
         let clientID = Authing.getAppId();
         let request = OIDAuthorizationRequest(configuration: configuration,
                                               clientId: clientID,
-                                              scopes: [OIDScopeOpenID, OIDScopeProfile, OIDScopeEmail, OIDScopePhone, "offline_access", "role"],
-                                              redirectURL: redirectURL!,
+                                              scopes: [OIDScopeOpenID, OIDScopeProfile, OIDScopeEmail, OIDScopePhone, "username", "address", "offline_access", "role", "extended_fields"],
+                                              redirectURL: redirectURL,
                                               responseType: OIDResponseTypeCode,
-                                              additionalParameters: nil)
-
+                                              additionalParameters: ["prompt": "consent"])
+        
         // performs authentication request
         print("Initiating authorization request with scope: \(request.scope ?? "nil")")
 
@@ -52,6 +52,10 @@ class AppAuthViewController: UIViewController {
             //            self.setAuthState(authState)
                 print("Got authorization tokens. Access token: " +
                   "\(authState.lastTokenResponse?.accessToken ?? "nil")")
+                
+                print("Refresh token: " +
+                  "\(authState.lastTokenResponse?.refreshToken ?? "nil")")
+                
                 self.tokenLabel.text = authState.lastTokenResponse?.accessToken
             } else {
                 print("Authorization error: \(error?.localizedDescription ?? "Unknown error")")
