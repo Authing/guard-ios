@@ -117,6 +117,14 @@ extension UIView {
             } else if let v = self as? BaseInput {
                 return v.isBold ? "bold" : "normal"
             }
+        } else if "text-align" == key {
+            if let v = self as? Label {
+                return v.textAlign
+            } else if let v = self as? Button {
+                return v.textAlign
+            } else if let v = self as? BaseInput {
+                return v.textAlign
+            }
         } else if "direction" == key {
             if let v = self as? Layout {
                 if v.orientation == .vertical {
@@ -220,6 +228,16 @@ extension UIView {
                     view.isBold = v
                 } else if let view = self as? BaseInput {
                     view.isBold = v
+                }
+            }
+        } else if "text-align" == key {
+            if let index = value as? Int {
+                if let view = self as? Label {
+                    view.textAlign = index
+                } else if let view = self as? Button {
+                    view.textAlign = index
+                } else if let view = self as? BaseInput {
+                    view.textAlign = index
                 }
             }
         } else if "direction" == key, let index = value as? Int {
@@ -334,6 +352,10 @@ extension UIView {
             if view.isBold {
                 res += " font-weight=\"bold\""
             }
+            
+            if let ta = view.getTextAlignAsString() {
+                res += " text-align=\"\(ta)\""
+            }
         }
         
         if let view = self as? Button {
@@ -345,6 +367,10 @@ extension UIView {
             
             if view.isBold {
                 res += " font-weight=\"bold\""
+            }
+            
+            if let ta = view.getTextAlignAsString() {
+                res += " text-align=\"\(ta)\""
             }
         }
         
@@ -364,6 +390,16 @@ extension UIView {
             
             if view.isBold {
                 res += " font-weight=\"bold\""
+            }
+            
+            if let ta = view.getTextAlignAsString() {
+                res += " text-align=\"\(ta)\""
+            }
+        }
+        
+        if let view = self as? GoSomewhereButton {
+            if let t = view.target {
+                res += " target=\"\(t)\""
             }
         }
         return res

@@ -35,6 +35,27 @@ open class Button: UIButton, AttributedViewProtocol {
         }
     }
     
+    open var textAlign = 1 {
+        didSet {
+            if 0 == textAlign {
+                contentHorizontalAlignment = .left
+            } else if 1 == textAlign {
+                contentHorizontalAlignment = .center
+            } else {
+                contentHorizontalAlignment = .right
+            }
+        }
+    }
+    
+    public func getTextAlignAsString() -> String? {
+        if 0 == textAlign {
+            return "left"
+        } else if 2 == textAlign {
+            return "right"
+        }
+        return nil
+    }
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -44,6 +65,7 @@ open class Button: UIButton, AttributedViewProtocol {
     }
     
     public func setAttribute(key: String, value: String) {
+        super.setAttribute(key: key, value: value)
         if ("text" == key) {
             textValue = value
         } else if ("color" == key) {
@@ -56,6 +78,14 @@ open class Button: UIButton, AttributedViewProtocol {
             fontSize = CGFloat((value as NSString).floatValue)
         } else if ("font-weight" == key) {
             isBold = value == "bold"
+        } else if ("text-align" == key) {
+            if "left" == value {
+                textAlign = 0
+            } else if "center" == value {
+                textAlign = 1
+            } else if "right" == value {
+                textAlign = 2
+            }
         }
     }
 }

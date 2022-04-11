@@ -12,7 +12,6 @@ open class AppName: Label {
         super.init(frame: frame)
         fontSize = 20
         isBold = true
-        textAlignment = .center
         setup()
     }
 

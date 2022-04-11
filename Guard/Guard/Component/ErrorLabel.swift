@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class ErrorLabel: UILabel, AttributedViewProtocol {
+open class ErrorLabel: Label {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         font = UIFont.systemFont(ofSize: 14)

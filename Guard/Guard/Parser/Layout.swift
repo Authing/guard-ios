@@ -81,22 +81,24 @@ public struct Edge {
 
 public var EdgeZero = Edge(0)
 
-open class LayoutParams {
+public struct LayoutParams {
     public static let matchParent: CGFloat = -1
     public static let wrapContent: CGFloat = -2
 
-    open var width = wrapContent
-    open var height = wrapContent
-    open var margin = EdgeZero
-    open var minWidth: CGFloat = 0
-    open var maxWidth = CGFloat.greatestFiniteMagnitude
-    open var minHeight: CGFloat = 0
-    open var maxHeight = CGFloat.greatestFiniteMagnitude
+    public var width = wrapContent
+    public var height = wrapContent
+    public var margin = EdgeZero
+    public var minWidth: CGFloat = 0
+    public var maxWidth = CGFloat.greatestFiniteMagnitude
+    public var minHeight: CGFloat = 0
+    public var maxHeight = CGFloat.greatestFiniteMagnitude
     
-    open var alignment: Alignment = .none
-    open var fill: CGFloat = 0
+    public var alignment: Alignment = .none
+    public var fill: CGFloat = 0
     
-    open var absolute: Bool = false
+    public var absolute: Bool = false
+    public var animatePositionOnce: Bool = false
+    public var animateSizeOnce: Bool = false
 }
 
 extension UIView {
@@ -178,6 +180,7 @@ open class Layout: UIImageView, AttributedViewProtocol {
     }
     
     public func setAttribute(key: String, value: String) {
+        super.setAttribute(key: key, value: value)
         if ("align-items" == key) {
             if ("center" == value) {
                 alignItems = .center
@@ -469,12 +472,16 @@ open class Layout: UIImageView, AttributedViewProtocol {
                     left = padding.left + margin.left + (width - size.width - padding.left - padding.right) / 2
                 }
 
-                view.frame = CGRect(
-                    x: round(left * scale) / scale,
-                    y: round((top + margin.top) * scale) / scale,
-                    width: size.width - margin.left - margin.right,
-                    height: size.height - margin.top - margin.bottom
-                )
+                let duration = view.layoutParams.animatePositionOnce ? 0.3 : 0
+                UIView.animate(withDuration: duration) {
+                    view.frame = CGRect(
+                        x: round(left * scale) / scale,
+                        y: round((top + margin.top) * scale) / scale,
+                        width: size.width - margin.left - margin.right,
+                        height: size.height - margin.top - margin.bottom
+                    )
+                    view.layoutParams.animatePositionOnce = false
+                }
 
                 view.layoutSubviews()
                 top += size.height
