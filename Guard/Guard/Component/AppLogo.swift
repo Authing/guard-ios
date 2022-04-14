@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class AppLogo: UIImageView, AttributedViewProtocol {
+open class AppLogo: ImageView {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()

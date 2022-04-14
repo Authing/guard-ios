@@ -174,7 +174,7 @@ open class Layout: UIImageView, AttributedViewProtocol {
         self.padding = padding
     }
     
-    private func setup() {
+    open func setup() {
         contentMode = .scaleAspectFill
         isUserInteractionEnabled = true
     }

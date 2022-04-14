@@ -33,6 +33,7 @@ open class GoSomewhereButton: Button {
     @objc private func onClick(_ sender: UITapGestureRecognizer? = nil) {
         ALog.d(Self.self, "Going somewhere")
         if let page = target {
+            ALog.d(Self.self, "Going \(page)")
             if let authFlow = authViewController?.authFlow,
                let appBundle = authFlow.appBundle {
                 let rootView = Parser().inflate(appBundle: appBundle, page: page)

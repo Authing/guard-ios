@@ -66,6 +66,7 @@ open class BaseInput: UITextField, AttributedViewProtocol {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        borderStyle = .roundedRect
     }
 
     required public init?(coder aDecoder: NSCoder) {
