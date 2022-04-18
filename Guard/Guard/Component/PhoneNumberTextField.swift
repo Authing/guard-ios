@@ -111,6 +111,8 @@ public class PhoneNumberText: AccountTextField {
     }
 
     override func setup() {
+        self.backgroundColor = UIColor.clear
+        self.borderStyle = .none
         self.border.removeFromSuperview()
         
         self.keyboardType = .phonePad
