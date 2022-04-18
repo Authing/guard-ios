@@ -8,11 +8,11 @@
 import UIKit
 
 open class AppBundle {
-    open var appId: String? = nil
-    open var rootDir: URL? = nil
-    open var name: String? = nil
+    open var appId: String?
+    open var rootDir: URL?
+    open var name: String?
     open var versionCode: Int = 1
-    open var versionName: String? = nil
-    open var indexView: UIView? = nil
-    open var mainColor: String? = nil   
+    open var versionName: String?
+    open var indexView: UIView?
+    open var mainColor: String?   
 }

@@ -143,6 +143,10 @@ extension UIView {
                     return 2
                 }
             }
+        } else if "target" == key {
+            if let v = self as? GoSomewhereButton {
+                return v.target
+            }
         }
         return nil
     }

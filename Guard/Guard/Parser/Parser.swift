@@ -9,9 +9,13 @@ import UIKit
 
 open class Parser: NSObject, XMLParserDelegate {
     
-    public var appBundle: AppBundle? = nil
+    var appBundle: AppBundle?
     var viewStack: Array<UIView> = Array()
-    var currentView: UIView? = nil
+    var currentView: UIView?
+    
+    public init(_ appBundle: AppBundle? = nil) {
+        self.appBundle = appBundle
+    }
     
     open func parse(appId: String) -> AppBundle? {
         do {

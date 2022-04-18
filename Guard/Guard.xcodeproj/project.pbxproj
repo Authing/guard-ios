@@ -62,6 +62,8 @@
 		7E7D1F6F278EB49F005AAD39 /* EmailLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7D1F6E278EB49F005AAD39 /* EmailLabel.swift */; };
 		7E7D1F71278ECC73005AAD39 /* PhoneLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7D1F70278ECC73005AAD39 /* PhoneLabel.swift */; };
 		7E7D1F73278FC44F005AAD39 /* AuthingFirstTimeLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E7D1F72278FC44F005AAD39 /* AuthingFirstTimeLogin.xib */; };
+		7E862A6B2807C6690057A4A0 /* VLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E862A6A2807C6690057A4A0 /* VLayout.swift */; };
+		7E862A6D2807C6C90057A4A0 /* HLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E862A6C2807C6C90057A4A0 /* HLayout.swift */; };
 		7E87A1BE27CCF8C800E52D5A /* UserProfileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87A1BD27CCF8C800E52D5A /* UserProfileTextField.swift */; };
 		7E87A1C227CDBAEF00E52D5A /* LogoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87A1C127CDBAEF00E52D5A /* LogoutButton.swift */; };
 		7E87A1C427CDBF2600E52D5A /* UserProfileField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87A1C327CDBF2600E52D5A /* UserProfileField.swift */; };
@@ -94,6 +96,7 @@
 		7EB32816278D5DD4008639AA /* FramedVerifyCodeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB32815278D5DD4008639AA /* FramedVerifyCodeTextField.swift */; };
 		7EB5CE5627D1EE3200BE3252 /* DeleteAccountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5CE5527D1EE3200BE3252 /* DeleteAccountButton.swift */; };
 		7EB5CE5827D5ECBF00BE3252 /* UtiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5CE5727D5ECBF00BE3252 /* UtiTests.swift */; };
+		7EC00A442808074C00FD8125 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC00A432808074C00FD8125 /* ImageView.swift */; };
 		7ECF8AC52759FE8D004F8FC5 /* SDKUsageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF8AC42759FE8D004F8FC5 /* SDKUsageTask.swift */; };
 		7ECF8AC72759FF17004F8FC5 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF8AC62759FF17004F8FC5 /* Const.swift */; };
 		7ECF8ACA275A022D004F8FC5 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF8AC9275A022D004F8FC5 /* Util.swift */; };
@@ -199,6 +202,8 @@
 		7E7D1F6E278EB49F005AAD39 /* EmailLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLabel.swift; sourceTree = "<group>"; };
 		7E7D1F70278ECC73005AAD39 /* PhoneLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneLabel.swift; sourceTree = "<group>"; };
 		7E7D1F72278FC44F005AAD39 /* AuthingFirstTimeLogin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingFirstTimeLogin.xib; sourceTree = "<group>"; };
+		7E862A6A2807C6690057A4A0 /* VLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VLayout.swift; sourceTree = "<group>"; };
+		7E862A6C2807C6C90057A4A0 /* HLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLayout.swift; sourceTree = "<group>"; };
 		7E87A1BD27CCF8C800E52D5A /* UserProfileTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileTextField.swift; sourceTree = "<group>"; };
 		7E87A1C127CDBAEF00E52D5A /* LogoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutButton.swift; sourceTree = "<group>"; };
 		7E87A1C327CDBF2600E52D5A /* UserProfileField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileField.swift; sourceTree = "<group>"; };
@@ -232,6 +237,7 @@
 		7EB32815278D5DD4008639AA /* FramedVerifyCodeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FramedVerifyCodeTextField.swift; sourceTree = "<group>"; };
 		7EB5CE5527D1EE3200BE3252 /* DeleteAccountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountButton.swift; sourceTree = "<group>"; };
 		7EB5CE5727D5ECBF00BE3252 /* UtiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtiTests.swift; sourceTree = "<group>"; };
+		7EC00A432808074C00FD8125 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		7ECF8AC42759FE8D004F8FC5 /* SDKUsageTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDKUsageTask.swift; sourceTree = "<group>"; };
 		7ECF8AC62759FF17004F8FC5 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		7ECF8AC9275A022D004F8FC5 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
@@ -358,6 +364,9 @@
 				7E0FAFB327EC6373006258FC /* Label.swift */,
 				7E0FAFB227EC6372006258FC /* Button.swift */,
 				7E20001727EB5D5D0051F590 /* BaseInput.swift */,
+				7E862A6A2807C6690057A4A0 /* VLayout.swift */,
+				7E862A6C2807C6C90057A4A0 /* HLayout.swift */,
+				7EC00A432808074C00FD8125 /* ImageView.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -801,6 +810,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EF66C7D277D471D00FCBBEB /* GoForgotPasswordButton.swift in Sources */,
+				7E862A6D2807C6C90057A4A0 /* HLayout.swift in Sources */,
 				7E7D1F71278ECC73005AAD39 /* PhoneLabel.swift in Sources */,
 				A8D38D1627F1DB4A00942707 /* CountryCodeViewController.swift in Sources */,
 				7ED434C92775653100893EDD /* LoginMethodTab.swift in Sources */,
@@ -811,6 +821,7 @@
 				7EF66C73277C37A500FCBBEB /* PasswordConfirmTextField.swift in Sources */,
 				7ED434DE2779554B00893EDD /* LoadingButton.swift in Sources */,
 				7EB327FD278BD473008639AA /* MFATableView.swift in Sources */,
+				7EC00A442808074C00FD8125 /* ImageView.swift in Sources */,
 				7E8AECBC27882D2D0030D27B /* SocialLoginButton.swift in Sources */,
 				7ECF8AC52759FE8D004F8FC5 /* SDKUsageTask.swift in Sources */,
 				7E87A1C627CE330800E52D5A /* UserProfileAvatarField.swift in Sources */,
@@ -828,6 +839,7 @@
 				7E1998D22783D3D5002C6F81 /* WechatLoginButton.swift in Sources */,
 				7ED434DA2779509100893EDD /* VerifyCodeTextField.swift in Sources */,
 				7E0FAFB527EC6373006258FC /* Label.swift in Sources */,
+				7E862A6B2807C6690057A4A0 /* VLayout.swift in Sources */,
 				7ED434D22775ABA000893EDD /* TextFieldLayout.swift in Sources */,
 				7E7566A22768801E00C3872F /* UIView+Authing.swift in Sources */,
 				7E02F46927950C57007FA048 /* UserInfoCompleteFieldForm.swift in Sources */,
