@@ -18,7 +18,7 @@ open class AccountTextField: TextFieldLayout {
         setup()
     }
 
-    private func setup() {
+    func setup() {
         Util.getConfig(self) { config in
             if (config != nil) {
                 self.setup(config!)

@@ -496,7 +496,8 @@ public class AuthClient: Client {
         request(endPoint: endPoint, method: "POST", body: body, completion: completion)
     }
     
-    public func delete(_ endPoint: String, _ body: NSDictionary? = nil, completion: @escaping (Int, String?, NSDictionary?) -> Void) {        request(endPoint: endPoint, method: "DELETE", body: body, completion: completion)
+    public func delete(_ endPoint: String, _ body: NSDictionary? = nil, completion: @escaping (Int, String?, NSDictionary?) -> Void) {
+        request(endPoint: endPoint, method: "DELETE", body: body, completion: completion)
     }
     
     private func request(endPoint: String, method: String, body: NSDictionary?, completion: @escaping (Int, String?, NSDictionary?) -> Void) {

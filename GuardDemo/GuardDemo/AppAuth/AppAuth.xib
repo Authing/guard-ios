@@ -36,6 +36,18 @@
                     <color key="textColor" systemColor="systemGray2Color"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fS5-yt-yJT">
+                    <rect key="frame" x="157" y="687" width="100" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="Tnk-4J-6HO"/>
+                        <constraint firstAttribute="height" constant="40" id="h6k-i4-ofZ"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="logout"/>
+                    <connections>
+                        <action selector="logout:" destination="-1" eventType="touchUpInside" id="L9K-Og-itK"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -44,9 +56,11 @@
                 <constraint firstItem="dyL-Sp-K2L" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="64" id="3VY-LS-8Rt"/>
                 <constraint firstItem="QX6-6J-4SN" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="LR1-FL-4Aa"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="QX6-6J-4SN" secondAttribute="trailing" constant="20" id="dN9-n1-0ya"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="fS5-yt-yJT" secondAttribute="bottom" constant="135" id="doy-wi-eO7"/>
                 <constraint firstItem="QX6-6J-4SN" firstAttribute="top" secondItem="dyL-Sp-K2L" secondAttribute="bottom" constant="8" symbolic="YES" id="h75-hy-OpT"/>
                 <constraint firstItem="QX6-6J-4SN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="mda-lo-eCw"/>
                 <constraint firstItem="dyL-Sp-K2L" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="rYT-Ab-cXd"/>
+                <constraint firstItem="fS5-yt-yJT" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="sKm-7g-OGr"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="124.55357142857142"/>
         </view>

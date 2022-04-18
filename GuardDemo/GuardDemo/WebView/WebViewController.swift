@@ -16,7 +16,9 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         webView = WKWebView()
         webView?.navigationDelegate = self
         view = webView
+        
 
+        authRequest.redirect_uri = "cn.guard://authing.cn/redirect"
         OIDCClient.buildAuthorizeUrl(authRequest: authRequest) { url in
             if url != nil {
                 self.webView?.load(URLRequest(url: url!))

@@ -10,11 +10,8 @@ import UIKit
 typealias PhoneNumberTextFieldBeginEditingCallBack = () -> Void
 typealias PhoneNumberTextFieldEndEditingCallBack = () -> Void
 
-open class PhoneNumberTextField: UIView {
+open class PhoneNumberTextField: TextFieldLayout {
     
-    let border = TextFieldBorder()
-
-//    public var text: String?
     public var textField = PhoneNumberText()
     private var countryCodeButton = UIButton()
     
@@ -37,8 +34,6 @@ open class PhoneNumberTextField: UIView {
     
     private func setup() {
         
-        self.addSubview(border)
-        
         self.countryCodeButton = UIButton.init(type: .custom)
         self.countryCodeButton.setTitle(countryCode, for: .normal)
         self.countryCodeButton.setImage(UIImage.init(named: "authing_down", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
@@ -51,10 +46,11 @@ open class PhoneNumberTextField: UIView {
         
         self.addSubview(self.textField)
 
+        
         self.textField.beginEditingCallBack = { [weak self] in
             self?.border.setHighlight(true)
         }
-        
+
         self.textField.endEditingCallBack = { [weak self] in
             self?.border.setHighlight(false)
         }
@@ -63,14 +59,15 @@ open class PhoneNumberTextField: UIView {
     
     open override func layoutSubviews() {
         super.layoutSubviews()
-        border.frame = CGRect(x: -2, y: -2, width: frame.width + 4, height: frame.height + 4)
-        border.setNeedsDisplay()
         
         Util.getConfig(self) { [self] config in
             
             //根据 internationalSmsConfigEnable 判断 true 显示, false 隐藏
             countryCodeButton.isHidden = !(config?.internationalSmsConfigEnable ?? false)
-            countryCodeButton.frame = CGRect(x: 0, y: 0, width: config?.internationalSmsConfigEnable == true ? 80 : 0, height: self.frame.height)
+            countryCodeButton.frame = CGRect(x: 0,
+                                                                y: 0,
+                                                                width: config?.internationalSmsConfigEnable == true ? 80 : 0,
+                                                                height: self.frame.height)
             countryCodeButton.setNeedsDisplay()
             
             textField.frame = CGRect(x: self.countryCodeButton.frame.width,
@@ -87,6 +84,14 @@ open class PhoneNumberTextField: UIView {
             self.countryCode = "+\(model.code ?? 86)"
         }
         self.viewController?.navigationController?.pushViewController(countryCodeVC, animated: true)
+    }
+    
+    public override func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return false
+    }
+    
+    
+    public override func textFieldDidEndEditing(_ textField: UITextField) {
     }
 }
 
@@ -105,7 +110,7 @@ public class PhoneNumberText: AccountTextField {
         setup()
     }
 
-    private func setup() {
+    override func setup() {
         self.border.removeFromSuperview()
         
         self.keyboardType = .phonePad
