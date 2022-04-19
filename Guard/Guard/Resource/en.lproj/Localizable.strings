@@ -53,6 +53,9 @@
 "authing_sex_male" = "M";
 "authing_sex_female" = "F";
 "authing_sex_unspecified" = "U";
+"authing_next" = "Next";
+"authing_invalid_phone" = "Phone number is invalid";
+"authing_invalid_email" = "Email address is invalid";
 
 // user profile
 "authing_user_profile" = "User profile";

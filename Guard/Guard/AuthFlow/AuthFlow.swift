@@ -125,7 +125,7 @@ public class AuthFlow {
     }
     
     public func startAppBundle(_ appId: String, authCompletion: Authing.AuthCompletion? = nil) {
-        if let ab = Parser().parse(appId: "62345c87ffe7c884acbae53c") {
+        if let ab = Parser().parse(appId: appId) {
             Parser().inflate(appBundle: ab)
             AuthFlow().startAppBundle(ab, authCompletion: authCompletion)
         }

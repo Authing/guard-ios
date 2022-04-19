@@ -177,6 +177,7 @@ open class Layout: UIImageView, AttributedViewProtocol {
     open func setup() {
         contentMode = .scaleAspectFill
         isUserInteractionEnabled = true
+        clipsToBounds = false
     }
     
     public func setAttribute(key: String, value: String) {
@@ -216,7 +217,7 @@ open class Layout: UIImageView, AttributedViewProtocol {
     }
 
     public override func layoutSubviews() {
-        if activated == true {
+//        if activated == true {
             if orientation == .horizontal {
                 let sizes = calculateHorizontalSizes(frame.size)
                 layoutHorizontally(sizes)
@@ -224,9 +225,9 @@ open class Layout: UIImageView, AttributedViewProtocol {
                 let sizes = calculateVerticalSizes(frame.size)
                 layoutVertically(sizes)
             }
-        } else {
-            super.layoutSubviews()
-        }
+//        } else {
+//            super.layoutSubviews()
+//        }
     }
 
     // MARK: - Private

@@ -26,12 +26,16 @@ open class GoSomewhereButton: Button {
         let text = getText()
         setTitle(text, for: .normal)
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.onClick(_:)))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self._onClick(_:)))
         self.addGestureRecognizer(tap)
     }
     
-    @objc private func onClick(_ sender: UITapGestureRecognizer? = nil) {
+    @objc private func _onClick(_ sender: UITapGestureRecognizer? = nil) {
         ALog.d(Self.self, "Going somewhere")
+        onClick()
+    }
+    
+    func onClick() {
         if let page = target {
             ALog.d(Self.self, "Going \(page)")
             if let authFlow = authViewController?.authFlow,

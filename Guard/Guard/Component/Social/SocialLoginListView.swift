@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class SocialLoginListView: UIView {
+open class SocialLoginListView: UIView, AttributedViewProtocol {
     
     let WIDTH = CGFloat(44)
     let HEIGHT = CGFloat(44)
@@ -39,6 +39,9 @@ open class SocialLoginListView: UIView {
             if (connections == nil) {
                 return
             }
+            for v in self.subviews {
+                v.removeFromSuperview()
+            }
             for conn in connections! {
                 if let type = conn["type"] as? String {
                     if ("wechat:mobile" == type) {
@@ -56,13 +59,20 @@ open class SocialLoginListView: UIView {
     }
     
     open override func layoutSubviews() {
-        let count = CGFloat(subviews.count)
+        var count = 0.0
+        for v in subviews {
+            if v as? SocialLoginButton != nil {
+                count += 1
+            }
+        }
         let paddingH = CGFloat((frame.width - count * WIDTH - (count - 1) * SPACE) / 2)
         let paddingV = CGFloat((frame.height - HEIGHT) / 2)
         var i = 0
         for v in subviews {
-            v.frame = CGRect(x: paddingH + (WIDTH + SPACE) * CGFloat(i), y: paddingV, width: WIDTH, height: HEIGHT)
-            i += 1
+            if v as? SocialLoginButton != nil {
+                v.frame = CGRect(x: paddingH + (WIDTH + SPACE) * CGFloat(i), y: paddingV, width: WIDTH, height: HEIGHT)
+                i += 1
+            }
         }
     }
     

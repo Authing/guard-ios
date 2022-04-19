@@ -69,6 +69,8 @@ extension UIView {
             return layoutParams
         } else if "margin" == key {
             return layoutParams.margin
+        } else if "flex" == key {
+            return layoutParams.fill
         } else if "border-width" == key {
             return NSString(format: "%.1f", layer.borderWidth)
         } else if "border-color" == key {
@@ -181,6 +183,10 @@ extension UIView {
                 if layer.borderWidth > 0 {
                     layer.masksToBounds = true
                 }
+            }
+        } else if "flex" == key {
+            if let v = value as? CGFloat {
+                layoutParams.fill = v
             }
         } else if "border-color" == key {
             if let color = value as? UIColor {

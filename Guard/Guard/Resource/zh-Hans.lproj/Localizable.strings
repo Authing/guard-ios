@@ -53,6 +53,10 @@
 "authing_sex_male" = "男";
 "authing_sex_female" = "女";
 "authing_sex_unspecified" = "保密";
+"authing_next" = "下一步";
+"authing_invalid_phone" = "手机号码无效";
+"authing_invalid_email" = "邮件地址无效";
+
 
 // user profile
 "authing_user_profile" = "个人中心";

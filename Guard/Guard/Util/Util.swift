@@ -244,8 +244,7 @@ public class Util {
             }
         }
         
-        let phone: String? = current.authViewController?.authFlow?.data[AuthFlow.KEY_MFA_PHONE] as? String
-        if (phone != nil) {
+        if let phone = current.authViewController?.authFlow?.data[AuthFlow.KEY_MFA_PHONE] as? String {
             return phone
         }
         
@@ -265,11 +264,23 @@ public class Util {
             }
         }
         
-        let email: String? = current.authViewController?.authFlow?.data[AuthFlow.KEY_MFA_EMAIL] as? String
-        if (email != nil) {
+        if let email = current.authViewController?.authFlow?.data[AuthFlow.KEY_MFA_EMAIL] as? String {
             return email
         }
         
+        return current.authViewController?.authFlow?.data[AuthFlow.KEY_ACCOUNT] as? String
+    }
+    
+    public static func getAccount(_ current: UIView) -> String? {
+        if let phone = Util.getPhoneNumber(current) {
+            return phone
+        }
+        if let email = Util.getEmail(current) {
+            return email
+        }
+        if let tfAccount: AccountTextField = Util.findView(current, viewClass: AccountTextField.self) {
+            return tfAccount.text
+        }
         return current.authViewController?.authFlow?.data[AuthFlow.KEY_ACCOUNT] as? String
     }
     

@@ -64,6 +64,7 @@
 		7E7D1F73278FC44F005AAD39 /* AuthingFirstTimeLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E7D1F72278FC44F005AAD39 /* AuthingFirstTimeLogin.xib */; };
 		7E862A6B2807C6690057A4A0 /* VLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E862A6A2807C6690057A4A0 /* VLayout.swift */; };
 		7E862A6D2807C6C90057A4A0 /* HLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E862A6C2807C6C90057A4A0 /* HLayout.swift */; };
+		7E866452280E4F9B000DEFD4 /* GoNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E866451280E4F9B000DEFD4 /* GoNextButton.swift */; };
 		7E87A1BE27CCF8C800E52D5A /* UserProfileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87A1BD27CCF8C800E52D5A /* UserProfileTextField.swift */; };
 		7E87A1C227CDBAEF00E52D5A /* LogoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87A1C127CDBAEF00E52D5A /* LogoutButton.swift */; };
 		7E87A1C427CDBF2600E52D5A /* UserProfileField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87A1C327CDBF2600E52D5A /* UserProfileField.swift */; };
@@ -204,6 +205,7 @@
 		7E7D1F72278FC44F005AAD39 /* AuthingFirstTimeLogin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingFirstTimeLogin.xib; sourceTree = "<group>"; };
 		7E862A6A2807C6690057A4A0 /* VLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VLayout.swift; sourceTree = "<group>"; };
 		7E862A6C2807C6C90057A4A0 /* HLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLayout.swift; sourceTree = "<group>"; };
+		7E866451280E4F9B000DEFD4 /* GoNextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoNextButton.swift; sourceTree = "<group>"; };
 		7E87A1BD27CCF8C800E52D5A /* UserProfileTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileTextField.swift; sourceTree = "<group>"; };
 		7E87A1C127CDBAEF00E52D5A /* LogoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutButton.swift; sourceTree = "<group>"; };
 		7E87A1C327CDBF2600E52D5A /* UserProfileField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileField.swift; sourceTree = "<group>"; };
@@ -407,6 +409,7 @@
 				7EDFB6CC27C7390A00B77DEE /* PrivacyConfirmBox.swift */,
 				7E87A1C127CDBAEF00E52D5A /* LogoutButton.swift */,
 				7EB5CE5527D1EE3200BE3252 /* DeleteAccountButton.swift */,
+				7E866451280E4F9B000DEFD4 /* GoNextButton.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -836,6 +839,7 @@
 				7ECF8AC72759FF17004F8FC5 /* Const.swift in Sources */,
 				7EF66C5B277BEE7300FCBBEB /* Animator.swift in Sources */,
 				7EF66C69277C197900FCBBEB /* RegisterMethodTab.swift in Sources */,
+				7E866452280E4F9B000DEFD4 /* GoNextButton.swift in Sources */,
 				7E1998D22783D3D5002C6F81 /* WechatLoginButton.swift in Sources */,
 				7ED434DA2779509100893EDD /* VerifyCodeTextField.swift in Sources */,
 				7E0FAFB527EC6373006258FC /* Label.swift in Sources */,

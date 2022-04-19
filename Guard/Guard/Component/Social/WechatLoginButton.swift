@@ -29,7 +29,7 @@ open class WechatLoginButton: SocialLoginButton, WXApiDelegate {
         req.scope = "snsapi_userinfo"
         req.state = "123"
         WXApi.sendAuthReq(req, viewController: authViewController!, delegate: self) { success in
-            print("wechat auth req result:\(success)")
+            ALog.i(Self.self, "wechat auth req result:\(success)")
         }
         
         loading?.startAnimating()

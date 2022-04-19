@@ -5,7 +5,6 @@
 //  Created by Lance Mao on 2021/12/13.
 //
 
-import Foundation
 import UIKit
 
 public class Config {
@@ -126,7 +125,7 @@ public class Config {
         requestPublicConfig()
     }
     
-    private func requestPublicConfig() {
+    public func requestPublicConfig() {
         isGettingConfig = true
         let url = "https://console." + Authing.getHost() + "/api/v2/applications/" + appId + "/public-config"
         AuthClient().request(config: nil, urlString: url, method: "get", body: nil) { code, message, jsonData in

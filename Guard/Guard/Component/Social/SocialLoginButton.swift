@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class SocialLoginButton: UIButton {
+open class SocialLoginButton: Button {
     
     var loading: UIActivityIndicatorView? = nil
     
