@@ -71,10 +71,8 @@ public class Authing {
     }
     
     public static func setupWechat(_ appid: String, universalLink: String) {
-        let ret = WXApi.registerApp(appid, universalLink: universalLink)
-        if (!ret) {
-            print("set up wechat failed!")
-        }
+        
+        WechatLogin.shared.registerApp(appId: appid, universalLink: universalLink)
     }
     
 //    public static func setupAlipay(_ appid: String, customScheme: String) {

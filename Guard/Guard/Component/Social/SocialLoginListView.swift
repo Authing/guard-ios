@@ -65,8 +65,8 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                 count += 1
             }
         }
-        let paddingH = CGFloat((frame.width - count * WIDTH - (count - 1) * SPACE) / 2)
-        let paddingV = CGFloat((frame.height - HEIGHT) / 2)
+        let paddingH = (frame.width - count * WIDTH - (count - 1) * SPACE) / 2
+        let paddingV = (frame.height - HEIGHT) / 2
         var i = 0
         for v in subviews {
             if v as? SocialLoginButton != nil {

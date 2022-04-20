@@ -24,15 +24,57 @@ open class WechatLoginButton: SocialLoginButton, WXApiDelegate {
     }
     
     @objc private func onClick(sender: UIButton) {
+
+        loading?.startAnimating()
+
+        WechatLogin.shared.login(viewController: authViewController ?? UIViewController()) { code, message, userInfo in
+            DispatchQueue.main.async() {
+                self.loading?.stopAnimating()
+                if (code == 200) {
+                    if let vc = self.authViewController?.navigationController as? AuthNavigationController {
+                        vc.complete(code, message, userInfo)
+                    }
+                } else {
+                    Util.setError(self, message)
+                }
+            }
+        }
+    }
+    
+
+}
+
+open class WechatLogin: NSObject, WXApiDelegate {
+        
+    @objc public static let shared = WechatLogin()
+    private override init() {}
+    
+    fileprivate var receiveCallBack: Authing.AuthCompletion?
+
+    public func registerApp(appId: String, universalLink: String) {
+        
+        let ret = WXApi.registerApp(appId, universalLink: universalLink)
+        if (!ret) {
+            print("set up wechat failed!")
+        }
+
+    }
+    
+    /// 微信一键登录方法
+    public func login(viewController:UIViewController, completion: @escaping Authing.AuthCompletion) -> Void {
+        self.sendRequest(viewController: viewController)
+        self.receiveCallBack = completion
+    }
+    
+    @objc func sendRequest(viewController: UIViewController) {
         NotificationCenter.default.addObserver(self, selector: #selector(self.wechatLoginOK(notification:)), name: Notification.Name("wechatLoginOK"), object: nil)
+
         let req: SendAuthReq = SendAuthReq()
         req.scope = "snsapi_userinfo"
         req.state = "123"
-        WXApi.sendAuthReq(req, viewController: authViewController!, delegate: self) { success in
+        WXApi.sendAuthReq(req, viewController: viewController, delegate: self) { success in
             ALog.i(Self.self, "wechat auth req result:\(success)")
         }
-        
-        loading?.startAnimating()
     }
     
     @objc func wechatLoginOK(notification: Notification) {
@@ -47,26 +89,24 @@ open class WechatLoginButton: SocialLoginButton, WXApiDelegate {
             }
         }
     }
-
+    
+    fileprivate func handleOpenURL(url: URL) -> Bool {
+        return WXApi.handleOpen(url, delegate: self)
+    }
+    
     public func onResp(_ resp: BaseResp) {
         let authResp = resp as? SendAuthResp
-        let code = authResp?.code
-        
-        guard code != nil else {
-            return
-        }
-        
-        Util.getAuthClient(self).loginByWechat(code!) { code, message, userInfo in
-            DispatchQueue.main.async() {
-                self.loading?.stopAnimating()
-                if (code == 200) {
-                    if let vc = self.authViewController?.navigationController as? AuthNavigationController {
-                        vc.complete(code, message, userInfo)
-                    }
-                } else {
-                    Util.setError(self, message)
-                }
+
+        if let code = authResp?.code{
+            AuthClient().loginByWechat(code) { c, message, userInfo in
+                self.receiveCallBack?(c, message, userInfo)
             }
+        }else {
+            self.receiveCallBack?(Int(resp.errCode), resp.errStr, nil)
         }
+    }
+ 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
