@@ -70,7 +70,7 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
         var i = 0
         for v in subviews {
             if v as? SocialLoginButton != nil {
-                v.frame = CGRect(x: paddingH + (WIDTH + SPACE) * CGFloat(i), y: paddingV, width: WIDTH, height: HEIGHT)
+                v.frame = CGRect(x:  CGFloat(paddingH) + (WIDTH + SPACE) * CGFloat(i), y: CGFloat(paddingV), width: WIDTH, height: HEIGHT)
                 i += 1
             }
         }
