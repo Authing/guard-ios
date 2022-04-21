@@ -67,8 +67,5 @@ open class WechatLogin: NSObject, WXApiDelegate {
             self.receiveCallBack?(Int(resp.errCode), resp.errStr, nil)
         }
     }
- 
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
+
 }
