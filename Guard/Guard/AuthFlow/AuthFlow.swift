@@ -180,6 +180,9 @@ public class AuthFlow {
         copy.mfaEmailXibName = self.mfaEmailXibName
         copy.mfaOTPXibName = self.mfaOTPXibName
         copy.resetPasswordFirstTimeLoginXibName = self.resetPasswordFirstTimeLoginXibName
+        
+        copy.appBundle = self.appBundle
+        copy.config = self.config
         return copy
     }
     

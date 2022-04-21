@@ -129,17 +129,19 @@ public class Config {
         isGettingConfig = true
         let url = "https://console." + Authing.getHost() + "/api/v2/applications/" + appId + "/public-config"
         AuthClient().request(config: nil, urlString: url, method: "get", body: nil) { code, message, jsonData in
-            if (code == 200) {
-                self.data = jsonData
-            } else {
+            if (code != 200) {
                 ALog.e(Self.self, "error when getting public cofig:\(message!)")
             }
-            self.fireCallback()
+            self.fireCallback(jsonData)
         }
     }
     
-    private func fireCallback() {
+    private func fireCallback(_ data: NSDictionary?) {
         DispatchQueue.main.async() {
+            self.data = data
+            if self.configListeners.count > 0 {
+                ALog.d(Self.self, "firing (\(self.configListeners.count)) callbacks for config")
+            }
             for completion in self.configListeners {
                 completion(self)
             }
@@ -150,6 +152,7 @@ public class Config {
     
     public func getConfig(completion: @escaping(Config?)->Void) {
         if isGettingConfig {
+            ALog.w(Self.self, "getting config while requesting")
             configListeners.append(completion);
         } else if data != nil {
             configListeners.removeAll()

@@ -14,6 +14,9 @@ open class ResetPasswordButton: PrimaryButton {
         case byEmail
     }
     
+    open var phoneTarget: String? = nil
+    open var emailTarget: String? = nil
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -119,10 +122,16 @@ open class ResetPasswordButton: PrimaryButton {
             if let vc = viewController, vc.canPerformSegue(withIdentifier: "phone") {
                 vc.performSegue(withIdentifier: "phone", sender: nil)
                 return
+            } else if let page = phoneTarget {
+                Util.openPage(self, page)
+                return
             }
         } else if type == .byEmail {
             if let vc = viewController, vc.canPerformSegue(withIdentifier: "email") {
                 vc.performSegue(withIdentifier: "email", sender: nil)
+                return
+            } else if let page = emailTarget {
+                Util.openPage(self, page)
                 return
             }
         }
@@ -167,6 +176,15 @@ open class ResetPasswordButton: PrimaryButton {
         } else {
             Util.setError(self, message)
             authCompletion?(code, message, nil)
+        }
+    }
+    
+    public override func setAttribute(key: String, value: String) {
+        super.setAttribute(key: key, value: value)
+        if ("phoneTarget" == key) {
+            phoneTarget = value
+        } else if ("emailTarget" == key) {
+            emailTarget = value
         }
     }
 }

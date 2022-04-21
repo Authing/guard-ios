@@ -11,8 +11,24 @@ open class GetEmailCodeButton: LoadingButton {
     
     public var scene: String = "RESET_PASSWORD"
     
+    override open var loadingColor: UIColor? {
+        get {
+            return Const.Color_Authing_Main
+        }
+        set {}
+    }
+    
+    override open var loadingLocation: Int {
+        get {
+            return 1
+        }
+        set {}
+    }
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        setTitleColor(Const.Color_Authing_Main, for: .normal)
+        fontSize = 14
         setup()
     }
 

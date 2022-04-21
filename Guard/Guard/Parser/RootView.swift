@@ -149,6 +149,14 @@ extension UIView {
             if let v = self as? GoSomewhereButton {
                 return v.target
             }
+        } else if "phoneTarget" == key {
+            if let v = self as? ResetPasswordButton {
+                return v.phoneTarget
+            }
+        } else if "emailTarget" == key {
+            if let v = self as? ResetPasswordButton {
+                return v.emailTarget
+            }
         }
         return nil
     }
@@ -410,6 +418,15 @@ extension UIView {
         if let view = self as? GoSomewhereButton {
             if let t = view.target {
                 res += " target=\"\(t)\""
+            }
+        }
+        
+        if let view = self as? ResetPasswordButton {
+            if let t = view.phoneTarget {
+                res += " phoneTarget=\"\(t)\""
+            }
+            if let t = view.emailTarget {
+                res += " emailTarget=\"\(t)\""
             }
         }
         return res
