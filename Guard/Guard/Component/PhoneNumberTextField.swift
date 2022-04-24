@@ -80,10 +80,11 @@ open class PhoneNumberTextField: TextFieldLayout {
     
     @objc func countryCodeButtonAction() {
         let countryCodeVC = CountryCodeViewController(nibName: "AuthingCountryCode", bundle: Bundle(for: CountryCodeViewController.self))
+        countryCodeVC.modalPresentationStyle = .fullScreen
         countryCodeVC.selectCountryCallBack = { model in
             self.countryCode = "+\(model.code ?? 86)"
         }
-        self.viewController?.navigationController?.pushViewController(countryCodeVC, animated: true)
+        self.viewController?.present(countryCodeVC, animated: true)
     }
     
     public override func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {

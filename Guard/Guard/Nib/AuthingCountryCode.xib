@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CountryCodeViewController" customModule="Guard" customModuleProvider="target">
             <connections>
+                <outlet property="titleLabel" destination="EtZ-6b-Rva" id="hes-zb-YAR"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Ega-zo-xa7"/>
             </connections>
         </placeholder>
@@ -19,15 +20,50 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o1n-3q-pgK">
+                    <rect key="frame" x="0.0" y="44" width="414" height="42"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ur1-r5-gMD">
+                            <rect key="frame" x="20" y="0.0" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="IJx-vJ-4Fv"/>
+                                <constraint firstAttribute="width" secondItem="ur1-r5-gMD" secondAttribute="height" multiplier="1:1" id="awK-Ve-7e2"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" backgroundImage="authing_close"/>
+                            <connections>
+                                <action selector="dismissButtonAction:" destination="-1" eventType="touchUpInside" id="LJs-lI-ftO"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EtZ-6b-Rva">
+                            <rect key="frame" x="132" y="0.0" width="150" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="OQU-UP-fgk"/>
+                                <constraint firstAttribute="width" constant="150" id="eJA-YR-of8"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="EtZ-6b-Rva" firstAttribute="centerX" secondItem="o1n-3q-pgK" secondAttribute="centerX" id="7Ez-gm-xrP"/>
+                        <constraint firstAttribute="height" constant="42" id="CBs-1C-n6S"/>
+                        <constraint firstItem="ur1-r5-gMD" firstAttribute="leading" secondItem="o1n-3q-pgK" secondAttribute="leading" constant="20" id="G8F-Zg-C4i"/>
+                        <constraint firstItem="EtZ-6b-Rva" firstAttribute="top" secondItem="o1n-3q-pgK" secondAttribute="top" id="e5u-wi-eXe"/>
+                        <constraint firstItem="ur1-r5-gMD" firstAttribute="top" secondItem="o1n-3q-pgK" secondAttribute="top" id="vBS-GX-WSw"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bgI-Yj-QjI" customClass="CountryCodeSearchBar" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <rect key="frame" x="0.0" y="86" width="414" height="44"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="ktj-GZ-Ng1"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gdm-Lk-sOg" customClass="CountryCodeTableView" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                    <rect key="frame" x="0.0" y="130" width="414" height="732"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
             </subviews>
@@ -35,17 +71,21 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="gdm-Lk-sOg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="734-Jo-XfM"/>
-                <constraint firstItem="bgI-Yj-QjI" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Qoy-H2-0Fw"/>
+                <constraint firstItem="bgI-Yj-QjI" firstAttribute="top" secondItem="o1n-3q-pgK" secondAttribute="bottom" id="Qoy-H2-0Fw"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="o1n-3q-pgK" secondAttribute="trailing" id="Sq0-mR-WpJ"/>
                 <constraint firstItem="bgI-Yj-QjI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="UoG-df-KOf"/>
                 <constraint firstItem="gdm-Lk-sOg" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="aJq-BM-8Kg"/>
+                <constraint firstItem="o1n-3q-pgK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="cYL-PJ-SVA"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="bgI-Yj-QjI" secondAttribute="trailing" id="g1H-mT-p4V"/>
                 <constraint firstItem="gdm-Lk-sOg" firstAttribute="top" secondItem="bgI-Yj-QjI" secondAttribute="bottom" id="iYV-Mq-1wc"/>
                 <constraint firstItem="gdm-Lk-sOg" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="uIH-Ay-WNe"/>
+                <constraint firstItem="o1n-3q-pgK" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="x4C-zR-4fZ"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="97.767857142857139"/>
         </view>
     </objects>
     <resources>
+        <image name="authing_close" width="40" height="40"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

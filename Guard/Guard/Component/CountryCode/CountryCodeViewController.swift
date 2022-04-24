@@ -25,6 +25,7 @@ class CountryCodeViewController: AuthViewController {
     
     private var countryModels: [CountryItemModel] = []
     var selectCountryCallBack: SelectCountryCallBack?
+    @IBOutlet var titleLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,7 @@ class CountryCodeViewController: AuthViewController {
         countryModels = readLocalJson()
         
         self.view.backgroundColor = UIColor.white
-        self.title = NSLocalizedString("authing_countrycode_title", bundle: Bundle(for: Self.self), comment: "")
+        titleLabel.text = NSLocalizedString("authing_countrycode_title", bundle: Bundle(for: Self.self), comment: "")
         
         if let tableView: CountryCodeTableView = Util.findView(view, viewClass: CountryCodeTableView.self),
            let searchBar: CountryCodeSearchBar = Util.findView(view, viewClass: CountryCodeSearchBar.self) {
@@ -49,6 +50,10 @@ class CountryCodeViewController: AuthViewController {
                 tableView.setContent(models: self.countryModels)
             }
         }
+    }
+    
+    @IBAction func dismissButtonAction(_ sender: Any) {
+        self.dismiss(animated: true)
     }
     
     private func readLocalJson() -> [CountryItemModel] {

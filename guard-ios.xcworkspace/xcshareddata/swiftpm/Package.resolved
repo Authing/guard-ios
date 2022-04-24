@@ -1,16 +1,14 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "AppAuth",
-        "repositoryURL": "https://github.com/openid/AppAuth-iOS.git",
-        "state": {
-          "branch": "master",
-          "revision": "e191b1beadf3041259652e6e464eaceff16e5fbb",
-          "version": null
-        }
+  "pins" : [
+    {
+      "identity" : "appauth-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/openid/AppAuth-iOS.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "e191b1beadf3041259652e6e464eaceff16e5fbb"
       }
-    ]
-  },
-  "version": 1
+    }
+  ],
+  "version" : 2
 }
