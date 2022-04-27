@@ -7,7 +7,7 @@
 
 import UIKit
 
-@IBDesignable open class RegisterContainer: Layout {
+open class RegisterContainer: Layout {
     
     // 0 by phone; 1 by email
     @IBInspectable open var type: Int = 0
