@@ -14,9 +14,21 @@
 				<string>cn.guard</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>main</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>wwauth803c38cb89ac1d57000002</string>
+			</array>
+		</dict>
 	</array>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>wxworklocal</string>
+		<string>wxwork</string>
 		<string>weixin</string>
 		<string>weixinULAPI</string>
 	</array>

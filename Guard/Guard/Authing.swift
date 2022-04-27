@@ -17,6 +17,15 @@ public class Authing {
     
     public static var sConfig: Config? = nil
     
+    public enum NotifyName: String {
+        ///微信登录成功回调
+        case notify_wechat = "wechatLoginOK"
+        ///企业微信通知 用于 Guard 向 WeCom 发送点击事件
+        case notify_wecom_register = "WeComRegisterNotificationName"
+        ///企业微信通知 用于 WeCom 向 Guard 返回回调信息
+        case notify_wecom_receive = "WeComReceiveNotificationName"
+    }
+    
     private static var sSchema = "https"
     private static var sHost = "authing.cn"
     private static var sAppId = ""

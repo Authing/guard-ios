@@ -28,6 +28,8 @@
 		7EACD00227915AAC005CBB2E /* Test.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EACD00127915AAC005CBB2E /* Test.xib */; };
 		7EB5CE5427CF70E900BE3252 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5CE5327CF70E900BE3252 /* WebViewController.swift */; };
 		7ED434D52775BA7000893EDD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7ED434D72775BA7000893EDD /* Localizable.strings */; };
+		A8541D6327EB5F9D00355EC5 /* WeCom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8541D6227EB5F9D00355EC5 /* WeCom.framework */; };
+		A8541D6427EB5F9D00355EC5 /* WeCom.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8541D6227EB5F9D00355EC5 /* WeCom.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +39,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				A8541D6427EB5F9D00355EC5 /* WeCom.framework in Embed Frameworks */,
 				7E959448274D063B001459C5 /* Guard.framework in Embed Frameworks */,
 				7E7566EE2769D40E00C3872F /* OneAuth.framework in Embed Frameworks */,
 			);
@@ -76,6 +79,8 @@
 		7EB5CE5327CF70E900BE3252 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		7ED434D62775BA7000893EDD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7ED434D82775BA7E00893EDD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		A8541D5B27EB579900355EC5 /* WeCom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WeCom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8541D6227EB5F9D00355EC5 /* WeCom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WeCom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +90,7 @@
 			files = (
 				7E95942E274CB549001459C5 /* AppAuth in Frameworks */,
 				7E959447274D063B001459C5 /* Guard.framework in Frameworks */,
+				A8541D6327EB5F9D00355EC5 /* WeCom.framework in Frameworks */,
 				7E959430274CB549001459C5 /* AppAuthCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,6 +159,8 @@
 		7E959442274CEF11001459C5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A8541D6227EB5F9D00355EC5 /* WeCom.framework */,
+				A8541D5B27EB579900355EC5 /* WeCom.framework */,
 				7E7566ED2769D40E00C3872F /* OneAuth.framework */,
 				7E7566C72769CFC100C3872F /* NTESBaseComponent.framework */,
 				7E7566C527699AC800C3872F /* libc++.1.tbd */,
