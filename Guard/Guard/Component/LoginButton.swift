@@ -57,7 +57,7 @@ open class LoginButton: PrimaryButton {
         
         if let tfPhone: PhoneNumberTextField = Util.findView(self, viewClass: PhoneNumberTextField.self),
            let tfCode: VerifyCodeTextField = Util.findView(self, viewClass: VerifyCodeTextField.self) {
-                if let phone = tfPhone.textField.text,
+                if let phone = tfPhone.text,
                    let code = tfCode.text {
                     loginByPhoneCode(tfPhone.countryCode, phone, code)
                     return

@@ -61,7 +61,7 @@ open class ResetPasswordButton: PrimaryButton {
         
         let tfPhone: PhoneNumberTextField? = Util.findView(self, viewClass: PhoneNumberTextField.self)
         if (tfPhone != nil) {
-            resetPasswordByPhone(tfPhone?.textField.text, password)
+            resetPasswordByPhone(tfPhone?.text, password)
             return
         }
         

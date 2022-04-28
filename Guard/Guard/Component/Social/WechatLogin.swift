@@ -13,8 +13,25 @@ open class WechatLogin: NSObject, WXApiDelegate {
     private override init() {}
     
     private var receiveCallBack: Authing.AuthCompletion?
+    
+    /**
+     - 初始化微信配置
+     */
+    public static func registerApp(appId: String, universalLink: String) {
+        WechatLogin.shared.registerApp(appId: appId, universalLink: universalLink)
+    }
 
-    public func registerApp(appId: String, universalLink: String) {
+    /**
+     - 不使用 Guard 内置按钮 直接调用登录事件
+     - Parameters:
+        - completion: code, message, userInfo
+     */
+    public static func login(viewController:UIViewController, completion: @escaping Authing.AuthCompletion) -> Void {
+        WechatLogin.shared.login(viewController: viewController, completion: completion)
+    }
+    
+
+    private func registerApp(appId: String, universalLink: String) {
         
         let ret = WXApi.registerApp(appId, universalLink: universalLink)
         if (!ret) {
@@ -22,14 +39,16 @@ open class WechatLogin: NSObject, WXApiDelegate {
         }
     }
     
-    /// 微信一键登录方法
-    public func login(viewController:UIViewController, completion: @escaping Authing.AuthCompletion) -> Void {
+    private func login(viewController:UIViewController, completion: @escaping Authing.AuthCompletion) -> Void {
         self.sendRequest(viewController: viewController)
         self.receiveCallBack = completion
     }
     
     @objc func sendRequest(viewController: UIViewController) {
-        NotificationCenter.default.addObserver(self, selector: #selector(self.wechatLoginOK(notification:)), name: Notification.Name("wechatLoginOK"), object: nil)
+        
+        let rawValue = Authing.NotifyName.notify_wechat.rawValue
+        let name = Notification.Name.init(rawValue: rawValue)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.wechatLoginOK(notification:)), name: name, object: nil)
 
         let req: SendAuthReq = SendAuthReq()
         req.scope = "snsapi_userinfo"
@@ -50,10 +69,6 @@ open class WechatLogin: NSObject, WXApiDelegate {
                 WXApi.handleOpen(url!, delegate: self)
             }
         }
-    }
-    
-    private func handleOpenURL(url: URL) -> Bool {
-        return WXApi.handleOpen(url, delegate: self)
     }
     
     public func onResp(_ resp: BaseResp) {

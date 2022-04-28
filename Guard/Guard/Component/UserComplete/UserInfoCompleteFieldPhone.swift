@@ -62,7 +62,7 @@ open class UserInfoCompleteFieldPhone: UserInfoCompleteFieldForm {
     }
     
     public func getPhone() -> String? {
-        return phoneTextField.textField.text
+        return phoneTextField.text
     }
     
     public func getCountryCode() -> String? {

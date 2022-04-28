@@ -233,8 +233,8 @@ public class Util {
     
     public static func getPhoneNumber(_ current: UIView) -> String? {
         if let tfPhone: PhoneNumberTextField = Util.findView(current, viewClass: PhoneNumberTextField.self) {
-            if (Validator.isValidPhone(phone: tfPhone.textField.text)) {
-                return tfPhone.textField.text
+            if (Validator.isValidPhone(phone: tfPhone.text)) {
+                return tfPhone.text
             }
         }
         

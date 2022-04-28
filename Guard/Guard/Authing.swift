@@ -81,7 +81,7 @@ public class Authing {
     
     public static func setupWechat(_ appid: String, universalLink: String) {
         
-        WechatLogin.shared.registerApp(appId: appid, universalLink: universalLink)
+        WechatLogin.registerApp(appId: appid, universalLink: universalLink)
     }
     
 //    public static func setupAlipay(_ appid: String, customScheme: String) {

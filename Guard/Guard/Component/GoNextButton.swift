@@ -31,7 +31,7 @@ open class GoNextButton: GoSomewhereButton {
         // save state
         if let authFlow = authViewController?.authFlow {
             if let tfPhone: PhoneNumberTextField = Util.findView(self, viewClass: PhoneNumberTextField.self) {
-                if (!Validator.isValidPhone(phone: tfPhone.textField.text)) {
+                if (!Validator.isValidPhone(phone: tfPhone.text)) {
                     let msg: String = NSLocalizedString("authing_invalid_phone", bundle: Bundle(for: Self.self), comment: "")
                     Util.setError(self, msg)
                     return
