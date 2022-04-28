@@ -7,9 +7,6 @@
 
 import UIKit
 
-typealias PhoneNumberTextFieldBeginEditingCallBack = () -> Void
-typealias PhoneNumberTextFieldEndEditingCallBack = () -> Void
-
 public class PhoneNumberTextField: AccountTextField {
     
     let countryCodeView = UIView()
@@ -21,9 +18,6 @@ public class PhoneNumberTextField: AccountTextField {
         }
     }
 
-    var beginEditingCallBack: PhoneNumberTextFieldBeginEditingCallBack?
-    var endEditingCallBack: PhoneNumberTextFieldEndEditingCallBack?
-    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -95,13 +89,4 @@ public class PhoneNumberTextField: AccountTextField {
         }
     }
     
-    public override func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        self.beginEditingCallBack?()
-        return true
-    }
-    
-    
-    public override func textFieldDidEndEditing(_ textField: UITextField) {
-        self.endEditingCallBack?()
-    }
 }
