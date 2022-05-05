@@ -347,17 +347,6 @@
             <point key="canvasLocation" x="137.68115942028987" y="124.55357142857142"/>
         </view>
     </objects>
-    <designables>
-        <designable name="4WY-fs-Tha">
-            <size key="intrinsicContentSize" width="16" height="15"/>
-        </designable>
-        <designable name="ZhR-A9-ylh">
-            <size key="intrinsicContentSize" width="16" height="15"/>
-        </designable>
-        <designable name="jkG-vF-ihh">
-            <size key="intrinsicContentSize" width="30" height="33"/>
-        </designable>
-    </designables>
     <resources>
         <image name="authing_close" width="40" height="40"/>
         <systemColor name="systemBackgroundColor">

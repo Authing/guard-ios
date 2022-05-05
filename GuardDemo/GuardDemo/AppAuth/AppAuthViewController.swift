@@ -31,11 +31,14 @@ class AppAuthViewController: UIViewController {
     }
 
     @IBAction func logout(_ sender: Any) {
+        
         let config = OIDServiceConfiguration(authorizationEndpoint: authorizationEndpoint, tokenEndpoint: tokenEndpoint, issuer:nil, registrationEndpoint: regEndpoint, endSessionEndpoint: endPoint)
-        let logoutRequest = OIDEndSessionRequest(configuration: config, idTokenHint: self.idToken, postLogoutRedirectURL: redirectURL, additionalParameters: ["redirect_uri":"cn.guard://authing.cn/redirect"])
+                
+        let logoutRequest = OIDEndSessionRequest(configuration: config, idTokenHint: idToken, postLogoutRedirectURL: redirectURL, additionalParameters: ["redirect_uri":"cn.guard://authing.cn/redirect"])
+        logoutRequest.setValuesForKeys(["state": nil])
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
+                        
         appDelegate.currentAuthorizationFlow = OIDAuthorizationService.present(logoutRequest, externalUserAgent: OIDExternalUserAgentIOS(presenting: self)!) { resp, err in
             print(resp)
             print(err)
@@ -76,6 +79,7 @@ class AppAuthViewController: UIViewController {
                 self.idToken = authState.lastTokenResponse?.accessToken
                 
                 self.tokenLabel.text = authState.lastTokenResponse?.accessToken
+                
             } else {
                 print("Authorization error: \(error?.localizedDescription ?? "Unknown error")")
             //            self.setAuthState(nil)
