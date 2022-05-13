@@ -54,7 +54,7 @@ open class LoginMethodTab: UIView {
                 gesture.numberOfTapsRequired = 1
                 item.addGestureRecognizer(gesture)
                 if (method == config?.defaultLoginMethod) {
-                    item.gainFocus()
+                    item.gainFocus(lastFocused: nil)
                 } else {
                     item.loseFocus()
                 }
@@ -79,12 +79,13 @@ open class LoginMethodTab: UIView {
     
     @objc private func onClick(sender: UITapGestureRecognizer) {
         Util.setError(self, nil)
+        var lastFocused: MethodTabItem?
         items.forEach { item in
-            if (item == sender.view) {
-                item.gainFocus()
-            } else {
-                item.loseFocus()
+            if (item.isFocused()) {
+                lastFocused = item
             }
+            item.loseFocus()
         }
+        (sender.view as? LoginMethodTabItem)?.gainFocus(lastFocused: lastFocused)
     }
 }

@@ -58,7 +58,7 @@ public class AuthClient: Client {
                 self.createUserInfo(code, message, data) { code, msg, userInfo in
                     if code == 200{
                         authData?.token = userInfo?.token
-                        OIDCClient.oidcInteraction(authData: authData, completion: completion)
+                        OIDCClient().oidcInteraction(authData: authData, completion: completion)
                     }else{
                         completion(code, message, userInfo)
                     }
@@ -79,7 +79,7 @@ public class AuthClient: Client {
                 self.createUserInfo(code, message, data) { code, msg, userInfo in
                     if code == 200{
                         authData?.token = userInfo?.token
-                        OIDCClient.oidcInteraction(authData: authData, completion: completion)
+                        OIDCClient().oidcInteraction(authData: authData, completion: completion)
                     }else{
                         completion(code, message, userInfo)
                     }
@@ -336,7 +336,13 @@ public class AuthClient: Client {
     }
     
     // MARK: Social APIs
+
     public func loginByWechat(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        self.loginByWechat(authData: nil, code, completion: completion)
+    }
+    
+    public func loginByWechat(authData: AuthRequest? = nil, _ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    
         getConfig { config in
             guard config != nil else {
                 completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
@@ -351,7 +357,18 @@ public class AuthClient: Client {
             
             let body: NSDictionary = ["connId" : conId!, "code" : code]
             self.post("/api/v2/ecConn/wechatMobile/authByCode", body) { code, message, data in
-                self.createUserInfo(code, message, data, completion: completion)
+                if authData == nil{
+                    self.createUserInfo(code, message, data, completion: completion)
+                }else{
+                    self.createUserInfo(code, message, data) { code, msg, userInfo in
+                        if code == 200{
+                            authData?.token = userInfo?.token
+                            OIDCClient().oidcInteraction(authData: authData, completion: completion)
+                        }else{
+                            completion(code, message, userInfo)
+                        }
+                    }
+                }
             }
         }
     }
@@ -555,6 +572,10 @@ public class AuthClient: Client {
         }
         if let appid = config?.appId {
             request.addValue(appid, forHTTPHeaderField: "x-authing-app-id")
+        }
+        
+        if let ua = config?.userAgent {
+            request.addValue(ua, forHTTPHeaderField: "User-Agent")
         }
         request.addValue("guard-ios", forHTTPHeaderField: "x-authing-request-from")
         request.addValue(Const.SDK_VERSION, forHTTPHeaderField: "x-authing-sdk-version")

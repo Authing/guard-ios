@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WebKit
 
 public class Config {
     
@@ -117,6 +118,7 @@ public class Config {
     
     // MARK: Request
     var appId: String
+    var userAgent: String?
     var isGettingConfig: Bool = false
     private var configListeners = [ConfigCompletion]()
     
@@ -139,6 +141,7 @@ public class Config {
     private func fireCallback(_ data: NSDictionary?) {
         DispatchQueue.main.async() {
             self.data = data
+            self.userAgent = WKWebView().value(forKey: "userAgent") as? String
             if self.configListeners.count > 0 {
                 ALog.d(Self.self, "firing (\(self.configListeners.count)) callbacks for config")
             }

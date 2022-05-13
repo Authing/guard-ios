@@ -28,7 +28,7 @@ open class WechatLoginButton: SocialLoginButton, WXApiDelegate {
 
         loading?.startAnimating()
 
-        WechatLogin.login(viewController: authViewController ?? UIViewController()) { code, message, userInfo in
+        WechatLogin.login(viewController: authViewController ?? AuthViewController()) { code, message, userInfo in
             DispatchQueue.main.async() {
                 self.loading?.stopAnimating()
                 if (code == 200) {

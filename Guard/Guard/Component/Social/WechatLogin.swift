@@ -13,7 +13,7 @@ open class WechatLogin: NSObject, WXApiDelegate {
     private override init() {}
     
     private var receiveCallBack: Authing.AuthCompletion?
-    
+    private var authViewController: AuthViewController!
     /**
      - 初始化微信配置
      */
@@ -26,7 +26,7 @@ open class WechatLogin: NSObject, WXApiDelegate {
      - Parameters:
         - completion: code, message, userInfo
      */
-    public static func login(viewController:UIViewController, completion: @escaping Authing.AuthCompletion) -> Void {
+    public static func login(viewController: AuthViewController, completion: @escaping Authing.AuthCompletion) -> Void {
         WechatLogin.shared.login(viewController: viewController, completion: completion)
     }
     
@@ -39,12 +39,14 @@ open class WechatLogin: NSObject, WXApiDelegate {
         }
     }
     
-    private func login(viewController:UIViewController, completion: @escaping Authing.AuthCompletion) -> Void {
-        self.sendRequest(viewController: viewController)
+    private func login(viewController: AuthViewController, completion: @escaping Authing.AuthCompletion) -> Void {
+        
+        self.authViewController = viewController
+        self.sendRequest()
         self.receiveCallBack = completion
     }
     
-    @objc func sendRequest(viewController: UIViewController) {
+    @objc func sendRequest() {
         
         let rawValue = Authing.NotifyName.notify_wechat.rawValue
         let name = Notification.Name.init(rawValue: rawValue)
@@ -53,7 +55,7 @@ open class WechatLogin: NSObject, WXApiDelegate {
         let req: SendAuthReq = SendAuthReq()
         req.scope = "snsapi_userinfo"
         req.state = "123"
-        WXApi.sendAuthReq(req, viewController: viewController, delegate: self) { success in
+        WXApi.sendAuthReq(req, viewController: self.authViewController, delegate: self) { success in
             ALog.i(Self.self, "wechat auth req result:\(success)")
         }
     }
@@ -75,8 +77,14 @@ open class WechatLogin: NSObject, WXApiDelegate {
         let authResp = resp as? SendAuthResp
 
         if let code = authResp?.code{
-            AuthClient().loginByWechat(code) { c, message, userInfo in
-                self.receiveCallBack?(c, message, userInfo)
+            if authViewController.authFlow?.authProtocol == .EInHouse{
+                AuthClient().loginByWechat(code) { c, message, userInfo in
+                    self.receiveCallBack?(c, message, userInfo)
+                }
+            } else {
+                OIDCClient().loginByWechat(code) { c, message, userInfo in
+                    self.receiveCallBack?(c, message, userInfo)
+                }
             }
         }else {
             self.receiveCallBack?(Int(resp.errCode), resp.errStr, nil)

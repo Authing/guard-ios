@@ -96,7 +96,7 @@ open class LoginButton: PrimaryButton {
                 }
             }
         }else{
-            OIDCClient.loginByPhoneCode(phoneCountryCode: countryCode, phone: phone, code: code) { code, message, userInfo in
+            OIDCClient().loginByPhoneCode(phoneCountryCode: countryCode, phone: phone, code: code) { code, message, userInfo in
                 self.stopLoading()
                 DispatchQueue.main.async() {
                     self.handleLogin(code, message: message, userInfo: userInfo)
@@ -117,7 +117,7 @@ open class LoginButton: PrimaryButton {
                 }
             }
         }else{
-            OIDCClient.loginByAccount(account: account, password: password) { code,  message,  userInfo in
+            OIDCClient().loginByAccount(account: account, password: password) { code,  message,  userInfo in
                 self.stopLoading()
                 DispatchQueue.main.async() {
                     self.handleLogin(code, message: message, userInfo: userInfo)

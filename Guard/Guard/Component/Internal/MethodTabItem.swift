@@ -11,6 +11,7 @@ public class MethodTabItem: UIView {
     
     private var button: UIButton?
     private var underLine: UIView?
+    private var isFocuse: Bool = false
     var type: Int = 0
     
     public override init(frame: CGRect) {
@@ -42,16 +43,33 @@ public class MethodTabItem: UIView {
         button?.setTitle(text, for: .normal)
     }
     
-    public func gainFocus() {
+    public func gainFocus(lastFocused: MethodTabItem?) {
+        
+        isFocuse = true
+
         button?.setTitleColor(Const.Color_Authing_Main, for: .normal)
         underLine?.backgroundColor = Const.Color_Authing_Main
-        
+                
+        //重复点击不展示动画
+        if self == lastFocused { return }
+
         DispatchQueue.main.async() {
+
+            if let focused = lastFocused {
+                
+                let lastFocusedX: CGFloat = focused.layer.position.x
+                let x: CGFloat = self.layer.position.x
+                self.underLine?.layer.add(self.createBasicAnimation(fromValue: CGPoint(x: 60 - (x - lastFocusedX), y: self.underLine?.frame.origin.y ?? 0),
+                                                                    toValue:CGPoint(x: 60, y: self.underLine?.frame.origin.y ?? 0),
+                                                                    timingFunction: CAMediaTimingFunctionName.linear.rawValue), forKey: "underLine")
+            }
+        
             self.focusGained()
         }
     }
     
     public func loseFocus() {
+        isFocuse = false
         button?.setTitleColor(UIColor(white: 0.8, alpha: 1), for: .normal)
         underLine?.backgroundColor = UIColor(white: 1, alpha: 0)
     }
@@ -59,4 +77,25 @@ public class MethodTabItem: UIView {
     public func focusGained() {
         
     }
+    
+    public func isFocused() -> Bool{
+        return isFocuse
+    }
+}
+
+extension MethodTabItem: CAAnimationDelegate{
+
+    fileprivate func createBasicAnimation (fromValue: CGPoint, toValue: CGPoint, timingFunction: String) -> CABasicAnimation {
+
+        let basicAni = CABasicAnimation()
+        basicAni.keyPath = "position.x"
+        basicAni.fromValue = fromValue
+        basicAni.toValue = toValue
+        basicAni.duration = 0.3;
+        basicAni.repeatCount = 0
+        basicAni.delegate = self
+        basicAni.timingFunction = CAMediaTimingFunction.init(name: CAMediaTimingFunctionName(rawValue: timingFunction))
+        return basicAni;
+    }
+
 }

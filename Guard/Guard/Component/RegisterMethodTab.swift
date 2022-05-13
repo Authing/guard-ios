@@ -53,7 +53,7 @@ open class RegisterMethodTab: UIView {
                 self.addSubview(item)
                 self.items.append(item)
                 if (method == config?.defaultRegisterMethod) {
-                    item.gainFocus()
+                    item.gainFocus(lastFocused: nil)
                 } else {
                     item.loseFocus()
                 }
@@ -75,12 +75,13 @@ open class RegisterMethodTab: UIView {
     
     @objc private func onClick(sender: UITapGestureRecognizer) {
         Util.setError(self, nil)
+        var lastFocused: MethodTabItem?
         items.forEach { item in
-            if (item == sender.view) {
-                item.gainFocus()
-            } else {
-                item.loseFocus()
+            if (item.isFocused()) {
+                lastFocused = item
             }
+            item.loseFocus()
         }
+        (sender.view as? RegisterMethodTabItem)?.gainFocus(lastFocused: lastFocused)
     }
 }
