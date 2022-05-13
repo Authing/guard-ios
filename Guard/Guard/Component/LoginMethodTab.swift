@@ -37,7 +37,8 @@ open class LoginMethodTab: UIView {
             underLine.backgroundColor = UIColor(white: 0.8, alpha: 1)
             
             var i: CGFloat = 0
-            config?.loginMethods?.forEach({ method in
+            
+            for method in config?.loginMethods ?? [] {
                 let frame = CGRect(x: i * LoginMethodTab.ITEM_WIDTH, y: 0, width: LoginMethodTab.ITEM_WIDTH, height: frame.height)
                 let item = LoginMethodTabItem(frame: frame)
                 if (method == "phone-code") {
@@ -50,7 +51,7 @@ open class LoginMethodTab: UIView {
                     item.setText(NSLocalizedString("authing_login_by_email_code", bundle: Bundle(for: Self.self), comment: ""))
                     item.type = 2
                 }else {
-                    return 
+                    continue
                 }
                 let gesture:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.onClick))
                 gesture.numberOfTapsRequired = 1
@@ -64,7 +65,7 @@ open class LoginMethodTab: UIView {
                 self.items.append(item)
                 
                 i += 1
-            })
+            }
             
             self.setItemFrame()
         }

@@ -59,8 +59,10 @@ public class MethodTabItem: UIView {
                 
                 let lastFocusedX: CGFloat = focused.layer.position.x
                 let x: CGFloat = self.layer.position.x
-                self.underLine?.layer.add(self.createBasicAnimation(fromValue: CGPoint(x: 60 - (x - lastFocusedX), y: self.underLine?.frame.origin.y ?? 0),
-                                                                    toValue:CGPoint(x: 60, y: self.underLine?.frame.origin.y ?? 0),
+                let underLinePositionX: CGFloat = self.underLine?.layer.position.x ?? 60
+
+                self.underLine?.layer.add(self.createBasicAnimation(fromValue: underLinePositionX - (x - lastFocusedX),
+                                                                    toValue: underLinePositionX,
                                                                     timingFunction: CAMediaTimingFunctionName.linear.rawValue), forKey: "underLine")
             }
         
@@ -85,7 +87,7 @@ public class MethodTabItem: UIView {
 
 extension MethodTabItem: CAAnimationDelegate{
 
-    fileprivate func createBasicAnimation (fromValue: CGPoint, toValue: CGPoint, timingFunction: String) -> CABasicAnimation {
+    fileprivate func createBasicAnimation (fromValue: Double, toValue: Double, timingFunction: String) -> CABasicAnimation {
 
         let basicAni = CABasicAnimation()
         basicAni.keyPath = "position.x"
