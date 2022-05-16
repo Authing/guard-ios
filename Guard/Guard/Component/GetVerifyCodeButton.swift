@@ -53,15 +53,23 @@ open class GetVerifyCodeButton: LoadingButton {
             startLoading()
             Util.setError(self, "")
             let phoneNumberTF: PhoneNumberTextField? = Util.findView(self, viewClass: PhoneNumberTextField.self)
+            phoneNumberTF?.textChangeCallBack = {
+                CountdownTimerManager.shared.invalidate()
+            }
             
+
             Util.getAuthClient(self).sendSms(phone: phone, phoneCountryCode: phoneNumberTF?.countryCode) { code, message in
                 self.stopLoading()
                 if (code != 200) {
                     Util.setError(self, message)
                 } else {
                     ALog.i(Self.self, "send sms success")
+                    DispatchQueue.main.async() {
+                        CountdownTimerManager.shared.createCountdownTimer(button: self)
+                    }
                 }
             }
         }
     }
 }
+

@@ -143,14 +143,15 @@
 		7EF66C8B277D5A7100FCBBEB /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C8A277D5A7100FCBBEB /* Validator.swift */; };
 		7EF66C8D277DA96200FCBBEB /* GetEmailCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C8C277DA96200FCBBEB /* GetEmailCodeButton.swift */; };
 		A84B62FC27F82A2B006650CC /* CountryCodeSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84B62FB27F82A2B006650CC /* CountryCodeSearchBar.swift */; };
+		A850622C283237FA00F97EBD /* CountdownTimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A850622B283237FA00F97EBD /* CountdownTimerManager.swift */; };
+		A8541D5827EB4F9400355EC5 /* WeComLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8541D5727EB4F9400355EC5 /* WeComLoginButton.swift */; };
+		A8541D5A27EB51E800355EC5 /* Notification+Authing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8541D5927EB51E800355EC5 /* Notification+Authing.swift */; };
 		A8BEB6BA280FF70B0068A2F5 /* WechatLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BEB6B9280FF70B0068A2F5 /* WechatLogin.swift */; };
 		A8D38D1627F1DB4A00942707 /* CountryCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D38D1527F1DB4A00942707 /* CountryCodeViewController.swift */; };
 		A8D38D1A27F1E44700942707 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D38D1827F1E44700942707 /* CountryTableViewCell.swift */; };
 		A8D38D1D27F1E4FF00942707 /* country.json in Resources */ = {isa = PBXBuildFile; fileRef = A8D38D1C27F1E4FF00942707 /* country.json */; };
 		A8D38D2127F2B02D00942707 /* AuthingCountryCode.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D38D2027F2B02D00942707 /* AuthingCountryCode.xib */; };
 		A8D38D2327F2B34100942707 /* CountryCodeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D38D2227F2B34100942707 /* CountryCodeTableView.swift */; };
-		A8541D5827EB4F9400355EC5 /* WeComLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8541D5727EB4F9400355EC5 /* WeComLoginButton.swift */; };
-		A8541D5A27EB51E800355EC5 /* Notification+Authing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8541D5927EB51E800355EC5 /* Notification+Authing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -288,14 +289,15 @@
 		7EF66C8A277D5A7100FCBBEB /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		7EF66C8C277DA96200FCBBEB /* GetEmailCodeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEmailCodeButton.swift; sourceTree = "<group>"; };
 		A84B62FB27F82A2B006650CC /* CountryCodeSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCodeSearchBar.swift; sourceTree = "<group>"; };
+		A850622B283237FA00F97EBD /* CountdownTimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimerManager.swift; sourceTree = "<group>"; };
+		A8541D5727EB4F9400355EC5 /* WeComLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeComLoginButton.swift; sourceTree = "<group>"; };
+		A8541D5927EB51E800355EC5 /* Notification+Authing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notification+Authing.swift"; sourceTree = "<group>"; };
 		A8BEB6B9280FF70B0068A2F5 /* WechatLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WechatLogin.swift; sourceTree = "<group>"; };
 		A8D38D1527F1DB4A00942707 /* CountryCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeViewController.swift; sourceTree = "<group>"; };
 		A8D38D1827F1E44700942707 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 		A8D38D1C27F1E4FF00942707 /* country.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = country.json; sourceTree = "<group>"; };
 		A8D38D2027F2B02D00942707 /* AuthingCountryCode.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingCountryCode.xib; sourceTree = "<group>"; };
 		A8D38D2227F2B34100942707 /* CountryCodeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeTableView.swift; sourceTree = "<group>"; };
-		A8541D5727EB4F9400355EC5 /* WeComLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeComLoginButton.swift; sourceTree = "<group>"; };
-		A8541D5927EB51E800355EC5 /* Notification+Authing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notification+Authing.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -642,6 +644,7 @@
 				7EF66C55277B157100FCBBEB /* PrimaryButton.swift */,
 				7EF66C62277BFD5B00FCBBEB /* GoSomewhereButton.swift */,
 				7EF66C74277C37CE00FCBBEB /* BasePasswordTextField.swift */,
+				A850622B283237FA00F97EBD /* CountdownTimerManager.swift */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -898,6 +901,7 @@
 				7EDFB6C327C3AABB00B77DEE /* UserInfoCompleteContentView.swift in Sources */,
 				7EF66C75277C37CE00FCBBEB /* BasePasswordTextField.swift in Sources */,
 				7EF66C6D277C1C6E00FCBBEB /* RegisterMethodTabItem.swift in Sources */,
+				A850622C283237FA00F97EBD /* CountdownTimerManager.swift in Sources */,
 				7EF66C61277BFD0900FCBBEB /* GoRegisterButton.swift in Sources */,
 				7EF66C56277B157100FCBBEB /* PrimaryButton.swift in Sources */,
 				7EF66C58277B3F8900FCBBEB /* TextFieldBorder.swift in Sources */,

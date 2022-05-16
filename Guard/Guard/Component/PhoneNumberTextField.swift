@@ -7,6 +7,8 @@
 
 import UIKit
 
+typealias PhoneNumberTextFieldTextChangeBlock = () -> Void
+
 public class PhoneNumberTextField: AccountTextField {
     
     let countryCodeView = UIView()
@@ -17,6 +19,8 @@ public class PhoneNumberTextField: AccountTextField {
             countryCodeButton.titleEdgeInsets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: CGFloat(5 * countryCode.count))
         }
     }
+    
+    var textChangeCallBack: PhoneNumberTextFieldTextChangeBlock?
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -79,6 +83,11 @@ public class PhoneNumberTextField: AccountTextField {
         if (tfCode != nil) {
             tfCode?.becomeFirstResponder()
         }
+        return true
+    }
+    
+    private func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        self.textChangeCallBack?()
         return true
     }
     
