@@ -152,6 +152,7 @@
 		A8D38D1D27F1E4FF00942707 /* country.json in Resources */ = {isa = PBXBuildFile; fileRef = A8D38D1C27F1E4FF00942707 /* country.json */; };
 		A8D38D2127F2B02D00942707 /* AuthingCountryCode.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D38D2027F2B02D00942707 /* AuthingCountryCode.xib */; };
 		A8D38D2327F2B34100942707 /* CountryCodeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D38D2227F2B34100942707 /* CountryCodeTableView.swift */; };
+		A8E1F10A28350590004B1E76 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E1F10928350590004B1E76 /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -298,6 +299,7 @@
 		A8D38D1C27F1E4FF00942707 /* country.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = country.json; sourceTree = "<group>"; };
 		A8D38D2027F2B02D00942707 /* AuthingCountryCode.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingCountryCode.xib; sourceTree = "<group>"; };
 		A8D38D2227F2B34100942707 /* CountryCodeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeTableView.swift; sourceTree = "<group>"; };
+		A8E1F10928350590004B1E76 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -420,6 +422,7 @@
 				7E87A1C127CDBAEF00E52D5A /* LogoutButton.swift */,
 				7EB5CE5527D1EE3200BE3252 /* DeleteAccountButton.swift */,
 				7E866451280E4F9B000DEFD4 /* GoNextButton.swift */,
+				A8E1F10928350590004B1E76 /* LoadingView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -861,6 +864,7 @@
 				7E02F46927950C57007FA048 /* UserInfoCompleteFieldForm.swift in Sources */,
 				7E87A1CA27CF603B00E52D5A /* OIDCClient.swift in Sources */,
 				7E87A1C827CF52C100E52D5A /* AuthRequest.swift in Sources */,
+				A8E1F10A28350590004B1E76 /* LoadingView.swift in Sources */,
 				7ED434E0277980B100893EDD /* ErrorLabel.swift in Sources */,
 				7EB32816278D5DD4008639AA /* FramedVerifyCodeTextField.swift in Sources */,
 				7E75668B276746AF00C3872F /* AppLogo.swift in Sources */,

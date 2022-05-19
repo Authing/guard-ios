@@ -40,10 +40,16 @@ open class AuthViewController: UIViewController {
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         
+        let loading = LoadingView.startAnimation(viewController: self)
+        Util.getConfig(self.view) { config in
+//            loading.removeFromSuperview()
+        }
+        
         let tf: AccountTextField? = Util.findView(view, viewClass: AccountTextField.self)
         if (tf != nil) {
             tf?.syncData()
         }
+        
     }
 
     @IBAction func onCloseClick(_ sender: UIButton, forEvent event: UIEvent) {

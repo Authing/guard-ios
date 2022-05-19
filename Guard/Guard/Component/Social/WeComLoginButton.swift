@@ -8,7 +8,7 @@
 import Foundation
 
 open class WeComLoginButton: SocialLoginButton {
-
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()

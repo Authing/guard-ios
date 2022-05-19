@@ -44,6 +44,8 @@ public class CountdownTimerManager: NSObject{
             self.verfyButton.isEnabled = true
             let text: String = NSLocalizedString("authing_get_verify_code", bundle: Bundle(for: Self.self), comment: "")
             self.verfyButton.setTitle(text, for: .normal)
+            
+            NotificationCenter.default.removeObserver(self)
         }
     }
                                                
