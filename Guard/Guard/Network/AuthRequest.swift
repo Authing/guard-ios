@@ -10,6 +10,7 @@ import CommonCrypto
 
 open class AuthRequest {
     public var client_id: String
+    public var client_secret: String? = nil
     public var redirect_uri: String
     public var response_type: String
     public var scope: String

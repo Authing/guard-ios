@@ -239,13 +239,17 @@ public class OIDCClient: NSObject {
     }
     
     public func authByCode(code: String, authRequest: AuthRequest, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        let body = "client_id="+Authing.getAppId()
+        var body = "client_id="+Authing.getAppId()
                     + "&grant_type=authorization_code"
                     + "&code=" + code
                     + "&scope=" + authRequest.scope
                     + "&prompt=" + "consent"
                     + "&code_verifier=" + authRequest.codeVerifier
                     + "&redirect_uri=" + authRequest.redirect_uri
+        
+        if let clientSecret = authRequest.client_secret {
+            body = body + "&client_secret=" + clientSecret
+        }
         request(userInfo: nil, endPoint: "/oidc/token", method: "POST", body: body) { code, message, data in
             if (code == 200) {
                 AuthClient().createUserInfo(code, message, data) { code, message, userInfo in
