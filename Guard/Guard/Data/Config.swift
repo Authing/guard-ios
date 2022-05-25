@@ -61,43 +61,43 @@ public class Config {
         }
     }
     
-    var userPoolId: String? {
+    open var userPoolId: String? {
         get { return data?["userPoolId"] as? String }
     }
-    var identifier: String? {
+    open var identifier: String? {
         get { return data?["identifier"] as? String }
     }
-    var name: String? {
+    open var name: String? {
         get { return data?["name"] as? String }
     }
-    var logo: String? {
+    open var logo: String? {
         get { return data?["logo"] as? String }
     }
-    var userpoolLogo: String? {
+    open var userpoolLogo: String? {
         get { return data?["userpoolLogo"] as? String }
     }
     
-    var verifyCodeLength: Int? {
+    open var verifyCodeLength: Int? {
         get { return data?["verifyCodeLength"] as? Int }
     }
     
-    var requestHostname: String? {
+    open var requestHostname: String? {
         get { return data?["requestHostname"] as? String }
     }
     
     public func getLogoUrl() -> String? {
         return logo ?? userpoolLogo
     }
-    var loginMethods: [String]?
-    var defaultLoginMethod: String?
-    var enabledLoginMethods: [String]?
-    var registerMethods: [String]?
-    var defaultRegisterMethod: String?
-    var passwordStrength: Int? {
+    open var loginMethods: [String]?
+    open var defaultLoginMethod: String?
+    open var enabledLoginMethods: [String]?
+    open var registerMethods: [String]?
+    open var defaultRegisterMethod: String?
+    open var passwordStrength: Int? {
         get { return data?["passwordStrength"] as? Int }
     }
     
-    var socialConnections: [NSDictionary]?
+    open var socialConnections: [NSDictionary]?
     public func getConnectionId(type: String) -> String? {
         let connections: [NSDictionary]? = data?["ecConnections"] as? [NSDictionary]
         var cid: String? = nil
@@ -109,16 +109,16 @@ public class Config {
         return cid
     }
     
-    var completeFieldsPlace: [String]?
-    var extendedFields: [NSDictionary]? // user info complete
-    var agreements: [NSDictionary]?
-    var redirectUris: [String]?
+    open var completeFieldsPlace: [String]?
+    open var extendedFields: [NSDictionary]? // user info complete
+    open var agreements: [NSDictionary]?
+    open var redirectUris: [String]?
     
-    var internationalSmsConfigEnable: Bool?
+    open var internationalSmsConfigEnable: Bool?
     
     // MARK: Request
-    var appId: String
-    var userAgent: String?
+    open var appId: String
+    open var userAgent: String?
     var isGettingConfig: Bool = false
     private var configListeners = [ConfigCompletion]()
     
