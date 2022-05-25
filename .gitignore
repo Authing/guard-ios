@@ -9,3 +9,4 @@ OneAuth/Frameworks
 .swiftpm
 Guard/build
 guard-ios.xcworkspace/xcuserdata
+WeCom/WeCom.xcodeproj/xcuserdata
