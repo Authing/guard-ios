@@ -155,7 +155,7 @@ class WebViewController: AuthViewController, WKNavigationDelegate, WKScriptMessa
                     }
                 };
                 xhr.onerror = function(e) {
-                    console.log('error=' + JSON.stringify(xhr));
+                    console.log('error=' + JSON.stringify(request));
                 };
                 xhr.onreadystatechange = function(e) {
                     if(xhr.readyState == 4 && xhr.status == 200) {
@@ -169,9 +169,7 @@ class WebViewController: AuthViewController, WKNavigationDelegate, WKScriptMessa
         """
         
         print(js)
-//        let script = WKUserScript.init(source: js, injectionTime: WKUserScriptInjectionTime.atDocumentStart, forMainFrameOnly: false)
-//        self.webView?.configuration.userContentController.addUserScript(script)
-//
+
         self.webView?.evaluateJavaScript(js, completionHandler: nil)
     }
     
