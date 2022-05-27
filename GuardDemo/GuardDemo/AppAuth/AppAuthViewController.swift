@@ -18,7 +18,7 @@ class AppAuthViewController: UIViewController {
     let regEndpoint = URL(string: "https://finclip.authing.cn/oidc/reg")!
     let redirectURL = URL(string: "cn.guard://authing.cn/redirect")!
     let endPoint = URL(string: "https://oiv3h3.authing.cn/login/profile/logout")!
-    var idToken: String!
+    var idToken: String = ""
     private var authState: OIDAuthState?
 
     override func viewDidLoad() {
@@ -76,7 +76,7 @@ class AppAuthViewController: UIViewController {
                 
                 print("ID Token: " +
                       "\(authState.lastTokenResponse?.idToken ?? "nil")")
-                self.idToken = authState.lastTokenResponse?.accessToken
+                self.idToken = authState.lastTokenResponse?.accessToken ?? ""
                 
                 self.tokenLabel.text = authState.lastTokenResponse?.accessToken
                 

@@ -42,6 +42,8 @@ public class AuthFlow {
     public var appBundle: AppBundle? = nil
     public var config: Config? = nil
 
+    public var skipConsent: Bool = false
+    
     public init() {
     }
     
@@ -183,6 +185,7 @@ public class AuthFlow {
         
         copy.appBundle = self.appBundle
         copy.config = self.config
+        copy.skipConsent = self.skipConsent
         return copy
     }
     

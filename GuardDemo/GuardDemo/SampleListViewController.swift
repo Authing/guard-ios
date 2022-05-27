@@ -60,6 +60,7 @@ class SampleListViewController: UITableViewController {
             return
         case "WebView":
             let vc = WebViewController()
+            vc.authFlow?.skipConsent = true
             self.navigationController?.pushViewController(vc, animated: true)
             return
         case "AppAuth":
