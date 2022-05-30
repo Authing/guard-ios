@@ -66,10 +66,15 @@ open class UserInfo {
     public var firstTimeLoginToken: String? = nil
 
     open func parse(data: NSDictionary?) {
+        var userData = data
+        if let entity = data?["userEntity"] as? NSDictionary {
+            userData = entity.mutableCopy() as? NSMutableDictionary
+        }
+        
         if (raw == nil) {
-            raw = data?.mutableCopy() as? NSMutableDictionary
+            raw = userData?.mutableCopy() as? NSMutableDictionary
         } else {
-            if let dic = data {
+            if let dic = userData {
                 for (key, value) in dic {
                     if let k = key as? String {
                         raw!.setValue(value, forKey: k)

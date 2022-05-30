@@ -33,7 +33,7 @@ open class AppleLoginButton: SocialLoginButton, ASAuthorizationControllerDelegat
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
         authorizationController.delegate = self
         authorizationController.performRequests()
-        loading?.startAnimating()
+        startLoading()
     }
     
     public func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
@@ -41,7 +41,7 @@ open class AppleLoginButton: SocialLoginButton, ASAuthorizationControllerDelegat
             if let authorizationCode = String(bytes: appleIDCredential.authorizationCode!, encoding: .utf8) {
                 Util.getAuthClient(self).loginByApple(authorizationCode) { code, message, userInfo in
                     DispatchQueue.main.async() {
-                        self.loading?.stopAnimating()
+                        self.stopLoading()
                         if (code == 200) {
                             if let vc = self.authViewController?.navigationController as? AuthNavigationController {
                                 vc.complete(code, message, userInfo)
@@ -58,7 +58,7 @@ open class AppleLoginButton: SocialLoginButton, ASAuthorizationControllerDelegat
     }
     
     public func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        self.loading?.stopAnimating()
+        stopLoading()
         if let err = error as? ASAuthorizationError {
             switch err.code {
                 case .canceled:

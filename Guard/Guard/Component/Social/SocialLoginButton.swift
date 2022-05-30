@@ -10,6 +10,8 @@ import UIKit
 open class SocialLoginButton: Button {
     
     var loading: UIActivityIndicatorView? = nil
+    var isLoading: Bool = false
+    var angle: CGFloat = 0
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,38 +24,53 @@ open class SocialLoginButton: Button {
     }
 
     private func setup() {
-        loading = UIActivityIndicatorView()
-        loading?.stopAnimating()
-        addSubview(loading!)
-        
-        loading?.translatesAutoresizingMaskIntoConstraints = false
-        loading?.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
-        loading?.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
-        loading?.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
-        loading?.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
+//        loading = UIActivityIndicatorView()
+//        loading?.stopAnimating()
+//        addSubview(loading!)
+//
+//        loading?.translatesAutoresizingMaskIntoConstraints = false
+//        loading?.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
+//        loading?.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
+//        loading?.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
+//        loading?.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
     }
     
-//    public override func draw(_ rect: CGRect) {
-//        // get current context
-//        let ctx = UIGraphicsGetCurrentContext()
-//
-//        // radius is the half the frame's width or height (whichever is smallest)
-//        let radius = min(frame.size.width, frame.size.height) * 0.5
-//
-//        // center of the view
-//        let viewCenter = CGPoint(x: bounds.size.width * 0.5, y: bounds.size.height * 0.5)
-//
-//        let color = UIColor(white: 0.9, alpha: 1)
-//        ctx?.setStrokeColor(color.cgColor)
-//
-//        // move to the center of the pie chart
-//        ctx?.move(to: viewCenter)
-//
-//        // add arc from the center for each segment (anticlockwise is specified for the arc, but as the view flips the context, it will produce a clockwise arc)
-//        ctx?.addArc(center: viewCenter, radius: radius, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: false)
-//
-//        ctx?.setLineWidth(Const.ONEPX)
-//        ctx?.setAllowsAntialiasing(true)
-//        ctx?.strokeEllipse(in: rect.insetBy(dx: 1, dy: 1))
-//    }
+    public func startLoading() {
+        isLoading = true
+        setNeedsDisplay()
+    }
+    
+    public func stopLoading() {
+        isLoading = false
+    }
+    
+    public override func draw(_ rect: CGRect) {
+        if isLoading {
+            // get current context
+            let ctx = UIGraphicsGetCurrentContext()
+
+            // radius is the half the frame's width or height (whichever is smallest)
+            let radius = min(frame.size.width, frame.size.height) * 0.5 - 1
+
+            // center of the view
+            let viewCenter = CGPoint(x: bounds.size.width * 0.5, y: bounds.size.height * 0.5)
+
+            let color = Const.Color_Authing_Main
+            ctx?.setStrokeColor(color.cgColor)
+
+            let trackPath = UIBezierPath(arcCenter: viewCenter, radius: radius, startAngle: angle, endAngle: angle + CGFloat.pi / 2, clockwise: true)
+            trackPath.lineWidth = 1
+            Const.Color_Authing_Main.setStroke()
+            trackPath.stroke()
+            
+            angle = angle + 5 * CGFloat.pi / 180
+            if angle >= CGFloat.pi*2 {
+                angle = 0
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.016) {
+                self.setNeedsDisplay()
+            }
+        }
+    }
 }

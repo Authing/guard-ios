@@ -26,11 +26,11 @@ open class WechatLoginButton: SocialLoginButton, WXApiDelegate {
     
     @objc private func onClick(sender: UIButton) {
 
-        loading?.startAnimating()
+        startLoading()
 
         WechatLogin.login(viewController: authViewController ?? AuthViewController()) { code, message, userInfo in
             DispatchQueue.main.async() {
-                self.loading?.stopAnimating()
+                self.stopLoading()
                 if (code == 200) {
                     if let vc = self.authViewController?.navigationController as? AuthNavigationController {
                         vc.complete(code, message, userInfo)
