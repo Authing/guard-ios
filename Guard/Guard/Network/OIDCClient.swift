@@ -14,17 +14,19 @@ public class OIDCClient: NSObject {
             if (config == nil) {
                 completion(nil)
             } else {
-                let url = "\(Authing.getSchema())://\(Util.getHost(config!))/oidc/auth?_authing_lang=\(Util.getLangHeader())"
-                + "&app_id=" + authRequest.client_id
+                
+                let secret = authRequest.client_secret
+                
+                let url = "\(Authing.getSchema())://\(Util.getHost(config!))/oidc/auth?"
+                + "nonce=" + authRequest.nonce
+                + "&scope=" + authRequest.scope.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
                 + "&client_id=" + authRequest.client_id
-                + "&nonce=" + authRequest.nonce
                 + "&redirect_uri=" + authRequest.redirect_uri
                 + "&response_type=" + authRequest.response_type
-                + "&scope=" + authRequest.scope.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
                 + "&prompt=consent"
                 + "&state=" + authRequest.state
-                + "&code_challenge=" + authRequest.codeChallenge!
-                + "&code_challenge_method=S256"
+                + (secret == nil ? "&code_challenge=" + authRequest.codeChallenge! + "&code_challenge_method=S256" : "");
+
                 completion(URL(string: url))
             }
         }
@@ -239,17 +241,18 @@ public class OIDCClient: NSObject {
     }
     
     public func authByCode(code: String, authRequest: AuthRequest, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        var body = "client_id="+Authing.getAppId()
+        
+        let secret = authRequest.client_secret
+        let secretStr = (secret == nil ? "&code_verifier=" + authRequest.codeVerifier : "&client_secret=" + (secret ?? ""))
+
+        let body = "client_id="+Authing.getAppId()
                     + "&grant_type=authorization_code"
                     + "&code=" + code
                     + "&scope=" + authRequest.scope
                     + "&prompt=" + "consent"
-                    + "&code_verifier=" + authRequest.codeVerifier
+                    + secretStr
                     + "&redirect_uri=" + authRequest.redirect_uri
         
-        if let clientSecret = authRequest.client_secret {
-            body = body + "&client_secret=" + clientSecret
-        }
         request(userInfo: nil, endPoint: "/oidc/token", method: "POST", body: body) { code, message, data in
             if (code == 200) {
                 AuthClient().createUserInfo(code, message, data) { code, message, userInfo in
