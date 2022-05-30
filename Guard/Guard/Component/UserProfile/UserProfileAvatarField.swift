@@ -49,12 +49,14 @@ open class UserProfileAvatarField: UserProfileField, UINavigationControllerDeleg
                     if let data = try? Data(contentsOf: url) {
                         DispatchQueue.main.async() { [weak self] in
                             self?.imageView.image = UIImage(data: data)
-                            self?.loading.stopAnimating()
                         }
                     }
                 }
             }
+        } else {
+            imageView.image = UIImage(named: "authing_default_user_avatar", in: Bundle(for: Self.self), compatibleWith: nil)
         }
+        loading.stopAnimating()
         self.layoutSubviews()
     }
     
