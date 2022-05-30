@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -38,9 +38,36 @@
                         <constraint firstAttribute="height" constant="64" id="l8H-BD-BgL"/>
                     </constraints>
                 </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yHd-Dq-NPR">
+                    <rect key="frame" x="205" y="158" width="4" height="24"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHE-LW-cSI" customClass="AppName" customModule="Guard" customModuleProvider="target">
+                            <rect key="frame" x="4" y="0.0" width="0.0" height="24"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxM-Eg-q9m">
+                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="24"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="WHE-LW-cSI" secondAttribute="bottom" id="HdN-HT-wPn"/>
+                        <constraint firstAttribute="height" constant="24" id="KNG-3L-C6c"/>
+                        <constraint firstItem="uxM-Eg-q9m" firstAttribute="top" secondItem="yHd-Dq-NPR" secondAttribute="top" id="iXH-Jh-4Er"/>
+                        <constraint firstItem="WHE-LW-cSI" firstAttribute="leading" secondItem="uxM-Eg-q9m" secondAttribute="trailing" constant="4" id="qc1-3V-Als"/>
+                        <constraint firstAttribute="trailing" secondItem="WHE-LW-cSI" secondAttribute="trailing" id="sfw-1l-udW"/>
+                        <constraint firstAttribute="bottom" secondItem="uxM-Eg-q9m" secondAttribute="bottom" id="tQA-8z-RXY"/>
+                        <constraint firstItem="WHE-LW-cSI" firstAttribute="top" secondItem="yHd-Dq-NPR" secondAttribute="top" id="v8Y-ed-G2X"/>
+                        <constraint firstItem="uxM-Eg-q9m" firstAttribute="leading" secondItem="yHd-Dq-NPR" secondAttribute="leading" id="yEv-Fj-KOJ"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="txj-YQ-JVh" customClass="LoginMethodTab" customModule="Guard" customModuleProvider="target">
                     <rect key="frame" x="20" y="198" width="374" height="48"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="Joi-M4-vcQ"/>
                     </constraints>
@@ -66,28 +93,15 @@
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4WY-fs-Tha" customClass="GetVerifyCodeButton" customModule="Guard" customModuleProvider="target">
                             <rect key="frame" x="358" y="60" width="16" height="44"/>
-                            <color key="backgroundColor" red="0.92549019610000005" green="0.94117647059999998" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="WG2-Og-WGl"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="color" keyPath="loadingColor">
-                                    <color key="value" red="0.224" green="0.41599999999999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="loadingLocation">
-                                    <integer key="value" value="1"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="4"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
-                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                    <color key="value" red="0.224" green="0.41599999999999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
+                            <state key="normal">
+                                <color key="titleColor" systemColor="labelColor"/>
+                            </state>
                         </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -165,28 +179,15 @@
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZhR-A9-ylh" customClass="GetEmailVerifyCodeButton" customModule="Guard" customModuleProvider="target">
                             <rect key="frame" x="358" y="60" width="16" height="44"/>
-                            <color key="backgroundColor" red="0.92549019610000005" green="0.94117647059999998" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="x1X-o2-tRn"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="color" keyPath="loadingColor">
-                                    <color key="value" red="0.224" green="0.41599999999999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="loadingLocation">
-                                    <integer key="value" value="1"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="4"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
-                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                    <color key="value" red="0.224" green="0.41599999999999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
+                            <state key="normal">
+                                <color key="titleColor" systemColor="labelColor"/>
+                            </state>
                         </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -270,34 +271,6 @@
                         <constraint firstAttribute="height" constant="44" id="7P3-i0-bKN"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yHd-Dq-NPR">
-                    <rect key="frame" x="205" y="158" width="4" height="24"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHE-LW-cSI" customClass="AppName" customModule="Guard" customModuleProvider="target">
-                            <rect key="frame" x="4" y="0.0" width="0.0" height="24"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxM-Eg-q9m">
-                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="24"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstAttribute="bottom" secondItem="WHE-LW-cSI" secondAttribute="bottom" id="HdN-HT-wPn"/>
-                        <constraint firstAttribute="height" constant="24" id="KNG-3L-C6c"/>
-                        <constraint firstItem="uxM-Eg-q9m" firstAttribute="top" secondItem="yHd-Dq-NPR" secondAttribute="top" id="iXH-Jh-4Er"/>
-                        <constraint firstItem="WHE-LW-cSI" firstAttribute="leading" secondItem="uxM-Eg-q9m" secondAttribute="trailing" constant="4" id="qc1-3V-Als"/>
-                        <constraint firstAttribute="trailing" secondItem="WHE-LW-cSI" secondAttribute="trailing" id="sfw-1l-udW"/>
-                        <constraint firstAttribute="bottom" secondItem="uxM-Eg-q9m" secondAttribute="bottom" id="tQA-8z-RXY"/>
-                        <constraint firstItem="WHE-LW-cSI" firstAttribute="top" secondItem="yHd-Dq-NPR" secondAttribute="top" id="v8Y-ed-G2X"/>
-                        <constraint firstItem="uxM-Eg-q9m" firstAttribute="leading" secondItem="yHd-Dq-NPR" secondAttribute="leading" id="yEv-Fj-KOJ"/>
-                    </constraints>
-                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -346,6 +319,9 @@
     </objects>
     <resources>
         <image name="authing_close" width="40" height="40"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -20,6 +20,7 @@ public class Const {
     public static let Color_Error = UIColor(red: 1, green: 0.31, blue: 0.31, alpha: 1)
     public static let Color_Asterisk = UIColor(red: 0.514, green: 0.094, blue: 0.153, alpha: 1)
     public static let Color_BG_Gray = UIColor(red: 0.937, green: 0.937, blue: 0.937, alpha: 1)
+    public static let Color_Border_Gray = UIColor(red: 0.828, green: 0.856, blue: 0.888, alpha: 1)
     
     public static let ONEPX = 1 / UIScreen.main.scale
     

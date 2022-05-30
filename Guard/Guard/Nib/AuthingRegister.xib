@@ -25,9 +25,36 @@
                         <constraint firstAttribute="height" constant="64" id="uvS-Ak-wNm"/>
                     </constraints>
                 </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Chw-u9-sLh">
+                    <rect key="frame" x="205" y="160" width="4" height="24"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bg-kp-aeY">
+                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="24"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ch-at-W3f" customClass="AppName" customModule="Guard" customModuleProvider="target">
+                            <rect key="frame" x="4" y="0.0" width="0.0" height="24"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="1bg-kp-aeY" firstAttribute="leading" secondItem="Chw-u9-sLh" secondAttribute="leading" id="7S3-Jw-TKr"/>
+                        <constraint firstAttribute="bottom" secondItem="6Ch-at-W3f" secondAttribute="bottom" id="RJh-Jx-0gt"/>
+                        <constraint firstItem="6Ch-at-W3f" firstAttribute="leading" secondItem="1bg-kp-aeY" secondAttribute="trailing" constant="4" id="TKS-TK-hrs"/>
+                        <constraint firstAttribute="bottom" secondItem="1bg-kp-aeY" secondAttribute="bottom" id="Vax-0p-jr4"/>
+                        <constraint firstItem="1bg-kp-aeY" firstAttribute="top" secondItem="Chw-u9-sLh" secondAttribute="top" id="gXe-Rz-c6b"/>
+                        <constraint firstItem="6Ch-at-W3f" firstAttribute="top" secondItem="Chw-u9-sLh" secondAttribute="top" id="lpM-Mw-pOG"/>
+                        <constraint firstAttribute="trailing" secondItem="6Ch-at-W3f" secondAttribute="trailing" id="skj-K7-bEe"/>
+                        <constraint firstAttribute="height" constant="24" id="uTr-FH-vJe"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vB5-a9-UJW" customClass="RegisterMethodTab" customModule="Guard" customModuleProvider="target">
                     <rect key="frame" x="20" y="200" width="374" height="48"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="olU-HD-SVb"/>
                     </constraints>
@@ -53,28 +80,15 @@
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oj4-7h-ssi" customClass="GetVerifyCodeButton" customModule="Guard" customModuleProvider="target">
                             <rect key="frame" x="358" y="60" width="16" height="44"/>
-                            <color key="backgroundColor" red="0.92549019610000005" green="0.94117647059999998" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="Meq-G7-TbC"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="color" keyPath="loadingColor">
-                                    <color key="value" red="0.224" green="0.41599999999999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="loadingLocation">
-                                    <integer key="value" value="1"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                    <color key="value" red="0.224" green="0.41599999999999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="4"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
-                            </userDefinedRuntimeAttributes>
+                            <state key="normal">
+                                <color key="titleColor" systemColor="labelColor"/>
+                            </state>
                         </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -173,34 +187,6 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                 </button>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Chw-u9-sLh">
-                    <rect key="frame" x="205" y="160" width="4" height="24"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bg-kp-aeY">
-                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="24"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ch-at-W3f" customClass="AppName" customModule="Guard" customModuleProvider="target">
-                            <rect key="frame" x="4" y="0.0" width="0.0" height="24"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstItem="1bg-kp-aeY" firstAttribute="leading" secondItem="Chw-u9-sLh" secondAttribute="leading" id="7S3-Jw-TKr"/>
-                        <constraint firstAttribute="bottom" secondItem="6Ch-at-W3f" secondAttribute="bottom" id="RJh-Jx-0gt"/>
-                        <constraint firstItem="6Ch-at-W3f" firstAttribute="leading" secondItem="1bg-kp-aeY" secondAttribute="trailing" constant="4" id="TKS-TK-hrs"/>
-                        <constraint firstAttribute="bottom" secondItem="1bg-kp-aeY" secondAttribute="bottom" id="Vax-0p-jr4"/>
-                        <constraint firstItem="1bg-kp-aeY" firstAttribute="top" secondItem="Chw-u9-sLh" secondAttribute="top" id="gXe-Rz-c6b"/>
-                        <constraint firstItem="6Ch-at-W3f" firstAttribute="top" secondItem="Chw-u9-sLh" secondAttribute="top" id="lpM-Mw-pOG"/>
-                        <constraint firstAttribute="trailing" secondItem="6Ch-at-W3f" secondAttribute="trailing" id="skj-K7-bEe"/>
-                        <constraint firstAttribute="height" constant="24" id="uTr-FH-vJe"/>
-                    </constraints>
-                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="t0S-i3-gzY"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -234,6 +220,9 @@
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
     </objects>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

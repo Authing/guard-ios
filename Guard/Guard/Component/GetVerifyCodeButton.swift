@@ -42,8 +42,8 @@ open class GetVerifyCodeButton: LoadingButton {
         }
         
         layer.cornerRadius = 4
-        layer.borderWidth = 1/UIScreen.main.scale
-        layer.borderColor = Const.Color_Authing_Main.cgColor
+        layer.borderWidth = 1
+        layer.borderColor = Const.Color_Border_Gray.cgColor
         
         self.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
     }
