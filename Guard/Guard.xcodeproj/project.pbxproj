@@ -25,6 +25,7 @@
 		7E02F46927950C57007FA048 /* UserInfoCompleteFieldForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02F46827950C57007FA048 /* UserInfoCompleteFieldForm.swift */; };
 		7E02F46B27950C6F007FA048 /* UserInfoCompleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02F46A27950C6F007FA048 /* UserInfoCompleteButton.swift */; };
 		7E02F46D27950C99007FA048 /* AuthingUserInfoComplete.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E02F46C27950C99007FA048 /* AuthingUserInfoComplete.xib */; };
+		7E09E5E52845BBB90058D83C /* MethodTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E09E5E42845BBB90058D83C /* MethodTab.swift */; };
 		7E0FAFB427EC6373006258FC /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0FAFB227EC6372006258FC /* Button.swift */; };
 		7E0FAFB527EC6373006258FC /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0FAFB327EC6373006258FC /* Label.swift */; };
 		7E0FAFDF27ED5A37006258FC /* UIViewController+Authing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0FAFDE27ED5A37006258FC /* UIViewController+Authing.swift */; };
@@ -170,6 +171,7 @@
 		7E02F46827950C57007FA048 /* UserInfoCompleteFieldForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCompleteFieldForm.swift; sourceTree = "<group>"; };
 		7E02F46A27950C6F007FA048 /* UserInfoCompleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCompleteButton.swift; sourceTree = "<group>"; };
 		7E02F46C27950C99007FA048 /* AuthingUserInfoComplete.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingUserInfoComplete.xib; sourceTree = "<group>"; };
+		7E09E5E42845BBB90058D83C /* MethodTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodTab.swift; sourceTree = "<group>"; };
 		7E0FAFB227EC6372006258FC /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		7E0FAFB327EC6373006258FC /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		7E0FAFDE27ED5A37006258FC /* UIViewController+Authing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Authing.swift"; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 				A8BEB6B9280FF70B0068A2F5 /* WechatLogin.swift */,
 				A8541D5727EB4F9400355EC5 /* WeComLoginButton.swift */,
 				7EB2D30027871E2A00A819B3 /* AppleLoginButton.swift */,
+				7E09E5E42845BBB90058D83C /* MethodTab.swift */,
 			);
 			path = Social;
 			sourceTree = "<group>";
@@ -867,6 +870,7 @@
 				A8E1F10A28350590004B1E76 /* LoadingView.swift in Sources */,
 				7ED434E0277980B100893EDD /* ErrorLabel.swift in Sources */,
 				7EB32816278D5DD4008639AA /* FramedVerifyCodeTextField.swift in Sources */,
+				7E09E5E52845BBB90058D83C /* MethodTab.swift in Sources */,
 				7E75668B276746AF00C3872F /* AppLogo.swift in Sources */,
 				7E96039227E08B2B007C87EB /* Parser.swift in Sources */,
 				7E7566B22768A7CC00C3872F /* UserInfo.swift in Sources */,
