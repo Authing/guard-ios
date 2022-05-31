@@ -418,4 +418,32 @@ public class Util {
             ALog.e(Self.self, "can't open page:\(page)")
         }
     }
+    
+    public static func getGrayBackgroundColor() -> UIColor {
+        if #available(iOS 13.0, *) {
+            if UIScreen.main.traitCollection.userInterfaceStyle == .light {
+                return Const.Color_BG_Gray
+            } else {
+                return UIColor.black
+            }
+        } else {
+            return Const.Color_BG_Gray
+        }
+    }
+    
+    public static func getWhiteBackgroundColor() -> UIColor {
+        if #available(iOS 13.0, *) {
+            return UIColor.systemBackground
+        } else {
+            return UIColor.white
+        }
+    }
+    
+    public static func getLabelColor() -> UIColor {
+        if #available(iOS 13.0, *) {
+            return UIColor.label
+        } else {
+            return Const.Color_Text_Gray
+        }
+    }
 }

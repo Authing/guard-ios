@@ -37,10 +37,10 @@ open class UserProfileField: UIView {
     }
 
     private func setup() {
-        labelField.textColor = Const.Color_Text_Gray
+        labelField.textColor = Util.getLabelColor()
         addSubview(labelField)
         
-        backgroundColor = UIColor.white
+        backgroundColor = Util.getWhiteBackgroundColor()
         sep.backgroundColor = Const.Color_BG_Gray
         addSubview(sep)
     }

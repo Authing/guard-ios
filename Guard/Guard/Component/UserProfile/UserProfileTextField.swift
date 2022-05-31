@@ -23,7 +23,7 @@ open class UserProfileTextField: UserProfileField {
     }
 
     private func setup() {
-        labelValue.textColor = Const.Color_Text_Gray
+        labelValue.textColor = Util.getLabelColor()
         addSubview(labelValue)
     }
     

@@ -23,8 +23,7 @@ open class DeleteAccountButton: UIButton {
     }
 
     private func setup() {
-        backgroundColor = UIColor.white
-        setTitleColor(UIColor.black, for: .normal)
+        backgroundColor = Util.getWhiteBackgroundColor()
         let text = NSLocalizedString("authing_delete_account", bundle: Bundle(for: Self.self), comment: "")
         self.setTitle(text, for: .normal)
         setTitleColor(Const.Color_Error, for: .normal)

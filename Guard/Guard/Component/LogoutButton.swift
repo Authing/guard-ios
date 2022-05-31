@@ -23,8 +23,8 @@ open class LogoutButton: UIButton {
     }
 
     private func setup() {
-        backgroundColor = UIColor.white
-        setTitleColor(UIColor.black, for: .normal)
+        backgroundColor = Util.getWhiteBackgroundColor()
+        setTitleColor(Util.getLabelColor(), for: .normal)
         let text = NSLocalizedString("authing_logout", bundle: Bundle(for: Self.self), comment: "")
         self.setTitle(text, for: .normal)
         self.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
