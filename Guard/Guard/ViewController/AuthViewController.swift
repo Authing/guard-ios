@@ -42,7 +42,7 @@ open class AuthViewController: UIViewController {
         
         let loading = LoadingView.startAnimation(viewController: self)
         Util.getConfig(self.view) { config in
-            loading.removeFromSuperview()
+            LoadingView.stopAnimation(loadingView: loading)
         }
         
         let tf: AccountTextField? = Util.findView(view, viewClass: AccountTextField.self)
