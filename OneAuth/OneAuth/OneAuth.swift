@@ -10,26 +10,60 @@ import Guard
 
 open class OneAuth {
     
-    public static var bizId: String?
+    // if warm up failed, it means current device doesn't support one auth e.g. Pad without sim card
+    public static var available = false
+    private static var token: String?
+    
+    public static var bizId: String? {
+        didSet {
+            warmUp()
+        }
+    }
+    
+    public static func warmUp() {
+        // warm up
+        NTESQuickLoginManager.sharedInstance().register(withBusinessID: bizId!)
+        NTESQuickLoginManager.sharedInstance().getPhoneNumberCompletion { result in
+            if result["success"] as! Bool == true, let t = result["token"] as? String {
+                token = t
+                available = true
+            } else {
+                available = false
+            }
+        }
+    }
     
     public static func start(_ vc: UIViewController, businessId: String? = nil, model: Any? = nil, completion: @escaping(Int, String?, UserInfo?)->Void) {
         if (businessId != nil) {
             bizId = businessId!
         }
         
-        NTESQuickLoginManager.sharedInstance().register(withBusinessID: bizId!)
-        NTESQuickLoginManager.sharedInstance().getPhoneNumberCompletion { result in
-            let success: Bool = result["success"] as! Bool
-            if (success) {
-                let token: String? = result["token"] as? String
-                Util.getConfig(vc.view) { config in
-                    self.setCustomUI(config, vc, completion: completion)
-                    self.startLogin(token, completion)
+        if let t = token {
+            Util.getConfig(vc.view) { config in
+                self.setCustomUI(config, vc, completion: completion)
+                self.startLogin(t, completion)
+            }
+        } else {
+            NTESQuickLoginManager.sharedInstance().register(withBusinessID: bizId!)
+            NTESQuickLoginManager.sharedInstance().getPhoneNumberCompletion { result in
+                let success: Bool = result["success"] as! Bool
+                if (success) {
+                    available = true
+                    let token: String? = result["token"] as? String
+                    Util.getConfig(vc.view) { config in
+                        if let c = config {
+                            self.setCustomUI(c, vc, completion: completion)
+                            self.startLogin(token, completion)
+                        } else {
+                            completion(400, "failed to login. no config", nil)
+                        }
+                    }
+                } else {
+                    let error: String = result["desc"] as! String
+                    print("Error oneauth getPhoneNumber \(error)")
+                    available = false
+                    completion(400, error, nil)
                 }
-            } else {
-                let error: String = result["desc"] as! String
-                print("Error oneauth getPhoneNumber \(error)")
-                completion(500, error, nil)
             }
         }
     }
@@ -53,8 +87,9 @@ open class OneAuth {
         
         /// logo
         let url = URL(string: (config?.getLogoUrl())!)
-        let data = try? Data(contentsOf: url! as URL)
-        model.logoImg = UIImage(data: data!)!
+        if let data = try? Data(contentsOf: url! as URL) {
+            model.logoImg = UIImage(data: data)!
+        }
         model.logoWidth = 52;
         model.logoHeight = 52;
         model.logoOffsetTopY = offsetY;

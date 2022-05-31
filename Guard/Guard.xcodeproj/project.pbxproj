@@ -335,7 +335,6 @@
 				A8BEB6B9280FF70B0068A2F5 /* WechatLogin.swift */,
 				A8541D5727EB4F9400355EC5 /* WeComLoginButton.swift */,
 				7EB2D30027871E2A00A819B3 /* AppleLoginButton.swift */,
-				7E09E5E42845BBB90058D83C /* MethodTab.swift */,
 			);
 			path = Social;
 			sourceTree = "<group>";
@@ -641,6 +640,7 @@
 		7ED434CA277569D100893EDD /* Internal */ = {
 			isa = PBXGroup;
 			children = (
+				7E09E5E42845BBB90058D83C /* MethodTab.swift */,
 				7EF66C6A277C1BF600FCBBEB /* MethodTabItem.swift */,
 				7ED434CB277569DF00893EDD /* LoginMethodTabItem.swift */,
 				7EF66C6C277C1C6E00FCBBEB /* RegisterMethodTabItem.swift */,

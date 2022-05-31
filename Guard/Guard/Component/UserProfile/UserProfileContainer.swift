@@ -18,12 +18,12 @@ open class UserProfileContainer: UIScrollView {
     
     @IBInspectable var fields: String = "all" {
         didSet {
-            refersh()
+            refreshUI()
         }
     }
     
-    let logoutButton = LogoutButton()
-    let deleteAccountButton = DeleteAccountButton()
+    public let logoutButton = LogoutButton()
+    public let deleteAccountButton = DeleteAccountButton()
     
     let accountImageView = UIImageView()
     let notLoginTip = UILabel()
@@ -31,15 +31,15 @@ open class UserProfileContainer: UIScrollView {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        refersh()
+        refreshUI()
     }
 
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        refersh()
+        refreshUI()
     }
 
-    open func refersh() {
+    open func refreshUI() {
         for v in subviews {
             v.removeFromSuperview()
         }
@@ -56,11 +56,16 @@ open class UserProfileContainer: UIScrollView {
                 addTextField("email")
             }
             
-            logoutButton.onLogout = { code, message in
-                self.refersh()
+            if logoutButton.onLogout == nil {
+                logoutButton.onLogout = { code, message in
+                    self.refreshUI()
+                }
             }
-            deleteAccountButton.onDeleteAccount = { code, message in
-                self.refersh()
+            
+            if deleteAccountButton.onDeleteAccount == nil {
+                deleteAccountButton.onDeleteAccount = { code, message in
+                    self.refreshUI()
+                }
             }
             addSubview(logoutButton)
             addSubview(deleteAccountButton)
@@ -125,7 +130,7 @@ open class UserProfileContainer: UIScrollView {
     
     @objc private func startLogin(sender: UIButton) {
         AuthFlow().start { code, message, userInfo in
-            self.refersh()
+            self.refreshUI()
         }
     }
 }
