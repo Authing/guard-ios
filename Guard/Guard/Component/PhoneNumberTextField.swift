@@ -33,6 +33,7 @@ public class PhoneNumberTextField: AccountTextField {
     }
 
     override func setup() {
+        super.setup()
         
         self.keyboardType = .phonePad
         let sInput: String = NSLocalizedString("authing_please_input", bundle: Bundle(for: Self.self), comment: "")
