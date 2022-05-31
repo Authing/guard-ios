@@ -36,15 +36,16 @@ open class LoginMethodTab: MethodTab {
                 continue
             }
             
+            self.addSubview(item)
+            self.items.append(item)
+            
             if (method == config.defaultLoginMethod) {
                 defaultLoginIncluded = true
                 item.gainFocus(lastFocused: nil)
             } else {
                 item.loseFocus()
             }
-            self.addSubview(item)
-            self.items.append(item)
-            
+
             i += 1
         }
         
