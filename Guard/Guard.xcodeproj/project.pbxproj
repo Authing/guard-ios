@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		7E003B0E284742DA00AAE4ED /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E003B0D284742DA00AAE4ED /* Device.swift */; };
 		7E02F46727950C35007FA048 /* UserInfoCompleteContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02F46627950C35007FA048 /* UserInfoCompleteContainer.swift */; };
 		7E02F46927950C57007FA048 /* UserInfoCompleteFieldForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02F46827950C57007FA048 /* UserInfoCompleteFieldForm.swift */; };
 		7E02F46B27950C6F007FA048 /* UserInfoCompleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02F46A27950C6F007FA048 /* UserInfoCompleteButton.swift */; };
@@ -167,6 +168,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7E003B0D284742DA00AAE4ED /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		7E02F46627950C35007FA048 /* UserInfoCompleteContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCompleteContainer.swift; sourceTree = "<group>"; };
 		7E02F46827950C57007FA048 /* UserInfoCompleteFieldForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCompleteFieldForm.swift; sourceTree = "<group>"; };
 		7E02F46A27950C6F007FA048 /* UserInfoCompleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCompleteButton.swift; sourceTree = "<group>"; };
@@ -370,6 +372,7 @@
 			isa = PBXGroup;
 			children = (
 				7E20000927E9A8320051F590 /* ALog.swift */,
+				7E003B0D284742DA00AAE4ED /* Device.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -863,6 +866,7 @@
 				7E0FAFB527EC6373006258FC /* Label.swift in Sources */,
 				7E862A6B2807C6690057A4A0 /* VLayout.swift in Sources */,
 				7ED434D22775ABA000893EDD /* TextFieldLayout.swift in Sources */,
+				7E003B0E284742DA00AAE4ED /* Device.swift in Sources */,
 				7E7566A22768801E00C3872F /* UIView+Authing.swift in Sources */,
 				7E02F46927950C57007FA048 /* UserInfoCompleteFieldForm.swift in Sources */,
 				7E87A1CA27CF603B00E52D5A /* OIDCClient.swift in Sources */,
