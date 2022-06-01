@@ -26,6 +26,10 @@ open class BasePasswordTextField: TextFieldLayout {
     private func setup() {
         self.isSecureTextEntry = true
         
+        if let image = UIImage(named: "authing_password", in: Bundle(for: Self.self), compatibleWith: nil){
+            self.updateIconImage(icon: image)
+        }
+        
         eyeView.setBackgroundImage(eyeImage, for: .normal)
         rightView = eyeView
         rightViewMode = .always

@@ -20,6 +20,11 @@ open class VerifyCodeTextField: TextFieldLayout {
 
     private func setup() {
         self.keyboardType = .numberPad
+        
+        if let image = UIImage(named: "authing_check", in: Bundle(for: Self.self), compatibleWith: nil){
+            self.updateIconImage(icon: image)
+        }
+        
         let sInput: String = NSLocalizedString("authing_please_input", bundle: Bundle(for: Self.self), comment: "")
         let sVerifyCode: String = NSLocalizedString("authing_verify_code", bundle: Bundle(for: Self.self), comment: "")
         setHint("\(sInput)\(sVerifyCode)")

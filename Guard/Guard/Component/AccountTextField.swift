@@ -33,6 +33,11 @@ open class AccountTextField: TextFieldLayout {
         
         // hint can be set explicitly via Nib
         if placeholder == nil {
+            
+            if let image = UIImage(named: "authing_user", in: Bundle(for: Self.self), compatibleWith: nil){
+                self.updateIconImage(icon: image)
+            }
+
             var hint = NSLocalizedString("authing_please_input", bundle: Bundle(for: Self.self), comment: "")
             
             var i: Int = 0

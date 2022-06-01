@@ -10,19 +10,17 @@ import UIKit
 open class TextFieldLayout: BaseInput, UITextFieldDelegate {
     
     let border = TextFieldBorder()
+    let imageView = UIImageView()
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        let paddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: 0))
-        leftView = paddingView
-        leftViewMode = .always
-        clearButtonMode = .whileEditing
-        font = UIFont.systemFont(ofSize: 14)
+
         setup()
     }
 
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        
         setup()
     }
 
@@ -33,6 +31,24 @@ open class TextFieldLayout: BaseInput, UITextFieldDelegate {
         autocapitalizationType = .none
         layer.borderColor = UIColor.clear.cgColor
         addSubview(border)
+        
+        let itemWidth: CGFloat =  frame.height/3
+        let paddingView: UIView =  UIView.init(frame: CGRect(x: 0, y: 0, width: frame.height/3 + 8, height: frame.height))
+    
+        imageView.contentMode = .scaleAspectFit
+        imageView.frame = CGRect(x: 8, y: (frame.height - itemWidth)/2, width: itemWidth, height: itemWidth)
+        paddingView.addSubview(imageView)
+        
+        leftView = paddingView
+        leftViewMode = .never
+        clearButtonMode = .whileEditing
+        font = UIFont.systemFont(ofSize: 14)
+        
+    }
+    
+    public func updateIconImage(icon: UIImage){
+        imageView.image = icon
+        leftViewMode = .always
     }
     
     open override func layoutSubviews() {

@@ -13,6 +13,8 @@ open class LoadingView: ImageView {
     var animationView: UIImageView!
     let itemWidth: CGFloat = 60
     let itemHeight: CGFloat = 70
+    var loadWork: DispatchWorkItem?
+    var isShowLoading: Bool? = false
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,31 +42,54 @@ open class LoadingView: ImageView {
         animationView.animationImages = images
         animationView.animationDuration = 1
         animationView.animationRepeatCount = 0
-        
+                
         self.addSubview(animationView)
     }
     
-    public class func startAnimation(viewController: UIViewController, _ images: [UIImage] = [], imageSize: CGSize = CGSize.zero) -> LoadingView{
+    public class func startAnimation(viewController: UIViewController, _ images: [UIImage] = [], _ imageSize: CGSize = CGSize.zero) -> LoadingView{
         
         let loading = LoadingView.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-        viewController.view.addSubview(loading)
-                        
-        if images.count != 0 {
-            loading.animationView.frame = CGRect(x: UIScreen.main.bounds.width/2 - imageSize.width/2,
-                                                       y: UIScreen.main.bounds.height/2 - imageSize.height/2,
-                                                       width: imageSize.width,
-                                                       height: imageSize.height)
-            loading.animationView.animationImages = images
-        }
-        loading.animationView.startAnimating()
+        
+        // Show the animation after 0.5 seconds, the reloaded page does not flicker
+        loading.loadWork = DispatchWorkItem(block: {
+
+            loading.isShowLoading = true
+            viewController.view.addSubview(loading)
+                            
+            if images.count != 0 {
+                loading.animationView.frame = CGRect(x: UIScreen.main.bounds.width/2 - imageSize.width/2,
+                                                           y: UIScreen.main.bounds.height/2 - imageSize.height/2,
+                                                           width: imageSize.width,
+                                                           height: imageSize.height)
+                loading.animationView.animationImages = images
+            }
+        
+            loading.animationView.startAnimating()
+        })
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: loading.loadWork!)
         
         return loading
     }
     
-    public class func stopAnimation(loadingView: LoadingView) {
+    public class func stopAnimation(view: LoadingView) {
         
-        loadingView.animationView.stopAnimating()
-        loadingView.removeFromSuperview()
-
+        let loadingView = view
+        if loadingView.isShowLoading == false {
+            
+            loadingView.loadWork?.cancel()
+            
+        }else{
+            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.8) {
+                
+                loadingView.animationView.stopAnimating()
+                loadingView.removeFromSuperview()
+                loadingView.isShowLoading = false
+                
+            }
+        }
     }
+    
+    
 }
