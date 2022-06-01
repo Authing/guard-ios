@@ -31,14 +31,14 @@ open class WeComLoginButton: SocialLoginButton {
         
         //向发送 WeCom  发送通知, 向 WeCom 发送点击事件
         NotificationCenter.post(name: .notify_wecom_register, object: nil, userInfo: nil)
-        loading?.startAnimating()
         
+        startLoading()
     }
     
     @objc func weComLoginComplete(notification: Notification) {
                 
         DispatchQueue.main.async() {
-            self.loading?.stopAnimating()
+            self.stopLoading()
             let dic = notification.object as? [ String : Any ]
             if let code = dic?["code"]  as? Int, let msg = dic?["msg"] as? String {
                 if (code == 200) {

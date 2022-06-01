@@ -40,7 +40,7 @@ class CountryCodeViewController: AuthViewController {
             
             tableView.setContent(models: countryModels)
             tableView.selectCallBack = { model in
-                self.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: nil)
                 self.selectCountryCallBack?(model)
             }
             

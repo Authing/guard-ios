@@ -40,9 +40,10 @@ open class AuthViewController: UIViewController {
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         
-        let loading = LoadingView.startAnimation(viewController: self)
+        let load = LoadingView.startAnimation(viewController: self)
+                
         Util.getConfig(self.view) { config in
-            LoadingView.stopAnimation(loadingView: loading)
+            LoadingView.stopAnimation(view: load)
         }
         
         let tf: AccountTextField? = Util.findView(view, viewClass: AccountTextField.self)

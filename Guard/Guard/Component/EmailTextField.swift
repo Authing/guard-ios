@@ -25,5 +25,9 @@ open class EmailTextField: AccountTextField {
             let text: String = NSLocalizedString("authing_email", bundle: Bundle(for: Self.self), comment: "")
             self.setHint("\(sInput)\(text)")
         }
+        
+        if let image = UIImage(named: "authing_mail", in: Bundle(for: Self.self), compatibleWith: nil){
+            self.updateIconImage(icon: image)
+        }
     }
 }
