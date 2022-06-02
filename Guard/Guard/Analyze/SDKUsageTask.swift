@@ -11,9 +11,9 @@ class SDKUsageTask {
     static func report() {
         DispatchQueue.global().async {
             let uuid: String = Util.getDeviceID()
-            let deviceName = UIDevice.modelName
+            let modelIdentifier = UIDevice.modelIdentifier()
             let systemVersion = UIDevice.current.systemVersion
-            if let escapedString = deviceName.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
+            if let escapedString = modelIdentifier.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
                 let urlString = "https://developer-beta.authing.cn/stats/sdk-trace/?appid=" + Authing.getAppId()
                 + "&sdk=ios&version=" + Const.SDK_VERSION
                 + "&ip=\(uuid)"
