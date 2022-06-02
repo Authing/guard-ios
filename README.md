@@ -12,6 +12,21 @@
 
 <br>
 
-[重新定义认证流程构建方式](https://docs.authing.cn/v2/reference/sdk-for-ios/)
+[中文文档请移步至这里查看](https://docs.authing.cn/v2/ios/)
+
+[Click me for English documentation](https://docs.authing.cn/v2/en/reference/sdk-for-ios/)
 
 </div>
+
+## Contribute
+- Fork it
+- Create your feature branch (git checkout -b my-new-feature)
+- Commit your changes (git commit -am 'Add some feature')
+- Push to the branch (git push origin my-new-feature)
+- Create new Pull Request
+
+## Get help
+
+Contact our senior iOS developer via Wechat:
+
+<img width="120" src="./doc/images/jianan.png">
