@@ -28,8 +28,7 @@
 		7EACD00227915AAC005CBB2E /* Test.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EACD00127915AAC005CBB2E /* Test.xib */; };
 		7EB5CE5427CF70E900BE3252 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5CE5327CF70E900BE3252 /* WebViewController.swift */; };
 		7ED434D52775BA7000893EDD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7ED434D72775BA7000893EDD /* Localizable.strings */; };
-		A8541D6327EB5F9D00355EC5 /* WeCom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8541D6227EB5F9D00355EC5 /* WeCom.framework */; };
-		A8541D6427EB5F9D00355EC5 /* WeCom.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8541D6227EB5F9D00355EC5 /* WeCom.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A81635E1284E07A80011B6ED /* WeCom in Frameworks */ = {isa = PBXBuildFile; productRef = A81635E0284E07A80011B6ED /* WeCom */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,7 +38,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A8541D6427EB5F9D00355EC5 /* WeCom.framework in Embed Frameworks */,
 				7E959448274D063B001459C5 /* Guard.framework in Embed Frameworks */,
 				7E7566EE2769D40E00C3872F /* OneAuth.framework in Embed Frameworks */,
 			);
@@ -88,9 +86,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A81635E1284E07A80011B6ED /* WeCom in Frameworks */,
 				7E95942E274CB549001459C5 /* AppAuth in Frameworks */,
 				7E959447274D063B001459C5 /* Guard.framework in Frameworks */,
-				A8541D6327EB5F9D00355EC5 /* WeCom.framework in Frameworks */,
 				7E959430274CB549001459C5 /* AppAuthCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -211,6 +209,7 @@
 			packageProductDependencies = (
 				7E95942D274CB549001459C5 /* AppAuth */,
 				7E95942F274CB549001459C5 /* AppAuthCore */,
+				A81635E0284E07A80011B6ED /* WeCom */,
 			);
 			productName = GuardDemo;
 			productReference = 7E959415274CB4E2001459C5 /* GuardDemo.app */;
@@ -243,6 +242,7 @@
 			mainGroup = 7E95940C274CB4E2001459C5;
 			packageReferences = (
 				7E95942C274CB549001459C5 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */,
+				A81635DF284E070A0011B6ED /* XCRemoteSwiftPackageReference "guard-ios-wecom" */,
 			);
 			productRefGroup = 7E959416274CB4E2001459C5 /* Products */;
 			projectDirPath = "";
@@ -544,6 +544,14 @@
 				kind = branch;
 			};
 		};
+		A81635DF284E070A0011B6ED /* XCRemoteSwiftPackageReference "guard-ios-wecom" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Authing/guard-ios-wecom";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -556,6 +564,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7E95942C274CB549001459C5 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
 			productName = AppAuthCore;
+		};
+		A81635E0284E07A80011B6ED /* WeCom */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A81635DF284E070A0011B6ED /* XCRemoteSwiftPackageReference "guard-ios-wecom" */;
+			productName = WeCom;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

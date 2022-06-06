@@ -10,7 +10,4 @@
    <FileRef
       location = "group:OneAuth/OneAuth.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:WeCom/WeCom.xcodeproj">
-   </FileRef>
 </Workspace>

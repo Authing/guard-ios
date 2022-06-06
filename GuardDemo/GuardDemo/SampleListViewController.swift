@@ -7,7 +7,6 @@
 
 import UIKit
 import Guard
-import WeCom
 
 class SampleListViewController: UITableViewController {
 

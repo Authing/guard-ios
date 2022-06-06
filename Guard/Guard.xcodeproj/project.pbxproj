@@ -146,8 +146,6 @@
 		7EF66C8D277DA96200FCBBEB /* GetEmailCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C8C277DA96200FCBBEB /* GetEmailCodeButton.swift */; };
 		A84B62FC27F82A2B006650CC /* CountryCodeSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84B62FB27F82A2B006650CC /* CountryCodeSearchBar.swift */; };
 		A850622C283237FA00F97EBD /* CountdownTimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A850622B283237FA00F97EBD /* CountdownTimerManager.swift */; };
-		A8541D5827EB4F9400355EC5 /* WeComLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8541D5727EB4F9400355EC5 /* WeComLoginButton.swift */; };
-		A8541D5A27EB51E800355EC5 /* Notification+Authing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8541D5927EB51E800355EC5 /* Notification+Authing.swift */; };
 		A8A7BBB228466CC5000A0D7C /* CountryCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A7BBB128466CC5000A0D7C /* CountryCodeView.swift */; };
 		A8BEB6BA280FF70B0068A2F5 /* WechatLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BEB6B9280FF70B0068A2F5 /* WechatLogin.swift */; };
 		A8D38D1627F1DB4A00942707 /* CountryCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D38D1527F1DB4A00942707 /* CountryCodeViewController.swift */; };
@@ -296,8 +294,6 @@
 		7EF66C8C277DA96200FCBBEB /* GetEmailCodeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEmailCodeButton.swift; sourceTree = "<group>"; };
 		A84B62FB27F82A2B006650CC /* CountryCodeSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCodeSearchBar.swift; sourceTree = "<group>"; };
 		A850622B283237FA00F97EBD /* CountdownTimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimerManager.swift; sourceTree = "<group>"; };
-		A8541D5727EB4F9400355EC5 /* WeComLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeComLoginButton.swift; sourceTree = "<group>"; };
-		A8541D5927EB51E800355EC5 /* Notification+Authing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notification+Authing.swift"; sourceTree = "<group>"; };
 		A8A7BBB128466CC5000A0D7C /* CountryCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeView.swift; sourceTree = "<group>"; };
 		A8BEB6B9280FF70B0068A2F5 /* WechatLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WechatLogin.swift; sourceTree = "<group>"; };
 		A8D38D1527F1DB4A00942707 /* CountryCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeViewController.swift; sourceTree = "<group>"; };
@@ -337,7 +333,6 @@
 				7E8AECBB27882D2D0030D27B /* SocialLoginButton.swift */,
 				7E1998D12783D3D5002C6F81 /* WechatLoginButton.swift */,
 				A8BEB6B9280FF70B0068A2F5 /* WechatLogin.swift */,
-				A8541D5727EB4F9400355EC5 /* WeComLoginButton.swift */,
 				7EB2D30027871E2A00A819B3 /* AppleLoginButton.swift */,
 			);
 			path = Social;
@@ -482,7 +477,6 @@
 				7E7566832766FD5D00C3872F /* UIApplication+Authing.swift */,
 				7E7566A12768801E00C3872F /* UIView+Authing.swift */,
 				7E0FAFDE27ED5A37006258FC /* UIViewController+Authing.swift */,
-				A8541D5927EB51E800355EC5 /* Notification+Authing.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -883,7 +877,6 @@
 				7E7566B22768A7CC00C3872F /* UserInfo.swift in Sources */,
 				7EF66C67277C119800FCBBEB /* IndexAuthViewController.swift in Sources */,
 				7E0FAFDF27ED5A37006258FC /* UIViewController+Authing.swift in Sources */,
-				A8541D5A27EB51E800355EC5 /* Notification+Authing.swift in Sources */,
 				7EF66C8D277DA96200FCBBEB /* GetEmailCodeButton.swift in Sources */,
 				7E75668D276837E700C3872F /* AccountTextField.swift in Sources */,
 				A84B62FC27F82A2B006650CC /* CountryCodeSearchBar.swift in Sources */,
@@ -940,7 +933,6 @@
 				7E12D7B6277DE9EF00703FC1 /* UserManager.swift in Sources */,
 				7E02F46727950C35007FA048 /* UserInfoCompleteContainer.swift in Sources */,
 				A8A7BBB228466CC5000A0D7C /* CountryCodeView.swift in Sources */,
-				A8541D5827EB4F9400355EC5 /* WeComLoginButton.swift in Sources */,
 				7E87A1C227CDBAEF00E52D5A /* LogoutButton.swift in Sources */,
 				7E20000727E961B20051F590 /* AppBundle.swift in Sources */,
 			);

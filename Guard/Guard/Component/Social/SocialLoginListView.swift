@@ -47,7 +47,10 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                     if ("wechat:mobile" == type) {
                         self.addSubview(WechatLoginButton())
                     } else if ("wechatwork:mobile" == type) {
-                        self.addSubview(WeComLoginButton())
+                        if let type = Bundle(identifier: "cn.authing.WeCom")?.classNamed("WeCom.WeComLoginButton") as? SocialLoginButton.Type {
+                            let view = type.init()
+                            self.addSubview(view)
+                        }
                     } else if ("apple" == type) {
                         if #available(iOS 13.0, *) {
                             self.addSubview(AppleLoginButton())
@@ -94,7 +97,10 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
             if ("wechat" == trimmed) {
                 self.addSubview(WechatLoginButton())
             } else if ("wecom" == trimmed) {
-                self.addSubview(WeComLoginButton())
+                if let type = Bundle(identifier: "cn.authing.WeCom")?.classNamed("WeCom.WeComLoginButton") as? SocialLoginButton.Type {
+                    let view = type.init()
+                    self.addSubview(view)
+                }
             }else if ("apple" == trimmed) {
                 if #available(iOS 13.0, *) {
                     self.addSubview(AppleLoginButton())
