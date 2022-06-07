@@ -507,7 +507,14 @@ public class AuthClient: Client {
         let userInfo = user ?? UserInfo()
         if code == 200 {
             userInfo.parse(data: data)
-            Authing.saveUser(userInfo)
+            
+            // only save user for 'root', otherwise we might be in console
+            if config == nil || config?.appId == Authing.getAppId() {
+                Authing.saveUser(userInfo)
+            } else {
+                ALog.i(Self.self, "requesting app ID: \(config!.appId) root app ID: \(Authing.getAppId())")
+            }
+            
             if userInfo.userId != nil {
                 getCustomUserData(userInfo: userInfo, completion: completion)
             } else {
