@@ -129,7 +129,7 @@ open class Parser: NSObject, XMLParserDelegate {
     
     public func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
 
-        if let viewType = Bundle(for: Parser.self).classNamed("Authing.\(elementName)") as? UIView.Type {
+        if let viewType = Bundle(for: Parser.self).classNamed("Guard.\(elementName)") as? UIView.Type {
             let view = viewType.init()
             
             if let layout = view as? Layout {
