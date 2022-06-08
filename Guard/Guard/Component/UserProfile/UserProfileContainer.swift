@@ -14,6 +14,7 @@ open class UserProfileContainer: UIScrollView {
     let NOT_LOGIN_AVATAR_LENGTH = CGFloat(64)
     let BUTTON_HEIGHT = CGFloat(44)
     
+    var userInfo: UserInfo?
     var fieldsViews = Array<UserProfileField>()
     
     @IBInspectable var fields: String = "all" {
@@ -46,7 +47,11 @@ open class UserProfileContainer: UIScrollView {
         
         fieldsViews.removeAll()
         
-        if Authing.getCurrentUser() != nil {
+        if userInfo == nil {
+            userInfo = Authing.getCurrentUser()
+        }
+        
+        if userInfo != nil {
             if ("all" == fields) {
                 addAvatarField()
                 addTextField("nickname")
@@ -89,6 +94,7 @@ open class UserProfileContainer: UIScrollView {
     
     private func addAvatarField() {
         let field = UserProfileAvatarField()
+        field.userInfo = userInfo
         addSubview(field)
         fieldsViews.append(field)
         field.field = "photo"
@@ -96,13 +102,14 @@ open class UserProfileContainer: UIScrollView {
     
     private func addTextField(_ field: String) {
         let uptf = UserProfileTextField()
+        uptf.userInfo = userInfo
         addSubview(uptf)
         fieldsViews.append(uptf)
         uptf.field = field
     }
     
     open override func layoutSubviews() {
-        if Authing.getCurrentUser() != nil {
+        if userInfo != nil {
             var y = 0.0
             for v in fieldsViews {
                 v.frame = CGRect(x: 0, y: y, width: frame.width, height: TEXT_HEIGHT)

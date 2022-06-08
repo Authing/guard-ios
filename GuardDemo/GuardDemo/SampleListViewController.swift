@@ -39,7 +39,8 @@ class SampleListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch from[indexPath.row] {
         case "Authing 登录":
-            AuthFlow("60caaf41df670b771fd08937").start { [weak self] code, message, userInfo in
+            Authing.start("60caaf41df670b771fd08937")
+            AuthFlow().start { [weak self] code, message, userInfo in
                 self?.goHome(userInfo: userInfo)
             }
             return
@@ -48,12 +49,14 @@ class SampleListViewController: UITableViewController {
                 self.navigationController?.pushViewController(vc, animated: true)
             return
         case "MFA":
-                AuthFlow("61c173ada0e3aec651b1a1d1").start { [weak self] code, message, userInfo in
-                    self?.goHome(userInfo: userInfo)
-                }
+            Authing.start("61c173ada0e3aec651b1a1d1")
+            AuthFlow().start { [weak self] code, message, userInfo in
+                self?.goHome(userInfo: userInfo)
+            }
             return
         case "用户信息补全":
-            AuthFlow("61ae0c9807451d6f30226bd4").start { [weak self] code, message, userInfo in
+            Authing.start("61ae0c9807451d6f30226bd4")
+            AuthFlow().start { [weak self] code, message, userInfo in
                 self?.goHome(userInfo: userInfo)
             }
             return
@@ -67,13 +70,15 @@ class SampleListViewController: UITableViewController {
             self.navigationController?.pushViewController(vc, animated: true)
             return
         case "OIDCClient":
-            let flow = AuthFlow("60caaf41df670b771fd08937")
+            Authing.start("60caaf41df670b771fd08937")
+            let flow = AuthFlow()
             flow.authProtocol = .EOIDC
             flow.start()  { [weak self] code, message, userInfo in
                 self?.goHome(userInfo: userInfo)
             }
             return
         case "HCML Parser":
+            Authing.start("62345c87ffe7c884acbae53c")
             AuthFlow().startAppBundle("62345c87ffe7c884acbae53c") { [weak self] code, message, userInfo in
                 self?.goHome(userInfo: userInfo)
             }                

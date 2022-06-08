@@ -15,6 +15,8 @@ open class UserProfileField: UIView {
                          "username":"authing_username",
                          "phone":"authing_phone",
                          "email":"authing_email"]
+    
+    var userInfo: UserInfo?
     let labelField: UILabel = UILabel()
     
     let MARGIN_X = CGFloat(20)

@@ -43,12 +43,28 @@ open class UserProfileAvatarField: UserProfileField, UINavigationControllerDeleg
     
     override func setField(_ field: String) {
         super.setField(field)
-        if let photo = Authing.getCurrentUser()?.photo {
-            if let url = URL(string: photo) {
-                DispatchQueue.global().async {
-                    if let data = try? Data(contentsOf: url) {
-                        DispatchQueue.main.async() { [weak self] in
-                            self?.imageView.image = UIImage(data: data)
+        
+        defer {
+            loading.stopAnimating()
+            self.layoutSubviews()
+        }
+        
+        guard let user = userInfo, let uid = user.userId else {
+            return
+        }
+        
+        if let image = CacheManager.getImage(uid) {
+            self.imageView.image = image
+        }
+        
+        if let photo = user.photo,
+           let url = URL(string: photo) {
+            DispatchQueue.global().async {
+                if let data = try? Data(contentsOf: url) {
+                    DispatchQueue.main.async() { [weak self] in
+                        if let image = UIImage(data: data) {
+                            self?.imageView.image = image
+                            CacheManager.putImage(uid, image)
                         }
                     }
                 }
@@ -56,8 +72,6 @@ open class UserProfileAvatarField: UserProfileField, UINavigationControllerDeleg
         } else {
             imageView.image = UIImage(named: "authing_default_user_avatar", in: Bundle(for: Self.self), compatibleWith: nil)
         }
-        loading.stopAnimating()
-        self.layoutSubviews()
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {

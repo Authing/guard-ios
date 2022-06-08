@@ -36,7 +36,7 @@ open class UserProfileTextField: UserProfileField {
     override func setField(_ field: String) {
         super.setField(field)
         let undefined = NSLocalizedString("authing_undefined", bundle: Bundle(for: Self.self), comment: "")
-        labelValue.text = Authing.getCurrentUser()?.raw?[field] as? String ?? undefined
+        labelValue.text = userInfo?.raw?[field] as? String ?? undefined
         self.layoutSubviews()
     }
 }
