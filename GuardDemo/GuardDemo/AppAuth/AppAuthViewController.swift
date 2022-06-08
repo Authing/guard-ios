@@ -8,6 +8,7 @@
 import Foundation
 import Guard
 import AppAuth
+import AuthenticationServices
 
 class AppAuthViewController: UIViewController {
     
@@ -80,6 +81,9 @@ class AppAuthViewController: UIViewController {
                 
                 self.tokenLabel.text = authState.lastTokenResponse?.accessToken
                 
+                
+//                self.navigationController?.present(AuthView.init() , animated: true, completion: nil)
+                
             } else {
                 print("Authorization error: \(error?.localizedDescription ?? "Unknown error")")
             //            self.setAuthState(nil)
@@ -88,4 +92,40 @@ class AppAuthViewController: UIViewController {
         }
     }
 
+}
+
+@available(iOS 12.0, *)
+class AuthView: UIViewController {
+    
+    var authSession: ASWebAuthenticationSession!
+    
+    override func viewDidLoad() {
+      super.viewDidLoad()
+        if #available(iOS 13.0, *) {
+            configureAuthSession()
+        }
+    }
+    
+    @available(iOS 13.0, *)
+    private func configureAuthSession() {
+        let urlString = "https://oiv3h3.authing.cn/u?app_id=6244398c8a4575cdb2cb5656"
+        guard let url = URL(string: urlString) else { return }
+        let callbackScheme = ""
+        authSession = ASWebAuthenticationSession(url: url, callbackURLScheme: callbackScheme)
+        { (callbackURL, error) in
+            guard error == nil, let successURL = callbackURL else { return }
+            _ = NSURLComponents(string: (successURL.absoluteString))?.queryItems?.filter({ $0.name == "code" }).first
+        }
+        authSession.presentationContextProvider = self
+        authSession.start()
+    }
+}
+
+@available(iOS 12.0, *)
+extension AuthView: ASWebAuthenticationPresentationContextProviding {
+    
+    @available(iOS 12.0, *)
+    func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
+        return self.view.window ?? ASPresentationAnchor()
+    }
 }
