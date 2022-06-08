@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 typealias SearchBarCallBack = (_ searchModels: [CountryItemModel]) -> Void
 

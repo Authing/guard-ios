@@ -79,10 +79,9 @@ public class Authing {
         return sConfig
     }
     
-    public static func setupWechat(_ appid: String, universalLink: String) {
-        
-        WechatLogin.registerApp(appId: appid, universalLink: universalLink)
-    }
+//    public static func setupWechat(_ appid: String, universalLink: String) {
+//        WechatLogin.registerApp(appId: appid, universalLink: universalLink)
+//    }
     
 //    public static func setupAlipay(_ appid: String, customScheme: String) {
 //        Alipay.appid = appid

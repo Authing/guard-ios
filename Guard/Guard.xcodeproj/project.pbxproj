@@ -34,11 +34,6 @@
 		7E12D7B8277DECB900703FC1 /* AuthingUserProfile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E12D7B7277DECB900703FC1 /* AuthingUserProfile.xib */; };
 		7E12D7BA277DEE6F00703FC1 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E12D7B9277DEE6F00703FC1 /* UserProfileViewController.swift */; };
 		7E189B0927F13ACD005AC1AC /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E189B0827F13ACD005AC1AC /* CacheManager.swift */; };
-		7E1998D22783D3D5002C6F81 /* WechatLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1998D12783D3D5002C6F81 /* WechatLoginButton.swift */; };
-		7E199D072783DE9E002C6F81 /* WXApi.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E199D032783DE9E002C6F81 /* WXApi.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7E199D082783DE9E002C6F81 /* WXApiObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E199D042783DE9E002C6F81 /* WXApiObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7E199D092783DE9E002C6F81 /* WechatAuthSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E199D052783DE9E002C6F81 /* WechatAuthSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7E199D0A2783DE9E002C6F81 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E199D062783DE9E002C6F81 /* libWeChatSDK.a */; };
 		7E199D0D2783DFC0002C6F81 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E199D0C2783DFC0002C6F81 /* WebKit.framework */; };
 		7E199D112783F8E1002C6F81 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E199D102783F8E1002C6F81 /* libc++.tbd */; };
 		7E20000727E961B20051F590 /* AppBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E20000627E961B20051F590 /* AppBundle.swift */; };
@@ -147,7 +142,6 @@
 		A84B62FC27F82A2B006650CC /* CountryCodeSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84B62FB27F82A2B006650CC /* CountryCodeSearchBar.swift */; };
 		A850622C283237FA00F97EBD /* CountdownTimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A850622B283237FA00F97EBD /* CountdownTimerManager.swift */; };
 		A8A7BBB228466CC5000A0D7C /* CountryCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A7BBB128466CC5000A0D7C /* CountryCodeView.swift */; };
-		A8BEB6BA280FF70B0068A2F5 /* WechatLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BEB6B9280FF70B0068A2F5 /* WechatLogin.swift */; };
 		A8D38D1627F1DB4A00942707 /* CountryCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D38D1527F1DB4A00942707 /* CountryCodeViewController.swift */; };
 		A8D38D1A27F1E44700942707 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D38D1827F1E44700942707 /* CountryTableViewCell.swift */; };
 		A8D38D1D27F1E4FF00942707 /* country.json in Resources */ = {isa = PBXBuildFile; fileRef = A8D38D1C27F1E4FF00942707 /* country.json */; };
@@ -180,11 +174,6 @@
 		7E12D7B7277DECB900703FC1 /* AuthingUserProfile.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingUserProfile.xib; sourceTree = "<group>"; };
 		7E12D7B9277DEE6F00703FC1 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		7E189B0827F13ACD005AC1AC /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
-		7E1998D12783D3D5002C6F81 /* WechatLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WechatLoginButton.swift; sourceTree = "<group>"; };
-		7E199D032783DE9E002C6F81 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
-		7E199D042783DE9E002C6F81 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
-		7E199D052783DE9E002C6F81 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
-		7E199D062783DE9E002C6F81 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		7E199D0C2783DFC0002C6F81 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/iOSSupport/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
 		7E199D102783F8E1002C6F81 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
 		7E20000627E961B20051F590 /* AppBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBundle.swift; sourceTree = "<group>"; };
@@ -295,7 +284,6 @@
 		A84B62FB27F82A2B006650CC /* CountryCodeSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCodeSearchBar.swift; sourceTree = "<group>"; };
 		A850622B283237FA00F97EBD /* CountdownTimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimerManager.swift; sourceTree = "<group>"; };
 		A8A7BBB128466CC5000A0D7C /* CountryCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeView.swift; sourceTree = "<group>"; };
-		A8BEB6B9280FF70B0068A2F5 /* WechatLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WechatLogin.swift; sourceTree = "<group>"; };
 		A8D38D1527F1DB4A00942707 /* CountryCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeViewController.swift; sourceTree = "<group>"; };
 		A8D38D1827F1E44700942707 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 		A8D38D1C27F1E4FF00942707 /* country.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = country.json; sourceTree = "<group>"; };
@@ -311,7 +299,6 @@
 			files = (
 				7E199D112783F8E1002C6F81 /* libc++.tbd in Frameworks */,
 				7E199D0D2783DFC0002C6F81 /* WebKit.framework in Frameworks */,
-				7E199D0A2783DE9E002C6F81 /* libWeChatSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,22 +318,9 @@
 			children = (
 				7EA2DD3B27CC84CB00B3E19D /* SocialLoginListView.swift */,
 				7E8AECBB27882D2D0030D27B /* SocialLoginButton.swift */,
-				7E1998D12783D3D5002C6F81 /* WechatLoginButton.swift */,
-				A8BEB6B9280FF70B0068A2F5 /* WechatLogin.swift */,
 				7EB2D30027871E2A00A819B3 /* AppleLoginButton.swift */,
 			);
 			path = Social;
-			sourceTree = "<group>";
-		};
-		7E199D022783DE9E002C6F81 /* Library */ = {
-			isa = PBXGroup;
-			children = (
-				7E199D032783DE9E002C6F81 /* WXApi.h */,
-				7E199D042783DE9E002C6F81 /* WXApiObject.h */,
-				7E199D052783DE9E002C6F81 /* WechatAuthSDK.h */,
-				7E199D062783DE9E002C6F81 /* libWeChatSDK.a */,
-			);
-			path = Library;
 			sourceTree = "<group>";
 		};
 		7E199D0B2783DFBF002C6F81 /* Frameworks */ = {
@@ -506,7 +480,6 @@
 			isa = PBXGroup;
 			children = (
 				7E199D7327854459002C6F81 /* Frameworks */,
-				7E199D022783DE9E002C6F81 /* Library */,
 				7E9593D4274C813A001459C5 /* Guard */,
 				7E9593DE274C813B001459C5 /* GuardTests */,
 				7E9593D3274C813A001459C5 /* Products */,
@@ -681,9 +654,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E199D072783DE9E002C6F81 /* WXApi.h in Headers */,
-				7E199D092783DE9E002C6F81 /* WechatAuthSDK.h in Headers */,
-				7E199D082783DE9E002C6F81 /* WXApiObject.h in Headers */,
 				7E9593E1274C813B001459C5 /* Guard.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -858,7 +828,6 @@
 				7EF66C5B277BEE7300FCBBEB /* Animator.swift in Sources */,
 				7EF66C69277C197900FCBBEB /* RegisterMethodTab.swift in Sources */,
 				7E866452280E4F9B000DEFD4 /* GoNextButton.swift in Sources */,
-				7E1998D22783D3D5002C6F81 /* WechatLoginButton.swift in Sources */,
 				7ED434DA2779509100893EDD /* VerifyCodeTextField.swift in Sources */,
 				7E0FAFB527EC6373006258FC /* Label.swift in Sources */,
 				7E862A6B2807C6690057A4A0 /* VLayout.swift in Sources */,
@@ -923,7 +892,6 @@
 				7EF66C6F277C1CCB00FCBBEB /* RegisterContainer.swift in Sources */,
 				7EB327FF278BD737008639AA /* MFATableItem.swift in Sources */,
 				7E02F46B27950C6F007FA048 /* UserInfoCompleteButton.swift in Sources */,
-				A8BEB6BA280FF70B0068A2F5 /* WechatLogin.swift in Sources */,
 				7EF66C71277C371E00FCBBEB /* EmailTextField.swift in Sources */,
 				7EB5CE5627D1EE3200BE3252 /* DeleteAccountButton.swift in Sources */,
 				7EA2DD3C27CC84CB00B3E19D /* SocialLoginListView.swift in Sources */,

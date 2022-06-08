@@ -45,7 +45,10 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
             for conn in connections! {
                 if let type = conn["type"] as? String {
                     if ("wechat:mobile" == type) {
-                        self.addSubview(WechatLoginButton())
+                        if let type = Bundle(identifier: "cn.authing.Wechat")?.classNamed("Wechat.WechatLoginButton") as? SocialLoginButton.Type {
+                            let view = type.init()
+                            self.addSubview(view)
+                        }
                     } else if ("wechatwork:mobile" == type) {
                         if let type = Bundle(identifier: "cn.authing.WeCom")?.classNamed("WeCom.WeComLoginButton") as? SocialLoginButton.Type {
                             let view = type.init()
@@ -95,7 +98,10 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
         for s in srcs {
             let trimmed = s.trimmingCharacters(in: .whitespacesAndNewlines)
             if ("wechat" == trimmed) {
-                self.addSubview(WechatLoginButton())
+                if let type = Bundle(identifier: "cn.authing.Wechat")?.classNamed("Wechat.WechatLoginButton") as? SocialLoginButton.Type {
+                    let view = type.init()
+                    self.addSubview(view)
+                }
             } else if ("wecom" == trimmed) {
                 if let type = Bundle(identifier: "cn.authing.WeCom")?.classNamed("WeCom.WeComLoginButton") as? SocialLoginButton.Type {
                     let view = type.init()

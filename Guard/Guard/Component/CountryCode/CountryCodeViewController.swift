@@ -5,6 +5,8 @@
 //  Created by JnMars on 2022/3/26.
 //
 
+import UIKit
+
 struct CountryItemModel {
     var cn: String?
     var en: String?
