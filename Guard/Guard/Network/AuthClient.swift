@@ -228,7 +228,7 @@ public class AuthClient: Client {
         let body: NSDictionary = ["targetType" : "USER", "targetId" : userInfo.userId as Any]
         post("/api/v2/udvs/get", body) { code, message, data in
             if (code == 200) {
-                userInfo.customData = data?["data"] as? [NSMutableDictionary]
+                userInfo.customData = data?["result"] as? [NSMutableDictionary]
             }
             completion(code, message, userInfo)
         }
