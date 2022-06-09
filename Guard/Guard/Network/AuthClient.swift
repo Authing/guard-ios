@@ -28,12 +28,12 @@ public class AuthClient: Client {
         post("/api/v2/register/email", body) { code, message, data in
             if authData == nil{
                 self.createUserInfo(code, message, data, completion: completion)
-            }else{
+            } else {
                 self.createUserInfo(code, message, data) { code, msg, userInfo in
                     if code == 200{
                         authData?.token = userInfo?.token
                         OIDCClient().oidcInteraction(authData: authData, completion: completion)
-                    }else{
+                    } else {
                         completion(code, message, userInfo)
                     }
                 }
@@ -52,7 +52,7 @@ public class AuthClient: Client {
                     if code == 200{
                         authData?.token = userInfo?.token
                         OIDCClient().oidcInteraction(authData: authData, completion: completion)
-                    }else{
+                    } else {
                         completion(code, message, userInfo)
                     }
                 }
@@ -76,7 +76,7 @@ public class AuthClient: Client {
                     if code == 200{
                         authData?.token = userInfo?.token
                         OIDCClient().oidcInteraction(authData: authData, completion: completion)
-                    }else{
+                    } else {
                         completion(code, message, userInfo)
                     }
                 }
@@ -91,6 +91,10 @@ public class AuthClient: Client {
     public func loginByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         loginByPhoneCode(authData: nil, phoneCountryCode: phoneCountryCode, phone: phone, code: code, completion: completion)
     }
+    
+    public func loginByEmail(email: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        loginByEmail(authData: nil, email: email, code: code, completion: completion)
+    }
             
     public func loginByAccount(authData: AuthRequest?, account: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let encryptedPassword = Util.encryptPassword(password)
@@ -98,12 +102,12 @@ public class AuthClient: Client {
         post("/api/v2/login/account", body) { code, message, data in
             if authData == nil{
                 self.createUserInfo(code, message, data, completion: completion)
-            }else{
+            } else {
                 self.createUserInfo(code, message, data) { code, msg, userInfo in
                     if code == 200{
                         authData?.token = userInfo?.token
                         OIDCClient().oidcInteraction(authData: authData, completion: completion)
-                    }else{
+                    } else {
                         completion(code, message, userInfo)
                     }
                 }
@@ -119,12 +123,12 @@ public class AuthClient: Client {
         post("/api/v2/login/phone-code", body) { code, message, data in
             if authData == nil{
                 self.createUserInfo(code, message, data, completion: completion)
-            }else{
+            } else {
                 self.createUserInfo(code, message, data) { code, msg, userInfo in
                     if code == 200{
                         authData?.token = userInfo?.token
                         OIDCClient().oidcInteraction(authData: authData, completion: completion)
-                    }else{
+                    } else {
                         completion(code, message, userInfo)
                     }
                 }
@@ -132,10 +136,21 @@ public class AuthClient: Client {
         }
     }
     
-    public func loginByEmail(email: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func loginByEmail(authData: AuthRequest?, email: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let body: NSDictionary = ["email" : email, "code" : code]
         post("/api/v2/login/email-code", body) { code, message, data in
+            if authData == nil{
                 self.createUserInfo(code, message, data, completion: completion)
+            } else {
+                self.createUserInfo(code, message, data) { code, msg, userInfo in
+                    if code == 200{
+                        authData?.token = userInfo?.token
+                        OIDCClient().oidcInteraction(authData: authData, completion: completion)
+                    } else {
+                        completion(code, message, userInfo)
+                    }
+                }
+            }
         }
     }
     
@@ -213,7 +228,7 @@ public class AuthClient: Client {
         let body: NSDictionary = ["targetType" : "USER", "targetId" : userInfo.userId as Any]
         post("/api/v2/udvs/get", body) { code, message, data in
             if (code == 200) {
-                userInfo.customData = data?["result"] as? [NSMutableDictionary]
+                userInfo.customData = data?["data"] as? [NSMutableDictionary]
             }
             completion(code, message, userInfo)
         }
@@ -403,12 +418,12 @@ public class AuthClient: Client {
             self.post("/api/v2/ecConn/wechatMobile/authByCode", body) { code, message, data in
                 if authData == nil{
                     self.createUserInfo(code, message, data, completion: completion)
-                }else{
+                } else {
                     self.createUserInfo(code, message, data) { code, msg, userInfo in
                         if code == 200{
                             authData?.token = userInfo?.token
                             OIDCClient().oidcInteraction(authData: authData, completion: completion)
-                        }else{
+                        } else {
                             completion(code, message, userInfo)
                         }
                     }

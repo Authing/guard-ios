@@ -76,7 +76,62 @@ public class OIDCClient: NSObject {
     }
     
     // MARK: AuthorizationCode APIs
-    public func getAuthorizationCodeByAccount(account: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    ///邮箱注册获取 Authorization code
+    public func getAuthorizationCodeForEmailRegister(email: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        Authing.getConfig { config in
+            if let conf = config{
+                self.prepareLogin(config: conf) { code, message, authRequest in
+                    if code == 200{
+                        authRequest?.returnAuthorizationCode = true
+                        AuthClient().registerByEmail(authData: authRequest, email: email, password: password, completion: completion)
+                    } else {
+                        completion(code, message, nil)
+                    }
+                }
+            } else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+            }
+        }
+    }
+    
+    ///手机号验证码注册获取 Authorization code
+    public func getAuthorizationCodeForPhoneCodeRegister(phoneCountryCode: String? = nil, phone: String, code: String, password: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        Authing.getConfig { config in
+            if let conf = config{
+                self.prepareLogin(config: conf) { statusCode, message, authRequest in
+                    if statusCode == 200{
+                        authRequest?.returnAuthorizationCode = true
+                        AuthClient().registerByPhoneCode(authData: authRequest, phoneCountryCode: phoneCountryCode, phone: phone, code: code, password: password, completion: completion)
+                    } else {
+                        completion(statusCode, message, nil)
+                    }
+                }
+            } else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+            }
+        }
+    }
+    
+    ///用户名密码注册获取 Authorization code
+    public func getAuthorizationCodeForUserNameRegister(username: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        Authing.getConfig { config in
+            if let conf = config{
+                self.prepareLogin(config: conf) { code, message, authRequest in
+                    if code == 200{
+                        authRequest?.returnAuthorizationCode = true
+                        AuthClient().registerByUserName(authData: authRequest, username: username, password: password, completion: completion)
+                    } else {
+                        completion(code, message, nil)
+                    }
+                }
+            } else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+            }
+        }
+    }
+    
+    ///账号登录获取 Authorization code
+    public func getAuthorizationCodeForAccountLogin(account: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         Authing.getConfig { config in
             if let conf = config{
                 self.prepareLogin(config: conf) { code, message, authRequest in
@@ -93,13 +148,32 @@ public class OIDCClient: NSObject {
         }
     }
     
-    public func getAuthorizationCodeByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    ///手机号验证码登录获取 Authorization code
+    public func getAuthorizationCodeForPhoneCodeLogin(phoneCountryCode: String? = nil, phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         Authing.getConfig { config in
             if let conf = config{
                 self.prepareLogin(config: conf) { statuCode, message, authRequest in
                     if statuCode == 200{
                         authRequest?.returnAuthorizationCode = true
                         AuthClient().loginByPhoneCode(authData: authRequest, phoneCountryCode: phoneCountryCode,  phone: phone, code: code, completion: completion)
+                    } else {
+                        completion(statuCode, message, nil)
+                    }
+                }
+            } else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+            }
+        }
+    }
+    
+    ///微信登录获取 Authorization code
+    public func getAuthorizationCodeForWechatLogin(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        Authing.getConfig { config in
+            if let conf = config{
+                self.prepareLogin(config: conf) { statuCode, message, authRequest in
+                    if statuCode == 200{
+                        authRequest?.returnAuthorizationCode = true
+                        AuthClient().loginByWechat(authData: authRequest, code, completion: completion)
                     } else {
                         completion(statuCode, message, nil)
                     }
@@ -182,6 +256,22 @@ public class OIDCClient: NSObject {
                 self.prepareLogin(config: conf) { statuCode, message, authRequest in
                     if statuCode == 200{
                         AuthClient().loginByPhoneCode(authData: authRequest, phoneCountryCode: phoneCountryCode,  phone: phone, code: code, completion: completion)
+                    } else {
+                        completion(statuCode, message, nil)
+                    }
+                }
+            } else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+            }
+        }
+    }
+    
+    public func loginByEmail(email: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        Authing.getConfig { config in
+            if let conf = config{
+                self.prepareLogin(config: conf) { statuCode, message, authRequest in
+                    if statuCode == 200{
+                        AuthClient().loginByEmail(authData: authRequest, email: email, code: code, completion: completion)
                     } else {
                         completion(statuCode, message, nil)
                     }
