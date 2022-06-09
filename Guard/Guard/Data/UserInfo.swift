@@ -64,6 +64,8 @@ open class UserInfo {
     public var mfaPolicy: [String]? = []
     
     public var firstTimeLoginToken: String? = nil
+    
+    public var authorizationCode: String? = nil
 
     open func parse(data: NSDictionary?) {
         var userData = data

@@ -20,6 +20,7 @@ open class AuthRequest {
     public var codeVerifier: String
     public var codeChallenge: String? = nil
     var token: String? = nil
+    public var returnAuthorizationCode: Bool? = false
     
     public init() {
         client_id = Authing.getAppId()
@@ -30,6 +31,7 @@ open class AuthRequest {
         state = Util.randomString(length: 10)
         codeVerifier = Util.randomString(length: 43)
         codeChallenge = generateCodeChallenge(codeVerifier)
+        returnAuthorizationCode = false
     }
     
     private func generateCodeChallenge(_ verifier: String) -> String? {

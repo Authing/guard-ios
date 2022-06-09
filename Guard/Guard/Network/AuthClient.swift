@@ -11,22 +11,56 @@ public class AuthClient: Client {
     
     // MARK: Basic authentication APIs
     public func registerByEmail(email: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        let encryptedPassword = Util.encryptPassword(password)
-        let body: NSDictionary = ["email" : email, "password" : encryptedPassword, "forceLogin" : true]
-        post("/api/v2/register/email", body) { code, message, data in
-            self.createUserInfo(code, message, data, completion: completion)
-        }
+        self.registerByEmail(authData: nil, email: email, password: password, completion: completion)
     }
     
     public func registerByUserName(username: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        let encryptedPassword = Util.encryptPassword(password)
-        let body: NSDictionary = ["username" : username, "password" : encryptedPassword, "forceLogin" : true]
-        post("/api/v2/register/username", body) { code, message, data in
-            self.createUserInfo(code, message, data, completion: completion)
-        }
+        self.registerByUserName(authData: nil, username: username, password: password, completion: completion)
     }
     
     public func registerByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, password: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        self.registerByPhoneCode(authData: nil, phoneCountryCode: phoneCountryCode, phone: phone, code: code, password: password, completion: completion)
+    }
+    
+    public func registerByEmail(authData: AuthRequest?, email: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        let encryptedPassword = Util.encryptPassword(password)
+        let body: NSDictionary = ["email" : email, "password" : encryptedPassword, "forceLogin" : true]
+        post("/api/v2/register/email", body) { code, message, data in
+            if authData == nil{
+                self.createUserInfo(code, message, data, completion: completion)
+            }else{
+                self.createUserInfo(code, message, data) { code, msg, userInfo in
+                    if code == 200{
+                        authData?.token = userInfo?.token
+                        OIDCClient().oidcInteraction(authData: authData, completion: completion)
+                    }else{
+                        completion(code, message, userInfo)
+                    }
+                }
+            }
+        }
+    }
+    
+    public func registerByUserName(authData: AuthRequest?, username: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        let encryptedPassword = Util.encryptPassword(password)
+        let body: NSDictionary = ["username" : username, "password" : encryptedPassword, "forceLogin" : true]
+        post("/api/v2/register/username", body) { code, message, data in
+            if authData == nil{
+                self.createUserInfo(code, message, data, completion: completion)
+            } else {
+                self.createUserInfo(code, message, data) { code, msg, userInfo in
+                    if code == 200{
+                        authData?.token = userInfo?.token
+                        OIDCClient().oidcInteraction(authData: authData, completion: completion)
+                    }else{
+                        completion(code, message, userInfo)
+                    }
+                }
+            }
+        }
+    }
+    
+    public func registerByPhoneCode(authData: AuthRequest?, phoneCountryCode: String? = nil, phone: String, code: String, password: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let body: NSMutableDictionary = ["phone" : phone, "code" : code, "forceLogin" : true]
         if password != nil {
             body.setValue(Util.encryptPassword(password!), forKey: "password")
@@ -35,20 +69,30 @@ public class AuthClient: Client {
             body.setValue(phoneCountryCode, forKey: "phoneCountryCode")
         }
         post("/api/v2/register/phone-code", body) { code, message, data in
-            self.createUserInfo(code, message, data, completion: completion)
+            if authData == nil{
+                self.createUserInfo(code, message, data, completion: completion)
+            } else {
+                self.createUserInfo(code, message, data) { code, msg, userInfo in
+                    if code == 200{
+                        authData?.token = userInfo?.token
+                        OIDCClient().oidcInteraction(authData: authData, completion: completion)
+                    }else{
+                        completion(code, message, userInfo)
+                    }
+                }
+            }
         }
     }
     
     public func loginByAccount(account: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         loginByAccount(authData: nil, account: account, password: password, completion: completion)
     }
-    
 
     public func loginByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         loginByPhoneCode(authData: nil, phoneCountryCode: phoneCountryCode, phone: phone, code: code, completion: completion)
     }
             
-    public func loginByAccount(authData: AuthRequest? ,account: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func loginByAccount(authData: AuthRequest?, account: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let encryptedPassword = Util.encryptPassword(password)
         let body: NSDictionary = ["account" : account, "password" : encryptedPassword]
         post("/api/v2/login/account", body) { code, message, data in
