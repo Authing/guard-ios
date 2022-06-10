@@ -22,7 +22,7 @@ class WebViewController: AuthViewController, WKNavigationDelegate {
         
         authRequest.redirect_uri = "cn.guard://authing.cn/redirect"
 
-        OIDCClient().buildAuthorizeUrl(authRequest: authRequest) { url in
+        OIDCClient(authRequest).buildAuthorizeUrl() { url in
             if url != nil {
                 self.webView?.load(URLRequest(url: url!))
                 self.webView?.allowsBackForwardNavigationGestures = true
@@ -39,7 +39,7 @@ class WebViewController: AuthViewController, WKNavigationDelegate {
             
             if url.absoluteString.hasPrefix(authRequest.redirect_uri) {
                 if let authCode = Util.getQueryStringParameter(url: url, param: "code") {
-                    OIDCClient().authByCode(code: authCode, authRequest: authRequest) { code, message, userInfo in
+                    OIDCClient(authRequest).authByCode(code: authCode) { code, message, userInfo in
                         if (code == 200) {
                             OIDCClient().getNewAccessTokenByRefreshToken(userInfo: userInfo) { code, message, userInfo in
                                 print("\(userInfo?.accessToken ?? "")")

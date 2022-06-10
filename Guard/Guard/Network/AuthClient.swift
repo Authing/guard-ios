@@ -32,7 +32,7 @@ public class AuthClient: Client {
                 self.createUserInfo(code, message, data) { code, msg, userInfo in
                     if code == 200{
                         authData?.token = userInfo?.token
-                        OIDCClient().oidcInteraction(authData: authData, completion: completion)
+                        OIDCClient(authData).oidcInteraction( completion: completion)
                     } else {
                         completion(code, message, userInfo)
                     }
@@ -51,7 +51,7 @@ public class AuthClient: Client {
                 self.createUserInfo(code, message, data) { code, msg, userInfo in
                     if code == 200{
                         authData?.token = userInfo?.token
-                        OIDCClient().oidcInteraction(authData: authData, completion: completion)
+                        OIDCClient(authData).oidcInteraction(completion: completion)
                     } else {
                         completion(code, message, userInfo)
                     }
@@ -75,7 +75,7 @@ public class AuthClient: Client {
                 self.createUserInfo(code, message, data) { code, msg, userInfo in
                     if code == 200{
                         authData?.token = userInfo?.token
-                        OIDCClient().oidcInteraction(authData: authData, completion: completion)
+                        OIDCClient(authData).oidcInteraction(completion: completion)
                     } else {
                         completion(code, message, userInfo)
                     }
@@ -106,7 +106,7 @@ public class AuthClient: Client {
                 self.createUserInfo(code, message, data) { code, msg, userInfo in
                     if code == 200{
                         authData?.token = userInfo?.token
-                        OIDCClient().oidcInteraction(authData: authData, completion: completion)
+                        OIDCClient(authData).oidcInteraction(completion: completion)
                     } else {
                         completion(code, message, userInfo)
                     }
@@ -127,7 +127,7 @@ public class AuthClient: Client {
                 self.createUserInfo(code, message, data) { code, msg, userInfo in
                     if code == 200{
                         authData?.token = userInfo?.token
-                        OIDCClient().oidcInteraction(authData: authData, completion: completion)
+                        OIDCClient(authData).oidcInteraction(completion: completion)
                     } else {
                         completion(code, message, userInfo)
                     }
@@ -145,7 +145,7 @@ public class AuthClient: Client {
                 self.createUserInfo(code, message, data) { code, msg, userInfo in
                     if code == 200{
                         authData?.token = userInfo?.token
-                        OIDCClient().oidcInteraction(authData: authData, completion: completion)
+                        OIDCClient(authData).oidcInteraction(completion: completion)
                     } else {
                         completion(code, message, userInfo)
                     }
@@ -422,7 +422,7 @@ public class AuthClient: Client {
                     self.createUserInfo(code, message, data) { code, msg, userInfo in
                         if code == 200{
                             authData?.token = userInfo?.token
-                            OIDCClient().oidcInteraction(authData: authData, completion: completion)
+                            OIDCClient(authData).oidcInteraction(completion: completion)
                         } else {
                             completion(code, message, userInfo)
                         }

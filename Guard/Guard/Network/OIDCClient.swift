@@ -8,37 +8,74 @@
 import Foundation
 
 public class OIDCClient: NSObject {
+    
+    public var authRequest: AuthRequest = AuthRequest()
+    
+    public init(_ authRequest: AuthRequest? = nil) {
+        super.init()
         
-    public func buildAuthorizeUrl(authRequest: AuthRequest, completion: @escaping (URL?) -> Void) {
+        if let authData = authRequest {
+            self.authRequest = authData
+        }
+        Authing.getConfig { config in
+            if let conf = config {
+                if conf.redirectUris?.count ?? 0 > 0{
+                    if let url = conf.redirectUris?.first { self.authRequest.redirect_uri = url }
+                }
+            }
+        }
+    }
+    
+    // MARK: Util APIs
+    public func buildAuthorizeUrl(completion: @escaping (URL?) -> Void) {
         Authing.getConfig { config in
             if (config == nil) {
                 completion(nil)
             } else {
                 
-                let secret = authRequest.client_secret
+                let secret = self.authRequest.client_secret
                 
                 let url = "\(Authing.getSchema())://\(Util.getHost(config!))/oidc/auth?"
-                + "nonce=" + authRequest.nonce
-                + "&scope=" + authRequest.scope.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-                + "&client_id=" + authRequest.client_id
-                + "&redirect_uri=" + authRequest.redirect_uri
-                + "&response_type=" + authRequest.response_type
+                + "nonce=" + self.authRequest.nonce
+                + "&scope=" + self.authRequest.scope.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+                + "&client_id=" + self.authRequest.client_id
+                + "&redirect_uri=" + self.authRequest.redirect_uri
+                + "&response_type=" + self.authRequest.response_type
                 + "&prompt=consent"
-                + "&state=" + authRequest.state
-                + (secret == nil ? "&code_challenge=" + authRequest.codeChallenge! + "&code_challenge_method=S256" : "");
+                + "&state=" + self.authRequest.state
+                + (secret == nil ? "&code_challenge=" + self.authRequest.codeChallenge! + "&code_challenge_method=S256" : "");
 
                 completion(URL(string: url))
             }
         }
     }
     
-    public func prepareLogin(config: Config, completion: @escaping(Int, String?, AuthRequest?) -> Void) {
-    
-        let authRequest = AuthRequest()
-        if config.redirectUris?.count ?? 0 > 0{
-            if let url = config.redirectUris?.first { authRequest.redirect_uri = url }
-        }
+    public func authByCode(code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         
+        let secret = self.authRequest.client_secret
+        let secretStr = (secret == nil ? "&code_verifier=" + self.authRequest.codeVerifier : "&client_secret=" + (secret ?? ""))
+
+        let body = "client_id="+Authing.getAppId()
+                    + "&grant_type=authorization_code"
+                    + "&code=" + code
+                    + "&scope=" + self.authRequest.scope
+                    + "&prompt=" + "consent"
+                    + secretStr
+                    + "&redirect_uri=" + self.authRequest.redirect_uri
+        
+        request(userInfo: nil, endPoint: "/oidc/token", method: "POST", body: body) { code, message, data in
+            if (code == 200) {
+                AuthClient().createUserInfo(code, message, data) { code, message, userInfo in
+                    self.getUserInfoByAccessToken(userInfo: userInfo, completion: completion)
+                }
+            } else {
+                completion(code, message, nil)
+            }
+        }
+    }
+    
+    public func prepareLogin(config: Config, completion: @escaping(Int, String?, AuthRequest?) -> Void) {
+            
         let url = "\(Authing.getSchema())://\(Util.getHost(config))/oidc/auth?_authing_lang=\(Util.getLangHeader())"
         + "&app_id=" + authRequest.client_id
         + "&client_id=" + authRequest.client_id
@@ -57,7 +94,7 @@ public class OIDCClient: NSObject {
         let session = URLSession.init(configuration: URLSessionConfiguration.default, delegate: OIDCClient(), delegateQueue: nil)
         session.dataTask(with: request) { (data, response, error) in
             guard error == nil else {
-                completion(500, "network error \(url) \n\(error!)", authRequest)
+                completion(500, "network error \(url) \n\(error!)", self.authRequest)
                 return
             }
             
@@ -66,9 +103,9 @@ public class OIDCClient: NSObject {
             if statusCode == 302{
                 let location: String = httpResponse?.allHeaderFields["Location"] as? String ?? ""
                 let uuid = URL(string: location)?.lastPathComponent
-                authRequest.uuid = uuid
+                self.authRequest.uuid = uuid
 
-                completion(200, "", authRequest)
+                completion(200, "", self.authRequest)
             } else {
                 completion(statusCode, String(decoding: data!, as: UTF8.self), nil)
             }
@@ -77,7 +114,7 @@ public class OIDCClient: NSObject {
     
     // MARK: AuthorizationCode APIs
     ///邮箱注册获取 Authorization code
-    public func getAuthorizationCodeForEmailRegister(email: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func getAuthCodeForEmailRegister(email: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         Authing.getConfig { config in
             if let conf = config{
                 self.prepareLogin(config: conf) { code, message, authRequest in
@@ -95,7 +132,7 @@ public class OIDCClient: NSObject {
     }
     
     ///手机号验证码注册获取 Authorization code
-    public func getAuthorizationCodeForPhoneCodeRegister(phoneCountryCode: String? = nil, phone: String, code: String, password: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func getAuthCodeForPhoneCodeRegister(phoneCountryCode: String? = nil, phone: String, code: String, password: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         Authing.getConfig { config in
             if let conf = config{
                 self.prepareLogin(config: conf) { statusCode, message, authRequest in
@@ -113,7 +150,7 @@ public class OIDCClient: NSObject {
     }
     
     ///用户名密码注册获取 Authorization code
-    public func getAuthorizationCodeForUserNameRegister(username: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func getAuthCodeForUserNameRegister(username: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         Authing.getConfig { config in
             if let conf = config{
                 self.prepareLogin(config: conf) { code, message, authRequest in
@@ -131,7 +168,7 @@ public class OIDCClient: NSObject {
     }
     
     ///账号登录获取 Authorization code
-    public func getAuthorizationCodeForAccountLogin(account: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func getAuthCodeForAccountLogin(account: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         Authing.getConfig { config in
             if let conf = config{
                 self.prepareLogin(config: conf) { code, message, authRequest in
@@ -149,7 +186,7 @@ public class OIDCClient: NSObject {
     }
     
     ///手机号验证码登录获取 Authorization code
-    public func getAuthorizationCodeForPhoneCodeLogin(phoneCountryCode: String? = nil, phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func getAuthCodeForPhoneCodeLogin(phoneCountryCode: String? = nil, phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         Authing.getConfig { config in
             if let conf = config{
                 self.prepareLogin(config: conf) { statuCode, message, authRequest in
@@ -167,7 +204,7 @@ public class OIDCClient: NSObject {
     }
     
     ///微信登录获取 Authorization code
-    public func getAuthorizationCodeForWechatLogin(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func getAuthCodeForWechatLogin(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         Authing.getConfig { config in
             if let conf = config{
                 self.prepareLogin(config: conf) { statuCode, message, authRequest in
@@ -297,34 +334,7 @@ public class OIDCClient: NSObject {
             }
         }
     }
-    
-
-    // MARK: Util APIs
-    
-    public func authByCode(code: String, authRequest: AuthRequest, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         
-        let secret = authRequest.client_secret
-        let secretStr = (secret == nil ? "&code_verifier=" + authRequest.codeVerifier : "&client_secret=" + (secret ?? ""))
-
-        let body = "client_id="+Authing.getAppId()
-                    + "&grant_type=authorization_code"
-                    + "&code=" + code
-                    + "&scope=" + authRequest.scope
-                    + "&prompt=" + "consent"
-                    + secretStr
-                    + "&redirect_uri=" + authRequest.redirect_uri
-        
-        request(userInfo: nil, endPoint: "/oidc/token", method: "POST", body: body) { code, message, data in
-            if (code == 200) {
-                AuthClient().createUserInfo(code, message, data) { code, message, userInfo in
-                    self.getUserInfoByAccessToken(userInfo: userInfo, completion: completion)
-                }
-            } else {
-                completion(code, message, nil)
-            }
-        }
-    }
-    
     public func getUserInfoByAccessToken(userInfo: UserInfo?, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         request(userInfo: userInfo, endPoint: "/oidc/me", method: "GET", body: nil) { code, message, data in
             AuthClient().createUserInfo(userInfo, code, message, data, completion: completion)
@@ -349,7 +359,7 @@ public class OIDCClient: NSObject {
                 self.prepareLogin(config: conf) { code, message, authRequest in
                     if code == 200 {
                         authRequest?.token = userInfo.token
-                        self.oidcInteraction(authData: authRequest, completion: completion)
+                        self.oidcInteraction(completion: completion)
                     } else {
                         completion(code, message, nil)
                     }
@@ -360,19 +370,19 @@ public class OIDCClient: NSObject {
         }
     }
     
-    public func oidcInteraction(authData: AuthRequest?, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func oidcInteraction(completion: @escaping(Int, String?, UserInfo?) -> Void) {
         Authing.getConfig { config in
-            if let conf = config, let data = authData{
-                let url = "\(Authing.getSchema())://\(Util.getHost(conf))/interaction/oidc/\(data.uuid!)/login"
-                let body = "token=" + data.token!
-                self._oidcInteraction(authData: authData, url: url, body: body, completion: completion)
+            if let conf = config {
+                let url = "\(Authing.getSchema())://\(Util.getHost(conf))/interaction/oidc/\(self.authRequest.uuid!)/login"
+                let body = "token=" + self.authRequest.token!
+                self._oidcInteraction(url: url, body: body, completion: completion)
             }else {
                 completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
             }
         }
     }
     
-    private func _oidcInteraction(authData: AuthRequest?, url: String, body: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    private func _oidcInteraction(url: String, body: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
     
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
@@ -390,14 +400,14 @@ public class OIDCClient: NSObject {
             let statusCode: Int = httpResponse?.statusCode ?? 0
             if statusCode == 302{
                 let location: String = httpResponse?.allHeaderFields["Location"] as? String ?? ""
-                self.oidcLogin(authData: authData, url: location, completion: completion)
+                self.oidcLogin(url: location, completion: completion)
             } else {
                 completion(statusCode, String(decoding: data!, as: UTF8.self), nil)
             }
         }.resume()
     }
 
-    public func oidcLogin(authData: AuthRequest?, url: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func oidcLogin(url: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "GET"
@@ -416,21 +426,21 @@ public class OIDCClient: NSObject {
                 let location: String = httpResponse?.allHeaderFields["Location"] as? String ?? ""
                 let authCode = Util.getQueryStringParameter(url: URL.init(string: location)!, param: "code")
                 if authCode != nil{
-                    if authData?.returnAuthorizationCode == true {
+                    if self.authRequest.returnAuthorizationCode == true {
                         let userInfo = UserInfo.init()
                         userInfo.authorizationCode = authCode
                         completion(200, "Get authorization code success", userInfo)
                         return
                     }
-                    self.authByCode(code: authCode!, authRequest: authData ?? AuthRequest(), completion: completion)
+                    self.authByCode(code: authCode!, completion: completion)
                 } else if URL(string: location)?.lastPathComponent == "authz" {
-                    if let scheme = request.url?.scheme, let host = request.url?.host, let uuid = authData?.uuid{
+                    if let scheme = request.url?.scheme, let host = request.url?.host, let uuid = self.authRequest.uuid{
                         let requsetUrl = "\(scheme)://\(host)/interaction/oidc/\(uuid)/confirm"
-                        self._oidcInteractionScopeConfirm(authData: authData, url: requsetUrl, completion: completion)
+                        self._oidcInteractionScopeConfirm(url: requsetUrl, completion: completion)
                     }
                 } else {
                     let requsetUrl = (request.url?.scheme ?? "") + "://" + (request.url?.host ?? "") + location
-                    self.oidcLogin(authData: authData, url: requsetUrl, completion: completion)
+                    self.oidcLogin(url: requsetUrl, completion: completion)
                 }
                 
             } else {
@@ -439,12 +449,12 @@ public class OIDCClient: NSObject {
         }.resume()
     }
     
-    private func _oidcInteractionScopeConfirm(authData: AuthRequest?, url: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    private func _oidcInteractionScopeConfirm(url: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        let body = authData?.getScopesAsConsentBody()
-        request.httpBody = body?.data(using: .utf8)
+        let body = self.authRequest.getScopesAsConsentBody()
+        request.httpBody = body.data(using: .utf8)
 
         let session = URLSession.init(configuration: URLSessionConfiguration.default, delegate: OIDCClient(), delegateQueue: nil)
         
@@ -458,7 +468,7 @@ public class OIDCClient: NSObject {
             let statusCode: Int = httpResponse?.statusCode ?? 0
             if statusCode == 302{
                 let location: String = httpResponse?.allHeaderFields["Location"] as? String ?? ""
-                self.oidcLogin(authData: authData, url: location, completion: completion)
+                self.oidcLogin(url: location, completion: completion)
             } else {
                 completion(statusCode, String(decoding: data!, as: UTF8.self), nil)
             }
