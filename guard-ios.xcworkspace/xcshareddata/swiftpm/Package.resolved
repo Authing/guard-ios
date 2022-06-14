@@ -6,7 +6,16 @@
       "location" : "https://github.com/openid/AppAuth-iOS.git",
       "state" : {
         "branch" : "master",
-        "revision" : "98ed5e15ceedcacc0b3fd6c3521a22411acc2212"
+        "revision" : "8582608849acbd2a434307a19da3a4f8f7267564"
+      }
+    },
+    {
+      "identity" : "guard-ios-wechat",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Authing/guard-ios-wechat",
+      "state" : {
+        "revision" : "67b6afa6354597d5e3873f63808063b6050874bd",
+        "version" : "1.0.2"
       }
     },
     {

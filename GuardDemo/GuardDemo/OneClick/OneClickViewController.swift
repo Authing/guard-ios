@@ -20,7 +20,12 @@ class OneClickViewController: UIViewController {
     }
     
     @IBAction func onClick(_ sender: UIButton, forEvent event: UIEvent) {
-        OneAuth.start(self) { code, message, userInfo in
+        let model: NTESQuickLoginModel = NTESQuickLoginModel()
+        model.currentVC = self
+        model.customViewBlock = { cumtom in
+            
+        }
+        OneAuth.start(self, businessId: "74ae90bd84f74b69a88b578bbbbcdcfd",model: nil) { code, message, userInfo in
             DispatchQueue.main.async() {
                 if (code == 200 && userInfo != nil) {
                     self.navigationController?.popViewController(animated: true)

@@ -7,6 +7,7 @@
 
 import UIKit
 import Guard
+import Wechat
 import OneAuth
 import AppAuth
 import WeCom
@@ -21,11 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         // Override point for customization after application launch.
-        OneAuth.bizId = "74ae90bd84f74b69a88b578bbbbcdcfd"
-    
-//        Authing.setupWechat("wx1cddb15e280c0f67", universalLink: "https://developer-beta.authing.cn/app/")
-        Authing.start("60caaf41df670b771fd08937");
+        WechatLogin.registerApp(appId:"wx1cddb15e280c0f67", universalLink: "https://developer-beta.authing.cn/app/")
         WeCom.registerApp(appId: "wwauth803c38cb89ac1d57000002", corpId: "ww803c38cb89ac1d57", agentId: "1000002")
+        OneAuth.bizId =  "74ae90bd84f74b69a88b578bbbbcdcfd"
+        Authing.start("60caaf41df670b771fd08937");
 
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
             print("Permission granted: \(granted)")

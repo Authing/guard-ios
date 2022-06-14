@@ -9,7 +9,8 @@ import Foundation
 
 public class OIDCClient: NSObject {
     
-    public var authRequest: AuthRequest = AuthRequest()
+    public var authRequest = AuthRequest()
+    private var authResult: AuthResult?
     
     public init(_ authRequest: AuthRequest? = nil) {
         super.init()
@@ -114,18 +115,21 @@ public class OIDCClient: NSObject {
     
     // MARK: AuthorizationCode APIs
     ///邮箱注册获取 Authorization code
-    public func getAuthCodeForEmailRegister(email: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func getAuthCodeForEmailRegister(email: String, password: String, completion: @escaping(Int, String?, AuthResult?) -> Void) {
         Authing.getConfig { config in
             if let conf = config{
-                self.prepareLogin(config: conf) { code, message, authRequest in
-                    if code == 200{
+                self.prepareLogin(config: conf) { statuCode, message, authRequest in
+                    if statuCode == 200{
                         authRequest?.returnAuthorizationCode = true
-//                        AuthClient().registerByEmail(authData: authRequest, email: email, password: password) { code, msg, UserInfo in
-//                            
-//                        }
-                        AuthClient().registerByEmail(authData: authRequest, email: email, password: password, completion: completion)
+                        AuthClient().registerByEmail(authData: authRequest, email: email, password: password) { code, msg, UserInfo in
+                            if code == 200{
+                                completion(code, "get authorization code success", AuthResult(code: msg, request: self.authRequest))
+                            } else {
+                                completion(code, message, nil)
+                            }
+                        }
                     } else {
-                        completion(code, message, nil)
+                        completion(statuCode, message, nil)
                     }
                 }
             } else {
@@ -135,13 +139,19 @@ public class OIDCClient: NSObject {
     }
     
     ///手机号验证码注册获取 Authorization code
-    public func getAuthCodeForPhoneCodeRegister(phoneCountryCode: String? = nil, phone: String, code: String, password: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func getAuthCodeForPhoneCodeRegister(phoneCountryCode: String? = nil, phone: String, code: String, password: String? = nil, completion: @escaping(Int, String?, AuthResult?) -> Void) {
         Authing.getConfig { config in
             if let conf = config{
                 self.prepareLogin(config: conf) { statusCode, message, authRequest in
                     if statusCode == 200{
                         authRequest?.returnAuthorizationCode = true
-                        AuthClient().registerByPhoneCode(authData: authRequest, phoneCountryCode: phoneCountryCode, phone: phone, code: code, password: password, completion: completion)
+                        AuthClient().registerByPhoneCode(authData: authRequest, phoneCountryCode: phoneCountryCode, phone: phone, code: code, password: password) { code, msg, UserInfo in
+                            if code == 200{
+                                completion(code, "get authorization code success", AuthResult(code: msg, request: self.authRequest))
+                            } else {
+                                completion(code, message, nil)
+                            }
+                        }
                     } else {
                         completion(statusCode, message, nil)
                     }
@@ -153,15 +163,21 @@ public class OIDCClient: NSObject {
     }
     
     ///用户名密码注册获取 Authorization code
-    public func getAuthCodeForUserNameRegister(username: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func getAuthCodeForUserNameRegister(username: String, password: String, completion: @escaping(Int, String?, AuthResult?) -> Void) {
         Authing.getConfig { config in
             if let conf = config{
-                self.prepareLogin(config: conf) { code, message, authRequest in
-                    if code == 200{
+                self.prepareLogin(config: conf) { statuCode, message, authRequest in
+                    if statuCode == 200{
                         authRequest?.returnAuthorizationCode = true
-                        AuthClient().registerByUserName(authData: authRequest, username: username, password: password, completion: completion)
+                        AuthClient().registerByUserName(authData: authRequest, username: username, password: password) { code, msg, UserInfo in
+                            if code == 200{
+                                completion(code, "get authorization code success", AuthResult(code: msg, request: self.authRequest))
+                            } else {
+                                completion(code, message, nil)
+                            }
+                        }
                     } else {
-                        completion(code, message, nil)
+                        completion(statuCode, message, nil)
                     }
                 }
             } else {
@@ -171,15 +187,21 @@ public class OIDCClient: NSObject {
     }
     
     ///账号登录获取 Authorization code
-    public func getAuthCodeForAccountLogin(account: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func getAuthCodeForAccountLogin(account: String, password: String, completion: @escaping(Int, String?, AuthResult?) -> Void) {
         Authing.getConfig { config in
             if let conf = config{
-                self.prepareLogin(config: conf) { code, message, authRequest in
-                    if code == 200{
+                self.prepareLogin(config: conf) { statuCode, message, authRequest in
+                    if statuCode == 200{
                         authRequest?.returnAuthorizationCode = true
-                        AuthClient().loginByAccount(authData: authRequest ,account: account, password: password, completion: completion)
+                        AuthClient().loginByAccount(authData: authRequest ,account: account, password: password) { code, msg, UserInfo in
+                            if code == 200{
+                                completion(code, "get authorization code success", AuthResult(code: msg, request: self.authRequest))
+                            } else {
+                                completion(code, message, nil)
+                            }
+                        }
                     } else {
-                        completion(code, message, nil)
+                        completion(statuCode, message, nil)
                     }
                 }
             } else {
@@ -189,13 +211,15 @@ public class OIDCClient: NSObject {
     }
     
     ///手机号验证码登录获取 Authorization code
-    public func getAuthCodeForPhoneCodeLogin(phoneCountryCode: String? = nil, phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func getAuthCodeForPhoneCodeLogin(phoneCountryCode: String? = nil, phone: String, code: String, completion: @escaping(Int, String?, AuthResult?) -> Void) {
         Authing.getConfig { config in
             if let conf = config{
                 self.prepareLogin(config: conf) { statuCode, message, authRequest in
                     if statuCode == 200{
                         authRequest?.returnAuthorizationCode = true
-                        AuthClient().loginByPhoneCode(authData: authRequest, phoneCountryCode: phoneCountryCode,  phone: phone, code: code, completion: completion)
+                        AuthClient().loginByPhoneCode(authData: authRequest, phoneCountryCode: phoneCountryCode,  phone: phone, code: code) { code, msg, UserInfo in
+                            completion(code, message, self.authResult)
+                        }
                     } else {
                         completion(statuCode, message, nil)
                     }
@@ -207,13 +231,19 @@ public class OIDCClient: NSObject {
     }
     
     ///微信登录获取 Authorization code
-    public func getAuthCodeForWechatLogin(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func getAuthCodeForWechatLogin(_ code: String, completion: @escaping(Int, String?, AuthResult?) -> Void) {
         Authing.getConfig { config in
             if let conf = config{
                 self.prepareLogin(config: conf) { statuCode, message, authRequest in
                     if statuCode == 200{
                         authRequest?.returnAuthorizationCode = true
-                        AuthClient().loginByWechat(authData: authRequest, code, completion: completion)
+                        AuthClient().loginByWechat(authData: authRequest, code) { code, msg, UserInfo in
+                            if code == 200{
+                                completion(code, "get authorization code success", AuthResult(code: msg, request: self.authRequest))
+                            } else {
+                                completion(code, message, nil)
+                            }
+                        }
                     } else {
                         completion(statuCode, message, nil)
                     }
@@ -430,8 +460,7 @@ public class OIDCClient: NSObject {
                 let authCode = Util.getQueryStringParameter(url: URL.init(string: location)!, param: "code")
                 if authCode != nil{
                     if self.authRequest.returnAuthorizationCode == true {
-                        
-                        completion(200, "Get authorization code success", nil)
+                        completion(200, authCode, nil)
                         return
                     }
                     self.authByCode(code: authCode!, completion: completion)
