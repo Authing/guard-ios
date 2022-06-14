@@ -141,6 +141,7 @@
 		7EF66C8D277DA96200FCBBEB /* GetEmailCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C8C277DA96200FCBBEB /* GetEmailCodeButton.swift */; };
 		A84B62FC27F82A2B006650CC /* CountryCodeSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84B62FB27F82A2B006650CC /* CountryCodeSearchBar.swift */; };
 		A850622C283237FA00F97EBD /* CountdownTimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A850622B283237FA00F97EBD /* CountdownTimerManager.swift */; };
+		A8A5ABC1285733F500D6B03A /* AuthResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A5ABC0285733F500D6B03A /* AuthResult.swift */; };
 		A8A7BBB228466CC5000A0D7C /* CountryCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A7BBB128466CC5000A0D7C /* CountryCodeView.swift */; };
 		A8D38D1627F1DB4A00942707 /* CountryCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D38D1527F1DB4A00942707 /* CountryCodeViewController.swift */; };
 		A8D38D1A27F1E44700942707 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D38D1827F1E44700942707 /* CountryTableViewCell.swift */; };
@@ -283,6 +284,7 @@
 		7EF66C8C277DA96200FCBBEB /* GetEmailCodeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEmailCodeButton.swift; sourceTree = "<group>"; };
 		A84B62FB27F82A2B006650CC /* CountryCodeSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCodeSearchBar.swift; sourceTree = "<group>"; };
 		A850622B283237FA00F97EBD /* CountdownTimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimerManager.swift; sourceTree = "<group>"; };
+		A8A5ABC0285733F500D6B03A /* AuthResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResult.swift; sourceTree = "<group>"; };
 		A8A7BBB128466CC5000A0D7C /* CountryCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeView.swift; sourceTree = "<group>"; };
 		A8D38D1527F1DB4A00942707 /* CountryCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeViewController.swift; sourceTree = "<group>"; };
 		A8D38D1827F1E44700942707 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
@@ -460,6 +462,8 @@
 			children = (
 				7E75668627672C8D00C3872F /* Config.swift */,
 				7E7566B12768A7CC00C3872F /* UserInfo.swift */,
+				7E87A1C727CF52C100E52D5A /* AuthRequest.swift */,
+				A8A5ABC0285733F500D6B03A /* AuthResult.swift */,
 				7E12D7B5277DE9EF00703FC1 /* UserManager.swift */,
 				7E189B0827F13ACD005AC1AC /* CacheManager.swift */,
 			);
@@ -585,7 +589,6 @@
 			isa = PBXGroup;
 			children = (
 				7E75669F27684A5E00C3872F /* AuthClient.swift */,
-				7E87A1C727CF52C100E52D5A /* AuthRequest.swift */,
 				7E87A1C927CF603B00E52D5A /* OIDCClient.swift */,
 				7E20000B27EAD9AB0051F590 /* Client.swift */,
 			);
@@ -844,6 +847,7 @@
 				7E75668B276746AF00C3872F /* AppLogo.swift in Sources */,
 				7E96039227E08B2B007C87EB /* Parser.swift in Sources */,
 				7E7566B22768A7CC00C3872F /* UserInfo.swift in Sources */,
+				A8A5ABC1285733F500D6B03A /* AuthResult.swift in Sources */,
 				7EF66C67277C119800FCBBEB /* IndexAuthViewController.swift in Sources */,
 				7E0FAFDF27ED5A37006258FC /* UIViewController+Authing.swift in Sources */,
 				7EF66C8D277DA96200FCBBEB /* GetEmailCodeButton.swift in Sources */,

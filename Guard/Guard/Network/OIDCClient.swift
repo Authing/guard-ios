@@ -120,6 +120,9 @@ public class OIDCClient: NSObject {
                 self.prepareLogin(config: conf) { code, message, authRequest in
                     if code == 200{
                         authRequest?.returnAuthorizationCode = true
+//                        AuthClient().registerByEmail(authData: authRequest, email: email, password: password) { code, msg, UserInfo in
+//                            
+//                        }
                         AuthClient().registerByEmail(authData: authRequest, email: email, password: password, completion: completion)
                     } else {
                         completion(code, message, nil)
@@ -427,9 +430,8 @@ public class OIDCClient: NSObject {
                 let authCode = Util.getQueryStringParameter(url: URL.init(string: location)!, param: "code")
                 if authCode != nil{
                     if self.authRequest.returnAuthorizationCode == true {
-                        let userInfo = UserInfo.init()
-                        userInfo.authorizationCode = authCode
-                        completion(200, "Get authorization code success", userInfo)
+                        
+                        completion(200, "Get authorization code success", nil)
                         return
                     }
                     self.authByCode(code: authCode!, completion: completion)

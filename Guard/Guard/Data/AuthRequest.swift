@@ -26,7 +26,7 @@ open class AuthRequest {
         client_id = Authing.getAppId()
         redirect_uri = "https://console.authing.cn/console/get-started/\(client_id)";
         response_type = "code";
-        scope = "openid profile email phone username address offline_access role extended_fields";
+        scope = "openid profile email phone username address offline_access roles extended_fields";
         nonce = Util.randomString(length: 10)
         state = Util.randomString(length: 10)
         codeVerifier = Util.randomString(length: 43)

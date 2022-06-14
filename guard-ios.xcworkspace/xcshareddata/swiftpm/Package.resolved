@@ -1,25 +1,23 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "AppAuth",
-        "repositoryURL": "https://github.com/openid/AppAuth-iOS.git",
-        "state": {
-          "branch": "master",
-          "revision": "98ed5e15ceedcacc0b3fd6c3521a22411acc2212",
-          "version": null
-        }
-      },
-      {
-        "package": "Guard-iOS-WeCom",
-        "repositoryURL": "https://github.com/Authing/guard-ios-wecom",
-        "state": {
-          "branch": null,
-          "revision": "1754b48dd36b4ab2c99f527c59abaab5cb4c4173",
-          "version": "1.0.1"
-        }
+  "pins" : [
+    {
+      "identity" : "appauth-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/openid/AppAuth-iOS.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "98ed5e15ceedcacc0b3fd6c3521a22411acc2212"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "guard-ios-wecom",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Authing/guard-ios-wecom",
+      "state" : {
+        "revision" : "1754b48dd36b4ab2c99f527c59abaab5cb4c4173",
+        "version" : "1.0.1"
+      }
+    }
+  ],
+  "version" : 2
 }

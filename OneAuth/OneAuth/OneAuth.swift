@@ -34,14 +34,14 @@ open class OneAuth {
     }
     
     public static func start(_ vc: UIViewController, businessId: String? = nil, model: Any? = nil, completion: @escaping(Int, String?, UserInfo?)->Void) {
+       
         if (businessId != nil) {
             bizId = businessId!
         }
-        
         if let t = token {
             Util.getConfig(vc.view) { config in
-                self.setCustomUI(config, vc, completion: completion)
-                self.startLogin(t, completion)
+                OneAuth.setCustomUI(config, vc, completion: completion)
+                OneAuth.startLogin(t, completion)
             }
         } else {
             NTESQuickLoginManager.sharedInstance().register(withBusinessID: bizId!)
@@ -50,12 +50,14 @@ open class OneAuth {
                 if (success) {
                     available = true
                     let token: String? = result["token"] as? String
-                    Util.getConfig(vc.view) { config in
-                        if let c = config {
-                            self.setCustomUI(c, vc, completion: completion)
-                            self.startLogin(token, completion)
-                        } else {
-                            completion(400, "failed to login. no config", nil)
+                    DispatchQueue.main.async() {
+                        Util.getConfig(vc.view) { config in
+                            if let c = config {
+                                OneAuth.setCustomUI(c, vc, completion: completion)
+                                OneAuth.startLogin(token, completion)
+                            } else {
+                                completion(400, "failed to login. no config", nil)
+                            }
                         }
                     }
                 } else {
@@ -215,7 +217,7 @@ open class OneAuth {
             let success: Bool = result["success"] as! Bool
             if (success) {
                 let ak: String = result["accessToken"] as! String
-                self.getAuthingToken(token!, ak, completion)
+                OneAuth.getAuthingToken(token!, ak, completion)
             } else {
                 let error: String = result["desc"] as! String
                 print("Error oneauth cucmctAuthorize \(error)")
