@@ -8,9 +8,9 @@
 import UIKit
 import Guard
 import Wechat
+import WeCom
 import OneAuth
 import AppAuth
-import WeCom
 import UserNotifications
 
 @main

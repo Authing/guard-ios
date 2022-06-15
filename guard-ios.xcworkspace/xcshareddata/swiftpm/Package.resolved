@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "guard-ios-oneauth",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Authing/guard-ios-oneauth",
+      "state" : {
+        "revision" : "faa761d5839917adc825692955e08ea7dc3453c0",
+        "version" : "1.0.7"
+      }
+    },
+    {
       "identity" : "guard-ios-wechat",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Authing/guard-ios-wechat",

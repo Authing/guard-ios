@@ -114,7 +114,6 @@ public class OIDCClient: NSObject {
     }
     
     // MARK: AuthorizationCode APIs
-    ///邮箱注册获取 Authorization code
     public func getAuthCodeForEmailRegister(email: String, password: String, completion: @escaping(Int, String?, AuthResult?) -> Void) {
         Authing.getConfig { config in
             if let conf = config{
@@ -138,7 +137,6 @@ public class OIDCClient: NSObject {
         }
     }
     
-    ///手机号验证码注册获取 Authorization code
     public func getAuthCodeForPhoneCodeRegister(phoneCountryCode: String? = nil, phone: String, code: String, password: String? = nil, completion: @escaping(Int, String?, AuthResult?) -> Void) {
         Authing.getConfig { config in
             if let conf = config{
@@ -162,7 +160,6 @@ public class OIDCClient: NSObject {
         }
     }
     
-    ///用户名密码注册获取 Authorization code
     public func getAuthCodeForUserNameRegister(username: String, password: String, completion: @escaping(Int, String?, AuthResult?) -> Void) {
         Authing.getConfig { config in
             if let conf = config{
@@ -186,7 +183,6 @@ public class OIDCClient: NSObject {
         }
     }
     
-    ///账号登录获取 Authorization code
     public func getAuthCodeForAccountLogin(account: String, password: String, completion: @escaping(Int, String?, AuthResult?) -> Void) {
         Authing.getConfig { config in
             if let conf = config{
@@ -210,7 +206,6 @@ public class OIDCClient: NSObject {
         }
     }
     
-    ///手机号验证码登录获取 Authorization code
     public func getAuthCodeForPhoneCodeLogin(phoneCountryCode: String? = nil, phone: String, code: String, completion: @escaping(Int, String?, AuthResult?) -> Void) {
         Authing.getConfig { config in
             if let conf = config{
@@ -230,7 +225,6 @@ public class OIDCClient: NSObject {
         }
     }
     
-    ///微信登录获取 Authorization code
     public func getAuthCodeForWechatLogin(_ code: String, completion: @escaping(Int, String?, AuthResult?) -> Void) {
         Authing.getConfig { config in
             if let conf = config{
