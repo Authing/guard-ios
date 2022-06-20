@@ -77,6 +77,8 @@ public class OIDCClient: NSObject {
     
     public func prepareLogin(config: Config, completion: @escaping(Int, String?, AuthRequest?) -> Void) {
             
+        let secret = authRequest.client_secret
+
         let url = "\(Authing.getSchema())://\(Util.getHost(config))/oidc/auth?_authing_lang=\(Util.getLangHeader())"
         + "&app_id=" + authRequest.client_id
         + "&client_id=" + authRequest.client_id
@@ -86,9 +88,8 @@ public class OIDCClient: NSObject {
         + "&scope=" + authRequest.scope.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
         + "&prompt=consent"
         + "&state=" + authRequest.state
-        + "&code_challenge=" + authRequest.codeChallenge!
-        + "&code_challenge_method=S256"
-        
+        + (secret == nil ? "&code_challenge=" + self.authRequest.codeChallenge! + "&code_challenge_method=S256" : "");
+
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "GET"
         
