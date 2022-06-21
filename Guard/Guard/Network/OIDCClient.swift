@@ -371,7 +371,14 @@ public class OIDCClient: NSObject {
     
     public func getNewAccessTokenByRefreshToken(userInfo: UserInfo?, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let rt = userInfo?.refreshToken ?? ""
-        let body = "client_id=" + Authing.getAppId() + "&grant_type=refresh_token" + "&refresh_token=" + rt;
+        
+        let secret = self.authRequest.client_secret
+        let body = "client_id="
+        + Authing.getAppId()
+        + "&grant_type=refresh_token"
+        + "&refresh_token=" + rt
+        + (secret == nil ? "&code_challenge=" + self.authRequest.codeChallenge! + "&code_challenge_method=S256" : "");
+
         request(userInfo: nil, endPoint: "/oidc/token", method: "POST", body: body) { code, message, data in
             if (code == 200) {
                 AuthClient().createUserInfo(userInfo, code, message, data, completion: completion)
