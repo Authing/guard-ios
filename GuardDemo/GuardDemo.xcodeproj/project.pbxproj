@@ -28,7 +28,7 @@
 		7EB5CE5427CF70E900BE3252 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5CE5327CF70E900BE3252 /* WebViewController.swift */; };
 		7ED434D52775BA7000893EDD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7ED434D72775BA7000893EDD /* Localizable.strings */; };
 		A81635E1284E07A80011B6ED /* WeCom in Frameworks */ = {isa = PBXBuildFile; productRef = A81635E0284E07A80011B6ED /* WeCom */; };
-		A82B10292859B2BE0022637B /* OneAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A82B10282859B2BE0022637B /* OneAuth */; };
+		A86712502861CF5C0029052A /* OneAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A867124F2861CF5C0029052A /* OneAuth */; };
 		A8A5ABC9285842AA00D6B03A /* Wechat in Frameworks */ = {isa = PBXBuildFile; productRef = A8A5ABC8285842AA00D6B03A /* Wechat */; };
 /* End PBXBuildFile section */
 
@@ -77,7 +77,6 @@
 		7EB5CE5327CF70E900BE3252 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		7ED434D62775BA7000893EDD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7ED434D82775BA7E00893EDD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		A8541D5B27EB579900355EC5 /* WeCom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WeCom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8541D6227EB5F9D00355EC5 /* WeCom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WeCom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -89,7 +88,7 @@
 				A8A5ABC9285842AA00D6B03A /* Wechat in Frameworks */,
 				A81635E1284E07A80011B6ED /* WeCom in Frameworks */,
 				7E95942E274CB549001459C5 /* AppAuth in Frameworks */,
-				A82B10292859B2BE0022637B /* OneAuth in Frameworks */,
+				A86712502861CF5C0029052A /* OneAuth in Frameworks */,
 				7E959447274D063B001459C5 /* Guard.framework in Frameworks */,
 				7E959430274CB549001459C5 /* AppAuthCore in Frameworks */,
 			);
@@ -160,7 +159,6 @@
 			isa = PBXGroup;
 			children = (
 				A8541D6227EB5F9D00355EC5 /* WeCom.framework */,
-				A8541D5B27EB579900355EC5 /* WeCom.framework */,
 				7E7566ED2769D40E00C3872F /* OneAuth.framework */,
 				7E7566C72769CFC100C3872F /* NTESBaseComponent.framework */,
 				7E7566C527699AC800C3872F /* libc++.1.tbd */,
@@ -213,7 +211,7 @@
 				7E95942F274CB549001459C5 /* AppAuthCore */,
 				A81635E0284E07A80011B6ED /* WeCom */,
 				A8A5ABC8285842AA00D6B03A /* Wechat */,
-				A82B10282859B2BE0022637B /* OneAuth */,
+				A867124F2861CF5C0029052A /* OneAuth */,
 			);
 			productName = GuardDemo;
 			productReference = 7E959415274CB4E2001459C5 /* GuardDemo.app */;
@@ -592,7 +590,7 @@
 			package = A81635DF284E070A0011B6ED /* XCRemoteSwiftPackageReference "guard-ios-wecom" */;
 			productName = WeCom;
 		};
-		A82B10282859B2BE0022637B /* OneAuth */ = {
+		A867124F2861CF5C0029052A /* OneAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A82B10272859B2BE0022637B /* XCRemoteSwiftPackageReference "guard-ios-oneauth" */;
 			productName = OneAuth;

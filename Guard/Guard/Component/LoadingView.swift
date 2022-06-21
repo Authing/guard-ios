@@ -29,6 +29,9 @@ open class LoadingView: ImageView {
     func setup() {
         
         self.backgroundColor = UIColor.white
+        self.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureAction))
+        self.addGestureRecognizer(tapGesture)
         
         var images = [UIImage]();
         for i in 0 ... 29{
@@ -46,7 +49,11 @@ open class LoadingView: ImageView {
         self.addSubview(animationView)
     }
     
-    public class func startAnimation(viewController: UIViewController, _ images: [UIImage] = [], _ imageSize: CGSize = CGSize.zero) -> LoadingView{
+    @objc private func tapGestureAction(){
+        
+    }
+    
+    public class func startAnimation(_ images: [UIImage] = [], _ imageSize: CGSize = CGSize.zero) -> LoadingView{
         
         let loading = LoadingView.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         
@@ -54,7 +61,11 @@ open class LoadingView: ImageView {
         loading.loadWork = DispatchWorkItem(block: {
 
             loading.isShowLoading = true
-            viewController.view.addSubview(loading)
+            if #available(iOS 11, *) {
+                 UIApplication.shared.keyWindow?.addSubview(loading)
+            } else {
+                 UIApplication.shared.windows.last?.addSubview(loading)
+            }
                             
             if images.count != 0 {
                 loading.animationView.frame = CGRect(x: UIScreen.main.bounds.width/2 - imageSize.width/2,

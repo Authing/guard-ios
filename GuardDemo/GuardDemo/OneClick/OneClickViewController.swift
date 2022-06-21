@@ -25,7 +25,8 @@ class OneClickViewController: UIViewController {
         model.customViewBlock = { cumtom in
             
         }
-        OneAuth.start(self, businessId: "74ae90bd84f74b69a88b578bbbbcdcfd",model: nil) { code, message, userInfo in
+        
+        OneAuth.start(self) { code, message, userInfo in
             DispatchQueue.main.async() {
                 if (code == 200 && userInfo != nil) {
                     self.navigationController?.popViewController(animated: true)
