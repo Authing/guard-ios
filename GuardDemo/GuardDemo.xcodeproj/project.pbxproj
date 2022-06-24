@@ -28,7 +28,7 @@
 		7EB5CE5427CF70E900BE3252 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5CE5327CF70E900BE3252 /* WebViewController.swift */; };
 		7ED434D52775BA7000893EDD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7ED434D72775BA7000893EDD /* Localizable.strings */; };
 		A81635E1284E07A80011B6ED /* WeCom in Frameworks */ = {isa = PBXBuildFile; productRef = A81635E0284E07A80011B6ED /* WeCom */; };
-		A86712502861CF5C0029052A /* OneAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A867124F2861CF5C0029052A /* OneAuth */; };
+		A86E06202865DFE700EABC45 /* OneAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A86E061F2865DFE700EABC45 /* OneAuth */; };
 		A8A5ABC9285842AA00D6B03A /* Wechat in Frameworks */ = {isa = PBXBuildFile; productRef = A8A5ABC8285842AA00D6B03A /* Wechat */; };
 /* End PBXBuildFile section */
 
@@ -59,7 +59,6 @@
 		7E7566C327699AB100C3872F /* libc++abi.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++abi.tbd"; path = "usr/lib/libc++abi.tbd"; sourceTree = SDKROOT; };
 		7E7566C527699AC800C3872F /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
 		7E7566C72769CFC100C3872F /* NTESBaseComponent.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NTESBaseComponent.framework; path = GuardDemo/OneClick/NTESBaseComponent.framework; sourceTree = "<group>"; };
-		7E7566ED2769D40E00C3872F /* OneAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = OneAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E959415274CB4E2001459C5 /* GuardDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuardDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E959418274CB4E2001459C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E95941A274CB4E2001459C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,7 +87,7 @@
 				A8A5ABC9285842AA00D6B03A /* Wechat in Frameworks */,
 				A81635E1284E07A80011B6ED /* WeCom in Frameworks */,
 				7E95942E274CB549001459C5 /* AppAuth in Frameworks */,
-				A86712502861CF5C0029052A /* OneAuth in Frameworks */,
+				A86E06202865DFE700EABC45 /* OneAuth in Frameworks */,
 				7E959447274D063B001459C5 /* Guard.framework in Frameworks */,
 				7E959430274CB549001459C5 /* AppAuthCore in Frameworks */,
 			);
@@ -159,7 +158,6 @@
 			isa = PBXGroup;
 			children = (
 				A8541D6227EB5F9D00355EC5 /* WeCom.framework */,
-				7E7566ED2769D40E00C3872F /* OneAuth.framework */,
 				7E7566C72769CFC100C3872F /* NTESBaseComponent.framework */,
 				7E7566C527699AC800C3872F /* libc++.1.tbd */,
 				7E7566C327699AB100C3872F /* libc++abi.tbd */,
@@ -211,7 +209,7 @@
 				7E95942F274CB549001459C5 /* AppAuthCore */,
 				A81635E0284E07A80011B6ED /* WeCom */,
 				A8A5ABC8285842AA00D6B03A /* Wechat */,
-				A867124F2861CF5C0029052A /* OneAuth */,
+				A86E061F2865DFE700EABC45 /* OneAuth */,
 			);
 			productName = GuardDemo;
 			productReference = 7E959415274CB4E2001459C5 /* GuardDemo.app */;
@@ -246,7 +244,7 @@
 				7E95942C274CB549001459C5 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */,
 				A81635DF284E070A0011B6ED /* XCRemoteSwiftPackageReference "guard-ios-wecom" */,
 				A8A5ABC7285842AA00D6B03A /* XCRemoteSwiftPackageReference "guard-ios-wechat" */,
-				A82B10272859B2BE0022637B /* XCRemoteSwiftPackageReference "guard-ios-oneauth" */,
+				A86E061E2865DFE700EABC45 /* XCRemoteSwiftPackageReference "guard-ios-oneauth" */,
 			);
 			productRefGroup = 7E959416274CB4E2001459C5 /* Products */;
 			projectDirPath = "";
@@ -472,7 +470,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = cn.authing.mobile;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.authing.GuardDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -507,7 +505,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = cn.authing.mobile;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.authing.GuardDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -556,7 +554,7 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		A82B10272859B2BE0022637B /* XCRemoteSwiftPackageReference "guard-ios-oneauth" */ = {
+		A86E061E2865DFE700EABC45 /* XCRemoteSwiftPackageReference "guard-ios-oneauth" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Authing/guard-ios-oneauth";
 			requirement = {
@@ -590,9 +588,9 @@
 			package = A81635DF284E070A0011B6ED /* XCRemoteSwiftPackageReference "guard-ios-wecom" */;
 			productName = WeCom;
 		};
-		A867124F2861CF5C0029052A /* OneAuth */ = {
+		A86E061F2865DFE700EABC45 /* OneAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A82B10272859B2BE0022637B /* XCRemoteSwiftPackageReference "guard-ios-oneauth" */;
+			package = A86E061E2865DFE700EABC45 /* XCRemoteSwiftPackageReference "guard-ios-oneauth" */;
 			productName = OneAuth;
 		};
 		A8A5ABC8285842AA00D6B03A /* Wechat */ = {

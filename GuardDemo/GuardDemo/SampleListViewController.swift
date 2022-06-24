@@ -39,7 +39,7 @@ class SampleListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch from[indexPath.row] {
         case "Authing 登录":
-            Authing.start("60caaf41df670b771fd08937")
+            Authing.start("6244398c8a4575cdb2cb5656")
             AuthFlow().start { [weak self] code, message, userInfo in
                 self?.goHome(userInfo: userInfo)
             }

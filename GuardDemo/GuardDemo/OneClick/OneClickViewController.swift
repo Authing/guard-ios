@@ -20,12 +20,6 @@ class OneClickViewController: UIViewController {
     }
     
     @IBAction func onClick(_ sender: UIButton, forEvent event: UIEvent) {
-        let model: NTESQuickLoginModel = NTESQuickLoginModel()
-        model.currentVC = self
-        model.customViewBlock = { cumtom in
-            
-        }
-        
         OneAuth.start(self) { code, message, userInfo in
             DispatchQueue.main.async() {
                 if (code == 200 && userInfo != nil) {

@@ -28,6 +28,9 @@ open class RegisterMethodTab: MethodTab {
             } else if (method == "email") {
                 item.setText(NSLocalizedString("authing_register_by_email", bundle: Bundle(for: Self.self), comment: ""))
                 item.type = 1
+            }else if (method == "emailCode") {
+                item.setText(NSLocalizedString("authing_register_by_emailCode", bundle: Bundle(for: Self.self), comment: ""))
+                item.type = 2
             }
 
             self.addSubview(item)

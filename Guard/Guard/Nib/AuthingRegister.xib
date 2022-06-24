@@ -159,6 +159,57 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kba-Fg-s5k" userLabel="EmailCode Login Container" customClass="RegisterContainer" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="20" y="264" width="374" height="110"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5sq-Cv-6eu" customClass="EmailTextField" customModule="Guard" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="mkm-KQ-NuG"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                        </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="SVJ-aE-VLO" customClass="VerifyCodeTextField" customModule="Guard" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="60" width="350" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="fSN-b1-Lmu"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RGf-Rb-Hv6" customClass="GetEmailVerifyCodeButton" customModule="Guard" customModuleProvider="target">
+                            <rect key="frame" x="358" y="60" width="16" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="fm6-WZ-gUa"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal">
+                                <color key="titleColor" systemColor="labelColor"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="klS-d5-XF6"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="RGf-Rb-Hv6" secondAttribute="trailing" id="5BP-th-2vN"/>
+                        <constraint firstItem="5sq-Cv-6eu" firstAttribute="top" secondItem="kba-Fg-s5k" secondAttribute="top" id="5da-dL-Sa7"/>
+                        <constraint firstItem="RGf-Rb-Hv6" firstAttribute="leading" secondItem="SVJ-aE-VLO" secondAttribute="trailing" constant="8" symbolic="YES" id="Io4-bO-0zS"/>
+                        <constraint firstItem="SVJ-aE-VLO" firstAttribute="top" secondItem="5sq-Cv-6eu" secondAttribute="bottom" constant="16" id="TUn-sU-rUF"/>
+                        <constraint firstAttribute="trailing" secondItem="5sq-Cv-6eu" secondAttribute="trailing" id="Xx1-Xh-DW0"/>
+                        <constraint firstItem="RGf-Rb-Hv6" firstAttribute="top" secondItem="5sq-Cv-6eu" secondAttribute="bottom" constant="16" id="a91-zy-XV6"/>
+                        <constraint firstAttribute="height" constant="110" id="bn6-RO-lr9"/>
+                        <constraint firstItem="5sq-Cv-6eu" firstAttribute="leading" secondItem="kba-Fg-s5k" secondAttribute="leading" id="eXx-1T-mKR"/>
+                        <constraint firstItem="SVJ-aE-VLO" firstAttribute="leading" secondItem="kba-Fg-s5k" secondAttribute="leading" id="tpg-z0-Tt1"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="type">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gy9-8p-ejP" userLabel="Error Label" customClass="ErrorLabel" customModule="Guard" customModuleProvider="target">
                     <rect key="frame" x="20" y="382" width="374" height="17"/>
                     <constraints>
@@ -196,10 +247,13 @@
                 <constraint firstItem="rbI-XB-hdi" firstAttribute="leading" secondItem="t0S-i3-gzY" secondAttribute="leading" constant="20" id="5pl-GY-GVp"/>
                 <constraint firstItem="vB5-a9-UJW" firstAttribute="leading" secondItem="t0S-i3-gzY" secondAttribute="leading" constant="20" id="86f-yk-b85"/>
                 <constraint firstItem="t0S-i3-gzY" firstAttribute="trailing" secondItem="rbI-XB-hdi" secondAttribute="trailing" constant="20" id="8gx-3S-5tJ"/>
+                <constraint firstItem="t0S-i3-gzY" firstAttribute="trailing" secondItem="kba-Fg-s5k" secondAttribute="trailing" constant="20" id="9Ge-kN-Bmb"/>
+                <constraint firstItem="kba-Fg-s5k" firstAttribute="leading" secondItem="t0S-i3-gzY" secondAttribute="leading" constant="20" id="GxZ-5c-gAz"/>
                 <constraint firstItem="nxl-an-WZu" firstAttribute="top" secondItem="vB5-a9-UJW" secondAttribute="bottom" constant="16" id="Ilq-mI-26I"/>
                 <constraint firstItem="gy9-8p-ejP" firstAttribute="top" secondItem="rbI-XB-hdi" secondAttribute="bottom" constant="8" symbolic="YES" id="Lxg-cU-cuT"/>
                 <constraint firstItem="F0M-JR-WfC" firstAttribute="top" secondItem="t0S-i3-gzY" secondAttribute="top" id="MAS-mu-hZq"/>
                 <constraint firstItem="F0M-JR-WfC" firstAttribute="centerX" secondItem="5TK-1R-p6K" secondAttribute="centerX" id="O23-ds-Pas"/>
+                <constraint firstItem="kba-Fg-s5k" firstAttribute="top" secondItem="vB5-a9-UJW" secondAttribute="bottom" constant="16" id="OqO-eA-oC3"/>
                 <constraint firstItem="1MM-ts-eHA" firstAttribute="leading" secondItem="t0S-i3-gzY" secondAttribute="leading" constant="20" id="a7e-Jm-dHm"/>
                 <constraint firstItem="rbI-XB-hdi" firstAttribute="top" secondItem="vB5-a9-UJW" secondAttribute="bottom" constant="16" id="dHf-4y-cWQ"/>
                 <constraint firstItem="gy9-8p-ejP" firstAttribute="leading" secondItem="t0S-i3-gzY" secondAttribute="leading" constant="20" id="e0V-gh-KBg"/>

@@ -14,6 +14,10 @@ public class AuthClient: Client {
         self.registerByEmail(authData: nil, email: email, password: password, completion: completion)
     }
     
+    public func registerByEmailCode(email: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        self.registerByEmailCode(authData: nil, email: email, code: code, completion: completion)
+    }
+    
     public func registerByUserName(username: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         self.registerByUserName(authData: nil, username: username, password: password, completion: completion)
     }
@@ -26,6 +30,24 @@ public class AuthClient: Client {
         let encryptedPassword = Util.encryptPassword(password)
         let body: NSDictionary = ["email" : email, "password" : encryptedPassword, "forceLogin" : true]
         post("/api/v2/register/email", body) { code, message, data in
+            if authData == nil{
+                self.createUserInfo(code, message, data, completion: completion)
+            } else {
+                self.createUserInfo(code, message, data) { code, msg, userInfo in
+                    if code == 200{
+                        authData?.token = userInfo?.token
+                        OIDCClient(authData).oidcInteraction( completion: completion)
+                    } else {
+                        completion(code, message, userInfo)
+                    }
+                }
+            }
+        }
+    }
+    
+    public func registerByEmailCode(authData: AuthRequest?, email: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        let body: NSDictionary = ["email" : email, "code" : code, "forceLogin" : true]
+        post("/api/v2/register/email-code", body) { code, message, data in
             if authData == nil{
                 self.createUserInfo(code, message, data, completion: completion)
             } else {

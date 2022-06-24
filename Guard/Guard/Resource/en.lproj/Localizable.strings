@@ -17,6 +17,7 @@
 "authing_welcome_to" = "Welcome to";
 "authing_register_by_phone" = "Phone";
 "authing_register_by_email" = "Email";
+"authing_register_by_emailCode" = "EmailCode";
 "authing_password_confirm_hint" = "Confirm password";
 "authing_password_do_not_match" = "Password and confirm password do not match";
 "authing_forgot_password" = "Forgot password?";

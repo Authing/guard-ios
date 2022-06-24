@@ -65,15 +65,24 @@ open class RegisterButton: PrimaryButton {
             }
         }
         
-        let tfEmail: EmailTextField? = Util.findView(self, viewClass: EmailTextField.self)
-        let tfPassword: PasswordTextField? = Util.findView(self, viewClass: PasswordTextField.self)
-        if (tfEmail != nil && tfPassword != nil) {
-            let email: String? = tfEmail!.text
-            let password: String? = tfPassword!.text
-            if (!email!.isEmpty && !password!.isEmpty) {
-                registerByEmail(email!, password!)
+        if let tfEmail: EmailTextField = Util.findView(self, viewClass: EmailTextField.self),
+           let tfPassword: PasswordTextField = Util.findView(self, viewClass: PasswordTextField.self) {
+            if let email = tfEmail.text,
+               let password = tfPassword.text {
+                registerByEmail(email, password)
+                return
             }
         }
+        
+        if let tfEmail: EmailTextField = Util.findView(self, viewClass: EmailTextField.self),
+           let tfCode: VerifyCodeTextField = Util.findView(self, viewClass: VerifyCodeTextField.self) {
+            if let email = tfEmail.text,
+               let code = tfCode.text {
+                registerByEmailCode(email, code)
+                return
+            }
+        }
+        
     }
     
     private func registerByPhoneCode(_ countryCode: String? = nil, _ phone: String, _ code: String) {
@@ -86,6 +95,13 @@ open class RegisterButton: PrimaryButton {
     private func registerByEmail(_ email: String, _ password: String) {
         startLoading()
         Util.getAuthClient(self).registerByEmail(email: email, password: password) { code, message, userInfo in
+            self.done(code: code, message: message, userInfo: userInfo)
+        }
+    }
+    
+    private func registerByEmailCode(_ email: String, _ code: String) {
+        startLoading()
+        Util.getAuthClient(self).registerByEmailCode(email: email, code: code) { code, message, userInfo in
             self.done(code: code, message: message, userInfo: userInfo)
         }
     }

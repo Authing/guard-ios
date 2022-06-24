@@ -17,6 +17,7 @@
 "authing_welcome_to" = "欢迎加入";
 "authing_register_by_phone" = "手机号注册";
 "authing_register_by_email" = "邮箱注册";
+"authing_register_by_emailCode" = "邮箱验证码注册";
 "authing_password_confirm_hint" = "请再次输入密码";
 "authing_password_do_not_match" = "两次输入的密码必须一致";
 "authing_forgot_password" = "忘记密码？";
