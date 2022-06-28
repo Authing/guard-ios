@@ -734,10 +734,10 @@ public class AuthClient: Client {
         }.resume()
     }
     
-    public func uploadImage(_ image: UIImage, completion: @escaping (Int, String?) -> Void) {
+    public func uploadImage(_ image: UIImage,_ isPrivate: Bool = false, completion: @escaping (Int, String?) -> Void) {
         getConfig { config in
             if (config != nil) {
-                let urlString: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/upload?folder=photos";
+                let urlString: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/upload?folder=photos&private=\(isPrivate)";
                 self._uploadImage(urlString, image, completion: completion)
             } else {
                 completion(500, "Cannot get config. app id:\(Authing.getAppId())")

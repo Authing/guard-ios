@@ -26,8 +26,139 @@ public class OIDCClient: NSObject {
             }
         }
     }
+
+    //MARK: ---------- Register APIs ----------
+    public func registerByEmail(email: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        Authing.getConfig { config in
+            if let conf = config{
+                self.prepareLogin(config: conf) { code, message, authRequest in
+                    if code == 200{
+                        AuthClient().registerByEmail(authData: authRequest, email: email, password: password, completion: completion)
+                    } else {
+                        completion(code, message, nil)
+                    }
+                }
+            } else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+            }
+        }
+    }
     
-    // MARK: Util APIs
+    public func registerByEmailCode(email: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        Authing.getConfig { config in
+            if let conf = config{
+                self.prepareLogin(config: conf) { statusCode, message, authRequest in
+                    if statusCode == 200{
+                        AuthClient().registerByEmailCode(authData: authRequest, email: email, code: code, completion: completion)
+                    } else {
+                        completion(statusCode, message, nil)
+                    }
+                }
+            } else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+            }
+        }
+    }
+    
+    
+    public func registerByUserName(username: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        Authing.getConfig { config in
+            if let conf = config{
+                self.prepareLogin(config: conf) { code, message, authRequest in
+                    if code == 200{
+                        AuthClient().registerByUserName(authData: authRequest, username: username, password: password, completion: completion)
+                    } else {
+                        completion(code, message, nil)
+                    }
+                }
+            } else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+            }
+        }
+    }
+    
+    public func registerByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, password: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        Authing.getConfig { config in
+            if let conf = config{
+                self.prepareLogin(config: conf) { statusCode, message, authRequest in
+                    if statusCode == 200{
+                        AuthClient().registerByPhoneCode(authData: authRequest, phoneCountryCode: phoneCountryCode, phone: phone, code: code, password: password, completion: completion)
+                    } else {
+                        completion(statusCode, message, nil)
+                    }
+                }
+            } else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+            }
+        }
+    }
+
+    //MARK: ---------- Login APIs ----------
+    public func loginByAccount(account: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        Authing.getConfig { config in
+            if let conf = config{
+                self.prepareLogin(config: conf) { code, message, authRequest in
+                    if code == 200{
+                        AuthClient().loginByAccount(authData: authRequest ,account: account, password: password, completion: completion)
+                    } else {
+                        completion(code, message, nil)
+                    }
+                }
+            } else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+            }
+        }
+    }
+    
+    public func loginByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        Authing.getConfig { config in
+            if let conf = config{
+                self.prepareLogin(config: conf) { statuCode, message, authRequest in
+                    if statuCode == 200{
+                        AuthClient().loginByPhoneCode(authData: authRequest, phoneCountryCode: phoneCountryCode,  phone: phone, code: code, completion: completion)
+                    } else {
+                        completion(statuCode, message, nil)
+                    }
+                }
+            } else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+            }
+        }
+    }
+    
+    public func loginByEmail(email: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        Authing.getConfig { config in
+            if let conf = config{
+                self.prepareLogin(config: conf) { statuCode, message, authRequest in
+                    if statuCode == 200{
+                        AuthClient().loginByEmail(authData: authRequest, email: email, code: code, completion: completion)
+                    } else {
+                        completion(statuCode, message, nil)
+                    }
+                }
+            } else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+            }
+        }
+    }
+    
+    public func loginByWechat(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        Authing.getConfig { config in
+            if let conf = config{
+                self.prepareLogin(config: conf) { statuCode, message, authRequest in
+                    if statuCode == 200{
+                        AuthClient().loginByWechat(authData: authRequest, code, completion: completion)
+                    } else {
+                        completion(statuCode, message, nil)
+                    }
+                }
+            } else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+            }
+        }
+    }
+    
+    //MARK: ---------- Util APIs ----------
     public func buildAuthorizeUrl(completion: @escaping (URL?) -> Void) {
         Authing.getConfig { config in
             if (config == nil) {
@@ -114,7 +245,8 @@ public class OIDCClient: NSObject {
         }.resume()
     }
     
-    // MARK: AuthorizationCode APIs
+        
+    //MARK: ---------- AuthorizationCode APIs ----------
     public func getAuthCodeForEmailRegister(email: String, password: String, completion: @escaping(Int, String?, AuthResult?) -> Void) {
         Authing.getConfig { config in
             if let conf = config{
@@ -249,120 +381,7 @@ public class OIDCClient: NSObject {
         }
     }
     
-    // MARK: Register APIs
-    public func registerByEmail(email: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        Authing.getConfig { config in
-            if let conf = config{
-                self.prepareLogin(config: conf) { code, message, authRequest in
-                    if code == 200{
-                        AuthClient().registerByEmail(authData: authRequest, email: email, password: password, completion: completion)
-                    } else {
-                        completion(code, message, nil)
-                    }
-                }
-            } else {
-                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
-            }
-        }
-    }
-    
-    public func registerByUserName(username: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        Authing.getConfig { config in
-            if let conf = config{
-                self.prepareLogin(config: conf) { code, message, authRequest in
-                    if code == 200{
-                        AuthClient().registerByUserName(authData: authRequest, username: username, password: password, completion: completion)
-                    } else {
-                        completion(code, message, nil)
-                    }
-                }
-            } else {
-                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
-            }
-        }
-    }
-    
-    public func registerByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, password: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        Authing.getConfig { config in
-            if let conf = config{
-                self.prepareLogin(config: conf) { statusCode, message, authRequest in
-                    if statusCode == 200{
-                        AuthClient().registerByPhoneCode(authData: authRequest, phoneCountryCode: phoneCountryCode, phone: phone, code: code, password: password, completion: completion)
-                    } else {
-                        completion(statusCode, message, nil)
-                    }
-                }
-            } else {
-                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
-            }
-        }
-    }
-
-    // MARK: Login APIs
-    public func loginByAccount(account: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        Authing.getConfig { config in
-            if let conf = config{
-                self.prepareLogin(config: conf) { code, message, authRequest in
-                    if code == 200{
-                        AuthClient().loginByAccount(authData: authRequest ,account: account, password: password, completion: completion)
-                    } else {
-                        completion(code, message, nil)
-                    }
-                }
-            } else {
-                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
-            }
-        }
-    }
-    
-    public func loginByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        Authing.getConfig { config in
-            if let conf = config{
-                self.prepareLogin(config: conf) { statuCode, message, authRequest in
-                    if statuCode == 200{
-                        AuthClient().loginByPhoneCode(authData: authRequest, phoneCountryCode: phoneCountryCode,  phone: phone, code: code, completion: completion)
-                    } else {
-                        completion(statuCode, message, nil)
-                    }
-                }
-            } else {
-                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
-            }
-        }
-    }
-    
-    public func loginByEmail(email: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        Authing.getConfig { config in
-            if let conf = config{
-                self.prepareLogin(config: conf) { statuCode, message, authRequest in
-                    if statuCode == 200{
-                        AuthClient().loginByEmail(authData: authRequest, email: email, code: code, completion: completion)
-                    } else {
-                        completion(statuCode, message, nil)
-                    }
-                }
-            } else {
-                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
-            }
-        }
-    }
-    
-    public func loginByWechat(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        Authing.getConfig { config in
-            if let conf = config{
-                self.prepareLogin(config: conf) { statuCode, message, authRequest in
-                    if statuCode == 200{
-                        AuthClient().loginByWechat(authData: authRequest, code, completion: completion)
-                    } else {
-                        completion(statuCode, message, nil)
-                    }
-                }
-            } else {
-                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
-            }
-        }
-    }
-        
+    //MARK: ---------- UserInfo API ----------
     public func getUserInfoByAccessToken(userInfo: UserInfo?, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         request(userInfo: userInfo, endPoint: "/oidc/me", method: "GET", body: nil) { code, message, data in
             AuthClient().createUserInfo(userInfo, code, message, data, completion: completion)

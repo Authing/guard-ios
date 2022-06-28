@@ -32,6 +32,8 @@ open class MFATableView: UIView {
                     mfaItem.mfaType = .email
                 } else if (policy == "OTP") {
                     mfaItem.mfaType = .totp
+                } else if (policy == "FACE") {
+                    mfaItem.mfaType = .face
                 } else {
                     continue
                 }

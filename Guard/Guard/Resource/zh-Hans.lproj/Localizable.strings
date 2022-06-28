@@ -35,6 +35,7 @@
 "authing_mfa_verify_phone" = "手机验证";
 "authing_mfa_verify_email" = "邮箱验证";
 "authing_mfa_verify_code" = "安全码验证";
+"authing_mfa_verify_face" = "人脸识别验证";
 "authing_please_input_verify_code" = "请输入验证码";
 "authing_phone_number_already_bound" = "手机号码已经被绑定";
 "authing_email_already_bound" = "邮箱已经被绑定";

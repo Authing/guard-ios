@@ -13,6 +13,7 @@ open class MFATableItem: UIView {
         case phone
         case email
         case totp
+        case face
     }
     
     let label = UILabel()
@@ -25,6 +26,8 @@ open class MFATableItem: UIView {
                 label.text = NSLocalizedString("authing_mfa_verify_email", bundle: Bundle(for: Self.self), comment: "")
             } else if (mfaType == .totp) {
                 label.text = NSLocalizedString("authing_mfa_verify_code", bundle: Bundle(for: Self.self), comment: "")
+            } else if (mfaType == .face) {
+                label.text = NSLocalizedString("authing_mfa_verify_face", bundle: Bundle(for: Self.self), comment: "")
             }
         }
     }
@@ -73,6 +76,8 @@ open class MFATableItem: UIView {
             }
         } else if (mfaType == .totp) {
             vc = AuthViewController(nibName: "AuthingMFAOTP", bundle: Bundle(for: Self.self))
+        } else if (mfaType == .face) {
+            vc = AuthingMFAFaceVC.init() 
         }
         self.authViewController?.navigationController?.pushViewController(vc!, animated: true)
     }

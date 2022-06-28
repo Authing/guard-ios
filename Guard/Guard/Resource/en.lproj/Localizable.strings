@@ -35,6 +35,7 @@
 "authing_mfa_verify_phone" = "Verify by phone";
 "authing_mfa_verify_email" = "Verify by email";
 "authing_mfa_verify_code" = "Verify by security code";
+"authing_mfa_verify_face" = "Verify by face ID";
 "authing_please_input_verify_code" = "Please input verify code";
 "authing_phone_number_already_bound" = "The phone number has been bound";
 "authing_email_already_bound" = "The email has been bound";
