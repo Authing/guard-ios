@@ -61,6 +61,11 @@ open class UserInfo {
             return mfaData?["email"] as? String
         }
     }
+    public var faceMfaEnabled: Bool? {
+        get {
+            return mfaData?["faceMfaEnabled"] as? Bool
+        }
+    }
     public var mfaPolicy: [String]? = []
     
     public var firstTimeLoginToken: String? = nil

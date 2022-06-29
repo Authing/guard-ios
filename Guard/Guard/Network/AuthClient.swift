@@ -563,9 +563,16 @@ public class AuthClient: Client {
         }
     }
     
-    public func mfaVerifyByRecoveryCode(code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        let body: NSDictionary = ["authenticatorType" : "totp", "recoveryCode" : code]
-        post("/api/v2/mfa/totp/recovery", body) { code, message, data in
+    public func mfaAssociateByFace(photoA: String, photoB: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        let body: NSDictionary = ["photoA" : photoA, "photoB" : photoB, "isExternalPhoto": false]
+        post("/api/v2/mfa/face/associate", body) { code, message, data in
+            self.createUserInfo(code, message, data, completion: completion)
+        }
+    }
+    
+    public func mfaVerifyByFace(photo: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        let body: NSDictionary = ["type" : "face", "photo" : photo]
+        post("/api/v2/mfa/face/verify", body) { code, message, data in
             self.createUserInfo(code, message, data, completion: completion)
         }
     }
@@ -734,10 +741,10 @@ public class AuthClient: Client {
         }.resume()
     }
     
-    public func uploadImage(_ image: UIImage,_ isPrivate: Bool = false, completion: @escaping (Int, String?) -> Void) {
+    public func uploadImage(_ image: UIImage, completion: @escaping (Int, String?) -> Void) {
         getConfig { config in
             if (config != nil) {
-                let urlString: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/upload?folder=photos&private=\(isPrivate)";
+                let urlString: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/upload?folder=photos";
                 self._uploadImage(urlString, image, completion: completion)
             } else {
                 completion(500, "Cannot get config. app id:\(Authing.getAppId())")
@@ -745,7 +752,18 @@ public class AuthClient: Client {
         }
     }
     
-    private func _uploadImage(_ urlString: String, _ image: UIImage, completion: @escaping (Int, String?) -> Void) {
+    public func uploadFaceImage(_ image: UIImage,_ isPrivate: Bool = true, completion: @escaping (Int, String?) -> Void) {
+        getConfig { config in
+            if (config != nil) {
+                let urlString: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/upload?folder=photos&private=\(isPrivate)";
+                self._uploadImage(urlString, image, true, completion: completion)
+            } else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())")
+            }
+        }
+    }
+    
+    private func _uploadImage(_ urlString: String, _ image: UIImage, _ isFaceImage: Bool? = false, completion: @escaping (Int, String?) -> Void) {
         let url = URL(string: urlString)
         let boundary = UUID().uuidString
         let session = URLSession.shared
@@ -756,7 +774,7 @@ public class AuthClient: Client {
 
         var data = Data()
         data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
-        data.append("Content-Disposition: form-data; name=\"file\"; filename=\"aPhone\"\r\n".data(using: .utf8)!)
+        data.append("Content-Disposition: form-data; name=\"file\"; filename=\"personal.png\"\r\n".data(using: .utf8)!)
         data.append("Content-Type: image/png\r\n\r\n".data(using: .utf8)!)
         data.append(image.pngData()!)
         data.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
@@ -783,22 +801,37 @@ public class AuthClient: Client {
                 return
             }
             
-            guard code == 200 else {
-                completion(code, json["message"] as? String)
-                return
-            }
-            
-            guard let data = json["data"] as? NSDictionary else {
-                completion(500, "no response data \(url!)")
-                return
-            }
-            
-            if let u = data["url"] as? String {
-                completion(200, u)
+            if isFaceImage == true{
+                guard let data = json["data"] as? NSDictionary else {
+                    completion(500, "no response data \(url!)")
+                    return
+                }
+                
+                if let u = data["key"] as? String {
+                    completion(200, u)
+                } else {
+                    completion(500, "response data has no url field \(url!)")
+                    return
+                }
             } else {
-                completion(500, "response data has no url field \(url!)")
-                return
+                guard code == 200 else {
+                    completion(code, json["message"] as? String)
+                    return
+                }
+                
+                guard let data = json["data"] as? NSDictionary else {
+                    completion(500, "no response data \(url!)")
+                    return
+                }
+                
+                if let u = data["url"] as? String {
+                    completion(200, u)
+                } else {
+                    completion(500, "response data has no url field \(url!)")
+                    return
+                }
             }
+
         }).resume()
     }
 }
