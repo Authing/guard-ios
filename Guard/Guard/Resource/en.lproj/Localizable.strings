@@ -74,3 +74,15 @@
 
 // country code
 "authing_countrycode_title" = "Region";
+
+"authing_mfa_facetitle" = "Bind facial recognition"
+"authing_mfa_facetitle2" = "Bind facial recognition"
+"authing_mfa_face_camera" = "Hold your camera properly"
+"authing_mfa_face_camera2" = "Hold your camera properly"
+"authing_mfa_verifying" = "Verifying"
+"authing_mfa_verify_failed" = "Face verify failed. Please try again"
+"authing_mfa_verify_success" = "Verify success"
+
+"authing_mfa_binding" = "Binding"
+"authing_mfa_bind_failed" = "Face bind failed. Please try again"
+"authing_mfa_bind_success" = "Binding success"

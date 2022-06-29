@@ -75,3 +75,20 @@
 
 // country code
 "authing_countrycode_title" = "选择国家和地区";
+
+
+//self?.tipLabel.text = "绑定成功"
+//self?.tipLabel.text = "绑定人脸失败, 请重试"
+
+
+"authing_mfa_face_title" = "绑定人脸识别"
+"authing_mfa_face_title2" = "人脸识别"
+"authing_mfa_face_camera" = "请保持摄像头已打开并无遮挡"
+"authing_mfa_face_camera2" = "请保持姿势不变"
+"authing_mfa_verifying" = "正在识别中，请稍候"
+"authing_mfa_verify_failed" = "识别人脸失败, 请重试"
+"authing_mfa_verify_success" = "识别成功"
+
+"authing_mfa_binding" = "正在绑定中，请稍候"
+"authing_mfa_bind_failed" = "绑定人脸失败, 请重试"
+"authing_mfa_bind_success" = "绑定成功"

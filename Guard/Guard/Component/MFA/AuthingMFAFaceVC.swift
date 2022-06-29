@@ -28,11 +28,11 @@ class AuthingMFAFaceVC: AuthViewController, AVCaptureVideoDataOutputSampleBuffer
             if countDown == 0 {
                 self.faceImages = []
                 self.gcdTimer?.cancel()
-                self.tipLabel.text = "请保持摄像头已打开并无遮挡"
+                self.tipLabel.text = NSLocalizedString("authing_mfa_face_camera", bundle: Bundle(for: Self.self), comment: "")
             } else if countDown == 100{
                 self.gcdTimer?.cancel()
             } else {
-                self.tipLabel.text = "请保持姿势不变"
+                self.tipLabel.text = NSLocalizedString("authing_mfa_face_camera2", bundle: Bundle(for: Self.self), comment: "")
             }
         }
     }
@@ -42,7 +42,7 @@ class AuthingMFAFaceVC: AuthViewController, AVCaptureVideoDataOutputSampleBuffer
         let b = UILabel()
         b.textColor = .black
         b.textAlignment = .center
-        b.text = "请保持摄像头已打开并无遮挡"
+        b.text = NSLocalizedString("authing_mfa_face_camera", bundle: Bundle(for: Self.self), comment: "")
         b.font = .systemFont(ofSize: 24, weight: .bold)
         return b
     }()
@@ -98,8 +98,8 @@ class AuthingMFAFaceVC: AuthViewController, AVCaptureVideoDataOutputSampleBuffer
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = self.needBindingFace == true ? "绑定人脸识别" : "人脸识别"
-        
+        self.title = self.needBindingFace == true ? NSLocalizedString("authing_mfa_face_title", bundle: Bundle(for: Self.self), comment: "") : NSLocalizedString("authing_mfa_face_title2", bundle: Bundle(for: Self.self), comment: "")
+
         view.backgroundColor = UIColor.white
         preview.frame = CGRect(x: UIScreen.main.bounds.width/2 - 120, y: UIScreen.main.bounds.height/2 - 120, width: 240, height: 240)
         view.layer.addSublayer(preview)
@@ -224,11 +224,11 @@ extension AuthingMFAFaceVC {
                 // bind
                 
                 loading.startAnimating()
-                self.tipLabel.text = "正在识别中,请稍候"
                 var uploadSuccess: Bool = false
                 let dispatchGroup = DispatchGroup()
 
                 if self.needBindingFace == true {
+                    self.tipLabel.text = NSLocalizedString("authing_mfa_binding", bundle: Bundle(for: Self.self), comment: "")
 
                     dispatchGroup.enter()
                     dispatchGroup.enter()
@@ -248,14 +248,14 @@ extension AuthingMFAFaceVC {
                                 DispatchQueue.main.async() {
                                     self?.loading.stopAnimating()
                                     if code == 200{
-                                        self?.tipLabel.text = "绑定成功"
+                                        self?.tipLabel.text = NSLocalizedString("authing_mfa_bind_success", bundle: Bundle(for: Self.self), comment: "")
                                     
                                         if let vc = self?.navigationController as? AuthNavigationController {
                                             self?.session.stopRunning()
                                             vc.complete(code, msg, userInfo)
                                         }
                                     } else {
-                                        self?.tipLabel.text = "绑定人脸失败, 请重试"
+                                        self?.tipLabel.text = NSLocalizedString("authing_mfa_bind_failed", bundle: Bundle(for: Self.self), comment: "")
                                         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
                                             self?.resetData()
                                         }
@@ -264,13 +264,15 @@ extension AuthingMFAFaceVC {
                             }
                         } else {
                             self?.loading.stopAnimating()
-                            self?.tipLabel.text = "绑定人脸失败, 请重试"
+                            self?.tipLabel.text = NSLocalizedString("authing_mfa_bind_failed", bundle: Bundle(for: Self.self), comment: "")
                             self?.resetData()
                         }
                     }
                 }
                 // verify
                 else {
+                    self.tipLabel.text = NSLocalizedString("authing_mfa_verifying", bundle: Bundle(for: Self.self), comment: "")
+
                     dispatchGroup.enter()
                     AuthClient().uploadFaceImage(self.faceImages.last ?? UIImage()) { code, key in
                         dispatchGroup.leave()
@@ -284,14 +286,14 @@ extension AuthingMFAFaceVC {
                                 DispatchQueue.main.async() {
                                     self?.loading.stopAnimating()
                                     if code == 200{
-                                        self?.tipLabel.text = "识别成功"
+                                        self?.tipLabel.text = NSLocalizedString("authing_mfa_verify_success", bundle: Bundle(for: Self.self), comment: "")
                                     
                                         if let vc = self?.navigationController as? AuthNavigationController {
                                             self?.session.stopRunning()
                                             vc.complete(code, msg, userInfo)
                                         }
                                     } else {
-                                        self?.tipLabel.text = "识别人脸失败, 请重试"
+                                        self?.tipLabel.text = NSLocalizedString("authing_mfa_verify_failed", bundle: Bundle(for: Self.self), comment: "")
                                         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
                                             self?.resetData()
                                         }
@@ -300,7 +302,7 @@ extension AuthingMFAFaceVC {
                             }
                         } else {
                             self?.loading.stopAnimating()
-                            self?.tipLabel.text = "识别人脸失败, 请重试"
+                            self?.tipLabel.text = NSLocalizedString("authing_mfa_verify_failed", bundle: Bundle(for: Self.self), comment: "")
                             self?.resetData()
                         }
                     }
