@@ -1,5 +1,5 @@
 //
-//  AuthingMFAFaceVC.swift
+//  MFAFaceViewController.swift
 //  Guard
 //
 //  Created by JnMars on 2022/6/28.
@@ -9,19 +9,19 @@ import Foundation
 import UIKit
 import AVFoundation
 
-class AuthingMFAFaceVC: AuthViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+open class MFAFaceViewController: AuthViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
 
-    public var needBindingFace: Bool = !(Authing.getCurrentUser()?.faceMfaEnabled ?? false)
+    private var needBindingFace: Bool = !(Authing.getCurrentUser()?.faceMfaEnabled ?? false)
     private var faceImages: [UIImage] = []
     private var isDetecting: Bool = false
     
+    var gcdTimer: DispatchSourceTimer?
+
     lazy var queue: DispatchQueue = {
         let q = DispatchQueue(label: "cameraQueue")
         return q
     }()
-    
-    let loading = UIActivityIndicatorView()
-    
+        
     private var countDown: Int = 0{
         didSet {
             self.progress.setProgress(countDown)
@@ -36,8 +36,9 @@ class AuthingMFAFaceVC: AuthViewController, AVCaptureVideoDataOutputSampleBuffer
             }
         }
     }
-    var gcdTimer: DispatchSourceTimer?
         
+    private let loading = UIActivityIndicatorView()
+
     lazy var tipLabel: UILabel = {
         let b = UILabel()
         b.textColor = .black
@@ -95,7 +96,7 @@ class AuthingMFAFaceVC: AuthViewController, AVCaptureVideoDataOutputSampleBuffer
         return o
     }()
     
-    override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = self.needBindingFace == true ? NSLocalizedString("authing_mfa_face_title", bundle: Bundle(for: Self.self), comment: "") : NSLocalizedString("authing_mfa_face_title2", bundle: Bundle(for: Self.self), comment: "")
@@ -124,7 +125,7 @@ class AuthingMFAFaceVC: AuthViewController, AVCaptureVideoDataOutputSampleBuffer
 
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
 
@@ -133,9 +134,9 @@ class AuthingMFAFaceVC: AuthViewController, AVCaptureVideoDataOutputSampleBuffer
 
 }
 
-extension AuthingMFAFaceVC {
+extension MFAFaceViewController {
     
-    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+    public func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
          
         guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         CVPixelBufferLockBaseAddress(imageBuffer, CVPixelBufferLockFlags(rawValue: 0))
@@ -159,7 +160,7 @@ extension AuthingMFAFaceVC {
         Thread.sleep(forTimeInterval: 0.5)
     }
 
-    @objc func detectFace(_ image: UIImage) {
+    @objc public func detectFace(_ image: UIImage) {
         
         guard let cgImage = image.cgImage else { return }
         let ciImage = CIImage(cgImage: cgImage)
@@ -201,118 +202,127 @@ extension AuthingMFAFaceVC {
             
             self.faceImages.append(image)
             
-            // CIDetector start detect
-            if self.isDetecting == false && self.countDown == 0 {
+            self.verifyFace()
+            
+        } else {
+        }
+    }
+    
+    public func verifyFace() {
+        // CIDetector start detect
+        if self.isDetecting == false && self.countDown == 0 {
 
-                self.isDetecting = true
-                gcdTimer = DispatchSource.makeTimerSource()
-                gcdTimer?.schedule(wallDeadline: DispatchWallTime.now(), repeating: DispatchTimeInterval.milliseconds(25), leeway: DispatchTimeInterval.milliseconds(0))
-                gcdTimer?.setEventHandler {
-                    DispatchQueue.main.async {
-                        self.countDown += 1
-                    }
+            self.isDetecting = true
+            gcdTimer = DispatchSource.makeTimerSource()
+            gcdTimer?.schedule(wallDeadline: DispatchWallTime.now(), repeating: DispatchTimeInterval.milliseconds(25), leeway: DispatchTimeInterval.milliseconds(0))
+            gcdTimer?.setEventHandler {
+                DispatchQueue.main.async {
+                    self.countDown += 1
                 }
-                gcdTimer?.resume()
-                
             }
-            // CIDetector detect complete
-            else if self.isDetecting == true && self.countDown == 100 {
-                self.isDetecting = false
-                var photoAUrl: String?
-                var photoBUrl: String?
-                // bind
-                
-                loading.startAnimating()
-                var uploadSuccess: Bool = false
-                let dispatchGroup = DispatchGroup()
+            gcdTimer?.resume()
+            
+        }
+        // CIDetector detect complete
+        else if self.isDetecting == true && self.countDown == 100 {
+            self.isDetecting = false
+            var photoAUrl: String?
+            var photoBUrl: String?
+            // bind
+            
+            loading.startAnimating()
+            var uploadSuccess: Bool = false
+            let dispatchGroup = DispatchGroup()
+            let dispathcQueue = DispatchQueue.global()
+            if self.needBindingFace == true {
+                self.tipLabel.text = NSLocalizedString("authing_mfa_binding", bundle: Bundle(for: Self.self), comment: "")
 
-                if self.needBindingFace == true {
-                    self.tipLabel.text = NSLocalizedString("authing_mfa_binding", bundle: Bundle(for: Self.self), comment: "")
-
-                    dispatchGroup.enter()
-                    dispatchGroup.enter()
+                dispatchGroup.enter()
+                dispathcQueue.async{
                     AuthClient().uploadFaceImage(self.faceImages.first ?? UIImage()) { code, key in
                         dispatchGroup.leave()
                         uploadSuccess = code == 200 ? true : false
                         photoAUrl = key
                     }
+                }
+                dispatchGroup.enter()
+                dispathcQueue.async{
                      AuthClient().uploadFaceImage(self.faceImages.last ?? UIImage()) { code, key in
                          dispatchGroup.leave()
                         uploadSuccess = code == 200 ? true : false
                         photoBUrl = key
                     }
-                    dispatchGroup.notify(queue: DispatchQueue.main) { [weak self] in
-                        if uploadSuccess == true {
-                            AuthClient().mfaAssociateByFace(photoA: photoAUrl ?? "", photoB: photoBUrl ?? "") { code, msg, userInfo in
-                                DispatchQueue.main.async() {
-                                    self?.loading.stopAnimating()
-                                    if code == 200{
-                                        self?.tipLabel.text = NSLocalizedString("authing_mfa_bind_success", bundle: Bundle(for: Self.self), comment: "")
-                                    
-                                        if let vc = self?.navigationController as? AuthNavigationController {
-                                            self?.session.stopRunning()
-                                            vc.complete(code, msg, userInfo)
-                                        }
-                                    } else {
-                                        self?.tipLabel.text = NSLocalizedString("authing_mfa_bind_failed", bundle: Bundle(for: Self.self), comment: "")
-                                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-                                            self?.resetData()
-                                        }
+                }
+                dispatchGroup.notify(queue: DispatchQueue.main) { [weak self] in
+                    if uploadSuccess == true {
+                        AuthClient().mfaAssociateByFace(photoA: photoAUrl ?? "", photoB: photoBUrl ?? "") { code, msg, userInfo in
+                            DispatchQueue.main.async() {
+                                self?.loading.stopAnimating()
+                                if code == 200{
+                                    self?.tipLabel.text = NSLocalizedString("authing_mfa_bind_success", bundle: Bundle(for: Self.self), comment: "")
+                                
+                                    if let vc = self?.navigationController as? AuthNavigationController {
+                                        self?.session.stopRunning()
+                                        vc.complete(code, msg, userInfo)
+                                    }
+                                } else {
+                                    self?.tipLabel.text = NSLocalizedString("authing_mfa_bind_failed", bundle: Bundle(for: Self.self), comment: "")
+                                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+                                        self?.resetData()
                                     }
                                 }
                             }
-                        } else {
-                            self?.loading.stopAnimating()
-                            self?.tipLabel.text = NSLocalizedString("authing_mfa_bind_failed", bundle: Bundle(for: Self.self), comment: "")
-                            self?.resetData()
                         }
+                    } else {
+                        self?.loading.stopAnimating()
+                        self?.tipLabel.text = NSLocalizedString("authing_mfa_bind_failed", bundle: Bundle(for: Self.self), comment: "")
+                        self?.resetData()
                     }
                 }
-                // verify
-                else {
-                    self.tipLabel.text = NSLocalizedString("authing_mfa_verifying", bundle: Bundle(for: Self.self), comment: "")
+            }
+            // verify
+            else {
+                self.tipLabel.text = NSLocalizedString("authing_mfa_verifying", bundle: Bundle(for: Self.self), comment: "")
 
-                    dispatchGroup.enter()
+                dispatchGroup.enter()
+                dispathcQueue.async{
                     AuthClient().uploadFaceImage(self.faceImages.last ?? UIImage()) { code, key in
                         dispatchGroup.leave()
                         uploadSuccess = code == 200 ? true : false
                         photoAUrl = key
                     }
-                    
-                    dispatchGroup.notify(queue: DispatchQueue.main) { [weak self] in
-                        if uploadSuccess == true {
-                            AuthClient().mfaVerifyByFace(photo: photoAUrl ?? "") { code, msg, userInfo in
-                                DispatchQueue.main.async() {
-                                    self?.loading.stopAnimating()
-                                    if code == 200{
-                                        self?.tipLabel.text = NSLocalizedString("authing_mfa_verify_success", bundle: Bundle(for: Self.self), comment: "")
-                                    
-                                        if let vc = self?.navigationController as? AuthNavigationController {
-                                            self?.session.stopRunning()
-                                            vc.complete(code, msg, userInfo)
-                                        }
-                                    } else {
-                                        self?.tipLabel.text = NSLocalizedString("authing_mfa_verify_failed", bundle: Bundle(for: Self.self), comment: "")
-                                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-                                            self?.resetData()
-                                        }
+                }
+                
+                dispatchGroup.notify(queue: DispatchQueue.main) { [weak self] in
+                    if uploadSuccess == true {
+                        AuthClient().mfaVerifyByFace(photo: photoAUrl ?? "") { code, msg, userInfo in
+                            DispatchQueue.main.async() {
+                                self?.loading.stopAnimating()
+                                if code == 200{
+                                    self?.tipLabel.text = NSLocalizedString("authing_mfa_verify_success", bundle: Bundle(for: Self.self), comment: "")
+                                
+                                    if let vc = self?.navigationController as? AuthNavigationController {
+                                        self?.session.stopRunning()
+                                        vc.complete(code, msg, userInfo)
+                                    }
+                                } else {
+                                    self?.tipLabel.text = NSLocalizedString("authing_mfa_verify_failed", bundle: Bundle(for: Self.self), comment: "")
+                                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+                                        self?.resetData()
                                     }
                                 }
                             }
-                        } else {
-                            self?.loading.stopAnimating()
-                            self?.tipLabel.text = NSLocalizedString("authing_mfa_verify_failed", bundle: Bundle(for: Self.self), comment: "")
-                            self?.resetData()
                         }
+                    } else {
+                        self?.loading.stopAnimating()
+                        self?.tipLabel.text = NSLocalizedString("authing_mfa_verify_failed", bundle: Bundle(for: Self.self), comment: "")
+                        self?.resetData()
                     }
-
                 }
+
             }
-            // CIDetector loading
-            else {
-            }
-            
-        } else {
+        }
+        else {
         }
     }
     
