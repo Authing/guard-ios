@@ -5,7 +5,6 @@
 //  Created by Lance Mao on 2021/11/23.
 //
 
-import UIKit
 import Guard
 
 class SampleListViewController: UITableViewController {

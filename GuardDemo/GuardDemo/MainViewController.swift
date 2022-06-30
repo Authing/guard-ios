@@ -6,7 +6,6 @@
 //
 
 import Guard
-import UIKit
 
 class MainViewController: UserProfileViewController {
     

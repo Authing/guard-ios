@@ -5,7 +5,6 @@
 //  Created by Lance Mao on 2021/12/15.
 //
 
-import UIKit
 import Guard
 import OneAuth
 
