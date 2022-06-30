@@ -129,7 +129,6 @@ class AuthingMFAFaceVC: AuthViewController, AVCaptureVideoDataOutputSampleBuffer
     }
 
     deinit {
-        print("==============deinit")
     }
 
 }

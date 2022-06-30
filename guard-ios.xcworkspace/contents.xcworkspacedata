@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/JN/Documents/Authing/guard-ios/Guard/Guard/Nib/AuthingMFAFace.xib">
-   </FileRef>
-   <FileRef
       location = "group:GuardDemo/GuardDemo.xcodeproj">
    </FileRef>
    <FileRef

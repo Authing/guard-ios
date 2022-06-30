@@ -78,6 +78,7 @@ open class MFATableItem: UIView {
             vc = AuthViewController(nibName: "AuthingMFAOTP", bundle: Bundle(for: Self.self))
         } else if (mfaType == .face) {
             vc = AuthingMFAFaceVC.init()
+        
         }
         self.authViewController?.navigationController?.pushViewController(vc!, animated: true)
     }

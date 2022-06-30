@@ -143,7 +143,6 @@
 		A850622C283237FA00F97EBD /* CountdownTimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A850622B283237FA00F97EBD /* CountdownTimerManager.swift */; };
 		A8A5ABC1285733F500D6B03A /* AuthResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A5ABC0285733F500D6B03A /* AuthResult.swift */; };
 		A8A7BBB228466CC5000A0D7C /* CountryCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A7BBB128466CC5000A0D7C /* CountryCodeView.swift */; };
-		A8A881F52869D16900631AD3 /* AuthingMFAFace.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8A881F42869D16900631AD3 /* AuthingMFAFace.xib */; };
 		A8A881F7286AE76400631AD3 /* AuthingMFAFaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A881F6286AE76400631AD3 /* AuthingMFAFaceVC.swift */; };
 		A8D38D1627F1DB4A00942707 /* CountryCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D38D1527F1DB4A00942707 /* CountryCodeViewController.swift */; };
 		A8D38D1A27F1E44700942707 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D38D1827F1E44700942707 /* CountryTableViewCell.swift */; };
@@ -288,7 +287,6 @@
 		A850622B283237FA00F97EBD /* CountdownTimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimerManager.swift; sourceTree = "<group>"; };
 		A8A5ABC0285733F500D6B03A /* AuthResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResult.swift; sourceTree = "<group>"; };
 		A8A7BBB128466CC5000A0D7C /* CountryCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeView.swift; sourceTree = "<group>"; };
-		A8A881F42869D16900631AD3 /* AuthingMFAFace.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingMFAFace.xib; sourceTree = "<group>"; };
 		A8A881F6286AE76400631AD3 /* AuthingMFAFaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthingMFAFaceVC.swift; sourceTree = "<group>"; };
 		A8D38D1527F1DB4A00942707 /* CountryCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeViewController.swift; sourceTree = "<group>"; };
 		A8D38D1827F1E44700942707 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
@@ -424,7 +422,6 @@
 				7EB32802278BEE0F008639AA /* AuthingMFAEmail0.xib */,
 				7EB3280F278D116F008639AA /* AuthingMFAEmail1.xib */,
 				7EB32811278D1DF9008639AA /* AuthingMFAOTP.xib */,
-				A8A881F42869D16900631AD3 /* AuthingMFAFace.xib */,
 				7E7D1F72278FC44F005AAD39 /* AuthingFirstTimeLogin.xib */,
 				7E02F46C27950C99007FA048 /* AuthingUserInfoComplete.xib */,
 				A8D38D2027F2B02D00942707 /* AuthingCountryCode.xib */,
@@ -772,7 +769,6 @@
 				7EB32801278BE056008639AA /* AuthingMFAPhone0.xib in Resources */,
 				7E12D7B8277DECB900703FC1 /* AuthingUserProfile.xib in Resources */,
 				7EB327FA278BD2EB008639AA /* AuthingMFAOptions.xib in Resources */,
-				A8A881F52869D16900631AD3 /* AuthingMFAFace.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
