@@ -255,7 +255,7 @@ extension MFAFaceViewController {
                 }
                 dispatchGroup.notify(queue: DispatchQueue.main) { [weak self] in
                     if uploadSuccess == true {
-                        AuthClient().mfaAssociateByFace(photoA: photoAUrl ?? "", photoB: photoBUrl ?? "") { code, msg, userInfo in
+                        AuthClient().mfaAssociateByFace(photoKeyA: photoAUrl ?? "", photoKeyB: photoBUrl ?? "") { code, msg, userInfo in
                             DispatchQueue.main.async() {
                                 self?.loading.stopAnimating()
                                 if code == 200{
@@ -295,7 +295,7 @@ extension MFAFaceViewController {
                 
                 dispatchGroup.notify(queue: DispatchQueue.main) { [weak self] in
                     if uploadSuccess == true {
-                        AuthClient().mfaVerifyByFace(photo: photoAUrl ?? "") { code, msg, userInfo in
+                        AuthClient().mfaVerifyByFace(photoKey: photoAUrl ?? "") { code, msg, userInfo in
                             DispatchQueue.main.async() {
                                 self?.loading.stopAnimating()
                                 if code == 200{

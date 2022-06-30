@@ -563,15 +563,15 @@ public class AuthClient: Client {
         }
     }
     
-    public func mfaAssociateByFace(photoA: String, photoB: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        let body: NSDictionary = ["photoA" : photoA, "photoB" : photoB, "isExternalPhoto": false]
+    public func mfaAssociateByFace(photoKeyA: String, photoKeyB: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        let body: NSDictionary = ["photoA" : photoKeyA, "photoB" : photoKeyB, "isExternalPhoto": false]
         post("/api/v2/mfa/face/associate", body) { code, message, data in
             self.createUserInfo(code, message, data, completion: completion)
         }
     }
     
-    public func mfaVerifyByFace(photo: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        let body: NSDictionary = ["type" : "face", "photo" : photo]
+    public func mfaVerifyByFace(photoKey: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        let body: NSDictionary = ["type" : "face", "photo" : photoKey]
         post("/api/v2/mfa/face/verify", body) { code, message, data in
             self.createUserInfo(code, message, data, completion: completion)
         }
