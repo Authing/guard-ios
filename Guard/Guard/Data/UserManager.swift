@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2021/12/30.
 //
 
-import Foundation
-
 open class UserManager {
     
     private static let KEY_USER_TOKEN = "authing_user_token"

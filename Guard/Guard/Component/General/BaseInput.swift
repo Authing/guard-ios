@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2022/3/23.
 //
 
-import UIKit
-
 open class BaseInput: UITextField, AttributedViewProtocol {
     
     open var textValue: String? = nil {

@@ -5,8 +5,6 @@
 //  Created by JnMars on 2022/5/16.
 //
 
-import Foundation
-import UIKit
 
 public class CountdownTimerManager: NSObject{
     

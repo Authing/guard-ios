@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2021/12/14.
 //
 
-import UIKit
-
 open class LoginButton: PrimaryButton {
     public override init(frame: CGRect) {
         super.init(frame: frame)

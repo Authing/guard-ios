@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2021/12/13.
 //
 
-import UIKit
-
 extension UIApplication {
 
     class func topViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {

@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2022/2/28.
 //
 
-import UIKit
-
 open class SocialLoginListView: UIView, AttributedViewProtocol {
     
     let WIDTH = CGFloat(44)

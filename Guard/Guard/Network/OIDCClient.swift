@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2022/3/2.
 //
 
-import Foundation
-
 public class OIDCClient: NSObject {
     
     public var authRequest = AuthRequest()

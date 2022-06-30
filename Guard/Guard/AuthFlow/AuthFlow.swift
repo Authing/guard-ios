@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2021/12/13.
 //
 
-import UIKit
-
 public enum AuthProtocol {
     case EInHouse
     case EOIDC

@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2022/3/15.
 //
 
-import UIKit
-
 open class Parser: NSObject, XMLParserDelegate {
     
     var appBundle: AppBundle?

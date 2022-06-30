@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2021/12/30.
 //
 
-import UIKit
-
 open class ResetPasswordButton: PrimaryButton {
     
     enum resetType {

@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2022/3/15.
 //
 
-import UIKit
-
 public protocol AttributedViewProtocol {
     func getAttribute(key: String) -> Any?
     

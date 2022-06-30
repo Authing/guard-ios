@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2021/11/23.
 //
 
-import Foundation
-
 typealias ConfigCompletion = (Config?) -> Void
 
 public class Authing {

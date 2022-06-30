@@ -5,7 +5,6 @@
 //  Created by Lance Mao on 2021/11/23.
 //
 
-import Foundation
 import Guard
 import AppAuth
 import AuthenticationServices
@@ -36,7 +35,8 @@ class AppAuthViewController: UIViewController {
         let config = OIDServiceConfiguration(authorizationEndpoint: authorizationEndpoint, tokenEndpoint: tokenEndpoint, issuer:nil, registrationEndpoint: regEndpoint, endSessionEndpoint: endPoint)
                 
         let logoutRequest = OIDEndSessionRequest(configuration: config, idTokenHint: idToken, postLogoutRedirectURL: redirectURL, additionalParameters: ["redirect_uri":"cn.guard://authing.cn/redirect"])
-        logoutRequest.setValuesForKeys(["state": nil])
+        
+        logoutRequest.setNilValueForKey("state")
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
                         

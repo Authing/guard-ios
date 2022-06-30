@@ -5,8 +5,6 @@
 //  Created by JnMars on 2022/5/18.
 //
 
-import Foundation
-import UIKit
 
 open class LoadingView: ImageView {
     

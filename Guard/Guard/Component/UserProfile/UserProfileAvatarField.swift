@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2022/3/1.
 //
 
-import UIKit
-
 open class UserProfileAvatarField: UserProfileField, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     let imageSize = CGFloat(40)

@@ -5,8 +5,6 @@
 //  Created by JnMars on 2022/3/26.
 //
 
-import UIKit
-
 class CountryTableViewCell: UITableViewCell {
     
     let itemHeight: CGFloat = 50

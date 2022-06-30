@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2022/1/17.
 //
 
-import UIKit
-
 open class UserInfoCompleteContainer: UIView {
     
     private let ITEM_TOP_SPACE: CGFloat = 16

@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2021/12/29.
 //
 
-import UIKit
-
 open class Animator {
     var from: Double = 0
     var to: Double = 1

@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2021/12/3.
 //
 
-import UIKit
-
 typealias AuthCallback = (Int, String?, UserInfo?) -> Void
 
 public class Const {

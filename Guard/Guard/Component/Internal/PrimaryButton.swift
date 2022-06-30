@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2021/12/28.
 //
 
-import UIKit
-
 open class PrimaryButton: LoadingButton {
     
     var authCompletion: Authing.AuthCompletion?

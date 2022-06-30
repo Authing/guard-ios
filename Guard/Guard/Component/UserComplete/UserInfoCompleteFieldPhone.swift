@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2022/2/22.
 //
 
-import UIKit
-
 open class UserInfoCompleteFieldPhone: UserInfoCompleteFieldForm {
     
     var phoneTextField: PhoneNumberTextField = PhoneNumberTextField()

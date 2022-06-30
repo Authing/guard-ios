@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2022/3/24.
 //
 
-import UIKit
-
 open class Label: UILabel, AttributedViewProtocol {
     
     open var textValue: String? = nil {

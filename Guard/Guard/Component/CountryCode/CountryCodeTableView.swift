@@ -5,8 +5,6 @@
 //  Created by JnMars on 2022/3/29.
 //
 
-import Foundation
-import UIKit
 
 open class CountryCodeTableView: UIView {
     

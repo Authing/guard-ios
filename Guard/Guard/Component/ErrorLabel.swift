@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2021/12/27.
 //
 
-import UIKit
-
 open class ErrorLabel: Label {
     public override init(frame: CGRect) {
         super.init(frame: frame)

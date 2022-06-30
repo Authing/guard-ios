@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2021/12/29.
 //
 
-import UIKit
-
 public class RegisterMethodTabItem: MethodTabItem {
     override public func focusGained() {
         let containers: Array<RegisterContainer> = Util.findViews(self, viewClass: RegisterContainer.self)

@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2021/12/24.
 //
 
-import UIKit
-
 open class LoginContainer: Layout {
 
     // 0 by phone code; 1 by password; 2 by email code

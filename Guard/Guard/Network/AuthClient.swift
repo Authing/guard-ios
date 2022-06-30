@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2021/12/14.
 //
 
-import UIKit
-
 public class AuthClient: Client {
     
     // MARK: Basic authentication APIs

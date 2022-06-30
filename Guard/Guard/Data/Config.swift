@@ -5,7 +5,7 @@
 //  Created by Lance Mao on 2021/12/13.
 //
 
-import UIKit
+
 import WebKit
 
 public class Config {

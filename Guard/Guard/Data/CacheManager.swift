@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2022/3/28.
 //
 
-import UIKit
-
 open class CacheManager {
     public static func getImage(_ key: String) -> UIImage? {
         do {

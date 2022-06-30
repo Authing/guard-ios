@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2022/2/22.
 //
 
-import UIKit
-
 open class UserInfoCompleteFieldFormSelect: UserInfoCompleteFieldForm {
     var segment: UISegmentedControl = UISegmentedControl()
     

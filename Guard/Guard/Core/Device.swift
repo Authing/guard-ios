@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2022/6/1.
 //
 
-import UIKit
-
 public extension UIDevice {
     static func modelIdentifier() -> String {
         if let simulatorModelIdentifier = ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] {

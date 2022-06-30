@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2021/12/29.
 //
 
-import UIKit
-
 open class RegisterContainer: Layout {
     
     // 0 by phone; 1 by email

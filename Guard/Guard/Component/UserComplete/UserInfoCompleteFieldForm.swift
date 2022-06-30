@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2022/1/17.
 //
 
-import UIKit
-
 open class UserInfoCompleteFieldForm: UIView {
     
     let LABEL_H: CGFloat = CGFloat(26)

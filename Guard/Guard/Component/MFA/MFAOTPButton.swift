@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2022/1/11.
 //
 
-import UIKit
-
 open class MFAOTPButton: PrimaryButton {
     public override init(frame: CGRect) {
         super.init(frame: frame)

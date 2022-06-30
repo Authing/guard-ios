@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2021/12/29.
 //
 
-import UIKit
-
 open class AuthNavigationController: UINavigationController {
     
     private var authCompletion: Authing.AuthCompletion?

@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2022/4/19.
 //
 
-import UIKit
-
 open class GoNextButton: GoSomewhereButton {
     public override init(frame: CGRect) {
         super.init(frame: frame)

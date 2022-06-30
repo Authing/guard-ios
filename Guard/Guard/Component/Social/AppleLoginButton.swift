@@ -5,7 +5,7 @@
 //  Created by Lance Mao on 2022/1/6.
 //
 
-import UIKit
+
 import AuthenticationServices
 
 @available(iOS 13.0, *)

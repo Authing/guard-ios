@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2021/12/13.
 //
 
-import UIKit
-
 open class AuthViewController: UIViewController {
     
     public var authFlow: AuthFlow? = AuthFlow()

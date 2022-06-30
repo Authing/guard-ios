@@ -5,7 +5,7 @@
 //  Created by Lance Mao on 2022/3/2.
 //
 
-import Foundation
+
 import CommonCrypto
 
 open class AuthRequest {

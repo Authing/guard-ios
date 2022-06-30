@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2022/3/4.
 //
 
-import UIKit
-
 open class DeleteAccountButton: UIButton {
     
     public typealias OnDeleteAccount = (Int, String?) -> Void

@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2022/1/10.
 //
 
-import UIKit
-
 open class MFATableItem: UIView {
     
     enum MFAType {

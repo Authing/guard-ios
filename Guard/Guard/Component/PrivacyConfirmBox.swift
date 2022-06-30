@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2022/2/24.
 //
 
-import UIKit
-
 open class PrivacyConfirmBox: UIView, UITextViewDelegate {
     
     let size = 15.0

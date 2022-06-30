@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2022/1/7.
 //
 
-import UIKit
-
 open class SocialLoginButton: Button {
     
     var loading: UIActivityIndicatorView? = nil

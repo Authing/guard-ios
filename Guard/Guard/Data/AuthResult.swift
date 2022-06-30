@@ -5,8 +5,6 @@
 //  Created by JnMars on 2022/6/13.
 //
 
-import Foundation
-
 open class AuthResult {
     /// authorization_code
     public var authorizationCode: String?

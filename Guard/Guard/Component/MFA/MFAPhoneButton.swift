@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2022/1/10.
 //
 
-import UIKit
-
 open class MFAPhoneButton: PrimaryButton {
     public override init(frame: CGRect) {
         super.init(frame: frame)

@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2021/12/27.
 //
 
-import UIKit
-
 open class GetVerifyCodeButton: LoadingButton {
     
     override open var loadingColor: UIColor? {

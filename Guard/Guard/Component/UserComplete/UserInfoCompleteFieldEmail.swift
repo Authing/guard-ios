@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2022/2/21.
 //
 
-import UIKit
-
 open class UserInfoCompleteFieldEmail: UserInfoCompleteFieldForm {
     
     var emailTextField: EmailTextField = EmailTextField()

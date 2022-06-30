@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2021/12/24.
 //
 
-import UIKit
-
 public class LoginMethodTabItem: MethodTabItem {
     override public func focusGained() {
         let containers: Array<LoginContainer> = Util.findViews(self, viewClass: LoginContainer.self)

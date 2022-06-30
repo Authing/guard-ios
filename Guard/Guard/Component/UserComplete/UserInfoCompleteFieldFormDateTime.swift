@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2022/2/22.
 //
 
-import UIKit
-
 open class UserInfoCompleteFieldFormDateTime: UserInfoCompleteFieldForm {
     var textField: UITextField = UITextField()
     let datePickerView:UIDatePicker = UIDatePicker()

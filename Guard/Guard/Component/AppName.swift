@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2021/12/13.
 //
 
-import UIKit
-
 open class AppName: Label {
     public override init(frame: CGRect) {
         super.init(frame: frame)

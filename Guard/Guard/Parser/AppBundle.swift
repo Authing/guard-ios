@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2022/3/22.
 //
 
-import UIKit
-
 open class AppBundle {
     open var appId: String?
     open var rootDir: URL?

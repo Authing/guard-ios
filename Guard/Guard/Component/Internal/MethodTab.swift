@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2022/5/31.
 //
 
-import UIKit
-
 open class MethodTab: UIScrollView {
     
     let ITEM_WIDTH: CGFloat = 120.0

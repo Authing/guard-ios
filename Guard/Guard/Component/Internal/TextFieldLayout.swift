@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2021/12/24.
 //
 
-import UIKit
-
 open class TextFieldLayout: BaseInput, UITextFieldDelegate {
     
     let border = TextFieldBorder()

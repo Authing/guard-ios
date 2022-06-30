@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2022/1/12.
 //
 
-import UIKit
-
 open class PhoneLabel: UILabel {
     public override init(frame: CGRect) {
         super.init(frame: frame)

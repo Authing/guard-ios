@@ -5,8 +5,6 @@
 //  Created by Lance Mao on 2022/1/10.
 //
 
-import UIKit
-
 open class MFATableView: UIView {
     
     private let ITEM_HEIGHT: CGFloat = 48
