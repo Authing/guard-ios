@@ -33,7 +33,6 @@ public class Authing {
     public static func start(_ appid: String) {
         sAppId = appid
         sConfig = Config(appId: appid)
-        SDKUsageTask.report();
     }
     
     public static func getAppId() -> String {
