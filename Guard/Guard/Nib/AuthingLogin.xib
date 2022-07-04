@@ -67,13 +67,13 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="txj-YQ-JVh" customClass="LoginMethodTab" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="20" y="222" width="374" height="32"/>
+                    <rect key="frame" x="20" y="222" width="374" height="36"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="32" id="Joi-M4-vcQ"/>
+                        <constraint firstAttribute="height" constant="36" id="Joi-M4-vcQ"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nmk-Ef-ukz" userLabel="Phone Login Container" customClass="LoginContainer" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="20" y="270" width="374" height="104"/>
+                    <rect key="frame" x="20" y="282" width="374" height="104"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0s7-XA-leK" customClass="PhoneNumberTextField" customModule="Guard" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
@@ -123,7 +123,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gFZ-Xj-lJ9" userLabel="Password Login Container" customClass="LoginContainer" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="20" y="270" width="374" height="104"/>
+                    <rect key="frame" x="20" y="282" width="374" height="104"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="oKO-HY-0iV" customClass="AccountTextField" customModule="Guard" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
@@ -159,7 +159,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bbf-gS-1Ex" userLabel="Email Login Container" customClass="LoginContainer" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="20" y="278" width="374" height="104"/>
+                    <rect key="frame" x="20" y="282" width="374" height="104"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="btZ-3o-eKL" customClass="EmailTextField" customModule="Guard" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
@@ -209,7 +209,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7BN-be-d2t" userLabel="Error Label" customClass="ErrorLabel" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="20" y="382" width="374" height="17"/>
+                    <rect key="frame" x="20" y="394" width="374" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="CS0-bW-sEs"/>
                     </constraints>
@@ -218,14 +218,14 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="les-eR-d4D" customClass="PrivacyConfirmBox" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="20" y="403" width="374" height="15"/>
+                    <rect key="frame" x="20" y="415" width="374" height="15"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="15" id="EVo-Ab-VIs"/>
                     </constraints>
                 </view>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTZ-xL-T1d">
-                    <rect key="frame" x="356" y="484" width="0.0" height="31"/>
+                    <rect key="frame" x="356" y="496" width="0.0" height="31"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" systemColor="systemGray2Color"/>
                     <nil key="highlightedColor"/>
@@ -234,7 +234,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2g3-pt-3FB" userLabel="Go register button" customClass="GoRegisterButton" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="364" y="484" width="30" height="31"/>
+                    <rect key="frame" x="364" y="496" width="30" height="31"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="31" id="PNq-4D-i2y"/>
                     </constraints>
@@ -245,7 +245,7 @@
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qfp-Ru-dGn" userLabel="Go forgot password button" customClass="GoForgotPasswordButton" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="20" y="484" width="30" height="31"/>
+                    <rect key="frame" x="20" y="496" width="30" height="31"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal">
@@ -253,7 +253,7 @@
                     </state>
                 </button>
                 <button contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jkG-vF-ihh" userLabel="Login button" customClass="LoginButton" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="20" y="434" width="374" height="42"/>
+                    <rect key="frame" x="20" y="446" width="374" height="42"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="42" id="sow-Ep-phF"/>
                     </constraints>
@@ -289,7 +289,7 @@
                 <constraint firstItem="Bbf-gS-1Ex" firstAttribute="top" secondItem="txj-YQ-JVh" secondAttribute="bottom" constant="24" id="PJk-fe-Apr"/>
                 <constraint firstItem="DMA-tf-9bk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="PPu-uI-RRv"/>
                 <constraint firstItem="Qfp-Ru-dGn" firstAttribute="top" secondItem="2g3-pt-3FB" secondAttribute="top" id="QWK-0n-XSj"/>
-                <constraint firstItem="gFZ-Xj-lJ9" firstAttribute="top" secondItem="txj-YQ-JVh" secondAttribute="bottom" constant="16" id="RtW-cc-hVO"/>
+                <constraint firstItem="gFZ-Xj-lJ9" firstAttribute="top" secondItem="txj-YQ-JVh" secondAttribute="bottom" constant="24" id="RtW-cc-hVO"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="7BN-be-d2t" secondAttribute="trailing" constant="20" id="TD6-pL-cBb"/>
                 <constraint firstItem="NTZ-xL-T1d" firstAttribute="top" secondItem="2g3-pt-3FB" secondAttribute="top" id="Uo7-ya-O8Q"/>
                 <constraint firstItem="txj-YQ-JVh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="XXG-Mn-ys9"/>
@@ -311,7 +311,7 @@
                 <constraint firstItem="NTZ-xL-T1d" firstAttribute="bottom" secondItem="2g3-pt-3FB" secondAttribute="bottom" id="uLG-fh-j2W"/>
                 <constraint firstItem="E2M-Lp-3aM" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="wEP-PK-Ngq"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="d9m-aA-3Gf" secondAttribute="trailing" constant="20" id="xDT-JU-Hyb"/>
-                <constraint firstItem="Nmk-Ef-ukz" firstAttribute="top" secondItem="txj-YQ-JVh" secondAttribute="bottom" constant="16" id="ywh-BJ-Ndn"/>
+                <constraint firstItem="Nmk-Ef-ukz" firstAttribute="top" secondItem="txj-YQ-JVh" secondAttribute="bottom" constant="24" id="ywh-BJ-Ndn"/>
                 <constraint firstItem="Qfp-Ru-dGn" firstAttribute="bottom" secondItem="2g3-pt-3FB" secondAttribute="bottom" id="zZi-c9-an0"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="124.55357142857142"/>
