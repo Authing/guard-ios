@@ -19,7 +19,7 @@ open class LoginMethodTab: MethodTab {
         var i: CGFloat = 0
         var defaultLoginIncluded = false
         for method in config.loginMethods ?? [] {
-            let frame = CGRect(x: i * self.ITEM_WIDTH, y: 0, width: self.ITEM_WIDTH, height: frame.height)
+            let frame = CGRect.zero
             let item = LoginMethodTabItem(frame: frame)
             if (method == "phone-code") {
                 item.setText(NSLocalizedString("authing_login_by_phone_code", bundle: Bundle(for: Self.self), comment: ""))

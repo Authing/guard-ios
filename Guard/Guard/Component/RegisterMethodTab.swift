@@ -18,7 +18,7 @@ open class RegisterMethodTab: MethodTab {
     override func doSetup(_ config: Config) {
         var i: CGFloat = 0
         config.registerMethods?.forEach({ method in
-            let frame = CGRect(x: i * ITEM_WIDTH, y: 0, width: ITEM_WIDTH, height: frame.height)
+            let frame = CGRect.zero
             let item = RegisterMethodTabItem(frame: frame)
             if (method == "phone") {
                 item.setText(NSLocalizedString("authing_register_by_phone", bundle: Bundle(for: Self.self), comment: ""))

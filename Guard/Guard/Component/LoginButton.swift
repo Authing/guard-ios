@@ -82,7 +82,7 @@ open class LoginButton: PrimaryButton {
         }
     }
     
-        private func loginByPhoneCode(_ countryCode: String? = nil, _ phone: String, _ code: String) {
+    private func loginByPhoneCode(_ countryCode: String? = nil, _ phone: String, _ code: String) {
         startLoading()
                 
         let authProtocol = authViewController?.authFlow?.authProtocol ?? .EInHouse
@@ -93,7 +93,7 @@ open class LoginButton: PrimaryButton {
                     self.handleLogin(code, message: message, userInfo: userInfo)
                 }
             }
-        }else{
+        } else {
             OIDCClient().loginByPhoneCode(phoneCountryCode: countryCode, phone: phone, code: code) { code, message, userInfo in
                 self.stopLoading()
                 DispatchQueue.main.async() {
@@ -114,7 +114,7 @@ open class LoginButton: PrimaryButton {
                     self.handleLogin(code, message: message, userInfo: userInfo)
                 }
             }
-        }else{
+        } else {
             OIDCClient().loginByAccount(account: account, password: password) { code,  message,  userInfo in
                 self.stopLoading()
                 DispatchQueue.main.async() {

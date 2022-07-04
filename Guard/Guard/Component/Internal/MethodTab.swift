@@ -7,8 +7,8 @@
 
 open class MethodTab: UIScrollView {
     
-    let ITEM_WIDTH: CGFloat = 120.0
-    let highlightHeight = 2.0
+    let itemPadding: CGFloat = 12.0
+    let highlightHeight = 1.0
     
     var items = [MethodTabItem]()
     let underLine = UIView() // fixed grey
@@ -54,13 +54,22 @@ open class MethodTab: UIScrollView {
     }
     
     private func setItemFrame() {
-        var i: CGFloat = 0
+        var x: CGFloat = 0
+        var i = 0
         items.forEach { item in
-            let frame = CGRect(x: i * ITEM_WIDTH, y: 0, width: ITEM_WIDTH, height: frame.height)
-            item.frame = frame
+            let w = item.content.intrinsicContentSize.width
+            if i == 0 {
+                item.frame = CGRect(x: x, y: 0, width: w + itemPadding, height: frame.height)
+                item.content.frame = CGRect(x: 0, y: 0, width: w, height: item.frame.height-2)
+                x += w + itemPadding
+            } else {
+                item.frame = CGRect(x: x, y: 0, width: w + 2 * itemPadding, height: frame.height)
+                item.content.frame = CGRect(x: itemPadding, y: 0, width: w, height: item.frame.height-2)
+                x += w + 2 * itemPadding
+            }
             i += 1
         }
-        contentSize = CGSize(width: CGFloat(items.count) * ITEM_WIDTH, height: frame.height)
+        contentSize = CGSize(width: x, height: frame.height)
     }
     
     private func focusedItem() -> MethodTabItem? {
@@ -74,7 +83,9 @@ open class MethodTab: UIScrollView {
     
     open override func layoutSubviews() {
         if let v = focusedItem() {
-            highlight.frame = CGRect(x: v.frame.origin.x, y: frame.height - highlightHeight, width: v.frame.width, height: highlightHeight)
+            let x = v.content.frame.origin.x
+            let w = v.content.frame.width
+            highlight.frame = CGRect(x: v.frame.origin.x + x, y: frame.height - highlightHeight, width: w, height: highlightHeight)
         }
         
         let underLineHeight = 1 / UIScreen.main.scale
@@ -92,11 +103,14 @@ open class MethodTab: UIScrollView {
         }
         (sender.view as? MethodTabItem)?.gainFocus(lastFocused: lastFocused)
         
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
             if let v = self.focusedItem() {
-                self.highlight.frame = CGRect(x: v.frame.origin.x, y: self.frame.height - self.highlightHeight, width: v.frame.width, height: self.highlightHeight)
+                let x = v.content.frame.origin.x
+                let w = v.content.frame.width
+                self.highlight.frame = CGRect(x: v.frame.origin.x + x, y: self.frame.height - self.highlightHeight, width: w, height: self.highlightHeight)
             }
-        }
+        }, completion: nil)
+        
         setNeedsLayout()
     }
 
