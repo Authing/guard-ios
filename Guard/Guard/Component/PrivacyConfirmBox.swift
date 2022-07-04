@@ -48,6 +48,7 @@ open class PrivacyConfirmBox: UIView, UITextViewDelegate {
         checkBox.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
         
         label.delegate = self
+        label.isEditable = false
         label.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.leadingAnchor.constraint(equalTo: checkBox.trailingAnchor, constant: 0).isActive = true

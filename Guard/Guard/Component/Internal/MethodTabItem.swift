@@ -40,12 +40,14 @@ public class MethodTabItem: UIView {
     public func gainFocus(lastFocused: MethodTabItem?) {
         isFocuse = true
         button.setTitleColor(Const.Color_Authing_Main, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         focusGained()
     }
     
     public func loseFocus() {
         isFocuse = false
         button.setTitleColor(UIColor(white: 0.8, alpha: 1), for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
     }
     
     public func focusGained() {

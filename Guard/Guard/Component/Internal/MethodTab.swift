@@ -7,7 +7,7 @@
 
 open class MethodTab: UIScrollView {
     
-    let ITEM_WIDTH: CGFloat = 120.0
+    let ITEM_WIDTH: CGFloat = 100.0
     let highlightHeight = 2.0
     
     var items = [MethodTabItem]()

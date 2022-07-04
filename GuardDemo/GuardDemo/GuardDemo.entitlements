@@ -10,7 +10,7 @@
 	</array>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>applinks:developer-beta.authing.cn</string>
+		<string>applinks:h5-static.authing.co</string>
 	</array>
 </dict>
 </plist>
