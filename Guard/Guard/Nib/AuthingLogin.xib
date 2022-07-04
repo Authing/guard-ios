@@ -161,7 +161,7 @@
                             <textInputTraits key="textInputTraits" returnKeyType="next"/>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4p3-hb-Tfx" customClass="VerifyCodeTextField" customModule="Guard" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="68" width="350" height="48"/>
+                            <rect key="frame" x="0.0" y="64" width="350" height="48"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="48" id="SDl-4r-gtD"/>
                             </constraints>
@@ -187,7 +187,7 @@
                         <constraint firstAttribute="trailing" secondItem="btZ-3o-eKL" secondAttribute="trailing" id="549-PC-mYp"/>
                         <constraint firstAttribute="trailing" secondItem="ZhR-A9-ylh" secondAttribute="trailing" id="BKT-qf-bRo"/>
                         <constraint firstItem="4p3-hb-Tfx" firstAttribute="leading" secondItem="Bbf-gS-1Ex" secondAttribute="leading" id="TxK-Pr-erd"/>
-                        <constraint firstItem="4p3-hb-Tfx" firstAttribute="top" secondItem="btZ-3o-eKL" secondAttribute="bottom" constant="20" id="UcZ-MI-G0V"/>
+                        <constraint firstItem="4p3-hb-Tfx" firstAttribute="top" secondItem="btZ-3o-eKL" secondAttribute="bottom" constant="16" id="UcZ-MI-G0V"/>
                         <constraint firstAttribute="height" constant="104" id="cf8-oe-HHb"/>
                         <constraint firstItem="ZhR-A9-ylh" firstAttribute="leading" secondItem="4p3-hb-Tfx" secondAttribute="trailing" constant="8" symbolic="YES" id="hKz-Bc-z8O"/>
                         <constraint firstItem="btZ-3o-eKL" firstAttribute="leading" secondItem="Bbf-gS-1Ex" secondAttribute="leading" id="iiO-3d-mvq"/>

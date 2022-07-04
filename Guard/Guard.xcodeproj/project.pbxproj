@@ -95,7 +95,6 @@
 		7EB5CE5627D1EE3200BE3252 /* DeleteAccountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5CE5527D1EE3200BE3252 /* DeleteAccountButton.swift */; };
 		7EB5CE5827D5ECBF00BE3252 /* UtiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5CE5727D5ECBF00BE3252 /* UtiTests.swift */; };
 		7EC00A442808074C00FD8125 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC00A432808074C00FD8125 /* ImageView.swift */; };
-		7ECF8AC52759FE8D004F8FC5 /* SDKUsageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF8AC42759FE8D004F8FC5 /* SDKUsageTask.swift */; };
 		7ECF8AC72759FF17004F8FC5 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF8AC62759FF17004F8FC5 /* Const.swift */; };
 		7ECF8ACA275A022D004F8FC5 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF8AC9275A022D004F8FC5 /* Util.swift */; };
 		7ED434C92775653100893EDD /* LoginMethodTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED434C82775653100893EDD /* LoginMethodTab.swift */; };
@@ -239,7 +238,6 @@
 		7EB5CE5527D1EE3200BE3252 /* DeleteAccountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountButton.swift; sourceTree = "<group>"; };
 		7EB5CE5727D5ECBF00BE3252 /* UtiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtiTests.swift; sourceTree = "<group>"; };
 		7EC00A432808074C00FD8125 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
-		7ECF8AC42759FE8D004F8FC5 /* SDKUsageTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDKUsageTask.swift; sourceTree = "<group>"; };
 		7ECF8AC62759FF17004F8FC5 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		7ECF8AC9275A022D004F8FC5 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		7ED434C82775653100893EDD /* LoginMethodTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMethodTab.swift; sourceTree = "<group>"; };
@@ -505,14 +503,13 @@
 		7E9593D4274C813A001459C5 /* Guard */ = {
 			isa = PBXGroup;
 			children = (
+				7E9593D5274C813A001459C5 /* Guard.h */,
+				7ECF8AC62759FF17004F8FC5 /* Const.swift */,
+				7E959440274CEECF001459C5 /* Authing.swift */,
 				7E20000827E9A8250051F590 /* Core */,
 				7E96039027E08B17007C87EB /* Parser */,
 				7EF66C59277BEE5100FCBBEB /* Animation */,
 				7E75669227683E4700C3872F /* Resource */,
-				7E959440274CEECF001459C5 /* Authing.swift */,
-				7ECF8AC62759FF17004F8FC5 /* Const.swift */,
-				7E9593D5274C813A001459C5 /* Guard.h */,
-				7ECF8AC32759FE71004F8FC5 /* Analyze */,
 				7E75667F2766FA0E00C3872F /* AuthFlow */,
 				7E7566762766F90200C3872F /* Component */,
 				7E75668527672C8100C3872F /* Data */,
@@ -596,14 +593,6 @@
 				7E20000B27EAD9AB0051F590 /* Client.swift */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		7ECF8AC32759FE71004F8FC5 /* Analyze */ = {
-			isa = PBXGroup;
-			children = (
-				7ECF8AC42759FE8D004F8FC5 /* SDKUsageTask.swift */,
-			);
-			path = Analyze;
 			sourceTree = "<group>";
 		};
 		7ECF8AC8275A0205004F8FC5 /* Util */ = {
@@ -820,7 +809,6 @@
 				7EB327FD278BD473008639AA /* MFATableView.swift in Sources */,
 				7EC00A442808074C00FD8125 /* ImageView.swift in Sources */,
 				7E8AECBC27882D2D0030D27B /* SocialLoginButton.swift in Sources */,
-				7ECF8AC52759FE8D004F8FC5 /* SDKUsageTask.swift in Sources */,
 				7E87A1C627CE330800E52D5A /* UserProfileAvatarField.swift in Sources */,
 				7E189B0927F13ACD005AC1AC /* CacheManager.swift in Sources */,
 				7EB32808278C1870008639AA /* BindPhoneButton.swift in Sources */,

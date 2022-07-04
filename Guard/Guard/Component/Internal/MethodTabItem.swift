@@ -7,7 +7,7 @@
 
 public class MethodTabItem: UIView {
     
-    private let button = UIButton()
+    let content = UILabel()
     private var isFocuse: Bool = false
     var type: Int = 0
     
@@ -23,31 +23,24 @@ public class MethodTabItem: UIView {
 
     private func setup(_ frame: CGRect) {
         self.isUserInteractionEnabled = true
-        
-        let width: Double = frame.width
-        let height: Double = frame.height
-        
-        button.frame = CGRect(x: 0, y: 0, width: width, height: height-2)
-        button.isUserInteractionEnabled = false
-        button.titleLabel?.font = button.titleLabel?.font.withSize(14)
-        addSubview(button)
+
+        content.font = UIFont.systemFont(ofSize: 14)
+        addSubview(content)
     }
     
     public func setText(_ text: String) {
-        button.setTitle(text, for: .normal)
+        content.text = text
     }
     
     public func gainFocus(lastFocused: MethodTabItem?) {
         isFocuse = true
-        button.setTitleColor(Const.Color_Authing_Main, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        content.textColor = Const.Color_Authing_Main
         focusGained()
     }
     
     public func loseFocus() {
         isFocuse = false
-        button.setTitleColor(UIColor(white: 0.8, alpha: 1), for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        content.textColor = UIColor(white: 0.8, alpha: 1)
     }
     
     public func focusGained() {
