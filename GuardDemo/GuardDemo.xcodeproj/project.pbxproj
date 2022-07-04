@@ -49,16 +49,11 @@
 /* Begin PBXFileReference section */
 		7E20000427E95D9A0051F590 /* 62345c87ffe7c884acbae53c */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 62345c87ffe7c884acbae53c; sourceTree = "<group>"; };
 		7E7566AD2768A30400C3872F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		7E7566B42769950E00C3872F /* WYOAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WYOAuth.framework; path = GuardDemo/OneClick/WYOAuth.framework; sourceTree = "<group>"; };
-		7E7566B52769950E00C3872F /* NTESQuickPass.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NTESQuickPass.framework; path = GuardDemo/OneClick/NTESQuickPass.framework; sourceTree = "<group>"; };
-		7E7566B62769950E00C3872F /* WYEAccountApiSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WYEAccountApiSDK.framework; path = GuardDemo/OneClick/WYEAccountApiSDK.framework; sourceTree = "<group>"; };
-		7E7566B72769950E00C3872F /* WYTYRZUISDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WYTYRZUISDK.framework; path = GuardDemo/OneClick/WYTYRZUISDK.framework; sourceTree = "<group>"; };
 		7E7566BC2769957800C3872F /* OneClickViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneClickViewController.swift; sourceTree = "<group>"; };
 		7E7566BE276995C500C3872F /* OneClick.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OneClick.xib; sourceTree = "<group>"; };
 		7E7566C127699AA800C3872F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		7E7566C327699AB100C3872F /* libc++abi.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++abi.tbd"; path = "usr/lib/libc++abi.tbd"; sourceTree = SDKROOT; };
 		7E7566C527699AC800C3872F /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
-		7E7566C72769CFC100C3872F /* NTESBaseComponent.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NTESBaseComponent.framework; path = GuardDemo/OneClick/NTESBaseComponent.framework; sourceTree = "<group>"; };
 		7E959415274CB4E2001459C5 /* GuardDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuardDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E959418274CB4E2001459C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E95941A274CB4E2001459C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -156,14 +151,9 @@
 		7E959442274CEF11001459C5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7E7566C72769CFC100C3872F /* NTESBaseComponent.framework */,
 				7E7566C527699AC800C3872F /* libc++.1.tbd */,
 				7E7566C327699AB100C3872F /* libc++abi.tbd */,
 				7E7566C127699AA800C3872F /* libz.tbd */,
-				7E7566B52769950E00C3872F /* NTESQuickPass.framework */,
-				7E7566B62769950E00C3872F /* WYEAccountApiSDK.framework */,
-				7E7566B42769950E00C3872F /* WYOAuth.framework */,
-				7E7566B72769950E00C3872F /* WYTYRZUISDK.framework */,
 				7E959443274CEF11001459C5 /* Guard.framework */,
 			);
 			name = Frameworks;
@@ -458,6 +448,8 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GuardDemo/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -493,6 +485,8 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GuardDemo/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
