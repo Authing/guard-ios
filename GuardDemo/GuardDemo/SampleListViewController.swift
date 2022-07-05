@@ -69,7 +69,7 @@ class SampleListViewController: UITableViewController {
             self.navigationController?.pushViewController(vc, animated: true)
             return
         case "OIDCClient":
-            Authing.start("6244398c8a4575cdb2cb5656")
+            Authing.start("62c3ea346b0f22c87492097b")
             let flow = AuthFlow()
             flow.authProtocol = .EOIDC
             flow.start()  { [weak self] code, message, userInfo in
