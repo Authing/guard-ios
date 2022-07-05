@@ -195,6 +195,9 @@ public class Util {
     
     public static func setError(_ current: UIView, _ text: String?) {
         DispatchQueue.main.async() {
+            if let tf = current as? TextFieldLayout {
+                tf.setError(text)
+            }
             if let errorView: ErrorLabel = Util.findView(current, viewClass: ErrorLabel.self) {
                 errorView.text = text
             }

@@ -103,7 +103,7 @@ open class MethodTab: UIScrollView {
         }
         (sender.view as? MethodTabItem)?.gainFocus(lastFocused: lastFocused)
         
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
             if let v = self.focusedItem() {
                 let x = v.content.frame.origin.x
                 let w = v.content.frame.width

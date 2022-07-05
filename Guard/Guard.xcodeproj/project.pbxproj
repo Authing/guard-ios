@@ -334,13 +334,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7E199D7327854459002C6F81 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Frameworks;
-			sourceTree = "<group>";
-		};
 		7E20000827E9A8250051F590 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -483,7 +476,6 @@
 		7E9593C8274C813A001459C5 = {
 			isa = PBXGroup;
 			children = (
-				7E199D7327854459002C6F81 /* Frameworks */,
 				7E9593D4274C813A001459C5 /* Guard */,
 				7E9593DE274C813B001459C5 /* GuardTests */,
 				7E9593D3274C813A001459C5 /* Products */,

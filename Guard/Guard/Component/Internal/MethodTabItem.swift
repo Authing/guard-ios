@@ -24,7 +24,7 @@ public class MethodTabItem: UIView {
     private func setup(_ frame: CGRect) {
         self.isUserInteractionEnabled = true
 
-        content.font = UIFont.systemFont(ofSize: 14)
+        content.font = UIFont.systemFont(ofSize: 16)
         addSubview(content)
     }
     

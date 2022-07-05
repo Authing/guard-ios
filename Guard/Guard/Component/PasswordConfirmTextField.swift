@@ -17,7 +17,6 @@ open class PasswordConfirmTextField: BasePasswordTextField {
     }
 
     private func setup() {
-                
         let text: String = NSLocalizedString("authing_password_confirm_hint", bundle: Bundle(for: Self.self), comment: "")
         setHint("\(text)")
         addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)

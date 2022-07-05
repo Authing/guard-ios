@@ -88,7 +88,7 @@ open class LoadingButton: Button {
             loadingColor?.setStroke()
             circlePath.stroke()
             
-            tick += 1
+            tick += 10
             DispatchQueue.main.async() {
                 self.setNeedsDisplay()
             }

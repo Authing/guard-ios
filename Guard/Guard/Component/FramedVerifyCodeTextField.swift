@@ -48,6 +48,7 @@ open class FramedVerifyCodeTextField: UIView, UITextFieldDelegate {
             var i = 0
             while (i < self.digit) {
                 let tf: TextFieldLayout = TextFieldLayout()
+                tf.clearButtonMode = .never
                 tf.keyboardType = .numberPad
                 tf.textAlignment = .center
                 tf.tintColor = UIColor.clear
@@ -91,6 +92,7 @@ open class FramedVerifyCodeTextField: UIView, UITextFieldDelegate {
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if let tf = textField as? TextFieldLayout {
             tf.border.setHighlight(true)
+            tf.layer.borderColor = Const.Color_Authing_Main.cgColor
         }
         return true
     }
@@ -106,6 +108,7 @@ open class FramedVerifyCodeTextField: UIView, UITextFieldDelegate {
     public func textFieldDidEndEditing(_ textField: UITextField) {
         if let tf = textField as? TextFieldLayout {
             tf.border.setHighlight(false)
+            tf.layer.borderColor = UIColor.clear.cgColor
         }
     }
     

@@ -20,6 +20,9 @@ open class EmailTextField: AccountTextField {
         super.setup()
         Util.getConfig(self) { config in
             self.keyboardType = .emailAddress
+            if let image = UIImage(named: "authing_mail", in: Bundle(for: Self.self), compatibleWith: nil) {
+                self.updateIconImage(icon: image)
+            }
             let sInput: String = NSLocalizedString("authing_please_input", bundle: Bundle(for: Self.self), comment: "")
             let text: String = NSLocalizedString("authing_email", bundle: Bundle(for: Self.self), comment: "")
             self.setHint("\(sInput)\(text)")
