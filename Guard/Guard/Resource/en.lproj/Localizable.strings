@@ -58,6 +58,7 @@
 "authing_next" = "Next";
 "authing_invalid_phone" = "Phone number is invalid";
 "authing_invalid_email" = "Email address is invalid";
+"authing_social_login" = "Or sign in with";
 
 // user profile
 "authing_user_profile" = "User profile";

@@ -39,7 +39,7 @@ open class TextFieldLayout: BaseInput, UITextFieldDelegate {
         leftView = paddingView
         leftViewMode = .never
         clearButtonMode = .whileEditing
-        font = UIFont.systemFont(ofSize: 16)
+//        font = UIFont.systemFont(ofSize: 16)
     }
     
     public func updateIconImage(icon: UIImage) {

@@ -58,6 +58,7 @@
 "authing_next" = "下一步";
 "authing_invalid_phone" = "手机号码无效";
 "authing_invalid_email" = "邮件地址无效";
+"authing_social_login" = "第三方账号登录";
 
 
 // user profile
