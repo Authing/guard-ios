@@ -12,7 +12,6 @@ open class LoadingView: ImageView {
     let itemWidth: CGFloat = 60
     let itemHeight: CGFloat = 70
     var loadWork: DispatchWorkItem?
-    var isShowLoading: Bool? = false
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -69,7 +68,6 @@ open class LoadingView: ImageView {
         // Show the animation after 0.5 seconds, the reloaded page does not flicker
         loading.loadWork = DispatchWorkItem(block: {
             loading.isHidden = false
-            loading.isShowLoading = true
                             
             if images.count != 0 {
                 loading.animationView.frame = CGRect(x: UIScreen.main.bounds.width/2 - imageSize.width/2,
@@ -88,15 +86,14 @@ open class LoadingView: ImageView {
     }
     
     public class func stopAnimation(loadingView: LoadingView) {
-        if loadingView.isShowLoading == false {
+        if loadingView.isHidden {
             loadingView.loadWork?.cancel()
             if let v = loadingView.superview {
                 v.removeFromSuperview()
-            } 
+            }
         } else {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.8) {
                 loadingView.animationView.stopAnimating()
-                loadingView.isShowLoading = false
                 if let v = loadingView.superview {
                     v.removeFromSuperview()
                 } else {
