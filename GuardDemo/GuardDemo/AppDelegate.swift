@@ -19,11 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window:UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+
         // Override point for customization after application launch.
         WechatLogin.registerApp(appId:"wx1cddb15e280c0f67", universalLink: "https://h5-static.authing.co/app/")
         WeCom.registerApp(appId: "wwauth803c38cb89ac1d57000002", corpId: "ww803c38cb89ac1d57", agentId: "1000002")
-        OneAuth.bizId =  "74ae90bd84f74b69a88b578bbbbcdcfd"
+        OneAuth.register(businessId: "74ae90bd84f74b69a88b578bbbbcdcfd")
         Authing.start("60caaf41df670b771fd08937");
 
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in

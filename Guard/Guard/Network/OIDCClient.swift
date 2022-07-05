@@ -382,11 +382,6 @@ public class OIDCClient: NSObject {
 */
 
     //    MARK: ---------- UserInfo API ----------
-    public func getUserInfoByAccessToken(userInfo: UserInfo?, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        request(userInfo: userInfo, endPoint: "/oidc/me", method: "GET", body: nil) { code, message, data in
-            AuthClient().createUserInfo(userInfo, code, message, data, completion: completion)
-        }
-    }
     
     public func getAccessTokenByAuthingToken(userInfo: UserInfo?, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         
@@ -407,6 +402,17 @@ public class OIDCClient: NSObject {
         }
     }
     
+    
+    public func getUserInfoByAccessToken(userInfo: UserInfo?, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        request(userInfo: userInfo, endPoint: "/oidc/me", method: "GET", body: nil) { code, message, data in
+            if (code == 200) {
+                AuthClient().createUserInfo(userInfo, code, message, data, completion: completion)
+            } else {
+                completion(code, message, nil)
+            }
+        }
+    }
+
     public func getNewAccessTokenByRefreshToken(userInfo: UserInfo?, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let rt = userInfo?.refreshToken ?? ""
         
