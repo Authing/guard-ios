@@ -54,16 +54,22 @@ open class LoadingView: ImageView {
     public class func startAnimation(_ images: [UIImage] = [], _ imageSize: CGSize = CGSize.zero) -> LoadingView{
         
         let loading = LoadingView.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        loading.isHidden = true
+        
+        let container = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        container.backgroundColor = Util.getWhiteBackgroundColor()
+        container.addSubview(loading)
+        
+        if #available(iOS 11, *) {
+             UIApplication.shared.keyWindow?.addSubview(container)
+        } else {
+             UIApplication.shared.windows.last?.addSubview(container)
+        }
         
         // Show the animation after 0.5 seconds, the reloaded page does not flicker
         loading.loadWork = DispatchWorkItem(block: {
-
+            loading.isHidden = false
             loading.isShowLoading = true
-            if #available(iOS 11, *) {
-                 UIApplication.shared.keyWindow?.addSubview(loading)
-            } else {
-                 UIApplication.shared.windows.last?.addSubview(loading)
-            }
                             
             if images.count != 0 {
                 loading.animationView.frame = CGRect(x: UIScreen.main.bounds.width/2 - imageSize.width/2,
@@ -81,24 +87,22 @@ open class LoadingView: ImageView {
         return loading
     }
     
-    public class func stopAnimation(view: LoadingView) {
-        
-        let loadingView = view
+    public class func stopAnimation(loadingView: LoadingView) {
         if loadingView.isShowLoading == false {
-            
             loadingView.loadWork?.cancel()
-            
-        }else{
-            
+            if let v = loadingView.superview {
+                v.removeFromSuperview()
+            } 
+        } else {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.8) {
-                
                 loadingView.animationView.stopAnimating()
-                loadingView.removeFromSuperview()
                 loadingView.isShowLoading = false
-                
+                if let v = loadingView.superview {
+                    v.removeFromSuperview()
+                } else {
+                    loadingView.removeFromSuperview()
+                }
             }
         }
     }
-    
-    
 }

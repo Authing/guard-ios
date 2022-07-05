@@ -393,6 +393,16 @@ public class Util {
         }
     }
     
+    public static func isGettingConfig(_ view: UIView) -> Bool {
+        if let c = view.authViewController?.authFlow?.config {
+            return c.isGettingConfig
+        } else if let c = Authing.sConfig {
+            return c.isGettingConfig
+        } else {
+            return false
+        }
+    }
+    
     public static func getAuthClient(_ view: UIView) -> AuthClient {
         if let flow = view.authViewController?.authFlow,
            let config = flow.config {
