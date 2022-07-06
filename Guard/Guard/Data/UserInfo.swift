@@ -107,4 +107,21 @@ open class UserInfo {
     public func getPhone() -> String? {
         return phone
     }
+    
+    public func getDisplayName() -> String? {
+        if let n = raw?["nickname"] as? String {
+            return n
+        } else if let n = raw?["preferredUsername"] as? String {
+            return n
+        } else if let n = raw?["name"] as? String {
+            return n
+        } else if let n = username {
+            return n
+        } else if let n = phone {
+            return n
+        } else if let n = email {
+            return n
+        }
+        return nil
+    }
 }
