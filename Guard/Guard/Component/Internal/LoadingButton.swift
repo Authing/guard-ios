@@ -9,10 +9,12 @@ open class LoadingButton: Button {
     
     static let LoadingPaddingH: CGFloat = CGFloat(16)
     static let LoadingPaddingV: CGFloat = CGFloat(12)
-    static let DeltaAngle: CGFloat = CGFloat(Double.pi * 2 / 300)
+    
+    static let duration = 0.5 // takes {duration} seconds for one circle
+    static let speed = Double.pi * 2 / duration
     
     var isLoading: Bool = false
-    var tick: Int = 0
+    var startTime: Double = 0.0
     
     @IBInspectable var borderColor: UIColor? {
         didSet {
@@ -41,7 +43,7 @@ open class LoadingButton: Button {
     
     public func startLoading() {
         isLoading = true
-        tick = 0
+        startTime = Date().timeIntervalSince1970
         self.isEnabled = false
         if (loadingLocation == 0) {
             let h: CGFloat = getLoadingHeight()
@@ -80,7 +82,8 @@ open class LoadingButton: Button {
                 x = frame.width / 2
             }
             
-            let startAngle = CGFloat(-Double.pi) + CGFloat(tick) * LoadingButton.DeltaAngle
+            let deltaTime = Date().timeIntervalSince1970 - startTime
+            let startAngle = CGFloat(-Double.pi) + LoadingButton.speed * deltaTime
             let endAngle = startAngle + CGFloat(Double.pi/2)
 
             let circlePath = UIBezierPath(arcCenter: CGPoint(x: x, y: frame.height/2), radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
@@ -88,7 +91,6 @@ open class LoadingButton: Button {
             loadingColor?.setStroke()
             circlePath.stroke()
             
-            tick += 10
             DispatchQueue.main.async() {
                 self.setNeedsDisplay()
             }
