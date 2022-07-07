@@ -11,6 +11,6 @@ open class UserProfileViewController: AuthViewController {
         
         view.backgroundColor = Util.getGrayBackgroundColor()
         
-        title = NSLocalizedString("authing_user_profile", bundle: Bundle(for: UserProfileViewController.self), comment: "")
+        title = "authing_user_profile".L
     }
 }

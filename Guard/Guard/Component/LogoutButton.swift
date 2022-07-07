@@ -23,14 +23,14 @@ open class LogoutButton: UIButton {
     private func setup() {
         backgroundColor = Util.getWhiteBackgroundColor()
         setTitleColor(Util.getLabelColor(), for: .normal)
-        let text = NSLocalizedString("authing_logout", bundle: Bundle(for: Self.self), comment: "")
+        let text = "authing_logout".L
         self.setTitle(text, for: .normal)
         self.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
     }
     
     @objc private func onClick(sender: UIButton) {
-        let cancel = NSLocalizedString("authing_cancel", bundle: Bundle(for: Self.self), comment: "")
-        let tip = NSLocalizedString("authing_logout_tip", bundle: Bundle(for: Self.self), comment: "")
+        let cancel = "authing_cancel".L
+        let tip = "authing_logout_tip".L
         let alert = UIAlertController(title: nil, message: tip, preferredStyle: UIAlertController.Style.alert)
 
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in

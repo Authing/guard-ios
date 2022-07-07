@@ -21,13 +21,13 @@ open class RegisterMethodTab: MethodTab {
             let frame = CGRect.zero
             let item = RegisterMethodTabItem(frame: frame)
             if (method == "phone") {
-                item.setText(NSLocalizedString("authing_register_by_phone", bundle: Bundle(for: Self.self), comment: ""))
+                item.setText("authing_register_by_phone".L)
                 item.type = 0
             } else if (method == "email") {
-                item.setText(NSLocalizedString("authing_register_by_email", bundle: Bundle(for: Self.self), comment: ""))
+                item.setText("authing_register_by_email".L)
                 item.type = 1
             }else if (method == "emailCode") {
-                item.setText(NSLocalizedString("authing_register_by_emailCode", bundle: Bundle(for: Self.self), comment: ""))
+                item.setText("authing_register_by_emailCode".L)
                 item.type = 2
             }
 

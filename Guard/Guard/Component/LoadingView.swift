@@ -35,8 +35,8 @@ open class LoadingView: ImageView {
             images.append(UIImage(named: "authing_loading-\(i)", in: Bundle(for: Self.self), compatibleWith: nil) ?? UIImage())
         }
         animationView  = UIImageView()
-        animationView.frame = CGRect(x: UIScreen.main.bounds.width/2 - itemWidth/2,
-                                     y: UIScreen.main.bounds.height/2 - itemHeight/2,
+        animationView.frame = CGRect(x: Const.SCREEN_WIDTH/2 - itemWidth/2,
+                                     y: Const.SCREEN_HEIGHT/2 - itemHeight/2,
                                      width: itemWidth,
                                      height: itemHeight)
         animationView.animationImages = images
@@ -52,10 +52,10 @@ open class LoadingView: ImageView {
     
     public class func startAnimation(_ images: [UIImage] = [], _ imageSize: CGSize = CGSize.zero) -> LoadingView{
         
-        let loading = LoadingView.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        let loading = LoadingView.init(frame: CGRect(x: 0, y: 0, width: Const.SCREEN_WIDTH, height: Const.SCREEN_HEIGHT))
         loading.isHidden = true
         
-        let container = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        let container = UIView(frame: CGRect(x: 0, y: 0, width: Const.SCREEN_WIDTH, height: Const.SCREEN_HEIGHT))
         container.backgroundColor = Util.getWhiteBackgroundColor()
         container.addSubview(loading)
         
@@ -70,8 +70,8 @@ open class LoadingView: ImageView {
             loading.isHidden = false
                             
             if images.count != 0 {
-                loading.animationView.frame = CGRect(x: UIScreen.main.bounds.width/2 - imageSize.width/2,
-                                                           y: UIScreen.main.bounds.height/2 - imageSize.height/2,
+                loading.animationView.frame = CGRect(x: Const.SCREEN_WIDTH/2 - imageSize.width/2,
+                                                           y: Const.SCREEN_HEIGHT/2 - imageSize.height/2,
                                                            width: imageSize.width,
                                                            height: imageSize.height)
                 loading.animationView.animationImages = images

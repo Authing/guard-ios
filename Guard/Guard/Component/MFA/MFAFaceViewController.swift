@@ -26,11 +26,11 @@ open class MFAFaceViewController: AuthViewController, AVCaptureVideoDataOutputSa
             if countDown == 0 {
                 self.faceImages = []
                 self.gcdTimer?.cancel()
-                self.tipLabel.text = NSLocalizedString("authing_mfa_face_camera", bundle: Bundle(for: Self.self), comment: "")
+                self.tipLabel.text = "authing_mfa_face_camera".L
             } else if countDown == 100{
                 self.gcdTimer?.cancel()
             } else {
-                self.tipLabel.text = NSLocalizedString("authing_mfa_face_camera2", bundle: Bundle(for: Self.self), comment: "")
+                self.tipLabel.text = "authing_mfa_face_camera2".L
             }
         }
     }
@@ -41,7 +41,7 @@ open class MFAFaceViewController: AuthViewController, AVCaptureVideoDataOutputSa
         let b = UILabel()
         b.textColor = .black
         b.textAlignment = .center
-        b.text = NSLocalizedString("authing_mfa_face_camera", bundle: Bundle(for: Self.self), comment: "")
+        b.text =  "authing_mfa_face_camera".L
         b.font = .systemFont(ofSize: 24, weight: .bold)
         return b
     }()
@@ -97,16 +97,16 @@ open class MFAFaceViewController: AuthViewController, AVCaptureVideoDataOutputSa
     open override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = self.needBindingFace == true ? NSLocalizedString("authing_mfa_face_title", bundle: Bundle(for: Self.self), comment: "") : NSLocalizedString("authing_mfa_face_title2", bundle: Bundle(for: Self.self), comment: "")
+        self.title = self.needBindingFace == true ? "authing_mfa_face_title".L : "authing_mfa_face_title2".L
 
         view.backgroundColor = UIColor.white
-        preview.frame = CGRect(x: UIScreen.main.bounds.width/2 - 120, y: UIScreen.main.bounds.height/2 - 120, width: 240, height: 240)
+        preview.frame = CGRect(x: Const.SCREEN_WIDTH/2 - 120, y: Const.SCREEN_HEIGHT/2 - 120, width: 240, height: 240)
         view.layer.addSublayer(preview)
         
-        progress.frame = CGRect(x: UIScreen.main.bounds.width/2 - 122.5, y: UIScreen.main.bounds.height/2 - 122.5, width: 245, height: 245)
+        progress.frame = CGRect(x: Const.SCREEN_WIDTH/2 - 122.5, y: Const.SCREEN_HEIGHT/2 - 122.5, width: 245, height: 245)
         view.addSubview(progress)
                 
-        tipLabel.frame = CGRect(x: 0, y: 120, width: UIScreen.main.bounds.width, height: 50)
+        tipLabel.frame = CGRect(x: 0, y: 120, width: Const.SCREEN_WIDTH, height: 50)
         view.addSubview(tipLabel)
         
         loading.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
@@ -233,7 +233,7 @@ extension MFAFaceViewController {
             let dispatchGroup = DispatchGroup()
             let dispathcQueue = DispatchQueue.global()
             if self.needBindingFace == true {
-                self.tipLabel.text = NSLocalizedString("authing_mfa_binding", bundle: Bundle(for: Self.self), comment: "")
+                self.tipLabel.text = "authing_mfa_binding".L
 
                 dispatchGroup.enter()
                 dispathcQueue.async{
@@ -257,14 +257,14 @@ extension MFAFaceViewController {
                             DispatchQueue.main.async() {
                                 self?.loading.stopAnimating()
                                 if code == 200{
-                                    self?.tipLabel.text = NSLocalizedString("authing_mfa_bind_success", bundle: Bundle(for: Self.self), comment: "")
+                                    self?.tipLabel.text = "authing_mfa_bind_success".L
                                 
                                     if let vc = self?.navigationController as? AuthNavigationController {
                                         self?.session.stopRunning()
                                         vc.complete(code, msg, userInfo)
                                     }
                                 } else {
-                                    self?.tipLabel.text = NSLocalizedString("authing_mfa_bind_failed", bundle: Bundle(for: Self.self), comment: "")
+                                    self?.tipLabel.text = "authing_mfa_bind_failed".L
                                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
                                         self?.resetData()
                                     }
@@ -273,14 +273,14 @@ extension MFAFaceViewController {
                         }
                     } else {
                         self?.loading.stopAnimating()
-                        self?.tipLabel.text = NSLocalizedString("authing_mfa_bind_failed", bundle: Bundle(for: Self.self), comment: "")
+                        self?.tipLabel.text = "authing_mfa_bind_failed".L
                         self?.resetData()
                     }
                 }
             }
             // verify
             else {
-                self.tipLabel.text = NSLocalizedString("authing_mfa_verifying", bundle: Bundle(for: Self.self), comment: "")
+                self.tipLabel.text = "authing_mfa_verifying".L
 
                 dispatchGroup.enter()
                 dispathcQueue.async{
@@ -297,14 +297,14 @@ extension MFAFaceViewController {
                             DispatchQueue.main.async() {
                                 self?.loading.stopAnimating()
                                 if code == 200{
-                                    self?.tipLabel.text = NSLocalizedString("authing_mfa_verify_success", bundle: Bundle(for: Self.self), comment: "")
+                                    self?.tipLabel.text = "authing_mfa_verify_success".L
                                 
                                     if let vc = self?.navigationController as? AuthNavigationController {
                                         self?.session.stopRunning()
                                         vc.complete(code, msg, userInfo)
                                     }
                                 } else {
-                                    self?.tipLabel.text = NSLocalizedString("authing_mfa_verify_failed", bundle: Bundle(for: Self.self), comment: "")
+                                    self?.tipLabel.text = "authing_mfa_verify_failed".L
                                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
                                         self?.resetData()
                                     }
@@ -313,7 +313,7 @@ extension MFAFaceViewController {
                         }
                     } else {
                         self?.loading.stopAnimating()
-                        self?.tipLabel.text = NSLocalizedString("authing_mfa_verify_failed", bundle: Bundle(for: Self.self), comment: "")
+                        self?.tipLabel.text = "authing_mfa_verify_failed".L
                         self?.resetData()
                     }
                 }

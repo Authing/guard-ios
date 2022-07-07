@@ -93,3 +93,20 @@
 "authing_mfa_binding" = "正在绑定中，请稍候";
 "authing_mfa_bind_failed" = "绑定人脸失败, 请重试";
 "authing_mfa_bind_success" = "绑定成功";
+
+"authing_cannot_get_verify_code" = "无法收到验证码";
+"authing_cannot_login" = "无法登录";
+"authing_cannot_register" = "无法注册";
+"authing_lost_account" = "帐号丢失";
+"authing_cannot_reset_password" = "无法重置密码";
+ "authing_account_is_locked" = "帐号锁定";
+"authing_other" = "其他";
+
+"authing_text_placeholder" = "请输入内容";
+
+"authing_feedback_title" = "问题反馈";
+"authing_feedback_contact" = "联系方式";
+"authing_feedback_related" = "相关问题";
+"authing_feedback_issuetip" = "如果无法重置密码，建议你进行以下操作： \n 1.检查你的手机是否停机/无网络；\n 2.检查你设置的密码是否正确。";
+"authing_feedback_description" = "问题描述";
+"authing_feedback_screenshot" = "问题截图";

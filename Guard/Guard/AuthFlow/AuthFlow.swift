@@ -25,7 +25,8 @@ public class AuthFlow {
     public var forgotPasswordXibName: String? = nil
     public var resetPasswordByEmailXibName: String? = nil
     public var resetPasswordByPhoneXibName: String? = nil
-    
+    public var feedBackXibName: String? = nil
+
     // MFA
     public var mfaPhoneXibName: [String]? = nil
     public var mfaEmailXibName: [String]? = nil

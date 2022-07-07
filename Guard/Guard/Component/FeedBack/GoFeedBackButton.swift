@@ -1,34 +1,40 @@
 //
-//  GoForgotPasswordButton.swift
+//  FeedBackButton.swift
 //  Guard
 //
-//  Created by Lance Mao on 2021/12/30.
+//  Created by JnMars on 2022/7/6.
 //
 
-open class GoForgotPasswordButton: GoSomewhereButton {
+import Foundation
+
+class FeedBackButton: GoSomewhereButton {
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        setup()
     }
 
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        setup()
     }
 
-    override func getText() -> String {
-        return "authing_forgot_password".L
+    private func setup() {
+
     }
     
     override func goNow() {
+
         var nextVC: AuthViewController? = nil
         if let vc = authViewController {
-            if (vc.authFlow?.forgotPasswordXibName == nil) {
-                nextVC = AuthViewController(nibName: "AuthingForgotPassword", bundle: Bundle(for: Self.self))
+            if (vc.authFlow?.feedBackXibName == nil) {
+                nextVC = FeedBackController(nibName: "AuthingFeedBack", bundle: Bundle(for: Self.self))
             } else {
-                nextVC = AuthViewController(nibName: vc.authFlow?.forgotPasswordXibName!, bundle: Bundle.main)
+                nextVC = AuthViewController(nibName: vc.authFlow?.feedBackXibName!, bundle: Bundle.main)
             }
             nextVC?.authFlow = vc.authFlow?.copy() as? AuthFlow
         }
         
         self.authViewController?.navigationController?.pushViewController(nextVC!, animated: true)
     }
+    
 }

@@ -20,8 +20,8 @@ open class PasswordTextField: BasePasswordTextField {
     }
 
     private func setup() {
-        let sInput: String = NSLocalizedString("authing_please_input", bundle: Bundle(for: Self.self), comment: "")
-        let sPassword: String = NSLocalizedString("authing_password", bundle: Bundle(for: Self.self), comment: "")
+        let sInput: String = "authing_please_input".L
+        let sPassword: String = "authing_password".L
         setHint("\(sInput)\(sPassword)")
         addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
@@ -43,11 +43,11 @@ open class PasswordTextField: BasePasswordTextField {
             let length = self.text?.count ?? 0
             if (length < 6) {
                 if (strength == 2) {
-                    message = NSLocalizedString("authing_password_strength2", bundle: Bundle(for: Self.self), comment: "")
+                    message = "authing_password_strength2".L
                 } else if (strength == 3) {
-                    message = NSLocalizedString("authing_password_strength3", bundle: Bundle(for: Self.self), comment: "")
+                    message = "authing_password_strength3".L
                 } else {
-                    message = NSLocalizedString("authing_password_strength1", bundle: Bundle(for: Self.self), comment: "")
+                    message = "authing_password_strength1".L
                 }
             } else if (strength == 2 || strength == 3) {
                 var count = 0
@@ -62,11 +62,11 @@ open class PasswordTextField: BasePasswordTextField {
                 }
                 if (strength == 2) {
                     if (count < 2) {
-                        message = NSLocalizedString("authing_password_strength2", bundle: Bundle(for: Self.self), comment: "")
+                        message = "authing_password_strength2".L
                     }
                 } else {
                     if (count < 3) {
-                        message = NSLocalizedString("authing_password_strength3", bundle: Bundle(for: Self.self), comment: "")
+                        message = "authing_password_strength3".L
                     }
                 }
             }
@@ -75,7 +75,7 @@ open class PasswordTextField: BasePasswordTextField {
         }
         let tfPassword: PasswordTextField? = Util.findView(self, viewClass: PasswordTextField.self)
         if (text != nil && tfPassword?.text != nil && text != tfPassword?.text) {
-            let message: String = NSLocalizedString("authing_password_do_not_match", bundle: Bundle(for: Self.self), comment: "")
+            let message: String = "authing_password_do_not_match".L
             Util.setError(self, message)
         }
     }

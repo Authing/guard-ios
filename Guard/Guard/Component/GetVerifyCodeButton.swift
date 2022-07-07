@@ -35,7 +35,7 @@ open class GetVerifyCodeButton: LoadingButton {
 
     private func setup() {
         if (title(for: .normal) == nil) {
-            let text: String = NSLocalizedString("authing_get_verify_code", bundle: Bundle(for: Self.self), comment: "")
+            let text: String = "authing_get_verify_code".L
             setTitle(text, for: .normal)
         }
         

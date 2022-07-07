@@ -17,14 +17,14 @@ open class MFAEmailButton: PrimaryButton {
     }
 
     private func setup() {
-        let text = NSLocalizedString("authing_bind", bundle: Bundle(for: Self.self), comment: "")
+        let text = "authing_bind".L
         self.setTitle(text, for: .normal)
         self.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
         
         DispatchQueue.main.async() {
             if let email = self.authViewController?.authFlow?.data[AuthFlow.KEY_MFA_EMAIL] as? String {
                 self.startLoading()
-                self.setTitle(NSLocalizedString("authing_login", bundle: Bundle(for: Self.self), comment: ""), for: .normal)
+                self.setTitle("authing_login".L, for: .normal)
                 Util.getAuthClient(self).sendMFAEmail(email: email) { code, message in
                     self.stopLoading()
                     if (code != 200) {
@@ -58,7 +58,7 @@ open class MFAEmailButton: PrimaryButton {
                 if (result != nil && result!) {
                     self.next(email)
                 } else {
-                    Util.setError(self, NSLocalizedString("authing_email_already_bound", bundle: Bundle(for: Self.self), comment: ""))
+                    Util.setError(self, "authing_email_already_bound".L)
                 }
             } else {
                 Util.setError(self, message)

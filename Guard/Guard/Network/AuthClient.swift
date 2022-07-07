@@ -34,7 +34,7 @@ public class AuthClient: Client {
                 self.createUserInfo(code, message, data) { code, msg, userInfo in
                     if code == 200{
                         authData?.token = userInfo?.token
-                        OIDCClient(authData).getAccessTokenByAuthingToken(userInfo: userInfo, completion: completion)
+                        OIDCClient(authData).authByToken(userInfo: userInfo, completion: completion)
                     } else {
                         completion(code, message, userInfo)
                     }
@@ -52,7 +52,7 @@ public class AuthClient: Client {
                 self.createUserInfo(code, message, data) { code, msg, userInfo in
                     if code == 200{
                         authData?.token = userInfo?.token
-                        OIDCClient(authData).getAccessTokenByAuthingToken(userInfo: userInfo, completion: completion)
+                        OIDCClient(authData).authByToken(userInfo: userInfo, completion: completion)
                     } else {
                         completion(code, message, userInfo)
                     }
@@ -71,7 +71,7 @@ public class AuthClient: Client {
                 self.createUserInfo(code, message, data) { code, msg, userInfo in
                     if code == 200{
                         authData?.token = userInfo?.token
-                        OIDCClient(authData).getAccessTokenByAuthingToken(userInfo: userInfo, completion: completion)
+                        OIDCClient(authData).authByToken(userInfo: userInfo, completion: completion)
                     } else {
                         completion(code, message, userInfo)
                     }
@@ -95,7 +95,7 @@ public class AuthClient: Client {
                 self.createUserInfo(code, message, data) { code, msg, userInfo in
                     if code == 200{
                         authData?.token = userInfo?.token
-                        OIDCClient(authData).getAccessTokenByAuthingToken(userInfo: userInfo, completion: completion)
+                        OIDCClient(authData).authByToken(userInfo: userInfo, completion: completion)
                     } else {
                         completion(code, message, userInfo)
                     }
@@ -126,7 +126,7 @@ public class AuthClient: Client {
                 self.createUserInfo(code, message, data) { code, msg, userInfo in
                     if code == 200{
                         authData?.token = userInfo?.token
-                        OIDCClient(authData).getAccessTokenByAuthingToken(userInfo: userInfo, completion: completion)
+                        OIDCClient(authData).authByToken(userInfo: userInfo, completion: completion)
                     } else {
                         completion(code, message, userInfo)
                     }
@@ -147,7 +147,7 @@ public class AuthClient: Client {
                 self.createUserInfo(code, message, data) { code, msg, userInfo in
                     if code == 200{
                         authData?.token = userInfo?.token
-                        OIDCClient(authData).getAccessTokenByAuthingToken(userInfo: userInfo, completion: completion)
+                        OIDCClient(authData).authByToken(userInfo: userInfo, completion: completion)
                     } else {
                         completion(code, message, userInfo)
                     }
@@ -165,7 +165,7 @@ public class AuthClient: Client {
                 self.createUserInfo(code, message, data) { code, msg, userInfo in
                     if code == 200{
                         authData?.token = userInfo?.token
-                        OIDCClient(authData).getAccessTokenByAuthingToken(userInfo: userInfo, completion: completion)
+                        OIDCClient(authData).authByToken(userInfo: userInfo, completion: completion)
                     } else {
                         completion(code, message, userInfo)
                     }
@@ -442,7 +442,7 @@ public class AuthClient: Client {
                     self.createUserInfo(code, message, data) { code, msg, userInfo in
                         if code == 200{
                             authData?.token = userInfo?.token
-                            OIDCClient(authData).getAccessTokenByAuthingToken(userInfo: userInfo, completion: completion)
+                            OIDCClient(authData).authByToken(userInfo: userInfo, completion: completion)
                         } else {
                             completion(code, message, userInfo)
                         }
@@ -615,6 +615,16 @@ public class AuthClient: Client {
             completion(code, message, userInfo)
         } else {
             completion(code, message, nil)
+        }
+    }
+    
+    public func feedBack(contact: String, type: Int, description: String, images: [String], completion: @escaping(Int, String?) -> Void) {
+        let body: NSMutableDictionary = ["appId" : Authing.getAppId(), "phone" : contact, "type": type, "description": description]
+        if (images.count != 0) {
+            body.setValue(images, forKey: "images")
+        }
+        post("/api/v2/feedback", body) { code, message, data in
+            completion(code, message)
         }
     }
     

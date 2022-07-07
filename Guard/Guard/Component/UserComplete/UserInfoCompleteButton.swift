@@ -96,14 +96,14 @@ open class UserInfoCompleteButton: PrimaryButton {
         let required: Bool = form!.data?["required"] as! Bool
         let email = form!.getEmail()
         if (required && Util.isNull(email)) {
-            Util.setError(self, NSLocalizedString("authing_email_cannot_be_empty", bundle: Bundle(for: Self.self), comment: ""))
+            Util.setError(self, "authing_email_cannot_be_empty".L)
             completion(false, nil)
             return
         }
         
         let code = form!.getCode()
         if (required && Util.isNull(code)) {
-            Util.setError(self, NSLocalizedString("authing_email_code_cannot_be_empty", bundle: Bundle(for: Self.self), comment: ""))
+            Util.setError(self, "authing_email_code_cannot_be_empty".L)
             completion(false, nil)
             return
         }
@@ -141,14 +141,14 @@ open class UserInfoCompleteButton: PrimaryButton {
         let required: Bool = form!.data?["required"] as! Bool
         let phone = form!.getPhone()
         if (required && Util.isNull(phone)) {
-            Util.setError(self, NSLocalizedString("authing_phone_cannot_be_empty", bundle: Bundle(for: Self.self), comment: ""))
+            Util.setError(self, "authing_phone_cannot_be_empty".L)
             completion(false, nil)
             return
         }
         
         let code = form!.getCode()
         if (required && Util.isNull(code)) {
-            Util.setError(self, NSLocalizedString("authing_phone_code_cannot_be_empty", bundle: Bundle(for: Self.self), comment: ""))
+            Util.setError(self, "authing_phone_code_cannot_be_empty".L)
             completion(false, nil)
             return
         }
@@ -198,7 +198,7 @@ open class UserInfoCompleteButton: PrimaryButton {
             let value = form.getValue()
             
             if (required && Util.isNull(value)) {
-                Util.setError(self, "\(label!)\(NSLocalizedString("authing_is_required", bundle: Bundle(for: Self.self), comment: ""))")
+                Util.setError(self, "\(label!)\("authing_is_required".L)")
                 completion(500, nil, nil)
                 return
             }

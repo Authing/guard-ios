@@ -17,7 +17,7 @@ open class RegisterButton: PrimaryButton {
     }
 
     private func setup() {
-        let text = NSLocalizedString("authing_register", bundle: Bundle(for: Self.self), comment: "")
+        let text = "authing_register".L
         self.setTitle(text, for: .normal)
         self.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
     }
@@ -41,7 +41,7 @@ open class RegisterButton: PrimaryButton {
                             continue
                         }
                         if (availableAt! == 2 || availableAt! == 1) {
-                            let warning = NSLocalizedString("authing_agree_privacy_first", bundle: Bundle(for: LoginButton.self), comment: "")
+                            let warning = "authing_agree_privacy_first".L
                             if (agreement["required"] as? Bool == true && !privacyBox!.isChecked) {
                                 Util.setError(self, warning)
                                 return;

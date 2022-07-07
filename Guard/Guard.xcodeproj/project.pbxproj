@@ -141,8 +141,15 @@
 		A84B62FC27F82A2B006650CC /* CountryCodeSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84B62FB27F82A2B006650CC /* CountryCodeSearchBar.swift */; };
 		A850622C283237FA00F97EBD /* CountdownTimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A850622B283237FA00F97EBD /* CountdownTimerManager.swift */; };
 		A8628F5C286D985200D7300E /* MFAFaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8628F5B286D985200D7300E /* MFAFaceViewController.swift */; };
+		A8A4897B287578A600F3120F /* GoFeedBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A4897A287578A600F3120F /* GoFeedBackButton.swift */; };
+		A8A4897D28758C1600F3120F /* AuthingFeedBack.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8A4897C28758C1600F3120F /* AuthingFeedBack.xib */; };
+		A8A489842876B97C00F3120F /* FeedBackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A489832876B97C00F3120F /* FeedBackController.swift */; };
 		A8A5ABC1285733F500D6B03A /* AuthResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A5ABC0285733F500D6B03A /* AuthResult.swift */; };
 		A8A7BBB228466CC5000A0D7C /* CountryCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A7BBB128466CC5000A0D7C /* CountryCodeView.swift */; };
+		A8BBEB352876DA890082DE59 /* FeedBackIssuePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BBEB342876DA890082DE59 /* FeedBackIssuePicker.swift */; };
+		A8BBEB372876DE330082DE59 /* String+Authing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BBEB362876DE330082DE59 /* String+Authing.swift */; };
+		A8BBEB392876F0F90082DE59 /* FeedBackDescribeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BBEB382876F0F90082DE59 /* FeedBackDescribeTextView.swift */; };
+		A8BBEB3D2876FC930082DE59 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BBEB3C2876FC930082DE59 /* ImagePickerView.swift */; };
 		A8D38D1627F1DB4A00942707 /* CountryCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D38D1527F1DB4A00942707 /* CountryCodeViewController.swift */; };
 		A8D38D1A27F1E44700942707 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D38D1827F1E44700942707 /* CountryTableViewCell.swift */; };
 		A8D38D1D27F1E4FF00942707 /* country.json in Resources */ = {isa = PBXBuildFile; fileRef = A8D38D1C27F1E4FF00942707 /* country.json */; };
@@ -284,8 +291,15 @@
 		A84B62FB27F82A2B006650CC /* CountryCodeSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCodeSearchBar.swift; sourceTree = "<group>"; };
 		A850622B283237FA00F97EBD /* CountdownTimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimerManager.swift; sourceTree = "<group>"; };
 		A8628F5B286D985200D7300E /* MFAFaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFAFaceViewController.swift; sourceTree = "<group>"; };
+		A8A4897A287578A600F3120F /* GoFeedBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoFeedBackButton.swift; sourceTree = "<group>"; };
+		A8A4897C28758C1600F3120F /* AuthingFeedBack.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingFeedBack.xib; sourceTree = "<group>"; };
+		A8A489832876B97C00F3120F /* FeedBackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackController.swift; sourceTree = "<group>"; };
 		A8A5ABC0285733F500D6B03A /* AuthResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResult.swift; sourceTree = "<group>"; };
 		A8A7BBB128466CC5000A0D7C /* CountryCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeView.swift; sourceTree = "<group>"; };
+		A8BBEB342876DA890082DE59 /* FeedBackIssuePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackIssuePicker.swift; sourceTree = "<group>"; };
+		A8BBEB362876DE330082DE59 /* String+Authing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Authing.swift"; sourceTree = "<group>"; };
+		A8BBEB382876F0F90082DE59 /* FeedBackDescribeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackDescribeTextView.swift; sourceTree = "<group>"; };
+		A8BBEB3C2876FC930082DE59 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		A8D38D1527F1DB4A00942707 /* CountryCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeViewController.swift; sourceTree = "<group>"; };
 		A8D38D1827F1E44700942707 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 		A8D38D1C27F1E4FF00942707 /* country.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = country.json; sourceTree = "<group>"; };
@@ -363,6 +377,7 @@
 				7EA2DD7B27CCF3ED00B3E19D /* UserProfile */,
 				7EB32806278C185E008639AA /* UserComplete */,
 				A8D38D1727F1DF5600942707 /* CountryCode */,
+				A8A4897E287591A800F3120F /* FeedBack */,
 				7EB327FB278BD455008639AA /* MFA */,
 				7E1998D02783D3B9002C6F81 /* Social */,
 				7ED434CA277569D100893EDD /* Internal */,
@@ -416,6 +431,7 @@
 				7E7D1F72278FC44F005AAD39 /* AuthingFirstTimeLogin.xib */,
 				7E02F46C27950C99007FA048 /* AuthingUserInfoComplete.xib */,
 				A8D38D2027F2B02D00942707 /* AuthingCountryCode.xib */,
+				A8A4897C28758C1600F3120F /* AuthingFeedBack.xib */,
 				7EF66C5E277BFB7100FCBBEB /* LocalizeHelper.swift */,
 			);
 			path = Nib;
@@ -446,6 +462,7 @@
 				7E7566832766FD5D00C3872F /* UIApplication+Authing.swift */,
 				7E7566A12768801E00C3872F /* UIView+Authing.swift */,
 				7E0FAFDE27ED5A37006258FC /* UIViewController+Authing.swift */,
+				A8BBEB362876DE330082DE59 /* String+Authing.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -623,11 +640,23 @@
 			path = Animation;
 			sourceTree = "<group>";
 		};
+		A8A4897E287591A800F3120F /* FeedBack */ = {
+			isa = PBXGroup;
+			children = (
+				A8A4897A287578A600F3120F /* GoFeedBackButton.swift */,
+				A8A489832876B97C00F3120F /* FeedBackController.swift */,
+				A8BBEB342876DA890082DE59 /* FeedBackIssuePicker.swift */,
+				A8BBEB382876F0F90082DE59 /* FeedBackDescribeTextView.swift */,
+				A8BBEB3C2876FC930082DE59 /* ImagePickerView.swift */,
+			);
+			path = FeedBack;
+			sourceTree = "<group>";
+		};
 		A8D38D1727F1DF5600942707 /* CountryCode */ = {
 			isa = PBXGroup;
 			children = (
-				A84B62FB27F82A2B006650CC /* CountryCodeSearchBar.swift */,
 				A8D38D1527F1DB4A00942707 /* CountryCodeViewController.swift */,
+				A84B62FB27F82A2B006650CC /* CountryCodeSearchBar.swift */,
 				A8D38D2227F2B34100942707 /* CountryCodeTableView.swift */,
 				A8D38D1827F1E44700942707 /* CountryTableViewCell.swift */,
 			);
@@ -734,6 +763,7 @@
 			files = (
 				7E02F46D27950C99007FA048 /* AuthingUserInfoComplete.xib in Resources */,
 				7EF66C7F277D478700FCBBEB /* AuthingForgotPassword.xib in Resources */,
+				A8A4897D28758C1600F3120F /* AuthingFeedBack.xib in Resources */,
 				7EF66C87277D54A600FCBBEB /* AuthingResetPasswordByEmail.xib in Resources */,
 				7ED434E52779B28B00893EDD /* Images.xcassets in Resources */,
 				7EF66C5D277BF8B700FCBBEB /* AuthingRegister.xib in Resources */,
@@ -801,6 +831,7 @@
 				7EB327FD278BD473008639AA /* MFATableView.swift in Sources */,
 				7EC00A442808074C00FD8125 /* ImageView.swift in Sources */,
 				7E8AECBC27882D2D0030D27B /* SocialLoginButton.swift in Sources */,
+				A8BBEB3D2876FC930082DE59 /* ImagePickerView.swift in Sources */,
 				7E87A1C627CE330800E52D5A /* UserProfileAvatarField.swift in Sources */,
 				7E189B0927F13ACD005AC1AC /* CacheManager.swift in Sources */,
 				7EB32808278C1870008639AA /* BindPhoneButton.swift in Sources */,
@@ -819,6 +850,7 @@
 				7E862A6B2807C6690057A4A0 /* VLayout.swift in Sources */,
 				7ED434D22775ABA000893EDD /* TextFieldLayout.swift in Sources */,
 				7E003B0E284742DA00AAE4ED /* Device.swift in Sources */,
+				A8A4897B287578A600F3120F /* GoFeedBackButton.swift in Sources */,
 				7E7566A22768801E00C3872F /* UIView+Authing.swift in Sources */,
 				7E02F46927950C57007FA048 /* UserInfoCompleteFieldForm.swift in Sources */,
 				7E87A1CA27CF603B00E52D5A /* OIDCClient.swift in Sources */,
@@ -827,6 +859,7 @@
 				7ED434E0277980B100893EDD /* ErrorLabel.swift in Sources */,
 				7EB32816278D5DD4008639AA /* FramedVerifyCodeTextField.swift in Sources */,
 				7E09E5E52845BBB90058D83C /* MethodTab.swift in Sources */,
+				A8BBEB372876DE330082DE59 /* String+Authing.swift in Sources */,
 				7E75668B276746AF00C3872F /* AppLogo.swift in Sources */,
 				7E96039227E08B2B007C87EB /* Parser.swift in Sources */,
 				7E7566B22768A7CC00C3872F /* UserInfo.swift in Sources */,
@@ -834,10 +867,12 @@
 				7EF66C67277C119800FCBBEB /* IndexAuthViewController.swift in Sources */,
 				7E0FAFDF27ED5A37006258FC /* UIViewController+Authing.swift in Sources */,
 				7EF66C8D277DA96200FCBBEB /* GetEmailCodeButton.swift in Sources */,
+				A8A489842876B97C00F3120F /* FeedBackController.swift in Sources */,
 				7E75668D276837E700C3872F /* AccountTextField.swift in Sources */,
 				A84B62FC27F82A2B006650CC /* CountryCodeSearchBar.swift in Sources */,
 				7E20001527EB0FA70051F590 /* Exporter.swift in Sources */,
 				7ECF8ACA275A022D004F8FC5 /* Util.swift in Sources */,
+				A8BBEB392876F0F90082DE59 /* FeedBackDescribeTextView.swift in Sources */,
 				7E7566842766FD5D00C3872F /* UIApplication+Authing.swift in Sources */,
 				7E20001327EB00100051F590 /* CloseButton.swift in Sources */,
 				7E20001827EB5D5D0051F590 /* BaseInput.swift in Sources */,
@@ -866,6 +901,7 @@
 				7EF66C75277C37CE00FCBBEB /* BasePasswordTextField.swift in Sources */,
 				7EF66C6D277C1C6E00FCBBEB /* RegisterMethodTabItem.swift in Sources */,
 				A850622C283237FA00F97EBD /* CountdownTimerManager.swift in Sources */,
+				A8BBEB352876DA890082DE59 /* FeedBackIssuePicker.swift in Sources */,
 				7EF66C61277BFD0900FCBBEB /* GoRegisterButton.swift in Sources */,
 				7EF66C56277B157100FCBBEB /* PrimaryButton.swift in Sources */,
 				7EF66C58277B3F8900FCBBEB /* TextFieldBorder.swift in Sources */,

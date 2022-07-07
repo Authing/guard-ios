@@ -23,8 +23,8 @@ open class VerifyCodeTextField: TextFieldLayout {
             self.updateIconImage(icon: image)
         }
         
-        let sInput: String = NSLocalizedString("authing_please_input", bundle: Bundle(for: Self.self), comment: "")
-        let sVerifyCode: String = NSLocalizedString("authing_verify_code", bundle: Bundle(for: Self.self), comment: "")
+        let sInput: String = "authing_please_input".L
+        let sVerifyCode: String = "authing_verify_code".L
         setHint("\(sInput)\(sVerifyCode)")
     }
 }

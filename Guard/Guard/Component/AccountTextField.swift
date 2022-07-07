@@ -36,7 +36,7 @@ open class AccountTextField: TextFieldLayout {
                 self.updateIconImage(icon: image)
             }
 
-            var hint = NSLocalizedString("authing_please_input", bundle: Bundle(for: Self.self), comment: "")
+            var hint = "authing_please_input".L
             
             var i: Int = 0
             if (config.enabledLoginMethods != nil) {
@@ -66,9 +66,9 @@ open class AccountTextField: TextFieldLayout {
     }
     
     private func getMethodText(_ method: String) -> String {
-        let sUsername: String = NSLocalizedString("authing_username", bundle: Bundle(for: Self.self), comment: "")
-        let sEmail: String = NSLocalizedString("authing_email", bundle: Bundle(for: Self.self), comment: "")
-        let sPhone: String = NSLocalizedString("authing_phone", bundle: Bundle(for: Self.self), comment: "")
+        let sUsername: String = "authing_username".L
+        let sEmail: String = "authing_email".L
+        let sPhone: String = "authing_phone".L
         if (method == "username-password") {
             return sUsername
         } else if (method == "email-password") {

@@ -22,13 +22,13 @@ open class LoginMethodTab: MethodTab {
             let frame = CGRect.zero
             let item = LoginMethodTabItem(frame: frame)
             if (method == "phone-code") {
-                item.setText(NSLocalizedString("authing_login_by_phone_code", bundle: Bundle(for: Self.self), comment: ""))
+                item.setText("authing_login_by_phone_code".L)
                 item.type = 0
             } else if (method == "password") {
-                item.setText(NSLocalizedString("authing_login_by_password", bundle: Bundle(for: Self.self), comment: ""))
+                item.setText("authing_login_by_password".L)
                 item.type = 1
             } else if (method == "email-code") {
-                item.setText(NSLocalizedString("authing_login_by_email_code", bundle: Bundle(for: Self.self), comment: ""))
+                item.setText("authing_login_by_email_code".L)
                 item.type = 2
             } else {
                 continue

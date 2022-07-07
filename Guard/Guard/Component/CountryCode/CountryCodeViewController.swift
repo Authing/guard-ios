@@ -33,7 +33,7 @@ class CountryCodeViewController: AuthViewController {
         countryModels = readLocalJson()
         
         self.view.backgroundColor = UIColor.white
-        titleLabel.text = NSLocalizedString("authing_countrycode_title", bundle: Bundle(for: Self.self), comment: "")
+        titleLabel.text = "authing_countrycode_title".L
         
         if let tableView: CountryCodeTableView = Util.findView(view, viewClass: CountryCodeTableView.self),
            let searchBar: CountryCodeSearchBar = Util.findView(view, viewClass: CountryCodeSearchBar.self) {
@@ -68,7 +68,7 @@ class CountryCodeViewController: AuthViewController {
             let value = jsonArr.map{ CountryItemModel.init(data: $0 as! NSDictionary) }
             return value
         } catch let error as Error? {
-            print("读取本地数据出现错误!\(error ?? "" as! Error)")
+            print("error:\(error ?? "" as! Error)")
             return []
         }
     }

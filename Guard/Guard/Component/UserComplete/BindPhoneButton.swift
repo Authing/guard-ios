@@ -17,7 +17,7 @@ open class BindPhoneButton: PrimaryButton {
     }
 
     private func setup() {
-        let text = NSLocalizedString("authing_bind_phone", bundle: Bundle(for: Self.self), comment: "")
+        let text = "authing_bind_phone".L
         self.setTitle(text, for: .normal)
         self.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
     }

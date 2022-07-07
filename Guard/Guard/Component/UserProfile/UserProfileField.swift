@@ -54,7 +54,7 @@ open class UserProfileField: UIView {
     
     func setField(_ field: String) {
         if let key = UserProfileField.labels[field] {
-            labelField.text = NSLocalizedString(key, bundle: Bundle(for: Self.self), comment: "")
+            labelField.text = key.L
         }
     }
 }

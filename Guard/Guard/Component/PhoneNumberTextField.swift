@@ -38,8 +38,8 @@ public class PhoneNumberTextField: AccountTextField {
             self.updateIconImage(icon: image)
         }
         
-        let sInput: String = NSLocalizedString("authing_please_input", bundle: Bundle(for: Self.self), comment: "")
-        let sPhone: String = NSLocalizedString("authing_phone", bundle: Bundle(for: Self.self), comment: "")
+        let sInput: String = "authing_please_input".L
+        let sPhone: String = "authing_phone".L
         self.setHint("\(sInput)\(sPhone)")
         
         countryCodeView.countryCodeUpdateCallBack = { [weak self] _ in

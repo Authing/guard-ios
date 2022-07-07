@@ -25,7 +25,7 @@ open class GoRegisterButton: GoSomewhereButton {
     }
 
     override func getText() -> String {
-        return NSLocalizedString("authing_register_now", bundle: Bundle(for: Self.self), comment: "")
+        return "authing_register_now".L
     }
     
     override func goNow() {

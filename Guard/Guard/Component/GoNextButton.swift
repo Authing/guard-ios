@@ -22,7 +22,7 @@ open class GoNextButton: GoSomewhereButton {
     }
 
     override func getText() -> String {
-        return NSLocalizedString("authing_next", bundle: Bundle(for: Self.self), comment: "")
+        return "authing_next".L
     }
     
     override func onClick() {
@@ -30,7 +30,7 @@ open class GoNextButton: GoSomewhereButton {
         if let authFlow = authViewController?.authFlow {
             if let tfPhone: PhoneNumberTextField = Util.findView(self, viewClass: PhoneNumberTextField.self) {
                 if (!Validator.isValidPhone(phone: tfPhone.text)) {
-                    let msg: String = NSLocalizedString("authing_invalid_phone", bundle: Bundle(for: Self.self), comment: "")
+                    let msg: String = "authing_invalid_phone".L
                     Util.setError(self, msg)
                     return
                 }
@@ -38,7 +38,7 @@ open class GoNextButton: GoSomewhereButton {
             
             if let tfEmail: EmailTextField = Util.findView(self, viewClass: EmailTextField.self) {
                 if (!Validator.isValidEmail(email: tfEmail.text)) {
-                    let msg: String = NSLocalizedString("authing_invalid_email", bundle: Bundle(for: Self.self), comment: "")
+                    let msg: String = "authing_invalid_email".L
                     Util.setError(self, msg)
                     return
                 }

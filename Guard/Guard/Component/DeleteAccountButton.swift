@@ -22,15 +22,15 @@ open class DeleteAccountButton: UIButton {
 
     private func setup() {
         backgroundColor = Util.getWhiteBackgroundColor()
-        let text = NSLocalizedString("authing_delete_account", bundle: Bundle(for: Self.self), comment: "")
+        let text = "authing_delete_account".L
         self.setTitle(text, for: .normal)
         setTitleColor(Const.Color_Error, for: .normal)
         self.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
     }
     
     @objc private func onClick(sender: UIButton) {
-        let cancel = NSLocalizedString("authing_cancel", bundle: Bundle(for: Self.self), comment: "")
-        let tip = NSLocalizedString("authing_delete_account_tip", bundle: Bundle(for: Self.self), comment: "")
+        let cancel = "authing_cancel".L
+        let tip = "authing_delete_account_tip".L
         let alert = UIAlertController(title: nil, message: tip, preferredStyle: UIAlertController.Style.alert)
 
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in

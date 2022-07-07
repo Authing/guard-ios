@@ -36,7 +36,7 @@ class AppAuthViewController: UIViewController {
                 
         let logoutRequest = OIDEndSessionRequest(configuration: config, idTokenHint: idToken, postLogoutRedirectURL: redirectURL, additionalParameters: ["redirect_uri":"cn.guard://authing.cn/redirect"])
         
-        logoutRequest.setNilValueForKey("state")
+        logoutRequest.setValue(nil, forKey: "state")
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
                         

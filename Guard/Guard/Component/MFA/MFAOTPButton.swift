@@ -17,7 +17,7 @@ open class MFAOTPButton: PrimaryButton {
     }
 
     private func setup() {
-        let text = NSLocalizedString("authing_login", bundle: Bundle(for: Self.self), comment: "")
+        let text = "authing_login".L
         self.setTitle(text, for: .normal)
         self.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
     }

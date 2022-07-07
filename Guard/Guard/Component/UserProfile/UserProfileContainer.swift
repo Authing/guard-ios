@@ -78,13 +78,13 @@ open class UserProfileContainer: UIScrollView {
             
             notLoginTip.textColor = UIColor.darkGray
             notLoginTip.font = UIFont.systemFont(ofSize: 14)
-            notLoginTip.text = NSLocalizedString("authing_not_login", bundle: Bundle(for: Self.self), comment: "")
+            notLoginTip.text = "authing_not_login".L
             addSubview(notLoginTip)
             
             startLoginButton.setTitleColor(UIColor.white, for: .normal)
             startLoginButton.layer.cornerRadius = 4
             startLoginButton.layer.masksToBounds = true
-            startLoginButton.setTitle(NSLocalizedString("authing_login", bundle: Bundle(for: Self.self), comment: ""), for: .normal)
+            startLoginButton.setTitle("authing_login".L, for: .normal)
             startLoginButton.addTarget(self, action:#selector(startLogin(sender:)), for: .touchUpInside)
             addSubview(startLoginButton)
         }

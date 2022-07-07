@@ -17,7 +17,7 @@ open class PasswordConfirmTextField: BasePasswordTextField {
     }
 
     private func setup() {
-        let text: String = NSLocalizedString("authing_password_confirm_hint", bundle: Bundle(for: Self.self), comment: "")
+        let text: String = "authing_password_confirm_hint".L
         setHint("\(text)")
         addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
@@ -27,7 +27,7 @@ open class PasswordConfirmTextField: BasePasswordTextField {
         
         let tfPassword: PasswordTextField? = Util.findView(self, viewClass: PasswordTextField.self)
         if (text != nil && tfPassword?.text != nil && text != tfPassword?.text) {
-            let message: String = NSLocalizedString("authing_password_do_not_match", bundle: Bundle(for: Self.self), comment: "")
+            let message: String = "authing_password_do_not_match".L
             Util.setError(self, message)
         }
     }

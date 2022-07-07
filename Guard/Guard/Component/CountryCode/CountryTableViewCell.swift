@@ -25,7 +25,7 @@ class CountryTableViewCell: UITableViewCell {
     }()
 
     private lazy var phoneCode: UILabel = {
-        var label = UILabel.init(frame: CGRect(x: UIScreen.main.bounds.width - itemHeight - 20, y: 5, width: itemHeight, height: itemHeight))
+        var label = UILabel.init(frame: CGRect(x: Const.SCREEN_WIDTH - itemHeight - 20, y: 5, width: itemHeight, height: itemHeight))
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = UIColor.lightGray
         label.textAlignment = .right

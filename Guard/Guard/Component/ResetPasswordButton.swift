@@ -26,7 +26,7 @@ open class ResetPasswordButton: PrimaryButton {
     }
 
     private func setup() {
-        let loginText = NSLocalizedString("authing_reset_password", bundle: Bundle(for: Self.self), comment: "")
+        let loginText = "authing_reset_password".L
         self.setTitle(loginText, for: .normal)
         self.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
     }

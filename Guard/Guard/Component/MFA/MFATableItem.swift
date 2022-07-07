@@ -19,13 +19,13 @@ open class MFATableItem: UIView {
     var mfaType: MFAType? {
         didSet {
             if (mfaType == .phone) {
-                label.text = NSLocalizedString("authing_mfa_verify_phone", bundle: Bundle(for: Self.self), comment: "")
+                label.text = "authing_mfa_verify_phone".L
             } else if (mfaType == .email) {
-                label.text = NSLocalizedString("authing_mfa_verify_email", bundle: Bundle(for: Self.self), comment: "")
+                label.text = "authing_mfa_verify_email".L
             } else if (mfaType == .totp) {
-                label.text = NSLocalizedString("authing_mfa_verify_code", bundle: Bundle(for: Self.self), comment: "")
+                label.text = "authing_mfa_verify_code".L
             } else if (mfaType == .face) {
-                label.text = NSLocalizedString("authing_mfa_verify_face", bundle: Bundle(for: Self.self), comment: "")
+                label.text = "authing_mfa_verify_face".L
             }
         }
     }

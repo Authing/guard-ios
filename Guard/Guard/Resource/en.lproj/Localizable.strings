@@ -87,3 +87,21 @@
 "authing_mfa_binding" = "Binding";
 "authing_mfa_bind_failed" = "Face bind failed. Please try again";
 "authing_mfa_bind_success" = "Binding success";
+
+
+"authing_cannot_get_verify_code" = "Cannot get verify code";
+"authing_cannot_login" = "Cannot login";
+"authing_cannot_register" = "Cannot register";
+"authing_lost_account" = "Lost my account";
+"authing_cannot_reset_password" = "Cannot reset password";
+"authing_account_is_locked" = "Account is locked";
+"authing_other" = "Other";
+
+"authing_text_placeholder" = "Enter some text";
+
+"authing_feedback_title" = "Feedback";
+"authing_feedback_contact" = "Contact information";
+"authing_feedback_related" = "Related isses";
+"authing_feedback_issuetip" = "If you cannot reset your password, you are advised to do the following: \n 1. Check whether your phone is down/disconnected; \n 2. Check that your password is correct.";
+"authing_feedback_description" = "Description";
+"authing_feedback_screenshot" = "Screen shot";

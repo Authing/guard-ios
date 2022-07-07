@@ -17,14 +17,14 @@ open class MFAPhoneButton: PrimaryButton {
     }
 
     private func setup() {
-        let text = NSLocalizedString("authing_bind", bundle: Bundle(for: Self.self), comment: "")
+        let text = "authing_bind".L
         self.setTitle(text, for: .normal)
         self.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
         
         DispatchQueue.main.async() {
             if let phone = self.authViewController?.authFlow?.data[AuthFlow.KEY_MFA_PHONE] as? String {
                 self.startLoading()
-                self.setTitle(NSLocalizedString("authing_login", bundle: Bundle(for: Self.self), comment: ""), for: .normal)
+                self.setTitle("authing_login".L, for: .normal)
                 let phoneNumberTF: PhoneNumberTextField? = Util.findView(self, viewClass: PhoneNumberTextField.self)
                 Util.getAuthClient(self).sendSms(phone: phone, phoneCountryCode: phoneNumberTF?.countryCode) { code, message in
                     self.stopLoading()
@@ -59,7 +59,7 @@ open class MFAPhoneButton: PrimaryButton {
                     self.next(phone)
                 } else {
                     self.stopLoading()
-                    Util.setError(self, NSLocalizedString("authing_phone_number_already_bound", bundle: Bundle(for: Self.self), comment: ""))
+                    Util.setError(self, "authing_phone_number_already_bound".L)
                 }
             } else {
                 self.stopLoading()
