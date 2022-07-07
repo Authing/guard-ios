@@ -7,9 +7,12 @@
 
 open class SocialLoginButton: Button {
     
+    static let duration = 0.5 // takes {duration} seconds for one circle
+    static let speed = Double.pi * 2 / duration
+    
     var loading: UIActivityIndicatorView? = nil
     var isLoading: Bool = false
-    var angle: CGFloat = 0
+    var startTime: Double = 0.0
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,6 +38,7 @@ open class SocialLoginButton: Button {
     
     public func startLoading() {
         isLoading = true
+        startTime = Date().timeIntervalSince1970
         setNeedsDisplay()
     }
     
@@ -56,15 +60,14 @@ open class SocialLoginButton: Button {
             let color = Const.Color_Authing_Main
             ctx?.setStrokeColor(color.cgColor)
 
-            let trackPath = UIBezierPath(arcCenter: viewCenter, radius: radius, startAngle: angle, endAngle: angle + CGFloat.pi / 2, clockwise: true)
-            trackPath.lineWidth = 1
+            let deltaTime = Date().timeIntervalSince1970 - startTime
+            let startAngle = CGFloat(-Double.pi) + SocialLoginButton.speed * deltaTime
+            let endAngle = startAngle + CGFloat(Double.pi/2)
+            
+            let trackPath = UIBezierPath(arcCenter: viewCenter, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+            trackPath.lineWidth = 2
             Const.Color_Authing_Main.setStroke()
             trackPath.stroke()
-            
-            angle = angle + 5 * CGFloat.pi / 180
-            if angle >= CGFloat.pi*2 {
-                angle = 0
-            }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.016) {
                 self.setNeedsDisplay()
