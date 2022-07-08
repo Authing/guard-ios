@@ -5,10 +5,10 @@
 //  Created by Lance Mao on 2022/3/23.
 //
 
-public class Client {
+public class Client: NSObject {
     var config: Config? = nil
     
-    public init() { }
+    public override init() { }
     
     public init(_ config: Config?) {
         self.config = config

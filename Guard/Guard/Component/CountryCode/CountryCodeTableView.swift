@@ -6,7 +6,7 @@
 //
 
 
-open class CountryCodeTableView: UIView {
+class CountryCodeTableView: UIView {
     
     public var cellHeight: CGFloat = 50
     

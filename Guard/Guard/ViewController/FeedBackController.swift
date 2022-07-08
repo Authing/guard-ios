@@ -18,6 +18,7 @@ enum FeedBackItem {
     case issuesDesContent
     case photoTitle
     case photoContent
+    case errorMessage
     case feedBack
 
     func title() -> String? {
@@ -51,6 +52,8 @@ enum FeedBackItem {
             return 100
         case .photoContent:
             return (UIScreen.main.bounds.width - 15) / 4 * 2 + 5
+        case .errorMessage:
+            return 20
         case .feedBack:
             return 44
         }
@@ -71,6 +74,7 @@ class FeedBackController: AuthViewController {
                                          .issuesDesContent,
                                          .photoTitle,
                                          .photoContent,
+                                         .errorMessage,
                                          .feedBack]
     
     override func viewDidLoad() {
@@ -132,15 +136,19 @@ extension FeedBackController: UITableViewDelegate, UITableViewDataSource {
             cell.contentView.addSubview(picker)
             break
         case .issuesDesContent:
-            let des = FeedBackDescribeTextView.init(frame: CGRect(x: 24, y: 0, width: Const.SCREEN_WIDTH - 48, height: 100))
+            let des = DescribeTextView.init(frame: CGRect(x: 24, y: 0, width: Const.SCREEN_WIDTH - 48, height: 100))
             cell.contentView.addSubview(des)
             break
         case .photoContent:
             let picker = ImagePickerView.init(frame: CGRect(x: 24, y: 0, width: Const.SCREEN_WIDTH - 48, height: FeedBackItem.photoContent.height()))
             cell.contentView.addSubview(picker)
             break
+        case .errorMessage:
+            let error = ErrorLabel.init(frame: CGRect(x: 24, y: 0, width: Const.SCREEN_WIDTH - 48, height: 20))
+            cell.contentView.addSubview(error)
+            break
         case .feedBack:
-            let button = LoginButton.init(frame: CGRect(x: 24, y: 0, width: Const.SCREEN_WIDTH - 48, height: 44))
+            let button = FeedBackButton.init(frame: CGRect(x: 24, y: 0, width: Const.SCREEN_WIDTH - 48, height: 44))
             cell.contentView.addSubview(button)
             break
         }

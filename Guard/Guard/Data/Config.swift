@@ -8,7 +8,7 @@
 
 import WebKit
 
-public class Config {
+public class Config: NSObject{
     
     var data: NSDictionary? {
         didSet {
@@ -117,12 +117,13 @@ public class Config {
     open var internationalSmsConfigEnable: Bool?
     
     // MARK: Request
-    open var appId: String
+    open var appId: String!
     open var userAgent: String?
     var isGettingConfig: Bool = false
     private var configListeners = [ConfigCompletion]()
     
     public init(appId: String) {
+        super.init()
         self.appId = appId
         requestPublicConfig()
     }

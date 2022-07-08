@@ -1,5 +1,5 @@
 //
-//  FeedBackDescribeTextView.swift
+//  DescribeTextView.swift
 //  Guard
 //
 //  Created by JnMars on 2022/7/7.
@@ -7,8 +7,9 @@
 
 import Foundation
 
-open class FeedBackDescribeTextView: UIView {
+open class DescribeTextView: UIView {
     
+    public var text: String?
     var textCountLabel: UILabel!
     var placeholderLabel: UILabel!
     
@@ -48,14 +49,27 @@ open class FeedBackDescribeTextView: UIView {
         textCountLabel.font = UIFont.systemFont(ofSize: 16)
         textCountLabel.text = "0/500"
         self.addSubview(textCountLabel)
+        
+        layer.borderWidth = 1
+        layer.cornerRadius = 4
+        layer.borderColor = Const.Color_BG_Text_Box.cgColor
     }
     
 }
 
-extension FeedBackDescribeTextView : UITextViewDelegate {
+extension DescribeTextView : UITextViewDelegate {
+    
+    public func textViewDidBeginEditing(_ textView: UITextView) {
+        layer.borderColor = Const.Color_Authing_Main.cgColor
+    }
+    
+    public func textViewDidEndEditing(_ textView: UITextView) { 
+        layer.borderColor = Const.Color_BG_Text_Box.cgColor
+    }
     
     public func textViewDidChange(_ textView: UITextView) {
         placeholderLabel.isHidden = !textView.text.isEmpty
         textCountLabel.text = "\(textView.text.count)/500"
+        text = textView.text
     }
 }

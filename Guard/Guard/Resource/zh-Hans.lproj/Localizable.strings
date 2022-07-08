@@ -110,3 +110,4 @@
 "authing_feedback_issuetip" = "如果无法重置密码，建议你进行以下操作： \n 1.检查你的手机是否停机/无网络；\n 2.检查你设置的密码是否正确。";
 "authing_feedback_description" = "问题描述";
 "authing_feedback_screenshot" = "问题截图";
+"authing_feedback_error" = "请输入手机号或邮箱";

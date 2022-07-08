@@ -7,7 +7,7 @@
 
 typealias AuthCallback = (Int, String?, UserInfo?) -> Void
 
-public class Const {
+public class Const: NSObject {
     public static let SDK_VERSION: String = (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) ?? "1.2.0"
     
     public static let Color_Authing_Main = UIColor(red: 0.224, green: 0.416, blue: 1, alpha: 1)

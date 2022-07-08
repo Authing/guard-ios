@@ -5,68 +5,69 @@
 //  Created by Lance Mao on 2021/12/14.
 //
 
-open class UserInfo {
+open class UserInfo: NSObject {
     
-    public var raw: NSMutableDictionary?
-    public var mfaData: NSDictionary? {
+    @objc public var raw: NSMutableDictionary?
+    @objc public var mfaData: NSDictionary? {
         didSet {
             if let mfas = mfaData?["applicationMfa"] as? [NSDictionary] {
                 for mfa in mfas {
                     mfaPolicy?.append((mfa["mfaPolicy"] as? String)!)
                 }
             }
+            if let enabled = mfaData?["faceMfaEnabled"] as? Bool {
+                faceMfaEnabled = enabled
+            }
         }
     }
-    public var customData: [NSMutableDictionary]?
+    @objc public var customData: [NSMutableDictionary]?
     
-    public var userId: String?
-    public var username: String?
-    public var email: String?
-    public var phone: String?
-    public var photo: String? {
+    @objc public var userId: String?
+    @objc public var username: String?
+    @objc public var email: String?
+    @objc public var phone: String?
+    @objc public var photo: String? {
         get {
             return raw?["photo"] as? String ?? raw?["picture"] as? String
         }
     }
-    public var token: String?
-    public var idToken: String? { // used as id token
+    @objc public var token: String?
+    @objc public var idToken: String? { // used as id token
         get {
             return token ?? raw?["id_token"] as? String
         }
     }
-    public var accessToken: String? {
+    @objc public var accessToken: String? {
         get {
             return raw?["access_token"] as? String
         }
     }
-    public var refreshToken: String? {
+    @objc public var refreshToken: String? {
         get {
             return raw?["refresh_token"] as? String
         }
     }
-    public var mfaToken: String? {
+    @objc public var mfaToken: String? {
         get {
             return mfaData?["mfaToken"] as? String
         }
     }
-    public var mfaPhone: String? {
+    @objc public var mfaPhone: String? {
         get {
             return mfaData?["phone"] as? String
         }
     }
-    public var mfaEmail: String? {
+    @objc public var mfaEmail: String? {
         get {
             return mfaData?["email"] as? String
         }
     }
-    public var faceMfaEnabled: Bool? {
-        get {
-            return mfaData?["faceMfaEnabled"] as? Bool
-        }
-    }
-    public var mfaPolicy: [String]? = []
     
-    public var firstTimeLoginToken: String? = nil
+    @objc public var faceMfaEnabled:Bool = false
+    
+    @objc public var mfaPolicy: [String]? = []
+    
+    @objc public var firstTimeLoginToken: String? = nil
     
     open func parse(data: NSDictionary?) {
         var userData = data

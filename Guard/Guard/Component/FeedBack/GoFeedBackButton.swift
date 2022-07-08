@@ -1,5 +1,5 @@
 //
-//  FeedBackButton.swift
+//  GoFeedBackButton.swift
 //  Guard
 //
 //  Created by JnMars on 2022/7/6.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FeedBackButton: GoSomewhereButton {
+class GoFeedBackButton: GoSomewhereButton {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()

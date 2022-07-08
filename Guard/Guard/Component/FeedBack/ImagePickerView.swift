@@ -7,12 +7,9 @@
 
 import Foundation
 
-typealias ImagePickerViewCallBack = (_ images: [UIImage]) -> Void
-
 open class ImagePickerView: UIView {
     
-    var items: [UIImage] = []
-    var selectImagesCallBack: ImagePickerViewCallBack?
+    public var items: [UIImage] = []
     var itemWidth: CGFloat = UIScreen.main.bounds.width - 15 / 4
     var collectionView: UICollectionView!
     
@@ -111,10 +108,7 @@ extension ImagePickerView: UIImagePickerControllerDelegate, UINavigationControll
             
             pickerVC.sourceType = UIImagePickerController.SourceType.photoLibrary
             self.viewController?.present(pickerVC, animated: true, completion: nil)
-        } else {
-            print("------> ERROR")
         }
-        
     }
     
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -126,7 +120,7 @@ extension ImagePickerView: UIImagePickerControllerDelegate, UINavigationControll
 
         items.append(image)
         collectionView.reloadData()
-        
+
         picker.dismiss(animated: true, completion: nil)
     }
 

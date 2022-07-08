@@ -150,11 +150,6 @@
             <point key="canvasLocation" x="137.68115942028987" y="112.5"/>
         </view>
     </objects>
-    <designables>
-        <designable name="7jg-dc-XMW">
-            <size key="intrinsicContentSize" width="24" height="14"/>
-        </designable>
-    </designables>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -8,23 +8,24 @@
 
 import CommonCrypto
 
-open class AuthRequest {
-    public var client_id: String
+open class AuthRequest: NSObject {
+    public var client_id: String!
     public var client_secret: String? = nil
-    public var redirect_uri: String
-    public var response_type: String
-    public var scope: String
-    public var nonce: String
-    public var state: String
+    public var redirect_uri: String!
+    public var response_type: String!
+    public var scope: String!
+    public var nonce: String!
+    public var state: String!
     public var uuid: String? = nil
-    public var codeVerifier: String
+    public var codeVerifier: String!
     public var codeChallenge: String? = nil
     var token: String? = nil
     public var returnAuthorizationCode: Bool? = false
     
-    public init() {
+    public init(_ authRequest: AuthRequest? = nil) {
+        super.init()
         client_id = Authing.getAppId()
-        redirect_uri = "https://console.authing.cn/console/get-started/\(client_id)";
+        redirect_uri = "https://console.authing.cn/console/get-started/\(client_id ?? "")";
         response_type = "code";
         scope = "openid profile email phone username address offline_access roles extended_fields";
         nonce = Util.randomString(length: 10)

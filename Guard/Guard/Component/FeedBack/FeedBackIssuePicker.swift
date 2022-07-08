@@ -17,6 +17,8 @@ open class FeedBackIssuePicker: TextFieldLayout {
                  "authing_account_is_locked".L,
                  "authing_other".L]
     
+    public var selectType: Int = 0
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -52,6 +54,11 @@ open class FeedBackIssuePicker: TextFieldLayout {
         for (_, value) in (otherBtns.enumerated()) {
             let otherAction = UIAlertAction(title: value, style: .`default`, handler: { (action) in
                 self.text = action.title
+                if let idx = self.items.firstIndex (where: { (title) -> Bool in
+                    return title == action.title
+                 }) {
+                    self.selectType = idx
+                 }
             })
             alertController.addAction(otherAction)
         }
