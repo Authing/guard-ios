@@ -24,6 +24,7 @@
 "authing_find_password_back" = "Reset password";
 "authing_reset_password" = "Reset password";
 "authing_input_phone_or_email" = "Enter phone number or email";
+"authing_input_phone_and_verifycode" = "Enter phone number/email and verify code";
 "authing_agree_privacy_first" = "Please agree to privacy terms first";
 "authing_password_strength1" = "Password must be at least 6 characters long";
 "authing_password_strength2" = "Password must be at least 6 characters long, and must contain two of English, numbers and symbols";

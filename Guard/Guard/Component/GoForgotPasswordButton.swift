@@ -22,7 +22,7 @@ open class GoForgotPasswordButton: GoSomewhereButton {
         var nextVC: AuthViewController? = nil
         if let vc = authViewController {
             if (vc.authFlow?.forgotPasswordXibName == nil) {
-                nextVC = AuthViewController(nibName: "AuthingForgotPassword", bundle: Bundle(for: Self.self))
+                nextVC = ForgotPasswordViewController(nibName: "AuthingForgotPassword", bundle: Bundle(for: Self.self))
             } else {
                 nextVC = AuthViewController(nibName: vc.authFlow?.forgotPasswordXibName!, bundle: Bundle.main)
             }

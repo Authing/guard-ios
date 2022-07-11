@@ -5,6 +5,8 @@
 //  Created by Lance Mao on 2021/12/27.
 //
 
+import UIKit
+
 open class LoadingButton: Button {
     
     static let LoadingPaddingH: CGFloat = CGFloat(16)

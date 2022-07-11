@@ -141,6 +141,8 @@
 		A84B62FC27F82A2B006650CC /* CountryCodeSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84B62FB27F82A2B006650CC /* CountryCodeSearchBar.swift */; };
 		A850622C283237FA00F97EBD /* CountdownTimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A850622B283237FA00F97EBD /* CountdownTimerManager.swift */; };
 		A852CBFB28780046000BC6EF /* FeedBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A852CBFA28780046000BC6EF /* FeedBackButton.swift */; };
+		A85EEF1A287C429F00D3BF29 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85EEF19287C429F00D3BF29 /* ForgotPasswordViewController.swift */; };
+		A85EEFBD287C4B4F00D3BF29 /* ForgotPasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85EEFBC287C4B4F00D3BF29 /* ForgotPasswordTextField.swift */; };
 		A8628F5C286D985200D7300E /* MFAFaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8628F5B286D985200D7300E /* MFAFaceViewController.swift */; };
 		A874BC7528780BBA002B4C9F /* DescribeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A874BC7428780BBA002B4C9F /* DescribeTextView.swift */; };
 		A8A4897B287578A600F3120F /* GoFeedBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A4897A287578A600F3120F /* GoFeedBackButton.swift */; };
@@ -292,6 +294,8 @@
 		A84B62FB27F82A2B006650CC /* CountryCodeSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCodeSearchBar.swift; sourceTree = "<group>"; };
 		A850622B283237FA00F97EBD /* CountdownTimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimerManager.swift; sourceTree = "<group>"; };
 		A852CBFA28780046000BC6EF /* FeedBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackButton.swift; sourceTree = "<group>"; };
+		A85EEF19287C429F00D3BF29 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		A85EEFBC287C4B4F00D3BF29 /* ForgotPasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordTextField.swift; sourceTree = "<group>"; };
 		A8628F5B286D985200D7300E /* MFAFaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFAFaceViewController.swift; sourceTree = "<group>"; };
 		A874BC7428780BBA002B4C9F /* DescribeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescribeTextView.swift; sourceTree = "<group>"; };
 		A8A4897A287578A600F3120F /* GoFeedBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoFeedBackButton.swift; sourceTree = "<group>"; };
@@ -393,6 +397,7 @@
 				7EB32815278D5DD4008639AA /* FramedVerifyCodeTextField.swift */,
 				7EF66C70277C371E00FCBBEB /* EmailTextField.swift */,
 				7E7566902768399E00C3872F /* LoginButton.swift */,
+				A85EEFBC287C4B4F00D3BF29 /* ForgotPasswordTextField.swift */,
 				7ED434C82775653100893EDD /* LoginMethodTab.swift */,
 				7ED434CD27757E4B00893EDD /* LoginContainer.swift */,
 				7ED434DB277950AC00893EDD /* GetVerifyCodeButton.swift */,
@@ -446,6 +451,7 @@
 				7E75667D2766F9DD00C3872F /* AuthViewController.swift */,
 				7EF66C66277C119800FCBBEB /* IndexAuthViewController.swift */,
 				7E12D7B9277DEE6F00703FC1 /* UserProfileViewController.swift */,
+				A85EEF19287C429F00D3BF29 /* ForgotPasswordViewController.swift */,
 				A8D38D1527F1DB4A00942707 /* CountryCodeViewController.swift */,
 				A8A489832876B97C00F3120F /* FeedBackController.swift */,
 				A8628F5B286D985200D7300E /* MFAFaceViewController.swift */,
@@ -851,6 +857,7 @@
 				7ED434DA2779509100893EDD /* VerifyCodeTextField.swift in Sources */,
 				7E0FAFB527EC6373006258FC /* Label.swift in Sources */,
 				7E862A6B2807C6690057A4A0 /* VLayout.swift in Sources */,
+				A85EEFBD287C4B4F00D3BF29 /* ForgotPasswordTextField.swift in Sources */,
 				7ED434D22775ABA000893EDD /* TextFieldLayout.swift in Sources */,
 				7E003B0E284742DA00AAE4ED /* Device.swift in Sources */,
 				A8A4897B287578A600F3120F /* GoFeedBackButton.swift in Sources */,
@@ -884,6 +891,7 @@
 				7EDFB6C927C4D1C500B77DEE /* UserInfoCompleteFieldFormSelect.swift in Sources */,
 				7EF66C81277D49B400FCBBEB /* ResetPasswordButton.swift in Sources */,
 				7E75667E2766F9DD00C3872F /* AuthViewController.swift in Sources */,
+				A85EEF1A287C429F00D3BF29 /* ForgotPasswordViewController.swift in Sources */,
 				7E12D7BA277DEE6F00703FC1 /* UserProfileViewController.swift in Sources */,
 				7EF66C5F277BFB7100FCBBEB /* LocalizeHelper.swift in Sources */,
 				7EF66C63277BFD5B00FCBBEB /* GoSomewhereButton.swift in Sources */,

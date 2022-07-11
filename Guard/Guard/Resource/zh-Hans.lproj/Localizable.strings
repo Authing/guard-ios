@@ -20,10 +20,11 @@
 "authing_register_by_emailCode" = "邮箱验证码注册";
 "authing_password_confirm_hint" = "请再次输入密码";
 "authing_password_do_not_match" = "两次输入的密码必须一致";
-"authing_forgot_password" = "忘记密码";
+"authing_forgot_password" = "重置密码";
 "authing_find_password_back" = "找回密码";
 "authing_reset_password" = "重置密码";
 "authing_input_phone_or_email" = "请输入手机号或邮箱";
+"authing_input_phone_and_verifycode" = "输入你的注册电话/邮箱及验证码";
 "authing_agree_privacy_first" = "请先同意隐私协议";
 "authing_password_strength1" = "密码长度至少为 6 位";
 "authing_password_strength2" = "密码长度至少为 6 位，且要包含英文、数字与符号中的两种";

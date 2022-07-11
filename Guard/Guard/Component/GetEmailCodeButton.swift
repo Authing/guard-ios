@@ -36,15 +36,14 @@ open class GetEmailCodeButton: LoadingButton {
     }
 
     private func setup() {
+        
+        backgroundColor = Const.Color_BG_Text_Box
+
         if (title(for: .normal) == nil) {
             let text: String = "authing_get_verify_code".L
             setTitle(text, for: .normal)
         }
-        
-        layer.cornerRadius = 4
-        layer.borderWidth = 1
-        layer.borderColor = Const.Color_Border_Gray.cgColor
-        
+                
         self.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
     }
     
