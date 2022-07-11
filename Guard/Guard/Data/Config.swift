@@ -8,7 +8,7 @@
 
 import WebKit
 
-public class Config: NSObject{
+public class Config: NSObject {
     
     var data: NSDictionary? {
         didSet {

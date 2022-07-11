@@ -105,7 +105,8 @@ open class PrivacyConfirmBox: UIView, UITextViewDelegate {
         } else {
             constraints.forEach { constraint in
                 if (constraint.firstAttribute == .height) {
-                    self.heightAnchor.constraint(equalToConstant: 0).isActive = true
+                    constraint.constant = 0
+                    self.updateConstraints()
                 }
             }
         }
