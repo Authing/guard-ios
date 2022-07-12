@@ -22,7 +22,7 @@ open class MFAFaceViewController: AuthViewController, AVCaptureVideoDataOutputSa
         
     private var countDown: Int = 0{
         didSet {
-            self.progress.setProgress(countDown)
+            self.progress.setProgress(CGFloat(countDown)/100.0)
             if countDown == 0 {
                 self.faceImages = []
                 self.gcdTimer?.cancel()
@@ -47,7 +47,7 @@ open class MFAFaceViewController: AuthViewController, AVCaptureVideoDataOutputSa
     }()
     
     lazy var progress: CircleProgressView = {
-        let p = CircleProgressView.init()
+        let p = CircleProgressView.init(frame: CGRect(x: Const.SCREEN_WIDTH/2 - 122.5, y: Const.SCREEN_HEIGHT/2 - 122.5, width: 245, height: 245))
         p.setProgress(0)
         return p
     }()
@@ -103,7 +103,6 @@ open class MFAFaceViewController: AuthViewController, AVCaptureVideoDataOutputSa
         preview.frame = CGRect(x: Const.SCREEN_WIDTH/2 - 120, y: Const.SCREEN_HEIGHT/2 - 120, width: 240, height: 240)
         view.layer.addSublayer(preview)
         
-        progress.frame = CGRect(x: Const.SCREEN_WIDTH/2 - 122.5, y: Const.SCREEN_HEIGHT/2 - 122.5, width: 245, height: 245)
         view.addSubview(progress)
                 
         tipLabel.frame = CGRect(x: 0, y: 120, width: Const.SCREEN_WIDTH, height: 50)
@@ -135,7 +134,6 @@ open class MFAFaceViewController: AuthViewController, AVCaptureVideoDataOutputSa
 extension MFAFaceViewController {
     
     public func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-         
         guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         CVPixelBufferLockBaseAddress(imageBuffer, CVPixelBufferLockFlags(rawValue: 0))
         
@@ -155,7 +153,7 @@ extension MFAFaceViewController {
         let image = UIImage(cgImage: newImage, scale: 1, orientation: .leftMirrored)
         
         performSelector(onMainThread: #selector(detectFace(_:)), with: self.crop(image: image, ratio: 1), waitUntilDone: true)
-        Thread.sleep(forTimeInterval: 0.5)
+        Thread.sleep(forTimeInterval: 0.25)
     }
 
     @objc public func detectFace(_ image: UIImage) {
@@ -264,7 +262,7 @@ extension MFAFaceViewController {
                                         vc.complete(code, msg, userInfo)
                                     }
                                 } else {
-                                    self?.tipLabel.text = "authing_mfa_bind_failed".L
+                                    self?.tipLabel.text = msg
                                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
                                         self?.resetData()
                                     }
@@ -304,7 +302,7 @@ extension MFAFaceViewController {
                                         vc.complete(code, msg, userInfo)
                                     }
                                 } else {
-                                    self?.tipLabel.text = "authing_mfa_verify_failed".L
+                                    self?.tipLabel.text = msg
                                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
                                         self?.resetData()
                                     }
@@ -354,46 +352,41 @@ extension MFAFaceViewController {
 }
 
 class CircleProgressView: UIView {
-    var staticLayer: CAShapeLayer!
-    var arcLayer: CAShapeLayer!
+    var shapeLayer: CAShapeLayer!
     
-    var progress = 100
+    var progress: CGFloat = 0
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupUI()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setProgress(_ progress: Int) {
+    func setupUI() {
+        shapeLayer = CAShapeLayer()
+        shapeLayer.strokeEnd = 0
+        shapeLayer.lineWidth = 5
+        shapeLayer.strokeColor = Const.Color_Authing_Main.cgColor
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        let radius = self.bounds.width / 2 - shapeLayer.lineWidth
+        let circularPath = UIBezierPath.init(arcCenter: CGPoint(x: bounds.width / 2, y: bounds.height / 2), radius: radius, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+
+        shapeLayer.path = circularPath.cgPath
+        self.layer.addSublayer(shapeLayer)
+    }
+    
+    func setProgress(_ progress: CGFloat) {
         self.progress = progress
         setNeedsDisplay()
     }
     
     override func draw(_ rect: CGRect) {
-        if staticLayer == nil {
-            staticLayer = createLayer(100, .lightGray)
+        DispatchQueue.main.async {
+            self.shapeLayer.strokeEnd = self.progress
         }
-        self.layer.addSublayer(staticLayer)
-        if arcLayer != nil {
-            arcLayer.removeFromSuperlayer()
-        }
-        arcLayer = createLayer(self.progress, Const.Color_Authing_Main)
-        self.layer.addSublayer(arcLayer)
-    }
-    
-    private func createLayer (_ progress: Int, _ color: UIColor) -> CAShapeLayer {
-        let endAngle = -CGFloat.pi / 2 + (CGFloat.pi * 2) * CGFloat(progress) / 100
-        let layer = CAShapeLayer()
-        layer.lineWidth = 5
-        layer.strokeColor = color.cgColor
-        layer.fillColor = UIColor.clear.cgColor
-        let radius = self.bounds.width / 2 - layer.lineWidth
-        let path = UIBezierPath.init(arcCenter: CGPoint(x: bounds.width / 2, y: bounds.height / 2), radius: radius, startAngle: -CGFloat.pi / 2, endAngle: endAngle, clockwise: true)
-        layer.path = path.cgPath
-        return layer
     }
 
 }
