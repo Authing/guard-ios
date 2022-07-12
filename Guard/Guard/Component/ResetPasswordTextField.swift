@@ -1,11 +1,12 @@
 //
-//  ForgetPasswordTextField.swift
+//  ResetPasswordTextField.swift
 //  Guard
 //
 //  Created by by JnMars on 2022/7/10.
 //
 
-open class ForgetPasswordTextField: AccountTextField {
+open class ResetPasswordTextField: AccountTextField {
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()

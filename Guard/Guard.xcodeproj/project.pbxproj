@@ -131,18 +131,16 @@
 		7EF66C73277C37A500FCBBEB /* PasswordConfirmTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C72277C37A500FCBBEB /* PasswordConfirmTextField.swift */; };
 		7EF66C75277C37CE00FCBBEB /* BasePasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C74277C37CE00FCBBEB /* BasePasswordTextField.swift */; };
 		7EF66C77277C38DB00FCBBEB /* RegisterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C76277C38DB00FCBBEB /* RegisterButton.swift */; };
-		7EF66C7D277D471D00FCBBEB /* GoForgotPasswordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C7C277D471D00FCBBEB /* GoForgotPasswordButton.swift */; };
-		7EF66C7F277D478700FCBBEB /* AuthingForgotPassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF66C7E277D478700FCBBEB /* AuthingForgotPassword.xib */; };
+		7EF66C7D277D471D00FCBBEB /* GoResetPasswordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C7C277D471D00FCBBEB /* GoResetPasswordButton.swift */; };
+		7EF66C7F277D478700FCBBEB /* AuthingResetPassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF66C7E277D478700FCBBEB /* AuthingResetPassword.xib */; };
 		7EF66C81277D49B400FCBBEB /* ResetPasswordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C80277D49B400FCBBEB /* ResetPasswordButton.swift */; };
-		7EF66C85277D548B00FCBBEB /* AuthingResetPasswordByPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF66C84277D548B00FCBBEB /* AuthingResetPasswordByPhone.xib */; };
-		7EF66C87277D54A600FCBBEB /* AuthingResetPasswordByEmail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF66C86277D54A600FCBBEB /* AuthingResetPasswordByEmail.xib */; };
 		7EF66C8B277D5A7100FCBBEB /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C8A277D5A7100FCBBEB /* Validator.swift */; };
 		7EF66C8D277DA96200FCBBEB /* GetEmailCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C8C277DA96200FCBBEB /* GetEmailCodeButton.swift */; };
 		A84B62FC27F82A2B006650CC /* CountryCodeSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84B62FB27F82A2B006650CC /* CountryCodeSearchBar.swift */; };
 		A850622C283237FA00F97EBD /* CountdownTimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A850622B283237FA00F97EBD /* CountdownTimerManager.swift */; };
 		A852CBFB28780046000BC6EF /* FeedBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A852CBFA28780046000BC6EF /* FeedBackButton.swift */; };
-		A85EEF1A287C429F00D3BF29 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85EEF19287C429F00D3BF29 /* ForgotPasswordViewController.swift */; };
-		A85EEFBD287C4B4F00D3BF29 /* ForgotPasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85EEFBC287C4B4F00D3BF29 /* ForgotPasswordTextField.swift */; };
+		A85EEFBD287C4B4F00D3BF29 /* ResetPasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85EEFBC287C4B4F00D3BF29 /* ResetPasswordTextField.swift */; };
+		A85EEFBF287C559000D3BF29 /* ResetPasswordVerifyCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85EEFBE287C559000D3BF29 /* ResetPasswordVerifyCodeButton.swift */; };
 		A8628F5C286D985200D7300E /* MFAFaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8628F5B286D985200D7300E /* MFAFaceViewController.swift */; };
 		A874BC7528780BBA002B4C9F /* DescribeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A874BC7428780BBA002B4C9F /* DescribeTextView.swift */; };
 		A8A4897B287578A600F3120F /* GoFeedBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A4897A287578A600F3120F /* GoFeedBackButton.swift */; };
@@ -158,6 +156,10 @@
 		A8D38D1D27F1E4FF00942707 /* country.json in Resources */ = {isa = PBXBuildFile; fileRef = A8D38D1C27F1E4FF00942707 /* country.json */; };
 		A8D38D2127F2B02D00942707 /* AuthingCountryCode.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D38D2027F2B02D00942707 /* AuthingCountryCode.xib */; };
 		A8D38D2327F2B34100942707 /* CountryCodeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D38D2227F2B34100942707 /* CountryCodeTableView.swift */; };
+		A8DBB7B3287D59B800F75C97 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DBB7B2287D59B800F75C97 /* ResetPasswordViewController.swift */; };
+		A8DBB7B5287D5B4100F75C97 /* AuthingResetSuccess.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DBB7B4287D5B4100F75C97 /* AuthingResetSuccess.xib */; };
+		A8DBB7B7287D5B8C00F75C97 /* ResetSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DBB7B6287D5B8C00F75C97 /* ResetSuccessViewController.swift */; };
+		A8DBB7B9287D635400F75C97 /* GoBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DBB7B8287D635400F75C97 /* GoBackButton.swift */; };
 		A8E1F10A28350590004B1E76 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E1F10928350590004B1E76 /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
@@ -284,18 +286,16 @@
 		7EF66C72277C37A500FCBBEB /* PasswordConfirmTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordConfirmTextField.swift; sourceTree = "<group>"; };
 		7EF66C74277C37CE00FCBBEB /* BasePasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePasswordTextField.swift; sourceTree = "<group>"; };
 		7EF66C76277C38DB00FCBBEB /* RegisterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterButton.swift; sourceTree = "<group>"; };
-		7EF66C7C277D471D00FCBBEB /* GoForgotPasswordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoForgotPasswordButton.swift; sourceTree = "<group>"; };
-		7EF66C7E277D478700FCBBEB /* AuthingForgotPassword.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingForgotPassword.xib; sourceTree = "<group>"; };
+		7EF66C7C277D471D00FCBBEB /* GoResetPasswordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoResetPasswordButton.swift; sourceTree = "<group>"; };
+		7EF66C7E277D478700FCBBEB /* AuthingResetPassword.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingResetPassword.xib; sourceTree = "<group>"; };
 		7EF66C80277D49B400FCBBEB /* ResetPasswordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordButton.swift; sourceTree = "<group>"; };
-		7EF66C84277D548B00FCBBEB /* AuthingResetPasswordByPhone.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingResetPasswordByPhone.xib; sourceTree = "<group>"; };
-		7EF66C86277D54A600FCBBEB /* AuthingResetPasswordByEmail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingResetPasswordByEmail.xib; sourceTree = "<group>"; };
 		7EF66C8A277D5A7100FCBBEB /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		7EF66C8C277DA96200FCBBEB /* GetEmailCodeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEmailCodeButton.swift; sourceTree = "<group>"; };
 		A84B62FB27F82A2B006650CC /* CountryCodeSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCodeSearchBar.swift; sourceTree = "<group>"; };
 		A850622B283237FA00F97EBD /* CountdownTimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimerManager.swift; sourceTree = "<group>"; };
 		A852CBFA28780046000BC6EF /* FeedBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackButton.swift; sourceTree = "<group>"; };
-		A85EEF19287C429F00D3BF29 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
-		A85EEFBC287C4B4F00D3BF29 /* ForgotPasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordTextField.swift; sourceTree = "<group>"; };
+		A85EEFBC287C4B4F00D3BF29 /* ResetPasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordTextField.swift; sourceTree = "<group>"; };
+		A85EEFBE287C559000D3BF29 /* ResetPasswordVerifyCodeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVerifyCodeButton.swift; sourceTree = "<group>"; };
 		A8628F5B286D985200D7300E /* MFAFaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFAFaceViewController.swift; sourceTree = "<group>"; };
 		A874BC7428780BBA002B4C9F /* DescribeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescribeTextView.swift; sourceTree = "<group>"; };
 		A8A4897A287578A600F3120F /* GoFeedBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoFeedBackButton.swift; sourceTree = "<group>"; };
@@ -311,6 +311,10 @@
 		A8D38D1C27F1E4FF00942707 /* country.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = country.json; sourceTree = "<group>"; };
 		A8D38D2027F2B02D00942707 /* AuthingCountryCode.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingCountryCode.xib; sourceTree = "<group>"; };
 		A8D38D2227F2B34100942707 /* CountryCodeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeTableView.swift; sourceTree = "<group>"; };
+		A8DBB7B2287D59B800F75C97 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		A8DBB7B4287D5B4100F75C97 /* AuthingResetSuccess.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingResetSuccess.xib; sourceTree = "<group>"; };
+		A8DBB7B6287D5B8C00F75C97 /* ResetSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetSuccessViewController.swift; sourceTree = "<group>"; };
+		A8DBB7B8287D635400F75C97 /* GoBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoBackButton.swift; sourceTree = "<group>"; };
 		A8E1F10928350590004B1E76 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -397,7 +401,6 @@
 				7EB32815278D5DD4008639AA /* FramedVerifyCodeTextField.swift */,
 				7EF66C70277C371E00FCBBEB /* EmailTextField.swift */,
 				7E7566902768399E00C3872F /* LoginButton.swift */,
-				A85EEFBC287C4B4F00D3BF29 /* ForgotPasswordTextField.swift */,
 				7ED434C82775653100893EDD /* LoginMethodTab.swift */,
 				7ED434CD27757E4B00893EDD /* LoginContainer.swift */,
 				7ED434DB277950AC00893EDD /* GetVerifyCodeButton.swift */,
@@ -407,14 +410,17 @@
 				7EF66C68277C197900FCBBEB /* RegisterMethodTab.swift */,
 				7EF66C6E277C1CCB00FCBBEB /* RegisterContainer.swift */,
 				7EF66C76277C38DB00FCBBEB /* RegisterButton.swift */,
-				7EF66C7C277D471D00FCBBEB /* GoForgotPasswordButton.swift */,
-				7EF66C80277D49B400FCBBEB /* ResetPasswordButton.swift */,
 				7E7D1F6E278EB49F005AAD39 /* EmailLabel.swift */,
 				7E7D1F70278ECC73005AAD39 /* PhoneLabel.swift */,
 				7EDFB6CC27C7390A00B77DEE /* PrivacyConfirmBox.swift */,
 				7E87A1C127CDBAEF00E52D5A /* LogoutButton.swift */,
 				7EB5CE5527D1EE3200BE3252 /* DeleteAccountButton.swift */,
 				7E866451280E4F9B000DEFD4 /* GoNextButton.swift */,
+				A8DBB7B8287D635400F75C97 /* GoBackButton.swift */,
+				7EF66C7C277D471D00FCBBEB /* GoResetPasswordButton.swift */,
+				A85EEFBC287C4B4F00D3BF29 /* ResetPasswordTextField.swift */,
+				A85EEFBE287C559000D3BF29 /* ResetPasswordVerifyCodeButton.swift */,
+				7EF66C80277D49B400FCBBEB /* ResetPasswordButton.swift */,
 				A8E1F10928350590004B1E76 /* LoadingView.swift */,
 			);
 			path = Component;
@@ -425,9 +431,8 @@
 			children = (
 				7E75667A2766F9C400C3872F /* AuthingLogin.xib */,
 				7EF66C5C277BF8B700FCBBEB /* AuthingRegister.xib */,
-				7EF66C7E277D478700FCBBEB /* AuthingForgotPassword.xib */,
-				7EF66C84277D548B00FCBBEB /* AuthingResetPasswordByPhone.xib */,
-				7EF66C86277D54A600FCBBEB /* AuthingResetPasswordByEmail.xib */,
+				7EF66C7E277D478700FCBBEB /* AuthingResetPassword.xib */,
+				A8DBB7B4287D5B4100F75C97 /* AuthingResetSuccess.xib */,
 				7E12D7B7277DECB900703FC1 /* AuthingUserProfile.xib */,
 				7EB327F9278BD2EB008639AA /* AuthingMFAOptions.xib */,
 				7EB32800278BE056008639AA /* AuthingMFAPhone0.xib */,
@@ -451,7 +456,8 @@
 				7E75667D2766F9DD00C3872F /* AuthViewController.swift */,
 				7EF66C66277C119800FCBBEB /* IndexAuthViewController.swift */,
 				7E12D7B9277DEE6F00703FC1 /* UserProfileViewController.swift */,
-				A85EEF19287C429F00D3BF29 /* ForgotPasswordViewController.swift */,
+				A8DBB7B2287D59B800F75C97 /* ResetPasswordViewController.swift */,
+				A8DBB7B6287D5B8C00F75C97 /* ResetSuccessViewController.swift */,
 				A8D38D1527F1DB4A00942707 /* CountryCodeViewController.swift */,
 				A8A489832876B97C00F3120F /* FeedBackController.swift */,
 				A8628F5B286D985200D7300E /* MFAFaceViewController.swift */,
@@ -771,9 +777,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E02F46D27950C99007FA048 /* AuthingUserInfoComplete.xib in Resources */,
-				7EF66C7F277D478700FCBBEB /* AuthingForgotPassword.xib in Resources */,
+				7EF66C7F277D478700FCBBEB /* AuthingResetPassword.xib in Resources */,
 				A8A4897D28758C1600F3120F /* AuthingFeedBack.xib in Resources */,
-				7EF66C87277D54A600FCBBEB /* AuthingResetPasswordByEmail.xib in Resources */,
 				7ED434E52779B28B00893EDD /* Images.xcassets in Resources */,
 				7EF66C5D277BF8B700FCBBEB /* AuthingRegister.xib in Resources */,
 				7EB32803278BEE0F008639AA /* AuthingMFAEmail0.xib in Resources */,
@@ -782,7 +787,7 @@
 				7EB32810278D116F008639AA /* AuthingMFAEmail1.xib in Resources */,
 				7E75667B2766F9C400C3872F /* AuthingLogin.xib in Resources */,
 				7E75669B27683F5300C3872F /* Localizable.strings in Resources */,
-				7EF66C85277D548B00FCBBEB /* AuthingResetPasswordByPhone.xib in Resources */,
+				A8DBB7B5287D5B4100F75C97 /* AuthingResetSuccess.xib in Resources */,
 				A8D38D2127F2B02D00942707 /* AuthingCountryCode.xib in Resources */,
 				7EB32812278D1DF9008639AA /* AuthingMFAOTP.xib in Resources */,
 				7EB3280C278C299A008639AA /* AuthingMFAPhone1.xib in Resources */,
@@ -826,7 +831,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7EF66C7D277D471D00FCBBEB /* GoForgotPasswordButton.swift in Sources */,
+				7EF66C7D277D471D00FCBBEB /* GoResetPasswordButton.swift in Sources */,
 				7E862A6D2807C6C90057A4A0 /* HLayout.swift in Sources */,
 				7E7D1F71278ECC73005AAD39 /* PhoneLabel.swift in Sources */,
 				A8D38D1627F1DB4A00942707 /* CountryCodeViewController.swift in Sources */,
@@ -843,6 +848,7 @@
 				A8BBEB3D2876FC930082DE59 /* ImagePickerView.swift in Sources */,
 				7E87A1C627CE330800E52D5A /* UserProfileAvatarField.swift in Sources */,
 				7E189B0927F13ACD005AC1AC /* CacheManager.swift in Sources */,
+				A8DBB7B3287D59B800F75C97 /* ResetPasswordViewController.swift in Sources */,
 				7EB32808278C1870008639AA /* BindPhoneButton.swift in Sources */,
 				7E96039D27E0C48C007C87EB /* RootView.swift in Sources */,
 				7EB32805278C17B3008639AA /* MFAPhoneButton.swift in Sources */,
@@ -855,9 +861,10 @@
 				7EF66C69277C197900FCBBEB /* RegisterMethodTab.swift in Sources */,
 				7E866452280E4F9B000DEFD4 /* GoNextButton.swift in Sources */,
 				7ED434DA2779509100893EDD /* VerifyCodeTextField.swift in Sources */,
+				A85EEFBF287C559000D3BF29 /* ResetPasswordVerifyCodeButton.swift in Sources */,
 				7E0FAFB527EC6373006258FC /* Label.swift in Sources */,
 				7E862A6B2807C6690057A4A0 /* VLayout.swift in Sources */,
-				A85EEFBD287C4B4F00D3BF29 /* ForgotPasswordTextField.swift in Sources */,
+				A85EEFBD287C4B4F00D3BF29 /* ResetPasswordTextField.swift in Sources */,
 				7ED434D22775ABA000893EDD /* TextFieldLayout.swift in Sources */,
 				7E003B0E284742DA00AAE4ED /* Device.swift in Sources */,
 				A8A4897B287578A600F3120F /* GoFeedBackButton.swift in Sources */,
@@ -891,7 +898,6 @@
 				7EDFB6C927C4D1C500B77DEE /* UserInfoCompleteFieldFormSelect.swift in Sources */,
 				7EF66C81277D49B400FCBBEB /* ResetPasswordButton.swift in Sources */,
 				7E75667E2766F9DD00C3872F /* AuthViewController.swift in Sources */,
-				A85EEF1A287C429F00D3BF29 /* ForgotPasswordViewController.swift in Sources */,
 				7E12D7BA277DEE6F00703FC1 /* UserProfileViewController.swift in Sources */,
 				7EF66C5F277BFB7100FCBBEB /* LocalizeHelper.swift in Sources */,
 				7EF66C63277BFD5B00FCBBEB /* GoSomewhereButton.swift in Sources */,
@@ -905,6 +911,7 @@
 				7EF66C8B277D5A7100FCBBEB /* Validator.swift in Sources */,
 				7EB2D30127871E2A00A819B3 /* AppleLoginButton.swift in Sources */,
 				A8D38D2327F2B34100942707 /* CountryCodeTableView.swift in Sources */,
+				A8DBB7B9287D635400F75C97 /* GoBackButton.swift in Sources */,
 				7EDFB6CD27C7390A00B77DEE /* PrivacyConfirmBox.swift in Sources */,
 				7E87A1C427CDBF2600E52D5A /* UserProfileField.swift in Sources */,
 				7EDFB6C327C3AABB00B77DEE /* UserInfoCompleteContentView.swift in Sources */,
@@ -923,6 +930,7 @@
 				7E75668727672C8D00C3872F /* Config.swift in Sources */,
 				7ED434D02775AB8500893EDD /* PhoneNumberTextField.swift in Sources */,
 				7E7566782766F91500C3872F /* AppName.swift in Sources */,
+				A8DBB7B7287D5B8C00F75C97 /* ResetSuccessViewController.swift in Sources */,
 				7EF66C6F277C1CCB00FCBBEB /* RegisterContainer.swift in Sources */,
 				7EB327FF278BD737008639AA /* MFATableItem.swift in Sources */,
 				A874BC7528780BBA002B4C9F /* DescribeTextView.swift in Sources */,

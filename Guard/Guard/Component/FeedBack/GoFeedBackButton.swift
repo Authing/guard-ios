@@ -29,7 +29,7 @@ class GoFeedBackButton: GoSomewhereButton {
             if (vc.authFlow?.feedBackXibName == nil) {
                 nextVC = FeedBackController(nibName: "AuthingFeedBack", bundle: Bundle(for: Self.self))
             } else {
-                nextVC = AuthViewController(nibName: vc.authFlow?.feedBackXibName!, bundle: Bundle.main)
+                nextVC = FeedBackController(nibName: vc.authFlow?.feedBackXibName!, bundle: Bundle.main)
             }
             nextVC?.authFlow = vc.authFlow?.copy() as? AuthFlow
         }

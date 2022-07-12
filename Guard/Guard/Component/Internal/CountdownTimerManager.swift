@@ -6,16 +6,16 @@
 //
 
 
-public class CountdownTimerManager: NSObject{
+public class CountdownTimerManager: NSObject {
     
     @objc public static let shared = CountdownTimerManager()
     private override init() {}
     var counter: Int = 60
     var timer: Timer!
-    var verfyButton: GetVerifyCodeButton!
+    var verfyButton: LoadingButton!
     var appDidEnterBackgroundDate: Date?
     
-    func createCountdownTimer(button: GetVerifyCodeButton) {
+    func createCountdownTimer(button: LoadingButton) {
         self.verfyButton = button
         
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)

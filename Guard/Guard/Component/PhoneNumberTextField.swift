@@ -5,14 +5,10 @@
 //  Created by Lance Mao on 2021/12/24.
 //
 
-typealias PhoneNumberTextFieldTextChangeBlock = () -> Void
-
 public class PhoneNumberTextField: AccountTextField {
     
     let countryCodeView = CountryCodeView()
-    
-    var textChangeCallBack: PhoneNumberTextFieldTextChangeBlock?
-    
+        
     var countryCode: String {
         get {
             return countryCodeView.countryCode
@@ -58,20 +54,7 @@ public class PhoneNumberTextField: AccountTextField {
             }
         }
     }
-    
-    override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let tfCode: VerifyCodeTextField? = Util.findView(self, viewClass: VerifyCodeTextField.self)
-        if (tfCode != nil) {
-            tfCode?.becomeFirstResponder()
-        }
-        return true
-    }
-    
-    private func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        self.textChangeCallBack?()
-        return true
-    }
-    
+        
     override func syncData() {
         let account: String? = AuthFlow.getAccount(current: self)
         if (account != nil && Validator.isValidPhone(phone: account)) {

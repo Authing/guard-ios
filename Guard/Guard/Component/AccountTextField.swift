@@ -6,6 +6,7 @@
 //
 
 open class AccountTextField: TextFieldLayout {
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -84,6 +85,17 @@ open class AccountTextField: TextFieldLayout {
         if (tf != nil) {
             tf?.becomeFirstResponder()
         }
+        
+        let tfCode: VerifyCodeTextField? = Util.findView(self, viewClass: VerifyCodeTextField.self)
+        if (tfCode != nil) {
+            tfCode?.becomeFirstResponder()
+        }
+        return true
+    }
+        
+    private func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        CountdownTimerManager.shared.invalidate()
         return true
     }
     

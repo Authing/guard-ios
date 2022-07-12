@@ -20,9 +20,14 @@
 "authing_register_by_emailCode" = "EmailCode";
 "authing_password_confirm_hint" = "Confirm password";
 "authing_password_do_not_match" = "Password and confirm password do not match";
-"authing_forgot_password" = "Forgot password";
 "authing_find_password_back" = "Reset password";
 "authing_reset_password" = "Reset password";
+"authing_forgot_password" = "Forgot password";
+"authing_reset_password_success" = "Reset Successfully";
+"authing_reset_password_tips" = "Password Reset Successfully";
+"authing_reset_password_content" = "Your password has been successfully reset";
+"authing_reset_goback" = "Back to the login page";
+"authing_reset_goback_auto" = "Automatically back to the login page after %ds";
 "authing_input_phone_or_email" = "Enter phone number or email";
 "authing_input_phone_and_verifycode" = "Enter phone number/email and verify code";
 "authing_agree_privacy_first" = "Please agree to privacy terms first";
@@ -83,11 +88,11 @@
 "authing_mfa_face_camera2" = "Hold your camera properly";
 "authing_mfa_verifying" = "Verifying";
 "authing_mfa_verify_failed" = "Face verify failed. Please try again";
-"authing_mfa_verify_success" = "Verify success";
+"authing_mfa_verify_success" = "Verify Successfully";
 
 "authing_mfa_binding" = "Binding";
 "authing_mfa_bind_failed" = "Face bind failed. Please try again";
-"authing_mfa_bind_success" = "Binding success";
+"authing_mfa_bind_success" = "Binding Successfully";
 
 
 "authing_cannot_get_verify_code" = "Cannot get verify code";

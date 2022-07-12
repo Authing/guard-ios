@@ -1,14 +1,17 @@
 //
-//  GetEmailCodeButton.swift
+//  ResetPasswordVerifyCodeButton.swift
 //  Guard
 //
-//  Created by Lance Mao on 2021/12/30.
+//  Created by JnMars on 2022/7/11.
 //
 
-open class GetEmailCodeButton: LoadingButton {
-    
-    public var scene: String = "RESET_PASSWORD"
-    
+open class ResetPasswordVerifyCodeButton: GetVerifyCodeButton {
+        
+    enum ResetType {
+        case byPhone
+        case byEmail
+    }
+
     override open var loadingColor: UIColor? {
         get {
             return Const.Color_Authing_Main
@@ -43,18 +46,42 @@ open class GetEmailCodeButton: LoadingButton {
             let text: String = "authing_get_verify_code".L
             setTitle(text, for: .normal)
         }
-                
-        self.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
+        
+        self.addTarget(self, action:#selector(click(sender:)), for: .touchUpInside)
+        
     }
     
-    @objc private func onClick(sender: UIButton) {
-        self.sendEmail()
+    @objc private func click(sender: UIButton) {
+        
+        if let tf: ResetPasswordTextField = Util.findView(self, viewClass: ResetPasswordTextField.self),
+           let account = tf.text {
+            if (Validator.isValidPhone(phone: account)) {
+                next(.byPhone, account)
+            } else if (Validator.isValidEmail(email: account)) {
+                next(.byEmail, account)
+            }
+        }
     }
-    
-    fileprivate func sendEmail() {
-        if let email = Util.getEmail(self) {
+
+    func next(_ type: ResetType, _ account: String) {
+        if type == .byPhone {
             startLoading()
-            Util.getAuthClient(self).sendEmail(email: email, scene: self.scene) { code, message in
+            Util.setError(self, "")
+
+            Util.getAuthClient(self).sendSms(phone: account) { code, message in
+                self.stopLoading()
+                if (code != 200) {
+                    Util.setError(self, message)
+                } else {
+                    ALog.i(Self.self, "send sms success")
+                    DispatchQueue.main.async() {
+                        CountdownTimerManager.shared.createCountdownTimer(button: self)
+                    }
+                }
+            }
+        } else {
+            startLoading()
+            Util.getAuthClient(self).sendEmail(email: account, scene: "RESET_PASSWORD") { code, message in
                 self.stopLoading()
                 if (code != 200) {
                     Util.setError(self, message)
@@ -69,28 +96,3 @@ open class GetEmailCodeButton: LoadingButton {
     }
 }
 
-open class GetEmailVerifyCodeButton: GetEmailCodeButton {
-    
-    public override var scene: String{
-        get { return "VERIFY_CODE" }
-        set { super.scene = newValue }
-    }
-    
-    override func sendEmail() {
-        if let email = Util.getEmail(self) {
-            startLoading()
-            Util.getAuthClient(self).sendLoginEmail(email: email, scene: scene) { code, message in
-                self.stopLoading()
-                if (code != 200) {
-                    Util.setError(self, message)
-                } else {
-                    ALog.i(Self.self, "send email success")
-                    DispatchQueue.main.async() {
-                        CountdownTimerManager.shared.createCountdownTimer(button: self)
-                    }
-                }
-            }
-        }
-    }
-    
-}

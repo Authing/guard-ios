@@ -1,11 +1,11 @@
 //
-//  GoForgotPasswordButton.swift
+//  GoResetPasswordButton.swift
 //  Guard
 //
 //  Created by Lance Mao on 2021/12/30.
 //
 
-open class GoForgotPasswordButton: GoSomewhereButton {
+open class GoResetPasswordButton: GoSomewhereButton {
     public override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -22,9 +22,9 @@ open class GoForgotPasswordButton: GoSomewhereButton {
         var nextVC: AuthViewController? = nil
         if let vc = authViewController {
             if (vc.authFlow?.forgotPasswordXibName == nil) {
-                nextVC = ForgotPasswordViewController(nibName: "AuthingForgotPassword", bundle: Bundle(for: Self.self))
+                nextVC = ResetPasswordViewController(nibName: "AuthingResetPassword", bundle: Bundle(for: Self.self))
             } else {
-                nextVC = AuthViewController(nibName: vc.authFlow?.forgotPasswordXibName!, bundle: Bundle.main)
+                nextVC = ResetPasswordViewController(nibName: vc.authFlow?.forgotPasswordXibName!, bundle: Bundle.main)
             }
             nextVC?.authFlow = vc.authFlow?.copy() as? AuthFlow
         }

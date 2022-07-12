@@ -231,7 +231,7 @@
                         <color key="titleColor" red="0.224" green="0.41599999999999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qfp-Ru-dGn" userLabel="Go forgot password button" customClass="GoForgotPasswordButton" customModule="Guard" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qfp-Ru-dGn" userLabel="Go forgot password button" customClass="GoResetPasswordButton" customModule="Guard" customModuleProvider="target">
                     <rect key="frame" x="20" y="500" width="30" height="31"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>

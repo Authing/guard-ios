@@ -598,7 +598,7 @@ public class AuthClient: Client {
             if config == nil || config?.appId == Authing.getAppId() {
                 Authing.saveUser(userInfo)
             } else {
-                ALog.i(Self.self, "requesting app ID: \(config!.appId) root app ID: \(Authing.getAppId())")
+                ALog.i(Self.self, "requesting app ID: \(config!.appId ?? "") root app ID: \(Authing.getAppId())")
             }
             
             if userInfo.userId != nil {
