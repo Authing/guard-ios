@@ -10,7 +10,7 @@ import WebKit
 
 public class Config: NSObject {
     
-    var data: NSDictionary? {
+    open var data: NSDictionary? {
         didSet {
             if let loginTabs: NSDictionary = data?["loginTabs"] as? NSDictionary{
                 loginMethods = loginTabs["list"] as? [String]

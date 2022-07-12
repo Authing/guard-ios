@@ -28,8 +28,8 @@
 		7EB5CE5427CF70E900BE3252 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5CE5327CF70E900BE3252 /* WebViewController.swift */; };
 		7ED434D52775BA7000893EDD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7ED434D72775BA7000893EDD /* Localizable.strings */; };
 		A81635E1284E07A80011B6ED /* WeCom in Frameworks */ = {isa = PBXBuildFile; productRef = A81635E0284E07A80011B6ED /* WeCom */; };
-		A86E06202865DFE700EABC45 /* OneAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A86E061F2865DFE700EABC45 /* OneAuth */; };
 		A8A5ABC9285842AA00D6B03A /* Wechat in Frameworks */ = {isa = PBXBuildFile; productRef = A8A5ABC8285842AA00D6B03A /* Wechat */; };
+		A8DBB7DC287DA1D700F75C97 /* OneAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A8DBB7DB287DA1D700F75C97 /* OneAuth */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -81,7 +81,7 @@
 				A8A5ABC9285842AA00D6B03A /* Wechat in Frameworks */,
 				A81635E1284E07A80011B6ED /* WeCom in Frameworks */,
 				7E95942E274CB549001459C5 /* AppAuth in Frameworks */,
-				A86E06202865DFE700EABC45 /* OneAuth in Frameworks */,
+				A8DBB7DC287DA1D700F75C97 /* OneAuth in Frameworks */,
 				7E959447274D063B001459C5 /* Guard.framework in Frameworks */,
 				7E959430274CB549001459C5 /* AppAuthCore in Frameworks */,
 			);
@@ -197,7 +197,7 @@
 				7E95942F274CB549001459C5 /* AppAuthCore */,
 				A81635E0284E07A80011B6ED /* WeCom */,
 				A8A5ABC8285842AA00D6B03A /* Wechat */,
-				A86E061F2865DFE700EABC45 /* OneAuth */,
+				A8DBB7DB287DA1D700F75C97 /* OneAuth */,
 			);
 			productName = GuardDemo;
 			productReference = 7E959415274CB4E2001459C5 /* GuardDemo.app */;
@@ -232,7 +232,7 @@
 				7E95942C274CB549001459C5 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */,
 				A81635DF284E070A0011B6ED /* XCRemoteSwiftPackageReference "guard-ios-wecom" */,
 				A8A5ABC7285842AA00D6B03A /* XCRemoteSwiftPackageReference "guard-ios-wechat" */,
-				A86E061E2865DFE700EABC45 /* XCRemoteSwiftPackageReference "guard-ios-oneauth" */,
+				A8DBB7DA287DA1D700F75C97 /* XCRemoteSwiftPackageReference "guard-ios-oneauth" */,
 			);
 			productRefGroup = 7E959416274CB4E2001459C5 /* Products */;
 			projectDirPath = "";
@@ -448,8 +448,8 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GuardDemo/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera Privacy";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Photo Libray Privacy";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -485,8 +485,8 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GuardDemo/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera Privacy";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Photo Libray Privacy";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -546,17 +546,17 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		A86E061E2865DFE700EABC45 /* XCRemoteSwiftPackageReference "guard-ios-oneauth" */ = {
+		A8A5ABC7285842AA00D6B03A /* XCRemoteSwiftPackageReference "guard-ios-wechat" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Authing/guard-ios-oneauth";
+			repositoryURL = "https://github.com/Authing/guard-ios-wechat";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.0;
 			};
 		};
-		A8A5ABC7285842AA00D6B03A /* XCRemoteSwiftPackageReference "guard-ios-wechat" */ = {
+		A8DBB7DA287DA1D700F75C97 /* XCRemoteSwiftPackageReference "guard-ios-oneauth" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Authing/guard-ios-wechat";
+			repositoryURL = "https://github.com/Authing/guard-ios-oneauth";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.0;
@@ -580,15 +580,15 @@
 			package = A81635DF284E070A0011B6ED /* XCRemoteSwiftPackageReference "guard-ios-wecom" */;
 			productName = WeCom;
 		};
-		A86E061F2865DFE700EABC45 /* OneAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A86E061E2865DFE700EABC45 /* XCRemoteSwiftPackageReference "guard-ios-oneauth" */;
-			productName = OneAuth;
-		};
 		A8A5ABC8285842AA00D6B03A /* Wechat */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A8A5ABC7285842AA00D6B03A /* XCRemoteSwiftPackageReference "guard-ios-wechat" */;
 			productName = Wechat;
+		};
+		A8DBB7DB287DA1D700F75C97 /* OneAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A8DBB7DA287DA1D700F75C97 /* XCRemoteSwiftPackageReference "guard-ios-oneauth" */;
+			productName = OneAuth;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

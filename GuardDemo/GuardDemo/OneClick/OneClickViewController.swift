@@ -18,6 +18,11 @@ class OneClickViewController: UIViewController {
     override func viewDidLoad() {
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
     @IBAction func onClick(_ sender: UIButton, forEvent event: UIEvent) {
         OneAuth.start(self) { code, message, userInfo in
             DispatchQueue.main.async() {
