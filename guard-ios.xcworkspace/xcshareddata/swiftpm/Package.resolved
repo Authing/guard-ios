@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Authing/guard-ios-oneauth",
       "state" : {
-        "revision" : "bb1691a6db41e90fea34e03d90329634c57e1557",
-        "version" : "1.0.8"
+        "revision" : "4338bd34771efa9af95f4e744b2dc7a1deaf3aa9",
+        "version" : "1.0.9"
       }
     },
     {

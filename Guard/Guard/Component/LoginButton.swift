@@ -172,6 +172,7 @@ open class LoginButton: PrimaryButton {
                 }
                 vc.authFlow?.data.setValue(userInfo, forKey: AuthFlow.KEY_USER_INFO)
                 nextVC?.authFlow = vc.authFlow?.copy() as? AuthFlow
+                nextVC?.title = "authing_first_time_login_title".L
             }
             self.authViewController?.navigationController?.pushViewController(nextVC!, animated: true)
         } else {
