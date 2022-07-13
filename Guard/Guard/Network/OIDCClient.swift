@@ -193,7 +193,7 @@ public class OIDCClient: NSObject {
             let statusCode: Int = (httpResponse?.statusCode)!
             
             if (data != nil) {
-                if let jsonData = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) {
+                if statusCode == 200, let jsonData = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) {
                     completion(statusCode, "", jsonData as? NSDictionary)
                 } else {
                     completion(statusCode, String(decoding: data!, as: UTF8.self), nil)
