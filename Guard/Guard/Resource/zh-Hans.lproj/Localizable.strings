@@ -18,6 +18,7 @@
 "authing_register_by_phone" = "手机号注册";
 "authing_register_by_email" = "邮箱注册";
 "authing_register_by_emailCode" = "邮箱验证码注册";
+"authing_password_hint" = "请输入密码";
 "authing_password_confirm_hint" = "请再次输入密码";
 "authing_password_do_not_match" = "两次输入的密码必须一致";
 "authing_find_password_back" = "找回密码";
@@ -76,8 +77,12 @@
 "authing_name" = "姓名";
 "authing_logout" = "退出登录";
 "authing_logout_tip" = "确定退出当前帐号吗？";
+"authing_delete_tip" = "确定注销此账号？";
+"authing_delete_phone" = "将发送验证码至绑定手机 %@";
+"authing_delete_password" = "请输入密码注销此账号";
 "authing_delete_account" = "注销帐号";
-"authing_delete_account_tip" = "确定要删除该帐号吗？该帐号将无法恢复";
+"authing_delete_title" = "确认";
+"authing_delete_account_tip" = "注销后，此账号的所有数据都将被删除且不可逆，请谨慎操作";
 "authing_cancel" = "取消";
 "authing_not_login" = "尚未登录";
 

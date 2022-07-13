@@ -5,9 +5,10 @@
 //  Created by Lance Mao on 2022/3/4.
 //
 
-open class DeleteAccountButton: UIButton {
+public typealias OnDeleteAccount = (Int, String?) -> Void
+
+open class DeleteAccountButton: PrimaryButton {
     
-    public typealias OnDeleteAccount = (Int, String?) -> Void
     public var onDeleteAccount: OnDeleteAccount?
     
     public override init(frame: CGRect) {
@@ -21,30 +22,62 @@ open class DeleteAccountButton: UIButton {
     }
 
     private func setup() {
-        backgroundColor = Util.getWhiteBackgroundColor()
-        let text = "authing_delete_account".L
-        self.setTitle(text, for: .normal)
-        setTitleColor(Const.Color_Error, for: .normal)
+        let loginText = "authing_delete_title".L
+        self.setTitle(loginText, for: .normal)
         self.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
     }
     
     @objc private func onClick(sender: UIButton) {
-        let cancel = "authing_cancel".L
-        let tip = "authing_delete_account_tip".L
-        let alert = UIAlertController(title: nil, message: tip, preferredStyle: UIAlertController.Style.alert)
-
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
-            Util.getAuthClient(self).deleteAccount { code, message in
-                DispatchQueue.main.async() {
-                    self.onDeleteAccount?(code, message)
-                }
+        
+        if let user = Authing.getCurrentUser() {
+            
+            if (user.phone == nil || user.phone == "") &&
+                (user.password == nil || user.password == "")
+            {
+                deleteAccount()
+            } else if user.phone == nil || user.phone == "" {
+                checkPassword()
+            } else {
+                checkPhoneCode()
             }
-        }))
-
-        alert.addAction(UIAlertAction(title: cancel, style: .cancel, handler: { (action: UIAlertAction!) in
-            alert.dismiss(animated: true, completion: nil)
-        }))
-
-        authViewController?.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    private func deleteAccount() {
+        DispatchQueue.main.async() {
+            Util.getAuthClient(self).deleteAccount { code, message in
+                    self.onDeleteAccount?(code, message)
+            }
+        }
+    }
+    
+    private func checkPassword() {
+        if let password: PasswordTextField = Util.findView(self, viewClass: PasswordTextField.self) {
+            if let text = password.text,
+               text != "" {
+                Util.getAuthClient(self).checkPassword(password: text) { code, message in
+                    if code == 200 {
+                        self.deleteAccount()
+                    } else {
+                        Util.setError(self, message)
+                    }
+                }
+            } else {
+                Util.setError(self, "authing_password_hint".L)
+            }
+        }
+    }
+    
+    private func checkPhoneCode() {
+        if let tfCode: VerifyCodeTextField = Util.findView(self, viewClass: VerifyCodeTextField.self) {
+           if let phone = Authing.getCurrentUser()?.phone,
+                   let code = tfCode.text {
+                    Util.getAuthClient(self).loginByPhoneCode(phone: phone, code: code) { code, message, user in
+                        if code == 200 && user != nil {
+                            self.deleteAccount()
+                        }
+                    }
+            }
+        }
     }
 }

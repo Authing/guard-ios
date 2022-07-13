@@ -404,6 +404,14 @@ public class AuthClient: Client {
         }
     }
     
+    public func checkPassword(password: String, completion: @escaping(Int, String?) -> Void) {
+        let cs = NSCharacterSet(charactersIn: "=+").inverted
+        let encryptedPassword = Util.encryptPassword(password).addingPercentEncoding(withAllowedCharacters: cs)!
+        get("/api/v2/users/password/check?password=\(encryptedPassword)") { code, message, data in
+            completion(code, message)
+        }
+    }
+    
     public func deleteAccount(completion: @escaping(Int, String?) -> Void) {
         delete("/api/v2/users/delete") { code, message, data in
             if (code == 200) {

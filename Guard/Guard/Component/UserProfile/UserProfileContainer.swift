@@ -22,7 +22,7 @@ open class UserProfileContainer: UIScrollView {
     }
     
     public let logoutButton = LogoutButton()
-    public let deleteAccountButton = DeleteAccountButton()
+    public let deleteAccountButton = UIButton()
     
     let accountImageView = UIImageView()
     let notLoginTip = UILabel()
@@ -65,11 +65,11 @@ open class UserProfileContainer: UIScrollView {
                 }
             }
             
-            if deleteAccountButton.onDeleteAccount == nil {
-                deleteAccountButton.onDeleteAccount = { code, message in
-                    self.refreshUI()
-                }
-            }
+            deleteAccountButton.backgroundColor = Util.getWhiteBackgroundColor()
+            deleteAccountButton.setTitle("authing_delete_account".L, for: .normal)
+            deleteAccountButton.setTitleColor(Const.Color_Error, for: .normal)
+            deleteAccountButton.addTarget(self, action: #selector(goDeleteVC), for: .touchUpInside)
+
             addSubview(logoutButton)
             addSubview(deleteAccountButton)
         } else {
@@ -137,5 +137,25 @@ open class UserProfileContainer: UIScrollView {
         AuthFlow().start { code, message, userInfo in
             self.refreshUI()
         }
+    }
+    
+    @objc private func goDeleteVC(sender: UIButton) {
+        var nextVC: AuthViewController? = nil
+        if let vc = authViewController {
+            if (vc.authFlow?.registerXibName == nil) {
+                nextVC = DeleteAccountViewController(nibName: "AuthingDeleteAccount", bundle: Bundle(for: Self.self))
+            } else {
+                nextVC = DeleteAccountViewController(nibName: vc.authFlow?.registerXibName!, bundle: Bundle.main)
+            }
+            (nextVC as? DeleteAccountViewController)?.onDeleteAccount = { code, message in
+                DispatchQueue.main.async() {
+                    self.viewController?.navigationController?.popViewController(animated: true)
+                    self.refreshUI()
+                }
+            }
+            nextVC?.title = "authing_delete_account".L
+            nextVC?.authFlow = vc.authFlow?.copy() as? AuthFlow
+        }
+        self.authViewController?.navigationController?.pushViewController(nextVC!, animated: true)
     }
 }

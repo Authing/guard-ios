@@ -22,10 +22,11 @@ open class GoResetPasswordButton: GoSomewhereButton {
         var nextVC: AuthViewController? = nil
         if let vc = authViewController {
             if (vc.authFlow?.forgotPasswordXibName == nil) {
-                nextVC = ResetPasswordViewController(nibName: "AuthingResetPassword", bundle: Bundle(for: Self.self))
+                nextVC = AuthViewController(nibName: "AuthingResetPassword", bundle: Bundle(for: Self.self))
             } else {
-                nextVC = ResetPasswordViewController(nibName: vc.authFlow?.forgotPasswordXibName!, bundle: Bundle.main)
+                nextVC = AuthViewController(nibName: vc.authFlow?.forgotPasswordXibName!, bundle: Bundle.main)
             }
+            nextVC?.title = "authing_forgot_password".L
             nextVC?.authFlow = vc.authFlow?.copy() as? AuthFlow
         }
         

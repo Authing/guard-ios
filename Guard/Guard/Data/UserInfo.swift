@@ -24,6 +24,7 @@ open class UserInfo: NSObject {
     
     @objc public var userId: String?
     @objc public var username: String?
+    @objc public var password: String?
     @objc public var email: String?
     @objc public var phone: String?
     @objc public var photo: String? {
@@ -92,6 +93,7 @@ open class UserInfo: NSObject {
             userId = raw?["sub"] as? String
         }
         username = raw?["username"] as? String
+        password = raw?["password"] as? String
         email = raw?["email"] as? String
         phone = raw?["phone"] as? String
         token = raw?["token"] as? String

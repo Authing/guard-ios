@@ -18,6 +18,7 @@
 "authing_register_by_phone" = "Phone";
 "authing_register_by_email" = "Email";
 "authing_register_by_emailCode" = "EmailCode";
+"authing_password_hint" = "Please input your password";
 "authing_password_confirm_hint" = "Confirm password";
 "authing_password_do_not_match" = "Password and confirm password do not match";
 "authing_find_password_back" = "Reset password";
@@ -75,7 +76,11 @@
 "authing_name" = "Name";
 "authing_logout" = "Logout";
 "authing_logout_tip" = "Are you sure to logout?";
+"authing_delete_tip" = "Are you sure delete your account?";
+"authing_delete_phone" = "The verification code will be sent to the phone %@";
+"authing_delete_password" = "Please enter your password to delete this account";
 "authing_delete_account" = "Delete account";
+"authing_delete_title" = "Delete";
 "authing_delete_account_tip" = "Are you sure to delete current account? This is unrecoverable";
 "authing_cancel" = "Cancel";
 "authing_not_login" = "Not login yet";

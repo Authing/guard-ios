@@ -24,6 +24,7 @@ public class AuthFlow {
     public var registerXibName: String? = nil
     public var forgotPasswordXibName: String? = nil
     public var feedBackXibName: String? = nil
+    public var deleteAccountXibName: String? = nil
 
     // MFA
     public var mfaPhoneXibName: [String]? = nil
@@ -173,6 +174,8 @@ public class AuthFlow {
         copy.loginXibName = self.loginXibName
         copy.registerXibName = self.registerXibName
         copy.forgotPasswordXibName = self.forgotPasswordXibName
+        copy.feedBackXibName = self.feedBackXibName
+        copy.deleteAccountXibName = self.deleteAccountXibName
         copy.mfaPhoneXibName = self.mfaPhoneXibName
         copy.mfaEmailXibName = self.mfaEmailXibName
         copy.mfaOTPXibName = self.mfaOTPXibName

@@ -30,8 +30,8 @@ open class LoginButton: PrimaryButton {
     }
     
     private func _onClick(_ config: Config?) {
-        let privacyBox = Util.findView(self, viewClass: PrivacyConfirmBox.self) as? PrivacyConfirmBox
-        if (privacyBox != nil && !privacyBox!.isHidden) {
+        if let privacyBox = Util.findView(self, viewClass: PrivacyConfirmBox.self) as? PrivacyConfirmBox{
+            if (!privacyBox.isHidden) {
             let lang = Util.getLangHeader()
             if let agreements = config?.agreements {
                 for agreement in agreements {
@@ -41,9 +41,10 @@ open class LoginButton: PrimaryButton {
                             continue
                         }
                         if (availableAt! == 2 || availableAt! == 1) {
-                            let warning = "authing_agree_privacy_first".L
-                            if (agreement["required"] as? Bool == true && !privacyBox!.isChecked) {
-                                Util.setError(self, warning)
+//                            let warning = "authing_agree_privacy_first".L
+                            if (agreement["required"] as? Bool == true && !privacyBox.isChecked) {
+//                                Util.setError(self, warning)
+                                PrivacyToast.showToast(viewController: self.viewController ?? UIViewController())
                                 return;
                             }
                             break
@@ -52,7 +53,7 @@ open class LoginButton: PrimaryButton {
                 }
             }
         }
-        
+        }
         if let tfPhone: PhoneNumberTextField = Util.findView(self, viewClass: PhoneNumberTextField.self),
            let tfCode: VerifyCodeTextField = Util.findView(self, viewClass: VerifyCodeTextField.self) {
                 if let phone = tfPhone.text,
@@ -62,15 +63,13 @@ open class LoginButton: PrimaryButton {
             }
         }
         
-        let tfAccount: AccountTextField? = Util.findView(self, viewClass: AccountTextField.self)
-        let tfPassword: PasswordTextField? = Util.findView(self, viewClass: PasswordTextField.self)
-        if (tfAccount != nil && tfPassword != nil) {
-            let account: String? = tfAccount!.text
-            let password: String? = tfPassword!.text
-            if (!account!.isEmpty && !password!.isEmpty) {
-                loginByAccount(account!, password!)
+        if let tfAccount: AccountTextField = Util.findView(self, viewClass: AccountTextField.self),
+            let tfPassword: PasswordTextField = Util.findView(self, viewClass: PasswordTextField.self) {
+            if let account = tfAccount.text,
+               let password = tfPassword.text {
+                loginByAccount(account, password)
+                return
             }
-            return
         }
         
         if let tfEmail: EmailTextField = Util.findView(self, viewClass: EmailTextField.self),
