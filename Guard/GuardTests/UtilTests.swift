@@ -1,5 +1,5 @@
 //
-//  UtiTests.swift
+//  UtilTests.swift
 //  GuardTests
 //
 //  Created by Lance Mao on 2022/3/7.
@@ -8,7 +8,7 @@
 import XCTest
 import Guard
 
-class UtiTests: XCTestCase {
+class UtilTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
