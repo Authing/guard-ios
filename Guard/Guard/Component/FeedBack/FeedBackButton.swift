@@ -8,6 +8,7 @@
 import Foundation
 
 open class FeedBackButton: PrimaryButton {
+        
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -73,6 +74,7 @@ open class FeedBackButton: PrimaryButton {
                 self.stopLoading()
                 if code == 200 {
                     DispatchQueue.main.async() {
+                        self.authViewController?.authFlow?.requestCallBack?(.FeedBack, code, message ?? "")
                         self.viewController?.navigationController?.popViewController(animated: true)
                     }
                 } else {

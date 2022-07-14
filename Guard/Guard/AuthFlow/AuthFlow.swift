@@ -10,7 +10,16 @@ public enum AuthProtocol {
     case EOIDC
 }
 
+public enum RequestType {
+    case FeedBack
+    case Register
+    case ResetPassword
+}
+
+public typealias RequestSuccessCallBack = (_ requestType: RequestType, _ code: Int, _ message: String) -> Void
+
 public class AuthFlow {
+    
     public static let KEY_USER_INFO: String = "user_info"
     public static let KEY_ACCOUNT: String = "account"
     public static let KEY_EXTENDED_FIELDS: String = "extended_fields"
@@ -41,6 +50,8 @@ public class AuthFlow {
     public var config: Config? = nil
 
     public var skipConsent: Bool = false
+    
+    public var requestCallBack: RequestSuccessCallBack?
     
     public init() {
     }
@@ -180,7 +191,7 @@ public class AuthFlow {
         copy.mfaEmailXibName = self.mfaEmailXibName
         copy.mfaOTPXibName = self.mfaOTPXibName
         copy.resetPasswordFirstTimeLoginXibName = self.resetPasswordFirstTimeLoginXibName
-        
+        copy.requestCallBack = self.requestCallBack
         copy.appBundle = self.appBundle
         copy.config = self.config
         copy.skipConsent = self.skipConsent
