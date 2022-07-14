@@ -18,7 +18,7 @@ public class OIDCClient: NSObject {
         }
         Authing.getConfig { config in
             if let conf = config {
-                if conf.redirectUris?.count ?? 0 > 0{
+                if conf.redirectUris?.count ?? 0 > 0 {
                     if let url = conf.redirectUris?.first { self.authRequest.redirect_uri = url }
                 }
             }
@@ -33,7 +33,6 @@ public class OIDCClient: NSObject {
     public func registerByEmailCode(email: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         AuthClient().registerByEmailCode(authData: self.authRequest, email: email, code: code, completion: completion)
     }
-    
     
     public func registerByUserName(username: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         AuthClient().registerByUserName(authData: self.authRequest, username: username, password: password, completion: completion)
@@ -126,8 +125,7 @@ public class OIDCClient: NSObject {
             }
         }
     }
-    
-    
+        
     public func getUserInfoByAccessToken(userInfo: UserInfo?, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         request(userInfo: userInfo, endPoint: "/oidc/me", method: "GET", body: nil) { code, message, data in
             if (code == 200) {
@@ -182,7 +180,6 @@ public class OIDCClient: NSObject {
             }
         }
         
-        
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard error == nil else {
                 completion(500, "network error \(url!) \n\(error!)", nil)
@@ -206,7 +203,7 @@ public class OIDCClient: NSObject {
 }
 
 //MARK: ---------- URLSessionTaskDelegate ----------
-extension OIDCClient: URLSessionTaskDelegate{
+extension OIDCClient: URLSessionTaskDelegate {
     
     public func urlSession(_ session: URLSession, task: URLSessionTask, willPerformHTTPRedirection response: HTTPURLResponse, newRequest request: URLRequest, completionHandler: @escaping (URLRequest?) -> Void) {
         completionHandler(nil)
