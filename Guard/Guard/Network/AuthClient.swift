@@ -431,18 +431,17 @@ public class AuthClient: Client {
     public func loginByWechat(authData: AuthRequest? = nil, _ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
     
         getConfig { config in
-            guard config != nil else {
+            guard let conf = config else {
                 completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
                 return
             }
   
-            let conId: String? = config?.getConnectionId(type: "wechat:mobile")
-            guard conId != nil else {
+            guard let conId = conf.getConnectionId(type: "wechat:mobile") else {
                 completion(500, "No wechat connection. Please set up in console for \(Authing.getAppId())", nil)
                 return
             }
             
-            let body: NSDictionary = ["connId" : conId!, "code" : code]
+            let body: NSDictionary = ["connId" : conId, "code" : code]
             self.post("/api/v2/ecConn/wechatMobile/authByCode", body) { code, message, data in
                 if authData == nil{
                     self.createUserInfo(code, message, data, completion: completion)
@@ -462,18 +461,17 @@ public class AuthClient: Client {
     
     public func loginByWeCom(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         getConfig { config in
-            guard config != nil else {
+            guard let conf = config else {
                 completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
                 return
             }
   
-            let conId: String? = config?.getConnectionId(type: "wechatwork:mobile")
-            guard conId != nil else {
+            guard let conId = conf.getConnectionId(type: "wechatwork:mobile") else {
                 completion(500, "No wechat connection. Please set up in console for \(Authing.getAppId())", nil)
                 return
             }
             
-            let body: NSDictionary = ["connId" : conId!, "code" : code]
+            let body: NSDictionary = ["connId" : conId, "code" : code]
             self.post("/api/v2/ecConn/wechat-work/authByCode", body) { code, message, data in
                 self.createUserInfo(code, message, data, completion: completion)
             }
@@ -521,12 +519,12 @@ public class AuthClient: Client {
 //        }
         
         getConfig { config in
-            guard config != nil else {
+            guard let conf = config else {
                 completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
                 return
             }
 
-            let userPoolId: String? = config?.userPoolId
+            let userPoolId: String? = conf.userPoolId
             let url: String = "/connection/social/apple/\(userPoolId!)/callback?app_id=\(Authing.getAppId())";
             let body: NSDictionary = ["code" : code]
             self.post(url, body) { code, message, data in

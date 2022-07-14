@@ -39,6 +39,73 @@ class GuardTests: XCTestCase {
         wait(for: [expectation], timeout: TIMEOUT)
     }
     
+    func testRegisterByEmailNormal() throws {
+        let expectation = XCTestExpectation(description: "registerByEmailNormal")
+        AuthClient().registerByEmail(email: "1@1024.cn", password: "111111") { code, message, userInfo in
+            XCTAssert(code == 200)
+            
+            // since force login is true we can get detail right after register
+            AuthClient().getCurrentUser() { code, message, data in
+                XCTAssert(code == 200)
+                XCTAssert(data?.email == "1@1024.cn")
+                
+                AuthClient().deleteAccount { code, message in
+                    XCTAssert(code == 200)
+                    expectation.fulfill()
+                }
+            }
+        }
+        wait(for: [expectation], timeout: TIMEOUT)
+    }
+    
+    func testRegisterByEmail1() throws {
+        let expectation = XCTestExpectation(description: "registerByEmail invalid email address")
+        AuthClient().registerByEmail(email: "1024.cn", password: "111111") { code, message, userInfo in
+            XCTAssert(code == 400)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: TIMEOUT)
+    }
+    
+    func testRegisterByEmail2() throws {
+        let expectation = XCTestExpectation(description: "registerByEmail email address exist")
+        AuthClient().registerByEmail(email: "1@1024.cn", password: "111111") { code, message, userInfo in
+            XCTAssert(code == 200)
+            AuthClient().registerByEmail(email: "1@1024.cn", password: "111111") { code, message, userInfo in
+                XCTAssert(code == 2026)
+                
+                AuthClient().loginByAccount(account: "1@1024.cn", password: "111111") { code, message, userInfo in
+                    XCTAssert(code == 200)
+                    
+                    AuthClient().deleteAccount { code, message in
+                        XCTAssert(code == 200)
+                        expectation.fulfill()
+                    }
+                }
+            }
+        }
+        wait(for: [expectation], timeout: TIMEOUT)
+    }
+    
+    func testRegisterByUserName() throws {
+        let expectation = XCTestExpectation(description: "registerByUserName")
+        AuthClient().registerByUserName(username: "10242048", password: "111111") { code, message, userInfo in
+            XCTAssert(code == 200)
+            
+            // since force login is true we can get detail right after register
+            AuthClient().getCurrentUser() { code, message, data in
+                XCTAssert(code == 200)
+                XCTAssert(data?.username == "10242048")
+                
+                AuthClient().deleteAccount { code, message in
+                    XCTAssert(code == 200)
+                    expectation.fulfill()
+                }
+            }
+        }
+        wait(for: [expectation], timeout: TIMEOUT)
+    }
+    
     func testLoginByAccount() throws {
         let expectation = XCTestExpectation(description: "loginByAccount")
         AuthClient().loginByAccount(account: account, password: password) { code, message, userInfo in
@@ -131,46 +198,15 @@ class GuardTests: XCTestCase {
         wait(for: [expectation], timeout: TIMEOUT)
     }
     
-    func testMarkQRCodeScanned() throws {
-        let expectation = XCTestExpectation(description: "markQRCodeScanned")
-        AuthClient().loginByAccount(account: account, password: password) { code, message, userInfo in
-            XCTAssert(code == 200)
-            
-            AuthClient().markQRCodeScanned(ticket:"gUvNyfCW7mpD6pSzeDfyD4QLsCYwPV") { code, message, data in
-                XCTAssert(code == 200)
-                XCTAssert(data != nil)
-                XCTAssert(data!["status"] as! Int == 1)
-                expectation.fulfill()
-            }
-        }
-        wait(for: [expectation], timeout: TIMEOUT)
-    }
-    
-    func testLoginByScannedTicket() throws {
-        let expectation = XCTestExpectation(description: "loginByScannedTicket")
-        AuthClient().loginByAccount(account: account, password: password) { code, message, userInfo in
-            XCTAssert(code == 200)
-            
-            let ticket = "gZHbp1PNjNqKbWbupZVaK1MHY16KjZ"
-            AuthClient().markQRCodeScanned(ticket:ticket) { code, message, data in
-                XCTAssert(code == 200)
-                XCTAssert(data != nil)
-                XCTAssert(data!["status"] as! Int == 1)
-                AuthClient().loginByScannedTicket(ticket:ticket) { code, message, data in
-                    XCTAssert(code == 200)
-                    XCTAssert(data != nil)
-                    XCTAssert(data!["status"] as! Int == 2)
-                    expectation.fulfill()
-                }
-            }
-        }
-        wait(for: [expectation], timeout: TIMEOUT)
-    }
-    
-    func testPerformanceExample() throws {
+    func testPerformanceLoginByAccount() throws {
         // This is an example of a performance test case.
         self.measure {
             // Put the code you want to measure the time of here.
+            let expectation = XCTestExpectation(description: "loginByAccount")
+            AuthClient().loginByAccount(account: account, password: password) { code, message, userInfo in
+                expectation.fulfill()
+            }
+            wait(for: [expectation], timeout: TIMEOUT)
         }
     }
 }
