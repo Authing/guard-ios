@@ -143,11 +143,11 @@ open class UserProfileContainer: UIScrollView {
         var nextVC: AuthViewController? = nil
         if let vc = authViewController {
             if (vc.authFlow?.registerXibName == nil) {
-                nextVC = DeleteAccountViewController(nibName: "AuthingDeleteAccount", bundle: Bundle(for: Self.self))
+                nextVC = AuthViewController(nibName: "AuthingDeleteAccount", bundle: Bundle(for: Self.self))
             } else {
-                nextVC = DeleteAccountViewController(nibName: vc.authFlow?.registerXibName!, bundle: Bundle.main)
+                nextVC = AuthViewController(nibName: vc.authFlow?.registerXibName!, bundle: Bundle.main)
             }
-            (nextVC as? DeleteAccountViewController)?.onDeleteAccount = { code, message in
+            (nextVC?.view.subviews.first as? DeleteAccountView)?.onDeleteAccount = { code, message in
                 DispatchQueue.main.async() {
                     self.viewController?.navigationController?.popViewController(animated: true)
                     self.refreshUI()

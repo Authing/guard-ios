@@ -9,7 +9,7 @@ import CoreGraphics
 
 open class PrivacyToast: UIView {
     
-    let privacyBox: PrivacyConfirmBox = PrivacyConfirmBox()
+    let privacyBox: PrivacyConfirmBox = PrivacyConfirmBox(size: 18)
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -135,7 +135,7 @@ open class PrivacyToast: UIView {
 
 open class PrivacyConfirmBox: UIView, UITextViewDelegate {
     
-    let size = 15.0
+    var size = 15.0
     
     var fontSize = 12.0
     
@@ -154,9 +154,15 @@ open class PrivacyConfirmBox: UIView, UITextViewDelegate {
             }
         }
     }
+    
+    convenience init(size: CGFloat = 15.0){
+        self.init(frame: CGRect.zero)
+        self.size = size
+        setup()
+    }
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
     }
 
     required public init?(coder aDecoder: NSCoder) {

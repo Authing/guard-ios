@@ -85,22 +85,43 @@ open class RegisterButton: PrimaryButton {
     
     private func registerByPhoneCode(_ countryCode: String? = nil, _ phone: String, _ code: String) {
         startLoading()
-        Util.getAuthClient(self).registerByPhoneCode(phoneCountryCode: countryCode, phone: phone, code: code) { code, message, userInfo in
-            self.done(code: code, message: message, userInfo: userInfo)
+        let authProtocol = authViewController?.authFlow?.authProtocol ?? .EInHouse
+        if authProtocol == .EInHouse {
+            Util.getAuthClient(self).registerByPhoneCode(phoneCountryCode: countryCode, phone: phone, code: code) { code, message, userInfo in
+                self.done(code: code, message: message, userInfo: userInfo)
+            }
+        } else {
+            OIDCClient().registerByPhoneCode(phoneCountryCode: countryCode, phone: phone, code: code) { code, message, userInfo in
+                self.done(code: code, message: message, userInfo: userInfo)
+            }
         }
     }
     
     private func registerByEmail(_ email: String, _ password: String) {
         startLoading()
-        Util.getAuthClient(self).registerByEmail(email: email, password: password) { code, message, userInfo in
-            self.done(code: code, message: message, userInfo: userInfo)
+        let authProtocol = authViewController?.authFlow?.authProtocol ?? .EInHouse
+        if authProtocol == .EInHouse {
+            Util.getAuthClient(self).registerByEmail(email: email, password: password) { code, message, userInfo in
+                self.done(code: code, message: message, userInfo: userInfo)
+            }
+        } else {
+            OIDCClient().registerByEmail(email: email, password: password) { code, message, userInfo in
+                self.done(code: code, message: message, userInfo: userInfo)
+            }
         }
     }
     
     private func registerByEmailCode(_ email: String, _ code: String) {
         startLoading()
-        Util.getAuthClient(self).registerByEmailCode(email: email, code: code) { code, message, userInfo in
-            self.done(code: code, message: message, userInfo: userInfo)
+        let authProtocol = authViewController?.authFlow?.authProtocol ?? .EInHouse
+        if authProtocol == .EInHouse {
+            Util.getAuthClient(self).registerByEmailCode(email: email, code: code) { code, message, userInfo in
+                self.done(code: code, message: message, userInfo: userInfo)
+            }
+        } else {
+            OIDCClient().registerByEmailCode(email: email, code: code) { code, message, userInfo in
+                self.done(code: code, message: message, userInfo: userInfo)
+            }
         }
     }
     

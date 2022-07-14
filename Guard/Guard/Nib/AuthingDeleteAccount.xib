@@ -9,25 +9,25 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DeleteAccountViewController" customModule="Guard" customModuleProvider="target">
-            <connections>
-                <outlet property="deleteButton" destination="BaD-9j-1wT" id="rx5-Pw-bib"/>
-                <outlet property="passwordTextField" destination="0tI-kK-QVR" id="Vb4-9K-OgL"/>
-                <outlet property="verifyButton" destination="3gb-Uz-e2G" id="zjq-ca-sJ7"/>
-                <outlet property="verifyLabel" destination="pnn-De-VGT" id="J0l-80-0jo"/>
-                <outlet property="verifyTextField" destination="fIc-FM-uF2" id="eMm-tq-3Mu"/>
-                <outlet property="view" destination="iN0-l3-epB" id="JDS-8P-qQd"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DeleteAccountView" customModule="Guard" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnn-De-VGT" customClass="Label" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="24" y="132" width="366" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="26" id="v3L-9I-BNH"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yee-GA-qLR">
                     <rect key="frame" x="24" y="44" width="366" height="64"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOb-9p-ahi" customClass="Label" customModule="Guard" customModuleProvider="target">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOb-9p-ahi" customClass="authing_delete_password">
                             <rect key="frame" x="15" y="0.0" width="336" height="64"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="64" id="ZO3-9P-OKc"/>
@@ -49,15 +49,6 @@
                         <constraint firstAttribute="bottom" secondItem="WOb-9p-ahi" secondAttribute="bottom" id="yZZ-dK-Oxu"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnn-De-VGT">
-                    <rect key="frame" x="24" y="132" width="366" height="26"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="26" id="v3L-9I-BNH"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fIc-FM-uF2" customClass="VerifyCodeTextField" customModule="Guard" customModuleProvider="target">
                     <rect key="frame" x="24" y="166" width="342" height="48"/>
                     <constraints>
@@ -74,9 +65,6 @@
                     <state key="normal">
                         <color key="titleColor" red="0.22352941179999999" green="0.41568627450000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
-                    <connections>
-                        <action selector="verifyButtonAction:" destination="-1" eventType="touchUpInside" id="g3T-dK-FTv"/>
-                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BaD-9j-1wT" customClass="DeleteAccountButton" customModule="Guard" customModuleProvider="target">
                     <rect key="frame" x="24" y="242" width="366" height="44"/>
