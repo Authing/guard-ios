@@ -84,11 +84,13 @@ public class Authing: NSObject {
     @objc public static func autoLogin(completion: @escaping(Int, String?, UserInfo?) -> Void) {
         sCurrentUser = UserManager.getUser()
         if sCurrentUser != nil {
-            AuthClient().getCurrentUser { code, message, userInfo in
+            AuthClient().getCurrentUser(user: sCurrentUser) { code, message, userInfo in
                 if (code != 200) {
                     UserManager.removeUser()
                     sCurrentUser = nil
                     completion(code, message, nil)
+                } else if sCurrentUser?.refreshToken != nil {
+                    OIDCClient().getNewAccessTokenByRefreshToken(userInfo: sCurrentUser, completion: completion)
                 } else {
                     AuthClient().updateIdToken(completion: completion)
                 }

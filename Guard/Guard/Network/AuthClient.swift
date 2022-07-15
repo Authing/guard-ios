@@ -197,10 +197,9 @@ public class AuthClient: Client {
         }
     }
     
-    
-    public func getCurrentUser(completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func getCurrentUser(user: UserInfo? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         get("/api/v2/users/me") { code, message, data in
-            self.createUserInfo(code, message, data, completion: completion)
+            self.createUserInfo(user, code, message, data, completion: completion)
         }
     }
     

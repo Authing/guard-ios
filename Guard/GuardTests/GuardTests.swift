@@ -111,10 +111,15 @@ class GuardTests: XCTestCase {
         AuthClient().loginByAccount(account: account, password: password) { code, message, userInfo in
             XCTAssert(code == 200)
             
-            AuthClient().loginByAccount(account: "doiknow", password: "idontknow") { code, message, data in
-                XCTAssert(code == 2004)
+            AuthClient().loginByAccount(account: self.account, password: "idontknow") { code, message, data in
+                XCTAssert(code == 2333)
                 XCTAssert(data == nil)
-                expectation.fulfill()
+                
+                AuthClient().loginByAccount(account: "doiknow", password: "idontknow") { code, message, data in
+                    XCTAssert(code == 2004)
+                    XCTAssert(data == nil)
+                    expectation.fulfill()
+                }
             }
         }
         wait(for: [expectation], timeout: TIMEOUT)
