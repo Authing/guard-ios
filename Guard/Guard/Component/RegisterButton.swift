@@ -57,8 +57,13 @@ open class RegisterButton: PrimaryButton {
            let tfCode: VerifyCodeTextField = Util.findView(self, viewClass: VerifyCodeTextField.self) {
             if let phone = tfPhone.text,
                let code = tfCode.text {
-
-                registerByPhoneCode(tfPhone.countryCode, phone, code)
+                if phone == "" {
+                    Util.setError(tfPhone, "authing_phone_none".L)
+                } else if code == "" {
+                    Util.setError(tfCode, "authing_verifycode_none".L)
+                } else {
+                    registerByPhoneCode(tfPhone.countryCode, phone, code)
+                }
                 return
             }
         }
@@ -67,7 +72,13 @@ open class RegisterButton: PrimaryButton {
            let tfPassword: PasswordTextField = Util.findView(self, viewClass: PasswordTextField.self) {
             if let email = tfEmail.text,
                let password = tfPassword.text {
-                registerByEmail(email, password)
+                if email == "" {
+                    Util.setError(tfEmail, "authing_email_none".L)
+                } else if password == "" {
+                    Util.setError(tfPassword, "authing_password_none".L)
+                } else {
+                    registerByEmail(email, password)
+                }
                 return
             }
         }
@@ -76,7 +87,13 @@ open class RegisterButton: PrimaryButton {
            let tfCode: VerifyCodeTextField = Util.findView(self, viewClass: VerifyCodeTextField.self) {
             if let email = tfEmail.text,
                let code = tfCode.text {
-                registerByEmailCode(email, code)
+                if email == "" {
+                    Util.setError(tfEmail, "authing_email_none".L)
+                } else if code == "" {
+                    Util.setError(tfCode, "authing_verifycode_none".L)
+                } else {
+                    registerByEmailCode(email, code)
+                }
                 return
             }
         }

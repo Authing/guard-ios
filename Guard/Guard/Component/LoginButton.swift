@@ -56,18 +56,29 @@ open class LoginButton: PrimaryButton {
         }
         if let tfPhone: PhoneNumberTextField = Util.findView(self, viewClass: PhoneNumberTextField.self),
            let tfCode: VerifyCodeTextField = Util.findView(self, viewClass: VerifyCodeTextField.self) {
-                if let phone = tfPhone.text,
-                   let code = tfCode.text {
-                    loginByPhoneCode(tfPhone.countryCode, phone, code)
+                if let phone = tfPhone.text, let code = tfCode.text {
+                    if phone == "" {
+                        Util.setError(tfPhone, "authing_phone_none".L)
+                    } else if code == "" {
+                        Util.setError(tfCode, "authing_verifycode_none".L)
+                    } else {
+                        loginByPhoneCode(tfPhone.countryCode, phone, code)
+                    }
                     return
-            }
+                }
         }
         
         if let tfAccount: AccountTextField = Util.findView(self, viewClass: AccountTextField.self),
             let tfPassword: PasswordTextField = Util.findView(self, viewClass: PasswordTextField.self) {
             if let account = tfAccount.text,
                let password = tfPassword.text {
-                loginByAccount(account, password)
+                if account == "" {
+                    Util.setError(tfAccount, "authing_account_none".L)
+                } else if password == "" {
+                    Util.setError(tfPassword, "authing_password_none".L)
+                } else {
+                    loginByAccount(account, password)
+                }
                 return
             }
         }
@@ -76,7 +87,13 @@ open class LoginButton: PrimaryButton {
            let tfEmailCode: VerifyCodeTextField = Util.findView(self, viewClass: VerifyCodeTextField.self) {
             if let email = tfEmail.text,
                let code = tfEmailCode.text{
+                if email == "" {
+                    Util.setError(tfEmail, "authing_email_none".L)
+                } else if code == "" {
+                    Util.setError(tfEmailCode, "authing_verifycode_none".L)
+                } else {
                    loginByEmail(email, code)
+                }
             }
         }
     }

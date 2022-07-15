@@ -116,6 +116,12 @@
 
 "authing_text_placeholder" = "请输入内容";
 
+"authing_phone_none" = "手机号未填写";
+"authing_verifycode_none" = "验证码未填写";
+"authing_email_none" = "邮箱未填写";
+"authing_account_none" = "账号未填写";
+"authing_password_none" = "密码未填写";
+
 "authing_feedback_title" = "问题反馈";
 "authing_feedback_contact" = "联系方式";
 "authing_feedback_related" = "相关问题";

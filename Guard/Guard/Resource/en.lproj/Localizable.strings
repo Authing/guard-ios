@@ -111,6 +111,13 @@
 
 "authing_text_placeholder" = "Enter some text";
 
+
+"authing_phone_none" = "Phone number is not entered";
+"authing_verifycode_none" = "The verification code is not entered";
+"authing_email_none" = "Email address is not entered";
+"authing_account_none" = "Username is not entered";
+"authing_password_none" = "Password is not entered";
+
 "authing_feedback_title" = "Feedback";
 "authing_feedback_contact" = "Contact information";
 "authing_feedback_related" = "Related isses";
