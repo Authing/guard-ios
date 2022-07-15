@@ -83,21 +83,40 @@ public class Authing: NSObject {
     
     @objc public static func autoLogin(completion: @escaping(Int, String?, UserInfo?) -> Void) {
         sCurrentUser = UserManager.getUser()
-        if sCurrentUser != nil {
+        if sCurrentUser == nil {
+            completion(500, "no user logged in", nil)
+            return
+        }
+        
+        if sCurrentUser?.refreshToken != nil {
+            OIDCClient().getNewAccessTokenByRefreshToken(userInfo: sCurrentUser) { code, message, userInfo in
+                if code == 200 {
+                    AuthClient().getCurrentUser(user: sCurrentUser) { code, message, userInfo in
+                        if (code != 200) {
+                            clearUser(code, message, completion)
+                        } else {
+                            completion(code, message, userInfo)
+                        }
+                    }
+                } else {
+                    clearUser(code, message, completion)
+                }
+            }
+        } else {
             AuthClient().getCurrentUser(user: sCurrentUser) { code, message, userInfo in
                 if (code != 200) {
-                    UserManager.removeUser()
-                    sCurrentUser = nil
-                    completion(code, message, nil)
-                } else if sCurrentUser?.refreshToken != nil {
-                    OIDCClient().getNewAccessTokenByRefreshToken(userInfo: sCurrentUser, completion: completion)
+                    clearUser(code, message, completion)
                 } else {
                     AuthClient().updateIdToken(completion: completion)
                 }
             }
-        } else {
-            completion(500, "no user logged in", nil)
         }
+    }
+    
+    @objc private static func clearUser(_ code: Int, _ message: String?, _ completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        UserManager.removeUser()
+        sCurrentUser = nil
+        completion(code, message, nil)
     }
     
     @objc public static func getCurrentUser() -> UserInfo? {
