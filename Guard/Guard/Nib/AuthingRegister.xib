@@ -60,17 +60,17 @@
                             <textInputTraits key="textInputTraits" returnKeyType="next"/>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5uU-rs-UFc" customClass="VerifyCodeTextField" customModule="Guard" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="64" width="350" height="48"/>
+                            <rect key="frame" x="0.0" y="64" width="266" height="48"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="48" id="vQE-ol-6DW"/>
+                                <constraint firstAttribute="height" constant="48" id="B6J-lJ-Ah9"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oj4-7h-ssi" customClass="GetVerifyCodeButton" customModule="Guard" customModuleProvider="target">
-                            <rect key="frame" x="358" y="64" width="16" height="44"/>
+                            <rect key="frame" x="274" y="64" width="100" height="48"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="44" id="Meq-G7-TbC"/>
+                                <constraint firstAttribute="width" constant="100" id="8UD-yi-wiU"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
@@ -85,11 +85,12 @@
                         <constraint firstAttribute="trailing" secondItem="oj4-7h-ssi" secondAttribute="trailing" id="1l6-pl-1Fa"/>
                         <constraint firstAttribute="trailing" secondItem="emr-dn-a81" secondAttribute="trailing" id="Clv-qt-GXn"/>
                         <constraint firstItem="emr-dn-a81" firstAttribute="leading" secondItem="rbI-XB-hdi" secondAttribute="leading" id="Eam-rb-lNY"/>
-                        <constraint firstItem="5uU-rs-UFc" firstAttribute="top" secondItem="emr-dn-a81" secondAttribute="bottom" constant="16" id="G30-Lx-G8v"/>
                         <constraint firstItem="oj4-7h-ssi" firstAttribute="leading" secondItem="5uU-rs-UFc" secondAttribute="trailing" constant="8" symbolic="YES" id="TJf-FU-SRO"/>
+                        <constraint firstItem="oj4-7h-ssi" firstAttribute="bottom" secondItem="5uU-rs-UFc" secondAttribute="bottom" id="Y7f-Nv-0fD"/>
+                        <constraint firstItem="oj4-7h-ssi" firstAttribute="top" secondItem="5uU-rs-UFc" secondAttribute="top" id="bEh-kK-ZzJ"/>
+                        <constraint firstItem="5uU-rs-UFc" firstAttribute="top" secondItem="emr-dn-a81" secondAttribute="bottom" constant="16" id="bK7-KP-Luu"/>
                         <constraint firstItem="5uU-rs-UFc" firstAttribute="leading" secondItem="rbI-XB-hdi" secondAttribute="leading" id="sch-pX-Nca"/>
                         <constraint firstItem="emr-dn-a81" firstAttribute="top" secondItem="rbI-XB-hdi" secondAttribute="top" id="wGx-FF-V9A"/>
-                        <constraint firstItem="oj4-7h-ssi" firstAttribute="top" secondItem="5uU-rs-UFc" secondAttribute="top" id="xmP-NL-k6p"/>
                         <constraint firstAttribute="height" constant="110" id="ybO-LU-adW"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
@@ -160,7 +161,7 @@
                             <textInputTraits key="textInputTraits" returnKeyType="next"/>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="SVJ-aE-VLO" customClass="VerifyCodeTextField" customModule="Guard" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="64" width="350" height="48"/>
+                            <rect key="frame" x="0.0" y="64" width="266" height="48"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="48" id="fSN-b1-Lmu"/>
                             </constraints>
@@ -168,9 +169,9 @@
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RGf-Rb-Hv6" customClass="GetEmailVerifyCodeButton" customModule="Guard" customModuleProvider="target">
-                            <rect key="frame" x="358" y="64" width="16" height="44"/>
+                            <rect key="frame" x="274" y="64" width="100" height="48"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="44" id="fm6-WZ-gUa"/>
+                                <constraint firstAttribute="width" constant="100" id="LOc-7U-O1F"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
@@ -188,10 +189,11 @@
                         <constraint firstItem="RGf-Rb-Hv6" firstAttribute="leading" secondItem="SVJ-aE-VLO" secondAttribute="trailing" constant="8" symbolic="YES" id="Io4-bO-0zS"/>
                         <constraint firstItem="SVJ-aE-VLO" firstAttribute="top" secondItem="5sq-Cv-6eu" secondAttribute="bottom" constant="16" id="TUn-sU-rUF"/>
                         <constraint firstAttribute="trailing" secondItem="5sq-Cv-6eu" secondAttribute="trailing" id="Xx1-Xh-DW0"/>
-                        <constraint firstItem="RGf-Rb-Hv6" firstAttribute="top" secondItem="5sq-Cv-6eu" secondAttribute="bottom" constant="16" id="a91-zy-XV6"/>
                         <constraint firstAttribute="height" constant="110" id="bn6-RO-lr9"/>
                         <constraint firstItem="5sq-Cv-6eu" firstAttribute="leading" secondItem="kba-Fg-s5k" secondAttribute="leading" id="eXx-1T-mKR"/>
+                        <constraint firstItem="RGf-Rb-Hv6" firstAttribute="top" secondItem="SVJ-aE-VLO" secondAttribute="top" id="kj0-ok-76E"/>
                         <constraint firstItem="SVJ-aE-VLO" firstAttribute="leading" secondItem="kba-Fg-s5k" secondAttribute="leading" id="tpg-z0-Tt1"/>
+                        <constraint firstItem="RGf-Rb-Hv6" firstAttribute="bottom" secondItem="SVJ-aE-VLO" secondAttribute="bottom" id="yC5-NF-B8p"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="type">
