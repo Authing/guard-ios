@@ -28,7 +28,9 @@ open class DeleteAccountButton: PrimaryButton {
     }
     
     @objc private func onClick(sender: UIButton) {
-        
+       
+       startLoading()
+       
         if let user = Authing.getCurrentUser() {
             
             if (user.phone == nil || user.phone == "") &&
@@ -46,7 +48,8 @@ open class DeleteAccountButton: PrimaryButton {
     private func deleteAccount() {
         DispatchQueue.main.async() {
             Util.getAuthClient(self).deleteAccount { code, message in
-                    self.onDeleteAccount?(code, message)
+               self.stopLoading()
+               self.onDeleteAccount?(code, message)
             }
         }
     }
@@ -56,28 +59,38 @@ open class DeleteAccountButton: PrimaryButton {
             if let text = password.text,
                text != "" {
                 Util.getAuthClient(self).checkPassword(password: text) { code, message in
-                    if code == 200 {
-                        self.deleteAccount()
-                    } else {
-                        Util.setError(self, message)
-                    }
+                   if code == 200 {
+                      self.deleteAccount()
+                   } else {
+                      self.stopLoading()
+                      Util.setError(self, message)
+                   }
                 }
             } else {
+               self.stopLoading()
                 Util.setError(self, "authing_password_hint".L)
             }
+        } else {
+           self.stopLoading()
         }
     }
     
     private func checkPhoneCode() {
         if let tfCode: VerifyCodeTextField = Util.findView(self, viewClass: VerifyCodeTextField.self) {
            if let phone = Authing.getCurrentUser()?.phone,
-                   let code = tfCode.text {
-                    Util.getAuthClient(self).loginByPhoneCode(phone: phone, code: code) { code, message, user in
-                        if code == 200 && user != nil {
-                            self.deleteAccount()
-                        }
-                    }
-            }
+              let code = tfCode.text {
+              Util.getAuthClient(self).loginByPhoneCode(phone: phone, code: code) { code, message, user in
+                  if code == 200 && user != nil {
+                      self.deleteAccount()
+                  } else {
+                     self.stopLoading()
+                  }
+              }
+           } else {
+              self.stopLoading()
+           }
+        } else {
+           self.stopLoading()
         }
     }
 }
