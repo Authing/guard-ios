@@ -115,7 +115,7 @@ public class OIDCClient: NSObject {
         + "&grant_type=http://authing.cn/oidc/grant_type/authing_token"
         + "&token=" + (userInfo?.token ?? "")
         + "&scope=" + self.authRequest.scope.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-        + (secret == nil ? "&code_challenge=" + self.authRequest.codeChallenge! + "&code_challenge_method=S256" : "");
+        + (secret == nil ? "&code_challenge=" + self.authRequest.codeChallenge! + "&code_challenge_method=S256" : "&client_secret=\(secret!)");
 
         request(userInfo: nil, endPoint: "/oidc/token", method: "POST", body: body) { code, message, data in
             if (code == 200) {
