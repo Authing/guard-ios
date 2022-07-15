@@ -99,7 +99,7 @@ extension FeedBackController: UITableViewDelegate, UITableViewDataSource {
         
         switch items[indexPath.row] {
         case .phoneTitle, .issuesTitle, .issuesDesTitle, .photoTitle, .issuesTips:
-            let label = UILabel.init(frame: CGRect(x: 24, y: 20, width: 100, height: 30))
+            let label = UILabel.init(frame: CGRect(x: 24, y: 20, width: Const.SCREEN_WIDTH - 48, height: 30))
             label.font = UIFont.systemFont(ofSize: 16)
             cell.contentView.addSubview(label)
             if items[indexPath.row] == .phoneTitle {
