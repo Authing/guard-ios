@@ -204,11 +204,19 @@ class GuardTests: XCTestCase {
     }
     
     func testPerformanceLoginByAccount() throws {
-        // This is an example of a performance test case.
         self.measure {
-            // Put the code you want to measure the time of here.
             let expectation = XCTestExpectation(description: "loginByAccount")
             AuthClient().loginByAccount(account: account, password: password) { code, message, userInfo in
+                expectation.fulfill()
+            }
+            wait(for: [expectation], timeout: TIMEOUT)
+        }
+    }
+    
+    func testPerformanceOIDCLoginByAccount() throws {
+        self.measure {
+            let expectation = XCTestExpectation(description: "OIDC loginByAccount")
+            OIDCClient().loginByAccount(account: account, password: password) { code, message, userInfo in
                 expectation.fulfill()
             }
             wait(for: [expectation], timeout: TIMEOUT)
