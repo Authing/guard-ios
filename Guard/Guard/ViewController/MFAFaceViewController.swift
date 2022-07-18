@@ -257,9 +257,9 @@ extension MFAFaceViewController {
                                 if code == 200{
                                     self?.tipLabel.text = "authing_mfa_bind_success".L
                                 
-                                    if let vc = self?.navigationController as? AuthNavigationController {
+                                    if let flow = self?.authFlow {
                                         self?.session.stopRunning()
-                                        vc.complete(code, msg, userInfo)
+                                        flow.complete(code, msg, userInfo)
                                     }
                                 } else {
                                     self?.tipLabel.text = msg
@@ -297,9 +297,9 @@ extension MFAFaceViewController {
                                 if code == 200{
                                     self?.tipLabel.text = "authing_mfa_verify_success".L
                                 
-                                    if let vc = self?.navigationController as? AuthNavigationController {
+                                    if let flow = self?.authFlow {
                                         self?.session.stopRunning()
-                                        vc.complete(code, msg, userInfo)
+                                        flow.complete(code, msg, userInfo)
                                     }
                                 } else {
                                     self?.tipLabel.text = msg

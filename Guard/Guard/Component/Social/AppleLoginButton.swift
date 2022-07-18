@@ -47,8 +47,8 @@ open class AppleLoginButton: SocialLoginButton, ASAuthorizationControllerDelegat
                     DispatchQueue.main.async() {
                         self.stopLoading()
                         if (code == 200) {
-                            if let vc = self.authViewController?.navigationController as? AuthNavigationController {
-                                vc.complete(code, message, userInfo)
+                            if let flow = self.authViewController?.authFlow {
+                                flow.complete(code, message, userInfo)
                             }
                         } else {
                             Util.setError(self, message)

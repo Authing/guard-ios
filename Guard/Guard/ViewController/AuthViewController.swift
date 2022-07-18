@@ -8,6 +8,7 @@
 open class AuthViewController: UIViewController {
     
     public var authFlow: AuthFlow? = AuthFlow()
+    public var isPresent = false
     
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +54,11 @@ open class AuthViewController: UIViewController {
     }
 
     @IBAction func onCloseClick(_ sender: UIButton, forEvent event: UIEvent) {
-        self.navigationController?.dismiss(animated: true, completion: nil)
+        if isPresent == true {
+            self.navigationController?.dismiss(animated: true, completion: nil)
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
     }
     
     @objc private func onBack(sender: UIButton) {
