@@ -225,8 +225,8 @@ open class UserInfoCompleteButton: PrimaryButton {
     
     private func done(_ code: Int, _ message: String?, _ userInfo: UserInfo?) {
         DispatchQueue.main.async() {
-            if let vc = self.authViewController?.navigationController as? AuthNavigationController {
-                vc.complete(code, message, userInfo)
+            if let flow = self.authViewController?.authFlow {
+                flow.complete(code, message, userInfo)
             }
         }
     }

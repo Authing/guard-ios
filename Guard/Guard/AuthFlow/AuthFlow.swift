@@ -26,6 +26,9 @@ public class AuthFlow {
     public static let KEY_MFA_PHONE: String = "mfa_phone"
     public static let KEY_MFA_EMAIL: String = "mfa_email"
     
+    public var startViewController: UIViewController?
+    public var authCompletion: Authing.AuthCompletion?
+    
     public var data: NSDictionary = NSMutableDictionary()
     
     // nil means Authing default. don't set value otherwise engine won't know from which bundle to load xib
@@ -68,7 +71,7 @@ public class AuthFlow {
     
     public static func showUserProfile() {
         let vc = UserProfileViewController(nibName: "AuthingUserProfile", bundle: Bundle(for: Self.self))
-        let nav: AuthNavigationController = AuthNavigationController(rootViewController: vc)
+        let nav = UINavigationController(rootViewController: vc)
         nav.setNavigationBarHidden(true, animated: false)
         nav.modalPresentationStyle = UIModalPresentationStyle.fullScreen
         UIApplication.topViewController()!.present(nav, animated: true, completion: nil)
@@ -82,20 +85,43 @@ public class AuthFlow {
             vc = IndexAuthViewController(nibName: "AuthingLogin", bundle: Bundle(for: Self.self))
         }
         
-        guard vc != nil else {
+        guard let target = vc else {
             return
         }
 
-        vc?.authFlow = self
-        let nav: AuthNavigationController = AuthNavigationController(rootViewController: vc!)
-        nav.setNavigationBarHidden(true, animated: false)
-        nav.setAuthCompletion(authCompletion)
-        nav.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+        target.authFlow = self
+        self.authCompletion = authCompletion
+        
         if let topVC = UIApplication.topViewController() {
-            topVC.present(nav, animated: true, completion: nil)
+            _start(topVC, target)
         } else {
             DispatchQueue.main.async() {
-                UIApplication.topViewController()?.present(nav, animated: true, completion: nil)
+                if let topVC = UIApplication.topViewController() {
+                    self._start(topVC, target)
+                }
+            }
+        }
+    }
+    
+    private func _start(_ topVC: UIViewController, _ target: AuthViewController) {
+        startViewController = topVC
+        if let n = topVC.navigationController {
+            target.isPresent = false
+            n.pushViewController(target, animated: true)
+        } else {
+            target.isPresent = true
+            let nav = UINavigationController(rootViewController: target)
+            nav.setNavigationBarHidden(true, animated: false)
+            nav.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+            topVC.present(nav, animated: true, completion: nil)
+        }
+    }
+    
+    public func complete(_ code: Int, _ message: String?, _ userInfo: UserInfo?, animated: Bool = true) {
+        if let n = startViewController?.navigationController {
+            n.popToViewController(startViewController!, animated: true)
+            DispatchQueue.main.async() {
+                self.authCompletion?(code, message, userInfo)
             }
         }
     }
@@ -161,10 +187,9 @@ public class AuthFlow {
         vc.view = rootView
         DispatchQueue.main.async() {
             if let topVC = UIApplication.topViewController() {
-                let nav: AuthNavigationController = AuthNavigationController(rootViewController: vc)
+                let nav = UINavigationController(rootViewController: vc)
                 nav.modalPresentationStyle = UIModalPresentationStyle.fullScreen
                 nav.setNavigationBarHidden(true, animated: false)
-                nav.setAuthCompletion(authCompletion)
                 topVC.present(nav, animated: true, completion: nil)
             } else {
                 ALog.e(Self.self, "startAppBundle failed for \(appid). No view controller for current app")
@@ -182,6 +207,8 @@ public class AuthFlow {
     
     func copy(with zone: NSZone? = nil) -> Any {
         let copy = AuthFlow(data)
+        copy.startViewController = self.startViewController
+        copy.authCompletion = self.authCompletion
         copy.loginXibName = self.loginXibName
         copy.registerXibName = self.registerXibName
         copy.forgotPasswordXibName = self.forgotPasswordXibName

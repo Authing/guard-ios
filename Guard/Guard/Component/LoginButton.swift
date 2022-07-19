@@ -165,8 +165,8 @@ open class LoginButton: PrimaryButton {
                     vc?.authFlow?.data.setValue(missingFields, forKey: AuthFlow.KEY_EXTENDED_FIELDS)
                     self.authViewController?.navigationController?.pushViewController(vc!, animated: true)
                 } else {
-                    if let vc = self.authViewController?.navigationController as? AuthNavigationController {
-                        vc.complete(code, message, userInfo)
+                    if let flow = self.authViewController?.authFlow {
+                        flow.complete(code, message, userInfo)
                     }
                 }
             }

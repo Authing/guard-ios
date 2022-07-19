@@ -121,7 +121,6 @@
 		7EF66C5F277BFB7100FCBBEB /* LocalizeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C5E277BFB7100FCBBEB /* LocalizeHelper.swift */; };
 		7EF66C61277BFD0900FCBBEB /* GoRegisterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C60277BFD0900FCBBEB /* GoRegisterButton.swift */; };
 		7EF66C63277BFD5B00FCBBEB /* GoSomewhereButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C62277BFD5B00FCBBEB /* GoSomewhereButton.swift */; };
-		7EF66C65277C0B6F00FCBBEB /* AuthNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C64277C0B6F00FCBBEB /* AuthNavigationController.swift */; };
 		7EF66C67277C119800FCBBEB /* IndexAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C66277C119800FCBBEB /* IndexAuthViewController.swift */; };
 		7EF66C69277C197900FCBBEB /* RegisterMethodTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C68277C197900FCBBEB /* RegisterMethodTab.swift */; };
 		7EF66C6B277C1BF600FCBBEB /* MethodTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C6A277C1BF600FCBBEB /* MethodTabItem.swift */; };
@@ -278,7 +277,6 @@
 		7EF66C5E277BFB7100FCBBEB /* LocalizeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizeHelper.swift; sourceTree = "<group>"; };
 		7EF66C60277BFD0900FCBBEB /* GoRegisterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoRegisterButton.swift; sourceTree = "<group>"; };
 		7EF66C62277BFD5B00FCBBEB /* GoSomewhereButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoSomewhereButton.swift; sourceTree = "<group>"; };
-		7EF66C64277C0B6F00FCBBEB /* AuthNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNavigationController.swift; sourceTree = "<group>"; };
 		7EF66C66277C119800FCBBEB /* IndexAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexAuthViewController.swift; sourceTree = "<group>"; };
 		7EF66C68277C197900FCBBEB /* RegisterMethodTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterMethodTab.swift; sourceTree = "<group>"; };
 		7EF66C6A277C1BF600FCBBEB /* MethodTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodTabItem.swift; sourceTree = "<group>"; };
@@ -458,7 +456,6 @@
 		7E75667C2766F9CE00C3872F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				7EF66C64277C0B6F00FCBBEB /* AuthNavigationController.swift */,
 				7E75667D2766F9DD00C3872F /* AuthViewController.swift */,
 				7EF66C66277C119800FCBBEB /* IndexAuthViewController.swift */,
 				7E12D7B9277DEE6F00703FC1 /* UserProfileViewController.swift */,
@@ -948,7 +945,6 @@
 				7EA2DD3C27CC84CB00B3E19D /* SocialLoginListView.swift in Sources */,
 				7E959441274CEECF001459C5 /* Authing.swift in Sources */,
 				A8628F5C286D985200D7300E /* MFAFaceViewController.swift in Sources */,
-				7EF66C65277C0B6F00FCBBEB /* AuthNavigationController.swift in Sources */,
 				7ED434CE27757E4B00893EDD /* LoginContainer.swift in Sources */,
 				7E12D7B6277DE9EF00703FC1 /* UserManager.swift in Sources */,
 				7E02F46727950C35007FA048 /* UserInfoCompleteContainer.swift in Sources */,
