@@ -35,7 +35,7 @@ open class UserInfo: NSObject {
     @objc public var token: String?
     @objc public var idToken: String? { // used as id token
         get {
-            return token ?? raw?["id_token"] as? String
+            return raw?["id_token"] as? String ?? token
         }
     }
     @objc public var accessToken: String? {
