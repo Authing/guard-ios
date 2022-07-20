@@ -20,6 +20,7 @@ public class Const: NSObject {
     public static let Color_BG_Gray = UIColor(red: 0.937, green: 0.937, blue: 0.937, alpha: 1)
     public static let Color_Border_Gray = UIColor(red: 0.828, green: 0.856, blue: 0.888, alpha: 1)
     public static let Color_BG_Text_Box = UIColor(red: 0.96, green: 0.96, blue: 0.98, alpha: 1)
+    public static let Color_Text_Default_Gray = UIColor(red: 134.0/255.0, green: 144.0/255.0, blue: 156.0/255.0, alpha: 1.0)
     
     public static let ONEPX = 1 / UIScreen.main.scale
     

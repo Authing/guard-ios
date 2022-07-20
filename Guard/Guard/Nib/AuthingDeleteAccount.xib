@@ -50,7 +50,7 @@
                     </constraints>
                 </view>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fIc-FM-uF2" customClass="VerifyCodeTextField" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="24" y="166" width="258" height="48"/>
+                    <rect key="frame" x="24" y="166" width="250" height="48"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="Tjj-lR-aOW"/>
                     </constraints>
@@ -104,7 +104,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="3gb-Uz-e2G" secondAttribute="trailing" constant="24" id="H4F-YV-cgn"/>
                 <constraint firstItem="BaD-9j-1wT" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="KmK-sE-yjO"/>
                 <constraint firstItem="fIc-FM-uF2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="MY2-HH-YZA"/>
-                <constraint firstItem="3gb-Uz-e2G" firstAttribute="leading" secondItem="fIc-FM-uF2" secondAttribute="trailing" constant="8" symbolic="YES" id="Wek-sS-8QV"/>
+                <constraint firstItem="3gb-Uz-e2G" firstAttribute="leading" secondItem="fIc-FM-uF2" secondAttribute="trailing" constant="16" id="Wek-sS-8QV"/>
                 <constraint firstItem="yee-GA-qLR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="bPq-a6-q5b"/>
                 <constraint firstItem="0tI-kK-QVR" firstAttribute="top" secondItem="pnn-De-VGT" secondAttribute="bottom" constant="8" symbolic="YES" id="bbn-F6-Tbu"/>
                 <constraint firstItem="fIc-FM-uF2" firstAttribute="top" secondItem="pnn-De-VGT" secondAttribute="bottom" constant="8" id="dH7-7K-doz"/>

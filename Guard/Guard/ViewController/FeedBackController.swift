@@ -40,8 +40,10 @@ enum FeedBackItem {
     
     func height() -> CGFloat {
         switch self {
-        case .phoneTitle, .issuesTitle, .issuesDesTitle, .photoTitle:
+        case .phoneTitle, .issuesDesTitle, .photoTitle:
             return 54
+        case .issuesTitle:
+            return 39
         case .phoneContent:
             return 52
         case .issuesContent:
@@ -53,7 +55,7 @@ enum FeedBackItem {
         case .photoContent:
             return (UIScreen.main.bounds.width - 15) / 4 * 2 + 5
         case .errorMessage:
-            return 20
+            return 15
         case .feedBack:
             return 44
         }
@@ -67,6 +69,7 @@ class FeedBackController: AuthViewController {
     
     private var items: [FeedBackItem] = [.phoneTitle,
                                          .phoneContent,
+                                         .errorMessage,
                                          .issuesTitle,
                                          .issuesContent,
                                          .issuesTips,
@@ -74,7 +77,6 @@ class FeedBackController: AuthViewController {
                                          .issuesDesContent,
                                          .photoTitle,
                                          .photoContent,
-                                         .errorMessage,
                                          .feedBack]
     
     override func viewDidLoad() {
@@ -97,9 +99,13 @@ extension FeedBackController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.selectionStyle = .none
         
+        for view in cell.contentView.subviews {
+            view.removeFromSuperview()
+        }
+        
         switch items[indexPath.row] {
         case .phoneTitle, .issuesTitle, .issuesDesTitle, .photoTitle, .issuesTips:
-            let label = UILabel.init(frame: CGRect(x: 24, y: 20, width: Const.SCREEN_WIDTH - 48, height: 30))
+            let label = UILabel.init(frame: CGRect(x: 24, y: 15, width: Const.SCREEN_WIDTH - 48, height: items[indexPath.row].height() - 15))
             label.font = UIFont.systemFont(ofSize: 16)
             cell.contentView.addSubview(label)
             if items[indexPath.row] == .phoneTitle {
@@ -113,7 +119,8 @@ extension FeedBackController: UITableViewDelegate, UITableViewDataSource {
             } else if items[indexPath.row] == .issuesTips {
                 
                 label.frame = CGRect(x: 24, y: 24, width: Const.SCREEN_WIDTH - 48, height: 70)
-                label.textColor = Const.Color_Text_Gray
+                label.textColor = Const.Color_Text_Default_Gray
+
                 label.numberOfLines = 0
                 
                 let  paraph =  NSMutableParagraphStyle ()
@@ -122,6 +129,11 @@ extension FeedBackController: UITableViewDelegate, UITableViewDataSource {
                                     NSAttributedString.Key.paragraphStyle : paraph]
                 label.attributedText =  NSAttributedString(string: items[indexPath.row].title() ?? "", attributes: attributes)
                 
+            } else if items[indexPath.row] == .issuesTitle {
+
+                label.frame = CGRect(x: 24, y: 0 , width: Const.SCREEN_WIDTH - 48, height: 39)
+                label.text = items[indexPath.row].title()
+                
             } else {
                 label.text = items[indexPath.row].title()
             }
@@ -129,6 +141,7 @@ extension FeedBackController: UITableViewDelegate, UITableViewDataSource {
         case .phoneContent:
             let at = AccountTextField.init(frame: CGRect(x: 24, y: 0, width: Const.SCREEN_WIDTH - 48, height: 48))
             at.placeholder = "authing_input_phone_or_email".L
+            at.hintColor = Const.Color_Text_Default_Gray
             cell.contentView.addSubview(at)
             break
         case .issuesContent:
@@ -144,7 +157,7 @@ extension FeedBackController: UITableViewDelegate, UITableViewDataSource {
             cell.contentView.addSubview(picker)
             break
         case .errorMessage:
-            let error = ErrorLabel.init(frame: CGRect(x: 24, y: 0, width: Const.SCREEN_WIDTH - 48, height: 20))
+            let error = ErrorLabel.init(frame: CGRect(x: 24, y: 0, width: Const.SCREEN_WIDTH - 48, height: 15))
             cell.contentView.addSubview(error)
             break
         case .feedBack:

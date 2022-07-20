@@ -588,6 +588,10 @@ public class AuthClient: Client {
     public func loginByScannedTicket(ticket: String, completion: @escaping(Int, String?, NSDictionary?) -> Void) {
         post("/api/v2/qrcode/confirm", ["random" : ticket], completion: completion)
     }
+    
+    public func cancelByScannedTicket(ticket: String, completion: @escaping(Int, String?, NSDictionary?) -> Void) {
+        post("/api/v2/qrcode/cancel", ["random" : ticket], completion: completion)
+    }
 
     // MARK: Util APIs
     public func createUserInfo(_ code: Int, _ message: String?, _ data: NSDictionary?, completion: @escaping(Int, String?, UserInfo?) -> Void) {

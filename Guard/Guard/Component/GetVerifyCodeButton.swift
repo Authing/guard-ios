@@ -36,7 +36,9 @@ open class GetVerifyCodeButton: LoadingButton {
     private func setup() {
         
         backgroundColor = Const.Color_BG_Text_Box
-
+        layer.cornerRadius = 4
+        clipsToBounds = true
+        
         if (title(for: .normal) == nil) {
             let text: String = "authing_get_verify_code".L
             setTitle(text, for: .normal)

@@ -40,7 +40,7 @@ public class MethodTabItem: UIView {
     
     public func loseFocus() {
         isFocuse = false
-        content.textColor = UIColor(white: 0.8, alpha: 1)
+        content.textColor = Const.Color_Text_Default_Gray
     }
     
     public func focusGained() {

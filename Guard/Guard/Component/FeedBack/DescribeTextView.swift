@@ -40,7 +40,8 @@ open class DescribeTextView: UIView {
         placeholderLabel.sizeToFit()
         textView.addSubview(placeholderLabel)
         placeholderLabel.frame.origin = CGPoint(x: 5, y: (textView.font?.pointSize)! / 2)
-        placeholderLabel.textColor = Const.Color_Text_Gray
+        placeholderLabel.textColor = Const.Color_Text_Default_Gray
+
         placeholderLabel.isHidden = !textView.text.isEmpty
         
         textCountLabel = UILabel.init(frame: CGRect(x: self.frame.width - 90, y: self.frame.height - 35, width: 80, height: 30))

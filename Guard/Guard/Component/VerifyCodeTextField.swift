@@ -18,7 +18,7 @@ open class VerifyCodeTextField: TextFieldLayout {
 
     private func setup() {
         self.keyboardType = .numberPad
-        
+                
         if let image = UIImage(named: "authing_check", in: Bundle(for: Self.self), compatibleWith: nil){
             self.updateIconImage(icon: image)
         }

@@ -32,11 +32,11 @@ open class FeedBackIssuePicker: TextFieldLayout {
     func setup() {
         
         self.text = items.first
-        textColor = Const.Color_Text_Gray
+        textColor = Const.Color_Text_Default_Gray
         
         let pullDownImageView = UIImageView.init(image: UIImage.init(named: "authing_pull", in: Bundle(for: Self.self), compatibleWith: nil))
         pullDownImageView.contentMode = .scaleAspectFit
-        pullDownImageView.frame = CGRect(x: self.frame.width - 35, y: self.frame.height / 2 - 7.5, width: 15, height: 15)
+        pullDownImageView.frame = CGRect(x: self.frame.width - 36, y: self.frame.height / 2 - 12, width: 24, height: 24)
         self.addSubview(pullDownImageView)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))

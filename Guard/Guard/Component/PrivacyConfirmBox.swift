@@ -9,7 +9,7 @@ import CoreGraphics
 
 open class PrivacyToast: UIView {
     
-    let privacyBox: PrivacyConfirmBox = PrivacyConfirmBox(size: 18)
+    let privacyBox: PrivacyConfirmBox = PrivacyConfirmBox(size: 18, showButton: false)
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,10 +46,10 @@ open class PrivacyToast: UIView {
         privacyBox.fontSize = 16
         privacyView.addSubview(privacyBox)
         privacyBox.translatesAutoresizingMaskIntoConstraints = false
-        privacyBox.leadingAnchor.constraint(equalTo: privacyView.leadingAnchor, constant: 20).isActive = true
+        privacyBox.leadingAnchor.constraint(equalTo: privacyView.leadingAnchor, constant: 0).isActive = true
         privacyBox.trailingAnchor.constraint(equalTo: privacyView.trailingAnchor, constant: -20).isActive = true
-        privacyBox.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        privacyBox.topAnchor.constraint(equalTo: privacyView.topAnchor, constant: (160 - 56)/2 - 10).isActive = true
+        privacyBox.heightAnchor.constraint(equalToConstant: 160 - 56).isActive = true
+        privacyBox.topAnchor.constraint(equalTo: privacyView.topAnchor, constant: 0).isActive = true
 
         let line = UIView.init()
         line.backgroundColor = UIColor.init(red: 0.906, green: 0.906, blue: 0.906, alpha: 1)
@@ -100,12 +100,9 @@ open class PrivacyToast: UIView {
     }
     
     @objc func doneClick(sender: UIButton) {
-        self.privacyBox.isChecked = true
-        
-        if let privacy: PrivacyConfirmBox = Util.findView(self.viewController?.view ?? UIView(), viewClass: PrivacyConfirmBox.self) {
-            privacy.isChecked = true
+        if let button = Util.findView(self, viewClass: PrivacyConfirmBox.self) as? PrivacyConfirmBox {
+            button.isChecked = true
         }
-        
         self.removeSelf()
     }
     
@@ -139,11 +136,13 @@ open class PrivacyConfirmBox: UIView, UITextViewDelegate {
     
     var fontSize = 12.0
     
+    var showButton: Bool = true
+    
     let imageUnchecked = UIImage(named: "authing_checkbox_unchecked", in: Bundle(for: PrivacyConfirmBox.self), compatibleWith: nil)
     let imageChecked = UIImage(named: "authing_checkbox_checked", in: Bundle(for: PrivacyConfirmBox.self), compatibleWith: nil)
     let checkBox: UIButton = UIButton()
     let checkBoxImageView: UIImageView = UIImageView()
-    let label: UITextView = UITextView()
+    let label: VerticallyCenteredTextView = VerticallyCenteredTextView()
     
     public var isChecked: Bool = false {
         didSet {
@@ -155,8 +154,9 @@ open class PrivacyConfirmBox: UIView, UITextViewDelegate {
         }
     }
     
-    convenience init(size: CGFloat = 15.0){
+    convenience init(size: CGFloat = 15.0, showButton: Bool = true){
         self.init(frame: CGRect.zero)
+        self.showButton = showButton
         self.size = size
         setup()
     }
@@ -172,17 +172,16 @@ open class PrivacyConfirmBox: UIView, UITextViewDelegate {
 
     private func setup() {
         isHidden = true
+        
+        if showButton == false {
+            checkBoxImageView.isHidden = true
+            checkBox.isHidden = true
+        }
+        
         addSubview(checkBoxImageView)
         addSubview(checkBox)
         addSubview(label)
-        
-        checkBoxImageView.image = imageUnchecked
-        checkBoxImageView.translatesAutoresizingMaskIntoConstraints = false
-        checkBoxImageView.widthAnchor.constraint(equalToConstant: size).isActive = true
-        checkBoxImageView.heightAnchor.constraint(equalToConstant: size).isActive = true
-        checkBoxImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
-        checkBoxImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
-        
+                
         checkBox.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
         checkBox.translatesAutoresizingMaskIntoConstraints = false
         checkBox.widthAnchor.constraint(equalToConstant: 20).isActive = true
@@ -190,9 +189,21 @@ open class PrivacyConfirmBox: UIView, UITextViewDelegate {
         checkBox.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
         checkBox.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
         
+        checkBoxImageView.image = imageUnchecked
+        checkBoxImageView.translatesAutoresizingMaskIntoConstraints = false
+        checkBoxImageView.widthAnchor.constraint(equalToConstant: size).isActive = true
+        checkBoxImageView.heightAnchor.constraint(equalToConstant: size).isActive = true
+        checkBoxImageView.centerXAnchor.constraint(equalTo: checkBox.centerXAnchor).isActive = true
+        checkBoxImageView.centerYAnchor.constraint(equalTo: checkBox.centerYAnchor).isActive = true
+
         label.delegate = self
         label.isEditable = false
         label.isScrollEnabled = false
+        label.linkTextAttributes = [
+            .foregroundColor: UIColor.init(red: 29/255, green: 33/255, blue: 41/255, alpha: 1.0),
+            .underlineColor: UIColor.clear
+        ]
+        label.textColor = UIColor.blue
         label.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.leadingAnchor.constraint(equalTo: checkBox.trailingAnchor, constant: 0).isActive = true
@@ -236,8 +247,10 @@ open class PrivacyConfirmBox: UIView, UITextViewDelegate {
                                 options: [.documentType: NSMutableAttributedString.DocumentType.html],
                                 documentAttributes: nil)
                             let para = NSMutableParagraphStyle.init()
-                            attributedString?.addAttribute(NSAttributedString.Key.paragraphStyle, value: para, range: NSMakeRange(0, attributedString?.length ?? 0))
-                            attributedString?.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: fontSize), range:  NSMakeRange(0, attributedString?.length ?? 0))
+
+                            attributedString?.addAttributes([NSAttributedString.Key.paragraphStyle : para,
+                                                             NSAttributedString.Key.font : UIFont.systemFont(ofSize: fontSize),
+                                                             NSAttributedString.Key.foregroundColor : Const.Color_Text_Default_Gray], range: NSMakeRange(0, attributedString?.length ?? 0))
 
                             self.label.attributedText = attributedString
                             shouldShow = true
@@ -271,5 +284,17 @@ open class PrivacyConfirmBox: UIView, UITextViewDelegate {
     
     public func textViewDidChangeSelection(_ textView: UITextView) {
         label.selectedTextRange = nil
+    }
+}
+
+
+class VerticallyCenteredTextView: UITextView {
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    
+        let rect = layoutManager.usedRect(for: textContainer)
+        let topInset = (bounds.size.height - rect.height) / 2.0
+        textContainerInset.top = max(0, topInset)
     }
 }

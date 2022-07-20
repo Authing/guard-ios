@@ -13,8 +13,12 @@ open class AuthViewController: UIViewController {
     open override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(false, animated: true)
-        let backImage = UIImage(named: "authing_back", in: Bundle(for: Self.self), compatibleWith: nil)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(onBack))
+
+        let backButton = UIButton.init(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+        backButton.setImage( UIImage(named: "authing_back", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
+        backButton.addTarget(self, action: #selector(onBack), for: .touchUpInside)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: backButton)
+        
 //        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         // make navigation bar clear

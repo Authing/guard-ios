@@ -76,7 +76,7 @@ extension ImagePickerView : UICollectionViewDelegate, UICollectionViewDataSource
             cell.contentView.addSubview(item)
             
             let deleteButton = UIButton.init(frame: CGRect(x: itemWidth - 30, y: 0, width: 30, height: 30))
-            deleteButton.setImage(UIImage.init(named: "authing_close", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
+            deleteButton.setImage(UIImage.init(named: "authing_delete", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
             deleteButton.tag = indexPath.row
             deleteButton.addTarget(self, action: #selector(deleteImage(_:)), for: .touchUpInside)
             cell.contentView.addSubview(deleteButton)

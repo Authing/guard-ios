@@ -22,6 +22,8 @@ open class TextFieldLayout: BaseInput, UITextFieldDelegate {
 
     private func setup() {
         self.delegate = self
+        
+//        hintColor = Const.Color_Text_Default_Gray
         backgroundColor = Const.Color_BG_Text_Box
         layer.borderWidth = 1
         layer.cornerRadius = 4
@@ -51,8 +53,27 @@ open class TextFieldLayout: BaseInput, UITextFieldDelegate {
         super.layoutSubviews()
         border.frame = CGRect(x: -2, y: -2, width: frame.width + 4, height: frame.height + 4)
         border.setNeedsDisplay()
+        
+        tintClearImage()
     }
 
+    private func tintClearImage() {
+        for view in subviews {
+            if view is UIButton {
+                let button = view as! UIButton
+                if let _ = button.image(for: .highlighted) {
+                    let image = UIImage(named: "authing_clear_button", in: Bundle(for: Self.self), compatibleWith: nil)
+                    button.setImage(image, for: .normal)
+                    button.setImage(image, for: .highlighted)
+                }
+            }
+        }
+    }
+
+    open override func clearButtonRect(forBounds bounds: CGRect) -> CGRect {
+        return CGRect(x: self.frame.width - self.frame.height, y: 0, width: self.frame.height, height: self.frame.height)
+    }
+    
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         border.setHighlight(true)
         layer.borderColor = Const.Color_Authing_Main.cgColor
