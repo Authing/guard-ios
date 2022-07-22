@@ -53,7 +53,16 @@ public class PhoneNumberTextField: AccountTextField {
                 self.leftView = countryCodeView
             }
         }
-        
+    }
+    
+    
+    @objc public override func textFieldDidChange(textField: UITextField) {
+        if let text = textField.text {
+            if (text.count) > 11 {
+                self.text = String(text.prefix(11))
+            }
+        }
+
     }
     
         
@@ -63,6 +72,7 @@ public class PhoneNumberTextField: AccountTextField {
         if textField.text?.isEmpty == true {
             Util.setError(self, "authing_phone_none".L)
         }
+
     }
     
     override func syncData() {

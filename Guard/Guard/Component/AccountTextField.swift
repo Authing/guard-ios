@@ -26,7 +26,7 @@ open class AccountTextField: TextFieldLayout {
         addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     
-    @objc final private func textFieldDidChange(textField: UITextField) {
+    @objc public func textFieldDidChange(textField: UITextField) {
         Util.setError(self, "")
     }
     
