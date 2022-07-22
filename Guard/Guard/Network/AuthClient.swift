@@ -173,22 +173,22 @@ public class AuthClient: Client {
             }
         }
     }
-    
-    public func loginByLDAP(username: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        let encryptedPassword = Util.encryptPassword(password)
-        let body: NSDictionary = ["username" : username, "password" : encryptedPassword]
-        post("/api/v2/login/ldap", body) { code, message, data in
-            self.createUserInfo(code, message, data, completion: completion)
-        }
-    }
-    
-    public func loginByAD(username: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        let encryptedPassword = Util.encryptPassword(password)
-        let body: NSDictionary = ["username" : username, "password" : encryptedPassword]
-        post("/api/v2/login/ad", body) { code, message, data in
-            self.createUserInfo(code, message, data, completion: completion)
-        }
-    }
+//
+//    public func loginByLDAP(username: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+//        let encryptedPassword = Util.encryptPassword(password)
+//        let body: NSDictionary = ["username" : username, "password" : encryptedPassword]
+//        post("/api/v2/login/ldap", body) { code, message, data in
+//            self.createUserInfo(code, message, data, completion: completion)
+//        }
+//    }
+//
+//    public func loginByAD(username: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+//        let encryptedPassword = Util.encryptPassword(password)
+//        let body: NSDictionary = ["username" : username, "password" : encryptedPassword]
+//        post("/api/v2/login/ad", body) { code, message, data in
+//            self.createUserInfo(code, message, data, completion: completion)
+//        }
+//    }
     
     public func loginByOneAuth(token: String, accessToken: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let body: NSDictionary = ["token" : token, "accessToken" : accessToken]
