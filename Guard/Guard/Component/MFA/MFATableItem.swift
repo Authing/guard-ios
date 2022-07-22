@@ -58,6 +58,7 @@ open class MFATableItem: UIView {
     
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
         var vc: AuthViewController? = nil
+
         if (mfaType == .phone) {
             if let phone = Authing.getCurrentUser()?.mfaPhone {
                 vc = AuthViewController(nibName: "AuthingMFAPhone1", bundle: Bundle(for: Self.self))
@@ -76,6 +77,7 @@ open class MFATableItem: UIView {
             vc = AuthViewController(nibName: "AuthingMFAOTP", bundle: Bundle(for: Self.self))
         } else if (mfaType == .face) {
             vc = MFAFaceViewController.init()
+            vc?.authFlow = authViewController?.authFlow?.copy() as? AuthFlow
         }
         self.authViewController?.navigationController?.pushViewController(vc!, animated: true)
     }

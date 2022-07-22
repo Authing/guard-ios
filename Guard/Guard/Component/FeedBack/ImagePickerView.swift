@@ -69,10 +69,12 @@ extension ImagePickerView : UICollectionViewDelegate, UICollectionViewDataSource
             cell.contentView.backgroundColor = Const.Color_BG_Text_Box
             let add = UIImageView.init(image: UIImage.init(named: "authing_add", in: Bundle(for: Self.self), compatibleWith: nil))
             add.frame = CGRect(x: (itemWidth - 15) / 2, y: (itemWidth - 15) / 2, width: 15, height: 15)
+            add.layer.cornerRadius = 4
             cell.contentView.addSubview(add)
         } else {
             let item = UIImageView.init(image: items[indexPath.row])
             item.frame = CGRect(x: 0, y: 0, width: itemWidth, height: itemWidth)
+            item.layer.cornerRadius = 4
             cell.contentView.addSubview(item)
             
             let deleteButton = UIButton.init(frame: CGRect(x: itemWidth - 30, y: 0, width: 30, height: 30))

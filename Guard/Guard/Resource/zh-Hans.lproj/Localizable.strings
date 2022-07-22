@@ -15,7 +15,7 @@
 "authing_no_account" = "没有帐号？";
 "authing_register_now" = "立即注册";
 "authing_welcome_to" = "欢迎加入";
-"authing_register_by_phone" = "手机号验证码";
+"authing_register_by_phone" = "短信验证码";
 "authing_register_by_email" = "邮箱密码";
 "authing_register_by_emailCode" = "邮箱验证码";
 "authing_password_hint" = "请输入密码";
@@ -129,3 +129,5 @@
 "authing_feedback_description" = "问题描述";
 "authing_feedback_screenshot" = "问题截图";
 "authing_feedback_error" = "请输入手机号或邮箱";
+
+"authing_verify_resend" = "重新获取";

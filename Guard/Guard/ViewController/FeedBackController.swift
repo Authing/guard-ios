@@ -57,7 +57,7 @@ enum FeedBackItem {
         case .errorMessage:
             return 15
         case .feedBack:
-            return 44
+            return 48
         }
     }
 }
@@ -161,7 +161,7 @@ extension FeedBackController: UITableViewDelegate, UITableViewDataSource {
             cell.contentView.addSubview(error)
             break
         case .feedBack:
-            let button = FeedBackButton.init(frame: CGRect(x: 24, y: 0, width: Const.SCREEN_WIDTH - 48, height: 44))
+            let button = FeedBackButton.init(frame: CGRect(x: 24, y: 0, width: Const.SCREEN_WIDTH - 48, height: 48))
             cell.contentView.addSubview(button)
             break
         }

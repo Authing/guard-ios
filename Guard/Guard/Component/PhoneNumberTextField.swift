@@ -53,13 +53,22 @@ public class PhoneNumberTextField: AccountTextField {
                 self.leftView = countryCodeView
             }
         }
-    }
         
+    }
+    
+        
+    public override func textFieldDidEndEditing(_ textField: UITextField) {
+        super.textFieldDidEndEditing(textField)
+        
+        if textField.text?.isEmpty == true {
+            Util.setError(self, "authing_phone_none".L)
+        }
+    }
+    
     override func syncData() {
         let account: String? = AuthFlow.getAccount(current: self)
         if (account != nil && Validator.isValidPhone(phone: account)) {
             text = account
         }
     }
-    
 }

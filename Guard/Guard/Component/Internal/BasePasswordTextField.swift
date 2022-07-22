@@ -31,7 +31,7 @@ open class BasePasswordTextField: TextFieldLayout {
         let rightBackGroundView = UIView(frame: CGRect(x: 0, y: 0, width: 48, height: 48))
         rightBackGroundView.addSubview(eyeView)
         eyeView.frame = CGRect(x: 12, y: 12, width: 24, height: 24)
-        eyeView.setImage(eyeImage, for: .normal)
+        eyeView.setImage(eyeOffImage, for: .normal)
         rightView = rightBackGroundView
         rightViewMode = .always
         
@@ -46,9 +46,9 @@ open class BasePasswordTextField: TextFieldLayout {
                 text = nil
                 insertText(existingText)
             }
-            eyeView.setImage(eyeImage, for: .normal)
-        } else {
             eyeView.setImage(eyeOffImage, for: .normal)
+        } else {
+            eyeView.setImage(eyeImage, for: .normal)
         }
     }
 }

@@ -26,7 +26,7 @@ open class GoResetPasswordButton: GoSomewhereButton {
             } else {
                 nextVC = AuthViewController(nibName: vc.authFlow?.forgotPasswordXibName!, bundle: Bundle.main)
             }
-            nextVC?.title = "authing_forgot_password".L
+            nextVC?.title = "authing_reset_password".L
             nextVC?.authFlow = vc.authFlow?.copy() as? AuthFlow
         }
         

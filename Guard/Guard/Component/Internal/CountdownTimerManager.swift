@@ -28,8 +28,9 @@ public class CountdownTimerManager: NSObject {
     @objc func updateCounter() {
         if counter > 0 {
             counter -= 1
-            self.verfyButton.isEnabled = false
-            self.verfyButton.setTitle("  \(counter)  ", for: .disabled)
+            self.verfyButton.isUserInteractionEnabled = false
+            self.verfyButton.setTitle("  \(counter)  ", for: .normal)
+            self.verfyButton.setTitleColor(UIColor.init(red: 29/255.0, green: 33/255.0, blue: 41/255.0, alpha: 1), for: .normal)
         } else {
             self.invalidate()
         }
@@ -40,10 +41,11 @@ public class CountdownTimerManager: NSObject {
             timer.invalidate()
             timer = nil
             counter = 60
-            self.verfyButton.isEnabled = true
-            let text: String = "authing_get_verify_code".L
-            self.verfyButton.setTitle(text, for: .normal)
-            
+            self.verfyButton.isUserInteractionEnabled = true
+//            let text: String = "authing_get_verify_code".L
+            self.verfyButton.setTitle("authing_verify_resend".L, for: .normal)
+            self.verfyButton.setTitleColor(self.verfyButton.loadingColor, for: .normal)
+
             NotificationCenter.default.removeObserver(self)
         }
     }

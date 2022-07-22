@@ -41,9 +41,10 @@ open class RegisterButton: PrimaryButton {
                             continue
                         }
                         if (availableAt! == 2 || availableAt! == 1) {
-                            let warning = "authing_agree_privacy_first".L
+//                            let warning = "authing_agree_privacy_first".L
                             if (agreement["required"] as? Bool == true && !privacyBox!.isChecked) {
-                                Util.setError(self, warning)
+//                                Util.setError(self, warning)
+                                PrivacyToast.showToast(viewController: self.viewController ?? UIViewController())
                                 return;
                             }
                             break

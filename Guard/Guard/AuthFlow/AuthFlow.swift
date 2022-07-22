@@ -10,6 +10,11 @@ public enum AuthProtocol {
     case EOIDC
 }
 
+public enum TransitionAnimation {
+    case Push
+    case Present
+}
+
 public enum RequestType {
     case FeedBack
     case Register
@@ -47,12 +52,12 @@ public class AuthFlow {
     
     public var authProtocol: AuthProtocol = .EInHouse
     
+    public var transition: TransitionAnimation = .Present
+
     // if not nil, we are in dynamic mode. the appId in appBundle can be different than Authing.getAppId
     // which means we are doing some management work e.g. editor
     public var appBundle: AppBundle? = nil
     public var config: Config? = nil
-
-    public var skipConsent: Bool = false
     
     public var requestCallBack: RequestSuccessCallBack?
     
@@ -88,41 +93,39 @@ public class AuthFlow {
         guard let target = vc else {
             return
         }
-
+        
         target.authFlow = self
         self.authCompletion = authCompletion
-        
-        if let topVC = UIApplication.topViewController() {
-            _start(topVC, target)
-        } else {
-            DispatchQueue.main.async() {
-                if let topVC = UIApplication.topViewController() {
-                    self._start(topVC, target)
-                }
+
+        DispatchQueue.main.async() {
+            if let topVC = UIApplication.topViewController() {
+                self.startViewController = topVC
+                self._start(topVC, target)
             }
         }
     }
     
     private func _start(_ topVC: UIViewController, _ target: AuthViewController) {
-        startViewController = topVC
         if let n = topVC.navigationController {
-            target.isPresent = false
-            n.pushViewController(target, animated: true)
-        } else {
-            target.isPresent = true
-            let nav = UINavigationController(rootViewController: target)
-            nav.setNavigationBarHidden(true, animated: false)
-            nav.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-            topVC.present(nav, animated: true, completion: nil)
+            if transition == .Push {
+                n.pushViewController(target, animated: true)
+            } else {
+                let nav = UINavigationController(rootViewController: target)
+                nav.setNavigationBarHidden(true, animated: false)
+                nav.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                topVC.present(nav, animated: true, completion: nil)
+            }
         }
     }
     
     public func complete(_ code: Int, _ message: String?, _ userInfo: UserInfo?, animated: Bool = true) {
-        if let n = startViewController?.navigationController {
-            n.popToViewController(startViewController!, animated: true)
-            DispatchQueue.main.async() {
-                self.authCompletion?(code, message, userInfo)
-            }
+        if transition == .Push {
+            startViewController?.navigationController?.popToViewController(startViewController!, animated: true)
+        } else {
+            startViewController?.dismiss(animated: true)
+        }
+        DispatchQueue.main.async() {
+            self.authCompletion?(code, message, userInfo)
         }
     }
     
@@ -221,7 +224,6 @@ public class AuthFlow {
         copy.requestCallBack = self.requestCallBack
         copy.appBundle = self.appBundle
         copy.config = self.config
-        copy.skipConsent = self.skipConsent
         return copy
     }
     

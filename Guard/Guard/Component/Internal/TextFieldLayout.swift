@@ -23,19 +23,20 @@ open class TextFieldLayout: BaseInput, UITextFieldDelegate {
     private func setup() {
         self.delegate = self
         
-//        hintColor = Const.Color_Text_Default_Gray
+        hintColor = Const.Color_Text_Default_Gray
         backgroundColor = Const.Color_BG_Text_Box
+        layer.borderColor = Const.Color_BG_Text_Box.cgColor
+
         layer.borderWidth = 1
         layer.cornerRadius = 4
         autocapitalizationType = .none
-        layer.borderColor = Const.Color_BG_Text_Box.cgColor
 //        addSubview(border)
         
         let itemWidth: CGFloat = frame.height/3
-        let paddingView: UIView = UIView.init(frame: CGRect(x: 0, y: 0, width: frame.height/3 + 8, height: frame.height))
+        let paddingView: UIView = UIView.init(frame: CGRect(x: 0, y: 0, width: frame.height/3 + 12, height: frame.height))
     
         imageView.contentMode = .scaleAspectFit
-        imageView.frame = CGRect(x: 8, y: (frame.height - itemWidth)/2, width: itemWidth, height: itemWidth)
+        imageView.frame = CGRect(x: 12, y: (frame.height - itemWidth)/2, width: itemWidth, height: itemWidth)
         paddingView.addSubview(imageView)
         
         leftView = paddingView

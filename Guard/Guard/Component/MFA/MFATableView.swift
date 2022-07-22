@@ -7,7 +7,7 @@
 
 open class MFATableView: UIView {
     
-    private let ITEM_HEIGHT: CGFloat = 48
+    private let ITEM_HEIGHT: CGFloat = 52
     
     public override init(frame: CGRect) {
         super.init(frame: frame)

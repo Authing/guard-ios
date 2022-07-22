@@ -64,6 +64,10 @@ open class GetVerifyCodeButton: LoadingButton {
                     }
                 }
             }
+        } else {
+            if let phoneNumberTF: PhoneNumberTextField = Util.findView(self, viewClass: PhoneNumberTextField.self) {
+                Util.setError(phoneNumberTF, "authing_phone_none".L)
+            }
         }
     }
 }

@@ -49,30 +49,29 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rbI-XB-hdi" userLabel="Phone Container" customClass="RegisterContainer" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="24" y="306" width="366" height="110"/>
+                    <rect key="frame" x="24" y="306" width="366" height="118"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="emr-dn-a81" customClass="PhoneNumberTextField" customModule="Guard" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="366" height="48"/>
+                            <rect key="frame" x="0.0" y="0.0" width="366" height="52"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="48" id="fd7-Qz-xkN"/>
+                                <constraint firstAttribute="height" constant="52" id="fd7-Qz-xkN"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits" returnKeyType="next"/>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5uU-rs-UFc" customClass="VerifyCodeTextField" customModule="Guard" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="64" width="250" height="48"/>
+                            <rect key="frame" x="0.0" y="68" width="222" height="52"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="48" id="B6J-lJ-Ah9"/>
+                                <constraint firstAttribute="height" constant="52" id="B6J-lJ-Ah9"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oj4-7h-ssi" customClass="GetVerifyCodeButton" customModule="Guard" customModuleProvider="target">
-                            <rect key="frame" x="266" y="64" width="100" height="48"/>
+                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oj4-7h-ssi" customClass="GetVerifyCodeButton" customModule="Guard" customModuleProvider="target">
+                            <rect key="frame" x="238" y="68" width="128" height="52"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="100" id="8UD-yi-wiU"/>
+                                <constraint firstAttribute="width" constant="128" id="8UD-yi-wiU"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal">
@@ -91,7 +90,7 @@
                         <constraint firstItem="5uU-rs-UFc" firstAttribute="top" secondItem="emr-dn-a81" secondAttribute="bottom" constant="16" id="bK7-KP-Luu"/>
                         <constraint firstItem="5uU-rs-UFc" firstAttribute="leading" secondItem="rbI-XB-hdi" secondAttribute="leading" id="sch-pX-Nca"/>
                         <constraint firstItem="emr-dn-a81" firstAttribute="top" secondItem="rbI-XB-hdi" secondAttribute="top" id="wGx-FF-V9A"/>
-                        <constraint firstAttribute="height" constant="110" id="ybO-LU-adW"/>
+                        <constraint firstAttribute="height" constant="118" id="ybO-LU-adW"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="type">
@@ -100,20 +99,20 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nxl-an-WZu" userLabel="Email Container" customClass="RegisterContainer" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="24" y="306" width="366" height="164"/>
+                    <rect key="frame" x="24" y="306" width="366" height="176"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="UUc-CA-3x8" customClass="EmailTextField" customModule="Guard" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="366" height="48"/>
+                            <rect key="frame" x="0.0" y="0.0" width="366" height="52"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="48" id="Bzw-ba-32L"/>
+                                <constraint firstAttribute="height" constant="52" id="Bzw-ba-32L"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits" returnKeyType="next"/>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zsf-ed-ghY" customClass="PasswordTextField" customModule="Guard" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="64" width="366" height="48"/>
+                            <rect key="frame" x="0.0" y="68" width="366" height="52"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="48" id="OVz-lJ-xbn"/>
+                                <constraint firstAttribute="height" constant="52" id="OVz-lJ-xbn"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits"/>
@@ -122,9 +121,9 @@
                             </userDefinedRuntimeAttributes>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="EtX-cw-Id4" customClass="PasswordConfirmTextField" customModule="Guard" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="128" width="366" height="48"/>
+                            <rect key="frame" x="0.0" y="136" width="366" height="52"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="48" id="Ckc-pG-MGu"/>
+                                <constraint firstAttribute="height" constant="52" id="Ckc-pG-MGu"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits"/>
@@ -140,7 +139,7 @@
                         <constraint firstItem="zsf-ed-ghY" firstAttribute="top" secondItem="UUc-CA-3x8" secondAttribute="bottom" constant="16" id="fW2-Rc-M9C"/>
                         <constraint firstAttribute="trailing" secondItem="UUc-CA-3x8" secondAttribute="trailing" id="hO0-z6-20u"/>
                         <constraint firstItem="EtX-cw-Id4" firstAttribute="leading" secondItem="nxl-an-WZu" secondAttribute="leading" id="mFi-KW-FfC"/>
-                        <constraint firstAttribute="height" constant="164" id="p9L-bV-hXt"/>
+                        <constraint firstAttribute="height" constant="176" id="p9L-bV-hXt"/>
                         <constraint firstItem="UUc-CA-3x8" firstAttribute="top" secondItem="nxl-an-WZu" secondAttribute="top" id="vxm-W4-rG7"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
@@ -150,30 +149,29 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kba-Fg-s5k" userLabel="EmailCode Login Container" customClass="RegisterContainer" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="24" y="306" width="366" height="110"/>
+                    <rect key="frame" x="24" y="306" width="366" height="118"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5sq-Cv-6eu" customClass="EmailTextField" customModule="Guard" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="366" height="48"/>
+                            <rect key="frame" x="0.0" y="0.0" width="366" height="52"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="48" id="mkm-KQ-NuG"/>
+                                <constraint firstAttribute="height" constant="52" id="mkm-KQ-NuG"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits" returnKeyType="next"/>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="SVJ-aE-VLO" customClass="VerifyCodeTextField" customModule="Guard" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="64" width="250" height="48"/>
+                            <rect key="frame" x="0.0" y="68" width="222" height="52"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="48" id="fSN-b1-Lmu"/>
+                                <constraint firstAttribute="height" constant="52" id="fSN-b1-Lmu"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RGf-Rb-Hv6" customClass="GetEmailVerifyCodeButton" customModule="Guard" customModuleProvider="target">
-                            <rect key="frame" x="266" y="64" width="100" height="48"/>
+                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RGf-Rb-Hv6" customClass="GetEmailVerifyCodeButton" customModule="Guard" customModuleProvider="target">
+                            <rect key="frame" x="238" y="68" width="128" height="52"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="100" id="LOc-7U-O1F"/>
+                                <constraint firstAttribute="width" constant="128" id="LOc-7U-O1F"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal">
@@ -189,7 +187,7 @@
                         <constraint firstItem="RGf-Rb-Hv6" firstAttribute="leading" secondItem="SVJ-aE-VLO" secondAttribute="trailing" constant="16" id="Io4-bO-0zS"/>
                         <constraint firstItem="SVJ-aE-VLO" firstAttribute="top" secondItem="5sq-Cv-6eu" secondAttribute="bottom" constant="16" id="TUn-sU-rUF"/>
                         <constraint firstAttribute="trailing" secondItem="5sq-Cv-6eu" secondAttribute="trailing" id="Xx1-Xh-DW0"/>
-                        <constraint firstAttribute="height" constant="110" id="bn6-RO-lr9"/>
+                        <constraint firstAttribute="height" constant="118" id="bn6-RO-lr9"/>
                         <constraint firstItem="5sq-Cv-6eu" firstAttribute="leading" secondItem="kba-Fg-s5k" secondAttribute="leading" id="eXx-1T-mKR"/>
                         <constraint firstItem="RGf-Rb-Hv6" firstAttribute="top" secondItem="SVJ-aE-VLO" secondAttribute="top" id="kj0-ok-76E"/>
                         <constraint firstItem="SVJ-aE-VLO" firstAttribute="leading" secondItem="kba-Fg-s5k" secondAttribute="leading" id="tpg-z0-Tt1"/>
@@ -202,7 +200,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gy9-8p-ejP" userLabel="Error Label" customClass="ErrorLabel" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="24" y="424" width="366" height="25"/>
+                    <rect key="frame" x="24" y="432" width="366" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="pEw-NX-Mgp"/>
                     </constraints>
@@ -211,16 +209,16 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1MM-ts-eHA" customClass="PrivacyConfirmBox" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="24" y="453" width="366" height="20"/>
+                    <rect key="frame" x="24" y="461" width="366" height="20"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="AgK-dr-cdz"/>
                     </constraints>
                 </view>
                 <button contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voS-Jy-wQm" customClass="RegisterButton" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="24" y="488" width="366" height="42"/>
+                    <rect key="frame" x="24" y="496" width="366" height="48"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="42" id="aGt-6h-8Oj"/>
+                        <constraint firstAttribute="height" constant="48" id="aGt-6h-8Oj"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -229,17 +227,26 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                 </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="authing_icon" translatesAutoresizingMaskIntoConstraints="NO" id="xd4-7A-p3g">
+                    <rect key="frame" x="132" y="846" width="150" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="AT2-XO-23e"/>
+                        <constraint firstAttribute="width" constant="150" id="iRt-LE-sV7"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="t0S-i3-gzY"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="voS-Jy-wQm" firstAttribute="top" secondItem="1MM-ts-eHA" secondAttribute="bottom" constant="15" id="4PU-P2-5y3"/>
+                <constraint firstItem="xd4-7A-p3g" firstAttribute="centerX" secondItem="5TK-1R-p6K" secondAttribute="centerX" id="6h2-YK-UZK"/>
                 <constraint firstItem="1MM-ts-eHA" firstAttribute="leading" secondItem="vB5-a9-UJW" secondAttribute="leading" id="9aj-5K-c1h"/>
                 <constraint firstItem="gy9-8p-ejP" firstAttribute="leading" secondItem="vB5-a9-UJW" secondAttribute="leading" id="9fe-L1-rqE"/>
                 <constraint firstItem="nxl-an-WZu" firstAttribute="top" secondItem="rbI-XB-hdi" secondAttribute="top" id="Bzd-QU-EfW"/>
                 <constraint firstItem="F0M-JR-WfC" firstAttribute="leading" secondItem="t0S-i3-gzY" secondAttribute="leading" constant="24" id="Ct9-i4-ako"/>
                 <constraint firstItem="1MM-ts-eHA" firstAttribute="trailing" secondItem="vB5-a9-UJW" secondAttribute="trailing" id="CxR-w4-efi"/>
                 <constraint firstItem="kba-Fg-s5k" firstAttribute="trailing" secondItem="vB5-a9-UJW" secondAttribute="trailing" id="EH1-ee-0Vc"/>
+                <constraint firstItem="t0S-i3-gzY" firstAttribute="bottom" secondItem="xd4-7A-p3g" secondAttribute="bottom" id="ET0-i2-SCm"/>
                 <constraint firstItem="33m-3M-o7j" firstAttribute="leading" secondItem="5TK-1R-p6K" secondAttribute="leading" constant="30" id="HFs-C1-pic"/>
                 <constraint firstItem="nxl-an-WZu" firstAttribute="leading" secondItem="vB5-a9-UJW" secondAttribute="leading" id="LCe-dT-Rib"/>
                 <constraint firstItem="gy9-8p-ejP" firstAttribute="top" secondItem="rbI-XB-hdi" secondAttribute="bottom" constant="8" symbolic="YES" id="Lxg-cU-cuT"/>
@@ -265,6 +272,7 @@
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
     </objects>
     <resources>
+        <image name="authing_icon" width="149" height="16"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

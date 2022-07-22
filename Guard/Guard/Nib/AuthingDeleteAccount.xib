@@ -48,19 +48,24 @@
                         <constraint firstItem="WOb-9p-ahi" firstAttribute="top" secondItem="yee-GA-qLR" secondAttribute="top" id="cau-R3-IPM"/>
                         <constraint firstAttribute="bottom" secondItem="WOb-9p-ahi" secondAttribute="bottom" id="yZZ-dK-Oxu"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fIc-FM-uF2" customClass="VerifyCodeTextField" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="24" y="166" width="250" height="48"/>
+                    <rect key="frame" x="24" y="166" width="222" height="52"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="48" id="Tjj-lR-aOW"/>
+                        <constraint firstAttribute="height" constant="52" id="Tjj-lR-aOW"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gb-Uz-e2G" customClass="GetVerifyCodeButton" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="290" y="166" width="100" height="48"/>
+                    <rect key="frame" x="262" y="166" width="128" height="52"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="100" id="IX0-KD-UuU"/>
+                        <constraint firstAttribute="width" constant="128" id="IX0-KD-UuU"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
@@ -70,15 +75,15 @@
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BaD-9j-1wT" customClass="DeleteAccountButton" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="24" y="242" width="366" height="44"/>
+                    <rect key="frame" x="24" y="246" width="366" height="48"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="5lo-bE-XX9"/>
+                        <constraint firstAttribute="height" constant="48" id="5lo-bE-XX9"/>
                     </constraints>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain"/>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCJ-VU-uaR" customClass="ErrorLabel" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="24" y="222" width="366" height="20"/>
+                    <rect key="frame" x="24" y="226" width="366" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="GUt-Nd-006"/>
                     </constraints>
@@ -87,10 +92,9 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0tI-kK-QVR" customClass="PasswordTextField" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="24" y="166" width="366" height="48"/>
+                    <rect key="frame" x="24" y="166" width="366" height="52"/>
                     <constraints>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="8Of-tq-PkB"/>
-                        <constraint firstAttribute="height" constant="48" id="Zgl-2y-R77"/>
+                        <constraint firstAttribute="height" constant="52" id="Zgl-2y-R77"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <textInputTraits key="textInputTraits"/>

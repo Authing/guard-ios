@@ -28,10 +28,11 @@ public class Config: NSObject {
             
             if let verifyCodeTabConfig: NSDictionary = data?["verifyCodeTabConfig"] as? NSDictionary{
                 if let enabledLoginMethods: [String] = verifyCodeTabConfig["enabledLoginMethods"] as? [String]{
-                    enabledLoginMethods.forEach { method in
-                        if method == "email-code" {
-                            loginMethods?.append(method)
-                        }
+                    let arr = (loginMethods ?? []) + enabledLoginMethods
+                    loginMethods = arr.enumerated().filter { (index, value) -> Bool in
+                        return arr.firstIndex(of: value) == index
+                    }.map {
+                        $0.element
                     }
                 }
             }

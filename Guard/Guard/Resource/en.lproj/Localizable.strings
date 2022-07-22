@@ -125,3 +125,5 @@
 "authing_feedback_description" = "Description";
 "authing_feedback_screenshot" = "Screen shot";
 "authing_feedback_error" = "Contact can not be empty";
+
+"authing_verify_resend" = "Re-send";

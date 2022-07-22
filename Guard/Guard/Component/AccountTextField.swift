@@ -23,6 +23,11 @@ open class AccountTextField: TextFieldLayout {
                 self.setup(config!)
             }
         }
+        addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+    }
+    
+    @objc final private func textFieldDidChange(textField: UITextField) {
+        Util.setError(self, "")
     }
     
     private func setup(_ config: Config) {

@@ -172,6 +172,7 @@ open class LoginButton: PrimaryButton {
             }
         } else if (code == Const.EC_MFA_REQUIRED) {
             let vc: AuthViewController? = AuthViewController(nibName: "AuthingMFAOptions", bundle: Bundle(for: Self.self))
+            vc?.authFlow = self.authViewController?.authFlow?.copy() as? AuthFlow
             self.authViewController?.navigationController?.pushViewController(vc!, animated: true)
         } else if (code == Const.EC_FIRST_TIME_LOGIN) {
             // clear password text field
@@ -189,8 +190,8 @@ open class LoginButton: PrimaryButton {
                 vc.authFlow?.data.setValue(userInfo, forKey: AuthFlow.KEY_USER_INFO)
                 nextVC?.authFlow = vc.authFlow?.copy() as? AuthFlow
                 nextVC?.title = "authing_first_time_login_title".L
+                vc.navigationController?.pushViewController(nextVC!, animated: true)
             }
-            self.authViewController?.navigationController?.pushViewController(nextVC!, animated: true)
         } else {
             Util.setError(self, message)
         }
