@@ -224,6 +224,7 @@ public class AuthFlow {
         copy.requestCallBack = self.requestCallBack
         copy.appBundle = self.appBundle
         copy.config = self.config
+        copy.authProtocol = self.authProtocol
         return copy
     }
     
