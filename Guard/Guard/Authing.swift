@@ -22,6 +22,10 @@ public class Authing: NSObject {
         case notify_wecom_register = "WeComRegisterNotificationName"
         /// wecom receive notification
         case notify_wecom_receive = "WeComReceiveNotificationName"
+        ///lark register notification
+        case notify_lark_register = "LarkRegisterNotificationName"
+        /// lark receive notification
+        case notify_lark_receive = "LarkReceiveNotificationName"
     }
     
     private static var sSchema = "https"

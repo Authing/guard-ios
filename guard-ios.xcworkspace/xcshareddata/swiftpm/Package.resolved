@@ -1,41 +1,43 @@
 {
-  "pins" : [
-    {
-      "identity" : "appauth-ios",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/openid/AppAuth-iOS.git",
-      "state" : {
-        "branch" : "master",
-        "revision" : "8582608849acbd2a434307a19da3a4f8f7267564"
+  "object": {
+    "pins": [
+      {
+        "package": "AppAuth",
+        "repositoryURL": "https://github.com/openid/AppAuth-iOS",
+        "state": {
+          "branch": null,
+          "revision": "33660c271c961f8ce1084cc13f2ea8195e864f7d",
+          "version": "1.5.0"
+        }
+      },
+      {
+        "package": "Guard-iOS-OneAuth",
+        "repositoryURL": "https://github.com/Authing/guard-ios-oneauth",
+        "state": {
+          "branch": null,
+          "revision": "4d755d393965fa41307f1195372dcb6c5c4f3b92",
+          "version": "1.0.9"
+        }
+      },
+      {
+        "package": "Guard-iOS-Wechat",
+        "repositoryURL": "https://github.com/Authing/guard-ios-wechat",
+        "state": {
+          "branch": null,
+          "revision": "67b6afa6354597d5e3873f63808063b6050874bd",
+          "version": "1.0.2"
+        }
+      },
+      {
+        "package": "Guard-iOS-WeCom",
+        "repositoryURL": "https://github.com/Authing/guard-ios-wecom",
+        "state": {
+          "branch": null,
+          "revision": "1754b48dd36b4ab2c99f527c59abaab5cb4c4173",
+          "version": "1.0.1"
+        }
       }
-    },
-    {
-      "identity" : "guard-ios-oneauth",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Authing/guard-ios-oneauth",
-      "state" : {
-        "revision" : "4338bd34771efa9af95f4e744b2dc7a1deaf3aa9",
-        "version" : "1.0.9"
-      }
-    },
-    {
-      "identity" : "guard-ios-wechat",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Authing/guard-ios-wechat",
-      "state" : {
-        "revision" : "67b6afa6354597d5e3873f63808063b6050874bd",
-        "version" : "1.0.2"
-      }
-    },
-    {
-      "identity" : "guard-ios-wecom",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Authing/guard-ios-wecom",
-      "state" : {
-        "revision" : "1754b48dd36b4ab2c99f527c59abaab5cb4c4173",
-        "version" : "1.0.1"
-      }
-    }
-  ],
-  "version" : 2
+    ]
+  },
+  "version": 1
 }

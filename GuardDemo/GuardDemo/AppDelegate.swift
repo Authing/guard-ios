@@ -9,12 +9,15 @@ import Guard
 import Wechat
 import WeCom
 import OneAuth
+import LarkLogin
 import AppAuth
 import UserNotifications
 
+let lark_scheme = "clia2b69a679b3a900b"
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var currentAuthorizationFlow: OIDExternalUserAgentSession?
     var window:UIWindow?
 
@@ -24,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         WechatLogin.registerApp(appId:"wx1cddb15e280c0f67", universalLink: "https://h5-static.authing.co/app/")
         WeCom.registerApp(appId: "wwauth803c38cb89ac1d57000002", corpId: "ww803c38cb89ac1d57", agentId: "1000002")
         OneAuth.register(businessId: "fdaf299f9d8f43c0a41ad3c2ca5c02f6")
+        LarkLogin.setupLark("cli_a2b69a679b3a900b", Scheme: lark_scheme)
         Authing.start("60caaf41df670b771fd08937");
 
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
@@ -60,7 +64,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return WeCom.handleOpenURL(url: url)
+        if "\(url)".contains(lark_scheme) {
+            return LarkLogin.handleUrl(url: url)
+        } else {
+            return WeCom.handleOpenURL(url: url)
+        }
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {

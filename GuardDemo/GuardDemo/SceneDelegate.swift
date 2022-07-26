@@ -7,6 +7,7 @@
 
 import Guard
 import WeCom
+import LarkLogin
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -54,9 +55,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         if let url = URLContexts.first?.url{
-            _ = WeCom.handleOpenURL(url: url)
+            if "\(url)".contains(lark_scheme) {
+                _ = LarkLogin.handleUrl(url: url)
+            } else {
+                _ = WeCom.handleOpenURL(url: url)
+            }
         }
     }
+    
+//    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+//        if let url = URLContexts.first?.url{
+//            _ =  LarkLogin.handleUrl(url: url)
+//        }
+//    }
+    
     
 }
 

@@ -70,6 +70,8 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                             srcs.append("wecom")
                         } else if ("apple" == type) {
                             srcs.append("apple")
+                        } else if ("lark-internal" == type || "lark-public" == type) {
+                            srcs.append(type)
                         }
                     }
                 }
@@ -139,6 +141,11 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                 }
             } else if ("wecom" == trimmed) {
                 if let type = Bundle(identifier: "cn.authing.WeCom")?.classNamed("WeCom.WeComLoginButton") as? SocialLoginButton.Type {
+                    let view = type.init()
+                    self.container.addSubview(view)
+                }
+            } else if ("lark-internal" == trimmed || "lark-public" == trimmed) {
+                if let type = Bundle(identifier: "cn.authing.LarkLogin")?.classNamed("LarkLogin.LarkLoginButton") as? SocialLoginButton.Type {
                     let view = type.init()
                     self.container.addSubview(view)
                 }

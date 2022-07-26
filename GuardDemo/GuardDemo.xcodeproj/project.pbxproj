@@ -16,8 +16,6 @@
 		7E959420274CB4E2001459C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E95941E274CB4E2001459C5 /* Main.storyboard */; };
 		7E959422274CB4E7001459C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E959421274CB4E7001459C5 /* Assets.xcassets */; };
 		7E959425274CB4E7001459C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E959423274CB4E7001459C5 /* LaunchScreen.storyboard */; };
-		7E95942E274CB549001459C5 /* AppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7E95942D274CB549001459C5 /* AppAuth */; };
-		7E959430274CB549001459C5 /* AppAuthCore in Frameworks */ = {isa = PBXBuildFile; productRef = 7E95942F274CB549001459C5 /* AppAuthCore */; };
 		7E959434274CDDC8001459C5 /* AppAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E959433274CDDC8001459C5 /* AppAuthViewController.swift */; };
 		7E959436274CDE42001459C5 /* SampleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E959435274CDE42001459C5 /* SampleListViewController.swift */; };
 		7E959438274CDEBA001459C5 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E959437274CDEBA001459C5 /* SplashViewController.swift */; };
@@ -28,7 +26,12 @@
 		7EB5CE5427CF70E900BE3252 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5CE5327CF70E900BE3252 /* WebViewController.swift */; };
 		7ED434D52775BA7000893EDD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7ED434D72775BA7000893EDD /* Localizable.strings */; };
 		A81635E1284E07A80011B6ED /* WeCom in Frameworks */ = {isa = PBXBuildFile; productRef = A81635E0284E07A80011B6ED /* WeCom */; };
+		A86D54C1288FEB940070AB25 /* LarkLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A86D54BE288FE9720070AB25 /* LarkLogin.framework */; };
+		A86D54C2288FEB940070AB25 /* LarkLogin.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A86D54BE288FE9720070AB25 /* LarkLogin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A8A5ABC9285842AA00D6B03A /* Wechat in Frameworks */ = {isa = PBXBuildFile; productRef = A8A5ABC8285842AA00D6B03A /* Wechat */; };
+		A8B4E84C288FE47C00CF43A9 /* AppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A8B4E84B288FE47C00CF43A9 /* AppAuth */; };
+		A8B4E84E288FE47C00CF43A9 /* AppAuthCore in Frameworks */ = {isa = PBXBuildFile; productRef = A8B4E84D288FE47C00CF43A9 /* AppAuthCore */; };
+		A8CF1CF9288FFAB50072A17F /* LarkSSO.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A8CF1CF8288FFAB50072A17F /* LarkSSO.bundle */; };
 		A8DBB7DC287DA1D700F75C97 /* OneAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A8DBB7DB287DA1D700F75C97 /* OneAuth */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +42,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				A86D54C2288FEB940070AB25 /* LarkLogin.framework in Embed Frameworks */,
 				7E959448274D063B001459C5 /* Guard.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -71,6 +75,8 @@
 		7EB5CE5327CF70E900BE3252 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		7ED434D62775BA7000893EDD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7ED434D82775BA7E00893EDD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		A86D54BE288FE9720070AB25 /* LarkLogin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LarkLogin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8CF1CF8288FFAB50072A17F /* LarkSSO.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = LarkSSO.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,12 +84,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8B4E84C288FE47C00CF43A9 /* AppAuth in Frameworks */,
 				A8A5ABC9285842AA00D6B03A /* Wechat in Frameworks */,
 				A81635E1284E07A80011B6ED /* WeCom in Frameworks */,
-				7E95942E274CB549001459C5 /* AppAuth in Frameworks */,
 				A8DBB7DC287DA1D700F75C97 /* OneAuth in Frameworks */,
 				7E959447274D063B001459C5 /* Guard.framework in Frameworks */,
-				7E959430274CB549001459C5 /* AppAuthCore in Frameworks */,
+				A86D54C1288FEB940070AB25 /* LarkLogin.framework in Frameworks */,
+				A8B4E84E288FE47C00CF43A9 /* AppAuthCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,12 +126,14 @@
 		7E959417274CB4E2001459C5 /* GuardDemo */ = {
 			isa = PBXGroup;
 			children = (
+				A8CF1CFB288FFADC0072A17F /* Resource */,
 				7E96039327E08E94007C87EB /* Parser */,
 				7EB5CE5227CF70DB00BE3252 /* WebView */,
 				7E7566B3276994D700C3872F /* OneClick */,
 				7E959432274CDDB5001459C5 /* AppAuth */,
 				7E959431274CCBBE001459C5 /* GuardDemo.entitlements */,
 				7E959418274CB4E2001459C5 /* AppDelegate.swift */,
+				A8CF1CFA288FFAC80072A17F /* Resouce */,
 				7E95941A274CB4E2001459C5 /* SceneDelegate.swift */,
 				7E959437274CDEBA001459C5 /* SplashViewController.swift */,
 				7E959435274CDE42001459C5 /* SampleListViewController.swift */,
@@ -151,6 +160,7 @@
 		7E959442274CEF11001459C5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A86D54BE288FE9720070AB25 /* LarkLogin.framework */,
 				7E7566C527699AC800C3872F /* libc++.1.tbd */,
 				7E7566C327699AB100C3872F /* libc++abi.tbd */,
 				7E7566C127699AA800C3872F /* libz.tbd */,
@@ -175,6 +185,21 @@
 			path = WebView;
 			sourceTree = "<group>";
 		};
+		A8CF1CFA288FFAC80072A17F /* Resouce */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resouce;
+			sourceTree = "<group>";
+		};
+		A8CF1CFB288FFADC0072A17F /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				A8CF1CF8288FFAB50072A17F /* LarkSSO.bundle */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -193,11 +218,11 @@
 			);
 			name = GuardDemo;
 			packageProductDependencies = (
-				7E95942D274CB549001459C5 /* AppAuth */,
-				7E95942F274CB549001459C5 /* AppAuthCore */,
 				A81635E0284E07A80011B6ED /* WeCom */,
 				A8A5ABC8285842AA00D6B03A /* Wechat */,
 				A8DBB7DB287DA1D700F75C97 /* OneAuth */,
+				A8B4E84B288FE47C00CF43A9 /* AppAuth */,
+				A8B4E84D288FE47C00CF43A9 /* AppAuthCore */,
 			);
 			productName = GuardDemo;
 			productReference = 7E959415274CB4E2001459C5 /* GuardDemo.app */;
@@ -229,10 +254,10 @@
 			);
 			mainGroup = 7E95940C274CB4E2001459C5;
 			packageReferences = (
-				7E95942C274CB549001459C5 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */,
 				A81635DF284E070A0011B6ED /* XCRemoteSwiftPackageReference "guard-ios-wecom" */,
 				A8A5ABC7285842AA00D6B03A /* XCRemoteSwiftPackageReference "guard-ios-wechat" */,
 				A8DBB7DA287DA1D700F75C97 /* XCRemoteSwiftPackageReference "guard-ios-oneauth" */,
+				A8B4E84A288FE47C00CF43A9 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */,
 			);
 			productRefGroup = 7E959416274CB4E2001459C5 /* Products */;
 			projectDirPath = "";
@@ -255,6 +280,7 @@
 				7E20000527E95D9A0051F590 /* 62345c87ffe7c884acbae53c in Resources */,
 				7E959420274CB4E2001459C5 /* Main.storyboard in Resources */,
 				7E95943F274CEA63001459C5 /* AppAuth.xib in Resources */,
+				A8CF1CF9288FFAB50072A17F /* LarkSSO.bundle in Resources */,
 				7E7566BF276995C500C3872F /* OneClick.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,10 +467,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N7MT678JXL;
+				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = armv7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GuardDemo/OneClick",
+					"$(PROJECT_DIR)/GuardDemo",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GuardDemo/Info.plist;
@@ -478,10 +506,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N7MT678JXL;
+				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = armv7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GuardDemo/OneClick",
+					"$(PROJECT_DIR)/GuardDemo",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GuardDemo/Info.plist;
@@ -530,14 +560,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7E95942C274CB549001459C5 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/openid/AppAuth-iOS.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		A81635DF284E070A0011B6ED /* XCRemoteSwiftPackageReference "guard-ios-wecom" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Authing/guard-ios-wecom";
@@ -554,6 +576,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		A8B4E84A288FE47C00CF43A9 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/openid/AppAuth-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		A8DBB7DA287DA1D700F75C97 /* XCRemoteSwiftPackageReference "guard-ios-oneauth" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Authing/guard-ios-oneauth";
@@ -565,16 +595,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7E95942D274CB549001459C5 /* AppAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7E95942C274CB549001459C5 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
-			productName = AppAuth;
-		};
-		7E95942F274CB549001459C5 /* AppAuthCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7E95942C274CB549001459C5 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
-			productName = AppAuthCore;
-		};
 		A81635E0284E07A80011B6ED /* WeCom */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A81635DF284E070A0011B6ED /* XCRemoteSwiftPackageReference "guard-ios-wecom" */;
@@ -584,6 +604,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A8A5ABC7285842AA00D6B03A /* XCRemoteSwiftPackageReference "guard-ios-wechat" */;
 			productName = Wechat;
+		};
+		A8B4E84B288FE47C00CF43A9 /* AppAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A8B4E84A288FE47C00CF43A9 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
+			productName = AppAuth;
+		};
+		A8B4E84D288FE47C00CF43A9 /* AppAuthCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A8B4E84A288FE47C00CF43A9 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
+			productName = AppAuthCore;
 		};
 		A8DBB7DB287DA1D700F75C97 /* OneAuth */ = {
 			isa = XCSwiftPackageProductDependency;
