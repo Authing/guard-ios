@@ -25,14 +25,13 @@
 		7EACD00227915AAC005CBB2E /* Test.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EACD00127915AAC005CBB2E /* Test.xib */; };
 		7EB5CE5427CF70E900BE3252 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5CE5327CF70E900BE3252 /* WebViewController.swift */; };
 		7ED434D52775BA7000893EDD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7ED434D72775BA7000893EDD /* Localizable.strings */; };
-		A81635E1284E07A80011B6ED /* WeCom in Frameworks */ = {isa = PBXBuildFile; productRef = A81635E0284E07A80011B6ED /* WeCom */; };
-		A86D54C1288FEB940070AB25 /* LarkLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A86D54BE288FE9720070AB25 /* LarkLogin.framework */; };
-		A86D54C2288FEB940070AB25 /* LarkLogin.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A86D54BE288FE9720070AB25 /* LarkLogin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A8A5ABC9285842AA00D6B03A /* Wechat in Frameworks */ = {isa = PBXBuildFile; productRef = A8A5ABC8285842AA00D6B03A /* Wechat */; };
 		A8B4E84C288FE47C00CF43A9 /* AppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A8B4E84B288FE47C00CF43A9 /* AppAuth */; };
 		A8B4E84E288FE47C00CF43A9 /* AppAuthCore in Frameworks */ = {isa = PBXBuildFile; productRef = A8B4E84D288FE47C00CF43A9 /* AppAuthCore */; };
+		A8CA28CD28900D7300697ECF /* LarkLogin in Frameworks */ = {isa = PBXBuildFile; productRef = A8CA28CC28900D7300697ECF /* LarkLogin */; };
+		A8CA28CF28900D7300697ECF /* OneAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A8CA28CE28900D7300697ECF /* OneAuth */; };
+		A8CA28D128900D7300697ECF /* WeCom in Frameworks */ = {isa = PBXBuildFile; productRef = A8CA28D028900D7300697ECF /* WeCom */; };
+		A8CA28D328900D7300697ECF /* Wechat in Frameworks */ = {isa = PBXBuildFile; productRef = A8CA28D228900D7300697ECF /* Wechat */; };
 		A8CF1CF9288FFAB50072A17F /* LarkSSO.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A8CF1CF8288FFAB50072A17F /* LarkSSO.bundle */; };
-		A8DBB7DC287DA1D700F75C97 /* OneAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A8DBB7DB287DA1D700F75C97 /* OneAuth */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,7 +41,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A86D54C2288FEB940070AB25 /* LarkLogin.framework in Embed Frameworks */,
 				7E959448274D063B001459C5 /* Guard.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -75,7 +73,6 @@
 		7EB5CE5327CF70E900BE3252 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		7ED434D62775BA7000893EDD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7ED434D82775BA7E00893EDD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		A86D54BE288FE9720070AB25 /* LarkLogin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LarkLogin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8CF1CF8288FFAB50072A17F /* LarkSSO.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = LarkSSO.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,13 +81,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8CA28D128900D7300697ECF /* WeCom in Frameworks */,
+				A8CA28CD28900D7300697ECF /* LarkLogin in Frameworks */,
 				A8B4E84C288FE47C00CF43A9 /* AppAuth in Frameworks */,
-				A8A5ABC9285842AA00D6B03A /* Wechat in Frameworks */,
-				A81635E1284E07A80011B6ED /* WeCom in Frameworks */,
-				A8DBB7DC287DA1D700F75C97 /* OneAuth in Frameworks */,
 				7E959447274D063B001459C5 /* Guard.framework in Frameworks */,
-				A86D54C1288FEB940070AB25 /* LarkLogin.framework in Frameworks */,
 				A8B4E84E288FE47C00CF43A9 /* AppAuthCore in Frameworks */,
+				A8CA28CF28900D7300697ECF /* OneAuth in Frameworks */,
+				A8CA28D328900D7300697ECF /* Wechat in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,7 +157,6 @@
 		7E959442274CEF11001459C5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A86D54BE288FE9720070AB25 /* LarkLogin.framework */,
 				7E7566C527699AC800C3872F /* libc++.1.tbd */,
 				7E7566C327699AB100C3872F /* libc++abi.tbd */,
 				7E7566C127699AA800C3872F /* libz.tbd */,
@@ -218,11 +214,12 @@
 			);
 			name = GuardDemo;
 			packageProductDependencies = (
-				A81635E0284E07A80011B6ED /* WeCom */,
-				A8A5ABC8285842AA00D6B03A /* Wechat */,
-				A8DBB7DB287DA1D700F75C97 /* OneAuth */,
 				A8B4E84B288FE47C00CF43A9 /* AppAuth */,
 				A8B4E84D288FE47C00CF43A9 /* AppAuthCore */,
+				A8CA28CC28900D7300697ECF /* LarkLogin */,
+				A8CA28CE28900D7300697ECF /* OneAuth */,
+				A8CA28D028900D7300697ECF /* WeCom */,
+				A8CA28D228900D7300697ECF /* Wechat */,
 			);
 			productName = GuardDemo;
 			productReference = 7E959415274CB4E2001459C5 /* GuardDemo.app */;
@@ -254,10 +251,8 @@
 			);
 			mainGroup = 7E95940C274CB4E2001459C5;
 			packageReferences = (
-				A81635DF284E070A0011B6ED /* XCRemoteSwiftPackageReference "guard-ios-wecom" */,
-				A8A5ABC7285842AA00D6B03A /* XCRemoteSwiftPackageReference "guard-ios-wechat" */,
-				A8DBB7DA287DA1D700F75C97 /* XCRemoteSwiftPackageReference "guard-ios-oneauth" */,
 				A8B4E84A288FE47C00CF43A9 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */,
+				A8CA28CB28900D7300697ECF /* XCRemoteSwiftPackageReference "authing-binary" */,
 			);
 			productRefGroup = 7E959416274CB4E2001459C5 /* Products */;
 			projectDirPath = "";
@@ -560,22 +555,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		A81635DF284E070A0011B6ED /* XCRemoteSwiftPackageReference "guard-ios-wecom" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Authing/guard-ios-wecom";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-		A8A5ABC7285842AA00D6B03A /* XCRemoteSwiftPackageReference "guard-ios-wechat" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Authing/guard-ios-wechat";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		A8B4E84A288FE47C00CF43A9 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/openid/AppAuth-iOS";
@@ -584,9 +563,9 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		A8DBB7DA287DA1D700F75C97 /* XCRemoteSwiftPackageReference "guard-ios-oneauth" */ = {
+		A8CA28CB28900D7300697ECF /* XCRemoteSwiftPackageReference "authing-binary" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Authing/guard-ios-oneauth";
+			repositoryURL = "https://github.com/Authing/authing-binary";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.0;
@@ -595,16 +574,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		A81635E0284E07A80011B6ED /* WeCom */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A81635DF284E070A0011B6ED /* XCRemoteSwiftPackageReference "guard-ios-wecom" */;
-			productName = WeCom;
-		};
-		A8A5ABC8285842AA00D6B03A /* Wechat */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A8A5ABC7285842AA00D6B03A /* XCRemoteSwiftPackageReference "guard-ios-wechat" */;
-			productName = Wechat;
-		};
 		A8B4E84B288FE47C00CF43A9 /* AppAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A8B4E84A288FE47C00CF43A9 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
@@ -615,10 +584,25 @@
 			package = A8B4E84A288FE47C00CF43A9 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
 			productName = AppAuthCore;
 		};
-		A8DBB7DB287DA1D700F75C97 /* OneAuth */ = {
+		A8CA28CC28900D7300697ECF /* LarkLogin */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A8DBB7DA287DA1D700F75C97 /* XCRemoteSwiftPackageReference "guard-ios-oneauth" */;
+			package = A8CA28CB28900D7300697ECF /* XCRemoteSwiftPackageReference "authing-binary" */;
+			productName = LarkLogin;
+		};
+		A8CA28CE28900D7300697ECF /* OneAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A8CA28CB28900D7300697ECF /* XCRemoteSwiftPackageReference "authing-binary" */;
 			productName = OneAuth;
+		};
+		A8CA28D028900D7300697ECF /* WeCom */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A8CA28CB28900D7300697ECF /* XCRemoteSwiftPackageReference "authing-binary" */;
+			productName = WeCom;
+		};
+		A8CA28D228900D7300697ECF /* Wechat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A8CA28CB28900D7300697ECF /* XCRemoteSwiftPackageReference "authing-binary" */;
+			productName = Wechat;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

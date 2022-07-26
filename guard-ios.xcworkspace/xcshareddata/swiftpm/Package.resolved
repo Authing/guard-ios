@@ -11,30 +11,12 @@
         }
       },
       {
-        "package": "Guard-iOS-OneAuth",
-        "repositoryURL": "https://github.com/Authing/guard-ios-oneauth",
+        "package": "Guard-iOS-binary",
+        "repositoryURL": "https://github.com/Authing/authing-binary",
         "state": {
           "branch": null,
-          "revision": "4d755d393965fa41307f1195372dcb6c5c4f3b92",
-          "version": "1.0.9"
-        }
-      },
-      {
-        "package": "Guard-iOS-Wechat",
-        "repositoryURL": "https://github.com/Authing/guard-ios-wechat",
-        "state": {
-          "branch": null,
-          "revision": "67b6afa6354597d5e3873f63808063b6050874bd",
-          "version": "1.0.2"
-        }
-      },
-      {
-        "package": "Guard-iOS-WeCom",
-        "repositoryURL": "https://github.com/Authing/guard-ios-wecom",
-        "state": {
-          "branch": null,
-          "revision": "1754b48dd36b4ab2c99f527c59abaab5cb4c4173",
-          "version": "1.0.1"
+          "revision": "0fa3792a67247546a33e421c0a9d08f86410c452",
+          "version": "1.0.3"
         }
       }
     ]
