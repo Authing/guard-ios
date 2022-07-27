@@ -1,0 +1,132 @@
+"authing_login" = "登錄";
+"authing_please_input" = "請輸入";
+"authing_username" = "用戶名";
+"authing_email" = "郵箱";
+"authing_phone" = "手機號";
+"authing_password" = "密碼";
+"authing_verify_code" = "驗證碼";
+"authing_other_login_methods" = "其他方式登錄";
+"authing_login_by_phone_code" = "短信驗證碼";
+"authing_login_by_email_code" = "郵箱驗證碼";
+"authing_login_by_password" = "賬號密碼";
+"authing_get_verify_code" = "獲取驗證碼";
+"authing_register" = "註冊";
+"authing_no_account" = "沒有帳號？";
+"authing_register_now" = "立即註冊";
+"authing_welcome_to" = "歡迎加入";
+"authing_register_by_phone" = "短信驗證碼";
+"authing_register_by_email" = "郵箱密碼";
+"authing_register_by_emailCode" = "郵箱驗證碼";
+"authing_password_hint" = "請輸入密碼";
+"authing_password_confirm_hint" = "請再次輸入密碼";
+"authing_password_do_not_match" = "兩次輸入的密碼必須一致";
+"authing_find_password_back" = "找回密碼";
+"authing_forgot_password" = "忘記密碼";
+"authing_reset_password" = "重置密碼";
+"authing_reset_password_success" = "重置成功";
+"authing_reset_password_tips" = "密碼重置成功";
+"authing_reset_password_content" = "你可以使用新密碼繼續登錄";
+"authing_reset_goback" = "返回登錄";
+"authing_reset_goback_auto" = "%ds 後自動跳轉登錄頁";
+"authing_input_phone_or_email" = "請輸入手機號或郵箱";
+"authing_input_phone_and_verifycode" = "輸入你的註冊電話/郵箱及驗證碼";
+"authing_agree_privacy_first" = "請先同意隱私協議";
+"authing_password_strength1" = "密碼長度至少為 6 位";
+"authing_password_strength2" = "密碼長度至少為 6 位，且要包含英文、數字與符號中的兩種";
+"authing_password_strength3" = "密碼長度至少為 6 位，且要包含英文、數字與符號";
+"authing_choose_mfa_tip" = "請選擇驗證方式";
+"authing_bind" = "綁定";
+"authing_bind_phone" = "綁定手機號";
+"authing_bind_email" = "綁定郵箱";
+"authing_mfa_verify_phone" = "手機驗證";
+"authing_mfa_verify_email" = "郵箱驗證";
+"authing_mfa_verify_code" = "安全碼驗證";
+"authing_mfa_verify_face" = "人臉識別驗證";
+"authing_please_input_verify_code" = "請輸入驗證碼";
+"authing_phone_number_already_bound" = "手機號碼已經被綁定";
+"authing_email_already_bound" = "郵箱已經被綁定";
+"authing_account_login_verify" = "帳號登錄驗證";
+"authing_security_code_tip" = "請輸入獲取的 6 位數字安全碼";
+"authing_code_sent_to" = "驗證碼已發送至";
+"authing_first_time_login_title" = "設置密碼";
+"authing_first_time_login_tip" = "為了保障帳號安全，請設置初始密碼";
+"authing_first_time_login_count_down" = "此頁面的有效期為 10 分鐘";
+"authing_user_info_complete" = "完善帳號信息";
+"authing_complete_tip" = "為了更好的使用體驗，請先完善您的資料信息";
+"authing_submit" = "提交";
+"authing_email_cannot_be_empty" = "郵箱不能為空";
+"authing_email_code_cannot_be_empty" = "郵件驗證碼不能為空";
+"authing_phone_cannot_be_empty" = "手機號不能為空";
+"authing_phone_code_cannot_be_empty" = "短信驗證碼不能為空";
+"authing_is_required" = "為必填項";
+"authing_sex_male" = "男";
+"authing_sex_female" = "女";
+"authing_sex_unspecified" = "保密";
+"authing_next" = "下一步";
+"authing_invalid_phone" = "手機號碼無效";
+"authing_invalid_email" = "郵件地址無效";
+"authing_social_login" = "第三方賬號登錄";
+
+
+// user profile
+"authing_user_profile" = "個人中心";
+"authing_undefined" = "未定義";
+"authing_avatar" = "頭像";
+"authing_nickname" = "暱稱";
+"authing_name" = "姓名";
+"authing_logout" = "退出登錄";
+"authing_logout_tip" = "確定退出當前帳號嗎？";
+"authing_delete_tip" = "確定註銷此賬號？";
+"authing_delete_phone" = "將發送驗證碼至綁定手機 %@";
+"authing_delete_password" = "請輸入密碼註銷此賬號";
+"authing_delete_account" = "註銷帳號";
+"authing_delete_title" = "確認";
+"authing_delete_account_tip" = "註銷後，此賬號的所有數據都將被刪除且不可逆，請謹慎操作";
+"authing_cancel" = "取消";
+"authing_not_login" = "尚未登錄";
+
+// country code
+"authing_countrycode_title" = "選擇國家和地區";
+
+
+//self?.tipLabel.text = "綁定成功"
+//self?.tipLabel.text = "綁定人臉失敗, 請重試"
+
+
+"authing_mfa_face_title" = "綁定人臉識別";
+"authing_mfa_face_title2" = "人臉識別";
+"authing_mfa_face_camera" = "請保持攝像頭已打開並無遮擋";
+"authing_mfa_face_camera2" = "請保持姿勢不變";
+"authing_mfa_verifying" = "正在識別中，請稍候";
+"authing_mfa_verify_failed" = "識別人臉失敗, 請重試";
+"authing_mfa_verify_success" = "識別成功";
+
+"authing_mfa_binding" = "正在綁定中，請稍候";
+"authing_mfa_bind_failed" = "綁定人臉失敗, 請重試";
+"authing_mfa_bind_success" = "綁定成功";
+
+"authing_cannot_get_verify_code" = "無法收到驗證碼";
+"authing_cannot_login" = "無法登錄";
+"authing_cannot_register" = "無法註冊";
+"authing_lost_account" = "帳號丟失";
+"authing_cannot_reset_password" = "無法重置密碼";
+ "authing_account_is_locked" = "帳號鎖定";
+"authing_other" = "其他";
+
+"authing_text_placeholder" = "請輸入內容";
+
+"authing_phone_none" = "手機號未填寫";
+"authing_verifycode_none" = "驗證碼未填寫";
+"authing_email_none" = "郵箱未填寫";
+"authing_account_none" = "賬號未填寫";
+"authing_password_none" = "密碼未填寫";
+
+"authing_feedback_title" = "問題反饋";
+"authing_feedback_contact" = "聯繫方式";
+"authing_feedback_related" = "相關問題";
+"authing_feedback_issuetip" = "如果無法重置密碼，建議你進行以下操作： \n 1.檢查你的手機是否停機/無網絡；\n 2.檢查你設置的密碼是否正確。";
+"authing_feedback_description" = "問題描述";
+"authing_feedback_screenshot" = "問題截圖";
+"authing_feedback_error" = "請輸入手機號或郵箱";
+
+"authing_verify_resend" = "重新獲取";

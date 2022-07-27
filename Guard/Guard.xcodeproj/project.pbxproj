@@ -305,6 +305,8 @@
 		A8A489832876B97C00F3120F /* FeedBackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackController.swift; sourceTree = "<group>"; };
 		A8A5ABC0285733F500D6B03A /* AuthResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResult.swift; sourceTree = "<group>"; };
 		A8A7BBB128466CC5000A0D7C /* CountryCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeView.swift; sourceTree = "<group>"; };
+		A8ABCD5B28914C4A00DD6DA0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		A8ABCD5C28914C5000DD6DA0 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A8BBEB342876DA890082DE59 /* FeedBackIssuePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackIssuePicker.swift; sourceTree = "<group>"; };
 		A8BBEB362876DE330082DE59 /* String+Authing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Authing.swift"; sourceTree = "<group>"; };
 		A8BBEB3C2876FC930082DE59 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
@@ -512,6 +514,7 @@
 		7E9593C8274C813A001459C5 = {
 			isa = PBXGroup;
 			children = (
+				7E9593D5274C813A001459C5 /* Guard.h */,
 				7E9593D4274C813A001459C5 /* Guard */,
 				7E9593DE274C813B001459C5 /* GuardTests */,
 				7E9593D3274C813A001459C5 /* Products */,
@@ -531,7 +534,6 @@
 		7E9593D4274C813A001459C5 /* Guard */ = {
 			isa = PBXGroup;
 			children = (
-				7E9593D5274C813A001459C5 /* Guard.h */,
 				7ECF8AC62759FF17004F8FC5 /* Const.swift */,
 				7E959440274CEECF001459C5 /* Authing.swift */,
 				7E20000827E9A8250051F590 /* Core */,
@@ -761,6 +763,8 @@
 				en,
 				"zh-Hans",
 				Base,
+				"zh-Hant",
+				ja,
 			);
 			mainGroup = 7E9593C8274C813A001459C5;
 			productRefGroup = 7E9593D3274C813A001459C5 /* Products */;
@@ -979,6 +983,8 @@
 			children = (
 				7E7566A3276888C300C3872F /* en */,
 				7E7566A4276888ED00C3872F /* zh-Hans */,
+				A8ABCD5B28914C4A00DD6DA0 /* zh-Hant */,
+				A8ABCD5C28914C5000DD6DA0 /* ja */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

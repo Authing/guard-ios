@@ -73,6 +73,8 @@
 		7EB5CE5327CF70E900BE3252 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		7ED434D62775BA7000893EDD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7ED434D82775BA7E00893EDD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		A8ABCD5928914C0700DD6DA0 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A8ABCD5A28914C2E00DD6DA0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A8CF1CF8288FFAB50072A17F /* LarkSSO.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = LarkSSO.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -248,6 +250,8 @@
 				en,
 				Base,
 				"zh-Hans",
+				ja,
+				"zh-Hant",
 			);
 			mainGroup = 7E95940C274CB4E2001459C5;
 			packageReferences = (
@@ -322,6 +326,8 @@
 			children = (
 				7ED434D62775BA7000893EDD /* en */,
 				7ED434D82775BA7E00893EDD /* zh-Hans */,
+				A8ABCD5928914C0700DD6DA0 /* ja */,
+				A8ABCD5A28914C2E00DD6DA0 /* zh-Hant */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

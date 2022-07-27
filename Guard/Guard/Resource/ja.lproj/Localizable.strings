@@ -1,0 +1,132 @@
+"authing_login"="ログイン";
+"authing_please_input"="入力してください";
+"authing_username"="ユーザー名";
+"authing_email"="メール";
+"authing_phone"="電話番号";
+"authing_password"="パスワード";
+"authing_verify_code"="確認コード";
+"authing_other_login_methods"="他のログイン方法";
+"authing_login_by_phone_code"="SMS確認コード";
+"authing_login_by_email_code"="メール確認コード";
+"authing_login_by_password"="アカウントパスワード";
+"authing_get_verify_code"="検証コードを取得";
+"authing_register"="登録";
+"authing_no_account" = "アカウントがありませんか？";
+"authing_register_now"="今すぐ登録";
+"authing_welcome_to"="ようこそ";
+"authing_register_by_phone"="SMS確認コード";
+"authing_register_by_email"="メールパスワード";
+"authing_register_by_emailCode"="メール確認コード";
+"authing_password_hint"="パスワードを入力してください";
+"authing_password_confirm_hint"="パスワードをもう一度入力してください";
+"authing_password_do_not_match"="2回入力したパスワードは一致する必要があります";
+"authing_find_password_back"="パスワードの取得";
+"authing_forgot_password"="パスワードを忘れた";
+"authing_reset_password"="パスワードのリセット";
+"authing_reset_password_success"="リセットに成功しました";
+"authing_reset_password_tips"="パスワードのリセットに成功しました";
+"authing_reset_password_content"="新しいパスワードで引き続きログインできます";
+"authing_reset_goback"="ゴーバック";
+"authing_reset_goback_auto" = "％dsの後に自動的にログインページにジャンプします";
+"authing_input_phone_or_email"="電話番号またはメールアドレスを入力してください";
+"authing_input_phone_and_verifycode"="登録電話/メールアドレスと確認コードを入力してください";
+"authing_agree_privacy_first"="最初にプライバシー契約に同意してください";
+"authing_password_strength1"="パスワードは6桁以上である必要があります";
+"authing_password_strength2" = "パスワードの長さは6桁以上で、数字と記号の2種類の英語が含まれている必要があります";
+"authing_password_strength3" = "パスワードは6文字以上で、英語、数字、記号が含まれている必要があります";
+"authing_choose_mfa_tip"="認証方法を選択してください";
+"authing_bind"="バインディング";
+"authing_bind_phone"="電話番号をバインド";
+"authing_bind_email"="メールをバインド";
+"authing_mfa_verify_phone"="電話の確認";
+"authing_mfa_verify_email"="メールの確認";
+"authing_mfa_verify_code"="セキュリティコードの検証";
+"authing_mfa_verify_face"="顔の検証";
+"authing_please_input_verify_code"="確認コードを入力してください";
+"authing_phone_number_already_bound"="電話番号はすでにバインドされています";
+"authing_email_already_bound"="メールはすでにバインドされています";
+"authing_account_login_verify"="アカウントログインの確認";
+"authing_security_code_tip"="取得した6桁のセキュリティコードを入力してください";
+"authing_code_sent_to"="認証コードの送信先";
+"authing_first_time_login_title"="パスワードの設定";
+"authing_first_time_login_tip" = "アカウントのセキュリティを確保するために、初期パスワードを設定してください";
+"authing_first_time_login_count_down"="このページは10分間有効です";
+"authing_user_info_complete"="完全なアカウント情報";
+"authing_complete_tip" = "ユーザーエクスペリエンスを向上させるには、最初にプロファイル情報を入力してください";
+"authing_submit"="送信";
+"authing_email_cannot_be_empty"="メールを空にすることはできません";
+"authing_email_code_cannot_be_empty"="メール確認コードを空にすることはできません";
+"authing_phone_cannot_be_empty"="電話番号を空にすることはできません";
+"authing_phone_code_cannot_be_empty"="SMS確認コードを空にすることはできません";
+"authing_is_required"="必須";
+"authing_sex_male"="男性";
+"authing_sex_female"="女性";
+"authing_sex_unspecified"="機密";
+"authing_next"="次へ";
+"authing_invalid_phone"="無効な電話番号";
+"authing_invalid_email"="無効なメールアドレス";
+"authing_social_login"="サードパーティアカウントログイン";
+
+
+//ユーザープロファイル
+"authing_user_profile"="パーソナルセンター";
+"authing_undefined" = "undefined";
+"authing_avatar"="アバター";
+"authing_nickname"="ニックネーム";
+"authing_name"="名前";
+"authing_logout"="ログアウト";
+"authing_logout_tip" = "本当にログアウトしますか？";
+"authing_delete_tip" = "このアカウントを削除してもよろしいですか？";
+"authing_delete_phone" = "確認コードがバインドされた電話％@に送信されます";
+"authing_delete_password"="このアカウントからログアウトするにはパスワードを入力してください";
+"authing_delete_account"="アカウントの削除";
+"authing_delete_title"="確認";
+"authing_delete_account_tip" = "ログアウト後、このアカウントのすべてのデータが削除され、元に戻せなくなります。注意して操作してください";
+"authing_cancel"="キャンセル";
+"authing_not_login"="まだログインしていません";
+
+//国コード
+"authing_countrycode_title"="国コードを選択";
+
+
+//self?.tipLabel.text="バインドに成功しました"
+//self?.tipLabel.text="顔のバインドに失敗しました。もう一度やり直してください"
+
+
+"authing_mfa_face_title"="顔認識をバインド";
+"authing_mfa_face_title2"="顔認識";
+"authing_mfa_face_camera"="カメラの電源を入れて邪魔にならないようにしてください";
+"authing_mfa_face_camera2"="ポーズをとってください";
+"authing_mfa_verifying"="認識しています。お待ちください";
+"authing_mfa_verify_failed"="顔を認識できませんでした。もう一度やり直してください";
+"authing_mfa_verify_success"="認証に成功しました";
+
+"authing_mfa_binding" ="バインディング、お待ちください";
+"authing_mfa_bind_failed"="顔のバインドに失敗しました。もう一度やり直してください";
+"authing_mfa_bind_success"="バインドに成功しました";
+
+"authing_cannot_get_verify_code"="確認コードを受信できません";
+"authing_cannot_login"="ログインできません";
+"authing_cannot_register"="登録できません";
+"authing_lost_account"="アカウントが失われました";
+"authing_cannot_reset_password"="パスワードをリセットできません";
+ "authing_account_is_locked"="アカウントがロックされています";
+"authing_other" = "other";
+
+"authing_text_placeholder"="コンテンツを入力してください";
+
+"authing_phone_none"="電話番号が入力されていません";
+"authing_verifycode_none"="確認コードが入力されていません";
+"authing_email_none"="メールが入力されていません";
+"authing_account_none"="アカウントが入力されていません";
+"authing_password_none"="パスワードが入力されていません";
+
+"authing_feedback_title"="質問のフィードバック";
+"authing_feedback_contact"="連絡先";
+"authing_feedback_related"="関連する質問";
+"authing_feedback_issuetip" = "パスワードをリセットできない場合は、次の手順を実行することをお勧めします。\n1.電話がダウンしているかネットワークがないかどうかを確認します;\n2。設定したパスワードが正しいかどうかを確認します。";
+"authing_feedback_description"="問題の説明";
+"authing_feedback_screenshot"="質問のスクリーンショット";
+"authing_feedback_error"="電話番号またはメールアドレスを入力してください";
+
+"authing_verify_resend"="再取得";
