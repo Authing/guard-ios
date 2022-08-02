@@ -161,6 +161,7 @@
 		A8DBB7B7287D5B8C00F75C97 /* ResetSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DBB7B6287D5B8C00F75C97 /* ResetSuccessViewController.swift */; };
 		A8DBB7B9287D635400F75C97 /* GoBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DBB7B8287D635400F75C97 /* GoBackButton.swift */; };
 		A8DBB7CA287D92C000F75C97 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DBB7C9287D92C000F75C97 /* LoginView.swift */; };
+		A8E1E1762898F6E100375EEA /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E1E1752898F6E100375EEA /* Language.swift */; };
 		A8E1F10A28350590004B1E76 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E1F10928350590004B1E76 /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
@@ -319,6 +320,7 @@
 		A8DBB7B6287D5B8C00F75C97 /* ResetSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetSuccessViewController.swift; sourceTree = "<group>"; };
 		A8DBB7B8287D635400F75C97 /* GoBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoBackButton.swift; sourceTree = "<group>"; };
 		A8DBB7C9287D92C000F75C97 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		A8E1E1752898F6E100375EEA /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		A8E1F10928350590004B1E76 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -638,6 +640,7 @@
 			children = (
 				7E09E5E42845BBB90058D83C /* MethodTab.swift */,
 				7EF66C6A277C1BF600FCBBEB /* MethodTabItem.swift */,
+				A8E1E1752898F6E100375EEA /* Language.swift */,
 				A8DBB7C9287D92C000F75C97 /* LoginView.swift */,
 				7ED434CB277569DF00893EDD /* LoginMethodTabItem.swift */,
 				7EF66C6C277C1C6E00FCBBEB /* RegisterMethodTabItem.swift */,
@@ -860,6 +863,7 @@
 				7E96039D27E0C48C007C87EB /* RootView.swift in Sources */,
 				7EB32805278C17B3008639AA /* MFAPhoneButton.swift in Sources */,
 				7EB3280E278D10B7008639AA /* MFAEmailButton.swift in Sources */,
+				A8E1E1762898F6E100375EEA /* Language.swift in Sources */,
 				7E7566A027684A5E00C3872F /* AuthClient.swift in Sources */,
 				7E96039927E0AF49007C87EB /* Layout.swift in Sources */,
 				7E20000A27E9A8320051F590 /* ALog.swift in Sources */,
