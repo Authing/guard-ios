@@ -66,7 +66,7 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                     if let type = conn["type"] as? String {
                         if ("wechat:mobile" == type) {
                             srcs.append("wechat")
-                        } else if ("wechatwork:mobile" == type) {
+                        } else if ("wechatwork:mobile" == type || "wechatwork:agency:mobile" == type) {
                             srcs.append("wecom")
                         } else if ("apple" == type) {
                             srcs.append("apple")

@@ -1151,7 +1151,7 @@
 				);
 				MARKETING_VERSION = 1.2.6;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_CFLAGS = "-fembed-bitcode-marker";
+				OTHER_CFLAGS = "-fembed-bitcode";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.authing.Guard;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";

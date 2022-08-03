@@ -477,6 +477,25 @@ public class AuthClient: Client {
         }
     }
     
+    public func loginbyWeComAgency(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        getConfig { config in
+            guard let conf = config else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+                return
+            }
+  
+            guard let conId = conf.getConnectionId(type: "wechatwork:agency:mobile") else {
+                completion(500, "No wechat connection. Please set up in console for \(Authing.getAppId())", nil)
+                return
+            }
+            
+            let body: NSDictionary = ["connId" : conId, "code" : code]
+            self.post("/api/v2/ecConn/wechat-work-agency/authByCode", body) { code, message, data in
+                self.createUserInfo(code, message, data, completion: completion)
+            }
+        }
+    }
+    
     public func loginByLark(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         getConfig { config in
             guard config != nil else {
