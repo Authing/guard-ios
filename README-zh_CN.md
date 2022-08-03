@@ -29,7 +29,7 @@ iOS App 通过 Guard 开源组件库接入。Guard 采用了全新的语义化�
 
 ## 文档
 
-[中文文档请移步至这里查看](https://docs.authing.cn/v2/ios/)
+[中文文档请移步至这里查看](https://docs.authing.cn/v2/reference/sdk-for-ios/)
 
 ## 常见问题
 
