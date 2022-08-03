@@ -1121,7 +1121,6 @@
 		7E9593E5274C813B001459C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BITCODE_GENERATION_MODE = bitcode;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1151,7 +1150,6 @@
 				);
 				MARKETING_VERSION = 1.2.6;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_CFLAGS = "-fembed-bitcode";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.authing.Guard;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -1168,7 +1166,6 @@
 		7E9593E6274C813B001459C5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BITCODE_GENERATION_MODE = bitcode;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1199,7 +1196,6 @@
 				);
 				MARKETING_VERSION = 1.2.6;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_CFLAGS = "-fembed-bitcode";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.authing.Guard;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
