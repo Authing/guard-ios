@@ -19,7 +19,7 @@
 "authing_register_by_email" = "Email Password";
 "authing_register_by_emailCode" = "Email Verification";
 "authing_password_hint" = "Please input your password";
-"authing_password_confirm_hint" = "Confirm password";
+"authing_password_confirm_hint" = "Confirm";
 "authing_password_do_not_match" = "Password and confirm password do not match";
 "authing_find_password_back" = "Reset password";
 "authing_reset_password" = "Reset password";
@@ -27,7 +27,7 @@
 "authing_reset_password_success" = "Reset Successfully";
 "authing_reset_password_tips" = "Password Reset Successfully";
 "authing_reset_password_content" = "Your password has been successfully reset";
-"authing_reset_goback" = "Back to the login page";
+"authing_reset_goback" = "Back";
 "authing_reset_goback_auto" = "Automatically back to the login page after %ds";
 "authing_input_phone_or_email" = "Enter phone number or email";
 "authing_input_phone_and_verifycode" = "Enter phone number/email and verify code";
@@ -112,13 +112,13 @@
 "authing_text_placeholder" = "Enter some text";
 
 
-"authing_phone_none" = "Phone number is not entered";
-"authing_verifycode_none" = "The verification code is not entered";
-"authing_email_none" = "Email address is not entered";
-"authing_account_none" = "Username is not entered";
-"authing_password_none" = "Password is not entered";
+"authing_phone_none" = "Phone number is missing";
+"authing_verifycode_none" = "The verification code is missing";
+"authing_email_none" = "Email is missing";
+"authing_account_none" = "Username is missing";
+"authing_password_none" = "Password is missing";
 
-"authing_feedback_title" = "Feedback";
+"authing_feedback_title" = "Need help?";
 "authing_feedback_contact" = "Contact information";
 "authing_feedback_related" = "Related isses";
 "authing_feedback_issuetip" = "If you cannot reset your password: \n 1. Check whether your phone is down/disconnected; \n 2. Check that your password is correct.";

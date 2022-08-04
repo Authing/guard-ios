@@ -22,11 +22,11 @@
 "authing_password_do_not_match" = "兩次輸入的密碼必須一致";
 "authing_find_password_back" = "找回密碼";
 "authing_forgot_password" = "忘記密碼";
-"authing_reset_password" = "重置密碼";
-"authing_reset_password_success" = "重置成功";
-"authing_reset_password_tips" = "密碼重置成功";
+"authing_reset_password" = "重設密碼";
+"authing_reset_password_success" = "重設成功";
+"authing_reset_password_tips" = "密碼重設成功";
 "authing_reset_password_content" = "你可以使用新密碼繼續登錄";
-"authing_reset_goback" = "返回登錄";
+"authing_reset_goback" = "返回";
 "authing_reset_goback_auto" = "%ds 後自動跳轉登錄頁";
 "authing_input_phone_or_email" = "請輸入手機號或郵箱";
 "authing_input_phone_and_verifycode" = "輸入你的註冊電話/郵箱及驗證碼";
@@ -117,11 +117,11 @@
 
 "authing_phone_none" = "手機號未填寫";
 "authing_verifycode_none" = "驗證碼未填寫";
-"authing_email_none" = "郵箱未填寫";
+"authing_email_none" = "電子郵件未填寫";
 "authing_account_none" = "賬號未填寫";
 "authing_password_none" = "密碼未填寫";
 
-"authing_feedback_title" = "問題反饋";
+"authing_feedback_title" = "幫助中心";
 "authing_feedback_contact" = "聯繫方式";
 "authing_feedback_related" = "相關問題";
 "authing_feedback_issuetip" = "如果無法重置密碼，建議你進行以下操作： \n 1.檢查你的手機是否停機/無網絡；\n 2.檢查你設置的密碼是否正確。";
