@@ -10,9 +10,13 @@ import XCTest
 
 class GuardTests: XCTestCase {
 
-    let TIMEOUT = 30.0
-    let account = "ci"
-    let password = "111111"
+    var TIMEOUT = 30.0
+    var account: String  = "ci"
+    var password: String  = "111111"
+    var emailAddress: String = "test@authing.com"
+    var emailCode: String = ""
+    var phone: String = "15100000000"
+    var phoneCode: String = ""
     
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -22,7 +26,7 @@ class GuardTests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
+    
     func testGetSecurityLevel() throws {
         let expectation = XCTestExpectation(description: "getSecurityLevel")
         AuthClient().loginByAccount(account: account, password: password) { code, message, userInfo in
@@ -303,7 +307,7 @@ class GuardTests: XCTestCase {
         }
     }
         
-    //MARK: ---------- OIDC unit test ----------
+    //MARK: ---------- OIDC Unit test ----------
     
     func testOIDCRegisterByUserName() throws {
         let expectation = XCTestExpectation(description: "OIDC registerByUserName")
@@ -316,7 +320,7 @@ class GuardTests: XCTestCase {
     
     func testOIDCLoginByAccount() throws {
         let expectation = XCTestExpectation(description: "OIDC loginByAccount")
-        OIDCClient().loginByAccount(account: "OIDCTest", password: password) { code, message, userInfo in
+        OIDCClient().loginByAccount(account: account, password: password) { code, message, userInfo in
             XCTAssert(code == 200)
             expectation.fulfill()
         }
@@ -325,7 +329,7 @@ class GuardTests: XCTestCase {
     
     func testOIDCGetUserInfoByAccessToken() throws {
         let expectation = XCTestExpectation(description: "OIDC getUserInfoByAccessToken")
-        OIDCClient().loginByAccount(account: "OIDCTest", password: password) { code, message, userInfo in
+        OIDCClient().loginByAccount(account: account, password: password) { code, message, userInfo in
             XCTAssert(code == 200)
             OIDCClient().getUserInfoByAccessToken(userInfo: userInfo) { code, message, userInfo in
                 XCTAssert(code == 200)
@@ -358,5 +362,121 @@ class GuardTests: XCTestCase {
             }
             wait(for: [expectation], timeout: TIMEOUT)
         }
+    }
+    
+    //MARK: ---------- Get verification code scene ----------
+    
+    func testSendSms() throws {
+        let expectation = XCTestExpectation(description: "sendSMS")
+        AuthClient().sendSms(phone: phone) { code, message in
+            XCTAssert(code == 200)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: TIMEOUT)
+    }
+    
+    func testRegisterByPhoneCode() throws {
+        let expectation = XCTestExpectation(description: "registerByPhoneCode")
+
+        AuthClient().registerByPhoneCode(phone: phone, code: phoneCode) { code, message, userInfo in
+            XCTAssert(code == 200)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: TIMEOUT)
+    }
+    
+    func testLoginByPhoneCode() throws {
+        let expectation = XCTestExpectation(description: "loginByPhoneCode")
+
+        AuthClient().loginByPhoneCode(phone: phone, code: phoneCode) { code, message, userInfo in
+            XCTAssert(code == 200)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: TIMEOUT)
+    }
+    
+    func testBindPhone() throws {
+        let expectation = XCTestExpectation(description: "bindPhone")
+
+        AuthClient().loginByAccount(account: account, password: password) { code, message, userInfo in
+            XCTAssert(code == 200)
+            AuthClient().bindPhone(phone: self.phone, code: self.phoneCode) { code, message, userInfo in
+                XCTAssert(code == 200)
+                expectation.fulfill()
+            }
+        }
+        wait(for: [expectation], timeout: TIMEOUT)
+    }
+    
+    func testUnbindPhone() throws {
+        let expectation = XCTestExpectation(description: "unbindPhone")
+        AuthClient().loginByAccount(account: account, password: password) { code, message, userInfo in
+            XCTAssert(code == 200)
+            AuthClient().unbindPhone { code, message, userInfo in
+                expectation.fulfill()
+            }
+        }
+        wait(for: [expectation], timeout: TIMEOUT)
+    }
+
+    func testSendEmail() throws {
+        let expectation = XCTestExpectation(description: "sendEmail")
+        AuthClient().sendEmail(email: emailAddress, scene: "VERIFY_CODE") { code, message in
+            XCTAssert(code == 200)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: TIMEOUT)
+    }
+    
+    func testRegisterByEmailCode() throws {
+        let expectation = XCTestExpectation(description: "registerByEmailCode")
+
+        AuthClient().registerByEmailCode(email: emailAddress, code: emailCode) { code, message, userInfo in
+            XCTAssert(code == 200)
+            
+            AuthClient().getCurrentUser() { code, message, data in
+                XCTAssert(code == 200)
+                expectation.fulfill()
+            }
+        }
+        wait(for: [expectation], timeout: TIMEOUT)
+    }
+    
+    func testLoginByEmailCode() throws {
+        let expectation = XCTestExpectation(description: "loginByEmailCode")
+
+        AuthClient().loginByEmail(email: emailAddress, code: emailCode) { code, message, userInfo in
+            XCTAssert(code == 200)
+            
+            AuthClient().getCurrentUser() { code, message, data in
+                XCTAssert(code == 200)
+                expectation.fulfill()
+            }
+        }
+        wait(for: [expectation], timeout: TIMEOUT)
+    }
+    
+    func testBindEmail() throws {
+        let expectation = XCTestExpectation(description: "bindEmail")
+
+        AuthClient().loginByAccount(account: account, password: password) { code, message, userInfo in
+            XCTAssert(code == 200)
+            AuthClient().bindEmail(email: self.emailAddress, code: self.emailCode) { code, message, userInfo in
+                XCTAssert(code == 200)
+                expectation.fulfill()
+            }
+        }
+        wait(for: [expectation], timeout: TIMEOUT)
+    }
+    
+    func testUnbindEmail() throws {
+        let expectation = XCTestExpectation(description: "unbindEmail")
+        AuthClient().loginByAccount(account: account, password: password) { code, message, userInfo in
+            XCTAssert(code == 200)
+            AuthClient().unbindEmail { code, message, userInfo in
+                expectation.fulfill()
+            }
+        }
+        wait(for: [expectation], timeout: TIMEOUT)
     }
 }
