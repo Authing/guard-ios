@@ -27,22 +27,6 @@ class GuardTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func testGetSecurityLevel() throws {
-        let expectation = XCTestExpectation(description: "getSecurityLevel")
-        AuthClient().loginByAccount(account: account, password: password) { code, message, userInfo in
-            XCTAssert(code == 200)
-            
-            AuthClient().getSecurityLevel() { code, message, data in
-                XCTAssert(code == 200)
-                XCTAssert(data != nil)
-                XCTAssert(data!["score"] as! Int == 60)
-                
-                expectation.fulfill()
-            }
-        }
-        wait(for: [expectation], timeout: TIMEOUT)
-    }
-    
     func testRegisterByEmailNormal() throws {
         let expectation = XCTestExpectation(description: "registerByEmailNormal")
         AuthClient().registerByEmail(email: "1@1024.cn", password: "111111") { code, message, userInfo in
@@ -137,23 +121,28 @@ class GuardTests: XCTestCase {
         wait(for: [expectation], timeout: TIMEOUT)
     }
     
-    func testGetCurrentUser() throws {
-        let expectation = XCTestExpectation(description: "getCurrentUser")
+    func testGetSecurityLevel() throws {
+        let expectation = XCTestExpectation(description: "getSecurityLevel")
         AuthClient().loginByAccount(account: account, password: password) { code, message, userInfo in
             XCTAssert(code == 200)
-            AuthClient().getCurrentUser() { code, message, data in
+            
+            AuthClient().getSecurityLevel() { code, message, data in
                 XCTAssert(code == 200)
+                XCTAssert(data != nil)
+                XCTAssert(data!["score"] as! Int == 60)
+                
                 expectation.fulfill()
             }
         }
         wait(for: [expectation], timeout: TIMEOUT)
     }
     
-    func testGetCustomUserData() throws {
-        let expectation = XCTestExpectation(description: "getCustomUserData")
+    //MARK: ---------- Get userInfo ----------
+    func testGetCurrentUser() throws {
+        let expectation = XCTestExpectation(description: "getCurrentUser")
         AuthClient().loginByAccount(account: account, password: password) { code, message, userInfo in
             XCTAssert(code == 200)
-            AuthClient().getCustomUserData(userInfo: userInfo ?? UserInfo()) { code, message, userInfo2 in
+            AuthClient().getCurrentUser() { code, message, data in
                 XCTAssert(code == 200)
                 expectation.fulfill()
             }
@@ -174,37 +163,18 @@ class GuardTests: XCTestCase {
         wait(for: [expectation], timeout: TIMEOUT)
     }
     
-    func testResetPasswordByFirstTimeLoginToken() throws {
-        let expectation = XCTestExpectation(description: "resetPasswordByFirstTimeLoginToken")
-        let userName = "t1"
-        AuthClient().loginByAccount(account: userName, password: "t1") { code, message, userInfo in
-            XCTAssert(code == 1639)
-            AuthClient().resetPasswordByFirstTimeLoginToken(token: userInfo?.firstTimeLoginToken ?? "", password: "test1") { code, message in
-                XCTAssert(code == 200)
-                AuthClient().loginByAccount(account: userName, password: "test1") { code, message, userInfo in
-                    XCTAssert(code == 200)
-                    AuthClient().deleteAccount { code, message in
-                        XCTAssert(code == 200)
-                    }
-                    expectation.fulfill()
-                }
-            }
-        }
-        wait(for: [expectation], timeout: TIMEOUT)
-    }
-    
-    func testUpdateProfile() throws {
-        let expectation = XCTestExpectation(description: "updateProfile")
+    func testGetCustomUserData() throws {
+        let expectation = XCTestExpectation(description: "getCustomUserData")
         AuthClient().loginByAccount(account: account, password: password) { code, message, userInfo in
             XCTAssert(code == 200)
-            AuthClient().updateProfile(object: ["test": "profile"]) { code, message, userInfo in
+            AuthClient().getCustomUserData(userInfo: userInfo ?? UserInfo()) { code, message, userInfo2 in
                 XCTAssert(code == 200)
                 expectation.fulfill()
             }
         }
         wait(for: [expectation], timeout: TIMEOUT)
     }
-    
+                
     func testUpdatePassword() throws {
         let expectation = XCTestExpectation(description: "updatePassword")
         AuthClient().loginByAccount(account: account, password: password) { code, message, userInfo in
@@ -306,8 +276,40 @@ class GuardTests: XCTestCase {
             wait(for: [expectation], timeout: TIMEOUT)
         }
     }
-        
-    //MARK: ---------- OIDC Unit test ----------
+    
+    //MARK: ---------- Update profile ----------
+    func testUpdateProfile() throws {
+        let expectation = XCTestExpectation(description: "updateProfile")
+        AuthClient().loginByAccount(account: account, password: password) { code, message, userInfo in
+            XCTAssert(code == 200)
+            AuthClient().updateProfile(object: ["test": "profile"]) { code, message, userInfo in
+                XCTAssert(code == 200)
+                expectation.fulfill()
+            }
+        }
+        wait(for: [expectation], timeout: TIMEOUT)
+    }
+    
+    func testResetPasswordByFirstTimeLoginToken() throws {
+        let expectation = XCTestExpectation(description: "resetPasswordByFirstTimeLoginToken")
+        let userName = "t1"
+        AuthClient().loginByAccount(account: userName, password: "t1") { code, message, userInfo in
+            XCTAssert(code == 1639)
+            AuthClient().resetPasswordByFirstTimeLoginToken(token: userInfo?.firstTimeLoginToken ?? "", password: "test1") { code, message in
+                XCTAssert(code == 200)
+                AuthClient().loginByAccount(account: userName, password: "test1") { code, message, userInfo in
+                    XCTAssert(code == 200)
+                    AuthClient().deleteAccount { code, message in
+                        XCTAssert(code == 200)
+                    }
+                    expectation.fulfill()
+                }
+            }
+        }
+        wait(for: [expectation], timeout: TIMEOUT)
+    }
+    
+    //MARK: ---------- OIDC ----------
     
     func testOIDCRegisterByUserName() throws {
         let expectation = XCTestExpectation(description: "OIDC registerByUserName")
@@ -476,6 +478,52 @@ class GuardTests: XCTestCase {
             AuthClient().unbindEmail { code, message, userInfo in
                 expectation.fulfill()
             }
+        }
+        wait(for: [expectation], timeout: TIMEOUT)
+    }
+    
+    //MARK: ---------- Social ----------
+    func testLoginByWechat() throws {
+        let expectation = XCTestExpectation(description: "loginByWechat")
+        AuthClient().loginByWechat("code") { code, message, userInfo in
+            XCTAssert(code == 200)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: TIMEOUT)
+    }
+    
+    func testLoginByWeCom() throws {
+        let expectation = XCTestExpectation(description: "loginByWeCom")
+        AuthClient().loginByWeCom("code") { code, message, userInfo in
+            XCTAssert(code == 200)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: TIMEOUT)
+    }
+    
+    func testLoginbyWeComAgency() throws {
+        let expectation = XCTestExpectation(description: "loginbyWeComAgency")
+        AuthClient().loginbyWeComAgency("code") { code, message, userInfo in
+            XCTAssert(code == 200)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: TIMEOUT)
+    }
+    
+    func testLoginByLark() throws {
+        let expectation = XCTestExpectation(description: "loginByLark")
+        AuthClient().loginByLark("code") { code, message, userInfo in
+            XCTAssert(code == 200)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: TIMEOUT)
+    }
+    
+    func testLoginByApple() throws {
+        let expectation = XCTestExpectation(description: "loginByApple")
+        AuthClient().loginByApple("code") { code, message, userInfo in
+            XCTAssert(code == 200)
+            expectation.fulfill()
         }
         wait(for: [expectation], timeout: TIMEOUT)
     }
