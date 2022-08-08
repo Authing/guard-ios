@@ -10,17 +10,13 @@
   <a href="javascript:;"><img src="https://img.shields.io/badge/PRs-welcome-green"></a>
   <a href="https://developer.apple.com/swift/"><img src="https://img.shields.io/badge/swift-5.0-orange.svg?style=flat"></a>
 <br/>
-
-<br>
+</div>
 
 English | [简体中文](./README-zh_CN.md)
 
 <br>
 
 <img width="250" src="https://user-images.githubusercontent.com/10389329/182366185-0ad0d882-74ab-4a8d-b8f8-5778fc6b9b72.png" />
-
-</div>
-
 
 ## Introduction
 
