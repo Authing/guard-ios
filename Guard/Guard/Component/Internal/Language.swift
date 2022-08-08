@@ -45,7 +45,7 @@ enum Language: String, CaseIterable {
             languageType = .Japanese
             break
         default:
-            languageType = .Chinese
+            languageType = .English
             break
         }
         lang = languageType

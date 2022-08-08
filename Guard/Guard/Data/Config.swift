@@ -60,15 +60,15 @@ public class Config: NSObject {
             agreements = data?["agreements"] as? [NSDictionary]
             redirectUris = data?["redirectUris"] as? [String]
             
-            if let global: NSDictionary = data?["global"] as? NSDictionary {
-                defaultLanguage = global["defaultLanguage"] as? String
-                languageFollowsBrowser = global["languageFollowsBrowser"] as? Bool
-                if languageFollowsBrowser == false {
-                    Language.setLanguage(Locale.current.identifier)
-                } else {
-                    Language.setLanguage(defaultLanguage ?? Locale.current.identifier)
-                }
-            }
+//            if let global: NSDictionary = data?["global"] as? NSDictionary {
+//                defaultLanguage = global["defaultLanguage"] as? String
+//                languageFollowsBrowser = global["languageFollowsBrowser"] as? Bool
+//                if languageFollowsBrowser == false {
+//                    Language.setLanguage(Locale.current.identifier)
+//                } else {
+//                    Language.setLanguage(defaultLanguage ?? Locale.current.identifier)
+//                }
+//            }
         }
     }
     
@@ -127,8 +127,8 @@ public class Config: NSObject {
     
     open var internationalSmsConfigEnable: Bool?
     
-    open var defaultLanguage: String?
-    open var languageFollowsBrowser: Bool? = true
+//    open var defaultLanguage: String?
+//    open var languageFollowsBrowser: Bool? = true
     
     // MARK: Request
     open var appId: String!
@@ -144,39 +144,40 @@ public class Config: NSObject {
     
     public func requestPublicConfig() {
         isGettingConfig = true
-        var publicConfigJson = NSMutableDictionary()
-        var componentsJson = NSDictionary()
-        let dispatchGroup = DispatchGroup()
-        let dispathcQueue = DispatchQueue.global()
-        dispatchGroup.enter()
-        dispathcQueue.async{
+//        var publicConfigJson = NSMutableDictionary()
+//        var componentsJson = NSDictionary()
+//        let dispatchGroup = DispatchGroup()
+//        let dispathcQueue = DispatchQueue.global()
+//        dispatchGroup.enter()
+//        dispathcQueue.async{
             let url = "https://console." + Authing.getHost() + "/api/v2/applications/" + self.appId + "/public-config"
             AuthClient().request(config: nil, urlString: url, method: "get", body: nil) { code, message, jsonData in
                 if (code != 200) {
                     ALog.e(Self.self, "error when getting public cofig:\(message!)")
                 }
-                publicConfigJson = jsonData?.mutableCopy() as? NSMutableDictionary ?? [:]
-                dispatchGroup.leave()
+//                publicConfigJson = jsonData?.mutableCopy() as? NSMutableDictionary ?? [:]
+//                dispatchGroup.leave()
+                self.fireCallback(jsonData)
             }
-        }
-        dispatchGroup.enter()
-        dispathcQueue.async{
-            let url2 = "https://console." + Authing.getHost() + "/api/v2/applications/" + self.appId + "/components-public-config/guard"
-            AuthClient().request(config: nil, urlString: url2, method: "get", body: nil) { code, message, jsonData in
-                if (code != 200) {
-                    ALog.e(Self.self, "error when getting components public config:\(message!)")
-                }
-                componentsJson = jsonData ?? [:]
-                dispatchGroup.leave()
-            }
-        }
-        dispatchGroup.notify(queue: DispatchQueue.main) { [weak self] in
-        
-            componentsJson.forEach({ (key, value) in
-                publicConfigJson[key] = value
-            })
-            self?.fireCallback(publicConfigJson)
-        }
+//        }
+//        dispatchGroup.enter()
+//        dispathcQueue.async{
+//            let url2 = "https://console." + Authing.getHost() + "/api/v2/applications/" + self.appId + "/components-public-config/guard"
+//            AuthClient().request(config: nil, urlString: url2, method: "get", body: nil) { code, message, jsonData in
+//                if (code != 200) {
+//                    ALog.e(Self.self, "error when getting components public config:\(message!)")
+//                }
+//                componentsJson = jsonData ?? [:]
+//                dispatchGroup.leave()
+//            }
+//        }
+//        dispatchGroup.notify(queue: DispatchQueue.main) { [weak self] in
+//
+//            componentsJson.forEach({ (key, value) in
+//                publicConfigJson[key] = value
+//            })
+//            self?.fireCallback(publicConfigJson)
+//        }
 
     }
     

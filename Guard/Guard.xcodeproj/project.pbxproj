@@ -141,6 +141,7 @@
 		A85EEFBD287C4B4F00D3BF29 /* ResetPasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85EEFBC287C4B4F00D3BF29 /* ResetPasswordTextField.swift */; };
 		A85EEFBF287C559000D3BF29 /* ResetPasswordVerifyCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85EEFBE287C559000D3BF29 /* ResetPasswordVerifyCodeButton.swift */; };
 		A8628F5C286D985200D7300E /* MFAFaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8628F5B286D985200D7300E /* MFAFaceViewController.swift */; };
+		A8652655289D2C03006FC1D3 /* GuardManualTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8652654289D2C03006FC1D3 /* GuardManualTest.swift */; };
 		A86AE1DC287FED6300BFD4A0 /* DeleteAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86AE1DB287FED6300BFD4A0 /* DeleteAccountView.swift */; };
 		A874BC7528780BBA002B4C9F /* DescribeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A874BC7428780BBA002B4C9F /* DescribeTextView.swift */; };
 		A89705CB287EDD520080BEE5 /* AuthingDeleteAccount.xib in Resources */ = {isa = PBXBuildFile; fileRef = A89705CA287EDD520080BEE5 /* AuthingDeleteAccount.xib */; };
@@ -298,6 +299,7 @@
 		A85EEFBC287C4B4F00D3BF29 /* ResetPasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordTextField.swift; sourceTree = "<group>"; };
 		A85EEFBE287C559000D3BF29 /* ResetPasswordVerifyCodeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVerifyCodeButton.swift; sourceTree = "<group>"; };
 		A8628F5B286D985200D7300E /* MFAFaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFAFaceViewController.swift; sourceTree = "<group>"; };
+		A8652654289D2C03006FC1D3 /* GuardManualTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardManualTest.swift; sourceTree = "<group>"; };
 		A86AE1DB287FED6300BFD4A0 /* DeleteAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountView.swift; sourceTree = "<group>"; };
 		A874BC7428780BBA002B4C9F /* DescribeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescribeTextView.swift; sourceTree = "<group>"; };
 		A89705CA287EDD520080BEE5 /* AuthingDeleteAccount.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingDeleteAccount.xib; sourceTree = "<group>"; };
@@ -558,6 +560,7 @@
 			isa = PBXGroup;
 			children = (
 				7E9593DF274C813B001459C5 /* GuardTests.swift */,
+				A8652654289D2C03006FC1D3 /* GuardManualTest.swift */,
 				7EB5CE5727D5ECBF00BE3252 /* UtilTests.swift */,
 			);
 			path = GuardTests;
@@ -967,6 +970,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EB5CE5827D5ECBF00BE3252 /* UtilTests.swift in Sources */,
+				A8652655289D2C03006FC1D3 /* GuardManualTest.swift in Sources */,
 				7E9593E0274C813B001459C5 /* GuardTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
