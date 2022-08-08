@@ -11,15 +11,13 @@
   <a href="https://developer.apple.com/swift/"><img src="https://img.shields.io/badge/swift-5.0-orange.svg?style=flat"></a>
 <br/>
 
+</div>
+
 <br>
 
 [English](./README.md) | 简体中文
 
-<br>
-
 <img width="250" src="https://user-images.githubusercontent.com/10389329/182366962-6a93c2d2-de2c-4f4f-a144-6fb9d827ce2d.png" />
-
-</div>
 
 ## 简介
 
