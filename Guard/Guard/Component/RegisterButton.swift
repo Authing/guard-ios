@@ -58,6 +58,10 @@ open class RegisterButton: PrimaryButton {
            let tfCode: VerifyCodeTextField = Util.findView(self, viewClass: VerifyCodeTextField.self) {
             if let phone = tfPhone.text,
                let code = tfCode.text {
+                if !(Validator.isValidPhone(phone: phone)) {
+                    Util.setError(tfPhone, "authing_invalid_phone".L)
+                    return
+                }
                 if phone == "" {
                     Util.setError(tfPhone, "authing_phone_none".L)
                 } else if code == "" {
@@ -73,6 +77,10 @@ open class RegisterButton: PrimaryButton {
            let tfPassword: PasswordTextField = Util.findView(self, viewClass: PasswordTextField.self) {
             if let email = tfEmail.text,
                let password = tfPassword.text {
+                if !(Validator.isValidEmail(email: email)) {
+                    Util.setError(tfEmail, "authing_invalid_email".L)
+                    return
+                }
                 if email == "" {
                     Util.setError(tfEmail, "authing_email_none".L)
                 } else if password == "" {
@@ -88,6 +96,10 @@ open class RegisterButton: PrimaryButton {
            let tfCode: VerifyCodeTextField = Util.findView(self, viewClass: VerifyCodeTextField.self) {
             if let email = tfEmail.text,
                let code = tfCode.text {
+                if !(Validator.isValidEmail(email: email)) {
+                    Util.setError(tfEmail, "authing_invalid_email".L)
+                    return
+                }
                 if email == "" {
                     Util.setError(tfEmail, "authing_email_none".L)
                 } else if code == "" {

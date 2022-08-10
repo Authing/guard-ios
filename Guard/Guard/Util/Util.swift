@@ -131,10 +131,15 @@ public class Util {
         return Data(bytes: keyBuffer, count: keySize).base64EncodedString()
     }
     
+
     public static func getLangHeader() -> String {
-        let langStr: String? = Locale.current.languageCode
-        if (langStr!.hasPrefix("zh")) {
+        let language = Locale.current.identifier
+        if language == "zh_CN" {
             return "zh-CN"
+        } else if language == "zh-Hant_CN" {
+            return "zh-TW"
+        } else if language == "ja_CN" {
+            return "ja-JP"
         } else {
             return "en-US"
         }

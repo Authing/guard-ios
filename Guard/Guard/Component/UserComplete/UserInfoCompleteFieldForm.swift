@@ -56,5 +56,11 @@ open class UserInfoCompleteFieldForm: UIView {
         if (required) {
             labelAsterisk.text = "*"
         }
+        let language = Util.getLangHeader()
+        if let dic: NSDictionary = data[language] as? NSDictionary {
+            if dic["enabled"] as? Bool == true {
+                label.text = dic["value"] as? String
+            }
+        }
     }
 }

@@ -51,22 +51,27 @@ open class GetVerifyCodeButton: LoadingButton {
         if let phone = Util.getPhoneNumber(self) {
             startLoading()
             Util.setError(self, "")
-            
-            let phoneNumberTF: PhoneNumberTextField? = Util.findView(self, viewClass: PhoneNumberTextField.self)
-            Util.getAuthClient(self).sendSms(phone: phone, phoneCountryCode: phoneNumberTF?.countryCode) { code, message in
-                self.stopLoading()
-                if (code != 200) {
-                    Util.setError(self, message)
-                } else {
-                    ALog.i(Self.self, "send sms success")
-                    DispatchQueue.main.async() {
-                        CountdownTimerManager.shared.createCountdownTimer(button: self)
+          
+            if let phoneNumberTF: PhoneNumberTextField = Util.findView(self, viewClass: PhoneNumberTextField.self) {
+                Util.getAuthClient(self).sendSms(phone: phone, phoneCountryCode: phoneNumberTF.countryCode) { code, message in
+                    self.stopLoading()
+                    if (code != 200) {
+                        Util.setError(self, message)
+                    } else {
+                        ALog.i(Self.self, "send sms success")
+                        DispatchQueue.main.async() {
+                            CountdownTimerManager.shared.createCountdownTimer(button: self)
+                        }
                     }
                 }
             }
         } else {
             if let phoneNumberTF: PhoneNumberTextField = Util.findView(self, viewClass: PhoneNumberTextField.self) {
-                Util.setError(phoneNumberTF, "authing_phone_none".L)
+                if phoneNumberTF.text == "" {
+                    Util.setError(phoneNumberTF, "authing_phone_none".L)
+                } else {
+                    Util.setError(phoneNumberTF, "authing_invalid_phone".L)
+                }
             }
         }
     }

@@ -153,10 +153,22 @@ public class AuthFlow {
         
         if let extendedFields = config!.extendedFields {
             for dic: NSDictionary in extendedFields {
-                let name: String? = dic["name"] as? String
+                let dictionary: NSMutableDictionary = dic.mutableCopy() as? NSMutableDictionary ?? [:]
+                let name: String? = dictionary["name"] as? String
+                if let extendsFieldsI18n = config!.extendsFieldsI18n {
+                    extendsFieldsI18n.forEach { (key, value) in
+                        if name == key as? String {
+                            if let v: NSDictionary = value as? NSDictionary {
+                                v.forEach { (key, value) in
+                                    dictionary[key] = value
+                                }
+                            }
+                        }
+                    }
+                }
                 let value: String? = userInfo!.raw?[name as Any] as? String
                 if (Util.isNull(value) || ("gender" == name && "U" == value)) {
-                    missing.append(dic)
+                    missing.append(dictionary)
                 }
             }
         }

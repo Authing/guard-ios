@@ -88,8 +88,8 @@
 // country code
 "authing_countrycode_title" = "Region";
 
-"authing_mfa_facetitle" = "Bind facial recognition";
-"authing_mfa_facetitle2" = "Bind facial recognition";
+"authing_mfa_face_title" = "Bind facial recognition";
+"authing_mfa_face_title2" = "Bind facial recognition";
 "authing_mfa_face_camera" = "Hold your camera properly";
 "authing_mfa_face_camera2" = "Hold your camera properly";
 "authing_mfa_verifying" = "Verifying";

@@ -57,6 +57,7 @@ public class Config: NSObject {
             }
             completeFieldsPlace = data?["complateFiledsPlace"] as? [String]
             extendedFields = data?["extendsFields"] as? [NSDictionary]
+            extendsFieldsI18n = data?["extendsFieldsI18n"] as? NSDictionary
             agreements = data?["agreements"] as? [NSDictionary]
             redirectUris = data?["redirectUris"] as? [String]
             
@@ -122,6 +123,7 @@ public class Config: NSObject {
     
     open var completeFieldsPlace: [String]?
     open var extendedFields: [NSDictionary]? // user info complete
+    open var extendsFieldsI18n: NSDictionary?
     open var agreements: [NSDictionary]?
     open var redirectUris: [String]?
     

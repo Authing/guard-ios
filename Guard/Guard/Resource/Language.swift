@@ -30,25 +30,22 @@ enum Language: String, CaseIterable {
     }
 
     static func setLanguage(_ language: String) {
-        var languageType: Language = .English
-        switch language {
-        case "zh-CN", "zh_CN":
-            languageType = .Chinese
-            break
-        case "en-US", "en_US":
-            languageType = .English
-            break
-        case "zh-TW", "zh_TW":
-            languageType = .ChineseT
-            break
-        case "ja-JP", "ja_JP":
-            languageType = .Japanese
-            break
-        default:
-            languageType = .English
-            break
-        }
-        lang = languageType
+        lang = Language.transitionLanguage(language)
     }
     
+    static func transitionLanguage(_ language: String) -> Language {
+        switch language {
+        case "zh-CN", "zh_CN":
+            return .Chinese
+        case "en-US", "en_US":
+            return .English
+        case "zh-TW", "zh_TW":
+            return .ChineseT
+        case "ja-JP", "ja_JP":
+            return .Japanese
+        default:
+            return .English
+        }
+    }
+
 }

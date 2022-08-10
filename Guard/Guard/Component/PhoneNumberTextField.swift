@@ -62,7 +62,6 @@ public class PhoneNumberTextField: AccountTextField {
                 self.text = String(text.prefix(11))
             }
         }
-
     }
     
         
@@ -72,7 +71,6 @@ public class PhoneNumberTextField: AccountTextField {
         if textField.text?.isEmpty == true {
             Util.setError(self, "authing_phone_none".L)
         }
-
     }
     
     override func syncData() {

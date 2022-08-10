@@ -69,7 +69,11 @@ open class GetEmailCodeButton: LoadingButton {
             }
         } else {
             if let tf: EmailTextField = Util.findView(self, viewClass: EmailTextField.self) {
-                Util.setError(tf, "authing_email_none".L)
+                if tf.text == "" {
+                    Util.setError(tf, "authing_email_none".L)
+                } else {
+                    Util.setError(tf, "authing_invalid_email".L)
+                }
             }
         }
     }
@@ -98,7 +102,11 @@ open class GetEmailVerifyCodeButton: GetEmailCodeButton {
             }
         } else {
             if let tf: EmailTextField = Util.findView(self, viewClass: EmailTextField.self) {
-                Util.setError(tf, "authing_email_none".L)
+                if tf.text == "" {
+                    Util.setError(tf, "authing_email_none".L)
+                } else {
+                    Util.setError(tf, "authing_invalid_email".L)
+                }
             }
         }
     }
