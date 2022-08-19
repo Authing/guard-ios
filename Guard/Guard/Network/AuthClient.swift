@@ -710,7 +710,7 @@ public class AuthClient: Client {
     private func request(endPoint: String, method: String, body: NSDictionary?, completion: @escaping (Int, String?, NSDictionary?) -> Void) {
         getConfig { config in
             if (config != nil) {
-                let urlString: String = "https://b633-125-34-219-245.ngrok.io\(endPoint)";
+                let urlString: String = "\(Authing.getSchema())://\(Util.getHost(config!))\(endPoint)";
                 self.request(config: config, urlString: urlString, method: method, body: body, completion: completion)
             } else {
                 completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
