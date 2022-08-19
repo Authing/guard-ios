@@ -35,6 +35,7 @@ public class Authing: NSObject {
     private static var sCurrentUser: UserInfo?
     
     @objc public static func start(_ appid: String) {
+                
         sAppId = appid
         sConfig = Config(appId: appid)
     }

@@ -261,6 +261,9 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="106" id="7P3-i0-bKN"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="src" value="wechat|apple|wecom|lark|google"/>
+                    </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2dA-Lj-eWo">
                     <rect key="frame" x="62" y="564" width="0.5" height="11"/>

@@ -135,6 +135,7 @@
 		7EF66C81277D49B400FCBBEB /* ResetPasswordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C80277D49B400FCBBEB /* ResetPasswordButton.swift */; };
 		7EF66C8B277D5A7100FCBBEB /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C8A277D5A7100FCBBEB /* Validator.swift */; };
 		7EF66C8D277DA96200FCBBEB /* GetEmailCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C8C277DA96200FCBBEB /* GetEmailCodeButton.swift */; };
+		A830E50D28AB9737005332ED /* UIColor+Authing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A830E50C28AB9737005332ED /* UIColor+Authing.swift */; };
 		A84B62FC27F82A2B006650CC /* CountryCodeSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84B62FB27F82A2B006650CC /* CountryCodeSearchBar.swift */; };
 		A850622C283237FA00F97EBD /* CountdownTimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A850622B283237FA00F97EBD /* CountdownTimerManager.swift */; };
 		A852CBFB28780046000BC6EF /* FeedBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A852CBFA28780046000BC6EF /* FeedBackButton.swift */; };
@@ -224,7 +225,7 @@
 		7E87A1C327CDBF2600E52D5A /* UserProfileField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileField.swift; sourceTree = "<group>"; };
 		7E87A1C527CE330800E52D5A /* UserProfileAvatarField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileAvatarField.swift; sourceTree = "<group>"; };
 		7E87A1C727CF52C100E52D5A /* AuthRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequest.swift; sourceTree = "<group>"; };
-		7E87A1C927CF603B00E52D5A /* OIDCClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OIDCClient.swift; sourceTree = "<group>"; };
+		7E87A1C927CF603B00E52D5A /* OIDCClient.swift */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = sourcecode.swift; path = OIDCClient.swift; sourceTree = "<group>"; };
 		7E8AECBB27882D2D0030D27B /* SocialLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginButton.swift; sourceTree = "<group>"; };
 		7E9593D2274C813A001459C5 /* Guard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Guard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E9593D5274C813A001459C5 /* Guard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Guard.h; sourceTree = "<group>"; };
@@ -293,6 +294,7 @@
 		7EF66C80277D49B400FCBBEB /* ResetPasswordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordButton.swift; sourceTree = "<group>"; };
 		7EF66C8A277D5A7100FCBBEB /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		7EF66C8C277DA96200FCBBEB /* GetEmailCodeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEmailCodeButton.swift; sourceTree = "<group>"; };
+		A830E50C28AB9737005332ED /* UIColor+Authing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Authing.swift"; sourceTree = "<group>"; };
 		A84B62FB27F82A2B006650CC /* CountryCodeSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCodeSearchBar.swift; sourceTree = "<group>"; };
 		A850622B283237FA00F97EBD /* CountdownTimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimerManager.swift; sourceTree = "<group>"; };
 		A852CBFA28780046000BC6EF /* FeedBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackButton.swift; sourceTree = "<group>"; };
@@ -488,6 +490,7 @@
 				7E7566A12768801E00C3872F /* UIView+Authing.swift */,
 				7E0FAFDE27ED5A37006258FC /* UIViewController+Authing.swift */,
 				A8BBEB362876DE330082DE59 /* String+Authing.swift */,
+				A830E50C28AB9737005332ED /* UIColor+Authing.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -937,6 +940,7 @@
 				7EF66C61277BFD0900FCBBEB /* GoRegisterButton.swift in Sources */,
 				A852CBFB28780046000BC6EF /* FeedBackButton.swift in Sources */,
 				7EF66C56277B157100FCBBEB /* PrimaryButton.swift in Sources */,
+				A830E50D28AB9737005332ED /* UIColor+Authing.swift in Sources */,
 				7EF66C58277B3F8900FCBBEB /* TextFieldBorder.swift in Sources */,
 				7ED434DC277950AC00893EDD /* GetVerifyCodeButton.swift in Sources */,
 				7E7566912768399E00C3872F /* LoginButton.swift in Sources */,

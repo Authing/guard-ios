@@ -23,9 +23,9 @@ open class AppleLoginButton: SocialLoginButton, ASAuthorizationControllerDelegat
 
     private func setup() {
         if UIScreen.main.traitCollection.userInterfaceStyle == .light {
-            setBackgroundImage(UIImage(named: "authing_apple", in: Bundle(for: AppleLoginButton.self), compatibleWith: nil), for: .normal)
+            setImage(UIImage(named: "authing_apple", in: Bundle(for: AppleLoginButton.self), compatibleWith: nil), for: .normal)
         } else {
-            setBackgroundImage(UIImage(named: "authing_apple_dark", in: Bundle(for: AppleLoginButton.self), compatibleWith: nil), for: .normal)
+            setImage(UIImage(named: "authing_apple_dark", in: Bundle(for: AppleLoginButton.self), compatibleWith: nil), for: .normal)
         }
         self.addTarget(self, action: #selector(onClick), for: .touchUpInside)
     }

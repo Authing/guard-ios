@@ -571,6 +571,25 @@ public class AuthClient: Client {
         }
     }
     
+    public func loginByGoogle(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        getConfig { config in
+            guard let conf = config else {
+                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+                return
+            }
+  
+            guard let conId = conf.getConnectionId(type: "google:mobile") else {
+                completion(500, "No wechat connection. Please set up in console for \(Authing.getAppId())", nil)
+                return
+            }
+            
+            let body: NSDictionary = ["connId" : conId, "code" : code]
+            self.post("/api/v2/ecConn/google/authByCode", body) { code, message, data in
+                self.createUserInfo(code, message, data, completion: completion)
+            }
+        }
+    }
+    
     // MARK: MFA APIs
     public func mfaCheck(phone: String?, email: String?, completion: @escaping(Int, String?, Bool?) -> Void) {
         var body: NSDictionary? = nil
@@ -691,7 +710,7 @@ public class AuthClient: Client {
     private func request(endPoint: String, method: String, body: NSDictionary?, completion: @escaping (Int, String?, NSDictionary?) -> Void) {
         getConfig { config in
             if (config != nil) {
-                let urlString: String = "\(Authing.getSchema())://\(Util.getHost(config!))\(endPoint)";
+                let urlString: String = "https://b633-125-34-219-245.ngrok.io\(endPoint)";
                 self.request(config: config, urlString: urlString, method: method, body: body, completion: completion)
             } else {
                 completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)

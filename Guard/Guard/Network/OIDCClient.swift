@@ -88,7 +88,7 @@ public class OIDCClient: NSObject {
         let secret = self.authRequest.client_secret
         let secretStr = (secret == nil ? "&code_verifier=" + self.authRequest.codeVerifier : "&client_secret=" + (secret ?? ""))
 
-        let body = "client_id="+Authing.getAppId()
+        let body = "client_id=" + Authing.getAppId()
                     + "&grant_type=authorization_code"
                     + "&code=" + code
                     + "&scope=" + self.authRequest.scope
@@ -109,21 +109,24 @@ public class OIDCClient: NSObject {
 
     //    MARK: ---------- UserInfo API ----------
     public func authByToken(userInfo: UserInfo?, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        let secret = self.authRequest.client_secret
-        let body = "client_id="
-        + Authing.getAppId()
-        + "&grant_type=http://authing.cn/oidc/grant_type/authing_token"
-        + "&token=" + (userInfo?.token ?? "")
-        + "&scope=" + self.authRequest.scope.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-        + (secret == nil ? "&code_challenge=" + self.authRequest.codeChallenge! + "&code_challenge_method=S256" : "&client_secret=\(secret!)");
+       let secret = self.authRequest.client_secret
+       let secretStr = (secret == nil ? "&code_verifier=" + self.authRequest.codeVerifier : "&client_secret=" + (secret ?? ""))
+       
+       let body = "client_id=" + Authing.getAppId()
+       + "&grant_type=http://authing.cn/oidc/grant_type/authing_token"
+       + "&token=" + (userInfo?.token ?? "")
+       + "&scope=" + self.authRequest.scope.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+       + "&prompt=" + "consent"
+       + secretStr
+       + "&redirect_uri=\(self.authRequest.redirect_uri ?? "")"
 
-        request(userInfo: nil, endPoint: "/oidc/token", method: "POST", body: body) { code, message, data in
-            if (code == 200) {
-                AuthClient().createUserInfo(userInfo, code, message, data, completion: completion)
-            } else {
-                completion(code, message, nil)
-            }
-        }
+       request(userInfo: nil, endPoint: "/oidc/token", method: "POST", body: body) { code, message, data in
+         if (code == 200) {
+             AuthClient().createUserInfo(userInfo, code, message, data, completion: completion)
+         } else {
+             completion(code, message, nil)
+         }
+       }
     }
         
     public func getUserInfoByAccessToken(userInfo: UserInfo?, completion: @escaping(Int, String?, UserInfo?) -> Void) {
@@ -140,11 +143,13 @@ public class OIDCClient: NSObject {
         let rt = userInfo?.refreshToken ?? ""
         
         let secret = self.authRequest.client_secret
+        let secretStr = (secret == nil ? "&code_verifier=" + self.authRequest.codeVerifier : "&client_secret=" + (secret ?? ""))
+
         let body = "client_id="
         + Authing.getAppId()
         + "&grant_type=refresh_token"
         + "&refresh_token=" + rt
-        + (secret == nil ? "&code_challenge=" + self.authRequest.codeChallenge! + "&code_challenge_method=S256" : "");
+        + secretStr
 
         request(userInfo: nil, endPoint: "/oidc/token", method: "POST", body: body) { code, message, data in
             if (code == 200) {

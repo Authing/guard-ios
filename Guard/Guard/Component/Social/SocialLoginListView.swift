@@ -5,11 +5,13 @@
 //  Created by Lance Mao on 2022/2/28.
 //
 
+import UIKit
+
 open class SocialLoginListView: UIView, AttributedViewProtocol {
     
     let tip = UILabel()
     let tipHeight = 32.0
-    let tipGap = 32.0
+    let tipGap = 16.0
     
     let leftSep = UIView()
     let rightSep = UIView()
@@ -39,18 +41,19 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
 
     private func setup() {
         // hide until we get source
+            
         isHidden = true
         
-        leftSep.backgroundColor = getTipColor()
+        leftSep.backgroundColor = Const.Color_Line_Gray
         addSubview(leftSep)
         
         tip.textColor = getTipColor()
-        tip.font = UIFont.systemFont(ofSize: 14)
+        tip.font = UIFont.systemFont(ofSize: 12)
         tip.textAlignment = .center
         tip.text = NSLocalizedString("authing_social_login", bundle: Bundle(for: Self.self), comment: "")
         addSubview(tip)
         
-        rightSep.backgroundColor = getTipColor()
+        rightSep.backgroundColor = Const.Color_Line_Gray
         addSubview(rightSep)
         
         addSubview(container)
@@ -71,7 +74,9 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                         } else if ("apple" == type) {
                             srcs.append("apple")
                         } else if ("lark-internal" == type || "lark-public" == type) {
-                            srcs.append(type)
+                            srcs.append("lark")
+                        } else if ("google:mobile" == type) {
+                            srcs.append("google")
                         }
                     }
                 }
@@ -102,6 +107,9 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
         for v in container.subviews {
             if v as? SocialLoginButton != nil {
                 v.frame = CGRect(x:  CGFloat(paddingH) + (socialButtonWidth + socialButtonSpace) * CGFloat(i), y: 0, width: socialButtonWidth, height: socialButtonHeight)
+                v.backgroundColor = Const.Color_BG_Text_Box
+                v.layer.cornerRadius = 4
+                v.clipsToBounds = true
                 i += 1
             }
         }
@@ -144,7 +152,7 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                     let view = type.init()
                     self.container.addSubview(view)
                 }
-            } else if ("lark-internal" == trimmed || "lark-public" == trimmed) {
+            } else if ("lark" == trimmed) {
                 if let type = Bundle(identifier: "cn.authing.LarkLogin")?.classNamed("LarkLogin.LarkLoginButton") as? SocialLoginButton.Type {
                     let view = type.init()
                     self.container.addSubview(view)
@@ -155,15 +163,16 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                 } else {
                     // Fallback on earlier versions
                 }
+            } else if ("google" == trimmed) {
+                if let type = Bundle(identifier: "cn.authing.Google")?.classNamed("Google.GoogleSignInButton") as? SocialLoginButton.Type {
+                    let view = type.init()
+                    self.container.addSubview(view)
+                }
             }
         }
     }
     
     private func getTipColor() -> UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.systemGray4
-        } else {
-            return Const.Color_Text_Gray
-        }
+        return Const.Color_Text_Gray
     }
 }

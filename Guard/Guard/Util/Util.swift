@@ -134,13 +134,14 @@ public class Util {
 
     public static func getLangHeader() -> String {
         let language = Locale.current.identifier
-        if language == "zh_CN" {
+        switch language {
+        case "zh_CN", "zh-Hans_CN", "zh-Hans_US":
             return "zh-CN"
-        } else if language == "zh-Hant_CN" {
+        case "zh-Hant_CN", "zh-Hant_US", "zh-Hant_TW", "zh-Hant_HK", "zh-Hant_MO":
             return "zh-TW"
-        } else if language == "ja_CN" {
+        case "ja_CN", "ja_US":
             return "ja-JP"
-        } else {
+        default:
             return "en-US"
         }
     }
