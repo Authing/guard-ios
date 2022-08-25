@@ -52,8 +52,8 @@
 "authing_first_time_login_title" = "设置密码";
 "authing_first_time_login_tip" = "为了保障帐号安全，请设置初始密码";
 "authing_first_time_login_count_down" = "此页面的有效期为 10 分钟";
-"authing_user_info_complete" = "完善帐号信息";
-"authing_complete_tip" = "为了更好的使用体验，请先完善您的资料信息";
+"authing_user_info_complete" = "完善用户信息";
+"authing_complete_tip" = "欢迎加入 Authing，为了更好的使用体验，请完善你的个人信息。";
 "authing_submit" = "提交";
 "authing_email_cannot_be_empty" = "邮箱不能为空";
 "authing_email_code_cannot_be_empty" = "邮件验证码不能为空";
@@ -131,3 +131,5 @@
 "authing_feedback_error" = "请输入手机号或邮箱";
 
 "authing_verify_resend" = "重新获取";
+
+"authing_complete_skip" = "跳过";

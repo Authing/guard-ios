@@ -198,7 +198,7 @@ open class UserInfoCompleteButton: PrimaryButton {
             let value = form.getValue()
             
             if (required && Util.isNull(value)) {
-                Util.setError(self, "\(label!)\("authing_is_required".L)")
+                Util.setError(self, "\(label ?? "")\("authing_is_required".L)")
                 completion(500, nil, nil)
                 return
             }

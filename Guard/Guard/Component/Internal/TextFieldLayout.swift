@@ -9,6 +9,7 @@ open class TextFieldLayout: BaseInput, UITextFieldDelegate {
     
     let border = TextFieldBorder()
     let imageView = UIImageView()
+    let paddingView = UIView()
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,12 +32,8 @@ open class TextFieldLayout: BaseInput, UITextFieldDelegate {
         layer.cornerRadius = 4
         autocapitalizationType = .none
 //        addSubview(border)
-        
-        let itemWidth: CGFloat = frame.height/3
-        let paddingView: UIView = UIView.init(frame: CGRect(x: 0, y: 0, width: frame.height/3 + 12, height: frame.height))
-    
+            
         imageView.contentMode = .scaleAspectFit
-        imageView.frame = CGRect(x: 12, y: (frame.height - itemWidth)/2, width: itemWidth, height: itemWidth)
         paddingView.addSubview(imageView)
         
         leftView = paddingView
@@ -53,6 +50,9 @@ open class TextFieldLayout: BaseInput, UITextFieldDelegate {
     open override func layoutSubviews() {
         super.layoutSubviews()
         border.frame = CGRect(x: -2, y: -2, width: frame.width + 4, height: frame.height + 4)
+        let itemWidth: CGFloat = frame.height/3
+        paddingView.frame = CGRect(x: 0, y: 0, width: frame.height/3 + 12, height: frame.height)
+        imageView.frame = CGRect(x: 12, y: (frame.height - itemWidth)/2, width: itemWidth, height: itemWidth)
         border.setNeedsDisplay()
         
         tintClearImage()

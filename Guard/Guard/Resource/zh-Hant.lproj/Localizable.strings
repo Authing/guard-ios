@@ -130,3 +130,5 @@
 "authing_feedback_error" = "請輸入手機號碼或電子郵件";
 
 "authing_verify_resend" = "重新獲得";
+
+"authing_complete_skip" = "跳過";

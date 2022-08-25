@@ -7,7 +7,8 @@
 
 open class UserInfoCompleteContentView: UIView {
     open override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        let v = Util.findView(self, viewClass: UserInfoCompleteButton.self)
+
+        let v = Util.findView(self, viewClass: UserInfoCompleteContainer.self)
         if (v != nil) {
             let p = v!.convert(point, from: self)
             if (v!.bounds.contains(p)) {

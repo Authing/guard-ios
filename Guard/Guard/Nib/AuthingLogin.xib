@@ -66,6 +66,7 @@
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0s7-XA-leK" customClass="PhoneNumberTextField" customModule="Guard" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="366" height="52"/>
+                            <color key="tintColor" red="0.90980392160000001" green="0.20784313730000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="52" id="FoK-iP-7lI"/>
                             </constraints>

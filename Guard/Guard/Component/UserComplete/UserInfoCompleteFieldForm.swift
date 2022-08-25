@@ -27,13 +27,13 @@ open class UserInfoCompleteFieldForm: UIView {
         addSubview(label)
         addSubview(labelAsterisk)
         
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         label.heightAnchor.constraint(equalToConstant: LABEL_H).isActive = true
         label.translatesAutoresizingMaskIntoConstraints = false
         label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
         label.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
         
-        labelAsterisk.font = UIFont.systemFont(ofSize: 14)
+        labelAsterisk.font = UIFont.systemFont(ofSize: 16)
         labelAsterisk.textColor = Const.Color_Asterisk
         labelAsterisk.heightAnchor.constraint(equalToConstant: LABEL_H).isActive = true
         labelAsterisk.translatesAutoresizingMaskIntoConstraints = false

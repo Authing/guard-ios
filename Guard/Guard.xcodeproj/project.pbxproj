@@ -154,6 +154,7 @@
 		A8BBEB352876DA890082DE59 /* FeedBackIssuePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BBEB342876DA890082DE59 /* FeedBackIssuePicker.swift */; };
 		A8BBEB372876DE330082DE59 /* String+Authing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BBEB362876DE330082DE59 /* String+Authing.swift */; };
 		A8BBEB3D2876FC930082DE59 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BBEB3C2876FC930082DE59 /* ImagePickerView.swift */; };
+		A8D1730728B752EE003D7F87 /* UserInfoCompleteSkipButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D1730628B752EE003D7F87 /* UserInfoCompleteSkipButton.swift */; };
 		A8D38D1627F1DB4A00942707 /* CountryCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D38D1527F1DB4A00942707 /* CountryCodeViewController.swift */; };
 		A8D38D1A27F1E44700942707 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D38D1827F1E44700942707 /* CountryTableViewCell.swift */; };
 		A8D38D1D27F1E4FF00942707 /* country.json in Resources */ = {isa = PBXBuildFile; fileRef = A8D38D1C27F1E4FF00942707 /* country.json */; };
@@ -162,7 +163,6 @@
 		A8DBB7B5287D5B4100F75C97 /* AuthingResetSuccess.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DBB7B4287D5B4100F75C97 /* AuthingResetSuccess.xib */; };
 		A8DBB7B7287D5B8C00F75C97 /* ResetSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DBB7B6287D5B8C00F75C97 /* ResetSuccessViewController.swift */; };
 		A8DBB7B9287D635400F75C97 /* GoBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DBB7B8287D635400F75C97 /* GoBackButton.swift */; };
-		A8DBB7CA287D92C000F75C97 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DBB7C9287D92C000F75C97 /* LoginView.swift */; };
 		A8E1E1762898F6E100375EEA /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E1E1752898F6E100375EEA /* Language.swift */; };
 		A8E1F10A28350590004B1E76 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E1F10928350590004B1E76 /* LoadingView.swift */; };
 /* End PBXBuildFile section */
@@ -315,6 +315,7 @@
 		A8BBEB342876DA890082DE59 /* FeedBackIssuePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackIssuePicker.swift; sourceTree = "<group>"; };
 		A8BBEB362876DE330082DE59 /* String+Authing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Authing.swift"; sourceTree = "<group>"; };
 		A8BBEB3C2876FC930082DE59 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
+		A8D1730628B752EE003D7F87 /* UserInfoCompleteSkipButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCompleteSkipButton.swift; sourceTree = "<group>"; };
 		A8D38D1527F1DB4A00942707 /* CountryCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeViewController.swift; sourceTree = "<group>"; };
 		A8D38D1827F1E44700942707 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 		A8D38D1C27F1E4FF00942707 /* country.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = country.json; sourceTree = "<group>"; };
@@ -323,7 +324,6 @@
 		A8DBB7B4287D5B4100F75C97 /* AuthingResetSuccess.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingResetSuccess.xib; sourceTree = "<group>"; };
 		A8DBB7B6287D5B8C00F75C97 /* ResetSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetSuccessViewController.swift; sourceTree = "<group>"; };
 		A8DBB7B8287D635400F75C97 /* GoBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoBackButton.swift; sourceTree = "<group>"; };
-		A8DBB7C9287D92C000F75C97 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A8E1E1752898F6E100375EEA /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		A8E1F10928350590004B1E76 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -615,6 +615,7 @@
 				7E02F46A27950C6F007FA048 /* UserInfoCompleteButton.swift */,
 				7E02F46827950C57007FA048 /* UserInfoCompleteFieldForm.swift */,
 				7EDFB6C627C4873A00B77DEE /* UserInfoCompleteFieldFormText.swift */,
+				A8D1730628B752EE003D7F87 /* UserInfoCompleteSkipButton.swift */,
 				7EDFB6C027C379EC00B77DEE /* UserInfoCompleteFieldEmail.swift */,
 				7EDFB6C427C4826100B77DEE /* UserInfoCompleteFieldPhone.swift */,
 				7EDFB6C827C4D1C500B77DEE /* UserInfoCompleteFieldFormSelect.swift */,
@@ -647,7 +648,6 @@
 			children = (
 				7E09E5E42845BBB90058D83C /* MethodTab.swift */,
 				7EF66C6A277C1BF600FCBBEB /* MethodTabItem.swift */,
-				A8DBB7C9287D92C000F75C97 /* LoginView.swift */,
 				7ED434CB277569DF00893EDD /* LoginMethodTabItem.swift */,
 				7EF66C6C277C1C6E00FCBBEB /* RegisterMethodTabItem.swift */,
 				7ED434D12775ABA000893EDD /* TextFieldLayout.swift */,
@@ -914,6 +914,7 @@
 				A8D38D1A27F1E44700942707 /* CountryTableViewCell.swift in Sources */,
 				7EDFB6C927C4D1C500B77DEE /* UserInfoCompleteFieldFormSelect.swift in Sources */,
 				7EF66C81277D49B400FCBBEB /* ResetPasswordButton.swift in Sources */,
+				A8D1730728B752EE003D7F87 /* UserInfoCompleteSkipButton.swift in Sources */,
 				7E75667E2766F9DD00C3872F /* AuthViewController.swift in Sources */,
 				7E12D7BA277DEE6F00703FC1 /* UserProfileViewController.swift in Sources */,
 				7EF66C5F277BFB7100FCBBEB /* LocalizeHelper.swift in Sources */,
@@ -923,7 +924,6 @@
 				7EF66C77277C38DB00FCBBEB /* RegisterButton.swift in Sources */,
 				7E20000C27EAD9AB0051F590 /* Client.swift in Sources */,
 				7EA2DD7D27CCF40200B3E19D /* UserProfileContainer.swift in Sources */,
-				A8DBB7CA287D92C000F75C97 /* LoginView.swift in Sources */,
 				7E87A1BE27CCF8C800E52D5A /* UserProfileTextField.swift in Sources */,
 				7EDFB6C127C379EC00B77DEE /* UserInfoCompleteFieldEmail.swift in Sources */,
 				7EF66C8B277D5A7100FCBBEB /* Validator.swift in Sources */,

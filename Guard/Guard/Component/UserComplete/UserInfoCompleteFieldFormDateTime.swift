@@ -6,7 +6,7 @@
 //
 
 open class UserInfoCompleteFieldFormDateTime: UserInfoCompleteFieldForm {
-    var textField: UITextField = UITextField()
+    var textField: TextFieldLayout = TextFieldLayout()
     let datePickerView:UIDatePicker = UIDatePicker()
     
     public override init(frame: CGRect) {
@@ -28,13 +28,14 @@ open class UserInfoCompleteFieldFormDateTime: UserInfoCompleteFieldForm {
         textField.inputView = datePickerView
         datePickerView.addTarget(self, action: #selector(datePickerValueChanged), for: UIControl.Event.valueChanged)
         
+        textField.tintColor = Const.Color_Authing_Main
         textField.borderStyle = .roundedRect
         textField.font = UIFont.systemFont(ofSize: 14)
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.heightAnchor.constraint(equalToConstant: 44).isActive = true
         textField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
         textField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
-        textField.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 2).isActive = true
+        textField.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 8).isActive = true
     }
     
     @objc func datePickerValueChanged(sender:UIDatePicker) {
@@ -43,7 +44,7 @@ open class UserInfoCompleteFieldFormDateTime: UserInfoCompleteFieldForm {
     }
     
     public override func getHeight() -> CGFloat {
-        return 26 + 44 + 2
+        return 26 + 44 + 8
     }
     
     public override func getValue() -> String? {

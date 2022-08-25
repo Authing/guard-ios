@@ -7,7 +7,7 @@
 
 open class UserInfoCompleteContainer: UIView {
     
-    private let ITEM_TOP_SPACE: CGFloat = 16
+    private let ITEM_TOP_SPACE: CGFloat = 24
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -114,4 +114,6 @@ open class UserInfoCompleteContainer: UIView {
             scrollView.contentSize = CGSize(width:contentView.frame.size.width, height: lastY + lastH + 32)
         }
     }
+    
+
 }

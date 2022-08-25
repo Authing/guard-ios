@@ -8,10 +8,9 @@
 open class AuthViewController: UIViewController {
     
     public var authFlow: AuthFlow? = AuthFlow()
-    
+    public var hideNavigationBar: Bool = false
     open override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.setNavigationBarHidden(false, animated: true)
 
         let backButton = UIButton.init(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
         backButton.setImage( UIImage(named: "authing_back", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
@@ -33,7 +32,7 @@ open class AuthViewController: UIViewController {
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.setNavigationBarHidden(hideNavigationBar, animated: true)
 //        let backImage = UIImage(named: "authing_back", in: Bundle(for: Self.self), compatibleWith: nil)
 //        navigationItem.leftBarButtonItem = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(onBack))
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)

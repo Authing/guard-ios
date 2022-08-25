@@ -28,35 +28,36 @@ open class UserInfoCompleteFieldPhone: UserInfoCompleteFieldForm {
         addSubview(verifyCodeTextField)
         addSubview(getCodeButton)
         
+        phoneTextField.tintColor = Const.Color_Authing_Main
         phoneTextField.translatesAutoresizingMaskIntoConstraints = false
-        phoneTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        phoneTextField.heightAnchor.constraint(equalToConstant: 52).isActive = true
         phoneTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
         phoneTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
-        phoneTextField.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 2).isActive = true
+        phoneTextField.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 8).isActive = true
         
-        verifyCodeTextField.borderStyle = .roundedRect
-        verifyCodeTextField.font = UIFont.systemFont(ofSize: 14)
+        verifyCodeTextField.tintColor = Const.Color_Authing_Main
         verifyCodeTextField.translatesAutoresizingMaskIntoConstraints = false
-        verifyCodeTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        verifyCodeTextField.heightAnchor.constraint(equalToConstant: 52).isActive = true
         verifyCodeTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
         verifyCodeTextField.trailingAnchor.constraint(equalTo: getCodeButton.leadingAnchor, constant: -8).isActive = true
-        verifyCodeTextField.topAnchor.constraint(equalTo: phoneTextField.bottomAnchor, constant: 12).isActive = true
+        verifyCodeTextField.topAnchor.constraint(equalTo: phoneTextField.bottomAnchor, constant: 8).isActive = true
         
-        getCodeButton.backgroundColor = Const.Color_Button_Gray
+        getCodeButton.backgroundColor = Const.Color_BG_Text_Box
         getCodeButton.loadingLocation = 1
         getCodeButton.loadingColor = Const.Color_Authing_Main
         getCodeButton.setTitleColor(Const.Color_Authing_Main, for: .normal)
-        getCodeButton.titleLabel?.font = getCodeButton.titleLabel?.font.withSize(12)
+        getCodeButton.titleLabel?.font = getCodeButton.titleLabel?.font.withSize(16)
         getCodeButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
         getCodeButton.translatesAutoresizingMaskIntoConstraints = false
-        getCodeButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        getCodeButton.heightAnchor.constraint(equalToConstant: 52).isActive = true
+        getCodeButton.widthAnchor.constraint(equalToConstant: 128).isActive = true
         getCodeButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
-        getCodeButton.topAnchor.constraint(equalTo: phoneTextField.bottomAnchor, constant: 12).isActive = true
+        getCodeButton.topAnchor.constraint(equalTo: phoneTextField.bottomAnchor, constant: 8).isActive = true
         getCodeButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
     }
     
     public override func getHeight() ->CGFloat {
-        return 128
+        return 128 + 16
     }
     
     public func getPhone() -> String? {

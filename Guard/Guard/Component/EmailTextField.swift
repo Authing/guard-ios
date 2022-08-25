@@ -6,6 +6,7 @@
 //
 
 open class EmailTextField: AccountTextField {
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -26,10 +27,6 @@ open class EmailTextField: AccountTextField {
             let sInput: String = "authing_please_input".L
             let text: String = "authing_email".L
             self.setHint("\(sInput)\(text)")
-        }
-        
-        if let image = UIImage(named: "authing_mail", in: Bundle(for: Self.self), compatibleWith: nil){
-            self.updateIconImage(icon: image)
         }
     }
 }

@@ -119,13 +119,13 @@ public class AuthFlow {
     }
     
     public func complete(_ code: Int, _ message: String?, _ userInfo: UserInfo?, animated: Bool = true) {
+        DispatchQueue.main.async() {
+            self.authCompletion?(code, message, userInfo)
+        }
         if transition == .Push {
             startViewController?.navigationController?.popToViewController(startViewController!, animated: true)
         } else {
             startViewController?.dismiss(animated: true)
-        }
-        DispatchQueue.main.async() {
-            self.authCompletion?(code, message, userInfo)
         }
     }
     

@@ -130,3 +130,5 @@
 "authing_feedback_error"="電話番号またはメールアドレスを入力してください";
 
 "authing_verify_resend"="再取得";
+
+"authing_complete_skip" = "スキップ";

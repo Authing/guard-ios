@@ -30,37 +30,36 @@ open class UserInfoCompleteFieldEmail: UserInfoCompleteFieldForm {
         addSubview(emailCodeTextField)
         addSubview(getCodeButton)
 
-        emailTextField.borderStyle = .roundedRect
-        emailTextField.font = UIFont.systemFont(ofSize: 14)
+        emailTextField.tintColor = Const.Color_Authing_Main
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
-        emailTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        emailTextField.heightAnchor.constraint(equalToConstant: 52).isActive = true
         emailTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
         emailTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
-        emailTextField.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 2).isActive = true
+        emailTextField.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 8).isActive = true
         
-        emailCodeTextField.borderStyle = .roundedRect
-        emailCodeTextField.font = UIFont.systemFont(ofSize: 14)
+        emailCodeTextField.tintColor = Const.Color_Authing_Main
         emailCodeTextField.translatesAutoresizingMaskIntoConstraints = false
-        emailCodeTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        emailCodeTextField.heightAnchor.constraint(equalToConstant: 52).isActive = true
         emailCodeTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
         emailCodeTextField.trailingAnchor.constraint(equalTo: getCodeButton.leadingAnchor, constant: -8).isActive = true
-        emailCodeTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 12).isActive = true
+        emailCodeTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 8).isActive = true
         
-        getCodeButton.backgroundColor = Const.Color_Button_Gray
+        getCodeButton.backgroundColor = Const.Color_BG_Text_Box
         getCodeButton.loadingLocation = 1
         getCodeButton.loadingColor = Const.Color_Authing_Main
         getCodeButton.setTitleColor(Const.Color_Authing_Main, for: .normal)
-        getCodeButton.titleLabel?.font = getCodeButton.titleLabel?.font.withSize(12)
+        getCodeButton.titleLabel?.font = getCodeButton.titleLabel?.font.withSize(16)
         getCodeButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
         getCodeButton.translatesAutoresizingMaskIntoConstraints = false
-        getCodeButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        getCodeButton.heightAnchor.constraint(equalToConstant: 52).isActive = true
+        getCodeButton.widthAnchor.constraint(equalToConstant: 128).isActive = true
         getCodeButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
-        getCodeButton.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 12).isActive = true
+        getCodeButton.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 8).isActive = true
         getCodeButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
     }
     
     public override func getHeight() ->CGFloat {
-        return 128
+        return 128 + 16
     }
     
     public func getEmail() -> String? {

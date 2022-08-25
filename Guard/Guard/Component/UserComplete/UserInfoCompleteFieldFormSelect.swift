@@ -27,11 +27,11 @@ open class UserInfoCompleteFieldFormSelect: UserInfoCompleteFieldForm {
         segment.heightAnchor.constraint(equalToConstant: 44).isActive = true
         segment.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
         segment.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
-        segment.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 2).isActive = true
+        segment.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 8).isActive = true
     }
     
     public override func getHeight() -> CGFloat {
-        return 26 + 44 + 2
+        return 26 + 44 + 8
     }
     
     public override func getValue() -> String? {
