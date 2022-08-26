@@ -74,7 +74,7 @@ class CountryCodeView: UIView {
         let countryCodeVC = CountryCodeViewController(nibName: "AuthingCountryCode", bundle: Bundle(for: CountryCodeViewController.self))
         countryCodeVC.modalPresentationStyle = .fullScreen
         countryCodeVC.selectCountryCallBack = { model in
-            self.countryCode = "+\(model.code ?? 86)"
+            self.countryCode = "+\(model.code ?? "86")"
         }
         self.viewController?.present(countryCodeVC, animated: true)
     }
