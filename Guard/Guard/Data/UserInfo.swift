@@ -21,7 +21,7 @@ open class UserInfo: NSObject {
         }
     }
     @objc public var customData: [NSMutableDictionary]?
-    
+    @objc public var identities: [NSDictionary]?
     @objc public var userId: String?
     @objc public var username: String?
     @objc public var password: String?
@@ -30,6 +30,41 @@ open class UserInfo: NSObject {
     @objc public var photo: String? {
         get {
             return raw?["photo"] as? String ?? raw?["picture"] as? String
+        }
+    }
+    @objc public var  nickname: String? {
+        get {
+            return raw?["nickname"] as? String ?? raw?["nickname"] as? String
+        }
+    }
+    @objc public var  name: String? {
+        get {
+            return raw?["name"] as? String ?? raw?["name"] as? String
+        }
+    }
+    @objc public var  createdAt: String? {
+        get {
+            return raw?["createdAt"] as? String ?? raw?["createdAt"] as? String
+        }
+    }
+    @objc public var  birthdate: String? {
+        get {
+            return raw?["birthdate"] as? String ?? raw?["birthdate"] as? String
+        }
+    }
+    @objc public var  address: String? {
+        get {
+            return raw?["address"] as? String ?? raw?["address"] as? String
+        }
+    }
+    @objc public var  gender: String? {
+        get {
+            return raw?["gender"] as? String ?? raw?["gender"] as? String
+        }
+    }
+    @objc public var  company: String? {
+        get {
+            return raw?["company"] as? String ?? raw?["company"] as? String
         }
     }
     @objc public var token: String?
@@ -97,6 +132,7 @@ open class UserInfo: NSObject {
         email = raw?["email"] as? String
         phone = raw?["phone"] as? String
         token = raw?["token"] as? String
+        identities = raw?["identities"] as? [NSDictionary]
     }
 
     public func getUserName() -> String? {
@@ -112,11 +148,11 @@ open class UserInfo: NSObject {
     }
     
     public func getDisplayName() -> String? {
-        if let n = raw?["nickname"] as? String {
+        if let n = nickname {
             return n
         } else if let n = raw?["preferredUsername"] as? String {
             return n
-        } else if let n = raw?["name"] as? String {
+        } else if let n = name {
             return n
         } else if let n = username {
             return n
