@@ -29,14 +29,18 @@ class CountryCodeViewController: AuthViewController {
     var searchResultValuesCode = NSMutableArray()
     var cellHeight: CGFloat = 50
     var indexArray = Array<String>()
+    var indexSectionArray = Array<String>()
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     
         sortedNameDict = loadPlist()
         let arr = sortedNameDict.keys.sorted(){ $0 < $1 }
         indexArray = Array(arr)
+        for index in indexArray {
+            indexSectionArray.append(index)
+            indexSectionArray.append("")
+        }
         
         self.view.backgroundColor = UIColor.white
         titleLabel.text = "authing_countrycode_title".L
@@ -45,6 +49,7 @@ class CountryCodeViewController: AuthViewController {
         countryCodeView.dataSource = self
         countryCodeView.rowHeight = 44
         countryCodeView.register(CountryTableViewCell.self, forCellReuseIdentifier: "Cell")
+        countryCodeView.sectionIndexColor = UIColor.init(hex: "#4E5969")
         if #available(iOS 15.0, *) {
             countryCodeView.sectionHeaderTopPadding = 0
         } else {
@@ -62,11 +67,11 @@ class CountryCodeViewController: AuthViewController {
         searchController.delegate = self
         searchController.searchResultsUpdater = self
         searchController.searchBar.searchBarStyle = .minimal
-        searchController.searchBar.placeholder = "输入国家或地区名搜索"
+        searchController.searchBar.placeholder = "authing_country_title".L
         searchController.searchBar.setImage(UIImage.init(named: "authing_search"), for: UISearchBar.Icon.search, state: .normal)
         searchController.view.frame = CGRect(x: 24, y: 0, width: 300, height: 30)
         if let textfield = searchController.searchBar.value(forKey: "searchField") as? UITextField {
-            let atrString = NSAttributedString(string: "输入国家或地区名搜索",
+            let atrString = NSAttributedString(string: "authing_country_title".L,
                                                attributes: [.foregroundColor: UIColor.init(hex: "#86909C"),
                                                 .font : UIFont.systemFont(ofSize: 14)])
             textfield.attributedPlaceholder = atrString
@@ -84,7 +89,7 @@ class CountryCodeViewController: AuthViewController {
     }
     
     private func loadPlist() -> Dictionary<String, NSArray> {
-        let plistPathCh = Bundle(for: type(of: self)).path(forResource: "country", ofType: "plist")
+        let plistPathCh = Bundle(for: type(of: self)).path(forResource: Util.getLangHeader().contains("zh") ? "country" : "country_en", ofType: "plist")
         let dic = NSDictionary(contentsOfFile: plistPathCh!) as! [String : NSArray]
         
         return dic
@@ -101,7 +106,7 @@ extension CountryCodeViewController: UISearchBarDelegate,UISearchControllerDeleg
         searchResultValuesCode.removeAllObjects()
         searchResultValuesArray.removeAllObjects()
         for array in sortedNameDict.values{
-            //country list
+            
             let arr = array.value(forKey: "country") as! Array<String>
             let arrCode = array.value(forKey: "code") as! Array<String>
             
@@ -148,11 +153,11 @@ extension CountryCodeViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return indexArray
+        return indexSectionArray
     }
     
     func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
-        return index
+        return index / 2
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

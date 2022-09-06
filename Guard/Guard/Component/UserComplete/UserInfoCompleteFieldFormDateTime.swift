@@ -26,6 +26,11 @@ open class UserInfoCompleteFieldFormDateTime: UserInfoCompleteFieldForm {
         
         datePickerView.datePickerMode = .date
         textField.inputView = datePickerView
+        if #available(iOS 13.4, *) {
+            datePickerView.preferredDatePickerStyle = .wheels
+        } else {
+            // Fallback on earlier versions
+        }
         datePickerView.addTarget(self, action: #selector(datePickerValueChanged), for: UIControl.Event.valueChanged)
         
         textField.tintColor = Const.Color_Authing_Main

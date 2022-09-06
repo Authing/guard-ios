@@ -31,6 +31,7 @@ public class Authing: NSObject {
     private static var sSchema = "https"
     private static var sHost = "authing.cn"
     private static var sAppId = ""
+    private static var isOnPremises = false
     private static var sPublicKey = DEFAULT_PUBLIC_KEY
     private static var sCurrentUser: UserInfo?
     
@@ -60,11 +61,16 @@ public class Authing: NSObject {
         return sHost
     }
     
+    @objc public static func getIsOnPremises() -> Bool {
+        return isOnPremises
+    }
+    
     @objc public static func getPublicKey() -> String {
         return sPublicKey
     }
     
     @objc public static func setOnPremiseInfo(host: String, publicKey: String) {
+        isOnPremises = true
         sHost = host
         sPublicKey = publicKey
     }

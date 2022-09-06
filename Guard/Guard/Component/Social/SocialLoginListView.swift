@@ -64,24 +64,32 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
             }
             
             if let connections: [NSDictionary] = config?.data?["ecConnections"] as? [NSDictionary] {
-                var srcs: Array<String> = []
+                let srcs: NSMutableDictionary = [:]
                 for conn in connections {
                     if let type = conn["type"] as? String {
                         if ("wechat:mobile" == type) {
-                            srcs.append("wechat")
+                            srcs.setValue("wechat", forKey: "1")
                         } else if ("wechatwork:mobile" == type || "wechatwork:agency:mobile" == type) {
-                            srcs.append("wecom")
+                            srcs.setValue("wecom", forKey: "4")
                         } else if ("apple" == type) {
-                            srcs.append("apple")
+                            srcs.setValue("apple", forKey: "2")
                         } else if ("lark-internal" == type || "lark-public" == type) {
-                            srcs.append("lark")
+                            srcs.setValue("lark", forKey: "5")
                         } else if ("google:mobile" == type) {
-                            srcs.append("google")
+                            srcs.setValue("google", forKey: "3")
                         }
                     }
                 }
                 
-                self.handleSrc(srcs)
+                var arrs: [String] = srcs.allKeys as? [String] ?? []
+                var value: [String] = []
+                arrs = arrs.sorted { a, b in
+                    return a < b
+                }
+                arrs.forEach { key in
+                    value.append(srcs[key] as? String ?? "")
+                }
+                self.handleSrc(value)
                 
                 self.layoutSubviews()
             }

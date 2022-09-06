@@ -23,8 +23,8 @@ public enum RequestType {
 
 public typealias RequestSuccessCallBack = (_ requestType: RequestType, _ code: Int, _ message: String) -> Void
 
-public class AuthFlow {
-    
+public class AuthFlow: NSObject {
+        
     public static let KEY_USER_INFO: String = "user_info"
     public static let KEY_ACCOUNT: String = "account"
     public static let KEY_EXTENDED_FIELDS: String = "extended_fields"
@@ -61,7 +61,7 @@ public class AuthFlow {
     
     public var requestCallBack: RequestSuccessCallBack?
     
-    public init() {
+    public override init() {
     }
     
     public init(_ appId: String?) {
@@ -82,7 +82,7 @@ public class AuthFlow {
         UIApplication.topViewController()!.present(nav, animated: true, completion: nil)
     }
     
-    public func start(authCompletion: Authing.AuthCompletion? = nil) {
+    @objc public func start(authCompletion: Authing.AuthCompletion? = nil) {
         var vc: IndexAuthViewController? = nil
         if let nibName = loginXibName {
             vc = IndexAuthViewController(nibName: nibName, bundle: Bundle.main)
@@ -220,7 +220,7 @@ public class AuthFlow {
         }
     }
     
-    func copy(with zone: NSZone? = nil) -> Any {
+    public override func copy() -> Any {
         let copy = AuthFlow(data)
         copy.startViewController = self.startViewController
         copy.authCompletion = self.authCompletion

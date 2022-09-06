@@ -9,14 +9,18 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AuthViewController" customModule="Guard" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="iN0-l3-epB" id="BQN-Xn-yya"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DeleteAccountView" customModule="Guard" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnn-De-VGT" customClass="Label" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="24" y="132" width="366" height="26"/>
+                    <rect key="frame" x="24" y="156" width="366" height="26"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="26" id="v3L-9I-BNH"/>
                     </constraints>
@@ -25,9 +29,9 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yee-GA-qLR">
-                    <rect key="frame" x="24" y="44" width="366" height="64"/>
+                    <rect key="frame" x="24" y="68" width="366" height="64"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOb-9p-ahi" customClass="authing_delete_password">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOb-9p-ahi">
                             <rect key="frame" x="15" y="0.0" width="336" height="64"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="64" id="ZO3-9P-OKc"/>
@@ -55,7 +59,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fIc-FM-uF2" customClass="VerifyCodeTextField" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="24" y="166" width="222" height="52"/>
+                    <rect key="frame" x="24" y="190" width="222" height="52"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="52" id="Tjj-lR-aOW"/>
                     </constraints>
@@ -63,7 +67,7 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gb-Uz-e2G" customClass="GetVerifyCodeButton" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="262" y="166" width="128" height="52"/>
+                    <rect key="frame" x="262" y="190" width="128" height="52"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="128" id="IX0-KD-UuU"/>
                     </constraints>
@@ -75,7 +79,7 @@
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BaD-9j-1wT" customClass="DeleteAccountButton" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="24" y="246" width="366" height="48"/>
+                    <rect key="frame" x="24" y="270" width="366" height="48"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="5lo-bE-XX9"/>
                     </constraints>
@@ -83,7 +87,7 @@
                     <buttonConfiguration key="configuration" style="plain"/>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCJ-VU-uaR" customClass="ErrorLabel" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="24" y="226" width="366" height="20"/>
+                    <rect key="frame" x="24" y="250" width="366" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="GUt-Nd-006"/>
                     </constraints>
@@ -92,12 +96,15 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0tI-kK-QVR" customClass="PasswordTextField" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="24" y="166" width="366" height="52"/>
+                    <rect key="frame" x="24" y="190" width="366" height="52"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="52" id="Zgl-2y-R77"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <textInputTraits key="textInputTraits"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="checkStrength" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                 </textField>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -113,7 +120,7 @@
                 <constraint firstItem="0tI-kK-QVR" firstAttribute="top" secondItem="pnn-De-VGT" secondAttribute="bottom" constant="8" symbolic="YES" id="bbn-F6-Tbu"/>
                 <constraint firstItem="fIc-FM-uF2" firstAttribute="top" secondItem="pnn-De-VGT" secondAttribute="bottom" constant="8" id="dH7-7K-doz"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="BaD-9j-1wT" secondAttribute="trailing" constant="24" id="dLQ-Z5-8A6"/>
-                <constraint firstItem="yee-GA-qLR" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="gr9-af-otu"/>
+                <constraint firstItem="yee-GA-qLR" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="24" id="gr9-af-otu"/>
                 <constraint firstItem="3gb-Uz-e2G" firstAttribute="bottom" secondItem="fIc-FM-uF2" secondAttribute="bottom" id="gyQ-5U-U72"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="0tI-kK-QVR" secondAttribute="trailing" constant="24" id="i2A-Ea-wPh"/>
                 <constraint firstItem="3gb-Uz-e2G" firstAttribute="top" secondItem="fIc-FM-uF2" secondAttribute="top" id="lDA-qs-3Jt"/>

@@ -146,13 +146,18 @@ public class Config: NSObject {
     
     public func requestPublicConfig() {
         isGettingConfig = true
+        
+        var url = "https://console." + Authing.getHost() + "/api/v2/applications/" + self.appId + "/public-config"
+
+        if Authing.getIsOnPremises() {
+            url = "https://" + Authing.getHost() + "/api/v2/applications/" + self.appId + "/public-config"
+        }
+        //        var componentsJson = NSDictionary()
+        //        let dispatchGroup = DispatchGroup()
+        //        let dispathcQueue = DispatchQueue.global()
+        //        dispatchGroup.enter()
+        //        dispathcQueue.async{
 //        var publicConfigJson = NSMutableDictionary()
-//        var componentsJson = NSDictionary()
-//        let dispatchGroup = DispatchGroup()
-//        let dispathcQueue = DispatchQueue.global()
-//        dispatchGroup.enter()
-//        dispathcQueue.async{
-            let url = "https://console." + Authing.getHost() + "/api/v2/applications/" + self.appId + "/public-config"
             AuthClient().request(config: nil, urlString: url, method: "get", body: nil) { code, message, jsonData in
                 if (code != 200) {
                     ALog.e(Self.self, "error when getting public cofig:\(message!)")

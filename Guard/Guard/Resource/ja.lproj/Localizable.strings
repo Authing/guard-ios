@@ -21,12 +21,12 @@
 "authing_password_confirm_hint"="パスワードをもう一度入力してください";
 "authing_password_do_not_match"="2回入力したパスワードは一致する必要があります";
 "authing_find_password_back"="パスワードの取得";
-"authing_forgot_password"="パスワードを忘れた";
-"authing_reset_password"="パスワードのリセット";
-"authing_reset_password_success"="リセットに成功しました";
+"authing_forgot_password"="パスワードをお忘れの場合";
+"authing_reset_password"="パスワードをリセット";
+"authing_reset_password_success"="リセットが完了しました";
 "authing_reset_password_tips"="パスワードのリセットに成功しました";
 "authing_reset_password_content"="新しいパスワードで引き続きログインできます";
-"authing_reset_goback"="ゴーバック";
+"authing_reset_goback"="ログイン画面に戻ります";
 "authing_reset_goback_auto" = "％dsの後に自動的にログインページにジャンプします";
 "authing_input_phone_or_email"="電話番号またはメールアドレスを入力してください";
 "authing_input_phone_and_verifycode"="登録電話/メールアドレスと確認コードを入力してください";
@@ -51,9 +51,9 @@
 "authing_first_time_login_title"="パスワードの設定";
 "authing_first_time_login_tip" = "アカウントのセキュリティを確保するために、初期パスワードを設定してください";
 "authing_first_time_login_count_down"="このページは10分間有効です";
-"authing_user_info_complete"="完全なアカウント情報";
+"authing_user_info_complete"="プロフィール充実";
 "authing_complete_tip" = "ユーザーエクスペリエンスを向上させるには、最初にプロファイル情報を入力してください";
-"authing_submit"="送信";
+"authing_submit"="提出";
 "authing_email_cannot_be_empty"="メールを空にすることはできません";
 "authing_email_code_cannot_be_empty"="メール確認コードを空にすることはできません";
 "authing_phone_cannot_be_empty"="電話番号を空にすることはできません";
@@ -65,7 +65,7 @@
 "authing_next"="次へ";
 "authing_invalid_phone"="無効な電話番号";
 "authing_invalid_email"="無効なメールアドレス";
-"authing_social_login"="サードパーティアカウントログイン";
+"authing_social_login"="他サイトIDでログイン";
 
 
 //ユーザープロファイル
@@ -87,6 +87,7 @@
 
 //国コード
 "authing_countrycode_title"="国コードを選択";
+"authing_country_title" = "国・地域名を入力して検索";
 
 
 //self?.tipLabel.text="バインドに成功しました"
@@ -105,13 +106,13 @@
 "authing_mfa_bind_failed"="顔のバインドに失敗しました。もう一度やり直してください";
 "authing_mfa_bind_success"="バインドに成功しました";
 
-"authing_cannot_get_verify_code"="確認コードを受信できません";
+"authing_cannot_get_verify_code"="認証コードが届きません";
 "authing_cannot_login"="ログインできません";
 "authing_cannot_register"="登録できません";
-"authing_lost_account"="アカウントが失われました";
-"authing_cannot_reset_password"="パスワードをリセットできません";
+"authing_lost_account"="アカウントをお忘れ";
+"authing_cannot_reset_password"="パスワードのリセットができません";
  "authing_account_is_locked"="アカウントがロックされています";
-"authing_other" = "other";
+"authing_other" = "その他";
 
 "authing_text_placeholder"="コンテンツを入力してください";
 
@@ -121,12 +122,13 @@
 "authing_account_none"="アカウントが入力されていません";
 "authing_password_none"="パスワードが入力されていません";
 
-"authing_feedback_title"="質問のフィードバック";
-"authing_feedback_contact"="連絡先";
-"authing_feedback_related"="関連する質問";
-"authing_feedback_issuetip" = "パスワードをリセットできない場合は、次の手順を実行することをお勧めします。\n1.電話がダウンしているかネットワークがないかどうかを確認します;\n2。設定したパスワードが正しいかどうかを確認します。";
-"authing_feedback_description"="問題の説明";
-"authing_feedback_screenshot"="質問のスクリーンショット";
+"authing_feedback_title"="ヘルプ・お問い合わせ";
+"authing_feedback_contact"="連絡方法";
+"authing_feedback_related"="ご用件";
+"authing_feedback_issuetip" = "認証コードのSMSが届かない原因としては以
+下の事象等が考えられます。\n1.通信状況が不安定 /モバイル通信ができない状態\n2.電話番号の入力間違い\n3.SMSの受信の制限";
+"authing_feedback_description"="お問い合わせ内容";
+"authing_feedback_screenshot"="スクリーンショット";
 "authing_feedback_error"="電話番号またはメールアドレスを入力してください";
 
 "authing_verify_resend"="再取得";

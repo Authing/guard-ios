@@ -87,6 +87,7 @@
 
 // country code
 "authing_countrycode_title" = "Region";
+"authing_country_title" = "Enter the country or region name to search";
 
 "authing_mfa_face_title" = "Bind facial recognition";
 "authing_mfa_face_title2" = "Bind facial recognition";
@@ -129,3 +130,4 @@
 "authing_verify_resend" = "Re-send";
 
 "authing_complete_skip" = "Skip";
+

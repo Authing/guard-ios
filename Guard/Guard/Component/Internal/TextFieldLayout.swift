@@ -45,6 +45,7 @@ open class TextFieldLayout: BaseInput, UITextFieldDelegate {
     public func updateIconImage(icon: UIImage) {
         imageView.image = icon
         leftViewMode = .always
+        self.layoutSubviews()
     }
     
     open override func layoutSubviews() {

@@ -87,7 +87,7 @@
 
 // country code
 "authing_countrycode_title" = "選擇國家和地區";
-
+"authing_country_title" = "輸入國家或地區名搜索";
 
 //self?.tipLabel.text = "綁定成功"
 //self?.tipLabel.text = "綁定人臉失敗, 請重試"

@@ -150,12 +150,12 @@
 		A8A489842876B97C00F3120F /* FeedBackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A489832876B97C00F3120F /* FeedBackController.swift */; };
 		A8A5ABC1285733F500D6B03A /* AuthResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A5ABC0285733F500D6B03A /* AuthResult.swift */; };
 		A8A7BBB228466CC5000A0D7C /* CountryCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A7BBB128466CC5000A0D7C /* CountryCodeView.swift */; };
+		A8AE59A728C5FDB600097FF0 /* country_en.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8AE59A628C5FDB600097FF0 /* country_en.plist */; };
 		A8BBEB352876DA890082DE59 /* FeedBackIssuePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BBEB342876DA890082DE59 /* FeedBackIssuePicker.swift */; };
 		A8BBEB372876DE330082DE59 /* String+Authing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BBEB362876DE330082DE59 /* String+Authing.swift */; };
 		A8BBEB3D2876FC930082DE59 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BBEB3C2876FC930082DE59 /* ImagePickerView.swift */; };
 		A8D1730728B752EE003D7F87 /* UserInfoCompleteSkipButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D1730628B752EE003D7F87 /* UserInfoCompleteSkipButton.swift */; };
 		A8D38D1627F1DB4A00942707 /* CountryCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D38D1527F1DB4A00942707 /* CountryCodeViewController.swift */; };
-		A8D38D1D27F1E4FF00942707 /* country.json in Resources */ = {isa = PBXBuildFile; fileRef = A8D38D1C27F1E4FF00942707 /* country.json */; };
 		A8D38D2127F2B02D00942707 /* AuthingCountryCode.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D38D2027F2B02D00942707 /* AuthingCountryCode.xib */; };
 		A8D62BAA28B8D442001D0A40 /* country.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8D62BA928B8D442001D0A40 /* country.plist */; };
 		A8DBB7B5287D5B4100F75C97 /* AuthingResetSuccess.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DBB7B4287D5B4100F75C97 /* AuthingResetSuccess.xib */; };
@@ -309,12 +309,12 @@
 		A8A7BBB128466CC5000A0D7C /* CountryCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeView.swift; sourceTree = "<group>"; };
 		A8ABCD5B28914C4A00DD6DA0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A8ABCD5C28914C5000DD6DA0 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A8AE59A628C5FDB600097FF0 /* country_en.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = country_en.plist; sourceTree = "<group>"; };
 		A8BBEB342876DA890082DE59 /* FeedBackIssuePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackIssuePicker.swift; sourceTree = "<group>"; };
 		A8BBEB362876DE330082DE59 /* String+Authing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Authing.swift"; sourceTree = "<group>"; };
 		A8BBEB3C2876FC930082DE59 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		A8D1730628B752EE003D7F87 /* UserInfoCompleteSkipButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCompleteSkipButton.swift; sourceTree = "<group>"; };
 		A8D38D1527F1DB4A00942707 /* CountryCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeViewController.swift; sourceTree = "<group>"; };
-		A8D38D1C27F1E4FF00942707 /* country.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = country.json; sourceTree = "<group>"; };
 		A8D38D2027F2B02D00942707 /* AuthingCountryCode.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingCountryCode.xib; sourceTree = "<group>"; };
 		A8D62BA928B8D442001D0A40 /* country.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = country.plist; sourceTree = "<group>"; };
 		A8DBB7B4287D5B4100F75C97 /* AuthingResetSuccess.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingResetSuccess.xib; sourceTree = "<group>"; };
@@ -419,7 +419,6 @@
 				7E7D1F70278ECC73005AAD39 /* PhoneLabel.swift */,
 				7EDFB6CC27C7390A00B77DEE /* PrivacyConfirmBox.swift */,
 				7E87A1C127CDBAEF00E52D5A /* LogoutButton.swift */,
-				7EB5CE5527D1EE3200BE3252 /* DeleteAccountButton.swift */,
 				7E866451280E4F9B000DEFD4 /* GoNextButton.swift */,
 				A8DBB7B8287D635400F75C97 /* GoBackButton.swift */,
 				7EF66C7C277D471D00FCBBEB /* GoResetPasswordButton.swift */,
@@ -427,6 +426,7 @@
 				A85EEFBE287C559000D3BF29 /* ResetPasswordVerifyCodeButton.swift */,
 				7EF66C80277D49B400FCBBEB /* ResetPasswordButton.swift */,
 				A86AE1DB287FED6300BFD4A0 /* DeleteAccountView.swift */,
+				7EB5CE5527D1EE3200BE3252 /* DeleteAccountButton.swift */,
 				A8E1F10928350590004B1E76 /* LoadingView.swift */,
 			);
 			path = Component;
@@ -509,8 +509,8 @@
 				A8E1E1752898F6E100375EEA /* Language.swift */,
 				7E75669D27683F5300C3872F /* Localizable.strings */,
 				7ED434E42779B28B00893EDD /* Images.xcassets */,
-				A8D38D1C27F1E4FF00942707 /* country.json */,
 				A8D62BA928B8D442001D0A40 /* country.plist */,
+				A8AE59A628C5FDB600097FF0 /* country_en.plist */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -785,12 +785,12 @@
 				7EF66C5D277BF8B700FCBBEB /* AuthingRegister.xib in Resources */,
 				7EB32803278BEE0F008639AA /* AuthingMFAEmail0.xib in Resources */,
 				A89705CB287EDD520080BEE5 /* AuthingDeleteAccount.xib in Resources */,
-				A8D38D1D27F1E4FF00942707 /* country.json in Resources */,
 				7E7D1F73278FC44F005AAD39 /* AuthingFirstTimeLogin.xib in Resources */,
 				7EB32810278D116F008639AA /* AuthingMFAEmail1.xib in Resources */,
 				7E75667B2766F9C400C3872F /* AuthingLogin.xib in Resources */,
 				7E75669B27683F5300C3872F /* Localizable.strings in Resources */,
 				A8DBB7B5287D5B4100F75C97 /* AuthingResetSuccess.xib in Resources */,
+				A8AE59A728C5FDB600097FF0 /* country_en.plist in Resources */,
 				A8D38D2127F2B02D00942707 /* AuthingCountryCode.xib in Resources */,
 				7EB32812278D1DF9008639AA /* AuthingMFAOTP.xib in Resources */,
 				A8D62BAA28B8D442001D0A40 /* country.plist in Resources */,

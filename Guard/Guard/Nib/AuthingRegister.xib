@@ -234,6 +234,13 @@
                         <constraint firstAttribute="width" constant="150" id="iRt-LE-sV7"/>
                     </constraints>
                 </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qud-oK-DOc" customClass="SocialLoginListView" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="20" y="676" width="374" height="106"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="106" id="JOX-f4-0UY"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="t0S-i3-gzY"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -254,9 +261,12 @@
                 <constraint firstItem="vB5-a9-UJW" firstAttribute="top" secondItem="33m-3M-o7j" secondAttribute="bottom" constant="40" id="aHL-Jg-eeE"/>
                 <constraint firstItem="vB5-a9-UJW" firstAttribute="leading" secondItem="t0S-i3-gzY" secondAttribute="leading" constant="24" id="aIY-2o-OdI"/>
                 <constraint firstItem="rbI-XB-hdi" firstAttribute="leading" secondItem="vB5-a9-UJW" secondAttribute="leading" id="cHs-1R-AR2"/>
+                <constraint firstItem="xd4-7A-p3g" firstAttribute="top" secondItem="Qud-oK-DOc" secondAttribute="bottom" constant="64" id="cvL-aj-q0R"/>
                 <constraint firstItem="rbI-XB-hdi" firstAttribute="top" secondItem="vB5-a9-UJW" secondAttribute="bottom" constant="24" id="dHf-4y-cWQ"/>
+                <constraint firstItem="t0S-i3-gzY" firstAttribute="trailing" secondItem="Qud-oK-DOc" secondAttribute="trailing" constant="20" id="eqa-tp-PhW"/>
                 <constraint firstItem="kba-Fg-s5k" firstAttribute="leading" secondItem="vB5-a9-UJW" secondAttribute="leading" id="i3g-zO-7H0"/>
                 <constraint firstItem="nxl-an-WZu" firstAttribute="trailing" secondItem="vB5-a9-UJW" secondAttribute="trailing" id="iba-LO-XZC"/>
+                <constraint firstItem="Qud-oK-DOc" firstAttribute="leading" secondItem="t0S-i3-gzY" secondAttribute="leading" constant="20" id="iq0-ki-kqb"/>
                 <constraint firstItem="rbI-XB-hdi" firstAttribute="trailing" secondItem="vB5-a9-UJW" secondAttribute="trailing" id="jEz-3a-2fr"/>
                 <constraint firstItem="t0S-i3-gzY" firstAttribute="trailing" secondItem="vB5-a9-UJW" secondAttribute="trailing" constant="24" id="jre-uE-mRW"/>
                 <constraint firstItem="voS-Jy-wQm" firstAttribute="leading" secondItem="vB5-a9-UJW" secondAttribute="leading" id="kfg-BO-o6n"/>
