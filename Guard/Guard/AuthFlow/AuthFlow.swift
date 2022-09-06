@@ -109,13 +109,14 @@ public class AuthFlow: NSObject {
         if let n = topVC.navigationController {
             if transition == .Push {
                 n.pushViewController(target, animated: true)
-            } else {
-                let nav = UINavigationController(rootViewController: target)
-                nav.setNavigationBarHidden(true, animated: false)
-                nav.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                topVC.present(nav, animated: true, completion: nil)
+                return
             }
         }
+        
+        let nav = UINavigationController(rootViewController: target)
+        nav.setNavigationBarHidden(true, animated: false)
+        nav.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+        topVC.present(nav, animated: true, completion: nil)
     }
     
     public func complete(_ code: Int, _ message: String?, _ userInfo: UserInfo?, animated: Bool = true) {
