@@ -19,8 +19,8 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
     let sepWidth = 24.0
     
     let container = UIView()
-    let socialButtonWidth = CGFloat(44)
-    let socialButtonHeight = CGFloat(44)
+    let socialButtonWidth = CGFloat(48)
+    let socialButtonHeight = CGFloat(48)
     let socialButtonSpace = CGFloat(24)
 
     @IBInspectable open var src: String = "auto" {

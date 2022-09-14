@@ -10,6 +10,7 @@ import SafariServices
 
 open class PrivacyToast: UIView {
     
+    var isSocialButton: Bool = false
     let privacyBox: PrivacyConfirmBox = PrivacyConfirmBox(size: 0, showButton: false, alignment: .center)
 
     public override init(frame: CGRect) {
@@ -105,7 +106,9 @@ open class PrivacyToast: UIView {
             button.isChecked = true
             
             if let loginButton = Util.findView(self, viewClass: LoginButton.self) as? LoginButton {
-                loginButton.sendActions(for: .touchUpInside)
+                if !isSocialButton {
+                    loginButton.sendActions(for: .touchUpInside)
+                }
             }
         }
 
@@ -120,9 +123,14 @@ open class PrivacyToast: UIView {
         }
     }
     
-    class func showToast(viewController: UIViewController) {
+    public class func privacyBoxIsChecked() -> Bool {
+        return UserDefaults.standard.object(forKey: "PrivacyConfirmBox_isChecked") as? Bool ?? true
+    }
+    
+    public class func showToast(viewController: UIViewController, _ isSocialButton: Bool? = false) {
         
         let toast = PrivacyToast()
+        toast.isSocialButton = isSocialButton ?? false
         viewController.view.addSubview(toast)
         toast.alpha = 0
         UIView.animate(withDuration: 0.3) {
@@ -207,9 +215,7 @@ open class PrivacyConfirmBox: UIView, UITextViewDelegate {
         checkBoxImageView.centerXAnchor.constraint(equalTo: checkBox.centerXAnchor).isActive = true
         checkBoxImageView.centerYAnchor.constraint(equalTo: checkBox.centerYAnchor).isActive = true
 
-        if let ischeck = UserDefaults.standard.object(forKey: userDefaultKey) as? Bool {
-            self.isChecked = ischeck
-        }
+        self.isChecked = PrivacyToast.privacyBoxIsChecked()
         
         label.delegate = self
         label.isEditable = false

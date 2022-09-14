@@ -55,6 +55,9 @@ public class Config: NSObject {
             if let internationalSmsConfig: NSDictionary = data?["internationalSmsConfig"] as? NSDictionary {
                 internationalSmsConfigEnable = internationalSmsConfig["enabled"] as? Bool
             }
+            if let ssoPageComponentDisplay: NSDictionary = data?["ssoPageComponentDisplay"] as? NSDictionary {
+                autoRegisterThenLoginHintInfo = ssoPageComponentDisplay["autoRegisterThenLoginHintInfo"] as? Bool
+            }
             completeFieldsPlace = data?["complateFiledsPlace"] as? [String]
             extendedFields = data?["extendsFields"] as? [NSDictionary]
             extendsFieldsI18n = data?["extendsFieldsI18n"] as? NSDictionary
@@ -131,6 +134,8 @@ public class Config: NSObject {
     
 //    open var defaultLanguage: String?
 //    open var languageFollowsBrowser: Bool? = true
+    
+    open var autoRegisterThenLoginHintInfo: Bool?
     
     // MARK: Request
     open var appId: String!

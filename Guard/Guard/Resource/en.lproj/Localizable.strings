@@ -131,3 +131,9 @@
 
 "authing_complete_skip" = "Skip";
 
+
+"authing_user_policy" = "User policy";
+"authing_pricacy_policy" = "Pricacy policy";
+"authing_legal_claim" = "Legal claim";
+"authing_privacy" = "I have agreed ";
+"authing_privacy2" = "and";

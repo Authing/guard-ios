@@ -7,11 +7,18 @@
 
 open class AuthViewController: UIViewController {
     
-    public var authFlow: AuthFlow? = AuthFlow()
+//    public var authFlow: AuthFlow? = AuthFlow()
+    
+    public var authFlow: AuthFlow? {
+        didSet {
+            setupUI()
+        }
+    }
+    
     public var hideNavigationBar: Bool = false
     open override func viewDidLoad() {
         super.viewDidLoad()
-
+                                                     
         let backButton = UIButton.init(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
         backButton.setImage( UIImage(named: "authing_back", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
         backButton.addTarget(self, action: #selector(onBack), for: .touchUpInside)
@@ -53,6 +60,32 @@ open class AuthViewController: UIViewController {
             tf?.syncData()
         }
         
+    }
+    
+    private func setupUI() {
+        
+        if let logo: AppLogo = Util.findView(view, viewClass: AppLogo.self),
+           let title: AppName = Util.findView(view, viewClass: AppName.self) {
+            if let mode = self.authFlow?.UIConfig?.contentMode, mode != .left{
+                self.view.constraints.forEach({ constraint in
+                    if (constraint.firstAttribute == .leading && constraint.firstItem as? UIView == logo) {
+                        self.view.removeConstraint(constraint)
+                    }
+                    if (constraint.firstAttribute == .leading && constraint.firstItem as? UIView == title) {
+                        self.view.removeConstraint(constraint)
+                    }
+                })
+                if mode == .center {
+                    logo.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+                    title.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+                    title.textAlign = 1
+                } else if mode == .right {
+                    logo.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -24).isActive = true
+                    title.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -30).isActive = true
+                    title.textAlign = 2
+                }
+            }
+        }
     }
 
     @IBAction func onCloseClick(_ sender: UIButton, forEvent event: UIEvent) {

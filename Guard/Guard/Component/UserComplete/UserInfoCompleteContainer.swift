@@ -88,7 +88,6 @@ open class UserInfoCompleteContainer: UIView {
             } else {
                 form.topAnchor.constraint(equalTo: last!.bottomAnchor, constant: ITEM_TOP_SPACE).isActive = true
             }
-            
             last = form
             i += 1
         }

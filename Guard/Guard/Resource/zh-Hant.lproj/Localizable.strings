@@ -132,3 +132,9 @@
 "authing_verify_resend" = "重新獲得";
 
 "authing_complete_skip" = "跳過";
+
+"authing_user_policy" = "用戶政策";
+"authing_pricacy_policy" = "隱私協議";
+"authing_legal_claim" = "法律聲明";
+"authing_privacy" = "我已閱讀並同意";
+"authing_privacy2" = "及";

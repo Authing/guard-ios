@@ -59,6 +59,9 @@ public class AuthFlow: NSObject {
     public var appBundle: AppBundle? = nil
     public var config: Config? = nil
     
+    // UI
+    public var UIConfig: AuthFlowUIConfig? = nil
+    
     public var requestCallBack: RequestSuccessCallBack?
     
     public override init() {
@@ -238,6 +241,7 @@ public class AuthFlow: NSObject {
         copy.appBundle = self.appBundle
         copy.config = self.config
         copy.authProtocol = self.authProtocol
+        copy.UIConfig = self.UIConfig
         return copy
     }
     

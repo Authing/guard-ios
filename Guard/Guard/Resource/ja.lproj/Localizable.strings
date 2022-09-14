@@ -134,3 +134,9 @@
 "authing_verify_resend"="再取得";
 
 "authing_complete_skip" = "スキップ";
+
+"auting _user_policy" = "ユーザーポリシー";
+"auting _ pricary _policy" = "プライバシープロトコル";
+"auting _lega _claim" = "法的声明";
+"auting _privacy" = "私は読み同意しました";
+"authing_privacy2" = "および";

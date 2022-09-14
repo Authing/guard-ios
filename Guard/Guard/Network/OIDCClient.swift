@@ -43,16 +43,16 @@ public class OIDCClient: NSObject {
     }
 
     //MARK: ---------- Login APIs ----------
-    public func loginByAccount(account: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        AuthClient().loginByAccount(authData: self.authRequest ,account: account, password: password, completion: completion)
+    public func loginByAccount(account: String, password: String, _ autoRegister: Bool = false, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        AuthClient().loginByAccount(authData: self.authRequest ,account: account, password: password, autoRegister, completion: completion)
     }
     
-    public func loginByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        AuthClient().loginByPhoneCode(authData: self.authRequest, phoneCountryCode: phoneCountryCode,  phone: phone, code: code, completion: completion)
+    public func loginByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, _ autoRegister: Bool = false, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        AuthClient().loginByPhoneCode(authData: self.authRequest, phoneCountryCode: phoneCountryCode,  phone: phone, code: code, autoRegister, completion: completion)
     }
     
-    public func loginByEmail(email: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        AuthClient().loginByEmail(authData: self.authRequest, email: email, code: code, completion: completion)
+    public func loginByEmail(email: String, code: String, _ autoRegister: Bool = false, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        AuthClient().loginByEmail(authData: self.authRequest, email: email, code: code, autoRegister, completion: completion)
     }
     
     public func loginByWechat(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {

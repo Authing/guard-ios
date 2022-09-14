@@ -135,6 +135,7 @@
 		7EF66C81277D49B400FCBBEB /* ResetPasswordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C80277D49B400FCBBEB /* ResetPasswordButton.swift */; };
 		7EF66C8B277D5A7100FCBBEB /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C8A277D5A7100FCBBEB /* Validator.swift */; };
 		7EF66C8D277DA96200FCBBEB /* GetEmailCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C8C277DA96200FCBBEB /* GetEmailCodeButton.swift */; };
+		A80BD1A728D1B65F00F9DEDE /* AuthFlowUIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80BD1A628D1B65F00F9DEDE /* AuthFlowUIConfig.swift */; };
 		A830E50D28AB9737005332ED /* UIColor+Authing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A830E50C28AB9737005332ED /* UIColor+Authing.swift */; };
 		A850622C283237FA00F97EBD /* CountdownTimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A850622B283237FA00F97EBD /* CountdownTimerManager.swift */; };
 		A852CBFB28780046000BC6EF /* FeedBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A852CBFA28780046000BC6EF /* FeedBackButton.swift */; };
@@ -292,6 +293,7 @@
 		7EF66C80277D49B400FCBBEB /* ResetPasswordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordButton.swift; sourceTree = "<group>"; };
 		7EF66C8A277D5A7100FCBBEB /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		7EF66C8C277DA96200FCBBEB /* GetEmailCodeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEmailCodeButton.swift; sourceTree = "<group>"; };
+		A80BD1A628D1B65F00F9DEDE /* AuthFlowUIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlowUIConfig.swift; sourceTree = "<group>"; };
 		A830E50C28AB9737005332ED /* UIColor+Authing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Authing.swift"; sourceTree = "<group>"; };
 		A850622B283237FA00F97EBD /* CountdownTimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimerManager.swift; sourceTree = "<group>"; };
 		A852CBFA28780046000BC6EF /* FeedBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackButton.swift; sourceTree = "<group>"; };
@@ -474,6 +476,7 @@
 			isa = PBXGroup;
 			children = (
 				7E7566802766FA1A00C3872F /* AuthFlow.swift */,
+				A80BD1A628D1B65F00F9DEDE /* AuthFlowUIConfig.swift */,
 			);
 			path = AuthFlow;
 			sourceTree = "<group>";
@@ -902,6 +905,7 @@
 				A8D1730728B752EE003D7F87 /* UserInfoCompleteSkipButton.swift in Sources */,
 				7E75667E2766F9DD00C3872F /* AuthViewController.swift in Sources */,
 				7E12D7BA277DEE6F00703FC1 /* UserProfileViewController.swift in Sources */,
+				A80BD1A728D1B65F00F9DEDE /* AuthFlowUIConfig.swift in Sources */,
 				7EF66C5F277BFB7100FCBBEB /* LocalizeHelper.swift in Sources */,
 				7EF66C63277BFD5B00FCBBEB /* GoSomewhereButton.swift in Sources */,
 				7EDFB6C527C4826100B77DEE /* UserInfoCompleteFieldPhone.swift in Sources */,

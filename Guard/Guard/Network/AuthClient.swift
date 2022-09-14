@@ -116,9 +116,9 @@ public class AuthClient: Client {
         loginByEmail(authData: nil, email: email, code: code, completion: completion)
     }
             
-    public func loginByAccount(authData: AuthRequest?, account: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func loginByAccount(authData: AuthRequest?, account: String, password: String, _ autoRegister: Bool = false, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let encryptedPassword = Util.encryptPassword(password)
-        let body: NSDictionary = ["account" : account, "password" : encryptedPassword]
+        let body: NSDictionary = ["account" : account, "password" : encryptedPassword, "autoRegister": autoRegister]
         post("/api/v2/login/account", body) { code, message, data in
             if authData == nil{
                 self.createUserInfo(code, message, data, completion: completion)
@@ -135,8 +135,8 @@ public class AuthClient: Client {
         }
     }
     
-    public func loginByPhoneCode(authData: AuthRequest?, phoneCountryCode: String? = nil, phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        let body: NSMutableDictionary = ["phone" : phone, "code" : code]
+    public func loginByPhoneCode(authData: AuthRequest?, phoneCountryCode: String? = nil, phone: String, code: String, _ autoRegister: Bool = false, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        let body: NSMutableDictionary = ["phone" : phone, "code" : code, "autoRegister": autoRegister]
         if phoneCountryCode != nil {
             body.setValue(phoneCountryCode, forKey: "phoneCountryCode")
         }
@@ -156,8 +156,8 @@ public class AuthClient: Client {
         }
     }
     
-    public func loginByEmail(authData: AuthRequest?, email: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        let body: NSDictionary = ["email" : email, "code" : code]
+    public func loginByEmail(authData: AuthRequest?, email: String, code: String, _ autoRegister: Bool = false, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        let body: NSDictionary = ["email" : email, "code" : code, "autoRegister": autoRegister]
         post("/api/v2/login/email-code", body) { code, message, data in
             if authData == nil{
                 self.createUserInfo(code, message, data, completion: completion)
