@@ -205,9 +205,10 @@ public class AuthClient: Client {
     
     public func logout(completion: @escaping(Int, String?) -> Void) {
         get("/api/v2/logout?app_id=\(Authing.getAppId())") { code, message, data in
+            
             Authing.saveUser(nil)
             HTTPCookieStorage.shared.cookies?.forEach(HTTPCookieStorage.shared.deleteCookie)
-            completion(200, "ok")
+            completion(code, message)
         }
     }
     

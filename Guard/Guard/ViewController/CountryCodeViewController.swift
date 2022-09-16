@@ -202,6 +202,16 @@ extension CountryCodeViewController: UITableViewDelegate, UITableViewDataSource 
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        if self.searchController.isActive  {
+            let country = searchResultValuesArray[indexPath.row]
+            let code = searchResultValuesCode[indexPath.row]
+            let model = CountryItemModel.init(data: ["country":country,"code":code])
+            self.selectCountryCallBack?(model)
+            self.searchController.isActive = false
+            self.dismiss(animated: true)
+            return
+        }
+        
         if let model = sortedNameDict[indexArray[indexPath.section]]?[indexPath.row] as? NSDictionary {
             self.selectCountryCallBack?(CountryItemModel.init(data: model))
             self.dismiss(animated: true)
