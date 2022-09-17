@@ -137,3 +137,9 @@
 "authing_legal_claim" = "Legal claim";
 "authing_privacy" = "I have agreed ";
 "authing_privacy2" = "and";
+
+"Authing_social_wechat" = "     Sign in with Wechat";
+"Authing_social_wecom" = "      Sign in with Wecom ";
+"Authing_social_lark" = "       Sign in with Lark ";
+"Authing_social_google" = "     Sign in with Google ";
+"Authing_social_apple" = "      Sign in with Apple ";

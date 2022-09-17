@@ -92,7 +92,7 @@ public class AuthFlow: NSObject {
         } else {
             vc = IndexAuthViewController(nibName: "AuthingLogin", bundle: Bundle(for: Self.self))
         }
-        
+            
         guard let target = vc else {
             return
         }

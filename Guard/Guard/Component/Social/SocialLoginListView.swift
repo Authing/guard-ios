@@ -47,7 +47,7 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
         leftSep.backgroundColor = Const.Color_Line_Gray
         addSubview(leftSep)
         
-        tip.textColor = getTipColor()
+        tip.textColor = Const.Color_Text_Gray
         tip.font = UIFont.systemFont(ofSize: 12)
         tip.textAlignment = .center
         tip.text = NSLocalizedString("authing_social_login", bundle: Bundle(for: Self.self), comment: "")
@@ -63,36 +63,10 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                 return
             }
             
-            if let connections: [NSDictionary] = config?.data?["ecConnections"] as? [NSDictionary] {
-                let srcs: NSMutableDictionary = [:]
-                for conn in connections {
-                    if let type = conn["type"] as? String {
-                        if ("wechat:mobile" == type) {
-                            srcs.setValue("wechat", forKey: "1")
-                        } else if ("wechatwork:mobile" == type || "wechatwork:agency:mobile" == type) {
-                            srcs.setValue("wecom", forKey: "4")
-                        } else if ("apple" == type) {
-                            srcs.setValue("apple", forKey: "2")
-                        } else if ("lark-internal" == type || "lark-public" == type) {
-                            srcs.setValue("lark", forKey: "5")
-                        } else if ("google:mobile" == type) {
-                            srcs.setValue("google", forKey: "3")
-                        }
-                    }
-                }
-                
-                var arrs: [String] = srcs.allKeys as? [String] ?? []
-                var value: [String] = []
-                arrs = arrs.sorted { a, b in
-                    return a < b
-                }
-                arrs.forEach { key in
-                    value.append(srcs[key] as? String ?? "")
-                }
-                self.handleSrc(value)
-                
-                self.layoutSubviews()
-            }
+            let src = SocialLoginListView.srcSort(config: config)
+            SocialLoginListView.handleSrc(container: self.container, src)
+            
+            self.layoutSubviews()
         }
     }
     
@@ -133,10 +107,7 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
         for sub in src.split(separator: "|") {
             srcs.append(String(sub))
         }
-        handleSrc(srcs)
-    }
-    
-    private func handleSrc(_ srcs: Array<String>) {
+        
         if srcs.count == 0 {
             isHidden = true
             return
@@ -144,6 +115,53 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
         
         isHidden = false
         
+        SocialLoginListView.handleSrc(container: self.container ,srcs)
+    }
+    
+    class func srcSort(config: Config?) -> [String] {
+
+        if let connections: [NSDictionary] = config?.data?["ecConnections"] as? [NSDictionary] {
+            let srcs: NSMutableDictionary = [:]
+            for conn in connections {
+                if let type = conn["type"] as? String {
+                    if ("wechat:mobile" == type) {
+                        srcs.setValue("wechat", forKey: "1")
+                    } else if ("apple" == type) {
+                        srcs.setValue("apple", forKey: "2")
+                    } else if ("google:mobile" == type) {
+                        srcs.setValue("google", forKey: "3")
+                    } else if ("wechatwork:mobile" == type || "wechatwork:agency:mobile" == type) {
+                        srcs.setValue("wecom", forKey: "4")
+                    } else if ("lark-internal" == type || "lark-public" == type) {
+                        srcs.setValue("lark", forKey: "5")
+                    }
+                }
+            }
+            
+            var arrs: [String] = srcs.allKeys as? [String] ?? []
+            var value: [String] = []
+            arrs = arrs.sorted { a, b in
+                return a < b
+            }
+            arrs.forEach { key in
+                value.append(srcs[key] as? String ?? "")
+            }
+            
+            return value
+        }
+        
+        return []
+    }
+    
+    class func handleSrc(container: UIView, _ srcs: Array<String>, _ isVerticalLayout: Bool = false) {
+        
+        if srcs.count == 0 {
+            container.superview?.isHidden = true
+            return
+        }
+        
+        container.superview?.isHidden = false
+
         for v in container.subviews {
             v.removeFromSuperview()
         }
@@ -153,34 +171,46 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
             if ("wechat" == trimmed) {
                 if let type = Bundle(identifier: "cn.authing.Wechat")?.classNamed("Wechat.WechatLoginButton") as? SocialLoginButton.Type {
                     let view = type.init()
-                    self.container.addSubview(view)
+                    if isVerticalLayout {
+                        view.setTitle("authing_social_wechat".L, for: .normal)
+                    }
+                    container.addSubview(view)
                 }
             } else if ("wecom" == trimmed) {
                 if let type = Bundle(identifier: "cn.authing.WeCom")?.classNamed("WeCom.WeComLoginButton") as? SocialLoginButton.Type {
                     let view = type.init()
-                    self.container.addSubview(view)
+                    if isVerticalLayout {
+                        view.setTitle("authing_social_wecom".L, for: .normal)
+                    }
+                    container.addSubview(view)
                 }
             } else if ("lark" == trimmed) {
                 if let type = Bundle(identifier: "cn.authing.LarkLogin")?.classNamed("LarkLogin.LarkLoginButton") as? SocialLoginButton.Type {
                     let view = type.init()
-                    self.container.addSubview(view)
+                    if isVerticalLayout {
+                        view.setTitle("authing_social_lark".L, for: .normal)
+                    }
+                    container.addSubview(view)
                 }
             }else if ("apple" == trimmed) {
                 if #available(iOS 13.0, *) {
-                    self.container.addSubview(AppleLoginButton())
+                    let view = AppleLoginButton()
+                    if isVerticalLayout {
+                        view.setTitle("authing_social_apple".L, for: .normal)
+                    }
+                    container.addSubview(view)
                 } else {
                     // Fallback on earlier versions
                 }
             } else if ("google" == trimmed) {
                 if let type = Bundle(identifier: "cn.authing.Google")?.classNamed("Google.GoogleSignInButton") as? SocialLoginButton.Type {
                     let view = type.init()
-                    self.container.addSubview(view)
+                    if isVerticalLayout {
+                        view.setTitle("authing_social_google".L, for: .normal)
+                    }
+                    container.addSubview(view)
                 }
             }
         }
-    }
-    
-    private func getTipColor() -> UIColor {
-        return Const.Color_Text_Gray
     }
 }

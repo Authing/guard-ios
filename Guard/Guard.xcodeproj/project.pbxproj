@@ -135,6 +135,8 @@
 		7EF66C81277D49B400FCBBEB /* ResetPasswordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C80277D49B400FCBBEB /* ResetPasswordButton.swift */; };
 		7EF66C8B277D5A7100FCBBEB /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C8A277D5A7100FCBBEB /* Validator.swift */; };
 		7EF66C8D277DA96200FCBBEB /* GetEmailCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C8C277DA96200FCBBEB /* GetEmailCodeButton.swift */; };
+		A80B20B728D6289300933A26 /* SocialLoginListVerticalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80B20B628D6289300933A26 /* SocialLoginListVerticalView.swift */; };
+		A80B20B928D63CBF00933A26 /* SocialNoLoginMethodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80B20B828D63CBF00933A26 /* SocialNoLoginMethodsView.swift */; };
 		A80BD1A728D1B65F00F9DEDE /* AuthFlowUIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80BD1A628D1B65F00F9DEDE /* AuthFlowUIConfig.swift */; };
 		A80BD1CD28D49B8700F9DEDE /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80BD1CC28D49B8700F9DEDE /* Toast.swift */; };
 		A830E50D28AB9737005332ED /* UIColor+Authing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A830E50C28AB9737005332ED /* UIColor+Authing.swift */; };
@@ -294,6 +296,8 @@
 		7EF66C80277D49B400FCBBEB /* ResetPasswordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordButton.swift; sourceTree = "<group>"; };
 		7EF66C8A277D5A7100FCBBEB /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		7EF66C8C277DA96200FCBBEB /* GetEmailCodeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEmailCodeButton.swift; sourceTree = "<group>"; };
+		A80B20B628D6289300933A26 /* SocialLoginListVerticalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginListVerticalView.swift; sourceTree = "<group>"; };
+		A80B20B828D63CBF00933A26 /* SocialNoLoginMethodsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialNoLoginMethodsView.swift; sourceTree = "<group>"; };
 		A80BD1A628D1B65F00F9DEDE /* AuthFlowUIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlowUIConfig.swift; sourceTree = "<group>"; };
 		A80BD1CC28D49B8700F9DEDE /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		A830E50C28AB9737005332ED /* UIColor+Authing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Authing.swift"; sourceTree = "<group>"; };
@@ -354,6 +358,8 @@
 			children = (
 				7EA2DD3B27CC84CB00B3E19D /* SocialLoginListView.swift */,
 				7E8AECBB27882D2D0030D27B /* SocialLoginButton.swift */,
+				A80B20B628D6289300933A26 /* SocialLoginListVerticalView.swift */,
+				A80B20B828D63CBF00933A26 /* SocialNoLoginMethodsView.swift */,
 				7EB2D30027871E2A00A819B3 /* AppleLoginButton.swift */,
 			);
 			path = Social;
@@ -902,6 +908,7 @@
 				7E7566842766FD5D00C3872F /* UIApplication+Authing.swift in Sources */,
 				7E20001327EB00100051F590 /* CloseButton.swift in Sources */,
 				7E20001827EB5D5D0051F590 /* BaseInput.swift in Sources */,
+				A80B20B928D63CBF00933A26 /* SocialNoLoginMethodsView.swift in Sources */,
 				7E0FAFB427EC6373006258FC /* Button.swift in Sources */,
 				7E7566812766FA1A00C3872F /* AuthFlow.swift in Sources */,
 				7EDFB6C927C4D1C500B77DEE /* UserInfoCompleteFieldFormSelect.swift in Sources */,
@@ -934,6 +941,7 @@
 				7EF66C56277B157100FCBBEB /* PrimaryButton.swift in Sources */,
 				A830E50D28AB9737005332ED /* UIColor+Authing.swift in Sources */,
 				7EF66C58277B3F8900FCBBEB /* TextFieldBorder.swift in Sources */,
+				A80B20B728D6289300933A26 /* SocialLoginListVerticalView.swift in Sources */,
 				7ED434DC277950AC00893EDD /* GetVerifyCodeButton.swift in Sources */,
 				7E7566912768399E00C3872F /* LoginButton.swift in Sources */,
 				7E75668F276838C600C3872F /* PasswordTextField.swift in Sources */,

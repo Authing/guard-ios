@@ -140,3 +140,9 @@
 "auting _lega _claim" = "法的声明";
 "auting _privacy" = "私は読み同意しました";
 "authing_privacy2" = "および";
+
+"authing_social_wechat" = "     WeChat を使用してログイン";
+"authing_social_wecom" = "      エンタープライズ WeChat でログイン";
+"authing_social_lark" = "       Lark を使用してログイン";
+"authing_social_google" = "     Google でサインイン";
+"authing_social_apple" = "      Apple でサインイン";

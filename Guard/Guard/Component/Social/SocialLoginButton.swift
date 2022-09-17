@@ -25,6 +25,8 @@ open class SocialLoginButton: Button {
     }
 
     private func setup() {
+        titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        setTitleColor(UIColor.init(hex: "#1D2129"), for: .normal)
 //        loading = UIActivityIndicatorView()
 //        loading?.stopAnimating()
 //        addSubview(loading!)
