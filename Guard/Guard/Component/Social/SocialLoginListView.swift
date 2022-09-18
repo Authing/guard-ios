@@ -21,13 +21,15 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
     let container = UIView()
     let socialButtonWidth = CGFloat(48)
     let socialButtonHeight = CGFloat(48)
-    let socialButtonSpace = CGFloat(24)
+    let socialButtonSpace = CGFloat(25)
 
     @IBInspectable open var src: String = "auto" {
         didSet {
             setSource(src)
         }
     }
+    
+    var srcArr: Array<String> = []
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -63,8 +65,8 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                 return
             }
             
-            let src = SocialLoginListView.srcSort(config: config)
-            SocialLoginListView.handleSrc(container: self.container, src)
+            self.srcArr = SocialLoginListView.srcSort(config: config)
+            SocialLoginListView.handleSrc(container: self.container, self.srcArr)
             
             self.layoutSubviews()
         }
@@ -93,8 +95,16 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                 v.layer.cornerRadius = 4
                 v.clipsToBounds = true
                 i += 1
+                
+                if i == 4 {
+                    (v as? SocialLoginButton)?.addTarget(self, action: #selector(moreButtonClick), for: .touchUpInside)
+                }
             }
         }
+    }
+    
+    @objc func moreButtonClick() {
+        SocialLoginListToast.show(viewController: self.authViewController ?? AuthViewController(), src: self.srcArr)
     }
     
     open func setSource(_ src: String) {
@@ -115,7 +125,7 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
         
         isHidden = false
         
-        SocialLoginListView.handleSrc(container: self.container ,srcs)
+        SocialLoginListView.handleSrc(container: self.container, srcs)
     }
     
     class func srcSort(config: Config?) -> [String] {
@@ -153,7 +163,9 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
         return []
     }
     
-    class func handleSrc(container: UIView, _ srcs: Array<String>, _ isVerticalLayout: Bool = false) {
+    class func handleSrc(container: UIView, _ sources: Array<String>, _ isVerticalLayout: Bool = false) {
+        
+        var srcs: Array<String> = sources
         
         if srcs.count == 0 {
             container.superview?.isHidden = true
@@ -164,6 +176,13 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
 
         for v in container.subviews {
             v.removeFromSuperview()
+        }
+        
+        if isVerticalLayout == false {
+            if srcs.count > 3 {
+                srcs.insert("more", at: 3)
+                srcs = Array(srcs[0...3])
+            }
         }
         
         for s in srcs {
@@ -210,7 +229,13 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                     }
                     container.addSubview(view)
                 }
+            } else if ("more" == trimmed) {
+                let view = SocialLoginButton.init()
+                view.setImage(UIImage(named: "authing_more", in: Bundle(for: SocialLoginListView.self), compatibleWith: nil), for: .normal)
+                container.addSubview(view)
             }
         }
     }
+    
+
 }

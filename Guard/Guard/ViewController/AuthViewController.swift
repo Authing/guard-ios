@@ -9,7 +9,7 @@ open class AuthViewController: UIViewController {
     
 //    public var authFlow: AuthFlow? = AuthFlow()
     
-    public var authFlow: AuthFlow? {
+    public var authFlow: AuthFlow? = AuthFlow(){
         didSet {
             setupUI()
         }

@@ -10,7 +10,7 @@ import UIKit
 class Toast {
     
     class func show(text: String){
-        if text == "" { return }
+        if text == ""  || text == " " { return }
 
         DispatchQueue.main.async() {
             

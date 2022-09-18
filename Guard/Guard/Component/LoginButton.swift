@@ -162,7 +162,9 @@ open class LoginButton: PrimaryButton {
                         && missingFields.count > 0) {
                         let vc: AuthViewController? = AuthViewController(nibName: "AuthingUserInfoComplete", bundle: Bundle(for: Self.self))
                         vc?.hideNavigationBar = true
-                        vc?.authFlow = button.authViewController?.authFlow?.copy() as? AuthFlow
+                        if let flow = button.authViewController?.authFlow {
+                            vc?.authFlow = flow.copy() as? AuthFlow
+                        }
                         vc?.authFlow?.data.setValue(missingFields, forKey: AuthFlow.KEY_EXTENDED_FIELDS)
                         button.authViewController?.navigationController?.pushViewController(vc!, animated: true)
                     } else {

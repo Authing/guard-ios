@@ -102,9 +102,11 @@ open class PrivacyToast: UIView {
     }
     
     @objc func doneClick(sender: UIButton) {
+                
         if let button = Util.findView(self, viewClass: PrivacyConfirmBox.self) as? PrivacyConfirmBox {
             button.isChecked = true
-            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PrivacyIsCheckNotify"), object: ["ischeck" : true])
+
             if let loginButton = Util.findView(self, viewClass: LoginButton.self) as? LoginButton {
                 if !isSocialButton {
                     loginButton.sendActions(for: .touchUpInside)
@@ -128,19 +130,20 @@ open class PrivacyToast: UIView {
     }
     
     public class func showToast(viewController: UIViewController, _ isSocialButton: Bool? = false) {
-        
         let toast = PrivacyToast()
-        toast.isSocialButton = isSocialButton ?? false
-        viewController.view.addSubview(toast)
-        toast.alpha = 0
-        UIView.animate(withDuration: 0.3) {
-            toast.alpha = 1
+        if let keyWindow = UIApplication.shared.windows.first {
+            keyWindow.addSubview(toast)
+            toast.isSocialButton = isSocialButton ?? false
+            toast.alpha = 0
+            UIView.animate(withDuration: 0.3) {
+                toast.alpha = 1
+            }
+            toast.translatesAutoresizingMaskIntoConstraints = false
+            toast.leftAnchor.constraint(equalTo: keyWindow.leftAnchor, constant: 0).isActive = true
+            toast.topAnchor.constraint(equalTo: keyWindow.topAnchor, constant: 0).isActive = true
+            toast.rightAnchor.constraint(equalTo: keyWindow.rightAnchor, constant: 0).isActive = true
+            toast.bottomAnchor.constraint(equalTo: keyWindow.bottomAnchor, constant: 0).isActive = true
         }
-        toast.translatesAutoresizingMaskIntoConstraints = false
-        toast.leftAnchor.constraint(equalTo: viewController.view.leftAnchor, constant: 0).isActive = true
-        toast.topAnchor.constraint(equalTo: viewController.view.topAnchor, constant: 0).isActive = true
-        toast.rightAnchor.constraint(equalTo: viewController.view.rightAnchor, constant: 0).isActive = true
-        toast.bottomAnchor.constraint(equalTo: viewController.view.bottomAnchor, constant: 0).isActive = true
     }
 }
 
@@ -181,6 +184,7 @@ open class PrivacyConfirmBox: UIView, UITextViewDelegate {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        setup()
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -237,6 +241,16 @@ open class PrivacyConfirmBox: UIView, UITextViewDelegate {
             Util.getConfig(self) { config in
                 self._setup(config)
             }
+        }
+        
+        let name = Notification.Name.init(rawValue: "PrivacyIsCheckNotify")
+        NotificationCenter.default.addObserver(self, selector: #selector(isCheckNoti(notification:)), name: name, object: nil)
+    }
+    
+    @objc func isCheckNoti(notification: Notification) {
+        let noti = notification.object as? [String : Any]
+        if let isCheck = noti?["ischeck"] as? Bool {
+            self.isChecked = isCheck
         }
     }
     
@@ -297,6 +311,7 @@ open class PrivacyConfirmBox: UIView, UITextViewDelegate {
     
     @objc private func onClick(sender: UIButton) {
         isChecked = !isChecked
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PrivacyIsCheckNotify"), object: ["ischeck" : isChecked])
     }
     
     public func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
