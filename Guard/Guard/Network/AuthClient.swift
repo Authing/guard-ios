@@ -757,7 +757,7 @@ public class AuthClient: Client {
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard error == nil else {
                 print("Guardian request network error:\(error!.localizedDescription)")
-                completion(500, error!.localizedDescription, nil)
+                completion((error as? NSError)?.code ?? 500, error!.localizedDescription, nil)
                 return
             }
             
