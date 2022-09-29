@@ -8,7 +8,6 @@
 public class OIDCClient: NSObject {
     
     public var authRequest = AuthRequest()
-    private var authResult: AuthResult?
     
     public init(_ authRequest: AuthRequest? = nil) {
         super.init()
