@@ -153,7 +153,6 @@
 		A8A4897B287578A600F3120F /* GoFeedBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A4897A287578A600F3120F /* GoFeedBackButton.swift */; };
 		A8A4897D28758C1600F3120F /* AuthingFeedBack.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8A4897C28758C1600F3120F /* AuthingFeedBack.xib */; };
 		A8A489842876B97C00F3120F /* FeedBackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A489832876B97C00F3120F /* FeedBackController.swift */; };
-		A8A5ABC1285733F500D6B03A /* AuthResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A5ABC0285733F500D6B03A /* AuthResult.swift */; };
 		A8A7BBB228466CC5000A0D7C /* CountryCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A7BBB128466CC5000A0D7C /* CountryCodeView.swift */; };
 		A8AE59A728C5FDB600097FF0 /* country_en.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8AE59A628C5FDB600097FF0 /* country_en.plist */; };
 		A8BBEB352876DA890082DE59 /* FeedBackIssuePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BBEB342876DA890082DE59 /* FeedBackIssuePicker.swift */; };
@@ -315,7 +314,6 @@
 		A8A4897A287578A600F3120F /* GoFeedBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoFeedBackButton.swift; sourceTree = "<group>"; };
 		A8A4897C28758C1600F3120F /* AuthingFeedBack.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingFeedBack.xib; sourceTree = "<group>"; };
 		A8A489832876B97C00F3120F /* FeedBackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackController.swift; sourceTree = "<group>"; };
-		A8A5ABC0285733F500D6B03A /* AuthResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResult.swift; sourceTree = "<group>"; };
 		A8A7BBB128466CC5000A0D7C /* CountryCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeView.swift; sourceTree = "<group>"; };
 		A8ABCD5B28914C4A00DD6DA0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A8ABCD5C28914C5000DD6DA0 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -511,7 +509,6 @@
 				7E75668627672C8D00C3872F /* Config.swift */,
 				7E7566B12768A7CC00C3872F /* UserInfo.swift */,
 				7E87A1C727CF52C100E52D5A /* AuthRequest.swift */,
-				A8A5ABC0285733F500D6B03A /* AuthResult.swift */,
 				7E12D7B5277DE9EF00703FC1 /* UserManager.swift */,
 				7E189B0827F13ACD005AC1AC /* CacheManager.swift */,
 			);
@@ -899,7 +896,6 @@
 				7E75668B276746AF00C3872F /* AppLogo.swift in Sources */,
 				7E96039227E08B2B007C87EB /* Parser.swift in Sources */,
 				7E7566B22768A7CC00C3872F /* UserInfo.swift in Sources */,
-				A8A5ABC1285733F500D6B03A /* AuthResult.swift in Sources */,
 				7EF66C67277C119800FCBBEB /* IndexAuthViewController.swift in Sources */,
 				7E0FAFDF27ED5A37006258FC /* UIViewController+Authing.swift in Sources */,
 				A80BD1CD28D49B8700F9DEDE /* Toast.swift in Sources */,
