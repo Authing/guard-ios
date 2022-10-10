@@ -6,6 +6,29 @@
 //
 
 
+public enum ErrorCode: Int {
+    case netWork = 10001
+    case config = 10002
+    case login = 10003
+    case jsonParse = 10004
+    case socialLogin = 10005
+    
+    public func errorMessage() -> String {
+        switch self {
+        case .netWork:
+            return "Network error"
+        case .config:
+            return "Config not found"
+        case .login:
+            return "Login failed"
+        case .jsonParse:
+            return "Json parse failed"
+        case .socialLogin:
+            return "Social login failed"
+        }
+    }
+}
+
 public class Util {
     
     public enum PasswordStrength {

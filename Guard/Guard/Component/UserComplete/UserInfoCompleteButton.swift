@@ -199,7 +199,7 @@ open class UserInfoCompleteButton: PrimaryButton {
             
             if (required && Util.isNull(value)) {
                 Util.setError(self, "\(label ?? "")\("authing_is_required".L)")
-                completion(500, nil, nil)
+                completion(ErrorCode.jsonParse.rawValue, ErrorCode.jsonParse.errorMessage(), nil)
                 return
             }
             

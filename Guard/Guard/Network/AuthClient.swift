@@ -376,7 +376,7 @@ public class AuthClient: Client {
                 }
             }
         } else {
-            completion(2020, "not logged in", nil)
+            completion(ErrorCode.login.rawValue, ErrorCode.login.errorMessage(), nil)
         }
     }
     
@@ -432,12 +432,12 @@ public class AuthClient: Client {
     
         getConfig { config in
             guard let conf = config else {
-                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
                 return
             }
   
             guard let conId = conf.getConnectionId(type: "wechat:mobile") else {
-                completion(500, "No wechat connection. Please set up in console for \(Authing.getAppId())", nil)
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
                 return
             }
             
@@ -462,12 +462,12 @@ public class AuthClient: Client {
     public func loginByWeCom(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         getConfig { config in
             guard let conf = config else {
-                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
                 return
             }
   
             guard let conId = conf.getConnectionId(type: "wechatwork:mobile") else {
-                completion(500, "No wechat connection. Please set up in console for \(Authing.getAppId())", nil)
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
                 return
             }
             
@@ -481,12 +481,12 @@ public class AuthClient: Client {
     public func loginbyWeComAgency(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         getConfig { config in
             guard let conf = config else {
-                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
                 return
             }
   
             guard let conId = conf.getConnectionId(type: "wechatwork:agency:mobile") else {
-                completion(500, "No wechat connection. Please set up in console for \(Authing.getAppId())", nil)
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
                 return
             }
             
@@ -500,13 +500,13 @@ public class AuthClient: Client {
     public func loginByLark(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         getConfig { config in
             guard config != nil else {
-                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
                 return
             }
   
             let conId: String? = config?.getConnectionId(type: "lark-internal") == nil ? config?.getConnectionId(type: "lark-public") : config?.getConnectionId(type: "lark-internal")
             guard conId != nil else {
-                completion(500, "No wechat connection. Please set up in console for \(Authing.getAppId())", nil)
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
                 return
             }
             
@@ -559,7 +559,7 @@ public class AuthClient: Client {
         
         getConfig { config in
             guard let conf = config else {
-                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
                 return
             }
 
@@ -575,12 +575,12 @@ public class AuthClient: Client {
     public func loginByGoogle(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         getConfig { config in
             guard let conf = config else {
-                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
                 return
             }
   
             guard let conId = conf.getConnectionId(type: "google:mobile") else {
-                completion(500, "No wechat connection. Please set up in console for \(Authing.getAppId())", nil)
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
                 return
             }
             
@@ -714,7 +714,7 @@ public class AuthClient: Client {
                 let urlString: String = "\(Authing.getSchema())://\(Util.getHost(config!))\(endPoint)";
                 self.request(config: config, urlString: urlString, method: method, body: body, completion: completion)
             } else {
-                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
             }
         }
     }
@@ -757,13 +757,13 @@ public class AuthClient: Client {
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard error == nil else {
                 print("Guardian request network error:\(error!.localizedDescription)")
-                completion((error as? NSError)?.code ?? 500, error!.localizedDescription, nil)
+                completion(ErrorCode.netWork.rawValue, ErrorCode.netWork.errorMessage(), nil)
                 return
             }
             
             guard data != nil else {
                 print("data is null when requesting \(urlString)")
-                completion(500, "no data from server", nil)
+                completion(ErrorCode.jsonParse.rawValue, ErrorCode.jsonParse.errorMessage(), nil)
                 return
             }
             
@@ -782,7 +782,7 @@ public class AuthClient: Client {
                 
                 guard let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary else {
                     print("data is not json when requesting \(urlString)")
-                    completion(500, "only accept json data", nil)
+                    completion(ErrorCode.jsonParse.rawValue, ErrorCode.jsonParse.errorMessage(), nil)
                     return
                 }
                 
@@ -812,7 +812,7 @@ public class AuthClient: Client {
                 }
             } catch {
                 print("parsing json error when requesting \(urlString)")
-                completion(500, urlString, nil)
+                completion(ErrorCode.jsonParse.rawValue, ErrorCode.jsonParse.errorMessage(), nil)
             }
         }.resume()
     }
@@ -823,7 +823,8 @@ public class AuthClient: Client {
                 let urlString: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/upload?folder=photos";
                 self._uploadImage(urlString, image, completion: completion)
             } else {
-                completion(500, "Cannot get config. app id:\(Authing.getAppId())")
+                print("Cannot get config. app id:\(Authing.getAppId())")
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage())
             }
         }
     }
@@ -834,7 +835,8 @@ public class AuthClient: Client {
                 let urlString: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/upload?folder=photos&private=\(isPrivate)";
                 self._uploadImage(urlString, image, true, completion: completion)
             } else {
-                completion(500, "Cannot get config. app id:\(Authing.getAppId())")
+                print("Cannot get config. app id:\(Authing.getAppId())")
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage())
             }
         }
     }
@@ -857,36 +859,42 @@ public class AuthClient: Client {
         
         session.uploadTask(with: urlRequest, from: data, completionHandler: { responseData, response, error in
             guard error == nil else {
-                completion(500, "network error \(url!)")
+                print("network error \(url!)")
+                completion(ErrorCode.netWork.rawValue, ErrorCode.netWork.errorMessage())
                 return
             }
             
             let jsonData = try? JSONSerialization.jsonObject(with: responseData!, options: .allowFragments)
             guard jsonData != nil else {
-                completion(500, "response not json \(url!)")
+                print("response not json \(url!)")
+                completion(ErrorCode.jsonParse.rawValue, ErrorCode.jsonParse.errorMessage())
                 return
             }
             
             guard let json = jsonData as? [String: Any] else {
-                completion(500, "illegal json \(url!)")
+                print("illegal json \(url!)")
+                completion(ErrorCode.jsonParse.rawValue, ErrorCode.jsonParse.errorMessage())
                 return
             }
             
             guard let code = json["code"] as? Int else {
-                completion(500, "no response code \(url!)")
+                print("no response code \(url!)")
+                completion(ErrorCode.jsonParse.rawValue, ErrorCode.jsonParse.errorMessage())
                 return
             }
             
             if isFaceImage == true{
                 guard let data = json["data"] as? NSDictionary else {
-                    completion(500, "no response data \(url!)")
+                    print("no response code \(url!)")
+                    completion(ErrorCode.jsonParse.rawValue, ErrorCode.jsonParse.errorMessage())
                     return
                 }
                 
                 if let u = data["key"] as? String {
                     completion(200, u)
                 } else {
-                    completion(500, "response data has no url field \(url!)")
+                    print("response data has no url field \(url!)")
+                    completion(ErrorCode.jsonParse.rawValue, ErrorCode.jsonParse.errorMessage())
                     return
                 }
             } else {
@@ -896,14 +904,16 @@ public class AuthClient: Client {
                 }
                 
                 guard let data = json["data"] as? NSDictionary else {
-                    completion(500, "no response data \(url!)")
+                    print("no response data \(url!)")
+                    completion(ErrorCode.jsonParse.rawValue, ErrorCode.jsonParse.errorMessage())
                     return
                 }
                 
                 if let u = data["url"] as? String {
                     completion(200, u)
                 } else {
-                    completion(500, "response data has no url field \(url!)")
+                    print("response data has no url field \(url!)")
+                    completion(ErrorCode.jsonParse.rawValue, ErrorCode.jsonParse.errorMessage())
                     return
                 }
             }

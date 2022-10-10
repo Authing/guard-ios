@@ -95,7 +95,7 @@ public class Authing: NSObject {
     @objc public static func autoLogin(completion: @escaping(Int, String?, UserInfo?) -> Void) {
         sCurrentUser = UserManager.getUser()
         if sCurrentUser == nil {
-            completion(500, "no user logged in", nil)
+            completion(ErrorCode.login.rawValue, ErrorCode.login.errorMessage(), nil)
             return
         }
         

@@ -65,19 +65,18 @@ public class OIDCClient: NSObject {
             if (config == nil) {
                 completion(nil)
             } else {
-                
-                let secret = self.authRequest.client_secret
-                
-                let url = "\(Authing.getSchema())://\(Util.getHost(config!))/oidc/auth?"
-                + "nonce=" + self.authRequest.nonce
-                + "&scope=" + self.authRequest.scope.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-                + "&client_id=" + self.authRequest.client_id
-                + "&redirect_uri=" + self.authRequest.redirect_uri
-                + "&response_type=" + self.authRequest.response_type
-                + "&prompt=consent"
-                + "&state=" + self.authRequest.state
-                + (secret == nil ? "&code_challenge=" + self.authRequest.codeChallenge! + "&code_challenge_method=S256" : "");
-
+               let secret = self.authRequest.client_secret
+               var url = "\(Authing.getSchema())://\(Util.getHost(config!))/oidc/auth?"
+               let nonce = "nonce=" + self.authRequest.nonce
+               let scope = "&scope=" + (self.authRequest.scope.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? "")
+               let clientId = "&client_id=" + self.authRequest.client_id
+               let redirect = "&redirect_uri=" + self.authRequest.redirect_uri
+               let responseType = "&response_type=" + self.authRequest.response_type
+               let prompt = "&prompt=consent"
+               let state = "&state=" + self.authRequest.state
+               let codeChallenge = (secret == nil ? "&code_challenge=" + self.authRequest.codeChallenge! + "&code_challenge_method=S256" : "");
+               url = url + nonce + scope + clientId + redirect + responseType + prompt + state + codeChallenge
+               
                 completion(URL(string: url))
             }
         }
@@ -166,7 +165,7 @@ public class OIDCClient: NSObject {
                 let urlString: String = "\(Authing.getSchema())://\(Util.getHost(config!))\(endPoint)"
                 self._request(userInfo: userInfo, config: config, urlString: urlString, method: method, body: body, completion: completion)
             } else {
-                completion(500, "Cannot get config. app id:\(Authing.getAppId())", nil)
+               completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
             }
         }
     }
@@ -187,7 +186,8 @@ public class OIDCClient: NSObject {
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard error == nil else {
-                completion(500, "network error \(url!) \n\(error!)", nil)
+                print("network error \(url!) \n\(error!)")
+                completion(ErrorCode.netWork.rawValue, ErrorCode.netWork.errorMessage(), nil)
                 return
             }
             
