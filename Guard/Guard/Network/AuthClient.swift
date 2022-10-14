@@ -104,16 +104,16 @@ public class AuthClient: Client {
         }
     }
     
-    public func loginByAccount(account: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        loginByAccount(authData: nil, account: account, password: password, completion: completion)
+    public func loginByAccount(account: String, password: String, _ autoRegister: Bool = false, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        loginByAccount(authData: nil, account: account, password: password, autoRegister, completion: completion)
     }
 
-    public func loginByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        loginByPhoneCode(authData: nil, phoneCountryCode: phoneCountryCode, phone: phone, code: code, completion: completion)
+    public func loginByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, _ autoRegister: Bool = false, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        loginByPhoneCode(authData: nil, phoneCountryCode: phoneCountryCode, phone: phone, code: code, autoRegister, completion: completion)
     }
     
-    public func loginByEmail(email: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        loginByEmail(authData: nil, email: email, code: code, completion: completion)
+    public func loginByEmail(email: String, code: String, _ autoRegister: Bool = false, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        loginByEmail(authData: nil, email: email, code: code, autoRegister, completion: completion)
     }
             
     public func loginByAccount(authData: AuthRequest?, account: String, password: String, _ autoRegister: Bool = false, completion: @escaping(Int, String?, UserInfo?) -> Void) {

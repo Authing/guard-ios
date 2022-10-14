@@ -155,7 +155,7 @@ public class Config: NSObject {
         var url = "https://console." + Authing.getHost() + "/api/v2/applications/" + self.appId + "/public-config"
 
         if Authing.getIsOnPremises() {
-            url = "https://" + Authing.getHost() + "/api/v2/applications/" + self.appId + "/public-config"
+            url = "\(Authing.getSchema())://" + Authing.getHost() + "/api/v2/applications/" + self.appId + "/public-config"
         }
         //        var componentsJson = NSDictionary()
         //        let dispatchGroup = DispatchGroup()
