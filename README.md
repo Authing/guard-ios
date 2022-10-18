@@ -26,6 +26,9 @@ Authing Guard for iOS
 
 [Click me for English documentation](https://docs.authing.cn/v2/en/reference/sdk-for-ios/)
 
+## Compatibility Notes
+Minimum supported versions have updated for the Guard-iOS : iOS 11.0, Xcode 13.4.1
+
 ## Questions
 
 For questions and support please use the [official forum](https://forum.authing.cn/). The issue list of this repo is exclusively for bug reports and feature requests.
