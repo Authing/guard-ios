@@ -8,25 +8,28 @@
 public class AuthClient: Client {
     
     // MARK: Basic authentication APIs
-    public func registerByEmail(email: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        self.registerByEmail(authData: nil, email: email, password: password, completion: completion)
+    public func registerByEmail(email: String, password: String, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        self.registerByEmail(authData: nil, email: email, password: password, context, completion: completion)
     }
     
-    public func registerByEmailCode(email: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        self.registerByEmailCode(authData: nil, email: email, code: code, completion: completion)
+    public func registerByEmailCode(email: String, code: String, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        self.registerByEmailCode(authData: nil, email: email, code: code, context, completion: completion)
     }
     
-    public func registerByUserName(username: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        self.registerByUserName(authData: nil, username: username, password: password, completion: completion)
+    public func registerByUserName(username: String, password: String, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        self.registerByUserName(authData: nil, username: username, password: password, context, completion: completion)
     }
     
-    public func registerByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, password: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func registerByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, password: String? = nil, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         self.registerByPhoneCode(authData: nil, phoneCountryCode: phoneCountryCode, phone: phone, code: code, password: password, completion: completion)
     }
     
-    public func registerByEmail(authData: AuthRequest?, email: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func registerByEmail(authData: AuthRequest?, email: String, password: String, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let encryptedPassword = Util.encryptPassword(password)
-        let body: NSDictionary = ["email" : email, "password" : encryptedPassword, "forceLogin" : true]
+        let body: NSMutableDictionary = ["email" : email, "password" : encryptedPassword, "forceLogin" : true]
+        if context != nil {
+            body.setValue(context, forKey: "context")
+        }
         post("/api/v2/register/email", body) { code, message, data in
             if authData == nil{
                 self.createUserInfo(code, message, data, completion: completion)
@@ -43,8 +46,11 @@ public class AuthClient: Client {
         }
     }
     
-    public func registerByEmailCode(authData: AuthRequest?, email: String, code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        let body: NSDictionary = ["email" : email, "code" : code, "forceLogin" : true]
+    public func registerByEmailCode(authData: AuthRequest?, email: String, code: String, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        let body: NSMutableDictionary = ["email" : email, "code" : code, "forceLogin" : true]
+        if context != nil {
+            body.setValue(context, forKey: "context")
+        }
         post("/api/v2/register/email-code", body) { code, message, data in
             if authData == nil{
                 self.createUserInfo(code, message, data, completion: completion)
@@ -61,9 +67,12 @@ public class AuthClient: Client {
         }
     }
     
-    public func registerByUserName(authData: AuthRequest?, username: String, password: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func registerByUserName(authData: AuthRequest?, username: String, password: String, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let encryptedPassword = Util.encryptPassword(password)
-        let body: NSDictionary = ["username" : username, "password" : encryptedPassword, "forceLogin" : true]
+        let body: NSMutableDictionary = ["username" : username, "password" : encryptedPassword, "forceLogin" : true]
+        if context != nil {
+            body.setValue(context, forKey: "context")
+        }
         post("/api/v2/register/username", body) { code, message, data in
             if authData == nil{
                 self.createUserInfo(code, message, data, completion: completion)
@@ -80,13 +89,16 @@ public class AuthClient: Client {
         }
     }
     
-    public func registerByPhoneCode(authData: AuthRequest?, phoneCountryCode: String? = nil, phone: String, code: String, password: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func registerByPhoneCode(authData: AuthRequest?, phoneCountryCode: String? = nil, phone: String, code: String, password: String? = nil, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let body: NSMutableDictionary = ["phone" : phone, "code" : code, "forceLogin" : true]
         if password != nil {
             body.setValue(Util.encryptPassword(password!), forKey: "password")
         }
         if phoneCountryCode != nil {
             body.setValue(phoneCountryCode, forKey: "phoneCountryCode")
+        }
+        if context != nil {
+            body.setValue(context, forKey: "context")
         }
         post("/api/v2/register/phone-code", body) { code, message, data in
             if authData == nil{
@@ -104,21 +116,24 @@ public class AuthClient: Client {
         }
     }
     
-    public func loginByAccount(account: String, password: String, _ autoRegister: Bool = false, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        loginByAccount(authData: nil, account: account, password: password, autoRegister, completion: completion)
+    public func loginByAccount(account: String, password: String, _ autoRegister: Bool = false, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        loginByAccount(authData: nil, account: account, password: password, autoRegister, context, completion: completion)
     }
 
-    public func loginByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, _ autoRegister: Bool = false, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        loginByPhoneCode(authData: nil, phoneCountryCode: phoneCountryCode, phone: phone, code: code, autoRegister, completion: completion)
+    public func loginByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, _ autoRegister: Bool = false, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        loginByPhoneCode(authData: nil, phoneCountryCode: phoneCountryCode, phone: phone, code: code, autoRegister, context, completion: completion)
     }
     
-    public func loginByEmail(email: String, code: String, _ autoRegister: Bool = false, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        loginByEmail(authData: nil, email: email, code: code, autoRegister, completion: completion)
+    public func loginByEmail(email: String, code: String, _ autoRegister: Bool = false, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        loginByEmail(authData: nil, email: email, code: code, autoRegister, context, completion: completion)
     }
             
-    public func loginByAccount(authData: AuthRequest?, account: String, password: String, _ autoRegister: Bool = false, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func loginByAccount(authData: AuthRequest?, account: String, password: String, _ autoRegister: Bool = false, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let encryptedPassword = Util.encryptPassword(password)
-        let body: NSDictionary = ["account" : account, "password" : encryptedPassword, "autoRegister": autoRegister]
+        let body: NSMutableDictionary = ["account" : account, "password" : encryptedPassword, "autoRegister": autoRegister]
+        if context != nil {
+            body.setValue(context, forKey: "context")
+        }
         post("/api/v2/login/account", body) { code, message, data in
             if authData == nil{
                 self.createUserInfo(code, message, data, completion: completion)
@@ -135,10 +150,13 @@ public class AuthClient: Client {
         }
     }
     
-    public func loginByPhoneCode(authData: AuthRequest?, phoneCountryCode: String? = nil, phone: String, code: String, _ autoRegister: Bool = false, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func loginByPhoneCode(authData: AuthRequest?, phoneCountryCode: String? = nil, phone: String, code: String, _ autoRegister: Bool = false, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let body: NSMutableDictionary = ["phone" : phone, "code" : code, "autoRegister": autoRegister]
         if phoneCountryCode != nil {
             body.setValue(phoneCountryCode, forKey: "phoneCountryCode")
+        }
+        if context != nil {
+            body.setValue(context, forKey: "context")
         }
         post("/api/v2/login/phone-code", body) { code, message, data in
             if authData == nil{
@@ -156,8 +174,11 @@ public class AuthClient: Client {
         }
     }
     
-    public func loginByEmail(authData: AuthRequest?, email: String, code: String, _ autoRegister: Bool = false, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        let body: NSDictionary = ["email" : email, "code" : code, "autoRegister": autoRegister]
+    public func loginByEmail(authData: AuthRequest?, email: String, code: String, _ autoRegister: Bool = false, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        let body: NSMutableDictionary = ["email" : email, "code" : code, "autoRegister": autoRegister]
+        if context != nil {
+            body.setValue(context, forKey: "context")
+        }
         post("/api/v2/login/email-code", body) { code, message, data in
             if authData == nil{
                 self.createUserInfo(code, message, data, completion: completion)
@@ -190,13 +211,7 @@ public class AuthClient: Client {
 //        }
 //    }
     
-    public func loginByOneAuth(token: String, accessToken: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        let body: NSDictionary = ["token" : token, "accessToken" : accessToken]
-        post("/api/v2/ecConn/oneAuth/login", body) { code, message, data in
-            self.createUserInfo(code, message, data, completion: completion)
-        }
-    }
-    
+
     public func getCurrentUser(user: UserInfo? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         get("/api/v2/users/me") { code, message, data in
             self.createUserInfo(user, code, message, data, completion: completion)
@@ -591,6 +606,16 @@ public class AuthClient: Client {
         }
     }
     
+    public func loginByOneAuth(token: String, accessToken: String, _ netWork: Int? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        let body: NSMutableDictionary = ["token" : token, "accessToken" : accessToken]
+        if netWork != nil {
+            body.setValue(netWork, forKey: "netWork")
+        }
+        post("/api/v2/ecConn/oneAuth/login", body) { code, message, data in
+            self.createUserInfo(code, message, data, completion: completion)
+        }
+    }
+    
     // MARK: MFA APIs
     public func mfaCheck(phone: String?, email: String?, completion: @escaping(Int, String?, Bool?) -> Void) {
         var body: NSDictionary? = nil
@@ -748,7 +773,7 @@ public class AuthClient: Client {
         if let ua = config?.userAgent {
             request.addValue(ua, forHTTPHeaderField: "User-Agent")
         }
-        request.addValue("guard-ios", forHTTPHeaderField: "x-authing-request-from")
+        request.addValue("Guard-iOS@\(Const.SDK_VERSION)", forHTTPHeaderField: "x-authing-request-from")
         request.addValue(Const.SDK_VERSION, forHTTPHeaderField: "x-authing-sdk-version")
         request.addValue(Util.getLangHeader(), forHTTPHeaderField: "x-authing-lang")
         

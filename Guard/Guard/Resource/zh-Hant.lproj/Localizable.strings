@@ -124,7 +124,7 @@
 "authing_feedback_title" = "幫助中心";
 "authing_feedback_contact" = "聯絡方式";
 "authing_feedback_related" = "相關問題";
-"authing_feedback_issuetip" = "如果無法收到驗證碼，建議您進行以下操作：\n 1. 檢查您的手機服務是否停用  / 沒有網路\n 2. 檢查您的手機號碼碼是否輸入正確路\n 3. 檢查您的驗證碼簡訊是否被阻擋";
+"authing_feedback_issuetip" = "如果無法收到驗證碼，建議您進行以下操作：\n 1. 檢查您的手機是否停機/無網路\n 2. 檢查您的設置的密碼是否正確";
 "authing_feedback_description" = "問題描述";
 "authing_feedback_screenshot" = "問題截圖";
 "authing_feedback_error" = "請輸入手機號碼或電子郵件";

@@ -12,7 +12,7 @@
 "authing_get_verify_code"="検証コードを取得";
 "authing_register"="登録";
 "authing_no_account" = "アカウントがありませんか？";
-"authing_register_now"="今すぐ登録";
+"authing_register_now"="すぐに登録します";
 "authing_welcome_to"="ようこそ";
 "authing_register_by_phone"="SMS確認コード";
 "authing_register_by_email"="メールパスワード";
@@ -27,7 +27,7 @@
 "authing_reset_password_tips"="パスワードのリセットに成功しました";
 "authing_reset_password_content"="新しいパスワードで引き続きログインできます";
 "authing_reset_goback"="ログイン画面に戻ります";
-"authing_reset_goback_auto" = "％dsの後に自動的にログインページにジャンプします";
+"authing_reset_goback_auto" = "％d秒後に、ログイン画面に戻ります";
 "authing_input_phone_or_email"="電話番号またはメールアドレスを入力してください";
 "authing_input_phone_and_verifycode"="登録電話/メールアドレスと確認コードを入力してください";
 "authing_agree_privacy_first"="最初にプライバシー契約に同意してください";
@@ -118,16 +118,15 @@
 
 "authing_phone_none"="電話番号が入力されていません";
 "authing_verifycode_none"="確認コードが入力されていません";
-"authing_email_none"="メールが入力されていません";
+"authing_email_none"="メールアドレスが未入力です";
 "authing_account_none"="アカウントが入力されていません";
-"authing_password_none"="パスワードが入力されていません";
+"authing_password_none"="パスワードが未入力です";
 
 "authing_feedback_title"="ヘルプ・お問い合わせ";
 "authing_feedback_contact"="連絡方法";
 "authing_feedback_related"="ご用件";
-"authing_feedback_issuetip" = "認証コードのSMSが届かない原因としては以
-下の事象等が考えられます。\n1.通信状況が不安定 /モバイル通信ができない状態\n2.電話番号の入力間違い\n3.SMSの受信の制限";
-"authing_feedback_description"="お問い合わせ内容";
+"authing_feedback_issuetip" = "パスワードをリセットできない場合は、以下の操作をお勧めします。\n 1. 携帯電話が利用停止かどうか若しくは
+ネットワーク接続状態チェックします。\n 2. 設定したパスワードが正しいかどうかチェックします。";
 "authing_feedback_screenshot"="スクリーンショット";
 "authing_feedback_error"="電話番号またはメールアドレスを入力してください";
 
