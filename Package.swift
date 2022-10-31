@@ -18,7 +18,7 @@ let package = Package(
         .binaryTarget(
             name: "Guard",
             url: "https://github.com/Authing/guard-ios/releases/download/1.3.4/Guard.xcframework.zip",
-            checksum: "6b40e4139a98e37475d9369a8a50169f2d8b9c391b3590c7b93498d8fa446859"
+            checksum: "3146dbe79d68520574f6006d8186840ab94496981cf3c421c819e8754c04c17c"
         )
     ]
 )
