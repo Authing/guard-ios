@@ -8,23 +8,23 @@
 public class AuthClient: Client {
     
     // MARK: Basic authentication APIs
-    public func registerByEmail(email: String, password: String, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func registerByEmail(email: String, password: String, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         self.registerByEmail(authData: nil, email: email, password: password, context, completion: completion)
     }
     
-    public func registerByEmailCode(email: String, code: String, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func registerByEmailCode(email: String, code: String, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         self.registerByEmailCode(authData: nil, email: email, code: code, context, completion: completion)
     }
     
-    public func registerByUserName(username: String, password: String, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func registerByUserName(username: String, password: String, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         self.registerByUserName(authData: nil, username: username, password: password, context, completion: completion)
     }
     
-    public func registerByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, password: String? = nil, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func registerByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, password: String? = nil, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         self.registerByPhoneCode(authData: nil, phoneCountryCode: phoneCountryCode, phone: phone, code: code, password: password, completion: completion)
     }
     
-    public func registerByEmail(authData: AuthRequest?, email: String, password: String, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func registerByEmail(authData: AuthRequest?, email: String, password: String, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let encryptedPassword = Util.encryptPassword(password)
         let body: NSMutableDictionary = ["email" : email, "password" : encryptedPassword, "forceLogin" : true]
         if context != nil {
@@ -46,7 +46,7 @@ public class AuthClient: Client {
         }
     }
     
-    public func registerByEmailCode(authData: AuthRequest?, email: String, code: String, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func registerByEmailCode(authData: AuthRequest?, email: String, code: String, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let body: NSMutableDictionary = ["email" : email, "code" : code, "forceLogin" : true]
         if context != nil {
             body.setValue(context, forKey: "context")
@@ -67,7 +67,7 @@ public class AuthClient: Client {
         }
     }
     
-    public func registerByUserName(authData: AuthRequest?, username: String, password: String, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func registerByUserName(authData: AuthRequest?, username: String, password: String, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let encryptedPassword = Util.encryptPassword(password)
         let body: NSMutableDictionary = ["username" : username, "password" : encryptedPassword, "forceLogin" : true]
         if context != nil {
@@ -89,7 +89,7 @@ public class AuthClient: Client {
         }
     }
     
-    public func registerByPhoneCode(authData: AuthRequest?, phoneCountryCode: String? = nil, phone: String, code: String, password: String? = nil, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func registerByPhoneCode(authData: AuthRequest?, phoneCountryCode: String? = nil, phone: String, code: String, password: String? = nil, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let body: NSMutableDictionary = ["phone" : phone, "code" : code, "forceLogin" : true]
         if password != nil {
             body.setValue(Util.encryptPassword(password!), forKey: "password")
@@ -116,19 +116,19 @@ public class AuthClient: Client {
         }
     }
     
-    public func loginByAccount(account: String, password: String, _ autoRegister: Bool = false, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func loginByAccount(account: String, password: String, _ autoRegister: Bool = false, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         loginByAccount(authData: nil, account: account, password: password, autoRegister, context, completion: completion)
     }
 
-    public func loginByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, _ autoRegister: Bool = false, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func loginByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, _ autoRegister: Bool = false, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         loginByPhoneCode(authData: nil, phoneCountryCode: phoneCountryCode, phone: phone, code: code, autoRegister, context, completion: completion)
     }
     
-    public func loginByEmail(email: String, code: String, _ autoRegister: Bool = false, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func loginByEmail(email: String, code: String, _ autoRegister: Bool = false, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         loginByEmail(authData: nil, email: email, code: code, autoRegister, context, completion: completion)
     }
             
-    public func loginByAccount(authData: AuthRequest?, account: String, password: String, _ autoRegister: Bool = false, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func loginByAccount(authData: AuthRequest?, account: String, password: String, _ autoRegister: Bool = false, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let encryptedPassword = Util.encryptPassword(password)
         let body: NSMutableDictionary = ["account" : account, "password" : encryptedPassword, "autoRegister": autoRegister]
         if context != nil {
@@ -150,7 +150,7 @@ public class AuthClient: Client {
         }
     }
     
-    public func loginByPhoneCode(authData: AuthRequest?, phoneCountryCode: String? = nil, phone: String, code: String, _ autoRegister: Bool = false, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func loginByPhoneCode(authData: AuthRequest?, phoneCountryCode: String? = nil, phone: String, code: String, _ autoRegister: Bool = false, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let body: NSMutableDictionary = ["phone" : phone, "code" : code, "autoRegister": autoRegister]
         if phoneCountryCode != nil {
             body.setValue(phoneCountryCode, forKey: "phoneCountryCode")
@@ -174,7 +174,7 @@ public class AuthClient: Client {
         }
     }
     
-    public func loginByEmail(authData: AuthRequest?, email: String, code: String, _ autoRegister: Bool = false, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func loginByEmail(authData: AuthRequest?, email: String, code: String, _ autoRegister: Bool = false, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let body: NSMutableDictionary = ["email" : email, "code" : code, "autoRegister": autoRegister]
         if context != nil {
             body.setValue(context, forKey: "context")

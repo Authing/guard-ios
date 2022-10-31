@@ -25,32 +25,32 @@ public class OIDCClient: NSObject {
     }
 
     //MARK: ---------- Register APIs ----------
-    public func registerByEmail(email: String, password: String, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func registerByEmail(email: String, password: String, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         AuthClient().registerByEmail(authData: self.authRequest, email: email, password: password, context, completion: completion)
     }
     
-    public func registerByEmailCode(email: String, code: String, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func registerByEmailCode(email: String, code: String, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         AuthClient().registerByEmailCode(authData: self.authRequest, email: email, code: code, context, completion: completion)
     }
     
-    public func registerByUserName(username: String, password: String, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func registerByUserName(username: String, password: String, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         AuthClient().registerByUserName(authData: self.authRequest, username: username, password: password, context, completion: completion)
     }
     
-    public func registerByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, password: String? = nil, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func registerByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, password: String? = nil, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         AuthClient().registerByPhoneCode(authData: self.authRequest, phoneCountryCode: phoneCountryCode, phone: phone, code: code, password: password, context, completion: completion)
     }
 
     //MARK: ---------- Login APIs ----------
-    public func loginByAccount(account: String, password: String, _ autoRegister: Bool = false, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func loginByAccount(account: String, password: String, _ autoRegister: Bool = false, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         AuthClient().loginByAccount(authData: self.authRequest ,account: account, password: password, autoRegister, context, completion: completion)
     }
     
-    public func loginByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, _ autoRegister: Bool = false, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func loginByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, _ autoRegister: Bool = false, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         AuthClient().loginByPhoneCode(authData: self.authRequest, phoneCountryCode: phoneCountryCode,  phone: phone, code: code, autoRegister, context, completion: completion)
     }
     
-    public func loginByEmail(email: String, code: String, _ autoRegister: Bool = false, _ context: NSDictionary? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func loginByEmail(email: String, code: String, _ autoRegister: Bool = false, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         AuthClient().loginByEmail(authData: self.authRequest, email: email, code: code, autoRegister, context, completion: completion)
     }
     
