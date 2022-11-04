@@ -18,7 +18,15 @@ open class LoginButton: PrimaryButton {
 
     private func setup() {
         let loginText = "authing_login".L
-        self.setTitle(loginText, for: .normal)
+        Util.getConfig(self) { config in
+            if config?.autoRegisterThenLoginHintInfo == true &&
+                config?.registerDisabled == false {
+                let registerText = "authing_register".L
+                self.setTitle("\(loginText) / \(registerText)", for: .normal)
+            } else {
+                self.setTitle(loginText, for: .normal)
+            }
+        }
         self.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
     }
     

@@ -105,6 +105,8 @@ open class UserInfo: NSObject {
     
     @objc public var firstTimeLoginToken: String? = nil
     
+    @objc public var loginsCount: Int = 0
+    
     open func parse(data: NSDictionary?) {
         var userData = data
         if let entity = data?["userEntity"] as? NSDictionary {
@@ -133,6 +135,7 @@ open class UserInfo: NSObject {
         phone = raw?["phone"] as? String
         token = raw?["token"] as? String
         identities = raw?["identities"] as? [NSDictionary]
+        loginsCount = raw?["loginsCount"] as? Int ?? 0
     }
 
     public func getUserName() -> String? {

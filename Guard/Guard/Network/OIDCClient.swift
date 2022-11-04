@@ -36,10 +36,20 @@ public class OIDCClient: NSObject {
     public func registerByUserName(username: String, password: String, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         AuthClient().registerByUserName(authData: self.authRequest, username: username, password: password, context, completion: completion)
     }
+   
+   
+   public func registerByPhone(phoneCountryCode: String? = nil,phone: String, password: String, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+      AuthClient().registerByPhone(authData: self.authRequest, phoneCountryCode: phoneCountryCode, phone: phone, password: password, context, completion: completion)
+   }
     
     public func registerByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, password: String? = nil, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         AuthClient().registerByPhoneCode(authData: self.authRequest, phoneCountryCode: phoneCountryCode, phone: phone, code: code, password: password, context, completion: completion)
     }
+   
+   
+   public func registerByExtendedFields(extendedFields: String, account: String, password: String, _ postUserInfoPipeline: Bool? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+      AuthClient().registerByExtendedFields(authData: self.authRequest, extendedFields: extendedFields, account: account, password: password, completion: completion)
+   }
 
     //MARK: ---------- Login APIs ----------
     public func loginByAccount(account: String, password: String, _ autoRegister: Bool = false, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {

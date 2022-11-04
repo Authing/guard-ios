@@ -9,13 +9,14 @@
 "authing_other_login_methods" = "其他方式登录";
 "authing_login_by_phone_code" = "短信验证码";
 "authing_login_by_email_code" = "邮箱验证码";
-"authing_login_by_password" = "账号密码";
+"authing_login_by_password" = "密码登录";
 "authing_get_verify_code" = "获取验证码";
 "authing_register" = "注册";
 "authing_no_account" = "没有帐号？";
 "authing_register_now" = "立即注册";
 "authing_welcome_to" = "欢迎加入";
 "authing_register_by_phone" = "短信验证码";
+"authing_register_by_phonePassword" = "手机号密码";
 "authing_register_by_email" = "邮箱密码";
 "authing_register_by_emailCode" = "邮箱验证码";
 "authing_password_hint" = "请输入密码";

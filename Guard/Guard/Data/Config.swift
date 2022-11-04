@@ -27,17 +27,26 @@ public class Config: NSObject {
             }
             
             if let verifyCodeTabConfig: NSDictionary = data?["verifyCodeTabConfig"] as? NSDictionary{
-                if let enabledLoginMethods: [String] = verifyCodeTabConfig["enabledLoginMethods"] as? [String]{
-                    let arr = (loginMethods ?? []) + enabledLoginMethods
-                    loginMethods = arr.enumerated().filter { (index, value) -> Bool in
-                        return arr.firstIndex(of: value) == index
-                    }.map {
-                        $0.element
+                if let enabledLoginMethods: [String] = verifyCodeTabConfig["validLoginMethods"] as? [String]{
+                    if loginMethods?.first == "password" {
+                        if let idx = loginMethods?.firstIndex (where: { (method) -> Bool in
+                            return method == "phone-code"
+                        }) {
+                            loginMethods?.remove(at: idx)
+                        }
+                        loginMethods = (loginMethods ?? []) + enabledLoginMethods
+                    } else {
+                        let arr = (loginMethods ?? []) + enabledLoginMethods
+                        loginMethods = arr.enumerated().filter { (index, value) -> Bool in
+                            return arr.firstIndex(of: value) == index
+                        }.map {
+                            $0.element
+                        }
                     }
                 }
             }
             if let passwordTabConfig: NSDictionary = data?["passwordTabConfig"] as? NSDictionary{
-                enabledLoginMethods = passwordTabConfig["enabledLoginMethods"] as? [String]
+                enabledLoginMethods = passwordTabConfig["validLoginMethods"] as? [String]
             }
             if let registerTabs: NSDictionary = data?["registerTabs"] as? NSDictionary{
                 registerMethods = registerTabs["list"] as? [String]
@@ -58,12 +67,13 @@ public class Config: NSObject {
             if let ssoPageComponentDisplay: NSDictionary = data?["ssoPageComponentDisplay"] as? NSDictionary {
                 autoRegisterThenLoginHintInfo = ssoPageComponentDisplay["autoRegisterThenLoginHintInfo"] as? Bool
             }
+            registerDisabled = data?["registerDisabled"] as? Bool
             completeFieldsPlace = data?["complateFiledsPlace"] as? [String]
             extendedFields = data?["extendsFields"] as? [NSDictionary]
             extendsFieldsI18n = data?["extendsFieldsI18n"] as? NSDictionary
             agreements = data?["agreements"] as? [NSDictionary]
             redirectUris = data?["redirectUris"] as? [String]
-            
+            tabMethodsFields = data?["tabMethodsFields"] as? [NSDictionary]
 //            if let global: NSDictionary = data?["global"] as? NSDictionary {
 //                defaultLanguage = global["defaultLanguage"] as? String
 //                languageFollowsBrowser = global["languageFollowsBrowser"] as? Bool
@@ -107,6 +117,7 @@ public class Config: NSObject {
     open var defaultLoginMethod: String?
     open var enabledLoginMethods: [String]?
     open var registerMethods: [String]?
+    open var tabMethodsFields: [NSDictionary]?
     open var defaultRegisterMethod: String?
     open var passwordStrength: Int? {
         get { return data?["passwordStrength"] as? Int }
@@ -136,6 +147,7 @@ public class Config: NSObject {
 //    open var languageFollowsBrowser: Bool? = true
     
     open var autoRegisterThenLoginHintInfo: Bool?
+    open var registerDisabled: Bool?
     
     // MARK: Request
     open var appId: String!

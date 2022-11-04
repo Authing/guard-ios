@@ -46,8 +46,8 @@ open class AccountTextField: TextFieldLayout {
             
             var i: Int = 0
             if (config.enabledLoginMethods != nil) {
-                for method in config.enabledLoginMethods! {
-                    hint += getMethodText(method)
+                for method in config.enabledLoginMethods ?? [] {
+                    hint += getMethodText(method, config)
                     if (i < config.enabledLoginMethods!.count - 1) {
                         hint += " / "
                     }
@@ -71,7 +71,7 @@ open class AccountTextField: TextFieldLayout {
         }
     }
     
-    private func getMethodText(_ method: String) -> String {
+    private func getMethodText(_ method: String, _ config: Config) -> String {
         let sUsername: String = "authing_username".L
         let sEmail: String = "authing_email".L
         let sPhone: String = "authing_phone".L
@@ -81,6 +81,9 @@ open class AccountTextField: TextFieldLayout {
             return sEmail
         } else if (method == "phone-password") {
             return sPhone
+        } else if method.contains("-password"){
+            let item = method.replacingOccurrences(of: "-password", with: "")
+            return Util.getExtendFieldTitle(config: config, field: item)
         }
         return ""
     }

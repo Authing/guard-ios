@@ -7,7 +7,7 @@
 
 public class AuthClient: Client {
     
-    // MARK: Basic authentication APIs
+    //MARK: ---------- Register APIs ----------
     public func registerByEmail(email: String, password: String, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         self.registerByEmail(authData: nil, email: email, password: password, context, completion: completion)
     }
@@ -20,8 +20,17 @@ public class AuthClient: Client {
         self.registerByUserName(authData: nil, username: username, password: password, context, completion: completion)
     }
     
+    
+    public func registerByPhone(phoneCountryCode: String? = nil,phone: String, password: String, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        self.registerByPhone(authData: nil, phoneCountryCode: phoneCountryCode, phone: phone, password: password, context, completion: completion)
+    }
+    
     public func registerByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, password: String? = nil, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         self.registerByPhoneCode(authData: nil, phoneCountryCode: phoneCountryCode, phone: phone, code: code, password: password, completion: completion)
+    }
+    
+    public func registerByExtendedFields(extendedFields: String, account: String, password: String, _ postUserInfoPipeline: Bool? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        self.registerByExtendedFields(authData: nil, extendedFields: extendedFields, account: account, password: password, completion: completion)
     }
     
     public func registerByEmail(authData: AuthRequest?, email: String, password: String, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
@@ -89,6 +98,28 @@ public class AuthClient: Client {
         }
     }
     
+    public func registerByPhone(authData: AuthRequest?, phoneCountryCode: String? = nil, phone: String, password: String, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        let body: NSMutableDictionary = ["account" : phone,
+                                         "password" : Util.encryptPassword(password)]
+        if phoneCountryCode != nil {
+            body.setValue(phoneCountryCode, forKey: "phoneCountryCode")
+        }
+        post("/api/v2/register-phone", body) { code, message, data in
+            if authData == nil{
+                self.createUserInfo(code, message, data, completion: completion)
+            } else {
+                self.createUserInfo(code, message, data) { code, msg, userInfo in
+                    if code == 200{
+                        authData?.token = userInfo?.token
+                        OIDCClient(authData).authByToken(userInfo: userInfo, completion: completion)
+                    } else {
+                        completion(code, message, userInfo)
+                    }
+                }
+            }
+        }
+    }
+    
     public func registerByPhoneCode(authData: AuthRequest?, phoneCountryCode: String? = nil, phone: String, code: String, password: String? = nil, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let body: NSMutableDictionary = ["phone" : phone, "code" : code, "forceLogin" : true]
         if password != nil {
@@ -116,6 +147,27 @@ public class AuthClient: Client {
         }
     }
     
+    public func registerByExtendedFields(authData: AuthRequest?, extendedFields: String, account: String, password: String, _ postUserInfoPipeline: Bool? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        let body: NSMutableDictionary = ["account" : account,
+                                         "password" : Util.encryptPassword(password)]
+
+        post("/api/v2/register-\(extendedFields)", body) { code, message, data in
+            if authData == nil{
+                self.createUserInfo(code, message, data, completion: completion)
+            } else {
+                self.createUserInfo(code, message, data) { code, msg, userInfo in
+                    if code == 200{
+                        authData?.token = userInfo?.token
+                        OIDCClient(authData).authByToken(userInfo: userInfo, completion: completion)
+                    } else {
+                        completion(code, message, userInfo)
+                    }
+                }
+            }
+        }
+    }
+    
+    //MARK: ---------- Login APIs ----------
     public func loginByAccount(account: String, password: String, _ autoRegister: Bool = false, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         loginByAccount(authData: nil, account: account, password: password, autoRegister, context, completion: completion)
     }
@@ -212,6 +264,7 @@ public class AuthClient: Client {
 //    }
     
 
+    // MARK: ---------- User APIs ----------
     public func getCurrentUser(user: UserInfo? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         get("/api/v2/users/me") { code, message, data in
             self.createUserInfo(user, code, message, data, completion: completion)
@@ -437,8 +490,7 @@ public class AuthClient: Client {
         }
     }
     
-    // MARK: Social APIs
-
+    // MARK: ---------- Social APIs ----------
     public func loginByWechat(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         self.loginByWechat(authData: nil, code, completion: completion)
     }
@@ -616,7 +668,7 @@ public class AuthClient: Client {
         }
     }
     
-    // MARK: MFA APIs
+    // MARK: ---------- MFA APIs ----------
     public func mfaCheck(phone: String?, email: String?, completion: @escaping(Int, String?, Bool?) -> Void) {
         var body: NSDictionary? = nil
         if (phone != nil) {
@@ -664,7 +716,7 @@ public class AuthClient: Client {
         }
     }
     
-    // MARK: Scan APIs
+    // MARK: ---------- Scan APIs ----------
     public func markQRCodeScanned(ticket: String, completion: @escaping(Int, String?, NSDictionary?) -> Void) {
         post("/api/v2/qrcode/scanned", ["random" : ticket], completion: completion)
     }
@@ -677,7 +729,7 @@ public class AuthClient: Client {
         post("/api/v2/qrcode/cancel", ["random" : ticket], completion: completion)
     }
 
-    // MARK: Util APIs
+    // MARK: ---------- Util APIs ----------
     public func createUserInfo(_ code: Int, _ message: String?, _ data: NSDictionary?, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         createUserInfo(nil, code, message, data, completion: completion)
     }

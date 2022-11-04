@@ -169,6 +169,23 @@ public class Util {
         }
     }
     
+    public static func getExtendFieldTitle(config: Config, field: String) -> String {
+        for tabMethod in config.tabMethodsFields ?? [] {
+            if let key = tabMethod["key"] as? String {
+                if field == key {
+                    let lang = Util.getLangHeader()
+                    let i18n = tabMethod["i18n"] as? NSDictionary
+                    if let extendField = i18n?[lang] as? String {
+                        return extendField
+                    } else {
+                        return tabMethod["label"] as? String ?? ""
+                    }
+                }
+            }
+        }
+        return ""
+    }
+    
     public static func findViews<T: UIView>(_ current: UIView, viewClass: AnyClass) -> Array<T> {
         let rootView: UIView = getRootView(current)
         var views: Array<T> = []

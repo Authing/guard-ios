@@ -20,7 +20,6 @@ class SocialNoLoginMethodsView: UIView, AttributedViewProtocol {
     }
 
     private func setup() {
-        self.isHidden = true
         
         Util.getConfig(self) { config in
             var hidden: Bool = false
