@@ -64,6 +64,18 @@ public class PhoneNumberTextField: AccountTextField {
         }
     }
     
+    public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if let text = textField.text {
+            if !(text == "" || text.isEmpty) {
+                if !(Validator.isValidPhone(phone: text)) {
+                    Util.setError(self, "authing_invalid_phone".L)
+                    return false
+                }
+            }
+        }
+        return true
+    }
+    
     override func syncData() {
         let account: String? = AuthFlow.getAccount(current: self)
         if (account != nil && Validator.isValidPhone(phone: account)) {

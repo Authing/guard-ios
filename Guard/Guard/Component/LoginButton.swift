@@ -19,8 +19,11 @@ open class LoginButton: PrimaryButton {
     private func setup() {
         let loginText = "authing_login".L
         Util.getConfig(self) { config in
-            if config?.autoRegisterThenLoginHintInfo == true &&
-                config?.registerDisabled == false {
+            if config?.autoRegisterThenLoginHintInfo ?? false &&
+                !(config?.registerDisabled == true ||
+                  config?.registerMethods == nil ||
+                  config?.registerMethods?.count == 0) {
+                
                 let registerText = "authing_register".L
                 self.setTitle("\(loginText) / \(registerText)", for: .normal)
             } else {
