@@ -80,7 +80,7 @@ open class DeleteAccountButton: PrimaryButton {
            if let phone = Authing.getCurrentUser()?.phone,
               let code = tfCode.text {
               Util.getAuthClient(self).loginByPhoneCode(phone: phone, code: code) { code, message, user in
-                  if code == 200 && user != nil {
+                 if code == 200 || code == Const.EC_MFA_REQUIRED {
                       self.deleteAccount()
                   } else {
                      self.stopLoading()

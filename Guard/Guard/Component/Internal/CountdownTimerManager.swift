@@ -29,8 +29,14 @@ public class CountdownTimerManager: NSObject {
         if counter > 0 {
             counter -= 1
             self.verfyButton.isUserInteractionEnabled = false
-            self.verfyButton.setTitle("  \(counter)  ", for: .normal)
-            self.verfyButton.setTitleColor(UIColor.init(red: 29/255.0, green: 33/255.0, blue: 41/255.0, alpha: 1), for: .normal)
+            if self.verfyButton.authViewController?.nibName == "AuthingMFAEmail1" ||
+                self.verfyButton.authViewController?.nibName == "AuthingMFAPhone1"{
+                self.verfyButton.setTitle("authing_get_verify_code".L + "（\(counter)）", for: .normal)
+                self.verfyButton.setTitleColor(UIColor.init(hex: "#86909C"), for: .normal)
+            } else {
+                self.verfyButton.setTitle("  \(counter)  ", for: .normal)
+                self.verfyButton.setTitleColor(UIColor.init(red: 29/255.0, green: 33/255.0, blue: 41/255.0, alpha: 1), for: .normal)
+            }
         } else {
             self.invalidate()
         }

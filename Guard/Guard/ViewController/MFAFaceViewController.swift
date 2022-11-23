@@ -47,7 +47,7 @@ open class MFAFaceViewController: AuthViewController, AVCaptureVideoDataOutputSa
     }()
     
     lazy var progress: CircleProgressView = {
-        let p = CircleProgressView.init(frame: CGRect(x: Const.SCREEN_WIDTH/2 - 122.5, y: Const.SCREEN_HEIGHT/2 - 122.5, width: 245, height: 245))
+        let p = CircleProgressView.init(frame: CGRect(x: Const.SCREEN_WIDTH/2 - 122.5, y: Const.SCREEN_HEIGHT/2 - 245, width: 245, height: 245))
         p.setProgress(0)
         return p
     }()
@@ -100,7 +100,7 @@ open class MFAFaceViewController: AuthViewController, AVCaptureVideoDataOutputSa
         self.title = self.needBindingFace == true ? "authing_mfa_face_title".L : "authing_mfa_face_title2".L
 
         view.backgroundColor = UIColor.white
-        preview.frame = CGRect(x: Const.SCREEN_WIDTH/2 - 120, y: Const.SCREEN_HEIGHT/2 - 120, width: 240, height: 240)
+        preview.frame = CGRect(x: Const.SCREEN_WIDTH/2 - 120, y: Const.SCREEN_HEIGHT/2 - 240, width: 240, height: 240)
         view.layer.addSublayer(preview)
         
         view.addSubview(progress)
@@ -259,7 +259,7 @@ extension MFAFaceViewController {
                                 
                                     if let flow = self?.authFlow {
                                         self?.session.stopRunning()
-                                        flow.complete(code, msg, userInfo)
+                                        self?.pushToBindSuccessViewController()
                                     }
                                 } else {
                                     self?.tipLabel.text = msg
@@ -326,6 +326,14 @@ extension MFAFaceViewController {
         self.isDetecting = false
         self.countDown = 0
         self.faceImages = []
+    }
+    
+    private func pushToBindSuccessViewController(){
+        
+        let nextVC = MFABindSuccessViewController(nibName: "AuthingMFABindSuccess", bundle: Bundle(for: Self.self))
+        nextVC.type = .face
+        nextVC.authFlow = self.authFlow?.copy() as? AuthFlow
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     func crop(image: UIImage, ratio: CGFloat) -> UIImage {

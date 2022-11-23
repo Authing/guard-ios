@@ -104,6 +104,8 @@
 "authing_mfa_binding" = "正在綁定中，請稍候";
 "authing_mfa_bind_failed" = "綁定人臉失敗, 請重試";
 "authing_mfa_bind_success" = "綁定成功";
+"authing_mfa_bind_result" = "綁定結果";
+"authing_mfa_bind_tip" = "僅用於二次驗證場景";
 
 "authing_cannot_get_verify_code" = "無法收到驗證碼";
 "authing_cannot_login" = "無法登入";
@@ -144,3 +146,27 @@
 "authing_social_lark" = "     使用 飛書 登錄";
 "authing_social_google" = "     使用 Google 登錄";
 "authing_social_apple" = "     使用 Apple 登錄";
+
+"authing_recovery_title" = "使用恢復代碼";
+"authing_recovery_tip" = "如果沒有恢復代碼，請聯繫管理員處理";
+"authing_recovery_button" = "請輸入恢復代碼";
+
+"me_security_gobind" = "去綁定";
+"authing_bind_else" = "其他二次驗證方式";
+"authing_bind_mfaemail" = "請輸入用於綁定 MFA 場景認證的電子郵箱";
+"authing_otp_tip" = "請長按並保存以下二維碼到手機相冊中，打開 Google 或 Microsoft Authenticator 驗證器識別並錄入相關的賬號信息。最後，在下方輸入獲取的 OTP口令。";
+"authing_security_code" = "數字安全碼";
+
+"authing_bind_goback" = "返回";
+
+"authing_mfa_tips1" = "當前管理員已開啓二次驗證，\n請先綁定「手機號綁定」";
+"authing_mfa_tips2" = "當前管理員已開啓二次驗證，\n請前往「電子郵箱綁定」";
+"authing_mfa_tips3" = "當前管理員已開啓二次驗證，\n請前往「OTP 綁定」";
+"authing_mfa_tips4" = "當前管理員已開啓二次驗證，\n請前往「人臉識別綁定」";
+"authing_bind_verify" = "賬號登錄二次驗證";
+
+"authing_save_success" = "綁定成功，請保存 OTP 恢復代碼：";
+"authing_save_tips" = "請妥善保管恢復代碼。如果 OTP 口令丟失，將需要使用恢復代碼來登錄你的賬號。";
+"authing_save_button" = "我已保存";
+
+"authing_recovery_code" = "安全碼丟失？";

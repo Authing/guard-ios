@@ -21,7 +21,7 @@ public class AuthClient: Client {
     }
     
     public func registerByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, password: String? = nil, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        self.registerByPhoneCode(authData: nil, phoneCountryCode: phoneCountryCode, phone: phone, code: code, password: password, completion: completion)
+        self.registerByPhoneCode(authData: nil, phoneCountryCode: phoneCountryCode, phone: phone, code: code, password: password, context, completion: completion)
     }
     
     public func registerByEmail(authData: AuthRequest?, email: String, password: String, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
@@ -67,6 +67,7 @@ public class AuthClient: Client {
         }
     }
     
+
     public func registerByUserName(authData: AuthRequest?, username: String, password: String, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let encryptedPassword = Util.encryptPassword(password)
         let body: NSMutableDictionary = ["username" : username, "password" : encryptedPassword, "forceLogin" : true]
@@ -643,6 +644,28 @@ public class AuthClient: Client {
         }
     }
     
+    public func mfaAssociateByOTP(completion: @escaping(Int, String?, NSDictionary?) -> Void) {
+        let body: NSDictionary = ["authenticatorType" : "totp", "source" : "SELF"]
+        post("/api/v2/mfa/totp/associate", body, completion: completion)
+    }
+    
+    public func mfaAssociateConfirmByOTP(code: String,completion: @escaping(Int, String?, NSDictionary?) -> Void) {
+        let body: NSDictionary = ["authenticatorType" : "totp", "totp" : code, "source" : "SELF"]
+        post("/api/v2/mfa/totp/associate/confirm", body, completion: completion)
+    }
+    
+    public func mfaAssociteByRecoveryCode(code: String,completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        let body: NSDictionary = ["authenticatorType" : "totp", "recoveryCode" : code]
+        post("/api/v2/mfa/totp/recovery", body) { code, message, data in
+            self.createUserInfo(code, message, data, completion: completion)
+        }
+    }
+    
+    public func mfaDeleteOTP(completion: @escaping(Int, String?, NSDictionary?) -> Void) {
+        delete("/api/v2/mfa/totp/associate", completion: completion)
+    }
+    
+    
     public func mfaVerifyByOTP(code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let body: NSDictionary = ["authenticatorType" : "totp", "totp" : code]
         post("/api/v2/mfa/totp/verify", body) { code, message, data in
@@ -662,6 +685,10 @@ public class AuthClient: Client {
         post("/api/v2/mfa/face/verify", body) { code, message, data in
             self.createUserInfo(code, message, data, completion: completion)
         }
+    }
+    
+    public func mfaUnbindFactor(factorId: String, completion: @escaping(Int, String?, NSDictionary?) -> Void) {
+        post("/api/v3/reset-factor", ["factorId" : factorId], completion: completion)
     }
     
     // MARK: Scan APIs

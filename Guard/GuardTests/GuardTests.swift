@@ -375,7 +375,7 @@ class GuardTests: XCTestCase {
             
     func testSendSms() throws {
         let expectation = XCTestExpectation(description: "sendSMS")
-        AuthClient().sendSms(phone: phone) { code, message in
+        AuthClient().sendSms(phone: "15647170125") { code, message in
             XCTAssert(code == 200)
             expectation.fulfill()
         }

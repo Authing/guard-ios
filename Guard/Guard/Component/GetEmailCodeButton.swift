@@ -35,7 +35,7 @@ open class GetEmailCodeButton: LoadingButton {
         setup()
     }
 
-    private func setup() {
+    public func setup() {
         
         backgroundColor = Const.Color_BG_Text_Box
         layer.cornerRadius = 4
@@ -86,17 +86,33 @@ open class GetEmailVerifyCodeButton: GetEmailCodeButton {
         set { super.scene = newValue }
     }
     
+    public override func setup() {
+        super.setup()
+        DispatchQueue.main.async() {
+            if self.authViewController?.nibName == "AuthingMFAEmail1" {
+                self.startLoading()
+                self.scene = "MFA_VERIFY"
+                self.sendEmail()
+            }
+        }
+    }
+
+    
     override func sendEmail() {
         if let email = Util.getEmail(self) {
             startLoading()
-            Util.getAuthClient(self).sendLoginEmail(email: email, scene: scene) { code, message in
-                self.stopLoading()
-                if (code != 200) {
-                    Util.setError(self, message)
-                } else {
-                    ALog.i(Self.self, "send email success")
-                    DispatchQueue.main.async() {
-                        CountdownTimerManager.shared.createCountdownTimer(button: self)
+            if self.authViewController?.authFlow?.mfaFromViewControllerName == "BindingMfaViewController" {
+                self.sendVerifyEmail(email: email)
+            } else {
+                Util.getAuthClient(self).sendLoginEmail(email: email, scene: scene) { code, message in
+                    self.stopLoading()
+                    if (code != 200) {
+                        Util.setError(self, message)
+                    } else {
+                        ALog.i(Self.self, "send email success")
+                        DispatchQueue.main.async() {
+                            CountdownTimerManager.shared.createCountdownTimer(button: self)
+                        }
                     }
                 }
             }
@@ -110,5 +126,26 @@ open class GetEmailVerifyCodeButton: GetEmailCodeButton {
             }
         }
     }
+    
+    private func sendVerifyEmail(email: String) {
+        
+        let body: NSDictionary = ["factorType" : "EMAIL", "profile": ["email": email]]
+        
+        AuthClient().post("/api/v3/send-enroll-factor-request", body) { code, msg, res in
+            self.stopLoading()
+            if  let data = res?["data"] as? NSDictionary,
+                let statusCode = res?["statusCode"] as? Int,
+                statusCode == 200 {
+                if let enrollmentToken = data["enrollmentToken"] as? String {
+                    DispatchQueue.main.async() {
+                        self.authViewController?.authFlow?.enrollmentToken = enrollmentToken
+                        CountdownTimerManager.shared.createCountdownTimer(button: self)
+                    }
+                }
+            }
+            Toast.show(text: res?["message"] as? String ?? "")
+        }
+    }
+    
     
 }

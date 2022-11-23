@@ -18,6 +18,9 @@ open class UserInfo: NSObject {
             if let enabled = mfaData?["faceMfaEnabled"] as? Bool {
                 faceMfaEnabled = enabled
             }
+            if let enabled = mfaData?["totpMfaEnabled"] as? Bool {
+                totpMfaEnabled = enabled
+            }
         }
     }
     @objc public var customData: [NSMutableDictionary]?
@@ -101,10 +104,12 @@ open class UserInfo: NSObject {
     
     @objc public var faceMfaEnabled:Bool = false
     
+    @objc public var totpMfaEnabled:Bool = false
+    
     @objc public var mfaPolicy: [String]? = []
     
     @objc public var firstTimeLoginToken: String? = nil
-    
+        
     open func parse(data: NSDictionary?) {
         var userData = data
         if let entity = data?["userEntity"] as? NSDictionary {

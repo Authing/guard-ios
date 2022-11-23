@@ -7,25 +7,26 @@
 
 open class MFATableItem: UIView {
     
-    enum MFAType {
-        case phone
-        case email
-        case totp
-        case face
+    enum MFAType: String {
+        case phone = "SMS"
+        case email = "EMAIL"
+        case totp = "OTP"
+        case face = "FACE"
     }
     
     let label = UILabel()
+    let imageview = UIImageView()
     
     var mfaType: MFAType? {
         didSet {
             if (mfaType == .phone) {
-                label.text = "authing_mfa_verify_phone".L
+                imageview.image = UIImage(named: "authing_mfa_phone", in: Bundle(for: Self.self), compatibleWith: nil)
             } else if (mfaType == .email) {
-                label.text = "authing_mfa_verify_email".L
+                imageview.image = UIImage(named: "authing_mfa_email", in: Bundle(for: Self.self), compatibleWith: nil)
             } else if (mfaType == .totp) {
-                label.text = "authing_mfa_verify_code".L
+                imageview.image = UIImage(named: "authing_mfa_otp", in: Bundle(for: Self.self), compatibleWith: nil)
             } else if (mfaType == .face) {
-                label.text = "authing_mfa_verify_face".L
+                imageview.image = UIImage(named: "authing_mfa_face", in: Bundle(for: Self.self), compatibleWith: nil)
             }
         }
     }
@@ -41,44 +42,21 @@ open class MFATableItem: UIView {
     }
 
     private func setup() {
-        backgroundColor = UIColor(white: 0.9, alpha: 1)
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         self.addGestureRecognizer(tap)
-
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 14)
-        addSubview(label)
         
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
-        label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
-        label.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
-        label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
+        addSubview(imageview)
+        imageview.translatesAutoresizingMaskIntoConstraints = false
+        imageview.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
+        imageview.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
+        imageview.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
+        imageview.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
-        var vc: AuthViewController? = nil
-
-        if (mfaType == .phone) {
-            if let phone = Authing.getCurrentUser()?.mfaPhone {
-                vc = AuthViewController(nibName: "AuthingMFAPhone1", bundle: Bundle(for: Self.self))
-                vc?.authFlow?.data.setValue(phone, forKey: AuthFlow.KEY_MFA_PHONE)
-            } else {
-                vc = AuthViewController(nibName: "AuthingMFAPhone0", bundle: Bundle(for: Self.self))
-            }
-        } else if (mfaType == .email) {
-            if let email = Authing.getCurrentUser()?.mfaEmail {
-                vc = AuthViewController(nibName: "AuthingMFAEmail1", bundle: Bundle(for: Self.self))
-                vc?.authFlow?.data.setValue(email, forKey: AuthFlow.KEY_MFA_EMAIL)
-            } else {
-                vc = AuthViewController(nibName: "AuthingMFAEmail0", bundle: Bundle(for: Self.self))
-            }
-        } else if (mfaType == .totp) {
-            vc = AuthViewController(nibName: "AuthingMFAOTP", bundle: Bundle(for: Self.self))
-        } else if (mfaType == .face) {
-            vc = MFAFaceViewController.init()
-            vc?.authFlow = authViewController?.authFlow?.copy() as? AuthFlow
-        }
-        self.authViewController?.navigationController?.pushViewController(vc!, animated: true)
+        
+        let vc = LoginButton.mfaHandle(view: self, mfaType: self.mfaType?.rawValue ?? "", needGuide: false)
+        self.authViewController?.navigationController?.pushViewController(vc ?? UIViewController(), animated: true)
     }
+    
 }

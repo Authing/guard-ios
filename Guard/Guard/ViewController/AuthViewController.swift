@@ -89,6 +89,13 @@ open class AuthViewController: UIViewController {
     }
 
     @IBAction func onCloseClick(_ sender: UIButton, forEvent event: UIEvent) {
+        
+        if (self.nibName == "AuthingLogin" ||
+            self.nibName == "AuthingRegister") &&
+            Authing.getCurrentUser()?.mfaToken != nil {
+            Authing.saveUser(nil)
+        }
+        
         if authFlow?.transition == .Present {
             self.navigationController?.dismiss(animated: true, completion: nil)
         } else {
@@ -96,7 +103,16 @@ open class AuthViewController: UIViewController {
         }
     }
     
-    @objc private func onBack(sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+    @objc func onBack(sender: UIButton) {
+        
+        if (self.nibName == "AuthingMFAPhone1" ||
+            self.nibName == "AuthingMFAEmail1" ||
+            self.nibName == "AuthingMFAOTP1" ||
+            self.isKind(of: MFAFaceViewController.self)) &&
+            self.authFlow?.mfaFromViewControllerName != "BindingMfaViewController" {
+            self.navigationController?.popToRootViewController(animated: true)
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }

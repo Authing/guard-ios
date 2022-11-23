@@ -9,7 +9,7 @@ public class PhoneNumberTextField: AccountTextField {
     
     let countryCodeView = CountryCodeView()
         
-    var countryCode: String {
+    open var countryCode: String {
         get {
             return countryCodeView.countryCode
         }

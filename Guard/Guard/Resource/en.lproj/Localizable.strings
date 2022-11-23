@@ -37,7 +37,17 @@
 "authing_password_strength3" = "Password must be at least 6 characters long, and must contain English, numbers and symbols";
 "authing_choose_mfa_tip" = "Please select verify method";
 "authing_bind" = "Bind";
-"authing_bind_phone" = "Bind phone";
+
+"authing_mfa_tips1" = "The current administrator has enabled the secondary authentication, \n please go to mobile phone binding";
+"authing_mfa_tips2" = "The current administrator has enabled the secondary authentication, \n please go to Email binding";
+"authing_mfa_tips3" = "The current administrator has enabled the secondary authentication, \n please go to OTP binding";
+"authing_mfa_tips4" = "The current administrator has opened the secondary verification, \n please go to the face recognition binding";
+
+"authing_bind_phone" = "Binding phone";
+"authing_bind_email" = "Binding email";
+"authing_bind_otp" = "Binding OTP";
+
+"authing_bind_mfaphone" = "Please enter the mobile phone number for secondary verification";
 "authing_bind_email" = "Bind email";
 "authing_mfa_verify_phone" = "Verify by phone";
 "authing_mfa_verify_email" = "Verify by email";
@@ -67,6 +77,7 @@
 "authing_invalid_phone" = "Phone number is invalid";
 "authing_invalid_email" = "Email address is invalid";
 "authing_social_login" = "Or sign in with";
+"authing_mfa_other" = "Other verification Methods";
 
 // user profile
 "authing_user_profile" = "User profile";
@@ -89,6 +100,9 @@
 "authing_countrycode_title" = "Region";
 "authing_country_title" = "Enter the country or region name to search";
 
+"authing_mfa_bind" = "Binding MFA";
+"authing_mfa_bind_result" = "Binding result";
+
 "authing_mfa_face_title" = "Bind facial recognition";
 "authing_mfa_face_title2" = "Bind facial recognition";
 "authing_mfa_face_camera" = "Hold your camera properly";
@@ -100,7 +114,7 @@
 "authing_mfa_binding" = "Binding";
 "authing_mfa_bind_failed" = "Face bind failed. Please try again";
 "authing_mfa_bind_success" = "Binding Successfully";
-
+"authing_mfa_bind_tip" = "Only for secondary authentication scenarios";
 
 "authing_cannot_get_verify_code" = "Cannot get verify code";
 "authing_cannot_login" = "Cannot login";
@@ -143,3 +157,22 @@
 "Authing_social_lark" = "       Sign in with Lark ";
 "Authing_social_google" = "     Sign in with Google ";
 "Authing_social_apple" = "      Sign in with Apple ";
+
+"authing_recovery_title" = "Use recovery code";
+"authing_recovery_tip" = "If no recovery code, please contact the administrator";
+"authing_recovery_button" = "Please enter recovery code";
+
+"me_security_gobind" = "Binding";
+"authing_bind_else" = "Other Binding method";
+"authing_bind_mfaemail" = "Please enter the email address used for binding authentication in MFA scenario";
+"authing_otp_tip" = "Please long press and save the following QR code to the mobile phone album. Open Google or Microsoft Authenticator to identify and input the relevant account information. Finally, enter the obtained OTP password below.";
+"authing_security_code" = "Digital security code";
+
+"authing_bind_goback" = "Go back";
+"authing_bind_verify" = "Secondary authentication for account login ";
+
+"authing_save_success" = "Binding successful, please save the OTP recovery code: ";
+"authing_save_tips" = "Please keep the recovery code safe. If the OTP password is lost, you will need to use a recovery code to log in to your account. ";
+"authing_save_button" = "I have saved ";
+
+"authing_recovery_code" = "Security code lost?" ;

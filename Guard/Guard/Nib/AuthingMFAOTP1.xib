@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AuthViewController" customModule="Guard" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="iN0-l3-epB" id="le3-Dq-6rm"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R8N-4C-96C" customClass="FramedVerifyCodeTextField" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="24" y="124" width="366" height="40"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="jbt-QT-pZI"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="boxSpacing">
+                            <integer key="value" value="12"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="digit">
+                            <integer key="value" value="6"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="boxWidth">
+                            <integer key="value" value="40"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="boxHeight">
+                            <integer key="value" value="40"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="type">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m32-Ic-5ba">
+                    <rect key="frame" x="24" y="84" width="366" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="CjN-cm-DWs"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.52549019607843139" green="0.56470588235294117" blue="0.61176470588235299" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="authing_security_code_tip"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="txT-mD-KoV">
+                    <rect key="frame" x="24" y="172" width="366" height="22"/>
+                    <subviews>
+                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rOU-fO-VgE">
+                            <rect key="frame" x="0.0" y="0.0" width="183" height="22"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="tintColor" red="0.52549019607843139" green="0.56470588235294117" blue="0.61176470588235299" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="安全码丢失？"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="xibLocText" value="authing_recovery_code"/>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aft-4N-JbU" customClass="MFAGoRecoveryCodeButton" customModule="Guard" customModuleProvider="target">
+                            <rect key="frame" x="183" y="0.0" width="183" height="22"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="tintColor" name="AccentColor"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="使用恢复代码"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="xibLocText" value="authing_recovery_title"/>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Aft-4N-JbU" secondAttribute="trailing" id="3H2-Mf-dg9"/>
+                        <constraint firstItem="rOU-fO-VgE" firstAttribute="leading" secondItem="txT-mD-KoV" secondAttribute="leading" id="FkH-kh-y8Q"/>
+                        <constraint firstItem="Aft-4N-JbU" firstAttribute="top" secondItem="txT-mD-KoV" secondAttribute="top" id="HG0-1o-1Hq"/>
+                        <constraint firstItem="Aft-4N-JbU" firstAttribute="leading" secondItem="rOU-fO-VgE" secondAttribute="trailing" id="Mxr-d3-AVj"/>
+                        <constraint firstItem="Aft-4N-JbU" firstAttribute="width" secondItem="rOU-fO-VgE" secondAttribute="width" id="h5P-lU-bhy"/>
+                        <constraint firstAttribute="bottom" secondItem="Aft-4N-JbU" secondAttribute="bottom" id="iyM-2n-yek"/>
+                        <constraint firstAttribute="height" constant="22" id="myM-gM-mr1"/>
+                        <constraint firstItem="rOU-fO-VgE" firstAttribute="top" secondItem="txT-mD-KoV" secondAttribute="top" id="vOY-ah-Goe"/>
+                        <constraint firstAttribute="bottom" secondItem="rOU-fO-VgE" secondAttribute="bottom" id="wNM-Oq-1ch"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7H4-kW-xAc" customClass="MFAOtherMethodButton" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="107" y="764" width="200" height="48"/>
+                    <color key="backgroundColor" red="0.94901960780000005" green="0.95294117649999999" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="7GV-sF-Oyo"/>
+                        <constraint firstAttribute="height" constant="48" id="wpW-ZO-xv7"/>
+                    </constraints>
+                    <color key="tintColor" red="0.1137254902" green="0.12941176469999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="其他二次验证方式">
+                        <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                    </buttonConfiguration>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocText" value="authing_bind_else"/>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <view clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5r6-PV-6ZI" customClass="MFATableView" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="7H4-kW-xAc" secondAttribute="bottom" constant="50" id="7iI-9y-Gcd"/>
+                <constraint firstItem="5r6-PV-6ZI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="AGN-8Y-c3W"/>
+                <constraint firstItem="5r6-PV-6ZI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Bvd-Qk-VnO"/>
+                <constraint firstItem="txT-mD-KoV" firstAttribute="top" secondItem="R8N-4C-96C" secondAttribute="bottom" constant="8" id="CoW-Mv-1M4"/>
+                <constraint firstItem="txT-mD-KoV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="DsX-nA-qa1"/>
+                <constraint firstItem="R8N-4C-96C" firstAttribute="top" secondItem="m32-Ic-5ba" secondAttribute="bottom" constant="16" id="HBb-gu-CJz"/>
+                <constraint firstItem="m32-Ic-5ba" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="J0K-UY-j8O"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="txT-mD-KoV" secondAttribute="trailing" constant="24" id="KUk-5A-FSd"/>
+                <constraint firstItem="R8N-4C-96C" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="KpH-Zm-gKE"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="m32-Ic-5ba" secondAttribute="trailing" constant="24" id="S4r-1v-1Gc"/>
+                <constraint firstItem="7H4-kW-xAc" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="abI-Hx-fep"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="R8N-4C-96C" secondAttribute="trailing" constant="24" id="ak8-9S-hxL"/>
+                <constraint firstItem="txT-mD-KoV" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="e2u-fo-wP5"/>
+                <constraint firstItem="5r6-PV-6ZI" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="e9y-Ju-2ER"/>
+                <constraint firstItem="m32-Ic-5ba" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="40" id="jsT-9T-2sO"/>
+                <constraint firstAttribute="bottom" secondItem="5r6-PV-6ZI" secondAttribute="bottom" id="tC6-qC-JVC"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="59.598214285714285"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="AccentColor">
+            <color red="0.12941176470588237" green="0.35294117647058826" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

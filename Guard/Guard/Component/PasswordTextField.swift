@@ -8,7 +8,7 @@
 open class PasswordTextField: BasePasswordTextField {
     
     @IBInspectable var checkStrength: Bool = false
-    
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -73,10 +73,10 @@ open class PasswordTextField: BasePasswordTextField {
             
             Util.setError(self, message)
         }
-        let tfPassword: PasswordTextField? = Util.findView(self, viewClass: PasswordTextField.self)
-        if (text != nil && tfPassword?.text != nil && text != tfPassword?.text) {
-            let message: String = "authing_password_do_not_match".L
-            Util.setError(self, message)
-        }
+//        let tfPassword: PasswordTextField? = Util.findView(self, viewClass: PasswordTextField.self)
+//        if (text != nil && tfPassword?.text != nil && text != tfPassword?.text) {
+//            let message: String = "authing_password_do_not_match".L
+//            Util.setError(self, message)
+//        }
     }
 }

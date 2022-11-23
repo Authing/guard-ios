@@ -89,7 +89,7 @@
 		7EB3280C278C299A008639AA /* AuthingMFAPhone1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB3280B278C299A008639AA /* AuthingMFAPhone1.xib */; };
 		7EB3280E278D10B7008639AA /* MFAEmailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3280D278D10B7008639AA /* MFAEmailButton.swift */; };
 		7EB32810278D116F008639AA /* AuthingMFAEmail1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB3280F278D116F008639AA /* AuthingMFAEmail1.xib */; };
-		7EB32812278D1DF9008639AA /* AuthingMFAOTP.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB32811278D1DF9008639AA /* AuthingMFAOTP.xib */; };
+		7EB32812278D1DF9008639AA /* AuthingMFAOTP0.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB32811278D1DF9008639AA /* AuthingMFAOTP0.xib */; };
 		7EB32814278D1FDC008639AA /* MFAOTPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB32813278D1FDC008639AA /* MFAOTPButton.swift */; };
 		7EB32816278D5DD4008639AA /* FramedVerifyCodeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB32815278D5DD4008639AA /* FramedVerifyCodeTextField.swift */; };
 		7EB5CE5627D1EE3200BE3252 /* DeleteAccountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5CE5527D1EE3200BE3252 /* DeleteAccountButton.swift */; };
@@ -135,6 +135,17 @@
 		7EF66C81277D49B400FCBBEB /* ResetPasswordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C80277D49B400FCBBEB /* ResetPasswordButton.swift */; };
 		7EF66C8B277D5A7100FCBBEB /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C8A277D5A7100FCBBEB /* Validator.swift */; };
 		7EF66C8D277DA96200FCBBEB /* GetEmailCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C8C277DA96200FCBBEB /* GetEmailCodeButton.swift */; };
+		8D4226282923F9FC000FDCDE /* MFAGoBindingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4226272923F9FC000FDCDE /* MFAGoBindingButton.swift */; };
+		8D42262A2923FA14000FDCDE /* MFAOtherMethodButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4226292923FA14000FDCDE /* MFAOtherMethodButton.swift */; };
+		8D8B329C2924FA09005F3E6E /* MFAOTPCodeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8B329B2924FA09005F3E6E /* MFAOTPCodeImage.swift */; };
+		8D8B329E29251934005F3E6E /* AuthingMFAOTP1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D8B329D29251934005F3E6E /* AuthingMFAOTP1.xib */; };
+		8D8B32A0292530D4005F3E6E /* MFAGoRecoveryCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8B329F292530D4005F3E6E /* MFAGoRecoveryCodeButton.swift */; };
+		8D8B32A429254D02005F3E6E /* AuthingMFABindSuccess.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D8B32A329254D02005F3E6E /* AuthingMFABindSuccess.xib */; };
+		8D8B32A629254D26005F3E6E /* MFABindSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8B32A529254D26005F3E6E /* MFABindSuccessViewController.swift */; };
+		8D8B32BA2925F5CA005F3E6E /* AuthingRecoveryCode.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D8B32B92925F5CA005F3E6E /* AuthingRecoveryCode.xib */; };
+		8D8B32BC2925F7BF005F3E6E /* MFARecoveryCodeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8B32BB2925F7BF005F3E6E /* MFARecoveryCodeTextField.swift */; };
+		8D8B32BE2925F8A9005F3E6E /* MFARecoveryCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8B32BD2925F8A9005F3E6E /* MFARecoveryCodeButton.swift */; };
+		8D8B32C0292771D2005F3E6E /* MFATipsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8B32BF292771D1005F3E6E /* MFATipsLabel.swift */; };
 		A80B20B728D6289300933A26 /* SocialLoginListVerticalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80B20B628D6289300933A26 /* SocialLoginListVerticalView.swift */; };
 		A80B20B928D63CBF00933A26 /* SocialNoLoginMethodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80B20B828D63CBF00933A26 /* SocialNoLoginMethodsView.swift */; };
 		A80BD1A728D1B65F00F9DEDE /* AuthFlowUIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80BD1A628D1B65F00F9DEDE /* AuthFlowUIConfig.swift */; };
@@ -250,7 +261,7 @@
 		7EB3280B278C299A008639AA /* AuthingMFAPhone1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingMFAPhone1.xib; sourceTree = "<group>"; };
 		7EB3280D278D10B7008639AA /* MFAEmailButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFAEmailButton.swift; sourceTree = "<group>"; };
 		7EB3280F278D116F008639AA /* AuthingMFAEmail1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingMFAEmail1.xib; sourceTree = "<group>"; };
-		7EB32811278D1DF9008639AA /* AuthingMFAOTP.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingMFAOTP.xib; sourceTree = "<group>"; };
+		7EB32811278D1DF9008639AA /* AuthingMFAOTP0.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingMFAOTP0.xib; sourceTree = "<group>"; };
 		7EB32813278D1FDC008639AA /* MFAOTPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFAOTPButton.swift; sourceTree = "<group>"; };
 		7EB32815278D5DD4008639AA /* FramedVerifyCodeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FramedVerifyCodeTextField.swift; sourceTree = "<group>"; };
 		7EB5CE5527D1EE3200BE3252 /* DeleteAccountButton.swift */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = sourcecode.swift; path = DeleteAccountButton.swift; sourceTree = "<group>"; };
@@ -296,6 +307,17 @@
 		7EF66C80277D49B400FCBBEB /* ResetPasswordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordButton.swift; sourceTree = "<group>"; };
 		7EF66C8A277D5A7100FCBBEB /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		7EF66C8C277DA96200FCBBEB /* GetEmailCodeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEmailCodeButton.swift; sourceTree = "<group>"; };
+		8D4226272923F9FC000FDCDE /* MFAGoBindingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFAGoBindingButton.swift; sourceTree = "<group>"; };
+		8D4226292923FA14000FDCDE /* MFAOtherMethodButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFAOtherMethodButton.swift; sourceTree = "<group>"; };
+		8D8B329B2924FA09005F3E6E /* MFAOTPCodeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFAOTPCodeImage.swift; sourceTree = "<group>"; };
+		8D8B329D29251934005F3E6E /* AuthingMFAOTP1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingMFAOTP1.xib; sourceTree = "<group>"; };
+		8D8B329F292530D4005F3E6E /* MFAGoRecoveryCodeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFAGoRecoveryCodeButton.swift; sourceTree = "<group>"; };
+		8D8B32A329254D02005F3E6E /* AuthingMFABindSuccess.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingMFABindSuccess.xib; sourceTree = "<group>"; };
+		8D8B32A529254D26005F3E6E /* MFABindSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFABindSuccessViewController.swift; sourceTree = "<group>"; };
+		8D8B32B92925F5CA005F3E6E /* AuthingRecoveryCode.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingRecoveryCode.xib; sourceTree = "<group>"; };
+		8D8B32BB2925F7BF005F3E6E /* MFARecoveryCodeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFARecoveryCodeTextField.swift; sourceTree = "<group>"; };
+		8D8B32BD2925F8A9005F3E6E /* MFARecoveryCodeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFARecoveryCodeButton.swift; sourceTree = "<group>"; };
+		8D8B32BF292771D1005F3E6E /* MFATipsLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFATipsLabel.swift; sourceTree = "<group>"; };
 		A80B20B628D6289300933A26 /* SocialLoginListVerticalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginListVerticalView.swift; sourceTree = "<group>"; };
 		A80B20B828D63CBF00933A26 /* SocialNoLoginMethodsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialNoLoginMethodsView.swift; sourceTree = "<group>"; };
 		A80BD1A628D1B65F00F9DEDE /* AuthFlowUIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlowUIConfig.swift; sourceTree = "<group>"; };
@@ -359,8 +381,8 @@
 				7EA2DD3B27CC84CB00B3E19D /* SocialLoginListView.swift */,
 				7E8AECBB27882D2D0030D27B /* SocialLoginButton.swift */,
 				A80B20B628D6289300933A26 /* SocialLoginListVerticalView.swift */,
-				A89EDCD628D6F5E2001B7E99 /* SocialLoginListToast.swift */,
 				A80B20B828D63CBF00933A26 /* SocialNoLoginMethodsView.swift */,
+				A89EDCD628D6F5E2001B7E99 /* SocialLoginListToast.swift */,
 				7EB2D30027871E2A00A819B3 /* AppleLoginButton.swift */,
 			);
 			path = Social;
@@ -451,18 +473,21 @@
 				7EF66C5C277BF8B700FCBBEB /* AuthingRegister.xib */,
 				7EF66C7E277D478700FCBBEB /* AuthingResetPassword.xib */,
 				A8DBB7B4287D5B4100F75C97 /* AuthingResetSuccess.xib */,
+				8D8B32B92925F5CA005F3E6E /* AuthingRecoveryCode.xib */,
 				7E12D7B7277DECB900703FC1 /* AuthingUserProfile.xib */,
+				8D8B32A329254D02005F3E6E /* AuthingMFABindSuccess.xib */,
 				7EB327F9278BD2EB008639AA /* AuthingMFAOptions.xib */,
 				7EB32800278BE056008639AA /* AuthingMFAPhone0.xib */,
 				7EB3280B278C299A008639AA /* AuthingMFAPhone1.xib */,
 				7EB32802278BEE0F008639AA /* AuthingMFAEmail0.xib */,
 				7EB3280F278D116F008639AA /* AuthingMFAEmail1.xib */,
-				7EB32811278D1DF9008639AA /* AuthingMFAOTP.xib */,
+				7EB32811278D1DF9008639AA /* AuthingMFAOTP0.xib */,
+				8D8B329D29251934005F3E6E /* AuthingMFAOTP1.xib */,
 				7E7D1F72278FC44F005AAD39 /* AuthingFirstTimeLogin.xib */,
 				7E02F46C27950C99007FA048 /* AuthingUserInfoComplete.xib */,
 				A8D38D2027F2B02D00942707 /* AuthingCountryCode.xib */,
-				A8A4897C28758C1600F3120F /* AuthingFeedBack.xib */,
 				A89705CA287EDD520080BEE5 /* AuthingDeleteAccount.xib */,
+				A8A4897C28758C1600F3120F /* AuthingFeedBack.xib */,
 				7EF66C5E277BFB7100FCBBEB /* LocalizeHelper.swift */,
 			);
 			path = Nib;
@@ -474,6 +499,7 @@
 				7E75667D2766F9DD00C3872F /* AuthViewController.swift */,
 				7EF66C66277C119800FCBBEB /* IndexAuthViewController.swift */,
 				7E12D7B9277DEE6F00703FC1 /* UserProfileViewController.swift */,
+				8D8B32A529254D26005F3E6E /* MFABindSuccessViewController.swift */,
 				A8DBB7B6287D5B8C00F75C97 /* ResetSuccessViewController.swift */,
 				A8D38D1527F1DB4A00942707 /* CountryCodeViewController.swift */,
 				A8A489832876B97C00F3120F /* FeedBackController.swift */,
@@ -610,6 +636,13 @@
 				7EB32804278C17B3008639AA /* MFAPhoneButton.swift */,
 				7EB3280D278D10B7008639AA /* MFAEmailButton.swift */,
 				7EB32813278D1FDC008639AA /* MFAOTPButton.swift */,
+				8D4226272923F9FC000FDCDE /* MFAGoBindingButton.swift */,
+				8D8B329B2924FA09005F3E6E /* MFAOTPCodeImage.swift */,
+				8D8B32BF292771D1005F3E6E /* MFATipsLabel.swift */,
+				8D4226292923FA14000FDCDE /* MFAOtherMethodButton.swift */,
+				8D8B329F292530D4005F3E6E /* MFAGoRecoveryCodeButton.swift */,
+				8D8B32BD2925F8A9005F3E6E /* MFARecoveryCodeButton.swift */,
+				8D8B32BB2925F7BF005F3E6E /* MFARecoveryCodeTextField.swift */,
 			);
 			path = MFA;
 			sourceTree = "<group>";
@@ -794,17 +827,20 @@
 				7EF66C7F277D478700FCBBEB /* AuthingResetPassword.xib in Resources */,
 				A8A4897D28758C1600F3120F /* AuthingFeedBack.xib in Resources */,
 				7ED434E52779B28B00893EDD /* Images.xcassets in Resources */,
+				8D8B329E29251934005F3E6E /* AuthingMFAOTP1.xib in Resources */,
 				7EF66C5D277BF8B700FCBBEB /* AuthingRegister.xib in Resources */,
 				7EB32803278BEE0F008639AA /* AuthingMFAEmail0.xib in Resources */,
 				A89705CB287EDD520080BEE5 /* AuthingDeleteAccount.xib in Resources */,
+				8D8B32A429254D02005F3E6E /* AuthingMFABindSuccess.xib in Resources */,
 				7E7D1F73278FC44F005AAD39 /* AuthingFirstTimeLogin.xib in Resources */,
 				7EB32810278D116F008639AA /* AuthingMFAEmail1.xib in Resources */,
 				7E75667B2766F9C400C3872F /* AuthingLogin.xib in Resources */,
 				7E75669B27683F5300C3872F /* Localizable.strings in Resources */,
+				8D8B32BA2925F5CA005F3E6E /* AuthingRecoveryCode.xib in Resources */,
 				A8DBB7B5287D5B4100F75C97 /* AuthingResetSuccess.xib in Resources */,
 				A8AE59A728C5FDB600097FF0 /* country_en.plist in Resources */,
 				A8D38D2127F2B02D00942707 /* AuthingCountryCode.xib in Resources */,
-				7EB32812278D1DF9008639AA /* AuthingMFAOTP.xib in Resources */,
+				7EB32812278D1DF9008639AA /* AuthingMFAOTP0.xib in Resources */,
 				A8D62BAA28B8D442001D0A40 /* country.plist in Resources */,
 				7EB3280C278C299A008639AA /* AuthingMFAPhone1.xib in Resources */,
 				7EB32801278BE056008639AA /* AuthingMFAPhone0.xib in Resources */,
@@ -866,6 +902,7 @@
 				7E189B0927F13ACD005AC1AC /* CacheManager.swift in Sources */,
 				7EB32808278C1870008639AA /* BindPhoneButton.swift in Sources */,
 				7E96039D27E0C48C007C87EB /* RootView.swift in Sources */,
+				8D8B32BC2925F7BF005F3E6E /* MFARecoveryCodeTextField.swift in Sources */,
 				7EB32805278C17B3008639AA /* MFAPhoneButton.swift in Sources */,
 				7EB3280E278D10B7008639AA /* MFAEmailButton.swift in Sources */,
 				A8E1E1762898F6E100375EEA /* Language.swift in Sources */,
@@ -905,6 +942,7 @@
 				7E20001527EB0FA70051F590 /* Exporter.swift in Sources */,
 				7ECF8ACA275A022D004F8FC5 /* Util.swift in Sources */,
 				7E7566842766FD5D00C3872F /* UIApplication+Authing.swift in Sources */,
+				8D8B32A629254D26005F3E6E /* MFABindSuccessViewController.swift in Sources */,
 				7E20001327EB00100051F590 /* CloseButton.swift in Sources */,
 				7E20001827EB5D5D0051F590 /* BaseInput.swift in Sources */,
 				A80B20B928D63CBF00933A26 /* SocialNoLoginMethodsView.swift in Sources */,
@@ -923,6 +961,7 @@
 				7EF66C77277C38DB00FCBBEB /* RegisterButton.swift in Sources */,
 				7E20000C27EAD9AB0051F590 /* Client.swift in Sources */,
 				7EA2DD7D27CCF40200B3E19D /* UserProfileContainer.swift in Sources */,
+				8D4226282923F9FC000FDCDE /* MFAGoBindingButton.swift in Sources */,
 				7E87A1BE27CCF8C800E52D5A /* UserProfileTextField.swift in Sources */,
 				7EDFB6C127C379EC00B77DEE /* UserInfoCompleteFieldEmail.swift in Sources */,
 				7EF66C8B277D5A7100FCBBEB /* Validator.swift in Sources */,
@@ -932,8 +971,10 @@
 				7E87A1C427CDBF2600E52D5A /* UserProfileField.swift in Sources */,
 				7EDFB6C327C3AABB00B77DEE /* UserInfoCompleteContentView.swift in Sources */,
 				7EF66C75277C37CE00FCBBEB /* BasePasswordTextField.swift in Sources */,
+				8D8B32BE2925F8A9005F3E6E /* MFARecoveryCodeButton.swift in Sources */,
 				7EF66C6D277C1C6E00FCBBEB /* RegisterMethodTabItem.swift in Sources */,
 				A850622C283237FA00F97EBD /* CountdownTimerManager.swift in Sources */,
+				8D42262A2923FA14000FDCDE /* MFAOtherMethodButton.swift in Sources */,
 				A8BBEB352876DA890082DE59 /* FeedBackIssuePicker.swift in Sources */,
 				7EF66C61277BFD0900FCBBEB /* GoRegisterButton.swift in Sources */,
 				A852CBFB28780046000BC6EF /* FeedBackButton.swift in Sources */,
@@ -942,12 +983,14 @@
 				7EF66C58277B3F8900FCBBEB /* TextFieldBorder.swift in Sources */,
 				A80B20B728D6289300933A26 /* SocialLoginListVerticalView.swift in Sources */,
 				7ED434DC277950AC00893EDD /* GetVerifyCodeButton.swift in Sources */,
+				8D8B32A0292530D4005F3E6E /* MFAGoRecoveryCodeButton.swift in Sources */,
 				7E7566912768399E00C3872F /* LoginButton.swift in Sources */,
 				7E75668F276838C600C3872F /* PasswordTextField.swift in Sources */,
 				7E7D1F6F278EB49F005AAD39 /* EmailLabel.swift in Sources */,
 				A86AE1DC287FED6300BFD4A0 /* DeleteAccountView.swift in Sources */,
 				7E75668727672C8D00C3872F /* Config.swift in Sources */,
 				7ED434D02775AB8500893EDD /* PhoneNumberTextField.swift in Sources */,
+				8D8B329C2924FA09005F3E6E /* MFAOTPCodeImage.swift in Sources */,
 				7E7566782766F91500C3872F /* AppName.swift in Sources */,
 				A8DBB7B7287D5B8C00F75C97 /* ResetSuccessViewController.swift in Sources */,
 				7EF66C6F277C1CCB00FCBBEB /* RegisterContainer.swift in Sources */,
@@ -961,6 +1004,7 @@
 				A89EDCD728D6F5E2001B7E99 /* SocialLoginListToast.swift in Sources */,
 				A8628F5C286D985200D7300E /* MFAFaceViewController.swift in Sources */,
 				7ED434CE27757E4B00893EDD /* LoginContainer.swift in Sources */,
+				8D8B32C0292771D2005F3E6E /* MFATipsLabel.swift in Sources */,
 				7E12D7B6277DE9EF00703FC1 /* UserManager.swift in Sources */,
 				7E02F46727950C35007FA048 /* UserInfoCompleteContainer.swift in Sources */,
 				A8A7BBB228466CC5000A0D7C /* CountryCodeView.swift in Sources */,

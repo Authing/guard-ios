@@ -22,41 +22,65 @@ open class MFAPhoneButton: PrimaryButton {
         self.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)
         
         DispatchQueue.main.async() {
-            if let phone = self.authViewController?.authFlow?.data[AuthFlow.KEY_MFA_PHONE] as? String {
-                self.startLoading()
+            if let _ = self.authViewController?.authFlow?.data[AuthFlow.KEY_MFA_PHONE] as? String {
+//                self.startLoading()
                 self.setTitle("authing_login".L, for: .normal)
-                let phoneNumberTF: PhoneNumberTextField? = Util.findView(self, viewClass: PhoneNumberTextField.self)
-                Util.getAuthClient(self).sendSms(phone: phone, phoneCountryCode: phoneNumberTF?.countryCode) { code, message in
-                    self.stopLoading()
-                    if (code != 200) {
-                        Util.setError(self, message)
-                    }
-                }
+//                let phoneNumberTF: PhoneNumberTextField? = Util.findView(self, viewClass: PhoneNumberTextField.self)
+//                Util.getAuthClient(self).sendSms(phone: phone, phoneCountryCode: phoneNumberTF?.countryCode) { code, message in
+//                    self.stopLoading()
+//                    if (code != 200) {
+//                        Util.setError(self, message)
+//                    }
+//                }
             }
         }
     }
     
     @objc private func onClick(sender: UIButton) {
-        if let code = Util.getVerifyCode(self) {
-            if let phone = Util.getPhoneNumber(self) {
-                startLoading()
-                Util.getAuthClient(self).mfaVerifyByPhone(phone: phone, code: code) { code, message, userInfo in
-                    self.done(code, message, userInfo)
+//        self.mfaBindPhone(phoneNumber: "15661050125", passCode: "8705")
+//        self.mfaBindEmail(email: "872468553@qq.com", passCode: "7325")
+//        return
+        if let code = Util.getVerifyCode(self),
+           let phone = Util.getPhoneNumber(self),
+           code != "" {
+            
+            startLoading()
+
+            if self.authViewController?.nibName == "AuthingMFAPhone0" {
+
+                if self.authViewController?.authFlow?.mfaFromViewControllerName == "BindingMfaViewController" {
+                    self.mfaBindPhone(passCode: code)
+                } else {
+                    checkPhone(phone, code)
                 }
-            }
-        } else {
-            if let tfPhone: PhoneNumberTextField = Util.findView(self, viewClass: PhoneNumberTextField.self) {
-                checkPhone(tfPhone.text)
+
+            } else {
+                AuthClient().mfaVerifyByPhone(phone: phone, code: code) { code, message, userInfo in
+                    DispatchQueue.main.async() {
+                        self.stopLoading()
+                        if (code == 200) {
+                            if let flow = self.authViewController?.authFlow {
+                                flow.complete(code, message, userInfo)
+                            } else {
+                                Util.setError(self, message)
+                            }
+                        } else {
+                            Util.setError(self, message)
+                        }
+                    }
+                }
             }
         }
     }
-    
-    private func checkPhone(_ phone: String?) {
+
+    private func checkPhone(_ phone: String,_ verfiryCode: String) {
         startLoading()
         Util.getAuthClient(self).mfaCheck(phone: phone, email: nil) { code, message, result in
             if (code == 200) {
                 if (result != nil && result!) {
-                    self.next(phone)
+                    AuthClient().mfaVerifyByPhone(phone: phone, code: verfiryCode) { code, message, userInfo in
+                        self.done(code, message, userInfo)
+                    }
                 } else {
                     self.stopLoading()
                     Util.setError(self, "authing_phone_number_already_bound".L)
@@ -68,21 +92,38 @@ open class MFAPhoneButton: PrimaryButton {
         }
     }
     
-    private func next(_ phone: String?) {
-        DispatchQueue.main.async() {
-            let vc: AuthViewController? = AuthViewController(nibName: "AuthingMFAPhone1", bundle: Bundle(for: Self.self))
-            vc?.authFlow?.data.setValue(phone, forKey: AuthFlow.KEY_MFA_PHONE)
-            self.authViewController?.navigationController?.pushViewController(vc!, animated: true)
+    private func mfaBindPhone(passCode: String) {
+        
+        if let enrollmentToken = self.authViewController?.authFlow?.enrollmentToken {
+            AuthClient().post("/api/v3/enroll-factor", ["factorType" : "SMS",
+                                                 "enrollmentToken": enrollmentToken,
+                                                        "enrollmentData": ["passCode": passCode]]) { code, msg, res in
+                if let statusCode = res?["statusCode"] as? Int,
+                    statusCode == 200 {
+                    self.done(code, msg, Authing.getCurrentUser())
+                } else {
+                    Toast.show(text: res?["message"] as? String ?? "")
+                }
+            }
         }
     }
     
     private func done(_ code: Int, _ message: String?, _ userInfo: UserInfo?) {
         DispatchQueue.main.async() {
+                        
             self.stopLoading()
             if (code == 200) {
-                if let flow = self.authViewController?.authFlow {
-                    flow.complete(code, message, userInfo)
+                
+                var nextVC: MFABindSuccessViewController? = nil
+                if let vc = self.authViewController {
+                    nextVC = MFABindSuccessViewController(nibName: "AuthingMFABindSuccess", bundle: Bundle(for: Self.self))
+                    nextVC?.type = .phone
+                    nextVC?.authFlow = vc.authFlow?.copy() as? AuthFlow
                 }
+                self.authViewController?.navigationController?.pushViewController(nextVC!, animated: true)
+//                if let flow = self.authViewController?.authFlow {
+//                    flow.complete(code, message, userInfo)
+//                }
             } else {
                 Util.setError(self, message)
             }

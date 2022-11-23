@@ -10,7 +10,7 @@
 "authing_login_by_phone_code" = "短信验证码";
 "authing_login_by_email_code" = "邮箱验证码";
 "authing_login_by_password" = "账号密码";
-"authing_get_verify_code" = "获取验证码";
+"authing_get_verify_code" = "发送验证码";
 "authing_register" = "注册";
 "authing_no_account" = "没有帐号？";
 "authing_register_now" = "立即注册";
@@ -37,8 +37,22 @@
 "authing_password_strength3" = "密码长度至少为 6 位，且要包含英文、数字与符号";
 "authing_choose_mfa_tip" = "请选择验证方式";
 "authing_bind" = "绑定";
+
+"authing_mfa_bind" = "绑定 MFA";
+
+"authing_mfa_tips1" = "当前管理员已开启二次验证，\n请先绑定「手机号绑定」";
+"authing_mfa_tips2" = "当前管理员已开启二次验证，\n请前往「电子邮箱绑定」";
+"authing_mfa_tips3" = "当前管理员已开启二次验证，\n请前往「OTP 绑定」";
+"authing_mfa_tips4" = "当前管理员已开启二次验证，\n请前往「人脸识别绑定」";
+
 "authing_bind_phone" = "绑定手机号";
-"authing_bind_email" = "绑定邮箱";
+"authing_bind_otp" = "绑定 OTP";
+
+"authing_bind_mfaphone" = "请输入用于二次验证的手机号";
+"authing_bind_mfaemail" = "请输入用于绑定 MFA 场景认证的电子邮箱";
+
+"authing_bind_email" = "绑定电子邮箱";
+"authing_bind_verify" = "账号登录二次验证";
 "authing_mfa_verify_phone" = "手机验证";
 "authing_mfa_verify_email" = "邮箱验证";
 "authing_mfa_verify_code" = "安全码验证";
@@ -47,7 +61,8 @@
 "authing_phone_number_already_bound" = "手机号码已经被绑定";
 "authing_email_already_bound" = "邮箱已经被绑定";
 "authing_account_login_verify" = "帐号登录验证";
-"authing_security_code_tip" = "请输入获取的 6 位数字安全码";
+"authing_security_code_tip" = "请输入六位数字安全码进行登录二次验证";
+"authing_otp_tip" = "请长按并保存以下二维码到手机相册中，打开 Google 或 Microsoft Authenticator 验证器识别并录入相关的账号信息。最后，在下方输入获取的 OTP口令。";
 "authing_code_sent_to" = "验证码已发送至";
 "authing_first_time_login_title" = "设置密码";
 "authing_first_time_login_tip" = "为了保障帐号安全，请设置初始密码";
@@ -67,6 +82,7 @@
 "authing_invalid_phone" = "手机号码无效";
 "authing_invalid_email" = "邮件地址无效";
 "authing_social_login" = "第三方账号登录";
+"authing_mfa_other" = "其他验证方式";
 
 
 // user profile
@@ -105,6 +121,8 @@
 "authing_mfa_binding" = "正在绑定中，请稍候";
 "authing_mfa_bind_failed" = "绑定人脸失败, 请重试";
 "authing_mfa_bind_success" = "绑定成功";
+"authing_mfa_bind_tip" = "仅用于二次验证场景";
+"authing_mfa_bind_result" = "绑定结果";
 
 "authing_cannot_get_verify_code" = "无法收到验证码";
 "authing_cannot_login" = "无法登录";
@@ -145,3 +163,21 @@
 "authing_social_lark" = "     使用 飞书 登录";
 "authing_social_google" = "     使用 Google 登录";
 "authing_social_apple" = "     使用 Apple 登录";
+
+"authing_recovery_title" = "使用恢复代码";
+"authing_recovery_tip" = "如果没有恢复代码，请联系管理员处理";
+"authing_recovery_button" = "请输入恢复代码";
+
+"me_security_gobind" = "去绑定";
+"authing_bind_else" = "其他二次验证方式";
+"authing_security_code" = "数字安全码";
+
+"authing_reset_goback" = "返回登录";
+
+"authing_bind_goback" = "返回";
+
+"authing_save_success" = "绑定成功，请保存 OTP 恢复代码：";
+"authing_save_tips" = "请妥善保管恢复代码。如果 OTP 口令丢失，将需要使用恢复代码来登录你的账号。";
+"authing_save_button" = "我已保存";
+
+"authing_recovery_code" = "安全码丢失？";

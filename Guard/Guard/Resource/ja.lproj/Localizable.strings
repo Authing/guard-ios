@@ -105,6 +105,8 @@
 "authing_mfa_binding" ="バインディング、お待ちください";
 "authing_mfa_bind_failed"="顔のバインドに失敗しました。もう一度やり直してください";
 "authing_mfa_bind_success"="バインドに成功しました";
+"authing_mfa_bind_result" = "バインディング結果";
+"authing_mfa_bind_tip" = "2次検証シーンのみに使用する";
 
 "authing_cannot_get_verify_code"="認証コードが届きません";
 "authing_cannot_login"="ログインできません";
@@ -134,10 +136,10 @@
 
 "authing_complete_skip" = "スキップ";
 
-"auting _user_policy" = "ユーザーポリシー";
-"auting _ pricary _policy" = "プライバシープロトコル";
-"auting _lega _claim" = "法的声明";
-"auting _privacy" = "私は読み同意しました";
+"authing_user_policy" = "ユーザーポリシー";
+"authing_pricary_policy" = "プライバシープロトコル";
+"authing_lega_claim" = "法的声明";
+"authing_privacy" = "私は読み同意しました";
 "authing_privacy2" = "および";
 
 "authing_social_wechat" = "     WeChat を使用してログイン";
@@ -145,3 +147,25 @@
 "authing_social_lark" = "       Lark を使用してログイン";
 "authing_social_google" = "     Google でサインイン";
 "authing_social_apple" = "      Apple でサインイン";
+
+"authing_recovery_title" = "使用回復コード";
+"authing_recovery_tip" = "回復コードがない場合は管理者に連絡して処理してください";
+"authing_recovery_button" = "結び付けに行く";
+"authing_bind_else" = "その他の二次検証方式";
+"authing_bind_mfaemail" = "MFAシーン認証を結びつけるための電子メールを入力してください";
+"authing_otp_tip" = "以下のqrコードを長押しして携帯フォトアルバムに保存し、GoogleまたはMicrosoft Authenticatorベリファイアを開いて関連アカウント情報を識別して入力してください。最後に、下に取得したOTPパスワードを入力します。";
+"authing_security_code" = "デジタルセキュリティコード";
+
+"authing_bind_goback" = "戻る";
+
+"authing_mfa_tips1" = "現在管理者は二次検証を開いて、\n先に「携帯電話番号のバインディング」を結びつけてください";
+"authing_mfa_tips2" = "現在の管理者は二次検証を開いて、\nは「電子メールのバインディング」に行ってください";
+"authing_mfa_tips3" = "現在の管理者は二次検証を開いて、\nは「OTPバインディング」に行ってください";
+"authing_mfa_tips4" = "現在管理者は二次検証を開いて、\nは「顔識別バインディング」に行ってください";
+"authing_bind_verify" = "アカウント登録二次検証";
+
+"authing_save_success" = "バインディング成功、OTP回復コードを保存してください:";
+"authing_save_tips" = "回復コードを大切に保管してください。OTPパスワードが失われた場合、回復コードを使用してアカウントにログインする必要があります。";
+"authing_save_button" = "私は保存しました";
+
+"authing_recovery_code" = "セキュリティコードの紛失?";

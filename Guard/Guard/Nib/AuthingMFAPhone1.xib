@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,56 +19,26 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAk-wR-Ikm">
-                    <rect key="frame" x="20" y="44" width="374" height="29"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="29" id="DxH-kJ-dkp"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="authing_please_input_verify_code"/>
-                    </userDefinedRuntimeAttributes>
-                </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T2e-iI-LnZ" customClass="FramedVerifyCodeTextField" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="20" y="118" width="374" height="52"/>
+                    <rect key="frame" x="24" y="121" width="366" height="64"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="52" id="NwR-23-MBg"/>
+                        <constraint firstAttribute="height" constant="64" id="NwR-23-MBg"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="boxSpacing">
                             <real key="value" value="16"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="boxWidth">
+                            <integer key="value" value="64"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="boxHeight">
+                            <integer key="value" value="64"/>
+                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n4u-h1-pjv" customClass="GetVerifyCodeButton" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="155.5" y="186" width="103" height="26"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="103" id="SK4-Iv-yXH"/>
-                        <constraint firstAttribute="height" constant="26" id="UfZ-pF-eq3"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" title="Get verify code"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="color" keyPath="loadingColor">
-                            <color key="value" red="0.224" green="0.41599999999999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="loadingLocation">
-                            <integer key="value" value="1"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocText" value="authing_get_verify_code"/>
-                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqG-p8-1vM" userLabel="Error Label" customClass="ErrorLabel" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="20" y="220" width="374" height="17"/>
+                    <rect key="frame" x="20" y="193" width="374" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="ezD-nu-lXO"/>
                     </constraints>
@@ -77,19 +47,23 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vi6-Ws-T8k" customClass="MFAPhoneButton" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="20" y="245" width="374" height="44"/>
+                    <rect key="frame" x="24" y="218" width="366" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="F2e-iO-Qrc"/>
                     </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="afE-J7-NC2">
-                    <rect key="frame" x="203" y="81" width="8" height="29"/>
+                    <rect key="frame" x="203" y="84" width="8" height="29"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Kd-al-OFx">
                             <rect key="frame" x="0.0" y="0.0" width="0.0" height="29"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <color key="textColor" systemColor="systemGray2Color"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" red="0.52549019607843139" green="0.56470588235294117" blue="0.61176470588235299" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="authing_code_sent_to"/>
@@ -97,8 +71,8 @@
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpy-wY-pyz" customClass="PhoneLabel" customModule="Guard" customModuleProvider="target">
                             <rect key="frame" x="8" y="0.0" width="0.0" height="29"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <color key="textColor" systemColor="systemGray2Color"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" red="0.52549019610000003" green="0.56470588239999997" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -114,44 +88,81 @@
                         <constraint firstAttribute="trailing" secondItem="bpy-wY-pyz" secondAttribute="trailing" id="nTK-gP-MkV"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n4u-h1-pjv" customClass="GetVerifyCodeButton" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="24" y="278" width="366" height="44"/>
+                    <color key="backgroundColor" red="0.94901960784313721" green="0.95294117647058818" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="SIJ-3e-N8a"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Get verify code">
+                        <color key="titleColor" red="0.52549019610000003" green="0.56470588239999997" blue="0.61176470589999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="loadingColor">
+                            <color key="value" red="0.224" green="0.41599999999999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="loadingLocation">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocText" value="authing_get_verify_code"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSp-zp-SbM" customClass="MFAOtherMethodButton" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="107" y="764" width="200" height="48"/>
+                    <color key="backgroundColor" red="0.94901960780000005" green="0.95294117649999999" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="cy1-cT-X9J"/>
+                        <constraint firstAttribute="height" constant="48" id="imN-vr-1of"/>
+                    </constraints>
+                    <color key="tintColor" red="0.1137254902" green="0.12941176469999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="其他二次验证方式">
+                        <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                    </buttonConfiguration>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocText" value="authing_bind_else"/>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <view clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mdA-lT-Pfb" customClass="MFATableView" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="kAk-wR-Ikm" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="3K5-zP-D91"/>
-                <constraint firstItem="kAk-wR-Ikm" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="46a-Oj-kgV"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="KSp-zp-SbM" secondAttribute="bottom" constant="50" id="7Du-ud-2AD"/>
+                <constraint firstItem="fqG-p8-1vM" firstAttribute="top" secondItem="T2e-iI-LnZ" secondAttribute="bottom" constant="8" id="AcE-cZ-0fh"/>
                 <constraint firstItem="fqG-p8-1vM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="CzN-MO-RYz"/>
-                <constraint firstItem="n4u-h1-pjv" firstAttribute="top" secondItem="T2e-iI-LnZ" secondAttribute="bottom" constant="16" id="GVw-9j-EFl"/>
-                <constraint firstItem="vi6-Ws-T8k" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="Niw-37-Nqo"/>
-                <constraint firstItem="n4u-h1-pjv" firstAttribute="centerX" secondItem="T2e-iI-LnZ" secondAttribute="centerX" id="Row-03-dtZ"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="vi6-Ws-T8k" secondAttribute="trailing" constant="20" id="TA0-s4-QS4"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="n4u-h1-pjv" secondAttribute="trailing" constant="24" id="DMA-Aa-0OB"/>
+                <constraint firstItem="mdA-lT-Pfb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="GIM-hf-nJ9"/>
+                <constraint firstItem="n4u-h1-pjv" firstAttribute="top" secondItem="vi6-Ws-T8k" secondAttribute="bottom" constant="16" id="IR8-kX-M9c"/>
+                <constraint firstItem="vi6-Ws-T8k" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="Niw-37-Nqo"/>
+                <constraint firstItem="n4u-h1-pjv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="S3n-DB-Y8u"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="vi6-Ws-T8k" secondAttribute="trailing" constant="24" id="TA0-s4-QS4"/>
                 <constraint firstItem="afE-J7-NC2" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="UD4-If-V3T"/>
-                <constraint firstItem="T2e-iI-LnZ" firstAttribute="trailing" secondItem="kAk-wR-Ikm" secondAttribute="trailing" id="X1A-E0-aK1"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="kAk-wR-Ikm" secondAttribute="trailing" constant="20" id="YJk-R4-PSH"/>
+                <constraint firstItem="KSp-zp-SbM" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="WjI-XM-Nrv"/>
+                <constraint firstAttribute="bottom" secondItem="mdA-lT-Pfb" secondAttribute="bottom" id="dGp-S3-Iff"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="T2e-iI-LnZ" secondAttribute="trailing" constant="24" id="eN3-BT-TO4"/>
                 <constraint firstItem="T2e-iI-LnZ" firstAttribute="top" secondItem="afE-J7-NC2" secondAttribute="bottom" constant="8" id="iPS-fS-kCI"/>
+                <constraint firstItem="afE-J7-NC2" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="40" id="j9Z-nr-NfG"/>
+                <constraint firstItem="T2e-iI-LnZ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="jlq-vD-f9Z"/>
+                <constraint firstItem="mdA-lT-Pfb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="rA7-S8-mK6"/>
                 <constraint firstItem="vi6-Ws-T8k" firstAttribute="top" secondItem="fqG-p8-1vM" secondAttribute="bottom" constant="8" symbolic="YES" id="rOC-e4-91W"/>
-                <constraint firstItem="afE-J7-NC2" firstAttribute="top" secondItem="kAk-wR-Ikm" secondAttribute="bottom" constant="8" symbolic="YES" id="vWM-WG-tU1"/>
-                <constraint firstItem="fqG-p8-1vM" firstAttribute="top" secondItem="n4u-h1-pjv" secondAttribute="bottom" constant="8" symbolic="YES" id="wyY-7U-29t"/>
+                <constraint firstItem="mdA-lT-Pfb" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="tTD-CJ-32c"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fqG-p8-1vM" secondAttribute="trailing" constant="20" id="xDN-93-ctP"/>
-                <constraint firstItem="T2e-iI-LnZ" firstAttribute="leading" secondItem="kAk-wR-Ikm" secondAttribute="leading" id="zA6-6W-Rb1"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
         </view>
     </objects>
-    <designables>
-        <designable name="n4u-h1-pjv">
-            <size key="intrinsicContentSize" width="103" height="15"/>
-        </designable>
-        <designable name="vi6-Ws-T8k">
-            <size key="intrinsicContentSize" width="30" height="30"/>
-        </designable>
-    </designables>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

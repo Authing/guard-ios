@@ -12,6 +12,7 @@ class ResetSuccessViewController: AuthViewController {
     @IBOutlet var countdownLabel: Label!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         self.title = "authing_reset_password_success".L

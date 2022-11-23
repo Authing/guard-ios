@@ -7,9 +7,11 @@
 
 open class FramedVerifyCodeTextField: UIView, UITextFieldDelegate {
     
-    @IBInspectable var boxWidth: CGFloat = 44
-    @IBInspectable var boxHeight: CGFloat = 52
-    @IBInspectable var boxSpacing: CGFloat = 12
+    // 0: default, 1: bindOTP, 2: verfiyOTP
+    @IBInspectable var type: Int = 0
+    @IBInspectable var boxWidth: CGFloat = 64
+    @IBInspectable var boxHeight: CGFloat = 64
+    @IBInspectable var boxSpacing: CGFloat = 23
     @IBInspectable var hyphen: Bool = true
     @IBInspectable var digit: Int = 0 {
         didSet {
@@ -73,7 +75,11 @@ open class FramedVerifyCodeTextField: UIView, UITextFieldDelegate {
         let hyphenSpace = self.hyphenView != nil ? hyphenWidth + boxSpacing : 0
         let w = self.frame.width
         let h = self.frame.height
-        let x = (w - hyphenSpace - boxWidth * CGFloat(Float(digit)) - boxSpacing * CGFloat((digit - 1))) / 2
+        var x = (w - hyphenSpace - boxWidth * CGFloat(Float(digit)) - boxSpacing * CGFloat((digit - 1))) / 2
+        if x < 12 {
+            boxWidth = w/CGFloat(textFields?.count ?? 0) - CGFloat(Float(digit)) - CGFloat(Float(digit * 2))
+            x = (w - hyphenSpace - boxWidth * CGFloat(Float(digit)) - boxSpacing * CGFloat((digit - 1))) / 2
+        }
         var i = 0
         for tf in textFields! {
             if (i < digit / 2) {
@@ -148,6 +154,39 @@ open class FramedVerifyCodeTextField: UIView, UITextFieldDelegate {
         }
         
         textFields![next].becomeFirstResponder()
+        
+        // bind
+        if next == 5 && i == 5 && type == 1 {
+            if let verifyCode = Util.getVerifyCode(self) {
+                
+                // Authing Mobile v3
+                if self.authViewController?.authFlow?.mfaFromViewControllerName == "BindingMfaViewController" {
+                    self.mfaBindOTP(passCode: verifyCode)
+                } else {
+                // v2
+                    Util.getAuthClient(self).mfaAssociateConfirmByOTP(code: verifyCode) { code, msg, data in
+                        if code == 200 {
+                            DispatchQueue.main.async() {
+                                Util.getAuthClient(self).mfaVerifyByOTP(code: verifyCode) { code, msg, userInfo in
+                                    self.done(code, msg, userInfo)
+                                }
+                            }
+                        } else {
+                            Toast.show(text: msg ?? "")
+                        }
+                    }
+                }
+            }
+        }
+        
+        // verfify
+        if next == 5 && i == 5 && type == 2 {
+            if let verifyCode = Util.getVerifyCode(self) {
+                Util.getAuthClient(self).mfaVerifyByOTP(code: verifyCode) { code, message, userInfo in
+                    self.done(code, message, userInfo)
+                }
+            }
+        }
     }
     
     private func moveFocusToPrevious(_ textField: UITextField) {
@@ -178,4 +217,41 @@ open class FramedVerifyCodeTextField: UIView, UITextFieldDelegate {
         }
         return s
     }
+    
+    private func mfaBindOTP(passCode: String) {
+        
+        if let enrollmentToken = self.authViewController?.authFlow?.enrollmentToken {
+            AuthClient().post("/api/v3/enroll-factor", ["factorType" : "OTP",
+                                                 "enrollmentToken": enrollmentToken,
+                                                        "enrollmentData": ["passCode": passCode]]) { code, msg, res in
+                if let statusCode = res?["statusCode"] as? Int,
+                    statusCode == 200 {
+                    self.done(code, msg, Authing.getCurrentUser())
+                } else {
+                    Toast.show(text: res?["message"] as? String ?? "")
+                }
+            }
+        }
+    }
+    private func done(_ code: Int, _ message: String?, _ userInfo: UserInfo?) {
+        DispatchQueue.main.async() {
+            if (code == 200) {
+                if self.type == 1 {
+                    var nextVC: AuthViewController? = nil
+                    if let vc = self.authViewController {
+                        nextVC = MFABindSuccessViewController(nibName: "AuthingMFABindSuccess", bundle: Bundle(for: Self.self))
+                        nextVC?.authFlow = vc.authFlow?.copy() as? AuthFlow
+                    }
+                    self.authViewController?.navigationController?.pushViewController(nextVC!, animated: true)
+                } else {
+                    if let flow = self.authViewController?.authFlow {
+                        flow.complete(code, message, userInfo)
+                    }
+                }
+            } else {
+                Util.setError(self, message)
+            }
+        }
+    }
+    
 }

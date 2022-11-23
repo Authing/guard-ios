@@ -46,7 +46,7 @@ public class AuthFlow: NSObject {
     // MFA
     public var mfaPhoneXibName: [String]? = nil
     public var mfaEmailXibName: [String]? = nil
-    public var mfaOTPXibName: String? = nil
+    public var mfaFromViewControllerName: String? = nil
     
     public var resetPasswordFirstTimeLoginXibName: String? = nil
     
@@ -64,6 +64,10 @@ public class AuthFlow: NSObject {
     
     public var requestCallBack: RequestSuccessCallBack?
     
+    public var enrollmentToken: String? = nil
+
+    public var mfaRecoveryCode: String? = nil
+
     public override init() {
     }
     
@@ -235,13 +239,15 @@ public class AuthFlow: NSObject {
         copy.deleteAccountXibName = self.deleteAccountXibName
         copy.mfaPhoneXibName = self.mfaPhoneXibName
         copy.mfaEmailXibName = self.mfaEmailXibName
-        copy.mfaOTPXibName = self.mfaOTPXibName
+        copy.mfaFromViewControllerName = self.mfaFromViewControllerName
         copy.resetPasswordFirstTimeLoginXibName = self.resetPasswordFirstTimeLoginXibName
         copy.requestCallBack = self.requestCallBack
         copy.appBundle = self.appBundle
         copy.config = self.config
         copy.authProtocol = self.authProtocol
+        copy.mfaRecoveryCode = self.mfaRecoveryCode
         copy.UIConfig = self.UIConfig
+        copy.enrollmentToken = self.enrollmentToken
         return copy
     }
     
