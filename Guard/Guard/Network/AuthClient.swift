@@ -738,6 +738,11 @@ public class AuthClient: Client {
         }
     }
     
+    public func checkAccount(paramsName: String, paramsValue: String, completion: @escaping(Int, String?, NSDictionary?) -> Void) {
+        
+        get("/api/v2/users/is-user-exists?" + paramsName + "=" + paramsValue, completion: completion)
+    }
+    
     public func feedBack(contact: String, type: Int, description: String, images: [String], completion: @escaping(Int, String?) -> Void) {
         let body: NSMutableDictionary = ["appId" : Authing.getAppId(), "phone" : contact, "type": type, "description": description]
         if (images.count != 0) {

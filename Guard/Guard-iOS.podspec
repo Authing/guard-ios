@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name              = 'Guard-iOS'
-    s.version           = '1.3.4'
+    s.version           = '1.3.5'
     s.summary           = 'Guard 采用了全新的 语义化编程模型，可以快速构建自定义风格的认证流程。'
     s.homepage          = 'https://github.com/Authing/guard-ios'
 
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 
     s.platform          = :ios
     # change the source location
-    s.source            = { :http => 'https://github.com/Authing/guard-ios/releases/download/1.3.4/Guard.xcframework.zip' }
+    s.source            = { :http => 'https://github.com/Authing/guard-ios/releases/download/1.3.5/Guard.xcframework.zip' }
     s.ios.deployment_target = '11.0'
     s.ios.vendored_frameworks = 'Guard.xcframework'
     

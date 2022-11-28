@@ -99,7 +99,7 @@ open class AuthViewController: UIViewController {
         if authFlow?.transition == .Present {
             self.navigationController?.dismiss(animated: true, completion: nil)
         } else {
-            navigationController?.popViewController(animated: true)
+            self.navigationController?.popViewController(animated: true)
         }
     }
     

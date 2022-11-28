@@ -92,6 +92,10 @@ public class Config: NSObject {
         get { return data?["userpoolLogo"] as? String }
     }
     
+    open var userPoolName: String? {
+        get { return data?["userpoolName"] as? String }
+    }
+    
     open var verifyCodeLength: Int? {
         get { return data?["verifyCodeLength"] as? Int }
     }
