@@ -23,6 +23,10 @@ open class UserInfo: NSObject {
             }
         }
     }
+    @objc public var socialBindingData: NSDictionary? {
+        didSet {
+        }
+    }
     @objc public var customData: [NSMutableDictionary]?
     @objc public var identities: [NSDictionary]?
     @objc public var userId: String?

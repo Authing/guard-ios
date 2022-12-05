@@ -181,3 +181,10 @@
 "authing_save_button" = "我已保存";
 
 "authing_recovery_code" = "安全码丢失？";
+
+"authing_binding_method" = "选择关联方式";
+"authing_binding_desc" = "如果绑定到已有账号，下次可以通过本次的方式直接登录已有账号。";
+"authing_binding_new_account" = "我想创建一个新账号";
+"authing_binding_choose_account" = "我想绑定到已有账号";
+
+"authing_binding_account" = "绑定已有账号";

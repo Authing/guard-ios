@@ -176,3 +176,10 @@
 "authing_save_button" = "I have saved ";
 
 "authing_recovery_code" = "Security code lost?" ;
+
+"authing_binding_method" = "Select association method";
+"authing_binding_desc" = "If it is bound to an existing account, you can use this method to log in to the existing account next time." ;
+"authing_binding_new_account" = "I want to create a new account";
+"authing_binding_choose_account" = "I want to bind to an existing account";
+
+"authing_binding_account" = "Binding an Existing Account";

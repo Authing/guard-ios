@@ -148,7 +148,7 @@ open class LoginButton: PrimaryButton {
             LoginButton.handleLogin(button: self, code, message: message, userInfo: userInfo, authCompletion: self.authCompletion)
         }
     }
-    
+        
     public class func handleLogin(button: Button, _ code: Int, message: String?, userInfo: UserInfo?, authCompletion: Authing.AuthCompletion? = nil) {
         DispatchQueue.main.async() {
             if (authCompletion != nil) {
@@ -176,9 +176,7 @@ open class LoginButton: PrimaryButton {
                     }
                 }
             } else if (code == Const.EC_MFA_REQUIRED) {
-                
-//                var vc: AuthViewController? = nil
-                
+                                
                 if let mfaPolicy = Authing.getCurrentUser()?.mfaPolicy {
                     
                     for policy in mfaPolicy {
@@ -187,46 +185,9 @@ open class LoginButton: PrimaryButton {
                             button.authViewController?.navigationController?.pushViewController(vc ?? UIViewController(), animated: true)
                         }
                         break
-                        
-//                        if (policy == "SMS") {
-//
-//                            vc = AuthViewController(nibName: "AuthingMFAPhone1", bundle: Bundle(for: Self.self))
-//                            vc?.authFlow = button.authViewController?.authFlow?.copy() as? AuthFlow
-//                            vc?.authFlow?.data.setValue(Authing.getCurrentUser()?.mfaPhone, forKey: AuthFlow.KEY_MFA_PHONE)
-//                            vc?.title = "authing_bind_verify".L
-//                            break
-//
-//                        } else if (policy == "EMAIL") {
-//
-//                            vc = AuthViewController(nibName: "AuthingMFAEmail1", bundle: Bundle(for: Self.self))
-//                            vc?.authFlow = button.authViewController?.authFlow?.copy() as? AuthFlow
-//                            vc?.authFlow?.data.setValue(Authing.getCurrentUser()?.mfaEmail, forKey: AuthFlow.KEY_MFA_EMAIL)
-//                            vc?.title = "authing_bind_verify".L
-//                            break
-//
-//                        } else if (policy == "OTP" && userInfo?.totpMfaEnabled == true) {
-//                            vc = AuthViewController(nibName: "AuthingMFAOTP1", bundle: Bundle(for: Self.self))
-//                            vc?.authFlow = button.authViewController?.authFlow?.copy() as? AuthFlow
-//                            vc?.title = "authing_bind_verify".L
-//                            break
-//
-//                        } else if (policy == "FACE") {
-//
-//                            vc = MFAFaceViewController.init()
-//                            vc?.authFlow = button.authViewController?.authFlow?.copy() as? AuthFlow
-//                            break
-//
-//                        } else {
-//
-//                            vc = AuthViewController(nibName: "AuthingMFAOptions", bundle: Bundle(for: Self.self))
-//                            vc?.title = "authing_mfa_bind".L
-//                            vc?.authFlow = button.authViewController?.authFlow?.copy() as? AuthFlow
-//                            break
-//                        }
+
                     }
                 }
-
-//                button.authViewController?.navigationController?.pushViewController(vc!, animated: true)
 
             } else if (code == Const.EC_FIRST_TIME_LOGIN) {
                 // clear password text field
@@ -246,6 +207,28 @@ open class LoginButton: PrimaryButton {
                     nextVC?.title = "authing_first_time_login_title".L
                     vc.navigationController?.pushViewController(nextVC!, animated: true)
                 }
+            } else if (code == Const.EC_ONLY_BINDING_ACCOUNT) {
+                
+                var nextVC: AuthViewController? = nil
+                if let vc = button.viewController as? AuthViewController {
+                    nextVC = AuthViewController(nibName: "AuthingBinding", bundle: Bundle(for: Self.self))
+                    vc.authFlow?.data.setValue(userInfo, forKey: AuthFlow.KEY_USER_INFO)
+                    nextVC?.authFlow = vc.authFlow?.copy() as? AuthFlow
+                    vc.navigationController?.pushViewController(nextVC!, animated: true)
+                }
+                
+            } else if (code == Const.EC_BINDING_CREATE_ACCOUNT) {
+                                
+                var nextVC: AuthViewController? = nil
+                if let vc = button.viewController as? AuthViewController {
+                    nextVC = AuthViewController(nibName: "AuthingBindingMethod", bundle: Bundle(for: Self.self))
+                    vc.authFlow?.data.setValue(userInfo, forKey: AuthFlow.KEY_USER_INFO)
+                    nextVC?.authFlow = vc.authFlow?.copy() as? AuthFlow
+                    nextVC?.title = "authing_binding_method".L
+                    vc.navigationController?.pushViewController(nextVC!, animated: true)
+                }
+            } else if (code == Const.EC_MULTIPLE_ACCOUNT) {
+                Util.setError(button, message)
             } else {
                 Util.setError(button, message)
             }

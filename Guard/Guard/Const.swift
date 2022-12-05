@@ -27,7 +27,10 @@ public class Const: NSObject {
     
     public static let EC_MFA_REQUIRED = 1636;
     public static let EC_FIRST_TIME_LOGIN = 1639;
-    
+    public static let EC_ONLY_BINDING_ACCOUNT = 1640;
+    public static let EC_BINDING_CREATE_ACCOUNT = 1641;
+    public static let EC_MULTIPLE_ACCOUNT = 2921;
+
     public static let SCREEN_WIDTH = UIScreen.main.bounds.width
     public static let SCREEN_HEIGHT = UIScreen.main.bounds.height
 

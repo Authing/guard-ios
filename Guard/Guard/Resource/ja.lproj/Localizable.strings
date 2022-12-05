@@ -169,3 +169,10 @@
 "authing_save_button" = "私は保存しました";
 
 "authing_recovery_code" = "セキュリティコードの紛失?";
+
+"authing_binding_method" = "関連する方法を選択する";
+"authing_binding_desc"="既存アカウントに紐付けておけば、次回は今回の方法で既存アカウントに直接ログインすることができます。";
+"authing_binding_new_account" = "新しいアカウントを作りたい";
+"authing_binding_choose_account" = "既存のアカウントに結びつけたい";
+
+"authing_binding_account" = "既存のアカウントを結びつける";

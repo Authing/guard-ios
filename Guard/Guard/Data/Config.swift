@@ -140,7 +140,7 @@ public class Config: NSObject {
 //    open var languageFollowsBrowser: Bool? = true
     
     open var autoRegisterThenLoginHintInfo: Bool?
-    
+        
     // MARK: Request
     open var appId: String!
     open var userAgent: String?

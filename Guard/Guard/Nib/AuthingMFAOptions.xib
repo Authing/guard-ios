@@ -114,7 +114,7 @@
     <resources>
         <image name="authing_mfa_placeholder" width="160" height="120"/>
         <namedColor name="AccentColor">
-            <color red="0.12941176470588237" green="0.35294117647058826" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

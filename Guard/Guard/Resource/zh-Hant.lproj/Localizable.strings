@@ -170,3 +170,10 @@
 "authing_save_button" = "我已保存";
 
 "authing_recovery_code" = "安全碼丟失？";
+
+"authing_binding_method" = "選擇關聯方式";
+"authing_binding_desc" = "如果綁定到已有賬號，下次可以通過本次的方式直接登錄已有賬號。";
+"authing_binding_new_account" = "我想創建一個新賬號";
+"authing_binding_choose_account" = "我想綁定到已有賬號";
+
+"authing_binding_account" = "綁定已有賬號";

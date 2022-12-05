@@ -5,6 +5,8 @@
 //  Created by Lance Mao on 2021/12/14.
 //
 
+import Foundation
+
 public class AuthClient: Client {
     
     // MARK: Basic authentication APIs
@@ -474,6 +476,7 @@ public class AuthClient: Client {
             }
         }
     }
+
     
     public func loginByWeCom(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         getConfig { config in
@@ -617,6 +620,155 @@ public class AuthClient: Client {
         }
     }
     
+    // MARK: Scoial Identity Binding
+    public func getDataByWechatlogin(authData: AuthRequest? = nil, code: String, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        getConfig { config in
+            guard let conf = config else {
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
+                return
+            }
+  
+            guard let conId = conf.getConnectionId(type: "wechat:mobile") else {
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
+                return
+            }
+            
+            guard let appid = config?.appId else {
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
+                return
+            }
+            
+            var dic: NSMutableDictionary = ["scope": AuthRequest().scope ?? ""]
+            if authData != nil {
+                dic = ["scope": authData?.scope ?? ""]
+            }
+            if context != nil {
+                dic.setValue(context, forKey: "context")
+            }
+            
+            let body: NSDictionary = ["connId" : conId, "code" : code, "appId" : appid, "options": dic]
+
+            self.post("/api/v2/ecConn/wechatMobile/authByCodeIdentity", body) { code, message, data in
+                if code == 200 {
+                    self.createUserInfo(code, message, data) { code, message, userInfo in
+                        self.getCurrentUser(user: userInfo, completion: completion)
+                    }
+                } else {
+                    self.createUserInfo(code, message, data, completion: completion)
+                }
+            }
+        }
+    }
+    
+    public func bindWechatWithRegister(key: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        
+        let body: NSDictionary = ["action": "create-federation-account",
+                                 "key": key]
+        self.post("/api/v2/ecConn/wechatMobile/register", body) { code, message, data in
+            if code == 200 {
+                if let jsonData = data {
+                    self.createUserInfo(code, message, jsonData) { code, message, userInfo in
+                        self.getCurrentUser(user: userInfo, completion: completion)
+                    }
+                } else {
+                    completion(ErrorCode.socialBinding.rawValue, ErrorCode.socialBinding.errorMessage(), nil)
+                }
+            } else {
+                completion(code, message, nil)
+            }
+        }
+    }
+    
+    public func bindWechatByAccount(account: String, password: String, key: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        
+        let encryptedPassword = Util.encryptPassword(password)
+        
+        let body: NSDictionary = ["action": "bind-identity-by-password",
+                                  "account": account,
+                                  "password": encryptedPassword,
+                                  "key": key]
+        self.post("/api/v2/ecConn/wechatMobile/byAccount", body) { code, message, data in
+            if code == 200 {
+                if let jsonData = data {
+                    self.createUserInfo(code, message, jsonData) { code, message, userInfo in
+                        self.getCurrentUser(user: userInfo, completion: completion)
+                    }
+                } else {
+                    completion(ErrorCode.socialBinding.rawValue, ErrorCode.socialBinding.errorMessage(), nil)
+                }
+            } else {
+                completion(code, message, nil)
+            }
+        }
+    }
+    
+    public func bindWechatByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, key: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+                
+        let body: NSMutableDictionary = ["action": "bind-identity-by-phone-code",
+                                  "phone": phone,
+                                  "code": code,
+                                  "key": key]
+        if phoneCountryCode != nil {
+            body.setValue(phoneCountryCode, forKey: "phoneCountryCode")
+        }
+        self.post("/api/v2/ecConn/wechatMobile/byPhoneCode", body) { code, message, data in
+            if code == 200 {
+                if let jsonData = data {
+                    self.createUserInfo(code, message, jsonData) { code, message, userInfo in
+                        self.getCurrentUser(user: userInfo, completion: completion)
+                    }
+                } else {
+                    completion(ErrorCode.socialBinding.rawValue, ErrorCode.socialBinding.errorMessage(), nil)
+                }
+            } else {
+                completion(code, message, nil)
+            }
+        }
+    }
+    
+    public func bindWechatByEmailCode(email: String, code: String, key: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+                
+        let body: NSMutableDictionary = ["action": "bind-identity-by-email-code",
+                                  "email": email,
+                                  "code": code,
+                                  "key": key]
+
+        self.post("/api/v2/ecConn/wechatMobile/byEmailCode", body) { code, message, data in
+            if code == 200 {
+                if let jsonData = data {
+                    self.createUserInfo(code, message, jsonData) { code, message, userInfo in
+                        self.getCurrentUser(user: userInfo, completion: completion)
+                    }
+                } else {
+                    completion(ErrorCode.socialBinding.rawValue, ErrorCode.socialBinding.errorMessage(), nil)
+                }
+            } else {
+                completion(code, message, nil)
+            }
+        }
+    }
+    
+    public func bindWechatByAccountId(accountId: String, key: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+                
+        let body: NSMutableDictionary = ["action": "bind-identity-by-selection",
+                                  "accountId": accountId,
+                                  "key": key]
+
+        self.post("/api/v2/ecConn/wechatMobile/select", body) { code, message, data in
+            if code == 200 {
+                if let jsonData = data {
+                    self.createUserInfo(code, message, jsonData) { code, message, userInfo in
+                        self.getCurrentUser(user: userInfo, completion: completion)
+                    }
+                } else {
+                    completion(ErrorCode.socialBinding.rawValue, ErrorCode.socialBinding.errorMessage(), nil)
+                }
+            } else {
+                completion(code, message, nil)
+            }
+        }
+    }
+    
     // MARK: MFA APIs
     public func mfaCheck(phone: String?, email: String?, completion: @escaping(Int, String?, Bool?) -> Void) {
         var body: NSDictionary? = nil
@@ -664,8 +816,7 @@ public class AuthClient: Client {
     public func mfaDeleteOTP(completion: @escaping(Int, String?, NSDictionary?) -> Void) {
         delete("/api/v2/mfa/totp/associate", completion: completion)
     }
-    
-    
+        
     public func mfaVerifyByOTP(code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let body: NSDictionary = ["authenticatorType" : "totp", "totp" : code]
         post("/api/v2/mfa/totp/verify", body) { code, message, data in
@@ -732,6 +883,11 @@ public class AuthClient: Client {
             completion(code, message, userInfo)
         } else if code == Const.EC_FIRST_TIME_LOGIN {
             userInfo.firstTimeLoginToken = data?["token"] as? String
+            completion(code, message, userInfo)
+        } else if code == Const.EC_BINDING_CREATE_ACCOUNT ||
+                    code == Const.EC_ONLY_BINDING_ACCOUNT ||
+                    code == Const.EC_MULTIPLE_ACCOUNT {
+            userInfo.socialBindingData = data
             completion(code, message, userInfo)
         } else {
             completion(code, message, nil)

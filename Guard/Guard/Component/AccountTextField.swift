@@ -36,6 +36,16 @@ open class AccountTextField: TextFieldLayout {
         autocorrectionType = .no
         
         // hint can be set explicitly via Nib
+        var methods = config.enabledLoginMethods
+        if let socialBindingMethods = (authViewController?.authFlow?.data.value(forKey: AuthFlow.KEY_USER_INFO) as? UserInfo)?.socialBindingData?["methods"] as? [String] {
+            methods = []
+            for method in socialBindingMethods {
+                if method.contains("password") {
+                    methods?.append(method)
+                }
+            }
+        }
+        
         if placeholder == nil {
             
             if let image = UIImage(named: "authing_user", in: Bundle(for: Self.self), compatibleWith: nil) {
@@ -45,10 +55,10 @@ open class AccountTextField: TextFieldLayout {
             var hint = "authing_please_input".L
             
             var i: Int = 0
-            if (config.enabledLoginMethods != nil) {
-                for method in config.enabledLoginMethods! {
+            if (methods != nil) {
+                for method in methods! {
                     hint += getMethodText(method)
-                    if (i < config.enabledLoginMethods!.count - 1) {
+                    if (i < methods!.count - 1) {
                         hint += " / "
                     }
                     i += 1
@@ -58,10 +68,10 @@ open class AccountTextField: TextFieldLayout {
             setHint(hint)
         }
         
-        if (config.enabledLoginMethods?.count == 1) {
-            if (config.enabledLoginMethods?[0] == "email-password") {
+        if (methods?.count == 1) {
+            if (methods?[0] == "email-password") {
                 keyboardType = .emailAddress
-            } else if (config.enabledLoginMethods?[0] == "phone-password") {
+            } else if (methods?[0] == "phone-password") {
                 keyboardType = .phonePad
             }
         }

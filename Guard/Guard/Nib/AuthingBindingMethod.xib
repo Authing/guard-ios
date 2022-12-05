@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AuthViewController" customModule="Guard" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="iN0-l3-epB" id="Tqp-9Q-TNS"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="如果绑定到已有账号，下次可以通过本次的方式直接登录已有账号。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOw-MR-tYR" customClass="Label" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="24" y="84" width="366" height="38.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.30588235289999999" green="0.34901960780000002" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="authing_binding_desc"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="authing_mfa_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="N8S-10-GVa">
+                    <rect key="frame" x="127" y="192.5" width="160" height="120"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="160" id="AQt-Zh-ybx"/>
+                        <constraint firstAttribute="height" constant="120" id="zhD-1r-tNC"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YLl-8R-z69" customClass="ScoialGoBindingButton" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="24" y="764" width="366" height="48"/>
+                    <color key="backgroundColor" name="AccentColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="TY5-cH-c5H"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="我想绑定到已有账号">
+                        <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                    </buttonConfiguration>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocText" value="authing_binding_choose_account"/>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zy3-vb-m6E" customClass="SocialCreateAccountButton" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="24" y="696" width="366" height="48"/>
+                    <color key="backgroundColor" red="0.94901960780000005" green="0.95294117649999999" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="NvU-w7-Gwx"/>
+                    </constraints>
+                    <color key="tintColor" red="0.1137254902" green="0.12941176469999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="我想创建一个新账号">
+                        <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                    </buttonConfiguration>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocText" value="authing_binding_new_account"/>
+                    </userDefinedRuntimeAttributes>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="YLl-8R-z69" secondAttribute="bottom" constant="50" id="Ahv-5x-EwA"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="YLl-8R-z69" secondAttribute="trailing" constant="24" id="CKX-2A-Hn1"/>
+                <constraint firstItem="YLl-8R-z69" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="I9s-IC-9PL"/>
+                <constraint firstItem="N8S-10-GVa" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Tb7-SP-hz3"/>
+                <constraint firstItem="YLl-8R-z69" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="Wt5-JJ-iMj"/>
+                <constraint firstItem="aOw-MR-tYR" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="hxP-8O-0jP"/>
+                <constraint firstItem="YLl-8R-z69" firstAttribute="top" secondItem="zy3-vb-m6E" secondAttribute="bottom" constant="20" id="j4C-L4-o7a"/>
+                <constraint firstAttribute="trailing" secondItem="aOw-MR-tYR" secondAttribute="trailing" constant="24" id="jR6-wr-LhZ"/>
+                <constraint firstItem="zy3-vb-m6E" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="kjc-fS-WBk"/>
+                <constraint firstItem="N8S-10-GVa" firstAttribute="top" secondItem="aOw-MR-tYR" secondAttribute="bottom" constant="70" id="ltT-7b-VGl"/>
+                <constraint firstItem="aOw-MR-tYR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="o6n-lf-oqW"/>
+                <constraint firstItem="aOw-MR-tYR" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="40" id="q6y-AJ-myO"/>
+                <constraint firstItem="zy3-vb-m6E" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="rlM-Se-SfQ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="zy3-vb-m6E" secondAttribute="trailing" constant="24" id="yls-PO-fUC"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="63"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="authing_mfa_placeholder" width="160" height="120"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

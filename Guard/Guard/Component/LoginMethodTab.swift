@@ -18,7 +18,24 @@ open class LoginMethodTab: MethodTab {
     override func doSetup(_ config: Config) {
         var i: CGFloat = 0
         var defaultLoginIncluded = false
-        for method in config.loginMethods ?? [] {
+        var methods = config.loginMethods ?? []
+
+        if let socialBindingMethods = (authViewController?.authFlow?.data.value(forKey: AuthFlow.KEY_USER_INFO) as? UserInfo)?.socialBindingData?["methods"] as? [String] {
+            methods = socialBindingMethods
+            
+            for method in methods {
+                if method.contains("password") {
+                    methods.append("password")
+                }
+            }
+            
+            methods = methods.enumerated().filter { (index, value) -> Bool in
+                return methods.firstIndex(of: value) == index
+            }.map {
+                $0.element
+            }
+        }
+        for method in methods {
             let frame = CGRect.zero
             let item = LoginMethodTabItem(frame: frame)
             if (method == "phone-code") {

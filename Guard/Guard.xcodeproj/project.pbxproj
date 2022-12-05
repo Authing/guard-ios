@@ -135,6 +135,11 @@
 		7EF66C81277D49B400FCBBEB /* ResetPasswordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C80277D49B400FCBBEB /* ResetPasswordButton.swift */; };
 		7EF66C8B277D5A7100FCBBEB /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C8A277D5A7100FCBBEB /* Validator.swift */; };
 		7EF66C8D277DA96200FCBBEB /* GetEmailCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF66C8C277DA96200FCBBEB /* GetEmailCodeButton.swift */; };
+		8D254F64293CF0E3001BEC9E /* AuthingBindingMethod.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D254F63293CF0E2001BEC9E /* AuthingBindingMethod.xib */; };
+		8D254F66293CF7AB001BEC9E /* SocialBindingAccountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D254F65293CF7AB001BEC9E /* SocialBindingAccountButton.swift */; };
+		8D254F68293CF7D2001BEC9E /* SocialCreateAccountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D254F67293CF7D2001BEC9E /* SocialCreateAccountButton.swift */; };
+		8D254F6C293D0356001BEC9E /* AuthingBinding.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D254F6B293D0356001BEC9E /* AuthingBinding.xib */; };
+		8D254F70293D2B5A001BEC9E /* ScoialGoBindingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D254F6F293D2B5A001BEC9E /* ScoialGoBindingButton.swift */; };
 		8D4226282923F9FC000FDCDE /* MFAGoBindingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4226272923F9FC000FDCDE /* MFAGoBindingButton.swift */; };
 		8D42262A2923FA14000FDCDE /* MFAOtherMethodButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4226292923FA14000FDCDE /* MFAOtherMethodButton.swift */; };
 		8D8B329C2924FA09005F3E6E /* MFAOTPCodeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8B329B2924FA09005F3E6E /* MFAOTPCodeImage.swift */; };
@@ -307,6 +312,11 @@
 		7EF66C80277D49B400FCBBEB /* ResetPasswordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordButton.swift; sourceTree = "<group>"; };
 		7EF66C8A277D5A7100FCBBEB /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		7EF66C8C277DA96200FCBBEB /* GetEmailCodeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEmailCodeButton.swift; sourceTree = "<group>"; };
+		8D254F63293CF0E2001BEC9E /* AuthingBindingMethod.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingBindingMethod.xib; sourceTree = "<group>"; };
+		8D254F65293CF7AB001BEC9E /* SocialBindingAccountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialBindingAccountButton.swift; sourceTree = "<group>"; };
+		8D254F67293CF7D2001BEC9E /* SocialCreateAccountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialCreateAccountButton.swift; sourceTree = "<group>"; };
+		8D254F6B293D0356001BEC9E /* AuthingBinding.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingBinding.xib; sourceTree = "<group>"; };
+		8D254F6F293D2B5A001BEC9E /* ScoialGoBindingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoialGoBindingButton.swift; sourceTree = "<group>"; };
 		8D4226272923F9FC000FDCDE /* MFAGoBindingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFAGoBindingButton.swift; sourceTree = "<group>"; };
 		8D4226292923FA14000FDCDE /* MFAOtherMethodButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFAOtherMethodButton.swift; sourceTree = "<group>"; };
 		8D8B329B2924FA09005F3E6E /* MFAOTPCodeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFAOTPCodeImage.swift; sourceTree = "<group>"; };
@@ -383,6 +393,9 @@
 				A80B20B628D6289300933A26 /* SocialLoginListVerticalView.swift */,
 				A80B20B828D63CBF00933A26 /* SocialNoLoginMethodsView.swift */,
 				A89EDCD628D6F5E2001B7E99 /* SocialLoginListToast.swift */,
+				8D254F65293CF7AB001BEC9E /* SocialBindingAccountButton.swift */,
+				8D254F67293CF7D2001BEC9E /* SocialCreateAccountButton.swift */,
+				8D254F6F293D2B5A001BEC9E /* ScoialGoBindingButton.swift */,
 				7EB2D30027871E2A00A819B3 /* AppleLoginButton.swift */,
 			);
 			path = Social;
@@ -484,6 +497,8 @@
 				7EB32811278D1DF9008639AA /* AuthingMFAOTP0.xib */,
 				8D8B329D29251934005F3E6E /* AuthingMFAOTP1.xib */,
 				7E7D1F72278FC44F005AAD39 /* AuthingFirstTimeLogin.xib */,
+				8D254F6B293D0356001BEC9E /* AuthingBinding.xib */,
+				8D254F63293CF0E2001BEC9E /* AuthingBindingMethod.xib */,
 				7E02F46C27950C99007FA048 /* AuthingUserInfoComplete.xib */,
 				A8D38D2027F2B02D00942707 /* AuthingCountryCode.xib */,
 				A89705CA287EDD520080BEE5 /* AuthingDeleteAccount.xib */,
@@ -823,6 +838,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D254F6C293D0356001BEC9E /* AuthingBinding.xib in Resources */,
 				7E02F46D27950C99007FA048 /* AuthingUserInfoComplete.xib in Resources */,
 				7EF66C7F277D478700FCBBEB /* AuthingResetPassword.xib in Resources */,
 				A8A4897D28758C1600F3120F /* AuthingFeedBack.xib in Resources */,
@@ -844,6 +860,7 @@
 				A8D62BAA28B8D442001D0A40 /* country.plist in Resources */,
 				7EB3280C278C299A008639AA /* AuthingMFAPhone1.xib in Resources */,
 				7EB32801278BE056008639AA /* AuthingMFAPhone0.xib in Resources */,
+				8D254F64293CF0E3001BEC9E /* AuthingBindingMethod.xib in Resources */,
 				7E12D7B8277DECB900703FC1 /* AuthingUserProfile.xib in Resources */,
 				7EB327FA278BD2EB008639AA /* AuthingMFAOptions.xib in Resources */,
 			);
@@ -921,6 +938,7 @@
 				7ED434D22775ABA000893EDD /* TextFieldLayout.swift in Sources */,
 				7E003B0E284742DA00AAE4ED /* Device.swift in Sources */,
 				A8A4897B287578A600F3120F /* GoFeedBackButton.swift in Sources */,
+				8D254F70293D2B5A001BEC9E /* ScoialGoBindingButton.swift in Sources */,
 				7E7566A22768801E00C3872F /* UIView+Authing.swift in Sources */,
 				7E02F46927950C57007FA048 /* UserInfoCompleteFieldForm.swift in Sources */,
 				7E87A1CA27CF603B00E52D5A /* OIDCClient.swift in Sources */,
@@ -935,6 +953,7 @@
 				7E7566B22768A7CC00C3872F /* UserInfo.swift in Sources */,
 				7EF66C67277C119800FCBBEB /* IndexAuthViewController.swift in Sources */,
 				7E0FAFDF27ED5A37006258FC /* UIViewController+Authing.swift in Sources */,
+				8D254F66293CF7AB001BEC9E /* SocialBindingAccountButton.swift in Sources */,
 				A80BD1CD28D49B8700F9DEDE /* Toast.swift in Sources */,
 				7EF66C8D277DA96200FCBBEB /* GetEmailCodeButton.swift in Sources */,
 				A8A489842876B97C00F3120F /* FeedBackController.swift in Sources */,
@@ -947,6 +966,7 @@
 				7E20001827EB5D5D0051F590 /* BaseInput.swift in Sources */,
 				A80B20B928D63CBF00933A26 /* SocialNoLoginMethodsView.swift in Sources */,
 				7E0FAFB427EC6373006258FC /* Button.swift in Sources */,
+				8D254F68293CF7D2001BEC9E /* SocialCreateAccountButton.swift in Sources */,
 				7E7566812766FA1A00C3872F /* AuthFlow.swift in Sources */,
 				7EDFB6C927C4D1C500B77DEE /* UserInfoCompleteFieldFormSelect.swift in Sources */,
 				7EF66C81277D49B400FCBBEB /* ResetPasswordButton.swift in Sources */,
