@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 open class SocialLoginListView: UIView, AttributedViewProtocol {
     
@@ -157,10 +158,26 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                 value.append(srcs[key] as? String ?? "")
             }
             
+            if value.count > 0 {
+                if SocialLoginListView.supportFaceID() {
+                    value.insert("face", at: 0)
+                } else {
+                    
+                }
+            }
             return value
         }
         
         return []
+    }
+    
+    class func supportFaceID() -> Bool {
+        let context = LAContext()
+        context.localizedFallbackTitle = "登录 Authing"
+        var error: NSError? = nil;
+        
+        let support = context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: &error)
+        return true
     }
     
     class func handleSrc(container: UIView, _ sources: Array<String>, _ isVerticalLayout: Bool = false) {
@@ -204,6 +221,7 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                     container.addSubview(view)
                 }
             } else if ("lark" == trimmed) {
+                
                 if let type = Bundle(identifier: "cn.authing.LarkLogin")?.classNamed("LarkLogin.LarkLoginButton") as? SocialLoginButton.Type {
                     let view = type.init()
                     if isVerticalLayout {
@@ -211,6 +229,7 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                     }
                     container.addSubview(view)
                 }
+                
             }else if ("apple" == trimmed) {
                 if #available(iOS 13.0, *) {
                     let view = AppleLoginButton()
@@ -222,6 +241,7 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                     // Fallback on earlier versions
                 }
             } else if ("google" == trimmed) {
+                
                 if let type = Bundle(identifier: "cn.authing.Google")?.classNamed("Google.GoogleSignInButton") as? SocialLoginButton.Type {
                     let view = type.init()
                     if isVerticalLayout {
@@ -229,10 +249,21 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                     }
                     container.addSubview(view)
                 }
+                
+            } else if ("face" == trimmed) {
+                                
+                let view = FaceIdLoginButton.init()
+                if isVerticalLayout {
+                    view.setTitle("Authing_social_face".L, for: .normal)
+                }
+                container.addSubview(view)
+                
             } else if ("more" == trimmed) {
+
                 let view = SocialLoginButton.init()
                 view.setImage(UIImage(named: "authing_more", in: Bundle(for: SocialLoginListView.self), compatibleWith: nil), for: .normal)
                 container.addSubview(view)
+ 
             }
         }
     }

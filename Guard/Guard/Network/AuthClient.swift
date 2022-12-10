@@ -842,6 +842,14 @@ public class AuthClient: Client {
         post("/api/v3/reset-factor", ["factorId" : factorId], completion: completion)
     }
     
+    public func unbindMFAPhone(completion: @escaping(Int, String?, NSDictionary?) -> Void) {
+        post("/api/v2/mfa/phone/unbind", [:], completion: completion)
+    }
+    
+    public func unbindMFAEmail(completion: @escaping(Int, String?, NSDictionary?) -> Void) {
+        post("/api/v2/mfa/email/unbind", [:], completion: completion)
+    }
+    
     // MARK: Scan APIs
     public func markQRCodeScanned(ticket: String, completion: @escaping(Int, String?, NSDictionary?) -> Void) {
         post("/api/v2/qrcode/scanned", ["random" : ticket], completion: completion)
