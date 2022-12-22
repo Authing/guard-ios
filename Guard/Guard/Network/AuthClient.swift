@@ -223,7 +223,6 @@ public class AuthClient: Client {
     
     public func logout(completion: @escaping(Int, String?) -> Void) {
         get("/api/v2/logout?app_id=\(Authing.getAppId())") { code, message, data in
-            
             Authing.saveUser(nil)
             HTTPCookieStorage.shared.cookies?.forEach(HTTPCookieStorage.shared.deleteCookie)
             completion(code, message)
@@ -430,6 +429,21 @@ public class AuthClient: Client {
         }
     }
     
+    public func checkAccount(paramsName: String, paramsValue: String, completion: @escaping(Int, String?, NSDictionary?) -> Void) {
+        
+        get("/api/v2/users/is-user-exists?" + paramsName + "=" + paramsValue, completion: completion)
+    }
+    
+    public func feedBack(contact: String, type: Int, description: String, images: [String], completion: @escaping(Int, String?) -> Void) {
+        let body: NSMutableDictionary = ["appId" : Authing.getAppId(), "phone" : contact, "type": type, "description": description]
+        if (images.count != 0) {
+            body.setValue(images, forKey: "images")
+        }
+        post("/api/v2/feedback", body) { code, message, data in
+            completion(code, message)
+        }
+    }
+    
     public func deleteAccount(completion: @escaping(Int, String?) -> Void) {
         delete("/api/v2/users/delete") { code, message, data in
             if (code == 200) {
@@ -441,7 +455,6 @@ public class AuthClient: Client {
     }
     
     // MARK: Social APIs
-
     public func loginByWechat(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         self.loginByWechat(authData: nil, code, completion: completion)
     }
@@ -862,7 +875,33 @@ public class AuthClient: Client {
     public func cancelByScannedTicket(ticket: String, completion: @escaping(Int, String?, NSDictionary?) -> Void) {
         post("/api/v2/qrcode/cancel", ["random" : ticket], completion: completion)
     }
-
+    
+    public func loginByQRCode(qrcodeId: String, action: String = "APP_LOGIN", completion: @escaping(Int, String?, NSDictionary?) -> Void) {
+        post("/api/v3/qrcode-app-login", ["qrcodeId" : qrcodeId, "action": action], completion: completion)
+    }
+    
+    public func loginByPushNotification(pushCodeId: String, action: String, completion: @escaping(Int, String?, NSDictionary?) -> Void) {
+        post("/api/v3/change-pushcode-status", ["pushCodeId" : pushCodeId, "action": action], completion: completion)
+    }
+    
+    public func createDevice(completion: @escaping(Int, String?, NSDictionary?) -> Void) {
+        
+        post("/api/v3/create-device", ["uniqueId" : Util.getDeviceID(),
+                                       "type": "Mobile",
+                                       "name": UIDevice.current.name,
+                                       "version": UIDevice.current.systemVersion,
+                                       "producer": "apple",
+                                       "os": UIDevice.current.systemName], completion: completion)
+    }
+    
+    public func bind(cid: String ,completion: @escaping(Int, String?, NSDictionary?) -> Void) {
+        
+        post("/api/v3/user-bind-app", ["cid": cid], completion: completion)
+    }
+    
+    public func unbind(cid: String ,completion: @escaping(Int, String?, NSDictionary?) -> Void) {
+        post("/api/v3/user-unbind-app", ["cid": cid], completion: completion)
+    }
     // MARK: Util APIs
     public func createUserInfo(_ code: Int, _ message: String?, _ data: NSDictionary?, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         createUserInfo(nil, code, message, data, completion: completion)
@@ -899,21 +938,6 @@ public class AuthClient: Client {
             completion(code, message, userInfo)
         } else {
             completion(code, message, nil)
-        }
-    }
-    
-    public func checkAccount(paramsName: String, paramsValue: String, completion: @escaping(Int, String?, NSDictionary?) -> Void) {
-        
-        get("/api/v2/users/is-user-exists?" + paramsName + "=" + paramsValue, completion: completion)
-    }
-    
-    public func feedBack(contact: String, type: Int, description: String, images: [String], completion: @escaping(Int, String?) -> Void) {
-        let body: NSMutableDictionary = ["appId" : Authing.getAppId(), "phone" : contact, "type": type, "description": description]
-        if (images.count != 0) {
-            body.setValue(images, forKey: "images")
-        }
-        post("/api/v2/feedback", body) { code, message, data in
-            completion(code, message)
         }
     }
     

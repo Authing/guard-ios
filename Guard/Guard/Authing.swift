@@ -30,6 +30,7 @@ public class Authing: NSObject {
     
     private static var sSchema = "https"
     private static var sHost = "authing.cn"
+    private static var pushClientId: String?
     private static var sAppId = ""
     private static var isOnPremises = false
     private static var sPublicKey = DEFAULT_PUBLIC_KEY
@@ -68,6 +69,15 @@ public class Authing: NSObject {
     @objc public static func getPublicKey() -> String {
         return sPublicKey
     }
+    
+    @objc public static func setPushClientId(cid: String?) {
+        pushClientId = cid
+    }
+    
+    @objc public static func getPushClientId() -> String? {
+        return pushClientId
+    }
+    
     
     @objc public static func setOnPremiseInfo(host: String, publicKey: String) {
         isOnPremises = true
