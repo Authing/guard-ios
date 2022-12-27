@@ -11,6 +11,7 @@ public class LoginMethodTabItem: MethodTabItem {
         containers.forEach { container in
             if (container.type == self.type) {
                 container.isHidden = false
+                
             } else {
                 container.isHidden = true
             }

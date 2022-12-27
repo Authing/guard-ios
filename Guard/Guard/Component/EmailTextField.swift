@@ -29,4 +29,16 @@ open class EmailTextField: AccountTextField {
             self.setHint("\(sInput)\(text)")
         }
     }
+    
+    public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if let text = textField.text {
+            if !(text == "" || text.isEmpty) {
+                if !(Validator.isValidEmail(email: text)) {
+                    Util.setError(self, "authing_invalid_email".L)
+                    return false
+                }
+            }
+        }
+        return true
+    }
 }

@@ -16,6 +16,7 @@
 "authing_register_now" = "Register now";
 "authing_welcome_to" = "Welcome to";
 "authing_register_by_phone" = "SMS Verification";
+"authing_register_by_phonePassword" = "Phone Password";
 "authing_register_by_email" = "Email Password";
 "authing_register_by_emailCode" = "Email Verification";
 "authing_password_hint" = "Please input your password";

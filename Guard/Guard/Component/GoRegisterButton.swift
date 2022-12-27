@@ -18,7 +18,9 @@ open class GoRegisterButton: GoSomewhereButton {
     
     private func setup() {
         Util.getConfig(self) { config in
-            if (config?.registerMethods == nil || config?.registerMethods?.count == 0) {
+            if (config?.registerMethods == nil || config?.registerMethods?.count == 0) ||
+                config?.autoRegisterThenLoginHintInfo == true ||
+                config?.registerDisabled == true {
                 self.isHidden = true
             }
         }

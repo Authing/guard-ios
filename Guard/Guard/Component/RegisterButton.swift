@@ -73,6 +73,25 @@ open class RegisterButton: PrimaryButton {
             }
         }
         
+        if let tfPhone: PhoneNumberTextField = Util.findView(self, viewClass: PhoneNumberTextField.self),
+           let tfPassword: PasswordTextField = Util.findView(self, viewClass: PasswordTextField.self) {
+            if let phone = tfPhone.text,
+               let password = tfPassword.text {
+                if !(Validator.isValidPhone(phone: phone)) {
+                    Util.setError(tfPhone, "authing_invalid_phone".L)
+                    return
+                }
+                if phone == "" {
+                    Util.setError(tfPhone, "authing_phone_none".L)
+                } else if password == "" {
+                    Util.setError(tfPassword, "authing_password_none".L)
+                } else {
+                    registerByPhone(tfPhone.countryCode, phone, password)
+                }
+                return
+            }
+        }
+        
         if let tfEmail: EmailTextField = Util.findView(self, viewClass: EmailTextField.self),
            let tfPassword: PasswordTextField = Util.findView(self, viewClass: PasswordTextField.self) {
             if let email = tfEmail.text,
@@ -111,6 +130,23 @@ open class RegisterButton: PrimaryButton {
             }
         }
         
+        if let tfExtend: ExtendFieldTextField = Util.findView(self, viewClass: ExtendFieldTextField.self),
+           let tfPassword: PasswordTextField = Util.findView(self, viewClass: PasswordTextField.self) {
+            if let account = tfExtend.text,
+               let password = tfPassword.text,
+               let extend = tfExtend.extendField {
+
+                if account == "" {
+                    Util.setError(tfExtend, "authing_account_none".L)
+                } else if password == "" {
+                    Util.setError(tfPassword, "authing_password_none".L)
+                } else {
+                    registerByExtend(extend, account, password)
+                }
+                return
+            }
+        }
+        
     }
     
     private func registerByPhoneCode(_ countryCode: String? = nil, _ phone: String, _ code: String) {
@@ -122,6 +158,19 @@ open class RegisterButton: PrimaryButton {
             }
         } else {
             OIDCClient().registerByPhoneCode(phoneCountryCode: countryCode, phone: phone, code: code) { code, message, userInfo in
+                self.done(code: code, message: message, userInfo: userInfo)
+            }
+        }
+    }
+    
+    private func registerByPhone(_ countryCode: String? = nil, _ phone: String, _ password: String) {
+        let authProtocol = authViewController?.authFlow?.authProtocol ?? .EInHouse
+        if authProtocol == .EInHouse {
+            Util.getAuthClient(self).registerByPhone(phoneCountryCode: countryCode, phone: phone, password: password) { code, message, userInfo in
+                self.done(code: code, message: message, userInfo: userInfo)
+            }
+        } else {
+            OIDCClient().registerByPhone(phoneCountryCode: countryCode, phone: phone, password: password) { code, message, userInfo in
                 self.done(code: code, message: message, userInfo: userInfo)
             }
         }
@@ -150,6 +199,21 @@ open class RegisterButton: PrimaryButton {
             }
         } else {
             OIDCClient().registerByEmailCode(email: email, code: code) { code, message, userInfo in
+                self.done(code: code, message: message, userInfo: userInfo)
+            }
+        }
+    }
+    
+    
+    private func registerByExtend(_ extend: String, _ account: String, _ password: String) {
+        startLoading()
+        let authProtocol = authViewController?.authFlow?.authProtocol ?? .EInHouse
+        if authProtocol == .EInHouse {
+            Util.getAuthClient(self).registerByExtendedFields(extendedFields: extend, account: account, password: password) { code, message, userInfo in
+                self.done(code: code, message: message, userInfo: userInfo)
+            }
+        } else {
+            OIDCClient().registerByExtendedFields(extendedFields: extend, account: account, password: password) { code, message, userInfo in
                 self.done(code: code, message: message, userInfo: userInfo)
             }
         }

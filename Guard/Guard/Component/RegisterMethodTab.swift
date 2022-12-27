@@ -17,18 +17,30 @@ open class RegisterMethodTab: MethodTab {
 
     override func doSetup(_ config: Config) {
         var i: CGFloat = 0
-        config.registerMethods?.forEach({ method in
+        
+        for method in config.registerMethods ?? [] {
             let frame = CGRect.zero
             let item = RegisterMethodTabItem(frame: frame)
             if (method == "phone") {
                 item.setText("authing_register_by_phone".L)
                 item.type = 0
+            } else if (method == "phone-password") {
+                item.setText("authing_register_by_phonePassword".L)
+                item.type = 1
             } else if (method == "email") {
                 item.setText("authing_register_by_email".L)
-                item.type = 1
-            }else if (method == "emailCode") {
-                item.setText("authing_register_by_emailCode".L)
                 item.type = 2
+            } else if (method == "emailCode") {
+                item.setText("authing_register_by_emailCode".L)
+                item.type = 3
+            } else if method.contains("-password") {
+                let field = method.replacingOccurrences(of: "-password", with: "")
+                let text = Util.getExtendFieldTitle(config: config, field: field)
+                item.setExtendField(field, text)
+                item.setText(text)
+                item.type = 4
+            } else {
+                continue
             }
 
             self.addSubview(item)
@@ -39,6 +51,6 @@ open class RegisterMethodTab: MethodTab {
                 item.loseFocus()
             }
             i += 1
-        })
+        }
     }
 }

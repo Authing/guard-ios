@@ -8,13 +8,14 @@
 "authing_other_login_methods" = "其他方式登入";
 "authing_login_by_phone_code" = "短信驗證碼";
 "authing_login_by_email_code" = "電子郵件驗證碼";
-"authing_login_by_password" = "賬號密碼";
+"authing_login_by_password" = "密碼登入";
 "authing_get_verify_code" = "獲得驗證碼";
 "authing_register" = "註冊";
 "authing_no_account" = "沒有帳號？";
 "authing_register_now" = "立即註冊";
 "authing_welcome_to" = "歡迎加入";
 "authing_register_by_phone" = "短信驗證碼";
+"authing_register_by_phonePassword" = "手機號密碼";
 "authing_register_by_email" = "電子郵件密碼";
 "authing_register_by_emailCode" = "電子郵件驗證碼";
 "authing_password_hint" = "請輸入密碼";

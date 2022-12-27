@@ -2,7 +2,7 @@
 "authing_please_input"="入力してください";
 "authing_username"="ユーザー名";
 "authing_email"="メール";
-"authing_phone"="電話番号";
+"authing_phone"="携帯電話番号";
 "authing_password"="パスワード";
 "authing_verify_code"="確認コード";
 "authing_other_login_methods"="他のログイン方法";
@@ -15,6 +15,7 @@
 "authing_register_now"="すぐに登録します";
 "authing_welcome_to"="ようこそ";
 "authing_register_by_phone"="SMS確認コード";
+"authing_register_by_phonePassword" = "携帯電話番号のパスワード";
 "authing_register_by_email"="メールパスワード";
 "authing_register_by_emailCode"="メール確認コード";
 "authing_password_hint"="パスワードを入力してください";

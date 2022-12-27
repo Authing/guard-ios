@@ -9,7 +9,7 @@ open class Validator {
     public static func isValidPhone(phone: String?) -> Bool {
         let phoneRegex = "^[0-9+]{0,1}+[0-9]+"
         let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
-        return phoneTest.evaluate(with: phone)
+        return phoneTest.evaluate(with: phone) && phone?.count == 11
     }
 
     public static func isValidEmail(email: String?) -> Bool {

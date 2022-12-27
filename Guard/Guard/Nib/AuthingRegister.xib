@@ -98,6 +98,56 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uBu-ix-gFv" userLabel="PhonePssword Container" customClass="RegisterContainer" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="24" y="306" width="366" height="176"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wsp-Wf-Scz" customClass="PhoneNumberTextField" customModule="Guard" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="366" height="52"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="52" id="Lq2-7k-aia"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                        </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Og0-2d-90u" customClass="PasswordTextField" customModule="Guard" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="68" width="366" height="52"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="52" id="YQW-HR-N2i"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="checkStrength" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8BG-Ah-h53" customClass="PasswordConfirmTextField" customModule="Guard" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="136" width="366" height="52"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="52" id="5Xh-XY-2sZ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="Og0-2d-90u" firstAttribute="leading" secondItem="uBu-ix-gFv" secondAttribute="leading" id="Aty-Ki-Kbc"/>
+                        <constraint firstAttribute="trailing" secondItem="wsp-Wf-Scz" secondAttribute="trailing" id="QvE-Kv-6HY"/>
+                        <constraint firstItem="Og0-2d-90u" firstAttribute="top" secondItem="wsp-Wf-Scz" secondAttribute="bottom" constant="16" id="SWH-6O-dfg"/>
+                        <constraint firstAttribute="trailing" secondItem="Og0-2d-90u" secondAttribute="trailing" id="Ytq-pw-OX6"/>
+                        <constraint firstAttribute="height" constant="176" id="bg2-BI-qPN"/>
+                        <constraint firstItem="wsp-Wf-Scz" firstAttribute="top" secondItem="uBu-ix-gFv" secondAttribute="top" id="biE-Xh-zuH"/>
+                        <constraint firstAttribute="trailing" secondItem="8BG-Ah-h53" secondAttribute="trailing" id="e7I-Q2-1Tl"/>
+                        <constraint firstItem="8BG-Ah-h53" firstAttribute="leading" secondItem="uBu-ix-gFv" secondAttribute="leading" id="hu3-c1-8Ot"/>
+                        <constraint firstItem="8BG-Ah-h53" firstAttribute="top" secondItem="Og0-2d-90u" secondAttribute="bottom" constant="16" id="tMx-19-gic"/>
+                        <constraint firstItem="wsp-Wf-Scz" firstAttribute="leading" secondItem="uBu-ix-gFv" secondAttribute="leading" id="y0O-q9-nmp"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="type">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nxl-an-WZu" userLabel="Email Container" customClass="RegisterContainer" customModule="Guard" customModuleProvider="target">
                     <rect key="frame" x="24" y="306" width="366" height="176"/>
                     <subviews>
@@ -144,7 +194,7 @@
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="type">
-                            <integer key="value" value="1"/>
+                            <integer key="value" value="2"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
@@ -195,7 +245,57 @@
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="type">
-                            <integer key="value" value="2"/>
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zu1-aM-oiw" userLabel="ExtendField Container" customClass="RegisterContainer" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="24" y="306" width="366" height="176"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4v6-Wo-Dz8" customClass="ExtendFieldTextField" customModule="Guard" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="366" height="52"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="52" id="wgh-7f-RVj"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                        </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="DJU-In-3Ff" customClass="PasswordTextField" customModule="Guard" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="68" width="366" height="52"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="52" id="PD3-W5-qUV"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="checkStrength" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ib5-aB-bi3" customClass="PasswordConfirmTextField" customModule="Guard" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="136" width="366" height="52"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="52" id="ows-cy-CT9"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="4v6-Wo-Dz8" firstAttribute="leading" secondItem="zu1-aM-oiw" secondAttribute="leading" id="Era-a2-ODd"/>
+                        <constraint firstItem="ib5-aB-bi3" firstAttribute="leading" secondItem="zu1-aM-oiw" secondAttribute="leading" id="F0z-Y3-2cE"/>
+                        <constraint firstItem="DJU-In-3Ff" firstAttribute="leading" secondItem="zu1-aM-oiw" secondAttribute="leading" id="Gw3-Jz-Zyh"/>
+                        <constraint firstItem="DJU-In-3Ff" firstAttribute="top" secondItem="4v6-Wo-Dz8" secondAttribute="bottom" constant="16" id="cE3-Ro-3Ub"/>
+                        <constraint firstAttribute="trailing" secondItem="ib5-aB-bi3" secondAttribute="trailing" id="cM3-hu-Lu9"/>
+                        <constraint firstItem="4v6-Wo-Dz8" firstAttribute="top" secondItem="zu1-aM-oiw" secondAttribute="top" id="hFy-v8-o4b"/>
+                        <constraint firstAttribute="trailing" secondItem="4v6-Wo-Dz8" secondAttribute="trailing" id="lOB-yL-tSB"/>
+                        <constraint firstAttribute="trailing" secondItem="DJU-In-3Ff" secondAttribute="trailing" id="oEC-36-kk1"/>
+                        <constraint firstItem="ib5-aB-bi3" firstAttribute="top" secondItem="DJU-In-3Ff" secondAttribute="bottom" constant="16" id="q78-QB-sq1"/>
+                        <constraint firstAttribute="height" constant="176" id="uWc-kI-zRz"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="type">
+                            <integer key="value" value="4"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
@@ -245,19 +345,25 @@
             <viewLayoutGuide key="safeArea" id="t0S-i3-gzY"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="uBu-ix-gFv" firstAttribute="top" secondItem="vB5-a9-UJW" secondAttribute="bottom" constant="24" id="2HF-UR-dMW"/>
                 <constraint firstItem="voS-Jy-wQm" firstAttribute="top" secondItem="1MM-ts-eHA" secondAttribute="bottom" constant="15" id="4PU-P2-5y3"/>
                 <constraint firstItem="xd4-7A-p3g" firstAttribute="centerX" secondItem="5TK-1R-p6K" secondAttribute="centerX" id="6h2-YK-UZK"/>
                 <constraint firstItem="1MM-ts-eHA" firstAttribute="leading" secondItem="vB5-a9-UJW" secondAttribute="leading" id="9aj-5K-c1h"/>
                 <constraint firstItem="gy9-8p-ejP" firstAttribute="leading" secondItem="vB5-a9-UJW" secondAttribute="leading" id="9fe-L1-rqE"/>
                 <constraint firstItem="nxl-an-WZu" firstAttribute="top" secondItem="rbI-XB-hdi" secondAttribute="top" id="Bzd-QU-EfW"/>
+                <constraint firstItem="zu1-aM-oiw" firstAttribute="trailing" secondItem="vB5-a9-UJW" secondAttribute="trailing" id="C4k-rS-0wA"/>
                 <constraint firstItem="F0M-JR-WfC" firstAttribute="leading" secondItem="t0S-i3-gzY" secondAttribute="leading" constant="24" id="Ct9-i4-ako"/>
                 <constraint firstItem="1MM-ts-eHA" firstAttribute="trailing" secondItem="vB5-a9-UJW" secondAttribute="trailing" id="CxR-w4-efi"/>
                 <constraint firstItem="kba-Fg-s5k" firstAttribute="trailing" secondItem="vB5-a9-UJW" secondAttribute="trailing" id="EH1-ee-0Vc"/>
                 <constraint firstItem="t0S-i3-gzY" firstAttribute="bottom" secondItem="xd4-7A-p3g" secondAttribute="bottom" id="ET0-i2-SCm"/>
+                <constraint firstItem="zu1-aM-oiw" firstAttribute="top" secondItem="vB5-a9-UJW" secondAttribute="bottom" constant="24" id="Ffr-4y-lFi"/>
+                <constraint firstItem="uBu-ix-gFv" firstAttribute="leading" secondItem="vB5-a9-UJW" secondAttribute="leading" id="GnW-Cc-qQs"/>
                 <constraint firstItem="33m-3M-o7j" firstAttribute="leading" secondItem="5TK-1R-p6K" secondAttribute="leading" constant="30" id="HFs-C1-pic"/>
+                <constraint firstItem="zu1-aM-oiw" firstAttribute="leading" secondItem="vB5-a9-UJW" secondAttribute="leading" id="Kym-ub-gqp"/>
                 <constraint firstItem="nxl-an-WZu" firstAttribute="leading" secondItem="vB5-a9-UJW" secondAttribute="leading" id="LCe-dT-Rib"/>
                 <constraint firstItem="gy9-8p-ejP" firstAttribute="top" secondItem="rbI-XB-hdi" secondAttribute="bottom" constant="8" symbolic="YES" id="Lxg-cU-cuT"/>
                 <constraint firstItem="F0M-JR-WfC" firstAttribute="top" secondItem="t0S-i3-gzY" secondAttribute="top" constant="50" id="MAS-mu-hZq"/>
+                <constraint firstItem="uBu-ix-gFv" firstAttribute="trailing" secondItem="vB5-a9-UJW" secondAttribute="trailing" id="WoZ-U3-L71"/>
                 <constraint firstItem="vB5-a9-UJW" firstAttribute="top" secondItem="33m-3M-o7j" secondAttribute="bottom" constant="40" id="aHL-Jg-eeE"/>
                 <constraint firstItem="vB5-a9-UJW" firstAttribute="leading" secondItem="t0S-i3-gzY" secondAttribute="leading" constant="24" id="aIY-2o-OdI"/>
                 <constraint firstItem="rbI-XB-hdi" firstAttribute="leading" secondItem="vB5-a9-UJW" secondAttribute="leading" id="cHs-1R-AR2"/>
