@@ -27,26 +27,28 @@ public class Config: NSObject {
             }
             
             if let verifyCodeTabConfig: NSDictionary = data?["verifyCodeTabConfig"] as? NSDictionary{
-                if let enabledLoginMethods: [String] = verifyCodeTabConfig["validLoginMethods"] as? [String]{
-                    if loginMethods?.first == "password" {
-                        if let idx = loginMethods?.firstIndex (where: { (method) -> Bool in
-                            return method == "phone-code"
-                        }) {
-                            loginMethods?.remove(at: idx)
-                        }
-                        loginMethods = (loginMethods ?? []) + enabledLoginMethods
-                    } else {
-                        let arr = (loginMethods ?? []) + enabledLoginMethods
-                        loginMethods = arr.enumerated().filter { (index, value) -> Bool in
-                            return arr.firstIndex(of: value) == index
-                        }.map {
-                            $0.element
-                        }
+                verifyCodeValidLoginMethods = verifyCodeTabConfig["validLoginMethods"] as? [String]
+                if loginMethods?.first == "password" {
+                    if let idx = loginMethods?.firstIndex (where: { (method) -> Bool in
+                        return method == "phone-code"
+                    }) {
+                        loginMethods?.remove(at: idx)
+                    }
+                    loginMethods = (loginMethods ?? []) + (verifyCodeValidLoginMethods ?? [])
+                } else {
+                    let arr = (loginMethods ?? []) + (verifyCodeValidLoginMethods ?? [])
+                    loginMethods = arr.enumerated().filter { (index, value) -> Bool in
+                        return arr.firstIndex(of: value) == index
+                    }.map {
+                        $0.element
                     }
                 }
+                verifyCodeValidRegisterMethods = verifyCodeTabConfig["validRegisterMethods"] as? [String]
             }
             if let passwordTabConfig: NSDictionary = data?["passwordTabConfig"] as? NSDictionary{
                 enabledLoginMethods = passwordTabConfig["validLoginMethods"] as? [String]
+                passwordValidLoginMethods = passwordTabConfig["validLoginMethods"] as? [String]
+                passwordValidRegisterMethods = passwordTabConfig["validRegisterMethods"] as? [String]
             }
             if let registerTabs: NSDictionary = data?["registerTabs"] as? NSDictionary{
                 registerMethods = registerTabs["list"] as? [String]
@@ -74,6 +76,7 @@ public class Config: NSObject {
             agreements = data?["agreements"] as? [NSDictionary]
             redirectUris = data?["redirectUris"] as? [String]
             tabMethodsFields = data?["tabMethodsFields"] as? [NSDictionary]
+            
 //            if let global: NSDictionary = data?["global"] as? NSDictionary {
 //                defaultLanguage = global["defaultLanguage"] as? String
 //                languageFollowsBrowser = global["languageFollowsBrowser"] as? Bool
@@ -120,6 +123,11 @@ public class Config: NSObject {
     open var loginMethods: [String]?
     open var defaultLoginMethod: String?
     open var enabledLoginMethods: [String]?
+    open var passwordValidRegisterMethods: [String]?
+    open var verifyCodeValidRegisterMethods: [String]?
+    open var passwordValidLoginMethods: [String]?
+    open var verifyCodeValidLoginMethods: [String]?
+
     open var registerMethods: [String]?
     open var tabMethodsFields: [NSDictionary]?
     open var defaultRegisterMethod: String?
@@ -153,6 +161,13 @@ public class Config: NSObject {
     open var autoRegisterThenLoginHintInfo: Bool?
 
     open var registerDisabled: Bool?
+    
+    open var enableFaceLogin: Bool? {
+        get { return data?["enableFaceLogin"] as? Bool }
+    }
+    open var enableFingerprintLogin: Bool? {
+        get { return data?["enableFingerprintLogin"] as? Bool }
+    }
     
     // MARK: Request
     open var appId: String!

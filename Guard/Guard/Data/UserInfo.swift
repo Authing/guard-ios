@@ -104,12 +104,12 @@ open class UserInfo: NSObject {
     }
     @objc public var mfaPhone: String? {
         get {
-            return mfaData?["phone"] as? String
+            return mfaData?["mfaPhone"] as? String
         }
     }
     @objc public var mfaEmail: String? {
         get {
-            return mfaData?["email"] as? String
+            return mfaData?["mfaEmail"] as? String
         }
     }
     

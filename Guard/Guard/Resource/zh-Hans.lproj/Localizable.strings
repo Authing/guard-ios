@@ -167,12 +167,14 @@
 "authing_social_google" = "     使用 Google 登录";
 "authing_social_apple" = "     使用 Apple 登录";
 "Authing_social_face" = "      使用 FaceID 登录";
+"Authing_social_touch" = "      使用 TouchID 登录";
 
 "authing_recovery_title" = "使用恢复代码";
 "authing_recovery_tip" = "如果没有恢复代码，请联系管理员处理";
 "authing_recovery_button" = "请输入恢复代码";
 
 "me_security_gobind" = "去绑定";
+
 "authing_bind_else" = "其他二次验证方式";
 "authing_security_code" = "数字安全码";
 
@@ -192,3 +194,6 @@
 "authing_binding_choose_account" = "我想绑定到已有账号";
 
 "authing_binding_account" = "绑定已有账号";
+
+"authing_binding_webauthn" = "未识别到指纹 / 人脸对应账号，请绑定已有账号。";
+"authing_webauthn_success" = "你已成功绑定「%@」账号";

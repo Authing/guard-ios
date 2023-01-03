@@ -149,6 +149,7 @@
 "authing_social_google" = "     Google でサインイン";
 "authing_social_apple" = "      Apple でサインイン";
 "Authing_social_face" = "      FaceID でサインイン";
+"Authing_social_touch" = "      TouchID でサインイン";
 
 "authing_recovery_title" = "使用回復コード";
 "authing_recovery_tip" = "回復コードがない場合は管理者に連絡して処理してください";
@@ -178,3 +179,5 @@
 "authing_binding_choose_account" = "既存のアカウントに結びつけたい";
 
 "authing_binding_account" = "既存のアカウントを結びつける";
+
+"authing_webauthn_success" = "あなたは成功して「%@」アカウントを結びつけました";

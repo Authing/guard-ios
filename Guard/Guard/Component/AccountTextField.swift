@@ -36,7 +36,7 @@ open class AccountTextField: TextFieldLayout {
         autocorrectionType = .no
         
         // hint can be set explicitly via Nib
-        var methods = config.enabledLoginMethods
+        var methods = config.passwordValidLoginMethods
         if let socialBindingMethods = (authViewController?.authFlow?.data.value(forKey: AuthFlow.KEY_USER_INFO) as? UserInfo)?.socialBindingData?["methods"] as? [String] {
             methods = []
             for method in socialBindingMethods {
@@ -56,10 +56,10 @@ open class AccountTextField: TextFieldLayout {
             
             var i: Int = 0
 
-            if (config.enabledLoginMethods != nil) {
-                for method in config.enabledLoginMethods ?? [] {
+            if (config.passwordValidLoginMethods != nil) {
+                for method in config.passwordValidLoginMethods ?? [] {
                     hint += getMethodText(method, config)
-                    if (i < config.enabledLoginMethods!.count - 1) {
+                    if (i < config.passwordValidLoginMethods!.count - 1) {
                         hint += " / "
                     }
                     i += 1

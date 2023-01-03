@@ -159,6 +159,7 @@
 "Authing_social_google" = "     Sign in with Google";
 "Authing_social_apple" = "      Sign in with Apple";
 "Authing_social_face" = "      Sign in with FaceID";
+"Authing_social_touch" = "      Sign in with TouchID";
 
 "authing_recovery_title" = "Use recovery code";
 "authing_recovery_tip" = "If no recovery code, please contact the administrator";
@@ -185,3 +186,6 @@
 "authing_binding_choose_account" = "I want to bind to an existing account";
 
 "authing_binding_account" = "Binding an Existing Account";
+
+"authing_binding_webauthn" = "No fingerprint/face corresponding account is identified, please bind an existing account.";
+"authing_webauthn_success" = "You have successfully bound the「%@」account ";

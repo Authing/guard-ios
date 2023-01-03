@@ -20,5 +20,4 @@ Pod::Spec.new do |s|
     s.source            = { :http => 'https://github.com/Authing/guard-ios/releases/download/1.3.6/Guard.xcframework.zip' }
     s.ios.deployment_target = '11.0'
     s.ios.vendored_frameworks = 'Guard.xcframework'
-    
 end

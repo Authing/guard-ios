@@ -257,7 +257,7 @@ extension MFAFaceViewController {
                                 if code == 200{
                                     self?.tipLabel.text = "authing_mfa_bind_success".L
                                 
-                                    if let flow = self?.authFlow {
+                                    if (self?.authFlow) != nil {
                                         self?.session.stopRunning()
                                         self?.pushToBindSuccessViewController()
                                     }

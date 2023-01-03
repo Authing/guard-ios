@@ -74,7 +74,7 @@ open class FeedBackButton: PrimaryButton {
                 self.stopLoading()
                 if code == 200 {
                     DispatchQueue.main.async() {
-                        self.authViewController?.authFlow?.requestCallBack?(.FeedBack, code, message ?? "")
+                        self.authViewController?.authFlow?.requestCallBack?(.FeedBack, code, message ?? "", nil)
                         self.viewController?.navigationController?.popViewController(animated: true)
                     }
                 } else {

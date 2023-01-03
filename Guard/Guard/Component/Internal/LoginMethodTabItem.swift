@@ -11,10 +11,55 @@ public class LoginMethodTabItem: MethodTabItem {
         containers.forEach { container in
             if (container.type == self.type) {
                 container.isHidden = false
-                
             } else {
                 container.isHidden = true
             }
+        }
+        
+        Util.getConfig(self) { config in
+            
+            if let loginButton: LoginButton = Util.findView(self, viewClass: LoginButton.self) as? LoginButton {
+                let loginText = "authing_login".L
+                
+                //phone-code
+                if self.type == 0 {
+                    if (config?.verifyCodeValidRegisterMethods?.contains("phone-code") ?? false) &&
+                        (config?.verifyCodeValidLoginMethods?.contains("phone-code") ?? false) {
+                        loginButton.setTitle(self.getLoginButtonTitle(config: config), for: .normal)
+                    } else {
+                        loginButton.setTitle(loginText, for: .normal)
+                    }
+                } else if self.type == 1 {
+                    //password
+                    if config?.passwordValidRegisterMethods?.count != config?.passwordValidLoginMethods?.count {
+                        loginButton.setTitle(loginText, for: .normal)
+                    } else {
+                        loginButton.setTitle(self.getLoginButtonTitle(config: config), for: .normal)
+                    }
+                } else if self.type == 2 {
+                    //email-code
+                    if (config?.verifyCodeValidRegisterMethods?.contains("email-code") ?? false) &&
+                        (config?.verifyCodeValidLoginMethods?.contains("email-code") ?? false) {
+                        loginButton.setTitle(self.getLoginButtonTitle(config: config), for: .normal)
+                    } else {
+                        loginButton.setTitle(loginText, for: .normal)
+                    }
+                } else {
+                    loginButton.setTitle(self.getLoginButtonTitle(config: config), for: .normal)
+                }
+            }
+        }
+    }
+    
+    private func getLoginButtonTitle(config: Config?) -> String {
+        if config?.autoRegisterThenLoginHintInfo ?? false &&
+            !(config?.registerDisabled == true ||
+              config?.registerMethods == nil ||
+              config?.registerMethods?.count == 0) {
+            
+            return "\("authing_login".L) / \("authing_register".L)"
+        } else {
+            return "authing_login".L
         }
     }
 }

@@ -19,9 +19,10 @@ public enum RequestType {
     case FeedBack
     case Register
     case ResetPassword
+    case BindingWebAuthn
 }
 
-public typealias RequestSuccessCallBack = (_ requestType: RequestType, _ code: Int, _ message: String) -> Void
+public typealias RequestSuccessCallBack = (_ requestType: RequestType, _ code: Int, _ message: String, _ userInfo: UserInfo?) -> Void
 
 public class AuthFlow: NSObject {
         
@@ -30,7 +31,8 @@ public class AuthFlow: NSObject {
     public static let KEY_EXTENDED_FIELDS: String = "extended_fields"
     public static let KEY_MFA_PHONE: String = "mfa_phone"
     public static let KEY_MFA_EMAIL: String = "mfa_email"
-    
+    public static let KEY_BINDING_WEBAUTHN: String = "binding_webauthn"
+
     public var startViewController: UIViewController?
     public var authCompletion: Authing.AuthCompletion?
     
@@ -125,6 +127,12 @@ public class AuthFlow: NSObject {
     }
     
     public func complete(_ code: Int, _ message: String?, _ userInfo: UserInfo?, animated: Bool = true) {
+        if let value = data[AuthFlow.KEY_BINDING_WEBAUTHN] as? String {
+            if !value.isEmpty {
+                self.requestCallBack?(.BindingWebAuthn, code, message ?? "", userInfo)
+                return
+            }
+        }
         DispatchQueue.main.async() {
             self.authCompletion?(code, message, userInfo)
         }

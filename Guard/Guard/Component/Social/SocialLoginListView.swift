@@ -158,26 +158,16 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                 value.append(srcs[key] as? String ?? "")
             }
             
-            if value.count > 0 {
-                if SocialLoginListView.supportFaceID() {
-                    value.insert("face", at: 0)
-                } else {
-                    
-                }
+            if config?.enableFaceLogin == true && Util.isFullScreenIphone() == true {
+                value.insert("face", at: 0)
+            } else if config?.enableFingerprintLogin == true && Util.isFullScreenIphone() == false {
+                value.insert("face", at: 0)
             }
+            
             return value
         }
         
         return []
-    }
-    
-    class func supportFaceID() -> Bool {
-        let context = LAContext()
-        context.localizedFallbackTitle = "登录 Authing"
-        var error: NSError? = nil;
-        
-        let support = context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: &error)
-        return true
     }
     
     class func handleSrc(container: UIView, _ sources: Array<String>, _ isVerticalLayout: Bool = false) {
@@ -255,6 +245,14 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                 let view = FaceIdLoginButton.init()
                 if isVerticalLayout {
                     view.setTitle("Authing_social_face".L, for: .normal)
+                }
+                container.addSubview(view)
+                
+            } else if ("touch" == trimmed) {
+                
+                let view = FaceIdLoginButton.init()
+                if isVerticalLayout {
+                    view.setTitle("Authing_social_touch".L, for: .normal)
                 }
                 container.addSubview(view)
                 

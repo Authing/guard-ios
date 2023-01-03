@@ -510,4 +510,29 @@ public class Util {
         }
     }
     
+    public static func isFullScreenIphone() -> Bool {
+        if (UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0.0) > 0.0{
+            return true
+        }
+        
+        return false
+    }
+    
+    public static func stringEncodeToUInt8Array(_ string: String) -> [UInt8] {
+        var base64Encoded = string.replacingOccurrences(of: "-", with: "+").replacingOccurrences(of: "_", with: "/")
+        let remainder = base64Encoded.count % 4
+        if remainder > 0 {
+            base64Encoded = base64Encoded.padding(toLength: base64Encoded.count + 4 - remainder,
+                                          withPad: "=",
+                                          startingAt: 0)
+        }
+        
+        var array:  [UInt8] = []
+        if let decodedData = Data(base64Encoded: base64Encoded) {
+            array=[UInt8](decodedData)
+        }
+        
+        return array
+    }
+    
 }

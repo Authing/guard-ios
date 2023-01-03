@@ -124,12 +124,12 @@ open class LoginButton: PrimaryButton {
                 
         let authProtocol = authViewController?.authFlow?.authProtocol ?? .EInHouse
         if authProtocol == .EInHouse {
-            Util.getAuthClient(self).loginByPhoneCode(phoneCountryCode: countryCode, phone: phone, code: code) { code, message, userInfo in
+            Util.getAuthClient(self).loginByPhoneCode(phoneCountryCode: countryCode, phone: phone, code: code, autoRegister) { code, message, userInfo in
                 self.stopLoading()
                 LoginButton.handleLogin(button: self, code, message: message, userInfo: userInfo, authCompletion: self.authCompletion)
             }
         } else {
-            OIDCClient().loginByPhoneCode(phoneCountryCode: countryCode, phone: phone, code: code) { code, message, userInfo in
+            OIDCClient().loginByPhoneCode(phoneCountryCode: countryCode, phone: phone, code: code, autoRegister) { code, message, userInfo in
                 self.stopLoading()
                 LoginButton.handleLogin(button: self, code, message: message, userInfo: userInfo, authCompletion: self.authCompletion)
             }
@@ -154,9 +154,19 @@ open class LoginButton: PrimaryButton {
     }
     
     private func loginByEmail(_ email: String, _ code: String, _ autoRegister: Bool) {
-        Util.getAuthClient(self).loginByEmail(authData: nil, email: email, code: code, autoRegister) { code, message, userInfo in
-            self.stopLoading()
-            LoginButton.handleLogin(button: self, code, message: message, userInfo: userInfo, authCompletion: self.authCompletion)
+        startLoading()
+        
+        let authProtocol = authViewController?.authFlow?.authProtocol ?? .EInHouse
+        if authProtocol == .EInHouse {
+            Util.getAuthClient(self).loginByEmail(authData: nil, email: email, code: code, autoRegister) { code, message, userInfo in
+                self.stopLoading()
+                LoginButton.handleLogin(button: self, code, message: message, userInfo: userInfo, authCompletion: self.authCompletion)
+            }
+        } else {
+            OIDCClient().loginByEmail(email: email, code: code, autoRegister) { code,  message,  userInfo in
+                self.stopLoading()
+                LoginButton.handleLogin(button: self, code, message: message, userInfo: userInfo, authCompletion: self.authCompletion)
+            }
         }
     }
         
@@ -189,14 +199,12 @@ open class LoginButton: PrimaryButton {
             } else if (code == Const.EC_MFA_REQUIRED) {
                                 
                 if let mfaPolicy = Authing.getCurrentUser()?.mfaPolicy {
-                    
                     for policy in mfaPolicy {
                         DispatchQueue.main.async() {
                             let vc = LoginButton.mfaHandle(view: button, mfaType: policy, needGuide: true)
                             button.authViewController?.navigationController?.pushViewController(vc ?? UIViewController(), animated: true)
                         }
                         break
-
                     }
                 }
 

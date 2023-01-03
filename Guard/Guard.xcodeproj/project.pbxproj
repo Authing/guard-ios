@@ -153,6 +153,8 @@
 		8D8B32C0292771D2005F3E6E /* MFATipsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8B32BF292771D1005F3E6E /* MFATipsLabel.swift */; };
 		8DBDC4DC2912470E00B7BE7F /* ExtendFieldTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBDC4DB2912470D00B7BE7F /* ExtendFieldTextField.swift */; };
 		8DF7F9682943841E007CC790 /* FaceIdLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF7F9672943841E007CC790 /* FaceIdLoginButton.swift */; };
+		A8093DA8295B82FF00372B90 /* AuthingBindingWebAuthn.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8093DA7295B82FF00372B90 /* AuthingBindingWebAuthn.xib */; };
+		A8093DAA295B853D00372B90 /* BindingWebAuthnButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8093DA9295B853D00372B90 /* BindingWebAuthnButton.swift */; };
 		A80B20B728D6289300933A26 /* SocialLoginListVerticalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80B20B628D6289300933A26 /* SocialLoginListVerticalView.swift */; };
 		A80B20B928D63CBF00933A26 /* SocialNoLoginMethodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80B20B828D63CBF00933A26 /* SocialNoLoginMethodsView.swift */; };
 		A80BD1A728D1B65F00F9DEDE /* AuthFlowUIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80BD1A628D1B65F00F9DEDE /* AuthFlowUIConfig.swift */; };
@@ -180,6 +182,8 @@
 		A8D38D1627F1DB4A00942707 /* CountryCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D38D1527F1DB4A00942707 /* CountryCodeViewController.swift */; };
 		A8D38D2127F2B02D00942707 /* AuthingCountryCode.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D38D2027F2B02D00942707 /* AuthingCountryCode.xib */; };
 		A8D62BAA28B8D442001D0A40 /* country.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8D62BA928B8D442001D0A40 /* country.plist */; };
+		A8D8BA51295D8A5C00B8AC45 /* WebAuthn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D8BA3D295D8A0200B8AC45 /* WebAuthn.framework */; };
+		A8D8BA52295D8A5C00B8AC45 /* WebAuthn.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8D8BA3D295D8A0200B8AC45 /* WebAuthn.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A8DBB7B5287D5B4100F75C97 /* AuthingResetSuccess.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DBB7B4287D5B4100F75C97 /* AuthingResetSuccess.xib */; };
 		A8DBB7B7287D5B8C00F75C97 /* ResetSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DBB7B6287D5B8C00F75C97 /* ResetSuccessViewController.swift */; };
 		A8DBB7B9287D635400F75C97 /* GoBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DBB7B8287D635400F75C97 /* GoBackButton.swift */; };
@@ -197,7 +201,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		A8D8BA50295D8A5700B8AC45 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A8D8BA52295D8A5C00B8AC45 /* WebAuthn.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		01DB0306C10822F505C8B8AD /* Pods_Guard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Guard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A88E534A7029F78B698F43D /* Pods-Guard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guard.release.xcconfig"; path = "Target Support Files/Pods-Guard/Pods-Guard.release.xcconfig"; sourceTree = "<group>"; };
 		7E003B0D284742DA00AAE4ED /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		7E02F46627950C35007FA048 /* UserInfoCompleteContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCompleteContainer.swift; sourceTree = "<group>"; };
 		7E02F46827950C57007FA048 /* UserInfoCompleteFieldForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCompleteFieldForm.swift; sourceTree = "<group>"; };
@@ -332,6 +352,8 @@
 		8D8B32BF292771D1005F3E6E /* MFATipsLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFATipsLabel.swift; sourceTree = "<group>"; };
 		8DBDC4DB2912470D00B7BE7F /* ExtendFieldTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendFieldTextField.swift; sourceTree = "<group>"; };
 		8DF7F9672943841E007CC790 /* FaceIdLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIdLoginButton.swift; sourceTree = "<group>"; };
+		A8093DA7295B82FF00372B90 /* AuthingBindingWebAuthn.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingBindingWebAuthn.xib; sourceTree = "<group>"; };
+		A8093DA9295B853D00372B90 /* BindingWebAuthnButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingWebAuthnButton.swift; sourceTree = "<group>"; };
 		A80B20B628D6289300933A26 /* SocialLoginListVerticalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginListVerticalView.swift; sourceTree = "<group>"; };
 		A80B20B828D63CBF00933A26 /* SocialNoLoginMethodsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialNoLoginMethodsView.swift; sourceTree = "<group>"; };
 		A80BD1A628D1B65F00F9DEDE /* AuthFlowUIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlowUIConfig.swift; sourceTree = "<group>"; };
@@ -345,7 +367,6 @@
 		A8652654289D2C03006FC1D3 /* GuardManualTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardManualTest.swift; sourceTree = "<group>"; };
 		A86AE1DB287FED6300BFD4A0 /* DeleteAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountView.swift; sourceTree = "<group>"; };
 		A874BC7428780BBA002B4C9F /* DescribeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescribeTextView.swift; sourceTree = "<group>"; };
-		A8788E86295B01E500117D57 /* libWebAuthnKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libWebAuthnKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A89705CA287EDD520080BEE5 /* AuthingDeleteAccount.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingDeleteAccount.xib; sourceTree = "<group>"; };
 		A89EDCD628D6F5E2001B7E99 /* SocialLoginListToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginListToast.swift; sourceTree = "<group>"; };
 		A8A4897A287578A600F3120F /* GoFeedBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoFeedBackButton.swift; sourceTree = "<group>"; };
@@ -362,11 +383,14 @@
 		A8D38D1527F1DB4A00942707 /* CountryCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeViewController.swift; sourceTree = "<group>"; };
 		A8D38D2027F2B02D00942707 /* AuthingCountryCode.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingCountryCode.xib; sourceTree = "<group>"; };
 		A8D62BA928B8D442001D0A40 /* country.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = country.plist; sourceTree = "<group>"; };
+		A8D8BA3D295D8A0200B8AC45 /* WebAuthn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WebAuthn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8D8BA41295D8A2C00B8AC45 /* Pods_WebAuthn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_WebAuthn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8DBB7B4287D5B4100F75C97 /* AuthingResetSuccess.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingResetSuccess.xib; sourceTree = "<group>"; };
 		A8DBB7B6287D5B8C00F75C97 /* ResetSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetSuccessViewController.swift; sourceTree = "<group>"; };
 		A8DBB7B8287D635400F75C97 /* GoBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoBackButton.swift; sourceTree = "<group>"; };
 		A8E1E1752898F6E100375EEA /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		A8E1F10928350590004B1E76 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		ABF5523F33BA23013C88A01F /* Pods-Guard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guard.debug.xcconfig"; path = "Target Support Files/Pods-Guard/Pods-Guard.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -374,6 +398,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8D8BA51295D8A5C00B8AC45 /* WebAuthn.framework in Frameworks */,
 				7E199D112783F8E1002C6F81 /* libc++.tbd in Frameworks */,
 				7E199D0D2783DFC0002C6F81 /* WebKit.framework in Frameworks */,
 			);
@@ -390,6 +415,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D37A669246CCB066AA4EAD5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ABF5523F33BA23013C88A01F /* Pods-Guard.debug.xcconfig */,
+				5A88E534A7029F78B698F43D /* Pods-Guard.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		7E1998D02783D3B9002C6F81 /* Social */ = {
 			isa = PBXGroup;
 			children = (
@@ -410,9 +444,11 @@
 		7E199D0B2783DFBF002C6F81 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A8788E86295B01E500117D57 /* libWebAuthnKit.a */,
+				A8D8BA41295D8A2C00B8AC45 /* Pods_WebAuthn.framework */,
+				A8D8BA3D295D8A0200B8AC45 /* WebAuthn.framework */,
 				7E199D102783F8E1002C6F81 /* libc++.tbd */,
 				7E199D0C2783DFC0002C6F81 /* WebKit.framework */,
+				01DB0306C10822F505C8B8AD /* Pods_Guard.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -457,6 +493,7 @@
 				7ED434CF2775AB8500893EDD /* PhoneNumberTextField.swift */,
 				8DBDC4DB2912470D00B7BE7F /* ExtendFieldTextField.swift */,
 				7ED434D92779509100893EDD /* VerifyCodeTextField.swift */,
+				A8093DA9295B853D00372B90 /* BindingWebAuthnButton.swift */,
 				7EB32815278D5DD4008639AA /* FramedVerifyCodeTextField.swift */,
 				7EF66C70277C371E00FCBBEB /* EmailTextField.swift */,
 				7E7566902768399E00C3872F /* LoginButton.swift */,
@@ -506,6 +543,7 @@
 				8D8B329D29251934005F3E6E /* AuthingMFAOTP1.xib */,
 				7E7D1F72278FC44F005AAD39 /* AuthingFirstTimeLogin.xib */,
 				8D254F6B293D0356001BEC9E /* AuthingBinding.xib */,
+				A8093DA7295B82FF00372B90 /* AuthingBindingWebAuthn.xib */,
 				8D254F63293CF0E2001BEC9E /* AuthingBindingMethod.xib */,
 				7E02F46C27950C99007FA048 /* AuthingUserInfoComplete.xib */,
 				A8D38D2027F2B02D00942707 /* AuthingCountryCode.xib */,
@@ -584,6 +622,7 @@
 				7E9593DE274C813B001459C5 /* GuardTests */,
 				7E9593D3274C813A001459C5 /* Products */,
 				7E199D0B2783DFBF002C6F81 /* Frameworks */,
+				1D37A669246CCB066AA4EAD5 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -764,10 +803,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7E9593E4274C813B001459C5 /* Build configuration list for PBXNativeTarget "Guard" */;
 			buildPhases = (
+				3089CC57FE14E5F5F8FDE6B1 /* [CP] Check Pods Manifest.lock */,
 				7E9593CD274C813A001459C5 /* Headers */,
 				7E9593CE274C813A001459C5 /* Sources */,
 				7E9593CF274C813A001459C5 /* Frameworks */,
 				7E9593D0274C813A001459C5 /* Resources */,
+				A8D8BA50295D8A5700B8AC45 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -858,6 +899,7 @@
 				8D8B32A429254D02005F3E6E /* AuthingMFABindSuccess.xib in Resources */,
 				7E7D1F73278FC44F005AAD39 /* AuthingFirstTimeLogin.xib in Resources */,
 				7EB32810278D116F008639AA /* AuthingMFAEmail1.xib in Resources */,
+				A8093DA8295B82FF00372B90 /* AuthingBindingWebAuthn.xib in Resources */,
 				7E75667B2766F9C400C3872F /* AuthingLogin.xib in Resources */,
 				7E75669B27683F5300C3872F /* Localizable.strings in Resources */,
 				8D8B32BA2925F5CA005F3E6E /* AuthingRecoveryCode.xib in Resources */,
@@ -884,6 +926,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3089CC57FE14E5F5F8FDE6B1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Guard-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7EB02F082771AC5D007CFF86 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -922,6 +986,7 @@
 				7EB327FD278BD473008639AA /* MFATableView.swift in Sources */,
 				7EC00A442808074C00FD8125 /* ImageView.swift in Sources */,
 				7E8AECBC27882D2D0030D27B /* SocialLoginButton.swift in Sources */,
+				A8093DAA295B853D00372B90 /* BindingWebAuthnButton.swift in Sources */,
 				A8BBEB3D2876FC930082DE59 /* ImagePickerView.swift in Sources */,
 				7E87A1C627CE330800E52D5A /* UserProfileAvatarField.swift in Sources */,
 				7E189B0927F13ACD005AC1AC /* CacheManager.swift in Sources */,
@@ -1202,6 +1267,7 @@
 		};
 		7E9593E5274C813B001459C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ABF5523F33BA23013C88A01F /* Pods-Guard.debug.xcconfig */;
 			buildSettings = {
 				BITCODE_GENERATION_MODE = bitcode;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -1213,24 +1279,24 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = armv7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)$(LOCAL_LIBRARY_DIR)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MACH_O_TYPE = mh_dylib;
 				MARKETING_VERSION = 1.3.5;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
@@ -1248,6 +1314,7 @@
 		};
 		7E9593E6274C813B001459C5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A88E534A7029F78B698F43D /* Pods-Guard.release.xcconfig */;
 			buildSettings = {
 				BITCODE_GENERATION_MODE = bitcode;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -1259,27 +1326,27 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "i386 armv7";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)$(LOCAL_LIBRARY_DIR)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MACH_O_TYPE = mh_dylib;
 				MARKETING_VERSION = 1.3.5;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.authing.Guard;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";

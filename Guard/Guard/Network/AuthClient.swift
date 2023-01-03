@@ -956,6 +956,68 @@ public class AuthClient: Client {
         post("/api/v3/user-unbind-app", ["cid": cid], completion: completion)
     }
 
+    // MARK: ---------- WebAuthn ----------
+    public func getWebauthnRegistrationParam(completion: @escaping(Int, String?, NSDictionary?) -> Void) {
+        get("/api/v3/webauthn/registration", completion: completion)
+    }
+
+    public func webauthnRegistration(ticket: String,
+                                     credentialId: String,
+                                     rawId: String,
+                                     attestationObject: String,
+                                     clientDataJSON: String,
+                                     authenticatorCode: String,
+                                     completion: @escaping(Int, String?, NSDictionary?) -> Void) {
+        
+        let body: NSDictionary = ["ticket" : ticket,
+                                  "registrationCredential" : ["id" : credentialId,
+                                                              "rawId": rawId,
+                                                              "response":["attestationObject": attestationObject,
+                                                                                              "clientDataJSON": clientDataJSON],
+                                                              "type": "public-key"],
+                                  "authenticatorCode": authenticatorCode]
+        
+        post("/api/v3/webauthn/registration", body, completion: completion)
+    }
+    
+    public func getWebauthnAuthenticationParam(completion: @escaping(Int, String?, NSDictionary?) -> Void) {
+        get("/api/v3/webauthn/authentication", completion: completion)
+    }
+
+    public func webauthnAuthentication(ticket: String,
+                                       credentialId: String,
+                                       rawId: String,
+                                       authenticatorData: String,
+                                       userHandle: String,
+                                       clientDataJSON: String,
+                                       signature: String,
+                                       authenticatorAttachment: String,
+                                       completion: @escaping(Int, String?, NSDictionary?) -> Void) {
+        
+        let body: NSDictionary = ["ticket" : ticket,
+                                  "authenticationCredential" : ["id" : credentialId,
+                                                                "rawId": rawId,
+                                                                "response": ["authenticatorData": authenticatorData,
+                                                                             "userHandle": userHandle,
+                                                                             "clientDataJSON": clientDataJSON,
+                                                                             "signature": signature],
+                                                                "type": "public-key"]]
+
+        post("/api/v3/webauthn/authentication", body, completion: completion)
+    }
+    
+    public func webauthnRemoveCredential(credentialID: String, completion: @escaping(Int, String?, NSDictionary?) -> Void) {
+        post("/api/v3/webauthn/remove-credential/\(credentialID)", [:], completion: completion)
+    }
+    
+    public func webauthnAuthenticatorDevice(authenticatorCode: String, completion: @escaping(Int, String?, NSDictionary?) -> Void) {
+        post("/api/v3/webauthn/page-authenticator-device", ["authenticatorCode": authenticatorCode], completion: completion)
+    }
+    
+    public func checkWebauthnVaildCredentitals(credentialIds: [String], authenticatorCode: String, completion: @escaping(Int, String?, NSDictionary?) -> Void) {
+        post("/api/v3/webauthn/check-valid-credentials-by-credIds", ["credentialIds": credentialIds, "authenticatorCode": authenticatorCode], completion: completion)
+    }
+    
     // MARK: ---------- Util APIs ----------
     public func createUserInfo(_ code: Int, _ message: String?, _ data: NSDictionary?, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         createUserInfo(nil, code, message, data, completion: completion)
@@ -973,7 +1035,7 @@ public class AuthClient: Client {
                 ALog.i(Self.self, "requesting app ID: \(config!.appId ?? "") root app ID: \(Authing.getAppId())")
             }
             
-            if userInfo.userId != nil {
+            if userInfo.userId != nil && userInfo.idToken != nil {
                 getCustomUserData(userInfo: userInfo, completion: completion)
             } else {
                 completion(code, message, userInfo)

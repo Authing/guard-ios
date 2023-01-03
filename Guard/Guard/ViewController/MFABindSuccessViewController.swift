@@ -12,6 +12,7 @@ public enum BindSuccessType {
     case phone
     case email
     case face
+    case webauthn
 }
 
 open class MFABindSuccessViewController: AuthViewController {
@@ -19,6 +20,8 @@ open class MFABindSuccessViewController: AuthViewController {
     @IBOutlet weak var otpView: UIView!
     @IBOutlet weak var successView: UIView!
     @IBOutlet weak var faceView: UIView!
+    @IBOutlet var webAuthnView: UIView!
+    @IBOutlet var webAuthnContent: UILabel!
     
     @IBOutlet weak var recoveryCodeLabel: UILabel!
     
@@ -41,24 +44,33 @@ open class MFABindSuccessViewController: AuthViewController {
             self.recoveryCodeLabel.text = self.authFlow?.mfaRecoveryCode
             self.successView.isHidden = true
             self.faceView.isHidden = true
+            self.webAuthnView.isHidden = true
             
         } else if type == .face {
             
             self.successView.isHidden = true
             self.otpView.isHidden = true
+            self.webAuthnView.isHidden = true
+
+        } else if type == .webauthn {
             
+            self.successView.isHidden = true
+            self.otpView.isHidden = true
+            self.faceView.isHidden = true
+            self.webAuthnContent.text = String(format: "authing_webauthn_success".L, Authing.getCurrentUser()?.getDisplayName() ?? "")
         } else {
             
             title = type == .phone ? "authing_bind_phone".L : "authing_bind_email".L
             self.otpView.isHidden = true
             self.faceView.isHidden = true
+            self.webAuthnView.isHidden = true
 
         }
         
         if self.authFlow?.mfaFromViewControllerName == "BindingMfaViewController" || self.type == .otp {
             self.countDownLabel.isHidden = true
         } else {
-            var seconds = 6
+            var seconds = 4
             let timer : DispatchSourceTimer = DispatchSource.makeTimerSource(flags: [], queue: DispatchQueue.main)
             timer.schedule(deadline: .now(), repeating: 1.0)
             timer.setEventHandler {
@@ -88,6 +100,11 @@ open class MFABindSuccessViewController: AuthViewController {
     }
     
     @IBAction func saveButtonClick(_ sender: Any) {
+        if let flow = self.authFlow {
+            flow.complete(200, "", Authing.getCurrentUser())
+        }
+    }
+    @IBAction func webAuthnDoneButtonClick(_ sender: Any) {
         if let flow = self.authFlow {
             flow.complete(200, "", Authing.getCurrentUser())
         }

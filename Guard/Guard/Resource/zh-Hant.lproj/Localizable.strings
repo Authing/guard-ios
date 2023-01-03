@@ -148,6 +148,7 @@
 "authing_social_google" = "     使用 Google 登錄";
 "authing_social_apple" = "     使用 Apple 登錄";
 "Authing_social_face" = "      使用 FaceID 登錄";
+"Authing_social_touch" = "      使用 TouchID 登錄";
 
 "authing_recovery_title" = "使用恢復代碼";
 "authing_recovery_tip" = "如果沒有恢復代碼，請聯繫管理員處理";
@@ -179,3 +180,6 @@
 "authing_binding_choose_account" = "我想綁定到已有賬號";
 
 "authing_binding_account" = "綁定已有賬號";
+
+"authing_binding_webauthn" = "未識別到指紋 / 人臉對應賬號，請綁定已有賬號。";
+"authing_webauthn_success" = "你已成功綁定「%@」賬號";
