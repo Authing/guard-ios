@@ -814,13 +814,33 @@ public class AuthClient: Client {
         }
     }
     
-    public func bindWechatByAccountId(accountId: String, key: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func bindWechatSelectedAccountId(accountId: String, key: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
                 
         let body: NSMutableDictionary = ["action": "bind-identity-by-selection",
                                   "accountId": accountId,
                                   "key": key]
 
         self.post("/api/v2/ecConn/wechatMobile/select", body) { code, message, data in
+            if code == 200 {
+                if let jsonData = data {
+                    self.createUserInfo(code, message, jsonData) { code, message, userInfo in
+                        self.getCurrentUser(user: userInfo, completion: completion)
+                    }
+                } else {
+                    completion(ErrorCode.socialBinding.rawValue, ErrorCode.socialBinding.errorMessage(), nil)
+                }
+            } else {
+                completion(code, message, nil)
+            }
+        }
+    }
+    
+    public func bindWechatByAccountId(accountId: String, key: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        let body: NSMutableDictionary = ["action": "bind-identity-by-account-id",
+                                  "accountId": accountId,
+                                  "key": key]
+
+        self.post("/api/v2/ecConn/wechatMobile/byAccountId", body) { code, message, data in
             if code == 200 {
                 if let jsonData = data {
                     self.createUserInfo(code, message, jsonData) { code, message, userInfo in

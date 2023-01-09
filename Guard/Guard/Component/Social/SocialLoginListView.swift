@@ -161,7 +161,7 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
             if config?.enableFaceLogin == true && Util.isFullScreenIphone() == true {
                 value.insert("face", at: 0)
             } else if config?.enableFingerprintLogin == true && Util.isFullScreenIphone() == false {
-                value.insert("face", at: 0)
+                value.insert("touch", at: 0)
             }
             
             return value

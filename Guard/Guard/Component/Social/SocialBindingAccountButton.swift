@@ -27,6 +27,14 @@ class SocialBindingAccountButton: PrimaryButton {
     @objc private func onClick(sender: UIButton) {
         
         let key = (authViewController?.authFlow?.data.value(forKey: AuthFlow.KEY_USER_INFO) as? UserInfo)?.socialBindingData?["key"] as? String ?? ""
+        
+        AuthClient().bindWechatByAccountId(accountId: "637afb021df3228ead2203d4", key: key) { code, message, userInfo in
+            print(code)
+            print(message)
+            print(userInfo?.accessToken)
+        }
+        
+        return
 
         if let tfPhone: PhoneNumberTextField = Util.findView(self, viewClass: PhoneNumberTextField.self),
            let tfCode: VerifyCodeTextField = Util.findView(self, viewClass: VerifyCodeTextField.self) {

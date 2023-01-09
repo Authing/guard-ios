@@ -183,7 +183,6 @@
 		A8D38D2127F2B02D00942707 /* AuthingCountryCode.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D38D2027F2B02D00942707 /* AuthingCountryCode.xib */; };
 		A8D62BAA28B8D442001D0A40 /* country.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8D62BA928B8D442001D0A40 /* country.plist */; };
 		A8D8BA51295D8A5C00B8AC45 /* WebAuthn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D8BA3D295D8A0200B8AC45 /* WebAuthn.framework */; };
-		A8D8BA52295D8A5C00B8AC45 /* WebAuthn.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8D8BA3D295D8A0200B8AC45 /* WebAuthn.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A8DBB7B5287D5B4100F75C97 /* AuthingResetSuccess.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DBB7B4287D5B4100F75C97 /* AuthingResetSuccess.xib */; };
 		A8DBB7B7287D5B8C00F75C97 /* ResetSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DBB7B6287D5B8C00F75C97 /* ResetSuccessViewController.swift */; };
 		A8DBB7B9287D635400F75C97 /* GoBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DBB7B8287D635400F75C97 /* GoBackButton.swift */; };
@@ -201,22 +200,7 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		A8D8BA50295D8A5700B8AC45 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				A8D8BA52295D8A5C00B8AC45 /* WebAuthn.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		01DB0306C10822F505C8B8AD /* Pods_Guard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Guard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A88E534A7029F78B698F43D /* Pods-Guard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guard.release.xcconfig"; path = "Target Support Files/Pods-Guard/Pods-Guard.release.xcconfig"; sourceTree = "<group>"; };
 		7E003B0D284742DA00AAE4ED /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		7E02F46627950C35007FA048 /* UserInfoCompleteContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCompleteContainer.swift; sourceTree = "<group>"; };
@@ -448,7 +432,6 @@
 				A8D8BA3D295D8A0200B8AC45 /* WebAuthn.framework */,
 				7E199D102783F8E1002C6F81 /* libc++.tbd */,
 				7E199D0C2783DFC0002C6F81 /* WebKit.framework */,
-				01DB0306C10822F505C8B8AD /* Pods_Guard.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -808,7 +791,6 @@
 				7E9593CE274C813A001459C5 /* Sources */,
 				7E9593CF274C813A001459C5 /* Frameworks */,
 				7E9593D0274C813A001459C5 /* Resources */,
-				A8D8BA50295D8A5700B8AC45 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
