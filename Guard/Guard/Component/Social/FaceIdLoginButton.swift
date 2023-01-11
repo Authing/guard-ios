@@ -7,7 +7,6 @@
 
 import Foundation
 import WebAuthn
-import PromiseKit
 
 open class FaceIdLoginButton: SocialLoginButton {
     
