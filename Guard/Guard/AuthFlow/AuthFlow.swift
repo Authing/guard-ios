@@ -91,20 +91,22 @@ public class AuthFlow: NSObject {
     
     @objc public func start(authCompletion: Authing.AuthCompletion? = nil) {
         var vc: IndexAuthViewController? = nil
-        if let nibName = loginXibName {
-            vc = IndexAuthViewController(nibName: nibName, bundle: Bundle.main)
-        } else {
-            vc = IndexAuthViewController(nibName: "AuthingLogin", bundle: Bundle(for: Self.self))
-        }
-            
-        guard let target = vc else {
-            return
-        }
-        
-        target.authFlow = self
-        self.authCompletion = authCompletion
 
         DispatchQueue.main.async() {
+            
+            if let nibName = self.loginXibName {
+                vc = IndexAuthViewController(nibName: nibName, bundle: Bundle.main)
+            } else {
+                vc = IndexAuthViewController(nibName: "AuthingLogin", bundle: Bundle(for: Self.self))
+            }
+                
+            guard let target = vc else {
+                return
+            }
+            
+            target.authFlow = self
+            self.authCompletion = authCompletion
+            
             if let topVC = UIApplication.topViewController() {
                 self.startViewController = topVC
                 self._start(topVC, target)

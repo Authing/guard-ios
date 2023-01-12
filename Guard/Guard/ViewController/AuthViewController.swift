@@ -63,29 +63,31 @@ open class AuthViewController: UIViewController {
     }
     
     private func setupUI() {
-        
-        if let logo: AppLogo = Util.findView(view, viewClass: AppLogo.self),
-           let title: AppName = Util.findView(view, viewClass: AppName.self) {
-            if let mode = self.authFlow?.UIConfig?.contentMode, mode != .left{
-                self.view.constraints.forEach({ constraint in
-                    if (constraint.firstAttribute == .leading && constraint.firstItem as? UIView == logo) {
-                        self.view.removeConstraint(constraint)
+        DispatchQueue.main.async() {
+            if let logo: AppLogo = Util.findView(self.view, viewClass: AppLogo.self),
+               let title: AppName = Util.findView(self.view, viewClass: AppName.self) {
+                if let mode = self.authFlow?.UIConfig?.contentMode, mode != .left{
+                    self.view.constraints.forEach({ constraint in
+                        if (constraint.firstAttribute == .leading && constraint.firstItem as? UIView == logo) {
+                            self.view.removeConstraint(constraint)
+                        }
+                        if (constraint.firstAttribute == .leading && constraint.firstItem as? UIView == title) {
+                            self.view.removeConstraint(constraint)
+                        }
+                    })
+                    if mode == .center {
+                        logo.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+                        title.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+                        title.textAlign = 1
+                    } else if mode == .right {
+                        logo.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -24).isActive = true
+                        title.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -30).isActive = true
+                        title.textAlign = 2
                     }
-                    if (constraint.firstAttribute == .leading && constraint.firstItem as? UIView == title) {
-                        self.view.removeConstraint(constraint)
-                    }
-                })
-                if mode == .center {
-                    logo.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-                    title.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-                    title.textAlign = 1
-                } else if mode == .right {
-                    logo.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -24).isActive = true
-                    title.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -30).isActive = true
-                    title.textAlign = 2
                 }
             }
         }
+
     }
 
     @IBAction func onCloseClick(_ sender: UIButton, forEvent event: UIEvent) {

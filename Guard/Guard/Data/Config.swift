@@ -117,6 +117,10 @@ public class Config: NSObject {
         get { return data?["requestHostname"] as? String }
     }
     
+    open var corsWhitelist: [String]? {
+        get {return data?["corsWhitelist"] as? [String]? ?? []}
+    }
+    
     public func getLogoUrl() -> String? {
         return logo ?? userpoolLogo
     }

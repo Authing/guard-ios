@@ -7,6 +7,7 @@
 
 import Foundation
 import WebAuthn
+import PromiseKit
 import UIKit
 
 class BindingWebAuthnButton: PrimaryButton {
