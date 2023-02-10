@@ -157,6 +157,7 @@
 "Authing_social_lark" = "       Sign in with Lark ";
 "Authing_social_google" = "     Sign in with Google ";
 "Authing_social_apple" = "      Sign in with Apple ";
+"authing_social_facebook" = "       Sign in with Facebook ";
 
 "authing_recovery_title" = "Use recovery code";
 "authing_recovery_tip" = "If no recovery code, please contact the administrator";

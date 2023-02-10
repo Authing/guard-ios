@@ -146,6 +146,7 @@
 "authing_social_lark" = "     使用 飛書 登錄";
 "authing_social_google" = "     使用 Google 登錄";
 "authing_social_apple" = "     使用 Apple 登錄";
+"authing_social_facebook" = "     使用 Facebook 登錄";
 
 "authing_recovery_title" = "使用恢復代碼";
 "authing_recovery_tip" = "如果沒有恢復代碼，請聯繫管理員處理";

@@ -163,7 +163,7 @@
 "authing_social_lark" = "     使用 飞书 登录";
 "authing_social_google" = "     使用 Google 登录";
 "authing_social_apple" = "     使用 Apple 登录";
-
+"authing_social_facebook" = "     使用 Facebook 登录";
 "authing_recovery_title" = "使用恢复代码";
 "authing_recovery_tip" = "如果没有恢复代码，请联系管理员处理";
 "authing_recovery_button" = "请输入恢复代码";

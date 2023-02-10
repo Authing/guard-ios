@@ -144,6 +144,8 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                         srcs.setValue("wecom", forKey: "4")
                     } else if ("lark-internal" == type || "lark-public" == type) {
                         srcs.setValue("lark", forKey: "5")
+                    } else if ("facebook:mobile" == type) {
+                        srcs.setValue("facebook", forKey: "6")
                     }
                 }
             }
@@ -226,6 +228,14 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                     let view = type.init()
                     if isVerticalLayout {
                         view.setTitle("authing_social_google".L, for: .normal)
+                    }
+                    container.addSubview(view)
+                }
+            }  else if ("facebook" == trimmed) {
+                if let type = Bundle(identifier: "cn.authing.Facebook")?.classNamed("Facebook.FacebookButton") as? SocialLoginButton.Type {
+                    let view = type.init()
+                    if isVerticalLayout {
+                        view.setTitle("authing_social_facebook".L, for: .normal)
                     }
                     container.addSubview(view)
                 }
