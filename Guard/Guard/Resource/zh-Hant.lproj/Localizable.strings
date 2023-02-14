@@ -142,6 +142,7 @@
 "authing_privacy2" = "及";
 
 "authing_social_wechat" = "     使用 微信 登錄";
+"authing_social_mini" = "     使用 小程序 登錄";
 "authing_social_wecom" = "     使用 企業微信 登錄";
 "authing_social_lark" = "     使用 飛書 登錄";
 "authing_social_google" = "     使用 Google 登錄";

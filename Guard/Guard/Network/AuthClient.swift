@@ -598,7 +598,7 @@ public class AuthClient: Client {
                 return
             }
   
-            guard let conId = conf.getConnectionId(type: "facebook:mobile") else {
+            guard let conId = conf.getConnectionId(type: "google:mobile") else {
                 completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
                 return
             }
@@ -616,7 +616,7 @@ public class AuthClient: Client {
                 completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
                 return
             }
-  
+            
             guard let conId = conf.getConnectionId(type: "facebook:mobile") else {
                 completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
                 return
@@ -624,6 +624,29 @@ public class AuthClient: Client {
             
             let body: NSDictionary = ["connId" : conId, "access_token" : accessToken]
             self.post("/api/v2/ecConn/facebook/authByAccessToken", body) { code, message, data in
+                self.createUserInfo(code, message, data, completion: completion)
+            }
+        }
+    }
+    
+    public func loginByMiniprogram(code: String, phoneInfoCode: String?, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        getConfig { config in
+            guard let conf = config else {
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
+                return
+            }
+              
+            guard let conId = conf.getConnectionId(type: "wechat:miniprogram:app-launch") else {
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
+                return
+            }
+            
+            let body: NSMutableDictionary = ["connId": conId, "iv" : "", "encryptedData" : "", "code": code]
+            if phoneInfoCode != nil {
+                body.setValue(phoneInfoCode, forKey: "phoneInfoCode")
+            }
+            
+            self.post("/api/v2/ecConn/wechatminiprogramapplaunch/authByCode", body) { code, message, data in
                 self.createUserInfo(code, message, data, completion: completion)
             }
         }

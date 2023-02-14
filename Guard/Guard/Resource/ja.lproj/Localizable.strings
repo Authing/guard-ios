@@ -143,6 +143,7 @@
 "authing_privacy2" = "および";
 
 "authing_social_wechat" = "     WeChat を使用してログイン";
+"authing_social_mini" = "     Mini Program を使用してログイン";
 "authing_social_wecom" = "      エンタープライズ WeChat でログイン";
 "authing_social_lark" = "       Lark を使用してログイン";
 "authing_social_google" = "     Google でサインイン";

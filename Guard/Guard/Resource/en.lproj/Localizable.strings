@@ -152,11 +152,12 @@
 "authing_privacy" = "I have agreed ";
 "authing_privacy2" = "and";
 
-"Authing_social_wechat" = "     Sign in with Wechat";
-"Authing_social_wecom" = "      Sign in with Wecom ";
-"Authing_social_lark" = "       Sign in with Lark ";
-"Authing_social_google" = "     Sign in with Google ";
-"Authing_social_apple" = "      Sign in with Apple ";
+"authing_social_wechat" = "     Sign in with Wechat";
+"authing_social_mini" = "     Sign in with Mini Program";
+"authing_social_wecom" = "      Sign in with Wecom ";
+"authing_social_lark" = "       Sign in with Lark ";
+"authing_social_google" = "     Sign in with Google ";
+"authing_social_apple" = "      Sign in with Apple ";
 "authing_social_facebook" = "       Sign in with Facebook ";
 
 "authing_recovery_title" = "Use recovery code";

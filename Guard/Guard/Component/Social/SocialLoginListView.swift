@@ -136,16 +136,18 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                 if let type = conn["type"] as? String {
                     if ("wechat:mobile" == type) {
                         srcs.setValue("wechat", forKey: "1")
+                    } else if ("wechat:miniprogram:app-launch" == type) {
+                        srcs.setValue("miniprogram", forKey: "2")
                     } else if ("apple" == type) {
-                        srcs.setValue("apple", forKey: "2")
+                        srcs.setValue("apple", forKey: "3")
                     } else if ("google:mobile" == type) {
-                        srcs.setValue("google", forKey: "3")
+                        srcs.setValue("google", forKey: "4")
                     } else if ("wechatwork:mobile" == type || "wechatwork:agency:mobile" == type) {
-                        srcs.setValue("wecom", forKey: "4")
+                        srcs.setValue("wecom", forKey: "5")
                     } else if ("lark-internal" == type || "lark-public" == type) {
-                        srcs.setValue("lark", forKey: "5")
+                        srcs.setValue("lark", forKey: "6")
                     } else if ("facebook:mobile" == type) {
-                        srcs.setValue("facebook", forKey: "6")
+                        srcs.setValue("facebook", forKey: "7")
                     }
                 }
             }
@@ -194,6 +196,15 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                     let view = type.init()
                     if isVerticalLayout {
                         view.setTitle("authing_social_wechat".L, for: .normal)
+                    }
+                    container.addSubview(view)
+                }
+            } else if ("miniprogram" == trimmed) {
+                                
+                if let type = Bundle(identifier: "cn.authing.Wechat")?.classNamed("Wechat.MiniProgramLoginButton") as? SocialLoginButton.Type {
+                    let view = type.init()
+                    if isVerticalLayout {
+                        view.setTitle("authing_social_mini".L, for: .normal)
                     }
                     container.addSubview(view)
                 }
