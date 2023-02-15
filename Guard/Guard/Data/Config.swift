@@ -128,6 +128,17 @@ public class Config: NSObject {
         return cid
     }
     
+    public func getConnectionFields(type: String) -> NSDictionary? {
+        let connections: [NSDictionary]? = data?["ecConnections"] as? [NSDictionary]
+        var fieldsDic: NSDictionary? = nil
+        connections?.forEach({ connection in
+            if connection["type"] as? String == type {
+                fieldsDic = connection["fields"] as? NSDictionary
+            }
+        })
+        return fieldsDic
+    }
+    
     open var completeFieldsPlace: [String]?
     open var extendedFields: [NSDictionary]? // user info complete
     open var extendsFieldsI18n: NSDictionary?
