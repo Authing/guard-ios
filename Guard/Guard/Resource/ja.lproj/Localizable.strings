@@ -144,12 +144,14 @@
 "authing_privacy2" = "および";
 
 "authing_social_wechat" = "     WeChat を使用してログイン";
+"authing_social_mini" = "     Mini Program を使用してログイン";
 "authing_social_wecom" = "      エンタープライズ WeChat でログイン";
 "authing_social_lark" = "       Lark を使用してログイン";
 "authing_social_google" = "     Google でサインイン";
 "authing_social_apple" = "      Apple でサインイン";
-"Authing_social_face" = "      FaceID でサインイン";
-"Authing_social_touch" = "      TouchID でサインイン";
+"authing_social_face" = "      FaceID でサインイン";
+"authing_social_touch" = "      TouchID でサインイン";
+"authing_social_facebook" = "      Facebook でサインイン";
 
 "authing_recovery_title" = "使用回復コード";
 "authing_recovery_tip" = "回復コードがない場合は管理者に連絡して処理してください";
