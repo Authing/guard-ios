@@ -87,6 +87,15 @@ open class AuthViewController: UIViewController {
                 }
             }
         }
+        
+        if authFlow?.UIConfig?.isCustomView == true {
+            if authFlow?.UIConfig?.viewType.rawValue == self.nibName {
+                
+                if let button = authFlow?.UIConfig?.button {
+                    self.view.addSubview(button)
+                }
+            }
+        }
 
     }
 

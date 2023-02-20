@@ -9,6 +9,13 @@ import Foundation
 
 public class AuthFlowUIConfig: NSObject {
     
+    ///AuthFlow view type
+    public enum viewType: String {
+        case login = "AuthingLogin"
+        case register = "AuthingRegister"
+    }
+    
+    
     ///AuthFlow content mode
     public enum ContentMode {
         case left
@@ -18,4 +25,15 @@ public class AuthFlowUIConfig: NSObject {
     
     public var contentMode: ContentMode = .left
     
+    public var isCustomView: Bool = false
+    
+    public var viewType: viewType = .login
+    
+    public var button: UIButton?
+    
+    public func setButton(button: UIButton, type: viewType) {
+        self.isCustomView = true
+        self.viewType = type
+        self.button = button
+    }
 }
