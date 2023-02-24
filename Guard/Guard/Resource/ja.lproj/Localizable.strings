@@ -183,3 +183,6 @@
 "authing_binding_account" = "既存のアカウントを結びつける";
 
 "authing_webauthn_success" = "あなたは成功して「%@」アカウントを結びつけました";
+
+"authing_webauthn_privacy" = "アカウントを結びつけるには顔のIDの権限を開く必要があります";
+"authing_webauthn_open" = "開くに行きます";

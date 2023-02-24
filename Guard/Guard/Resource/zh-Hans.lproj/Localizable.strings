@@ -84,7 +84,7 @@
 "authing_next" = "下一步";
 "authing_invalid_phone" = "手机号码无效";
 "authing_invalid_email" = "邮件地址无效";
-"authing_social_login" = "第三方账号登录";
+"authing_social_login" = "其他登录方式";
 "authing_mfa_other" = "其他验证方式";
 
 
@@ -197,5 +197,8 @@
 
 "authing_binding_account" = "绑定已有账号";
 
-"authing_binding_webauthn" = "未识别到指纹 / 人脸对应账号，请绑定已有账号。";
+"authing_binding_webauthn" = "未识别到指纹 / 人脸绑定账户，请输入账号信息，进行绑定。";
 "authing_webauthn_success" = "你已成功绑定「%@」账号";
+
+"authing_webauthn_privacy" = "绑定账号需要开启面容 ID 权限";
+"authing_webauthn_open" = "去开启";

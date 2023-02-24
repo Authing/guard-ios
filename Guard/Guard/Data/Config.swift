@@ -113,6 +113,10 @@ public class Config: NSObject {
         get { return data?["verifyCodeLength"] as? Int }
     }
     
+    open var appType: String? {
+        get { return data?["appType"] as? String }
+    }
+    
     open var requestHostname: String? {
         get { return data?["requestHostname"] as? String }
     }
@@ -189,6 +193,7 @@ public class Config: NSObject {
     open var userAgent: String?
     var isGettingConfig: Bool = false
     private var configListeners = [ConfigCompletion]()
+    
     
     public init(appId: String) {
         super.init()

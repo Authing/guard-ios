@@ -185,3 +185,6 @@
 
 "authing_binding_webauthn" = "未識別到指紋 / 人臉對應賬號，請綁定已有賬號。";
 "authing_webauthn_success" = "你已成功綁定「%@」賬號";
+
+"authing_webauthn_privacy" = "綁定賬號需要開啓面容 ID 權限";
+"authing_webauthn_open" = "去開啓";

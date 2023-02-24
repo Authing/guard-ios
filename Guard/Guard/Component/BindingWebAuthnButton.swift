@@ -9,6 +9,7 @@ import Foundation
 import WebAuthn
 import PromiseKit
 import UIKit
+import LocalAuthentication
 
 class BindingWebAuthnButton: PrimaryButton {
     
@@ -227,7 +228,32 @@ class BindingWebAuthnButton: PrimaryButton {
         }
     }
     
+
+    
     private func bindingWebAuthn() {
+        
+        var error: NSError?
+        let result = LAContext().canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error)
+        if result == false {
+            let alert = UIAlertController(title: nil, message:  "authing_webauthn_privacy".L, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "authing_webauthn_open".L, style: .default, handler: { (action: UIAlertAction!) in
+                guard let url = URL(string: UIApplication.openSettingsURLString) else {
+                    return
+                }
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                } else {
+                    UIApplication.shared.openURL(url)
+                }
+            }))
+
+            alert.addAction(UIAlertAction(title: "authing_cancel".L, style: .cancel, handler: { (action: UIAlertAction!) in
+            }))
+
+            authViewController?.present(alert, animated: true, completion: nil)
+            return
+        }
+                
         AuthClient().getWebauthnRegistrationParam() { code, message, res in
             if  let data = res?["data"] as? NSDictionary,
                 let statusCode = res?["statusCode"] as? Int,
