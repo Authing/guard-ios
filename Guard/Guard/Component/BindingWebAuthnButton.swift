@@ -395,6 +395,7 @@ class BindingWebAuthnButton: PrimaryButton {
                     let statusCode = res?["statusCode"] as? Int,
                     statusCode == 200 {
                     DispatchQueue.main.async() {
+                        UserManager.saveRpid(userId, rpId: rpId)
                         let nextVC = MFABindSuccessViewController(nibName: "AuthingMFABindSuccess", bundle: Bundle(for: Self.self))
                         nextVC.type = .webauthn
                         nextVC.authFlow = self.authViewController?.authFlow?.copy() as? AuthFlow
