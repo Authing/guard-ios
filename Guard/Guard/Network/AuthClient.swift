@@ -8,7 +8,7 @@
 import Foundation
 
 public class AuthClient: Client {
-    
+        
     //MARK: ---------- Register APIs ----------
     public func registerByEmail(email: String, password: String, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         self.registerByEmail(authData: nil, email: email, password: password, context, completion: completion)
@@ -1345,4 +1345,31 @@ public class AuthClient: Client {
 
         }).resume()
     }
+    
+    //MARK: ---------- subEvent ----------
+    public func authSubEvent(eventCode: String, completion: @escaping (String?) -> Void) {
+        if let currentUser = Authing.getCurrentUser(),
+           let token = currentUser.accessToken {
+            let eventUri = "\(Authing.getWebsocketHost())/events/v1/authentication/sub?code=\(eventCode)&token=\(token)"
+            AuthingWebsocketClient().initWebSocket(url: eventUri) { msg in
+                print(msg)
+            }
+        }
+    }
+    
+    public func manageSubEvent(eventCode: String, completion: @escaping (String?) -> Void) {
+        if let currentUser = Authing.getCurrentUser(),
+           let token = currentUser.accessToken {
+            let eventUri = "\(Authing.getWebsocketHost())/events/v1/management/sub?code=\(eventCode)&token=\(token)"
+            AuthingWebsocketClient().initWebSocket(url: eventUri) { msg in
+                print(msg)
+            }
+        }
+    }
+    
+    //MARK: ---------- pubEvent ----------
+    public func pubEvent(eventCode: String, completion: @escaping (String?) -> Void) {
+        
+    }
 }
+

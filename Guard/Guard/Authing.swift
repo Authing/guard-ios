@@ -31,6 +31,7 @@ public class Authing: NSObject {
     
     private static var sSchema = "https"
     private static var sHost = "authing.cn"
+    private static var sWebsocketHost = "wss://events.authing.com"
     private static var pushClientId: String?
     private static var sAppId = ""
     private static var isOnPremises = false
@@ -79,6 +80,13 @@ public class Authing: NSObject {
         return pushClientId
     }
     
+    @objc public static func setWebsocketHost(websocketHost: String) {
+        sWebsocketHost = websocketHost
+    }
+    
+    @objc public static func getWebsocketHost() -> String {
+        return sWebsocketHost
+    }
     
     @objc public static func setOnPremiseInfo(host: String, publicKey: String) {
         isOnPremises = true
