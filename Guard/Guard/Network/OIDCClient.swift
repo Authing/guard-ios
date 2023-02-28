@@ -195,7 +195,8 @@ public class OIDCClient: NSObject {
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard error == nil else {
-                print("network error \(url!) \n\(error!)")
+               ALog.e(OIDCClient.self, "network error \(url!) \n\(error!)")
+
                 completion(ErrorCode.netWork.rawValue, ErrorCode.netWork.errorMessage(), nil)
                 return
             }

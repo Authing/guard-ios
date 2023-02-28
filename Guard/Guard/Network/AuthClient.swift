@@ -1082,6 +1082,35 @@ public class AuthClient: Client {
         post("/api/v3/webauthn/check-valid-credentials-by-credIds", ["credentialIds": credentialIds, "authenticatorCode": authenticatorCode], completion: completion)
     }
     
+    //MARK: ---------- subEvent ----------
+    public func subEvent(eventCode: String, completion: @escaping (String?) -> Void) {
+        if let currentUser = Authing.getCurrentUser(),
+           let token = currentUser.accessToken {
+            let eventUri = "\(Authing.getWebsocketHost())/events/v1/authentication/sub?code=\(eventCode)&token=\(token)"
+            if #available(iOS 13.0, *) {
+                AuthingWebsocketClient().initWebSocket(urlString: eventUri, completion: completion)
+            }
+        }
+    }
+    
+    //MARK: ---------- pubEvent ----------
+    public func pubEvent(eventCode: String, eventData: NSDictionary, completion: @escaping(Int, String?, NSDictionary?) -> Void) {
+        
+        guard let data = try? JSONSerialization.data(withJSONObject: eventData, options: []) else {
+            ALog.d(AuthClient.self, "eventData is not json when requesting pubEvent")
+            completion(ErrorCode.jsonParse.rawValue, ErrorCode.jsonParse.errorMessage(), nil)
+            return
+        }
+        
+        guard let str = String(data: data, encoding: .utf8) else {
+            ALog.d(AuthClient.self, "eventData is not json when requesting pubEvent")
+            completion(ErrorCode.jsonParse.rawValue, ErrorCode.jsonParse.errorMessage(), nil)
+            return
+        }
+        
+        post("/api/v3/pub-userEvent", ["eventType": eventCode, "eventData": str], completion: completion)
+    }
+    
     // MARK: ---------- Util APIs ----------
     public func createUserInfo(_ code: Int, _ message: String?, _ data: NSDictionary?, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         createUserInfo(nil, code, message, data, completion: completion)
@@ -1181,13 +1210,13 @@ public class AuthClient: Client {
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard error == nil else {
-                print("Guardian request network error:\(error!.localizedDescription)")
+                ALog.d(AuthClient.self, "Guardian request network error:\(error!.localizedDescription)")
                 completion(ErrorCode.netWork.rawValue, ErrorCode.netWork.errorMessage(), nil)
                 return
             }
             
             guard data != nil else {
-                print("data is null when requesting \(urlString)")
+                ALog.d(AuthClient.self, "data is null when requesting \(urlString)")
                 completion(ErrorCode.jsonParse.rawValue, ErrorCode.jsonParse.errorMessage(), nil)
                 return
             }
@@ -1206,13 +1235,13 @@ public class AuthClient: Client {
                 }
                 
                 guard let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary else {
-                    print("data is not json when requesting \(urlString)")
+                    ALog.d(AuthClient.self, "data is not json when requesting \(urlString)")
                     completion(ErrorCode.jsonParse.rawValue, ErrorCode.jsonParse.errorMessage(), nil)
                     return
                 }
                 
                 guard statusCode == 200 || statusCode == 201 else {
-                    print("Guardian request network error. Status code:\(statusCode.description). url:\(urlString)")
+                    ALog.d(AuthClient.self, "Guardian request network error. Status code:\(statusCode.description). url:\(urlString)")
                     let message: String? = json["message"] as? String
                     completion(statusCode, message ?? "Network Error", json)
                     return
@@ -1236,7 +1265,7 @@ public class AuthClient: Client {
                     }
                 }
             } catch {
-                print("parsing json error when requesting \(urlString)")
+                ALog.d(AuthClient.self, "parsing json error when requesting \(urlString)")
                 completion(ErrorCode.jsonParse.rawValue, ErrorCode.jsonParse.errorMessage(), nil)
             }
         }.resume()
@@ -1248,7 +1277,7 @@ public class AuthClient: Client {
                 let urlString: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/upload?folder=photos";
                 self._uploadImage(urlString, image, completion: completion)
             } else {
-                print("Cannot get config. app id:\(Authing.getAppId())")
+                ALog.d(AuthClient.self, "Cannot get config. app id:\(Authing.getAppId())")
                 completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage())
             }
         }
@@ -1260,7 +1289,7 @@ public class AuthClient: Client {
                 let urlString: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/upload?folder=photos&private=\(isPrivate)";
                 self._uploadImage(urlString, image, true, completion: completion)
             } else {
-                print("Cannot get config. app id:\(Authing.getAppId())")
+                ALog.d(AuthClient.self, "Cannot get config. app id:\(Authing.getAppId())")
                 completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage())
             }
         }
@@ -1284,33 +1313,33 @@ public class AuthClient: Client {
         
         session.uploadTask(with: urlRequest, from: data, completionHandler: { responseData, response, error in
             guard error == nil else {
-                print("network error \(url!)")
+                ALog.d(AuthClient.self, "network error \(url!)")
                 completion(ErrorCode.netWork.rawValue, ErrorCode.netWork.errorMessage())
                 return
             }
             
             let jsonData = try? JSONSerialization.jsonObject(with: responseData!, options: .allowFragments)
             guard jsonData != nil else {
-                print("response not json \(url!)")
+                ALog.d(AuthClient.self, "response not json \(url!)")
                 completion(ErrorCode.jsonParse.rawValue, ErrorCode.jsonParse.errorMessage())
                 return
             }
             
             guard let json = jsonData as? [String: Any] else {
-                print("illegal json \(url!)")
+                ALog.d(AuthClient.self, "illegal json \(url!)")
                 completion(ErrorCode.jsonParse.rawValue, ErrorCode.jsonParse.errorMessage())
                 return
             }
             
             guard let code = json["code"] as? Int else {
-                print("no response code \(url!)")
+                ALog.d(AuthClient.self, "no response code \(url!)")
                 completion(ErrorCode.jsonParse.rawValue, ErrorCode.jsonParse.errorMessage())
                 return
             }
             
             if isFaceImage == true{
                 guard let data = json["data"] as? NSDictionary else {
-                    print("no response code \(url!)")
+                    ALog.d(AuthClient.self, "no response code \(url!)")
                     completion(ErrorCode.jsonParse.rawValue, ErrorCode.jsonParse.errorMessage())
                     return
                 }
@@ -1318,7 +1347,7 @@ public class AuthClient: Client {
                 if let u = data["key"] as? String {
                     completion(200, u)
                 } else {
-                    print("response data has no url field \(url!)")
+                    ALog.d(AuthClient.self, "response data has no url field \(url!)")
                     completion(ErrorCode.jsonParse.rawValue, ErrorCode.jsonParse.errorMessage())
                     return
                 }
@@ -1329,7 +1358,7 @@ public class AuthClient: Client {
                 }
                 
                 guard let data = json["data"] as? NSDictionary else {
-                    print("no response data \(url!)")
+                    ALog.d(AuthClient.self, "no response data \(url!)")
                     completion(ErrorCode.jsonParse.rawValue, ErrorCode.jsonParse.errorMessage())
                     return
                 }
@@ -1337,7 +1366,7 @@ public class AuthClient: Client {
                 if let u = data["url"] as? String {
                     completion(200, u)
                 } else {
-                    print("response data has no url field \(url!)")
+                    ALog.d(AuthClient.self, "response data has no url field \(url!)")
                     completion(ErrorCode.jsonParse.rawValue, ErrorCode.jsonParse.errorMessage())
                     return
                 }
@@ -1346,30 +1375,6 @@ public class AuthClient: Client {
         }).resume()
     }
     
-    //MARK: ---------- subEvent ----------
-    public func authSubEvent(eventCode: String, completion: @escaping (String?) -> Void) {
-        if let currentUser = Authing.getCurrentUser(),
-           let token = currentUser.accessToken {
-            let eventUri = "\(Authing.getWebsocketHost())/events/v1/authentication/sub?code=\(eventCode)&token=\(token)"
-            AuthingWebsocketClient().initWebSocket(url: eventUri) { msg in
-                print(msg)
-            }
-        }
-    }
-    
-    public func manageSubEvent(eventCode: String, completion: @escaping (String?) -> Void) {
-        if let currentUser = Authing.getCurrentUser(),
-           let token = currentUser.accessToken {
-            let eventUri = "\(Authing.getWebsocketHost())/events/v1/management/sub?code=\(eventCode)&token=\(token)"
-            AuthingWebsocketClient().initWebSocket(url: eventUri) { msg in
-                print(msg)
-            }
-        }
-    }
-    
-    //MARK: ---------- pubEvent ----------
-    public func pubEvent(eventCode: String, completion: @escaping (String?) -> Void) {
-        
-    }
+
 }
 

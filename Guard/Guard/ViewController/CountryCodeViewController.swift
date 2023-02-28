@@ -94,10 +94,6 @@ class CountryCodeViewController: AuthViewController {
         
         return dic
     }
-    
-    deinit {
-        print("deinit")
-    }
 }
 
 extension CountryCodeViewController: UISearchBarDelegate,UISearchControllerDelegate,UISearchResultsUpdating {

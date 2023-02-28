@@ -7,19 +7,27 @@
 
 open class ALog {
     public static func d(_ type: AnyClass, _ msg: Any...) {
-        print("📘 \(getTimestamp()):\(getTag(type)):\(msg)")
+        if Authing.getDebugMode() == true {
+            print("📘 \(getTimestamp()):\(getTag(type)):\(msg)")
+        }
     }
     
     public static func i(_ type: AnyClass, _ msg: Any...) {
-        print("📗 \(getTimestamp()):\(getTag(type)):\(msg)")
+        if Authing.getDebugMode() == true {
+            print("📗 \(getTimestamp()):\(getTag(type)):\(msg)")
+        }
     }
     
     public static func w(_ type: AnyClass, _ msg: Any...) {
-        print("⚠️ \(getTimestamp()):\(getTag(type)):\(msg)")
+        if Authing.getDebugMode() == true {
+            print("⚠️ \(getTimestamp()):\(getTag(type)):\(msg)")
+        }
     }
     
     public static func e(_ type: AnyClass, _ msg: Any...) {
-        print("❌ \(getTimestamp()):\(getTag(type)):\(msg)")
+        if Authing.getDebugMode() == true {
+            print("❌ \(getTimestamp()):\(getTag(type)):\(msg)")
+        }
     }
     
     private static func getTimestamp() -> String {

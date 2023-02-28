@@ -29,6 +29,9 @@ public class Authing: NSObject {
         case notify_lark_receive = "LarkReceiveNotificationName"
     }
     
+
+    private static var debugMode: Bool = false
+    
     private static var sSchema = "https"
     private static var sHost = "authing.cn"
     private static var sWebsocketHost = "wss://events.authing.com"
@@ -92,6 +95,14 @@ public class Authing: NSObject {
         isOnPremises = true
         sHost = host
         sPublicKey = publicKey
+    }
+    
+    @objc public static func setDebugMode(open: Bool) {
+        debugMode = open
+    }
+    
+    @objc public static func getDebugMode() -> Bool {
+        return  debugMode
     }
     
     @objc public static func getConfig(completion: @escaping(Config?)->Void) {

@@ -79,7 +79,7 @@ public class Util {
         var result: AnyObject?
         let status = SecItemCopyMatching(query, &result)
         if (status != 0) {
-            print("Try get uuid from keychain operation finished with status: \(status)")
+            ALog.e(Util.self, "Try get uuid from keychain operation finished with status: \(status)")
         }
         if (result == nil) {
             return nil
@@ -88,7 +88,6 @@ public class Util {
         let dic = result as! NSDictionary
         let uuidData = dic[kSecValueData] as! Data
         let uuid = String(data: uuidData, encoding: .utf8)!
-//        print("uuid: \(uuid)")
         return uuid;
     }
     
@@ -143,7 +142,7 @@ public class Util {
 
         var error: Unmanaged<CFError>? = nil
         guard let secKey = SecKeyCreateWithData(data as CFData, attributes, &error) else {
-            print(error.debugDescription)
+            ALog.d(Util.self, error.debugDescription)
             return "error"
         }
         

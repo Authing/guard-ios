@@ -169,26 +169,6 @@
 		A86AE1DC287FED6300BFD4A0 /* DeleteAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86AE1DB287FED6300BFD4A0 /* DeleteAccountView.swift */; };
 		A874BC7528780BBA002B4C9F /* DescribeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A874BC7428780BBA002B4C9F /* DescribeTextView.swift */; };
 		A879677A29ACA491007033E5 /* WebAuthn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D8BA3D295D8A0200B8AC45 /* WebAuthn.framework */; };
-		A879680929ACAFEB007033E5 /* Transport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87967EC29ACAFEB007033E5 /* Transport.swift */; };
-		A879680A29ACAFEB007033E5 /* FoundationTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87967ED29ACAFEB007033E5 /* FoundationTransport.swift */; };
-		A879680B29ACAFEB007033E5 /* TCPTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87967EE29ACAFEB007033E5 /* TCPTransport.swift */; };
-		A879680C29ACAFEB007033E5 /* Security.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87967F029ACAFEB007033E5 /* Security.swift */; };
-		A879680D29ACAFEB007033E5 /* FoundationSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87967F129ACAFEB007033E5 /* FoundationSecurity.swift */; };
-		A879680E29ACAFEB007033E5 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87967F329ACAFEB007033E5 /* Data+Extensions.swift */; };
-		A879680F29ACAFEB007033E5 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87967F529ACAFEB007033E5 /* Server.swift */; };
-		A879681029ACAFEB007033E5 /* WebSocketServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87967F629ACAFEB007033E5 /* WebSocketServer.swift */; };
-		A879681129ACAFEB007033E5 /* FoundationHTTPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87967F829ACAFEB007033E5 /* FoundationHTTPHandler.swift */; };
-		A879681229ACAFEB007033E5 /* HTTPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87967F929ACAFEB007033E5 /* HTTPHandler.swift */; };
-		A879681329ACAFEB007033E5 /* FrameCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87967FA29ACAFEB007033E5 /* FrameCollector.swift */; };
-		A879681429ACAFEB007033E5 /* StringHTTPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87967FB29ACAFEB007033E5 /* StringHTTPHandler.swift */; };
-		A879681529ACAFEB007033E5 /* FoundationHTTPServerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87967FC29ACAFEB007033E5 /* FoundationHTTPServerHandler.swift */; };
-		A879681629ACAFEB007033E5 /* Framer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87967FD29ACAFEB007033E5 /* Framer.swift */; };
-		A879681729ACAFEB007033E5 /* Compression.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87967FF29ACAFEB007033E5 /* Compression.swift */; };
-		A879681829ACAFEB007033E5 /* WSCompression.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879680029ACAFEB007033E5 /* WSCompression.swift */; };
-		A879681929ACAFEB007033E5 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879680229ACAFEB007033E5 /* WebSocket.swift */; };
-		A879681A29ACAFEB007033E5 /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879680429ACAFEB007033E5 /* Engine.swift */; };
-		A879681B29ACAFEB007033E5 /* NativeEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879680529ACAFEB007033E5 /* NativeEngine.swift */; };
-		A879681C29ACAFEB007033E5 /* WSEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879680629ACAFEB007033E5 /* WSEngine.swift */; };
 		A879681E29ACB518007033E5 /* AuthingWebsocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879681D29ACB518007033E5 /* AuthingWebsocketClient.swift */; };
 		A89705CB287EDD520080BEE5 /* AuthingDeleteAccount.xib in Resources */ = {isa = PBXBuildFile; fileRef = A89705CA287EDD520080BEE5 /* AuthingDeleteAccount.xib */; };
 		A89EDCD728D6F5E2001B7E99 /* SocialLoginListToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89EDCD628D6F5E2001B7E99 /* SocialLoginListToast.swift */; };
@@ -372,27 +352,10 @@
 		A8652654289D2C03006FC1D3 /* GuardManualTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardManualTest.swift; sourceTree = "<group>"; };
 		A86AE1DB287FED6300BFD4A0 /* DeleteAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountView.swift; sourceTree = "<group>"; };
 		A874BC7428780BBA002B4C9F /* DescribeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescribeTextView.swift; sourceTree = "<group>"; };
-		A87967EC29ACAFEB007033E5 /* Transport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transport.swift; sourceTree = "<group>"; };
-		A87967ED29ACAFEB007033E5 /* FoundationTransport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationTransport.swift; sourceTree = "<group>"; };
-		A87967EE29ACAFEB007033E5 /* TCPTransport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPTransport.swift; sourceTree = "<group>"; };
-		A87967F029ACAFEB007033E5 /* Security.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Security.swift; sourceTree = "<group>"; };
-		A87967F129ACAFEB007033E5 /* FoundationSecurity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationSecurity.swift; sourceTree = "<group>"; };
-		A87967F329ACAFEB007033E5 /* Data+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
-		A87967F529ACAFEB007033E5 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
-		A87967F629ACAFEB007033E5 /* WebSocketServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocketServer.swift; sourceTree = "<group>"; };
-		A87967F829ACAFEB007033E5 /* FoundationHTTPHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationHTTPHandler.swift; sourceTree = "<group>"; };
-		A87967F929ACAFEB007033E5 /* HTTPHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPHandler.swift; sourceTree = "<group>"; };
-		A87967FA29ACAFEB007033E5 /* FrameCollector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameCollector.swift; sourceTree = "<group>"; };
-		A87967FB29ACAFEB007033E5 /* StringHTTPHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringHTTPHandler.swift; sourceTree = "<group>"; };
-		A87967FC29ACAFEB007033E5 /* FoundationHTTPServerHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationHTTPServerHandler.swift; sourceTree = "<group>"; };
-		A87967FD29ACAFEB007033E5 /* Framer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Framer.swift; sourceTree = "<group>"; };
-		A87967FF29ACAFEB007033E5 /* Compression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Compression.swift; sourceTree = "<group>"; };
-		A879680029ACAFEB007033E5 /* WSCompression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSCompression.swift; sourceTree = "<group>"; };
-		A879680229ACAFEB007033E5 /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
-		A879680429ACAFEB007033E5 /* Engine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
-		A879680529ACAFEB007033E5 /* NativeEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeEngine.swift; sourceTree = "<group>"; };
-		A879680629ACAFEB007033E5 /* WSEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSEngine.swift; sourceTree = "<group>"; };
 		A879681D29ACB518007033E5 /* AuthingWebsocketClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthingWebsocketClient.swift; sourceTree = "<group>"; };
+		A879687529ADFFEA007033E5 /* Starscream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Starscream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A879699A29AE0117007033E5 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
+		A87969D129AE0270007033E5 /* Starscream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Starscream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A89705CA287EDD520080BEE5 /* AuthingDeleteAccount.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingDeleteAccount.xib; sourceTree = "<group>"; };
 		A89EDCD628D6F5E2001B7E99 /* SocialLoginListToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginListToast.swift; sourceTree = "<group>"; };
 		A8A4897A287578A600F3120F /* GoFeedBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoFeedBackButton.swift; sourceTree = "<group>"; };
@@ -470,6 +433,9 @@
 		7E199D0B2783DFBF002C6F81 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A87969D129AE0270007033E5 /* Starscream.framework */,
+				A879699A29AE0117007033E5 /* libz.tbd */,
+				A879687529ADFFEA007033E5 /* Starscream.framework */,
 				A8D8BA41295D8A2C00B8AC45 /* Pods_WebAuthn.framework */,
 				A8D8BA3D295D8A0200B8AC45 /* WebAuthn.framework */,
 				7E199D102783F8E1002C6F81 /* libc++.tbd */,
@@ -755,7 +721,6 @@
 		7ECF8AC02759F819004F8FC5 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				A87967E729ACAFEB007033E5 /* Starscream */,
 				7E75669F27684A5E00C3872F /* AuthClient.swift */,
 				7E87A1C927CF603B00E52D5A /* OIDCClient.swift */,
 				A879681D29ACB518007033E5 /* AuthingWebsocketClient.swift */,
@@ -800,105 +765,6 @@
 			path = Animation;
 			sourceTree = "<group>";
 		};
-		A87967E729ACAFEB007033E5 /* Starscream */ = {
-			isa = PBXGroup;
-			children = (
-				A87967EA29ACAFEB007033E5 /* Sources */,
-			);
-			path = Starscream;
-			sourceTree = "<group>";
-		};
-		A87967EA29ACAFEB007033E5 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				A87967EB29ACAFEB007033E5 /* Transport */,
-				A87967EF29ACAFEB007033E5 /* Security */,
-				A87967F229ACAFEB007033E5 /* DataBytes */,
-				A87967F429ACAFEB007033E5 /* Server */,
-				A87967F729ACAFEB007033E5 /* Framer */,
-				A87967FE29ACAFEB007033E5 /* Compression */,
-				A879680129ACAFEB007033E5 /* Starscream */,
-				A879680329ACAFEB007033E5 /* Engine */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
-		A87967EB29ACAFEB007033E5 /* Transport */ = {
-			isa = PBXGroup;
-			children = (
-				A87967EC29ACAFEB007033E5 /* Transport.swift */,
-				A87967ED29ACAFEB007033E5 /* FoundationTransport.swift */,
-				A87967EE29ACAFEB007033E5 /* TCPTransport.swift */,
-			);
-			path = Transport;
-			sourceTree = "<group>";
-		};
-		A87967EF29ACAFEB007033E5 /* Security */ = {
-			isa = PBXGroup;
-			children = (
-				A87967F029ACAFEB007033E5 /* Security.swift */,
-				A87967F129ACAFEB007033E5 /* FoundationSecurity.swift */,
-			);
-			path = Security;
-			sourceTree = "<group>";
-		};
-		A87967F229ACAFEB007033E5 /* DataBytes */ = {
-			isa = PBXGroup;
-			children = (
-				A87967F329ACAFEB007033E5 /* Data+Extensions.swift */,
-			);
-			path = DataBytes;
-			sourceTree = "<group>";
-		};
-		A87967F429ACAFEB007033E5 /* Server */ = {
-			isa = PBXGroup;
-			children = (
-				A87967F529ACAFEB007033E5 /* Server.swift */,
-				A87967F629ACAFEB007033E5 /* WebSocketServer.swift */,
-			);
-			path = Server;
-			sourceTree = "<group>";
-		};
-		A87967F729ACAFEB007033E5 /* Framer */ = {
-			isa = PBXGroup;
-			children = (
-				A87967F829ACAFEB007033E5 /* FoundationHTTPHandler.swift */,
-				A87967F929ACAFEB007033E5 /* HTTPHandler.swift */,
-				A87967FA29ACAFEB007033E5 /* FrameCollector.swift */,
-				A87967FB29ACAFEB007033E5 /* StringHTTPHandler.swift */,
-				A87967FC29ACAFEB007033E5 /* FoundationHTTPServerHandler.swift */,
-				A87967FD29ACAFEB007033E5 /* Framer.swift */,
-			);
-			path = Framer;
-			sourceTree = "<group>";
-		};
-		A87967FE29ACAFEB007033E5 /* Compression */ = {
-			isa = PBXGroup;
-			children = (
-				A87967FF29ACAFEB007033E5 /* Compression.swift */,
-				A879680029ACAFEB007033E5 /* WSCompression.swift */,
-			);
-			path = Compression;
-			sourceTree = "<group>";
-		};
-		A879680129ACAFEB007033E5 /* Starscream */ = {
-			isa = PBXGroup;
-			children = (
-				A879680229ACAFEB007033E5 /* WebSocket.swift */,
-			);
-			path = Starscream;
-			sourceTree = "<group>";
-		};
-		A879680329ACAFEB007033E5 /* Engine */ = {
-			isa = PBXGroup;
-			children = (
-				A879680429ACAFEB007033E5 /* Engine.swift */,
-				A879680529ACAFEB007033E5 /* NativeEngine.swift */,
-				A879680629ACAFEB007033E5 /* WSEngine.swift */,
-			);
-			path = Engine;
-			sourceTree = "<group>";
-		};
 		A8A4897E287591A800F3120F /* FeedBack */ = {
 			isa = PBXGroup;
 			children = (
@@ -940,6 +806,8 @@
 			dependencies = (
 			);
 			name = Guard;
+			packageProductDependencies = (
+			);
 			productName = Guard;
 			productReference = 7E9593D2274C813A001459C5 /* Guard.framework */;
 			productType = "com.apple.product-type.framework";
@@ -996,6 +864,8 @@
 				ja,
 			);
 			mainGroup = 7E9593C8274C813A001459C5;
+			packageReferences = (
+			);
 			productRefGroup = 7E9593D3274C813A001459C5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1112,7 +982,6 @@
 				7EC00A442808074C00FD8125 /* ImageView.swift in Sources */,
 				7E8AECBC27882D2D0030D27B /* SocialLoginButton.swift in Sources */,
 				A8093DAA295B853D00372B90 /* BindingWebAuthnButton.swift in Sources */,
-				A879680929ACAFEB007033E5 /* Transport.swift in Sources */,
 				A8BBEB3D2876FC930082DE59 /* ImagePickerView.swift in Sources */,
 				7E87A1C627CE330800E52D5A /* UserProfileAvatarField.swift in Sources */,
 				7E189B0927F13ACD005AC1AC /* CacheManager.swift in Sources */,
@@ -1147,12 +1016,10 @@
 				7ED434E0277980B100893EDD /* ErrorLabel.swift in Sources */,
 				8DF7F9682943841E007CC790 /* FaceIdLoginButton.swift in Sources */,
 				7EB32816278D5DD4008639AA /* FramedVerifyCodeTextField.swift in Sources */,
-				A879681B29ACAFEB007033E5 /* NativeEngine.swift in Sources */,
 				7E09E5E52845BBB90058D83C /* MethodTab.swift in Sources */,
 				A8BBEB372876DE330082DE59 /* String+Authing.swift in Sources */,
 				7E75668B276746AF00C3872F /* AppLogo.swift in Sources */,
 				7E96039227E08B2B007C87EB /* Parser.swift in Sources */,
-				A879681729ACAFEB007033E5 /* Compression.swift in Sources */,
 				7E7566B22768A7CC00C3872F /* UserInfo.swift in Sources */,
 				7EF66C67277C119800FCBBEB /* IndexAuthViewController.swift in Sources */,
 				7E0FAFDF27ED5A37006258FC /* UIViewController+Authing.swift in Sources */,
@@ -1160,7 +1027,6 @@
 				A80BD1CD28D49B8700F9DEDE /* Toast.swift in Sources */,
 				7EF66C8D277DA96200FCBBEB /* GetEmailCodeButton.swift in Sources */,
 				A8A489842876B97C00F3120F /* FeedBackController.swift in Sources */,
-				A879681129ACAFEB007033E5 /* FoundationHTTPHandler.swift in Sources */,
 				7E75668D276837E700C3872F /* AccountTextField.swift in Sources */,
 				7E20001527EB0FA70051F590 /* Exporter.swift in Sources */,
 				7ECF8ACA275A022D004F8FC5 /* Util.swift in Sources */,
@@ -1168,27 +1034,18 @@
 				8D8B32A629254D26005F3E6E /* MFABindSuccessViewController.swift in Sources */,
 				A879681E29ACB518007033E5 /* AuthingWebsocketClient.swift in Sources */,
 				7E20001327EB00100051F590 /* CloseButton.swift in Sources */,
-				A879681529ACAFEB007033E5 /* FoundationHTTPServerHandler.swift in Sources */,
 				7E20001827EB5D5D0051F590 /* BaseInput.swift in Sources */,
 				A80B20B928D63CBF00933A26 /* SocialNoLoginMethodsView.swift in Sources */,
 				7E0FAFB427EC6373006258FC /* Button.swift in Sources */,
-				A879680F29ACAFEB007033E5 /* Server.swift in Sources */,
-				A879681429ACAFEB007033E5 /* StringHTTPHandler.swift in Sources */,
 				8D254F68293CF7D2001BEC9E /* SocialCreateAccountButton.swift in Sources */,
 				7E7566812766FA1A00C3872F /* AuthFlow.swift in Sources */,
 				7EDFB6C927C4D1C500B77DEE /* UserInfoCompleteFieldFormSelect.swift in Sources */,
-				A879680B29ACAFEB007033E5 /* TCPTransport.swift in Sources */,
-				A879681929ACAFEB007033E5 /* WebSocket.swift in Sources */,
-				A879680E29ACAFEB007033E5 /* Data+Extensions.swift in Sources */,
 				7EF66C81277D49B400FCBBEB /* ResetPasswordButton.swift in Sources */,
 				A8D1730728B752EE003D7F87 /* UserInfoCompleteSkipButton.swift in Sources */,
 				7E75667E2766F9DD00C3872F /* AuthViewController.swift in Sources */,
 				7E12D7BA277DEE6F00703FC1 /* UserProfileViewController.swift in Sources */,
-				A879681329ACAFEB007033E5 /* FrameCollector.swift in Sources */,
 				A80BD1A728D1B65F00F9DEDE /* AuthFlowUIConfig.swift in Sources */,
 				7EF66C5F277BFB7100FCBBEB /* LocalizeHelper.swift in Sources */,
-				A879681629ACAFEB007033E5 /* Framer.swift in Sources */,
-				A879680D29ACAFEB007033E5 /* FoundationSecurity.swift in Sources */,
 				7EF66C63277BFD5B00FCBBEB /* GoSomewhereButton.swift in Sources */,
 				7EDFB6C527C4826100B77DEE /* UserInfoCompleteFieldPhone.swift in Sources */,
 				7EB32814278D1FDC008639AA /* MFAOTPButton.swift in Sources */,
@@ -1205,15 +1062,11 @@
 				7E87A1C427CDBF2600E52D5A /* UserProfileField.swift in Sources */,
 				7EDFB6C327C3AABB00B77DEE /* UserInfoCompleteContentView.swift in Sources */,
 				7EF66C75277C37CE00FCBBEB /* BasePasswordTextField.swift in Sources */,
-				A879681829ACAFEB007033E5 /* WSCompression.swift in Sources */,
-				A879681229ACAFEB007033E5 /* HTTPHandler.swift in Sources */,
 				8D8B32BE2925F8A9005F3E6E /* MFARecoveryCodeButton.swift in Sources */,
 				7EF66C6D277C1C6E00FCBBEB /* RegisterMethodTabItem.swift in Sources */,
 				A850622C283237FA00F97EBD /* CountdownTimerManager.swift in Sources */,
 				8D42262A2923FA14000FDCDE /* MFAOtherMethodButton.swift in Sources */,
-				A879680C29ACAFEB007033E5 /* Security.swift in Sources */,
 				A8BBEB352876DA890082DE59 /* FeedBackIssuePicker.swift in Sources */,
-				A879681C29ACAFEB007033E5 /* WSEngine.swift in Sources */,
 				7EF66C61277BFD0900FCBBEB /* GoRegisterButton.swift in Sources */,
 				A852CBFB28780046000BC6EF /* FeedBackButton.swift in Sources */,
 				7EF66C56277B157100FCBBEB /* PrimaryButton.swift in Sources */,
@@ -1221,16 +1074,13 @@
 				7EF66C58277B3F8900FCBBEB /* TextFieldBorder.swift in Sources */,
 				A80B20B728D6289300933A26 /* SocialLoginListVerticalView.swift in Sources */,
 				7ED434DC277950AC00893EDD /* GetVerifyCodeButton.swift in Sources */,
-				A879681A29ACAFEB007033E5 /* Engine.swift in Sources */,
 				8D8B32A0292530D4005F3E6E /* MFAGoRecoveryCodeButton.swift in Sources */,
-				A879680A29ACAFEB007033E5 /* FoundationTransport.swift in Sources */,
 				7E7566912768399E00C3872F /* LoginButton.swift in Sources */,
 				7E75668F276838C600C3872F /* PasswordTextField.swift in Sources */,
 				7E7D1F6F278EB49F005AAD39 /* EmailLabel.swift in Sources */,
 				A86AE1DC287FED6300BFD4A0 /* DeleteAccountView.swift in Sources */,
 				7E75668727672C8D00C3872F /* Config.swift in Sources */,
 				7ED434D02775AB8500893EDD /* PhoneNumberTextField.swift in Sources */,
-				A879681029ACAFEB007033E5 /* WebSocketServer.swift in Sources */,
 				8D8B329C2924FA09005F3E6E /* MFAOTPCodeImage.swift in Sources */,
 				7E7566782766F91500C3872F /* AppName.swift in Sources */,
 				A8DBB7B7287D5B8C00F75C97 /* ResetSuccessViewController.swift in Sources */,

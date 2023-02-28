@@ -258,8 +258,6 @@ class BindingWebAuthnButton: PrimaryButton {
             if  let data = res?["data"] as? NSDictionary,
                 let statusCode = res?["statusCode"] as? Int,
                 statusCode == 200 {
-                print(data)
-
                 DispatchQueue.main.async() {
                     self.startRegistration(challenge: (data["registrationOptions"] as? NSDictionary)?["challenge"] as? String,
                                            userId: ((data["registrationOptions"] as? NSDictionary)?["user"] as? NSDictionary)?["id"] as? String,

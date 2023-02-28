@@ -52,8 +52,6 @@ open class FaceIdLoginButton: SocialLoginButton {
             if  let data = res?["data"] as? NSDictionary,
                 let statusCode = res?["statusCode"] as? Int,
                 statusCode == 200 {
-                print(data)
-
                 DispatchQueue.main.async() {
 
                     self.startAuthentication(challenge: (data["authenticationOptions"] as? NSDictionary)?["challenge"] as? String,
