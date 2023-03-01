@@ -152,7 +152,7 @@
 		8D8B32BE2925F8A9005F3E6E /* MFARecoveryCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8B32BD2925F8A9005F3E6E /* MFARecoveryCodeButton.swift */; };
 		8D8B32C0292771D2005F3E6E /* MFATipsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8B32BF292771D1005F3E6E /* MFATipsLabel.swift */; };
 		8DBDC4DC2912470E00B7BE7F /* ExtendFieldTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBDC4DB2912470D00B7BE7F /* ExtendFieldTextField.swift */; };
-		8DF7F9682943841E007CC790 /* FaceIdLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF7F9672943841E007CC790 /* FaceIdLoginButton.swift */; };
+		8DF7F9682943841E007CC790 /* BiometricLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF7F9672943841E007CC790 /* BiometricLoginButton.swift */; };
 		A8093DA8295B82FF00372B90 /* AuthingBindingWebAuthn.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8093DA7295B82FF00372B90 /* AuthingBindingWebAuthn.xib */; };
 		A8093DAA295B853D00372B90 /* BindingWebAuthnButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8093DA9295B853D00372B90 /* BindingWebAuthnButton.swift */; };
 		A80B20B728D6289300933A26 /* SocialLoginListVerticalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80B20B628D6289300933A26 /* SocialLoginListVerticalView.swift */; };
@@ -336,7 +336,7 @@
 		8D8B32BD2925F8A9005F3E6E /* MFARecoveryCodeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFARecoveryCodeButton.swift; sourceTree = "<group>"; };
 		8D8B32BF292771D1005F3E6E /* MFATipsLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFATipsLabel.swift; sourceTree = "<group>"; };
 		8DBDC4DB2912470D00B7BE7F /* ExtendFieldTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendFieldTextField.swift; sourceTree = "<group>"; };
-		8DF7F9672943841E007CC790 /* FaceIdLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIdLoginButton.swift; sourceTree = "<group>"; };
+		8DF7F9672943841E007CC790 /* BiometricLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricLoginButton.swift; sourceTree = "<group>"; };
 		A8093DA7295B82FF00372B90 /* AuthingBindingWebAuthn.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingBindingWebAuthn.xib; sourceTree = "<group>"; };
 		A8093DA9295B853D00372B90 /* BindingWebAuthnButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingWebAuthnButton.swift; sourceTree = "<group>"; };
 		A80B20B628D6289300933A26 /* SocialLoginListVerticalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginListVerticalView.swift; sourceTree = "<group>"; };
@@ -424,7 +424,7 @@
 				8D254F65293CF7AB001BEC9E /* SocialBindingAccountButton.swift */,
 				8D254F67293CF7D2001BEC9E /* SocialCreateAccountButton.swift */,
 				8D254F6F293D2B5A001BEC9E /* ScoialGoBindingButton.swift */,
-				8DF7F9672943841E007CC790 /* FaceIdLoginButton.swift */,
+				8DF7F9672943841E007CC790 /* BiometricLoginButton.swift */,
 				7EB2D30027871E2A00A819B3 /* AppleLoginButton.swift */,
 			);
 			path = Social;
@@ -1014,7 +1014,7 @@
 				7E87A1C827CF52C100E52D5A /* AuthRequest.swift in Sources */,
 				A8E1F10A28350590004B1E76 /* LoadingView.swift in Sources */,
 				7ED434E0277980B100893EDD /* ErrorLabel.swift in Sources */,
-				8DF7F9682943841E007CC790 /* FaceIdLoginButton.swift in Sources */,
+				8DF7F9682943841E007CC790 /* BiometricLoginButton.swift in Sources */,
 				7EB32816278D5DD4008639AA /* FramedVerifyCodeTextField.swift in Sources */,
 				7E09E5E52845BBB90058D83C /* MethodTab.swift in Sources */,
 				A8BBEB372876DE330082DE59 /* String+Authing.swift in Sources */,

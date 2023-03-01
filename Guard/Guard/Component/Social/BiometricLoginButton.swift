@@ -9,7 +9,7 @@ import Foundation
 import WebAuthn
 import PromiseKit
 
-open class FaceIdLoginButton: SocialLoginButton {
+open class BiometricLoginButton: SocialLoginButton {
     
     var webAuthnClient: WebAuthnClient!
     var userConsentUI: UserConsentUI!

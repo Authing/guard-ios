@@ -254,7 +254,7 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                 }
             } else if ("face" == trimmed) {
                                 
-                let view = FaceIdLoginButton.init()
+                let view = BiometricLoginButton.init()
                 if isVerticalLayout {
                     view.setTitle("Authing_social_face".L, for: .normal)
                 }
@@ -262,7 +262,7 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                 
             } else if ("touch" == trimmed) {
                 
-                let view = FaceIdLoginButton.init()
+                let view = BiometricLoginButton.init()
                 if isVerticalLayout {
                     view.setTitle("Authing_social_touch".L, for: .normal)
                 }
