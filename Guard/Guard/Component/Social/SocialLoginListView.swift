@@ -253,20 +253,21 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                     container.addSubview(view)
                 }
             } else if ("face" == trimmed) {
-                                
-                let view = BiometricLoginButton.init()
-                if isVerticalLayout {
-                    view.setTitle("Authing_social_face".L, for: .normal)
+                if let type = Bundle(identifier: "cn.authing.webauthn")?.classNamed("WebAuthn.BiometricLoginButton") as? SocialLoginButton.Type {
+                    let view = type.init()
+                    if isVerticalLayout {
+                        view.setTitle("Authing_social_face".L, for: .normal)
+                    }
+                    container.addSubview(view)
                 }
-                container.addSubview(view)
-                
             } else if ("touch" == trimmed) {
-                
-                let view = BiometricLoginButton.init()
-                if isVerticalLayout {
-                    view.setTitle("Authing_social_touch".L, for: .normal)
+                if let type = Bundle(identifier: "cn.authing.webauthn")?.classNamed("WebAuthn.BiometricLoginButton") as? SocialLoginButton.Type {
+                    let view = type.init()
+                    if isVerticalLayout {
+                        view.setTitle("Authing_social_touch".L, for: .normal)
+                    }
+                    container.addSubview(view)
                 }
-                container.addSubview(view)
             }  else if ("facebook" == trimmed) {
                 if let type = Bundle(identifier: "cn.authing.Facebook")?.classNamed("Facebook.FacebookButton") as? SocialLoginButton.Type {
                     let view = type.init()

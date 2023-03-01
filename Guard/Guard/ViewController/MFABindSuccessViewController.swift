@@ -28,7 +28,7 @@ open class MFABindSuccessViewController: AuthViewController {
     @IBOutlet weak var countDownLabel: UILabel!
     @IBOutlet weak var loginButton: PrimaryButton!
     
-    var type: BindSuccessType = .otp
+    public var type: BindSuccessType = .otp
     
     open override func viewDidLoad() {
         super.viewDidLoad()

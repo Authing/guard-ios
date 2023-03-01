@@ -7,9 +7,9 @@
 
 import UIKit
 
-class Toast {
+open class Toast {
     
-    class func show(text: String){
+    public class func show(text: String){
         if text == ""  || text == " " { return }
 
         DispatchQueue.main.async() {

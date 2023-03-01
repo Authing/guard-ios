@@ -7,7 +7,7 @@
 
 open class PrimaryButton: LoadingButton {
     
-    var authCompletion: Authing.AuthCompletion?
+    public var authCompletion: Authing.AuthCompletion?
     
     public override init(frame: CGRect) {
         super.init(frame: frame)

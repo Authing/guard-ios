@@ -152,9 +152,7 @@
 		8D8B32BE2925F8A9005F3E6E /* MFARecoveryCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8B32BD2925F8A9005F3E6E /* MFARecoveryCodeButton.swift */; };
 		8D8B32C0292771D2005F3E6E /* MFATipsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8B32BF292771D1005F3E6E /* MFATipsLabel.swift */; };
 		8DBDC4DC2912470E00B7BE7F /* ExtendFieldTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBDC4DB2912470D00B7BE7F /* ExtendFieldTextField.swift */; };
-		8DF7F9682943841E007CC790 /* BiometricLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF7F9672943841E007CC790 /* BiometricLoginButton.swift */; };
 		A8093DA8295B82FF00372B90 /* AuthingBindingWebAuthn.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8093DA7295B82FF00372B90 /* AuthingBindingWebAuthn.xib */; };
-		A8093DAA295B853D00372B90 /* BindingWebAuthnButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8093DA9295B853D00372B90 /* BindingWebAuthnButton.swift */; };
 		A80B20B728D6289300933A26 /* SocialLoginListVerticalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80B20B628D6289300933A26 /* SocialLoginListVerticalView.swift */; };
 		A80B20B928D63CBF00933A26 /* SocialNoLoginMethodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80B20B828D63CBF00933A26 /* SocialNoLoginMethodsView.swift */; };
 		A80BD1A728D1B65F00F9DEDE /* AuthFlowUIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80BD1A628D1B65F00F9DEDE /* AuthFlowUIConfig.swift */; };
@@ -168,7 +166,6 @@
 		A8652655289D2C03006FC1D3 /* GuardManualTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8652654289D2C03006FC1D3 /* GuardManualTest.swift */; };
 		A86AE1DC287FED6300BFD4A0 /* DeleteAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86AE1DB287FED6300BFD4A0 /* DeleteAccountView.swift */; };
 		A874BC7528780BBA002B4C9F /* DescribeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A874BC7428780BBA002B4C9F /* DescribeTextView.swift */; };
-		A879677A29ACA491007033E5 /* WebAuthn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D8BA3D295D8A0200B8AC45 /* WebAuthn.framework */; };
 		A879681E29ACB518007033E5 /* AuthingWebsocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879681D29ACB518007033E5 /* AuthingWebsocketClient.swift */; };
 		A89705CB287EDD520080BEE5 /* AuthingDeleteAccount.xib in Resources */ = {isa = PBXBuildFile; fileRef = A89705CA287EDD520080BEE5 /* AuthingDeleteAccount.xib */; };
 		A89EDCD728D6F5E2001B7E99 /* SocialLoginListToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89EDCD628D6F5E2001B7E99 /* SocialLoginListToast.swift */; };
@@ -202,7 +199,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5A88E534A7029F78B698F43D /* Pods-Guard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guard.release.xcconfig"; path = "Target Support Files/Pods-Guard/Pods-Guard.release.xcconfig"; sourceTree = "<group>"; };
 		7E003B0D284742DA00AAE4ED /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		7E02F46627950C35007FA048 /* UserInfoCompleteContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCompleteContainer.swift; sourceTree = "<group>"; };
 		7E02F46827950C57007FA048 /* UserInfoCompleteFieldForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCompleteFieldForm.swift; sourceTree = "<group>"; };
@@ -336,9 +332,7 @@
 		8D8B32BD2925F8A9005F3E6E /* MFARecoveryCodeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFARecoveryCodeButton.swift; sourceTree = "<group>"; };
 		8D8B32BF292771D1005F3E6E /* MFATipsLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFATipsLabel.swift; sourceTree = "<group>"; };
 		8DBDC4DB2912470D00B7BE7F /* ExtendFieldTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendFieldTextField.swift; sourceTree = "<group>"; };
-		8DF7F9672943841E007CC790 /* BiometricLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricLoginButton.swift; sourceTree = "<group>"; };
 		A8093DA7295B82FF00372B90 /* AuthingBindingWebAuthn.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingBindingWebAuthn.xib; sourceTree = "<group>"; };
-		A8093DA9295B853D00372B90 /* BindingWebAuthnButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingWebAuthnButton.swift; sourceTree = "<group>"; };
 		A80B20B628D6289300933A26 /* SocialLoginListVerticalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginListVerticalView.swift; sourceTree = "<group>"; };
 		A80B20B828D63CBF00933A26 /* SocialNoLoginMethodsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialNoLoginMethodsView.swift; sourceTree = "<group>"; };
 		A80BD1A628D1B65F00F9DEDE /* AuthFlowUIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlowUIConfig.swift; sourceTree = "<group>"; };
@@ -353,9 +347,7 @@
 		A86AE1DB287FED6300BFD4A0 /* DeleteAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountView.swift; sourceTree = "<group>"; };
 		A874BC7428780BBA002B4C9F /* DescribeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescribeTextView.swift; sourceTree = "<group>"; };
 		A879681D29ACB518007033E5 /* AuthingWebsocketClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthingWebsocketClient.swift; sourceTree = "<group>"; };
-		A879687529ADFFEA007033E5 /* Starscream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Starscream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A879699A29AE0117007033E5 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
-		A87969D129AE0270007033E5 /* Starscream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Starscream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A89705CA287EDD520080BEE5 /* AuthingDeleteAccount.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingDeleteAccount.xib; sourceTree = "<group>"; };
 		A89EDCD628D6F5E2001B7E99 /* SocialLoginListToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginListToast.swift; sourceTree = "<group>"; };
 		A8A4897A287578A600F3120F /* GoFeedBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoFeedBackButton.swift; sourceTree = "<group>"; };
@@ -372,14 +364,11 @@
 		A8D38D1527F1DB4A00942707 /* CountryCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeViewController.swift; sourceTree = "<group>"; };
 		A8D38D2027F2B02D00942707 /* AuthingCountryCode.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingCountryCode.xib; sourceTree = "<group>"; };
 		A8D62BA928B8D442001D0A40 /* country.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = country.plist; sourceTree = "<group>"; };
-		A8D8BA3D295D8A0200B8AC45 /* WebAuthn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WebAuthn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A8D8BA41295D8A2C00B8AC45 /* Pods_WebAuthn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_WebAuthn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8DBB7B4287D5B4100F75C97 /* AuthingResetSuccess.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingResetSuccess.xib; sourceTree = "<group>"; };
 		A8DBB7B6287D5B8C00F75C97 /* ResetSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetSuccessViewController.swift; sourceTree = "<group>"; };
 		A8DBB7B8287D635400F75C97 /* GoBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoBackButton.swift; sourceTree = "<group>"; };
 		A8E1E1752898F6E100375EEA /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		A8E1F10928350590004B1E76 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		ABF5523F33BA23013C88A01F /* Pods-Guard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guard.debug.xcconfig"; path = "Target Support Files/Pods-Guard/Pods-Guard.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -389,7 +378,6 @@
 			files = (
 				7E199D112783F8E1002C6F81 /* libc++.tbd in Frameworks */,
 				7E199D0D2783DFC0002C6F81 /* WebKit.framework in Frameworks */,
-				A879677A29ACA491007033E5 /* WebAuthn.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,15 +392,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1D37A669246CCB066AA4EAD5 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				ABF5523F33BA23013C88A01F /* Pods-Guard.debug.xcconfig */,
-				5A88E534A7029F78B698F43D /* Pods-Guard.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		7E1998D02783D3B9002C6F81 /* Social */ = {
 			isa = PBXGroup;
 			children = (
@@ -424,7 +403,6 @@
 				8D254F65293CF7AB001BEC9E /* SocialBindingAccountButton.swift */,
 				8D254F67293CF7D2001BEC9E /* SocialCreateAccountButton.swift */,
 				8D254F6F293D2B5A001BEC9E /* ScoialGoBindingButton.swift */,
-				8DF7F9672943841E007CC790 /* BiometricLoginButton.swift */,
 				7EB2D30027871E2A00A819B3 /* AppleLoginButton.swift */,
 			);
 			path = Social;
@@ -433,11 +411,7 @@
 		7E199D0B2783DFBF002C6F81 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A87969D129AE0270007033E5 /* Starscream.framework */,
 				A879699A29AE0117007033E5 /* libz.tbd */,
-				A879687529ADFFEA007033E5 /* Starscream.framework */,
-				A8D8BA41295D8A2C00B8AC45 /* Pods_WebAuthn.framework */,
-				A8D8BA3D295D8A0200B8AC45 /* WebAuthn.framework */,
 				7E199D102783F8E1002C6F81 /* libc++.tbd */,
 				7E199D0C2783DFC0002C6F81 /* WebKit.framework */,
 			);
@@ -484,7 +458,6 @@
 				7ED434CF2775AB8500893EDD /* PhoneNumberTextField.swift */,
 				8DBDC4DB2912470D00B7BE7F /* ExtendFieldTextField.swift */,
 				7ED434D92779509100893EDD /* VerifyCodeTextField.swift */,
-				A8093DA9295B853D00372B90 /* BindingWebAuthnButton.swift */,
 				7EB32815278D5DD4008639AA /* FramedVerifyCodeTextField.swift */,
 				7EF66C70277C371E00FCBBEB /* EmailTextField.swift */,
 				7E7566902768399E00C3872F /* LoginButton.swift */,
@@ -613,7 +586,6 @@
 				7E9593DE274C813B001459C5 /* GuardTests */,
 				7E9593D3274C813A001459C5 /* Products */,
 				7E199D0B2783DFBF002C6F81 /* Frameworks */,
-				1D37A669246CCB066AA4EAD5 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -795,7 +767,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7E9593E4274C813B001459C5 /* Build configuration list for PBXNativeTarget "Guard" */;
 			buildPhases = (
-				3089CC57FE14E5F5F8FDE6B1 /* [CP] Check Pods Manifest.lock */,
 				7E9593CD274C813A001459C5 /* Headers */,
 				7E9593CE274C813A001459C5 /* Sources */,
 				7E9593CF274C813A001459C5 /* Frameworks */,
@@ -921,28 +892,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3089CC57FE14E5F5F8FDE6B1 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Guard-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		7EB02F082771AC5D007CFF86 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -981,7 +930,6 @@
 				7EB327FD278BD473008639AA /* MFATableView.swift in Sources */,
 				7EC00A442808074C00FD8125 /* ImageView.swift in Sources */,
 				7E8AECBC27882D2D0030D27B /* SocialLoginButton.swift in Sources */,
-				A8093DAA295B853D00372B90 /* BindingWebAuthnButton.swift in Sources */,
 				A8BBEB3D2876FC930082DE59 /* ImagePickerView.swift in Sources */,
 				7E87A1C627CE330800E52D5A /* UserProfileAvatarField.swift in Sources */,
 				7E189B0927F13ACD005AC1AC /* CacheManager.swift in Sources */,
@@ -1014,7 +962,6 @@
 				7E87A1C827CF52C100E52D5A /* AuthRequest.swift in Sources */,
 				A8E1F10A28350590004B1E76 /* LoadingView.swift in Sources */,
 				7ED434E0277980B100893EDD /* ErrorLabel.swift in Sources */,
-				8DF7F9682943841E007CC790 /* BiometricLoginButton.swift in Sources */,
 				7EB32816278D5DD4008639AA /* FramedVerifyCodeTextField.swift in Sources */,
 				7E09E5E52845BBB90058D83C /* MethodTab.swift in Sources */,
 				A8BBEB372876DE330082DE59 /* String+Authing.swift in Sources */,
@@ -1263,7 +1210,6 @@
 		};
 		7E9593E5274C813B001459C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ABF5523F33BA23013C88A01F /* Pods-Guard.debug.xcconfig */;
 			buildSettings = {
 				BITCODE_GENERATION_MODE = bitcode;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -1313,7 +1259,6 @@
 		};
 		7E9593E6274C813B001459C5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5A88E534A7029F78B698F43D /* Pods-Guard.release.xcconfig */;
 			buildSettings = {
 				BITCODE_GENERATION_MODE = bitcode;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;

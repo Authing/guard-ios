@@ -254,7 +254,7 @@ open class LoginButton: PrimaryButton {
         }
     }
     
-    class func mfaHandle(view: UIView, mfaType: String, needGuide: Bool) -> AuthViewController? {
+    public class func mfaHandle(view: UIView, mfaType: String, needGuide: Bool) -> AuthViewController? {
         var vc: AuthViewController? = nil
 
         if (mfaType == "SMS" ) {
