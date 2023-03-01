@@ -1094,7 +1094,7 @@ public class AuthClient: Client {
     }
     
     //MARK: ---------- pubEvent ----------
-    public func pubEvent(eventCode: String, eventData: NSDictionary, completion: @escaping(Int, String?, NSDictionary?) -> Void) {
+    public func pubEvent(eventType: String, eventData: NSDictionary, completion: @escaping(Int, String?, NSDictionary?) -> Void) {
         
         guard let data = try? JSONSerialization.data(withJSONObject: eventData, options: []) else {
             ALog.d(AuthClient.self, "eventData is not json when requesting pubEvent")
@@ -1108,7 +1108,7 @@ public class AuthClient: Client {
             return
         }
         
-        post("/api/v3/pub-userEvent", ["eventType": eventCode, "eventData": str], completion: completion)
+        post("/api/v3/pub-userEvent", ["eventType": eventType, "eventData": str], completion: completion)
     }
     
     // MARK: ---------- Util APIs ----------

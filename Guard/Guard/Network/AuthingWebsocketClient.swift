@@ -13,14 +13,14 @@ public class AuthingWebsocketClient: NSObject {
     private var webSocketTask: URLSessionWebSocketTask!
     private var urlString: String = ""
     private var retryCount: Int = 3
-    
+    private var retryTimes: Int = 0
+
     public func setRetryCount(_ count: Int) {
         retryCount = count
     }
     
     public func initWebSocket(urlString: String, completion: @escaping (String?) -> Void) {
         self.urlString = urlString
-        var retryTimes: Int = 0
         guard let url = URL(string: urlString) else {
             ALog.e(AuthingWebsocketClient.self, "Error: can not create URL")
             return
@@ -45,8 +45,8 @@ public class AuthingWebsocketClient: NSObject {
             case .failure(let error):
                 ALog.e(AuthingWebsocketClient.self, error)
                 completion(error.localizedDescription)
-                retryTimes += 1
-                self.reconnect(url: self.urlString, retryTimes: retryTimes)
+                self.retryTimes += 1
+                self.reconnect(url: self.urlString, retryTimes: self.retryTimes)
             }
         }
     }
