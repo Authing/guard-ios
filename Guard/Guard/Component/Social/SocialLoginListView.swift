@@ -149,6 +149,10 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                         srcs.setValue("lark", forKey: "6")
                     } else if ("facebook:mobile" == type) {
                         srcs.setValue("facebook", forKey: "7")
+                    } else if ("qq:mobile" == type) {
+                        srcs.setValue("qq", forKey: "8")
+                    } else if ("weibo:mobile" == type) {
+                        srcs.setValue("weibo", forKey: "9")
                     }
                 }
             }
@@ -268,8 +272,16 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                     }
                     container.addSubview(view)
                 }
-            }  else if ("facebook" == trimmed) {
+            } else if ("facebook" == trimmed) {
                 if let type = Bundle(identifier: "cn.authing.Facebook")?.classNamed("Facebook.FacebookButton") as? SocialLoginButton.Type {
+                    let view = type.init()
+                    if isVerticalLayout {
+                        view.setTitle("authing_social_facebook".L, for: .normal)
+                    }
+                    container.addSubview(view)
+                }
+            } else if ("qq" == trimmed) {
+                if let type = Bundle(identifier: "cn.authing.Tencent")?.classNamed("Tencent.TencentLoginButton") as? SocialLoginButton.Type {
                     let view = type.init()
                     if isVerticalLayout {
                         view.setTitle("authing_social_facebook".L, for: .normal)

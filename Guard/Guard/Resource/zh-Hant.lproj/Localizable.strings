@@ -151,6 +151,7 @@
 "authing_social_face" = "      使用 FaceID 登錄";
 "authing_social_touch" = "      使用 TouchID 登錄";
 "authing_social_facebook" = "     使用 Facebook 登錄";
+"authing_social_qq" = "     使用 QQ 登錄";
 
 "authing_recovery_title" = "使用恢復代碼";
 "authing_recovery_tip" = "如果沒有恢復代碼，請聯繫管理員處理";

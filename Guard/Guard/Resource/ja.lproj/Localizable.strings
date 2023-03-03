@@ -152,6 +152,7 @@
 "authing_social_face" = "      FaceID でサインイン";
 "authing_social_touch" = "      TouchID でサインイン";
 "authing_social_facebook" = "      Facebook でサインイン";
+"authing_social_qq" = "      QQ でサインイン";
 
 "authing_recovery_title" = "使用回復コード";
 "authing_recovery_tip" = "回復コードがない場合は管理者に連絡して処理してください";

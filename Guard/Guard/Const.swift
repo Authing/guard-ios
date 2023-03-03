@@ -29,6 +29,7 @@ public class Const: NSObject {
     public static let EC_FIRST_TIME_LOGIN = 1639;
     public static let EC_ONLY_BINDING_ACCOUNT = 1640;
     public static let EC_BINDING_CREATE_ACCOUNT = 1641;
+    public static let EC_ENTER_VERIFICATION_CODE = 2000;
     public static let EC_MULTIPLE_ACCOUNT = 2921;
 
     public static let SCREEN_WIDTH = UIScreen.main.bounds.width

@@ -162,6 +162,7 @@
 "authing_social_google" = "     Sign in with Google ";
 "authing_social_apple" = "      Sign in with Apple ";
 "authing_social_facebook" = "       Sign in with Facebook ";
+"authing_social_qq" = "       Sign in with QQ ";
 
 "authing_recovery_title" = "Use recovery code";
 "authing_recovery_tip" = "If no recovery code, please contact the administrator";

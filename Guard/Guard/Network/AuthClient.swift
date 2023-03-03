@@ -718,6 +718,44 @@ public class AuthClient: Client {
         }
     }
     
+    public func loginByTencent(_ accessToken: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        getConfig { config in
+            guard let conf = config else {
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
+                return
+            }
+            
+            guard let conId = conf.getConnectionId(type: "qq:mobile") else {
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
+                return
+            }
+            
+            let body: NSDictionary = ["connId" : conId, "access_token" : accessToken]
+            self.post("/api/v2/ecConn/QQConnect/authByAccessToken", body) { code, message, data in
+                self.createUserInfo(code, message, data, completion: completion)
+            }
+        }
+    }
+    
+    public func loginByWeibo(_ accessToken: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        getConfig { config in
+            guard let conf = config else {
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
+                return
+            }
+            
+            guard let conId = conf.getConnectionId(type: "weibo:mobile") else {
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
+                return
+            }
+            
+            let body: NSDictionary = ["connId" : conId, "access_token" : accessToken]
+            self.post("/api/v2/ecConn/weibo/authByAccessToken", body) { code, message, data in
+                self.createUserInfo(code, message, data, completion: completion)
+            }
+        }
+    }
+    
     public func loginByOneAuth(token: String, accessToken: String, _ netWork: Int? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let body: NSMutableDictionary = ["token" : token, "accessToken" : accessToken]
         if netWork != nil {
@@ -728,7 +766,7 @@ public class AuthClient: Client {
         }
     }
     
-    // MARK: Scoial Identity Binding
+    // MARK: ---------- Scoial Identity Binding APIs ----------
     public func getDataByWechatlogin(authData: AuthRequest? = nil, code: String, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         getConfig { config in
             guard let conf = config else {
@@ -1055,7 +1093,6 @@ public class AuthClient: Client {
                                        userHandle: String,
                                        clientDataJSON: String,
                                        signature: String,
-                                       authenticatorAttachment: String,
                                        completion: @escaping(Int, String?, NSDictionary?) -> Void) {
         
         let body: NSDictionary = ["ticket" : ticket,

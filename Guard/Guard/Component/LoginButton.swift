@@ -197,7 +197,7 @@ open class LoginButton: PrimaryButton {
                     }
                 }
             } else if (code == Const.EC_MFA_REQUIRED) {
-                                
+                
                 if let mfaPolicy = Authing.getCurrentUser()?.mfaPolicy {
                     for policy in mfaPolicy {
                         DispatchQueue.main.async() {
@@ -207,7 +207,7 @@ open class LoginButton: PrimaryButton {
                         break
                     }
                 }
-
+                
             } else if (code == Const.EC_FIRST_TIME_LOGIN) {
                 // clear password text field
                 if let tfPassword: PasswordTextField = Util.findView(button, viewClass: PasswordTextField.self) {
@@ -237,7 +237,7 @@ open class LoginButton: PrimaryButton {
                 }
                 
             } else if (code == Const.EC_BINDING_CREATE_ACCOUNT) {
-                                
+                
                 var nextVC: AuthViewController? = nil
                 if let vc = button.viewController as? AuthViewController {
                     nextVC = AuthViewController(nibName: "AuthingBindingMethod", bundle: Bundle(for: Self.self))
@@ -248,6 +248,8 @@ open class LoginButton: PrimaryButton {
                 }
             } else if (code == Const.EC_MULTIPLE_ACCOUNT) {
                 Util.setError(button, message)
+            } else if (code == Const.EC_ENTER_VERIFICATION_CODE) {
+                
             } else {
                 Util.setError(button, message)
             }
