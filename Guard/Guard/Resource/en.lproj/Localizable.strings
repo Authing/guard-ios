@@ -163,6 +163,8 @@
 "authing_social_apple" = "      Sign in with Apple ";
 "authing_social_facebook" = "       Sign in with Facebook ";
 "authing_social_qq" = "       Sign in with QQ ";
+"authing_social_weibo" = "       Sign in with Weibo ";
+"authing_social_baidu" = "       Sign in with Baidu ";
 
 "authing_recovery_title" = "Use recovery code";
 "authing_recovery_tip" = "If no recovery code, please contact the administrator";
