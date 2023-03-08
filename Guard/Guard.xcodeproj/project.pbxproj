@@ -181,6 +181,8 @@
 		A8D38D1627F1DB4A00942707 /* CountryCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D38D1527F1DB4A00942707 /* CountryCodeViewController.swift */; };
 		A8D38D2127F2B02D00942707 /* AuthingCountryCode.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D38D2027F2B02D00942707 /* AuthingCountryCode.xib */; };
 		A8D62BAA28B8D442001D0A40 /* country.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8D62BA928B8D442001D0A40 /* country.plist */; };
+		A8DB600529B836D30012F391 /* GraphValidateCodeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DB600429B836D30012F391 /* GraphValidateCodeTextField.swift */; };
+		A8DB600729B856C40012F391 /* GraphValidateCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DB600629B856C40012F391 /* GraphValidateCode.swift */; };
 		A8DBB7B5287D5B4100F75C97 /* AuthingResetSuccess.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DBB7B4287D5B4100F75C97 /* AuthingResetSuccess.xib */; };
 		A8DBB7B7287D5B8C00F75C97 /* ResetSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DBB7B6287D5B8C00F75C97 /* ResetSuccessViewController.swift */; };
 		A8DBB7B9287D635400F75C97 /* GoBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DBB7B8287D635400F75C97 /* GoBackButton.swift */; };
@@ -364,6 +366,8 @@
 		A8D38D1527F1DB4A00942707 /* CountryCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeViewController.swift; sourceTree = "<group>"; };
 		A8D38D2027F2B02D00942707 /* AuthingCountryCode.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingCountryCode.xib; sourceTree = "<group>"; };
 		A8D62BA928B8D442001D0A40 /* country.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = country.plist; sourceTree = "<group>"; };
+		A8DB600429B836D30012F391 /* GraphValidateCodeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphValidateCodeTextField.swift; sourceTree = "<group>"; };
+		A8DB600629B856C40012F391 /* GraphValidateCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphValidateCode.swift; sourceTree = "<group>"; };
 		A8DBB7B4287D5B4100F75C97 /* AuthingResetSuccess.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingResetSuccess.xib; sourceTree = "<group>"; };
 		A8DBB7B6287D5B8C00F75C97 /* ResetSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetSuccessViewController.swift; sourceTree = "<group>"; };
 		A8DBB7B8287D635400F75C97 /* GoBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoBackButton.swift; sourceTree = "<group>"; };
@@ -466,6 +470,8 @@
 				7ED434DB277950AC00893EDD /* GetVerifyCodeButton.swift */,
 				7EF66C8C277DA96200FCBBEB /* GetEmailCodeButton.swift */,
 				7ED434DF277980B100893EDD /* ErrorLabel.swift */,
+				A8DB600429B836D30012F391 /* GraphValidateCodeTextField.swift */,
+				A8DB600629B856C40012F391 /* GraphValidateCode.swift */,
 				7EF66C60277BFD0900FCBBEB /* GoRegisterButton.swift */,
 				7EF66C68277C197900FCBBEB /* RegisterMethodTab.swift */,
 				7EF66C6E277C1CCB00FCBBEB /* RegisterContainer.swift */,
@@ -1021,9 +1027,11 @@
 				7EF66C58277B3F8900FCBBEB /* TextFieldBorder.swift in Sources */,
 				A80B20B728D6289300933A26 /* SocialLoginListVerticalView.swift in Sources */,
 				7ED434DC277950AC00893EDD /* GetVerifyCodeButton.swift in Sources */,
+				A8DB600529B836D30012F391 /* GraphValidateCodeTextField.swift in Sources */,
 				8D8B32A0292530D4005F3E6E /* MFAGoRecoveryCodeButton.swift in Sources */,
 				7E7566912768399E00C3872F /* LoginButton.swift in Sources */,
 				7E75668F276838C600C3872F /* PasswordTextField.swift in Sources */,
+				A8DB600729B856C40012F391 /* GraphValidateCode.swift in Sources */,
 				7E7D1F6F278EB49F005AAD39 /* EmailLabel.swift in Sources */,
 				A86AE1DC287FED6300BFD4A0 /* DeleteAccountView.swift in Sources */,
 				7E75668727672C8D00C3872F /* Config.swift in Sources */,
