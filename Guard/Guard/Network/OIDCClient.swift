@@ -52,8 +52,8 @@ public class OIDCClient: NSObject {
    }
 
     //MARK: ---------- Login APIs ----------
-    public func loginByAccount(account: String, password: String, _ autoRegister: Bool = false, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        AuthClient().loginByAccount(authData: self.authRequest ,account: account, password: password, autoRegister, context, completion: completion)
+    public func loginByAccount(account: String, password: String, _ autoRegister: Bool = false, _ context: String? = nil, _ captchaCode: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        AuthClient().loginByAccount(authData: self.authRequest ,account: account, password: password, autoRegister, context, captchaCode, completion: completion)
     }
     
     public func loginByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, _ autoRegister: Bool = false, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {

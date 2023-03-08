@@ -106,7 +106,7 @@ extension UIView {
         static var layoutParamsKey = "layoutParams"
     }
 
-    open var layoutParams: LayoutParams {
+    public var layoutParams: LayoutParams {
         get {
             if let lp = objc_getAssociatedObject(self, &Keys.layoutParamsKey) as? LayoutParams {
                 return lp

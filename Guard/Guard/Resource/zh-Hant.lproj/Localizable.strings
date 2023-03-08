@@ -44,6 +44,7 @@
 "authing_mfa_verify_code" = "安全碼驗證";
 "authing_mfa_verify_face" = "人臉識別驗證";
 "authing_please_input_verify_code" = "請輸入驗證碼";
+"authing_please_input_graph_verify_code" = "請輸入圖形驗證碼";
 "authing_phone_number_already_bound" = "手機號碼碼已經被綁定";
 "authing_email_already_bound" = "電子郵件已經被綁定";
 "authing_account_login_verify" = "帳號登入驗證";
@@ -154,6 +155,7 @@
 "authing_social_qq" = "     使用 QQ 登錄";
 "authing_social_weibo" = "     使用 微博 登錄";
 "authing_social_baidu" = "     使用 百度 登錄";
+"authing_social_linkedin" = "     使用 领英 登錄";
 
 "authing_recovery_title" = "使用恢復代碼";
 "authing_recovery_tip" = "如果沒有恢復代碼，請聯繫管理員處理";

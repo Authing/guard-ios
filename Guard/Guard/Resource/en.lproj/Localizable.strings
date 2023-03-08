@@ -55,6 +55,7 @@
 "authing_mfa_verify_code" = "Verify by security code";
 "authing_mfa_verify_face" = "Verify by face ID";
 "authing_please_input_verify_code" = "Please input verify code";
+"authing_please_input_graph_verify_code" = "Please enter the graphic verification code";
 "authing_phone_number_already_bound" = "The phone number has been bound";
 "authing_email_already_bound" = "The email has been bound";
 "authing_account_login_verify" = "Login verification";
@@ -165,6 +166,7 @@
 "authing_social_qq" = "       Sign in with QQ ";
 "authing_social_weibo" = "       Sign in with Weibo ";
 "authing_social_baidu" = "       Sign in with Baidu ";
+"authing_social_linkedin" = "       Sign in with Linkedin ";
 
 "authing_recovery_title" = "Use recovery code";
 "authing_recovery_tip" = "If no recovery code, please contact the administrator";

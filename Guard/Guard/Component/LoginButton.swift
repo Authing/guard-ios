@@ -86,7 +86,7 @@ open class LoginButton: PrimaryButton {
         }
         
         if let tfAccount: AccountTextField = Util.findView(self, viewClass: AccountTextField.self),
-            let tfPassword: PasswordTextField = Util.findView(self, viewClass: PasswordTextField.self) {
+           let tfPassword: PasswordTextField = Util.findView(self, viewClass: PasswordTextField.self) {
             if let account = tfAccount.text,
                let password = tfPassword.text {
                 if account == "" {
@@ -94,7 +94,16 @@ open class LoginButton: PrimaryButton {
                 } else if password == "" {
                     Util.setError(tfPassword, "authing_password_none".L)
                 } else {
-                    loginByAccount(account, password, config?.autoRegisterThenLoginHintInfo ?? false)
+                    if let captchaCode: GraphValidateCodeTextField = Util.findView(self, viewClass: GraphValidateCodeTextField.self),
+                       let code = captchaCode.text,
+                       captchaCode.getNeedInput() == true {
+                        if code == "" {
+                            Util.setError(captchaCode, "authing_verifycode_none".L)
+                        }
+                        loginByAccount(account, password, config?.autoRegisterThenLoginHintInfo ?? false, nil, code)
+                    } else {
+                        loginByAccount(account, password, config?.autoRegisterThenLoginHintInfo ?? false, nil, nil)
+                    }
                 }
                 return
             }
@@ -136,17 +145,17 @@ open class LoginButton: PrimaryButton {
         }
     }
     
-    private func loginByAccount(_ account: String, _ password: String, _ autoRegister: Bool) {
+    private func loginByAccount(_ account: String, _ password: String, _ autoRegister: Bool, _ context: String? = nil, _ captchaCode: String? = nil) {
         startLoading()
         
         let authProtocol = authViewController?.authFlow?.authProtocol ?? .EInHouse
         if authProtocol == .EInHouse {
-            Util.getAuthClient(self).loginByAccount(authData: nil, account: account, password: password, autoRegister) { code, message, userInfo in
+            Util.getAuthClient(self).loginByAccount(authData: nil, account: account, password: password, autoRegister, context, captchaCode) { code, message, userInfo in
                 self.stopLoading()
                 LoginButton.handleLogin(button: self, code, message: message, userInfo: userInfo, authCompletion: self.authCompletion)
             }
         } else {
-            OIDCClient().loginByAccount(account: account, password: password, autoRegister) { code,  message,  userInfo in
+            OIDCClient().loginByAccount(account: account, password: password, autoRegister, context, captchaCode) { code,  message,  userInfo in
                 self.stopLoading()
                 LoginButton.handleLogin(button: self, code, message: message, userInfo: userInfo, authCompletion: self.authCompletion)
             }
@@ -249,7 +258,20 @@ open class LoginButton: PrimaryButton {
             } else if (code == Const.EC_MULTIPLE_ACCOUNT) {
                 Util.setError(button, message)
             } else if (code == Const.EC_ENTER_VERIFICATION_CODE) {
-                
+                if let graphVerifyCode = Util.findView(button, viewClass: GraphValidateCode.self) as? GraphValidateCode,
+                   let graphText = Util.findView(button, viewClass: GraphValidateCodeTextField.self) as? GraphValidateCodeTextField {
+                    graphText.setNeedInput(need: true)
+                    graphVerifyCode.refreshCaptcha()
+                    if let superView = graphVerifyCode.superview {
+                        superView.isHidden = false
+                        superView.constraints.forEach({ constraint in
+                            if (constraint.firstAttribute == .height) {
+                                superView.removeConstraint(constraint)
+                            }
+                        })
+                        superView.heightAnchor.constraint(equalToConstant: 52).isActive = true
+                    }
+                }
             } else {
                 Util.setError(button, message)
             }

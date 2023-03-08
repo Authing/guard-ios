@@ -6,7 +6,7 @@
 //
 
 extension UIViewController {
-    open func canPerformSegue(withIdentifier id: String) -> Bool {
+    public func canPerformSegue(withIdentifier id: String) -> Bool {
         guard let segues = self.value(forKey: "storyboardSegueTemplates") as? [NSObject] else { return false }
         return segues.first { $0.value(forKey: "identifier") as? String == id } != nil
     }

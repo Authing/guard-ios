@@ -155,6 +155,8 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                         srcs.setValue("weibo", forKey: "9")
                     } else if ("baidu:mobile" == type) {
                         srcs.setValue("baidu", forKey: "10")
+                    } else if ("linkedin:mobile" == type) {
+                        srcs.setValue("linkedin", forKey: "11")
                     }
                 }
             }
@@ -300,6 +302,14 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                 }
             } else if ("baidu" == trimmed) {
                 if let type = Bundle(identifier: "cn.authing.Baidu")?.classNamed("Baidu.BaiduLoginButton") as? SocialLoginButton.Type {
+                    let view = type.init()
+                    if isVerticalLayout {
+                        view.setTitle("authing_social_baidu".L, for: .normal)
+                    }
+                    container.addSubview(view)
+                }
+            } else if ("linkedin" == trimmed) {
+                if let type = Bundle(identifier: "cn.authing.Linkedin")?.classNamed("Linkedin.LinkedinLoginButton") as? SocialLoginButton.Type {
                     let view = type.init()
                     if isVerticalLayout {
                         view.setTitle("authing_social_baidu".L, for: .normal)

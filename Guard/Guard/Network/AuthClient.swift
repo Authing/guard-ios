@@ -171,8 +171,8 @@ public class AuthClient: Client {
     }
     
     //MARK: ---------- Login APIs ----------
-    public func loginByAccount(account: String, password: String, _ autoRegister: Bool = false, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
-        loginByAccount(authData: nil, account: account, password: password, autoRegister, context, completion: completion)
+    public func loginByAccount(account: String, password: String, _ autoRegister: Bool = false, _ context: String? = nil, _ captchaCode: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        loginByAccount(authData: nil, account: account, password: password, autoRegister, context, captchaCode, completion: completion)
     }
 
     public func loginByPhoneCode(phoneCountryCode: String? = nil, phone: String, code: String, _ autoRegister: Bool = false, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
@@ -183,11 +183,14 @@ public class AuthClient: Client {
         loginByEmail(authData: nil, email: email, code: code, autoRegister, context, completion: completion)
     }
             
-    public func loginByAccount(authData: AuthRequest?, account: String, password: String, _ autoRegister: Bool = false, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func loginByAccount(authData: AuthRequest?, account: String, password: String, _ autoRegister: Bool = false, _ context: String? = nil, _ captchaCode: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let encryptedPassword = Util.encryptPassword(password)
         let body: NSMutableDictionary = ["account" : account, "password" : encryptedPassword, "autoRegister": autoRegister]
         if context != nil {
             body.setValue(context, forKey: "context")
+        }
+        if captchaCode != nil {
+            body.setValue(captchaCode, forKey: "captchaCode")
         }
         post("/api/v2/login/account", body) { code, message, data in
             if authData == nil{
@@ -266,7 +269,17 @@ public class AuthClient: Client {
 //        }
 //    }
     
-
+    //MARK: ---------- Security ----------
+    public func getSecurityCaptcha(completion: @escaping(Int, String?, Data?) -> Void) {
+        getConfig { config in
+            if (config != nil) {
+                let urlString: String = "\(Authing.getSchema())://\(Util.getHost(config!))/api/v2/security/captcha";
+                self.request(config: config, urlString: urlString, method: "GET", body: nil, completion: completion)
+            } else {
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
+            }
+        }
+    }
     // MARK: ---------- User APIs ----------
     public func getCurrentUser(user: UserInfo? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         get("/api/v2/users/me") { code, message, data in
@@ -775,6 +788,44 @@ public class AuthClient: Client {
         }
     }
     
+    public func loginByBaiduByAccessToken(_ accessToken: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        getConfig { config in
+            guard let conf = config else {
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
+                return
+            }
+  
+            guard let conId = conf.getConnectionId(type: "baidu:mobile") else {
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
+                return
+            }
+            
+            let body: NSDictionary = ["connId" : conId, "access_token" : accessToken]
+            self.post("/api/v2/ecConn/baidu/authByAccessToken", body) { code, message, data in
+                self.createUserInfo(code, message, data, completion: completion)
+            }
+        }
+    }
+    
+    public func loginByLinkedin(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        getConfig { config in
+            guard let conf = config else {
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
+                return
+            }
+  
+            guard let conId = conf.getConnectionId(type: "linkedin:mobile") else {
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
+                return
+            }
+            
+            let body: NSDictionary = ["connId" : conId, "code" : code]
+            self.post("/api/v2/ecConn/linkedin/authByCode", body) { code, message, data in
+                self.createUserInfo(code, message, data, completion: completion)
+            }
+        }
+    }
+    
     public func loginByOneAuth(token: String, accessToken: String, _ netWork: Int? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let body: NSMutableDictionary = ["token" : token, "accessToken" : accessToken]
         if netWork != nil {
@@ -1229,7 +1280,7 @@ public class AuthClient: Client {
         }
     }
     
-    public func request(config: Config?, urlString: String, method: String, body: NSDictionary?, completion: @escaping (Int, String?, NSDictionary?) -> Void) {
+    private func request(config: Config?, urlString: String, method: String, body: NSDictionary?) -> URLRequest {
         let url:URL! = URL(string:urlString)
         var request = URLRequest(url: url)
         request.httpMethod = method
@@ -1261,10 +1312,70 @@ public class AuthClient: Client {
         request.addValue("Guard-iOS@\(Const.SDK_VERSION)", forHTTPHeaderField: "x-authing-request-from")
         request.addValue(Const.SDK_VERSION, forHTTPHeaderField: "x-authing-sdk-version")
         request.addValue(Util.getLangHeader(), forHTTPHeaderField: "x-authing-lang")
-        
         request.httpShouldHandleCookies = false
         
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
+        request.addValue(<#T##value: String##String#>, forHTTPHeaderField: <#T##String#>)
+        return request
+    }
+    
+    public func request(config: Config?, urlString: String, method: String, body: NSDictionary?, completion: @escaping (Int, String?, Data?) -> Void) {
+        
+        URLSession.shared.dataTask(with: self.request(config: config, urlString: urlString, method: method, body: body)) { (data, response, error) in
+            guard error == nil else {
+                ALog.d(AuthClient.self, "Guardian request network error:\(error!.localizedDescription)")
+                completion(ErrorCode.netWork.rawValue, ErrorCode.netWork.errorMessage(), nil)
+                return
+            }
+            
+            guard data != nil else {
+                ALog.d(AuthClient.self, "data is null when requesting \(urlString)")
+                completion(ErrorCode.jsonParse.rawValue, ErrorCode.jsonParse.errorMessage(), nil)
+                return
+            }
+            do {
+                self.getRequestCookie(response: response)
+                let httpResponse = response as? HTTPURLResponse
+                let statusCode: Int = (httpResponse?.statusCode)!
+                
+                // some API e.g. getCustomUserData returns json array
+                if (statusCode == 200 || statusCode == 201) {
+                    return completion(200, "", data)
+                } else {
+                    ALog.d(AuthClient.self, "Guardian request network error. Status code:\(statusCode.description). url:\(urlString)")
+                    completion(statusCode, "Network Error", nil)
+                }
+            }
+        }.resume()
+    }
+    
+    public func getRequestCookie(response: URLResponse?) {
+        guard
+        let url = response?.url,
+        let httpResponse = response as? HTTPURLResponse,
+        let fields = httpResponse.allHeaderFields as? [String: String]
+        else { return }
+
+        let cookies = HTTPCookie.cookies(withResponseHeaderFields: fields, for: url)
+        HTTPCookieStorage.shared.setCookies(cookies, for: url, mainDocumentURL: nil)
+        for cookie in cookies {
+            var cookieProperties = [HTTPCookiePropertyKey: Any]()
+            cookieProperties[.name] = cookie.name
+            cookieProperties[.value] = cookie.value
+            cookieProperties[.domain] = cookie.domain
+            cookieProperties[.path] = cookie.path
+            cookieProperties[.version] = cookie.version
+            cookieProperties[.expires] = cookie.expiresDate
+
+            let newCookie = HTTPCookie(properties: cookieProperties)
+            HTTPCookieStorage.shared.setCookie(newCookie!)
+
+            print("name: \(cookie.name) value: \(cookie.value)")
+        }
+    }
+    
+    public func request(config: Config?, urlString: String, method: String, body: NSDictionary?, completion: @escaping (Int, String?, NSDictionary?) -> Void) {
+
+        URLSession.shared.dataTask(with: self.request(config: config, urlString: urlString, method: method, body: body)) { (data, response, error) in
             guard error == nil else {
                 ALog.d(AuthClient.self, "Guardian request network error:\(error!.localizedDescription)")
                 completion(ErrorCode.netWork.rawValue, ErrorCode.netWork.errorMessage(), nil)

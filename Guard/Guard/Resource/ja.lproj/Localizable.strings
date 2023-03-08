@@ -44,6 +44,7 @@
 "authing_mfa_verify_code"="セキュリティコードの検証";
 "authing_mfa_verify_face"="顔の検証";
 "authing_please_input_verify_code"="確認コードを入力してください";
+"authing_please_input_graph_verify_code" = "図形の検証コードを入力してくださいです。";
 "authing_phone_number_already_bound"="電話番号はすでにバインドされています";
 "authing_email_already_bound"="メールはすでにバインドされています";
 "authing_account_login_verify"="アカウントログインの確認";
@@ -155,6 +156,7 @@
 "authing_social_qq" = "      QQ でサインイン";
 "authing_social_weibo" = "     Weibo でサインイン";
 "authing_social_baidu" = "     Baidu でサインイン";
+"authing_social_linkedin" = "     Linkedin でサインイン";
 
 "authing_recovery_title" = "使用回復コード";
 "authing_recovery_tip" = "回復コードがない場合は管理者に連絡して処理してください";

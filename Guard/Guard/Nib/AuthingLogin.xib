@@ -45,7 +45,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nmk-Ef-ukz" userLabel="Phone Login Container" customClass="LoginContainer" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="24" y="310" width="366" height="112"/>
+                    <rect key="frame" x="24" y="310" width="366" height="120"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0s7-XA-leK" customClass="PhoneNumberTextField" customModule="Guard" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="366" height="52"/>
@@ -82,7 +82,7 @@
                         <constraint firstAttribute="trailing" secondItem="4WY-fs-Tha" secondAttribute="trailing" id="Aba-em-7b5"/>
                         <constraint firstAttribute="trailing" secondItem="0s7-XA-leK" secondAttribute="trailing" id="Fqa-Zx-K1x"/>
                         <constraint firstItem="0s7-XA-leK" firstAttribute="leading" secondItem="Nmk-Ef-ukz" secondAttribute="leading" id="L97-nP-mKR"/>
-                        <constraint firstAttribute="height" constant="112" id="YmE-cA-v7E"/>
+                        <constraint firstAttribute="height" constant="120" id="YmE-cA-v7E"/>
                         <constraint firstItem="4WY-fs-Tha" firstAttribute="bottom" secondItem="jZa-yg-R9R" secondAttribute="bottom" id="b0w-mM-1ZQ"/>
                         <constraint firstItem="4WY-fs-Tha" firstAttribute="top" secondItem="jZa-yg-R9R" secondAttribute="top" id="eS3-l6-XMF"/>
                         <constraint firstItem="4WY-fs-Tha" firstAttribute="top" secondItem="0s7-XA-leK" secondAttribute="bottom" constant="16" id="gYn-7R-2TE"/>
@@ -96,7 +96,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gFZ-Xj-lJ9" userLabel="Password Login Container" customClass="LoginContainer" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="24" y="310" width="366" height="112"/>
+                    <rect key="frame" x="24" y="310" width="366" height="120"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="oKO-HY-0iV" customClass="AccountTextField" customModule="Guard" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="366" height="52"/>
@@ -117,7 +117,7 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="112" id="3ex-3N-B2b"/>
+                        <constraint firstAttribute="height" constant="120" id="3ex-3N-B2b"/>
                         <constraint firstItem="oKO-HY-0iV" firstAttribute="top" secondItem="gFZ-Xj-lJ9" secondAttribute="top" id="IUd-nv-poz"/>
                         <constraint firstItem="oKO-HY-0iV" firstAttribute="leading" secondItem="gFZ-Xj-lJ9" secondAttribute="leading" id="MnY-Gm-D8R"/>
                         <constraint firstItem="gwQ-lK-Qlg" firstAttribute="leading" secondItem="gFZ-Xj-lJ9" secondAttribute="leading" id="NN3-R6-Gb6"/>
@@ -132,7 +132,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bbf-gS-1Ex" userLabel="Email Login Container" customClass="LoginContainer" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="24" y="310" width="366" height="112"/>
+                    <rect key="frame" x="24" y="310" width="366" height="120"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="btZ-3o-eKL" customClass="EmailTextField" customModule="Guard" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="366" height="52"/>
@@ -171,7 +171,7 @@
                         <constraint firstAttribute="trailing" secondItem="ZhR-A9-ylh" secondAttribute="trailing" id="BKT-qf-bRo"/>
                         <constraint firstItem="4p3-hb-Tfx" firstAttribute="leading" secondItem="Bbf-gS-1Ex" secondAttribute="leading" id="TxK-Pr-erd"/>
                         <constraint firstItem="4p3-hb-Tfx" firstAttribute="top" secondItem="btZ-3o-eKL" secondAttribute="bottom" constant="16" id="UcZ-MI-G0V"/>
-                        <constraint firstAttribute="height" constant="112" id="cf8-oe-HHb"/>
+                        <constraint firstAttribute="height" constant="120" id="cf8-oe-HHb"/>
                         <constraint firstItem="ZhR-A9-ylh" firstAttribute="leading" secondItem="4p3-hb-Tfx" secondAttribute="trailing" constant="16" id="hKz-Bc-z8O"/>
                         <constraint firstItem="btZ-3o-eKL" firstAttribute="leading" secondItem="Bbf-gS-1Ex" secondAttribute="leading" id="iiO-3d-mvq"/>
                         <constraint firstItem="ZhR-A9-ylh" firstAttribute="top" secondItem="btZ-3o-eKL" secondAttribute="bottom" constant="16" id="m0A-Uk-E0k"/>
@@ -183,7 +183,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7BN-be-d2t" userLabel="Error Label" customClass="ErrorLabel" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="24" y="430" width="366" height="25"/>
+                    <rect key="frame" x="24" y="438" width="366" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="CS0-bW-sEs"/>
                     </constraints>
@@ -191,15 +191,8 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="les-eR-d4D" customClass="PrivacyConfirmBox" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="24" y="459" width="366" height="20"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="20" id="vgm-I9-uzD"/>
-                    </constraints>
-                </view>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTZ-xL-T1d">
-                    <rect key="frame" x="356" y="558" width="0.0" height="31"/>
+                    <rect key="frame" x="356" y="549" width="0.0" height="31"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" systemColor="systemGray2Color"/>
                     <nil key="highlightedColor"/>
@@ -207,8 +200,42 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="authing_no_account"/>
                     </userDefinedRuntimeAttributes>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Pe-QK-Hge" userLabel="GraphView">
+                    <rect key="frame" x="24" y="446" width="366" height="0.0"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fud-3H-qj0" customClass="GraphValidateCode" customModule="Guard" customModuleProvider="target">
+                            <rect key="frame" x="238" y="0.0" width="128" height="0.0"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="128" id="l1G-le-ElL"/>
+                            </constraints>
+                        </imageView>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2MU-9R-GgW" customClass="GraphValidateCodeTextField" customModule="Guard" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="222" height="0.0"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="2MU-9R-GgW" secondAttribute="bottom" id="2dY-qT-VTv"/>
+                        <constraint firstItem="2MU-9R-GgW" firstAttribute="top" secondItem="8Pe-QK-Hge" secondAttribute="top" id="ClQ-hF-dG8"/>
+                        <constraint firstItem="fud-3H-qj0" firstAttribute="top" secondItem="8Pe-QK-Hge" secondAttribute="top" id="KBT-fS-QpN"/>
+                        <constraint firstAttribute="bottom" secondItem="fud-3H-qj0" secondAttribute="bottom" id="aXA-GL-E3p"/>
+                        <constraint firstAttribute="trailing" secondItem="fud-3H-qj0" secondAttribute="trailing" id="pgL-5Q-gOo"/>
+                        <constraint firstAttribute="height" id="t1r-GN-yGm"/>
+                        <constraint firstItem="2MU-9R-GgW" firstAttribute="leading" secondItem="8Pe-QK-Hge" secondAttribute="leading" id="uZv-HA-tfU"/>
+                        <constraint firstItem="fud-3H-qj0" firstAttribute="leading" secondItem="2MU-9R-GgW" secondAttribute="trailing" constant="16" id="vdM-fX-Psn"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="les-eR-d4D" customClass="PrivacyConfirmBox" customModule="Guard" customModuleProvider="target">
+                    <rect key="frame" x="24" y="450" width="366" height="20"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="vgm-I9-uzD"/>
+                    </constraints>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2g3-pt-3FB" userLabel="Go register button" customClass="GoRegisterButton" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="364" y="558" width="30" height="31"/>
+                    <rect key="frame" x="364" y="549" width="30" height="31"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="31" id="PNq-4D-i2y"/>
                     </constraints>
@@ -219,7 +246,7 @@
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qfp-Ru-dGn" userLabel="Go forgot password button" customClass="GoResetPasswordButton" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="24" y="558" width="30" height="31"/>
+                    <rect key="frame" x="24" y="549" width="30" height="31"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal">
@@ -227,7 +254,7 @@
                     </state>
                 </button>
                 <button contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jkG-vF-ihh" userLabel="Login button" customClass="LoginButton" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="24" y="494" width="366" height="48"/>
+                    <rect key="frame" x="24" y="485" width="366" height="48"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="sow-Ep-phF"/>
                     </constraints>
@@ -246,7 +273,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2dA-Lj-eWo">
-                    <rect key="frame" x="62" y="568" width="0.5" height="11"/>
+                    <rect key="frame" x="62" y="559" width="0.5" height="11"/>
                     <color key="backgroundColor" red="0.89803921568627454" green="0.90196078431372551" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="11" id="KsG-QM-Nxh"/>
@@ -254,7 +281,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdt-5U-q0t" customClass="GoFeedBackButton" customModule="Guard" customModuleProvider="target">
-                    <rect key="frame" x="70.5" y="564.5" width="16" height="18"/>
+                    <rect key="frame" x="70.5" y="555.5" width="16" height="18"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal" image="authing_feedback"/>
                 </button>
@@ -370,7 +397,7 @@
                 <constraint firstItem="NTZ-xL-T1d" firstAttribute="top" secondItem="2g3-pt-3FB" secondAttribute="top" id="Uo7-ya-O8Q"/>
                 <constraint firstItem="Nmk-Ef-ukz" firstAttribute="trailing" secondItem="txj-YQ-JVh" secondAttribute="trailing" id="UuW-1q-hYa"/>
                 <constraint firstItem="txj-YQ-JVh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="XXG-Mn-ys9"/>
-                <constraint firstItem="les-eR-d4D" firstAttribute="top" secondItem="7BN-be-d2t" secondAttribute="bottom" constant="4" id="aas-Y5-Nfu"/>
+                <constraint firstAttribute="trailing" secondItem="8Pe-QK-Hge" secondAttribute="trailing" constant="24" id="ZWn-Sg-sNY"/>
                 <constraint firstItem="les-eR-d4D" firstAttribute="leading" secondItem="txj-YQ-JVh" secondAttribute="leading" id="d6l-JP-EEp"/>
                 <constraint firstItem="bdt-5U-q0t" firstAttribute="leading" secondItem="2dA-Lj-eWo" secondAttribute="trailing" constant="8" id="djL-4e-DmV"/>
                 <constraint firstItem="1Lv-Ik-TVE" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="eN6-Me-VAr"/>
@@ -378,7 +405,9 @@
                 <constraint firstItem="DMA-tf-9bk" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="hzL-29-msk"/>
                 <constraint firstItem="fEb-Jx-gFS" firstAttribute="top" secondItem="DMA-tf-9bk" secondAttribute="bottom" id="ixe-g7-8Kh"/>
                 <constraint firstItem="Nmk-Ef-ukz" firstAttribute="leading" secondItem="txj-YQ-JVh" secondAttribute="leading" id="jAF-c8-z2R"/>
+                <constraint firstItem="8Pe-QK-Hge" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="jcc-qb-hDd"/>
                 <constraint firstItem="jkG-vF-ihh" firstAttribute="top" secondItem="les-eR-d4D" secondAttribute="bottom" constant="15" id="jfc-NT-qjP"/>
+                <constraint firstItem="8Pe-QK-Hge" firstAttribute="top" secondItem="Nmk-Ef-ukz" secondAttribute="bottom" constant="16" id="nzg-PF-Taz"/>
                 <constraint firstItem="jkG-vF-ihh" firstAttribute="leading" secondItem="txj-YQ-JVh" secondAttribute="leading" id="o1z-Zg-SXN"/>
                 <constraint firstItem="Nmk-Ef-ukz" firstAttribute="top" secondItem="gFZ-Xj-lJ9" secondAttribute="top" id="qTN-7N-XTy"/>
                 <constraint firstItem="1Lv-Ik-TVE" firstAttribute="top" secondItem="d9m-aA-3Gf" secondAttribute="bottom" constant="54" id="sSB-6Z-u4m"/>
@@ -391,6 +420,7 @@
                 <constraint firstItem="WHE-LW-cSI" firstAttribute="top" secondItem="E2M-Lp-3aM" secondAttribute="bottom" constant="8" symbolic="YES" id="xXZ-Y8-XY9"/>
                 <constraint firstItem="Bbf-gS-1Ex" firstAttribute="trailing" secondItem="txj-YQ-JVh" secondAttribute="trailing" id="yNY-QM-67X"/>
                 <constraint firstItem="Nmk-Ef-ukz" firstAttribute="top" secondItem="txj-YQ-JVh" secondAttribute="bottom" constant="24" id="ywh-BJ-Ndn"/>
+                <constraint firstItem="les-eR-d4D" firstAttribute="top" secondItem="8Pe-QK-Hge" secondAttribute="bottom" constant="4" id="zDS-kW-uu2"/>
                 <constraint firstItem="Qfp-Ru-dGn" firstAttribute="bottom" secondItem="2g3-pt-3FB" secondAttribute="bottom" id="zZi-c9-an0"/>
                 <constraint firstItem="bdt-5U-q0t" firstAttribute="centerY" secondItem="Qfp-Ru-dGn" secondAttribute="centerY" id="zgk-EV-uHO"/>
             </constraints>

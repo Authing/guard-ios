@@ -30,7 +30,7 @@ extension UIView {
         static var extendedPropertyKey = "extendedProperty"
     }
 
-    open var extendedProperty: NSDictionary {
+    public var extendedProperty: NSDictionary {
         get {
             if let ep = objc_getAssociatedObject(self, &Keys.extendedPropertyKey) as? NSDictionary {
                 return ep
