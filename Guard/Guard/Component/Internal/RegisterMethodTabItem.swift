@@ -14,20 +14,21 @@ public class RegisterMethodTabItem: MethodTabItem {
         let containers: Array<RegisterContainer> = Util.findViews(self, viewClass: RegisterContainer.self)
         containers.forEach { container in
             if (container.type == self.type) {
+                if let privacyBox = Util.findHiddenView(self, viewClass: PrivacyConfirmBox.self) as? PrivacyConfirmBox{
+                    privacyBox.superview?.constraints.forEach({ constraint in
+                        if (constraint.firstAttribute == .top && constraint.firstItem as? UIView == privacyBox) {
+                            privacyBox.superview?.removeConstraint(constraint)
+                        }
+                    })
+                    privacyBox.topAnchor.constraint(equalTo: container.bottomAnchor, constant: 16).isActive = true
+                }
+                    
                 container.isHidden = false
-
-                if let errorLabel = Util.findView(container, viewClass: ErrorLabel.self) as? ErrorLabel{
-                    updateErrorLabelConstraints(label: errorLabel, container: container)
-                }
                 
-                if let extendFieldTextField = Util.findView(self, viewClass: ExtendFieldTextField.self) as? ExtendFieldTextField,
-                   let field = self.extendField,
-                   let text = self.fieldText {
-                    extendFieldTextField.setExtendField(field, text)
-                }
             } else {
                 container.isHidden = true
             }
+            
         }
     }
     

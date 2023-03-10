@@ -156,6 +156,7 @@
 "authing_social_weibo" = "     使用 微博 登錄";
 "authing_social_baidu" = "     使用 百度 登錄";
 "authing_social_linkedin" = "     使用 领英 登錄";
+"authing_social_dingtalk" = "     使用 钉钉 登錄";
 
 "authing_recovery_title" = "使用恢復代碼";
 "authing_recovery_tip" = "如果沒有恢復代碼，請聯繫管理員處理";

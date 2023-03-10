@@ -43,7 +43,7 @@ open class LoginButton: PrimaryButton {
     }
     
     private func _onClick(_ config: Config?) {
-        if let privacyBox = Util.findView(self, viewClass: PrivacyConfirmBox.self) as? PrivacyConfirmBox{
+        if let privacyBox = Util.findView(self, viewClass: PrivacyConfirmBox.self) as? PrivacyConfirmBox {
             if (!privacyBox.isHidden) {
             let lang = Util.getLangHeader()
             if let agreements = config?.agreements {
@@ -96,7 +96,7 @@ open class LoginButton: PrimaryButton {
                 } else {
                     if let captchaCode: GraphValidateCodeTextField = Util.findView(self, viewClass: GraphValidateCodeTextField.self),
                        let code = captchaCode.text,
-                       captchaCode.getNeedInput() == true {
+                       captchaCode.isHidden == false {
                         if code == "" {
                             Util.setError(captchaCode, "authing_verifycode_none".L)
                         }
@@ -152,12 +152,24 @@ open class LoginButton: PrimaryButton {
         if authProtocol == .EInHouse {
             Util.getAuthClient(self).loginByAccount(authData: nil, account: account, password: password, autoRegister, context, captchaCode) { code, message, userInfo in
                 self.stopLoading()
+                self.refreshValidateCode(code: code, captchaCode: captchaCode)
                 LoginButton.handleLogin(button: self, code, message: message, userInfo: userInfo, authCompletion: self.authCompletion)
             }
         } else {
             OIDCClient().loginByAccount(account: account, password: password, autoRegister, context, captchaCode) { code,  message,  userInfo in
                 self.stopLoading()
+                self.refreshValidateCode(code: code, captchaCode: captchaCode)
                 LoginButton.handleLogin(button: self, code, message: message, userInfo: userInfo, authCompletion: self.authCompletion)
+            }
+        }
+    }
+    
+    private func refreshValidateCode(code: Int, captchaCode: String?) {
+        if code != 200 && captchaCode != nil {
+            DispatchQueue.main.async() {
+                if let graphVerifyCode = Util.findView(self, viewClass: GraphValidateCode.self) as? GraphValidateCode {
+                    graphVerifyCode.refreshCaptcha()
+                }
             }
         }
     }
@@ -258,18 +270,25 @@ open class LoginButton: PrimaryButton {
             } else if (code == Const.EC_MULTIPLE_ACCOUNT) {
                 Util.setError(button, message)
             } else if (code == Const.EC_ENTER_VERIFICATION_CODE) {
-                if let graphVerifyCode = Util.findView(button, viewClass: GraphValidateCode.self) as? GraphValidateCode,
-                   let graphText = Util.findView(button, viewClass: GraphValidateCodeTextField.self) as? GraphValidateCodeTextField {
-                    graphText.setNeedInput(need: true)
+                Util.setError(button, message)
+                if let graphVerifyCode = Util.findHiddenView(button, viewClass: GraphValidateCode.self) as? GraphValidateCode,
+                   let graphVerifyText = Util.findHiddenView(button, viewClass: GraphValidateCodeTextField.self) as? GraphValidateCodeTextField {
+
+                    graphVerifyCode.isHidden = false
+                    graphVerifyText.isHidden = false
                     graphVerifyCode.refreshCaptcha()
-                    if let superView = graphVerifyCode.superview {
-                        superView.isHidden = false
-                        superView.constraints.forEach({ constraint in
-                            if (constraint.firstAttribute == .height) {
-                                superView.removeConstraint(constraint)
-                            }
-                        })
-                        superView.heightAnchor.constraint(equalToConstant: 52).isActive = true
+                    
+                    let containers: Array<LoginContainer> = Util.findViews(button, viewClass: LoginContainer.self)
+                    containers.forEach { container in
+                        // password
+                        if (container.type == 1) {
+                            container.constraints.forEach({ constraint in
+                                if (constraint.firstAttribute == .height) {
+                                    container.removeConstraint(constraint)
+                                }
+                            })
+                            container.heightAnchor.constraint(equalToConstant: 188).isActive = true
+                        }
                     }
                 }
             } else {

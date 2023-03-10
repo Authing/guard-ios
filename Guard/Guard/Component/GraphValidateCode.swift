@@ -19,13 +19,21 @@ open class GraphValidateCode: ImageView {
     }
 
     private func setup() {
+        
+        Util.getConfig(self) { config in
+            if config?.appRobotVerify == "always_enable" {
+
+            }
+            self.isHidden = config?.appRobotVerify == "always_enable" ? false : true
+        }
+        
         self.layer.cornerRadius = 4
         self.layer.borderWidth = 0.5
         self.layer.borderColor = Const.Color_BG_Gray.cgColor
-        self.refreshCaptcha()
         self.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         self.addGestureRecognizer(tap)
+        self.refreshCaptcha()
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {

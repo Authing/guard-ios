@@ -56,6 +56,8 @@ public class Util {
     }
     
     private static let SERVICE_UUID: String = "service_uuid"
+    
+    public static var cookies: [HTTPCookie] = []
 
     public static func getDeviceID() -> String {
         let savedUUID = load()
@@ -216,6 +218,24 @@ public class Util {
         }
         for child in parent.subviews {
             let result: T? = _findView(child, viewClass: viewClass)
+            if (result != nil) {
+                return result
+            }
+        }
+        return nil
+    }
+    
+    public static func findHiddenView<T: UIView>(_ current: UIView, viewClass: AnyClass) -> T? {
+        let rootView: UIView = current.authViewController?.view ?? getRootView(current)
+        return _findHiddenView(rootView, viewClass: viewClass)
+    }
+    
+    public static func _findHiddenView<T: UIView>(_ parent: UIView, viewClass: AnyClass) -> T? {
+        if (type(of: parent) == viewClass && true) {
+            return parent as? T
+        }
+        for child in parent.subviews {
+            let result: T? = _findHiddenView(child, viewClass: viewClass)
             if (result != nil) {
                 return result
             }
@@ -533,5 +553,5 @@ public class Util {
         
         return array
     }
-    
+
 }

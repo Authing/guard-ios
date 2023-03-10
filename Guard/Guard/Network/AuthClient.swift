@@ -826,6 +826,25 @@ public class AuthClient: Client {
         }
     }
     
+    public func loginByDingTalk(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        getConfig { config in
+            guard let conf = config else {
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
+                return
+            }
+  
+            guard let conId = conf.getConnectionId(type: "dingtalk:mobile") else {
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
+                return
+            }
+            
+            let body: NSDictionary = ["connId" : conId, "code" : code]
+            self.post("/api/v2/ecConn/dingtalk/authByCode", body) { code, message, data in
+                self.createUserInfo(code, message, data, completion: completion)
+            }
+        }
+    }
+    
     public func loginByOneAuth(token: String, accessToken: String, _ netWork: Int? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let body: NSMutableDictionary = ["token" : token, "accessToken" : accessToken]
         if netWork != nil {
@@ -1312,70 +1331,16 @@ public class AuthClient: Client {
         request.addValue("Guard-iOS@\(Const.SDK_VERSION)", forHTTPHeaderField: "x-authing-request-from")
         request.addValue(Const.SDK_VERSION, forHTTPHeaderField: "x-authing-sdk-version")
         request.addValue(Util.getLangHeader(), forHTTPHeaderField: "x-authing-lang")
-        request.httpShouldHandleCookies = false
-        
-        request.addValue(<#T##value: String##String#>, forHTTPHeaderField: <#T##String#>)
+        request.httpShouldHandleCookies = true
         return request
     }
     
-    public func request(config: Config?, urlString: String, method: String, body: NSDictionary?, completion: @escaping (Int, String?, Data?) -> Void) {
-        
-        URLSession.shared.dataTask(with: self.request(config: config, urlString: urlString, method: method, body: body)) { (data, response, error) in
-            guard error == nil else {
-                ALog.d(AuthClient.self, "Guardian request network error:\(error!.localizedDescription)")
-                completion(ErrorCode.netWork.rawValue, ErrorCode.netWork.errorMessage(), nil)
-                return
-            }
-            
-            guard data != nil else {
-                ALog.d(AuthClient.self, "data is null when requesting \(urlString)")
-                completion(ErrorCode.jsonParse.rawValue, ErrorCode.jsonParse.errorMessage(), nil)
-                return
-            }
-            do {
-                self.getRequestCookie(response: response)
-                let httpResponse = response as? HTTPURLResponse
-                let statusCode: Int = (httpResponse?.statusCode)!
-                
-                // some API e.g. getCustomUserData returns json array
-                if (statusCode == 200 || statusCode == 201) {
-                    return completion(200, "", data)
-                } else {
-                    ALog.d(AuthClient.self, "Guardian request network error. Status code:\(statusCode.description). url:\(urlString)")
-                    completion(statusCode, "Network Error", nil)
-                }
-            }
-        }.resume()
-    }
-    
-    public func getRequestCookie(response: URLResponse?) {
-        guard
-        let url = response?.url,
-        let httpResponse = response as? HTTPURLResponse,
-        let fields = httpResponse.allHeaderFields as? [String: String]
-        else { return }
-
-        let cookies = HTTPCookie.cookies(withResponseHeaderFields: fields, for: url)
-        HTTPCookieStorage.shared.setCookies(cookies, for: url, mainDocumentURL: nil)
-        for cookie in cookies {
-            var cookieProperties = [HTTPCookiePropertyKey: Any]()
-            cookieProperties[.name] = cookie.name
-            cookieProperties[.value] = cookie.value
-            cookieProperties[.domain] = cookie.domain
-            cookieProperties[.path] = cookie.path
-            cookieProperties[.version] = cookie.version
-            cookieProperties[.expires] = cookie.expiresDate
-
-            let newCookie = HTTPCookie(properties: cookieProperties)
-            HTTPCookieStorage.shared.setCookie(newCookie!)
-
-            print("name: \(cookie.name) value: \(cookie.value)")
-        }
-    }
-    
     public func request(config: Config?, urlString: String, method: String, body: NSDictionary?, completion: @escaping (Int, String?, NSDictionary?) -> Void) {
-
-        URLSession.shared.dataTask(with: self.request(config: config, urlString: urlString, method: method, body: body)) { (data, response, error) in
+        let session = URLSession.shared
+        if body?.object(forKey: "captchaCode") != nil, let url: URL = URL(string:urlString) {
+            session.configuration.httpCookieStorage?.setCookies(Util.cookies, for: url, mainDocumentURL: url)
+        }
+        session.dataTask(with: self.request(config: config, urlString: urlString, method: method, body: body)) { (data, response, error) in
             guard error == nil else {
                 ALog.d(AuthClient.self, "Guardian request network error:\(error!.localizedDescription)")
                 completion(ErrorCode.netWork.rawValue, ErrorCode.netWork.errorMessage(), nil)
@@ -1540,6 +1505,41 @@ public class AuthClient: Client {
             }
 
         }).resume()
+    }
+    
+    public func request(config: Config?, urlString: String, method: String, body: NSDictionary?, completion: @escaping (Int, String?, Data?) -> Void) {
+        var session = URLSession.shared
+        session.dataTask(with: self.request(config: config, urlString: urlString, method: method, body: body)) { (data, response, error) in
+            guard error == nil else {
+                ALog.d(AuthClient.self, "Guardian request network error:\(error!.localizedDescription)")
+                completion(ErrorCode.netWork.rawValue, ErrorCode.netWork.errorMessage(), nil)
+                return
+            }
+            
+            guard data != nil else {
+                ALog.d(AuthClient.self, "data is null when requesting \(urlString)")
+                completion(ErrorCode.jsonParse.rawValue, ErrorCode.jsonParse.errorMessage(), nil)
+                return
+            }
+            do {
+                let url = response?.url
+                let httpResponse = response as? HTTPURLResponse
+                let fields = httpResponse?.allHeaderFields as? [String: String]
+//                else { return nil }
+                Util.cookies = HTTPCookie.cookies(withResponseHeaderFields: fields!, for: url!)
+
+//                let httpResponse = response as? HTTPURLResponse
+                let statusCode: Int = (httpResponse?.statusCode)!
+                
+                // some API e.g. getCustomUserData returns json array
+                if (statusCode == 200 || statusCode == 201) {
+                    return completion(200, "", data)
+                } else {
+                    ALog.d(AuthClient.self, "Guardian request network error. Status code:\(statusCode.description). url:\(urlString)")
+                    completion(statusCode, "Network Error", nil)
+                }
+            }
+        }.resume()
     }
     
 

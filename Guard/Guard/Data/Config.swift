@@ -184,8 +184,13 @@ public class Config: NSObject {
     open var enableFaceLogin: Bool? {
         get { return data?["enableFaceLogin"] as? Bool }
     }
+    
     open var enableFingerprintLogin: Bool? {
         get { return data?["enableFingerprintLogin"] as? Bool }
+    }
+    
+    open var appRobotVerify: String? {
+        get { return data?["appRobotVerify"] as? String }
     }
     
     // MARK: Request
@@ -204,8 +209,7 @@ public class Config: NSObject {
     public func requestPublicConfig() {
         isGettingConfig = true
         
-        var url = "https://console." + Authing.getHost() + "/api/v2/applications/" + self.appId + "/public-config"
-
+        var url = "http://console." + Authing.getHost() + "/api/v2/applications/" + self.appId + "/public-config"
         if Authing.getIsOnPremises() {
             url = "\(Authing.getSchema())://" + Authing.getHost() + "/api/v2/applications/" + self.appId + "/public-config"
         }

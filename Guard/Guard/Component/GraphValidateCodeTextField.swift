@@ -9,8 +9,6 @@ import Foundation
 
 open class GraphValidateCodeTextField: TextFieldLayout {
     
-    private var needInput: Bool = false
-    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -22,16 +20,16 @@ open class GraphValidateCodeTextField: TextFieldLayout {
     }
     
     private func setup() {
+        
+        Util.getConfig(self) { config in
+            if config?.appRobotVerify == "always_enable" {
+
+            }
+            self.isHidden = config?.appRobotVerify == "always_enable" ? false : true
+        }
+        
         let sVerifyCode: String = "authing_please_input_graph_verify_code".L
         setHint("\(sVerifyCode)")
     }
-    
-    public func setNeedInput(need: Bool) {
-        self.needInput = need
-    }
-    
-    public func getNeedInput() -> Bool {
-        return self.needInput
-    }
-    
+
 }

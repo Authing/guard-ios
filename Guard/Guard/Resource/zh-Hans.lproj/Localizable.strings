@@ -175,6 +175,7 @@
 "authing_social_weibo" = "     使用 微博 登录";
 "authing_social_baidu" = "     使用 百度 登录";
 "authing_social_linkedin" = "     使用 领英 登录";
+"authing_social_dingtalk" = "     使用 钉钉 登录";
 
 "authing_recovery_title" = "使用恢复代码";
 "authing_recovery_tip" = "如果没有恢复代码，请联系管理员处理";
