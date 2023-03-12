@@ -213,40 +213,14 @@ public class Config: NSObject {
         if Authing.getIsOnPremises() {
             url = "\(Authing.getSchema())://" + Authing.getHost() + "/api/v2/applications/" + self.appId + "/public-config"
         }
-        //        var componentsJson = NSDictionary()
-        //        let dispatchGroup = DispatchGroup()
-        //        let dispathcQueue = DispatchQueue.global()
-        //        dispatchGroup.enter()
-        //        dispathcQueue.async{
-//        var publicConfigJson = NSMutableDictionary()
-            AuthClient().request(config: nil, urlString: url, method: "get", body: nil) { code, message, jsonData in
-                if (code != 200) {
-                    ALog.e(Self.self, "error when getting public cofig:\(message!)")
-                }
-//                publicConfigJson = jsonData?.mutableCopy() as? NSMutableDictionary ?? [:]
-//                dispatchGroup.leave()
-                self.fireCallback(jsonData)
-            }
-//        }
-//        dispatchGroup.enter()
-//        dispathcQueue.async{
-//            let url2 = "https://console." + Authing.getHost() + "/api/v2/applications/" + self.appId + "/components-public-config/guard"
-//            AuthClient().request(config: nil, urlString: url2, method: "get", body: nil) { code, message, jsonData in
-//                if (code != 200) {
-//                    ALog.e(Self.self, "error when getting components public config:\(message!)")
-//                }
-//                componentsJson = jsonData ?? [:]
-//                dispatchGroup.leave()
-//            }
-//        }
-//        dispatchGroup.notify(queue: DispatchQueue.main) { [weak self] in
-//
-//            componentsJson.forEach({ (key, value) in
-//                publicConfigJson[key] = value
-//            })
-//            self?.fireCallback(publicConfigJson)
-//        }
 
+        AuthClient().request(config: nil, urlString: url, method:  "get", body: nil) { code, message, jsonData in
+            if (code != 200) {
+                ALog.e(Self.self, "error when getting public cofig:\(message!)")
+            }
+
+            self.fireCallback(jsonData)
+        }
     }
     
     private func fireCallback(_ data: NSDictionary?) {

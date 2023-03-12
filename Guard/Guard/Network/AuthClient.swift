@@ -826,7 +826,7 @@ public class AuthClient: Client {
         }
     }
     
-    public func loginByDingTalk(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+    public func loginByDingTalk(_ code: String, _ isSnsCode: Bool = true, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         getConfig { config in
             guard let conf = config else {
                 completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
@@ -838,7 +838,7 @@ public class AuthClient: Client {
                 return
             }
             
-            let body: NSDictionary = ["connId" : conId, "code" : code]
+            let body: NSDictionary = ["connId" : conId, "code" : code, "isSnsCode" : isSnsCode]
             self.post("/api/v2/ecConn/dingtalk/authByCode", body) { code, message, data in
                 self.createUserInfo(code, message, data, completion: completion)
             }
@@ -1507,9 +1507,8 @@ public class AuthClient: Client {
         }).resume()
     }
     
-    public func request(config: Config?, urlString: String, method: String, body: NSDictionary?, completion: @escaping (Int, String?, Data?) -> Void) {
-        var session = URLSession.shared
-        session.dataTask(with: self.request(config: config, urlString: urlString, method: method, body: body)) { (data, response, error) in
+    private func request(config: Config?, urlString: String, method: String, body: NSDictionary?, completion: @escaping (Int, String?, Data?) -> Void) {
+        URLSession.shared.dataTask(with: self.request(config: config, urlString: urlString, method: method, body: body)) { (data, response, error) in
             guard error == nil else {
                 ALog.d(AuthClient.self, "Guardian request network error:\(error!.localizedDescription)")
                 completion(ErrorCode.netWork.rawValue, ErrorCode.netWork.errorMessage(), nil)
