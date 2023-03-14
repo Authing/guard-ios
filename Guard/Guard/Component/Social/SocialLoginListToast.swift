@@ -108,12 +108,8 @@ class SocialLoginListToast: UIView {
         var i = 0
         for v in self.backGroundView.subviews {
             if let button = v as? SocialLoginButton {
-                if i < 4 {
-                    
-                    button.frame = CGRect(x:  54 + (socialButtonWidth + paddingH) * CGFloat(i), y: tipHeight, width: socialButtonWidth, height: socialButtonHeight)
-                } else {
-                    button.frame = CGRect(x:  54 + (socialButtonWidth + paddingH) * CGFloat(i - 4), y: tipHeight + socialButtonHeight + 16, width: socialButtonWidth, height: socialButtonHeight)
-                }
+                button.frame = CGRect(x:  54 + (socialButtonWidth + paddingH) * CGFloat(i - 4 * (i / 4)), y: tipHeight + (socialButtonHeight + 16) * CGFloat(i / 4), width: socialButtonWidth, height: socialButtonHeight)
+
                 button.backgroundColor = Const.Color_BG_Text_Box
                 button.layer.cornerRadius = 4
                 button.clipsToBounds = true

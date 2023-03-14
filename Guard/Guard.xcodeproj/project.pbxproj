@@ -157,6 +157,7 @@
 		A80B20B928D63CBF00933A26 /* SocialNoLoginMethodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80B20B828D63CBF00933A26 /* SocialNoLoginMethodsView.swift */; };
 		A80BD1A728D1B65F00F9DEDE /* AuthFlowUIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80BD1A628D1B65F00F9DEDE /* AuthFlowUIConfig.swift */; };
 		A80BD1CD28D49B8700F9DEDE /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80BD1CC28D49B8700F9DEDE /* Toast.swift */; };
+		A817913029C057B200C94294 /* SocialAuthWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A817912F29C057B100C94294 /* SocialAuthWebViewController.swift */; };
 		A830E50D28AB9737005332ED /* UIColor+Authing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A830E50C28AB9737005332ED /* UIColor+Authing.swift */; };
 		A850622C283237FA00F97EBD /* CountdownTimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A850622B283237FA00F97EBD /* CountdownTimerManager.swift */; };
 		A852CBFB28780046000BC6EF /* FeedBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A852CBFA28780046000BC6EF /* FeedBackButton.swift */; };
@@ -339,6 +340,7 @@
 		A80B20B828D63CBF00933A26 /* SocialNoLoginMethodsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialNoLoginMethodsView.swift; sourceTree = "<group>"; };
 		A80BD1A628D1B65F00F9DEDE /* AuthFlowUIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlowUIConfig.swift; sourceTree = "<group>"; };
 		A80BD1CC28D49B8700F9DEDE /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		A817912F29C057B100C94294 /* SocialAuthWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialAuthWebViewController.swift; sourceTree = "<group>"; };
 		A830E50C28AB9737005332ED /* UIColor+Authing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Authing.swift"; sourceTree = "<group>"; };
 		A850622B283237FA00F97EBD /* CountdownTimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimerManager.swift; sourceTree = "<group>"; };
 		A852CBFA28780046000BC6EF /* FeedBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackButton.swift; sourceTree = "<group>"; };
@@ -535,6 +537,7 @@
 				A8D38D1527F1DB4A00942707 /* CountryCodeViewController.swift */,
 				A8A489832876B97C00F3120F /* FeedBackController.swift */,
 				A8628F5B286D985200D7300E /* MFAFaceViewController.swift */,
+				A817912F29C057B100C94294 /* SocialAuthWebViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -952,6 +955,7 @@
 				7EF66C5B277BEE7300FCBBEB /* Animator.swift in Sources */,
 				7EF66C69277C197900FCBBEB /* RegisterMethodTab.swift in Sources */,
 				7E866452280E4F9B000DEFD4 /* GoNextButton.swift in Sources */,
+				A817913029C057B200C94294 /* SocialAuthWebViewController.swift in Sources */,
 				7ED434DA2779509100893EDD /* VerifyCodeTextField.swift in Sources */,
 				A85EEFBF287C559000D3BF29 /* ResetPasswordVerifyCodeButton.swift in Sources */,
 				7E0FAFB527EC6373006258FC /* Label.swift in Sources */,

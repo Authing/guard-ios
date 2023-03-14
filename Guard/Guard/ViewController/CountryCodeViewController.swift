@@ -59,7 +59,7 @@ class CountryCodeViewController: AuthViewController {
         searchResultValuesArray = NSMutableArray()
         //searchController
         searchController = UISearchController(searchResultsController: nil)
-        searchController.dimsBackgroundDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.delegate = self
         searchController.searchBar.backgroundColor = UIColor.white

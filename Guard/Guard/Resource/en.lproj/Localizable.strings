@@ -78,7 +78,7 @@
 "authing_next" = "Next";
 "authing_invalid_phone" = "Phone number is invalid";
 "authing_invalid_email" = "Email address is invalid";
-"authing_social_login" = "Or sign in with";
+"authing_social_login" = "Other login methods";
 "authing_mfa_other" = "Other verification Methods";
 
 // user profile
