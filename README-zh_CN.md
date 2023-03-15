@@ -23,11 +23,16 @@
 
 Authing Guard for iOS
 
-iOS App 通过 Guard 开源组件库接入。Guard 采用了全新的语义化编程模型，可以快速构建自定义风格的认证流程。
+此仓库包含 Authing 登录 API 及 UI 组件。 
+
+如果您想使用第三方登录和生物认证相关功能，请查看: https://github.com/Authing/authing-binary。
 
 ## 文档
 
 [中文文档请移步至这里查看](https://docs.authing.cn/v2/reference/sdk-for-ios/)
+
+## 代码示例
+https://github.com/Authing/guard-ios-example.
 
 ## 常见问题
 
