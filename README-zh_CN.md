@@ -25,7 +25,7 @@ Authing Guard for iOS
 
 此仓库包含 Authing 登录 API 及 UI 组件。 
 
-如果您想使用第三方登录和生物认证相关功能，请查看: https://github.com/Authing/authing-binary。
+如果您想使用第三方登录和生物认证相关功能，请查看: https://github.com/Authing/authing-binary.
 
 ## 文档
 
