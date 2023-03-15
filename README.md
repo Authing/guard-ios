@@ -20,11 +20,19 @@ English | [简体中文](./README-zh_CN.md)
 
 ## Introduction
 
-Authing Guard for iOS
+Authing Guard for iOS.
+
+This repository contains Authing signin API and Guard UI componenet.
+
+If you want to use social login and biometric authentication related functions, please check:
+https://github.com/Authing/authing-binary.
 
 ## Documentation
 
 [Click me for English documentation](https://docs.authing.cn/v2/en/reference/sdk-for-ios/)
+
+## Examples
+https://github.com/Authing/guard-ios-example.
 
 ## Compatibility Notes
 Minimum supported iOS versions, compiler version, Swift version: iOS 11.0, Xcode 13.4.1, Swift 5.6.
