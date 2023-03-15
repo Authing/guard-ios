@@ -15,6 +15,7 @@ open class SocialAuthWebViewController: AuthViewController, WKNavigationDelegate
     private var redirectURI: String?
     private var scope: String!
     private var host: String!
+    public var authResponse: ((_ authCode: String) -> Void)?
     
     class public func register(appId: String, scope: String, host: String, _ redirectURI: String? = nil) -> SocialAuthWebViewController {
         let web = SocialAuthWebViewController.init()
@@ -47,7 +48,7 @@ open class SocialAuthWebViewController: AuthViewController, WKNavigationDelegate
             if (config == nil) {
                 completion(nil)
             } else {
-                var url = "https://" + self.host + "/oauth/authorize?"
+                var url = self.host + "/oauth/authorize?"
                 let clientId = "&client_id=" + self.appId
                 if self.redirectURI == nil {
                     self.redirectURI = config?.redirectUris?.first ?? ""
@@ -63,12 +64,13 @@ open class SocialAuthWebViewController: AuthViewController, WKNavigationDelegate
     
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         if let url = navigationAction.request.url {
-            
+
             if url.absoluteString.hasPrefix(self.redirectURI!) {
                 if let authCode = Util.getQueryStringParameter(url: url, param: "code") {
-                    print(authCode)
+                    ALog.d(SocialAuthWebViewController.self, authCode)
+                    self.authResponse?(authCode)
                     decisionHandler(.cancel)
-
+                    self.dismiss(animated: true)
                     return
                 }
             }
@@ -76,10 +78,9 @@ open class SocialAuthWebViewController: AuthViewController, WKNavigationDelegate
         decisionHandler(.allow)
     }
     
-    
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         if let url = webView.url{
-            print("didFinish: \(url)")
+            ALog.e(SocialAuthWebViewController.self, "didFinish: \(url)")
         }
     }
 }

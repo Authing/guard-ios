@@ -159,6 +159,10 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                         srcs.setValue("linkedin", forKey: "11")
                     } else if ("dingtalk:mobile" == type) {
                         srcs.setValue("dingtalk", forKey: "12")
+                    } else if ("douyin:mobile" == type) {
+                        srcs.setValue("douyin", forKey: "13")
+                    } else if ("github:mobile" == type) {
+                        srcs.setValue("github", forKey: "14")
                     }
                 }
             }
@@ -326,7 +330,23 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                     }
                     container.addSubview(view)
                 }
-            } else if ("more" == trimmed) {
+            } else if ("douyin" == trimmed) {
+                if let type = Bundle(identifier: "cn.authing.Douyin")?.classNamed("Douyin.DouyinLoginButton") as? SocialLoginButton.Type {
+                    let view = type.init()
+                    if isVerticalLayout {
+                        view.setTitle("authing_social_douyin".L, for: .normal)
+                    }
+                    container.addSubview(view)
+                }
+            } else if ("github" == trimmed) {
+                if let type = Bundle(identifier: "cn.authing.Github")?.classNamed("Github.GithubLoginButton") as? SocialLoginButton.Type {
+                    let view = type.init()
+                    if isVerticalLayout {
+                        view.setTitle("authing_social_github".L, for: .normal)
+                    }
+                    container.addSubview(view)
+                }
+            }else if ("more" == trimmed) {
 
                 let view = SocialLoginButton.init()
                 view.setImage(UIImage(named: "authing_more", in: Bundle(for: SocialLoginListView.self), compatibleWith: nil), for: .normal)

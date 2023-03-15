@@ -168,6 +168,8 @@
 "authing_social_baidu" = "       Sign in with Baidu ";
 "authing_social_linkedin" = "       Sign in with Linkedin ";
 "authing_social_dingtalk" = "       Sign in with DingTalk ";
+"authing_social_douyin" = "       Sign in with Douyin ";
+"authing_social_github" = "       Sign in with Github ";
 
 "authing_recovery_title" = "Use recovery code";
 "authing_recovery_tip" = "If no recovery code, please contact the administrator";
