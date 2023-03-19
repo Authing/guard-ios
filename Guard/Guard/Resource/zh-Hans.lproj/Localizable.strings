@@ -178,6 +178,7 @@
 "authing_social_dingtalk" = "     使用 钉钉 登录";
 "authing_social_douyin" = "     使用 抖音 登录";
 "authing_social_github" = "     使用 Github 登录";
+"authing_social_gitee" = "     使用 Gitee 登录";
 
 "authing_recovery_title" = "使用恢复代码";
 "authing_recovery_tip" = "如果没有恢复代码，请联系管理员处理";

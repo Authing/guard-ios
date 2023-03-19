@@ -163,6 +163,8 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                         srcs.setValue("douyin", forKey: "13")
                     } else if ("github:mobile" == type) {
                         srcs.setValue("github", forKey: "14")
+                    } else if ("gitee:mobile" == type) {
+                        srcs.setValue("gitee", forKey: "15")
                     }
                 }
             }
@@ -346,7 +348,15 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                     }
                     container.addSubview(view)
                 }
-            }else if ("more" == trimmed) {
+            } else if ("gitee" == trimmed) {
+                if let type = Bundle(identifier: "cn.authing.Gitee")?.classNamed("Gitee.GiteeLoginButton") as? SocialLoginButton.Type {
+                    let view = type.init()
+                    if isVerticalLayout {
+                        view.setTitle("authing_social_gitee".L, for: .normal)
+                    }
+                    container.addSubview(view)
+                }
+            } else if ("more" == trimmed) {
 
                 let view = SocialLoginButton.init()
                 view.setImage(UIImage(named: "authing_more", in: Bundle(for: SocialLoginListView.self), compatibleWith: nil), for: .normal)

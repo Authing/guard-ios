@@ -170,6 +170,7 @@
 "authing_social_dingtalk" = "       Sign in with DingTalk ";
 "authing_social_douyin" = "       Sign in with Douyin ";
 "authing_social_github" = "       Sign in with Github ";
+"authing_social_gitee" = "       Sign in with Gitee ";
 
 "authing_recovery_title" = "Use recovery code";
 "authing_recovery_tip" = "If no recovery code, please contact the administrator";
