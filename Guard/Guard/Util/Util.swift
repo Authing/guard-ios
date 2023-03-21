@@ -13,6 +13,7 @@ public enum ErrorCode: Int {
     case jsonParse = 10004
     case socialLogin = 10005
     case socialBinding = 10006
+    case webView = 10007
 
     public func errorMessage() -> String {
         switch self {
@@ -28,6 +29,8 @@ public enum ErrorCode: Int {
             return "Social login failed"
         case .socialBinding:
             return "Social binding failed"
+        case .webView:
+            return "Webview error"
         }
     }
 }

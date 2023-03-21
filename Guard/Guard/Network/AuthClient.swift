@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import WebKit
 
 public class AuthClient: Client {
         
@@ -291,6 +292,14 @@ public class AuthClient: Client {
         get("/api/v2/logout?app_id=\(Authing.getAppId())") { code, message, data in
             Authing.saveUser(nil)
             HTTPCookieStorage.shared.cookies?.forEach(HTTPCookieStorage.shared.deleteCookie)
+            HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
+            DispatchQueue.main.async() {
+                WKWebsiteDataStore.default().fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
+                    records.forEach { record in
+                        WKWebsiteDataStore.default().removeData(ofTypes: record.dataTypes, for: [record], completionHandler: {})
+                    }
+                }
+            }
             completion(code, message)
         }
     }
@@ -859,6 +868,25 @@ public class AuthClient: Client {
             
             let body: NSDictionary = ["connId" : conId, "code" : code]
             self.post("/api/v2/ecConn/douyin/authByCode", body) { code, message, data in
+                self.createUserInfo(code, message, data, completion: completion)
+            }
+        }
+    }
+    
+    public func loginByGithub(_ code: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        getConfig { config in
+            guard let conf = config else {
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
+                return
+            }
+  
+            guard let conId = conf.getConnectionId(type: "github:mobile") else {
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
+                return
+            }
+            
+            let body: NSDictionary = ["connId" : conId, "code" : code]
+            self.post("/api/v2/ecConn/github/authByCode", body) { code, message, data in
                 self.createUserInfo(code, message, data, completion: completion)
             }
         }

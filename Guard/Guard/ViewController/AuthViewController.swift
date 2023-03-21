@@ -126,4 +126,5 @@ open class AuthViewController: UIViewController {
             self.navigationController?.popViewController(animated: true)
         }
     }
+
 }
