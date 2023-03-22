@@ -171,6 +171,9 @@
 "authing_social_douyin" = "       Sign in with Douyin ";
 "authing_social_github" = "       Sign in with Github ";
 "authing_social_gitee" = "       Sign in with Gitee ";
+"authing_social_kuaishou" = "       Sign in with Kuaishou ";
+"authing_social_xiaomi" = "       Sign in with Xiaomi ";
+"authing_social_gitlab" = "       Sign in with GitLab ";
 
 "authing_recovery_title" = "Use recovery code";
 "authing_recovery_tip" = "If no recovery code, please contact the administrator";

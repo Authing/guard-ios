@@ -160,6 +160,9 @@
 "authing_social_douyin" = "     使用 抖音 登錄";
 "authing_social_github" = "     使用 Github 登錄";
 "authing_social_gitee" = "     使用 Gitee 登錄";
+"authing_social_kuaishou" = "     使用快手登錄";
+"authing_social_xiaomi" = "     使用小米登錄";
+"authing_social_gitlab" = "     使用 GitLab 登錄";
 
 "authing_recovery_title" = "使用恢復代碼";
 "authing_recovery_tip" = "如果沒有恢復代碼，請聯繫管理員處理";

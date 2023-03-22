@@ -165,6 +165,12 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                         srcs.setValue("github", forKey: "14")
                     } else if ("gitee:mobile" == type) {
                         srcs.setValue("gitee", forKey: "15")
+                    } else if ("kuaishou:mobile" == type) {
+                        srcs.setValue("kuaishou", forKey: "16")
+                    } else if ("xiaomi:mobile" == type) {
+                        srcs.setValue("xiaomi", forKey: "17")
+                    } else if ("gitlab:mobile" == type) {
+                        srcs.setValue("gitlab", forKey: "18")
                     }
                 }
             }
@@ -356,12 +362,34 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                     }
                     container.addSubview(view)
                 }
+            } else if ("kuaishou" == trimmed) {
+                if let type = Bundle(identifier: "cn.authing.Kuaishou")?.classNamed("Kuaishou.KuaishouLoginButton") as? SocialLoginButton.Type {
+                    let view = type.init()
+                    if isVerticalLayout {
+                        view.setTitle("authing_social_kuaishou".L, for: .normal)
+                    }
+                    container.addSubview(view)
+                }
+            } else if ("xiaomi" == trimmed) {
+                if let type = Bundle(identifier: "cn.authing.Xiaomi")?.classNamed("Xiaomi.XiaomiLoginButton") as? SocialLoginButton.Type {
+                    let view = type.init()
+                    if isVerticalLayout {
+                        view.setTitle("authing_social_xiaomi".L, for: .normal)
+                    }
+                    container.addSubview(view)
+                }
+            } else if ("gitlab" == trimmed) {
+                if let type = Bundle(identifier: "cn.authing.GitLab")?.classNamed("GitLab.GitLabLoginButton") as? SocialLoginButton.Type {
+                    let view = type.init()
+                    if isVerticalLayout {
+                        view.setTitle("authing_social_gitlab".L, for: .normal)
+                    }
+                    container.addSubview(view)
+                }
             } else if ("more" == trimmed) {
-
                 let view = SocialLoginButton.init()
                 view.setImage(UIImage(named: "authing_more", in: Bundle(for: SocialLoginListView.self), compatibleWith: nil), for: .normal)
-                container.addSubview(view)
- 
+                container.addSubview(view) 
             }
         }
     }
