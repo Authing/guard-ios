@@ -182,6 +182,7 @@
 "authing_social_kuaishou" = "     使用快手登录";
 "authing_social_xiaomi" = "     使用小米登录";
 "authing_social_gitlab" = "     使用 GitLab 登录";
+"authing_social_line" = "     使用 Line 登录";
 
 "authing_recovery_title" = "使用恢复代码";
 "authing_recovery_tip" = "如果没有恢复代码，请联系管理员处理";

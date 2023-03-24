@@ -171,6 +171,8 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                         srcs.setValue("xiaomi", forKey: "17")
                     } else if ("gitlab:mobile" == type) {
                         srcs.setValue("gitlab", forKey: "18")
+                    } else if ("line:mobile" == type) {
+                        srcs.setValue("line", forKey: "19")
                     }
                 }
             }
@@ -383,6 +385,14 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                     let view = type.init()
                     if isVerticalLayout {
                         view.setTitle("authing_social_gitlab".L, for: .normal)
+                    }
+                    container.addSubview(view)
+                }
+            } else if ("line" == trimmed) {
+                if let type = Bundle(identifier: "cn.authing.Line")?.classNamed("Line.LineLoginButton") as? SocialLoginButton.Type {
+                    let view = type.init()
+                    if isVerticalLayout {
+                        view.setTitle("authing_social_line".L, for: .normal)
                     }
                     container.addSubview(view)
                 }

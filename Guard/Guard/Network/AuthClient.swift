@@ -968,6 +968,28 @@ public class AuthClient: Client {
         }
     }
     
+    public func loginByLine(_ accessToken: String, _ idToken: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        getConfig { config in
+            guard let conf = config else {
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
+                return
+            }
+  
+            guard let conId = conf.getConnectionId(type: "gitlab:mobile") else {
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
+                return
+            }
+            
+            let body: NSMutableDictionary = ["connId" : conId, "access_token" : accessToken]
+            if idToken != nil {
+                body.setValue(idToken, forKey: "id_token")
+            }
+            self.post("/api/v2/ecConn/line/authByAccessToken", body) { code, message, data in
+                self.createUserInfo(code, message, data, completion: completion)
+            }
+        }
+    }
+    
     public func loginByOneAuth(token: String, accessToken: String, _ netWork: Int? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         let body: NSMutableDictionary = ["token" : token, "accessToken" : accessToken]
         if netWork != nil {
@@ -1254,11 +1276,11 @@ public class AuthClient: Client {
     public func createDevice(completion: @escaping(Int, String?, NSDictionary?) -> Void) {
         
         post("/api/v3/create-device", ["uniqueId" : Util.getDeviceID(),
-                                       "type": "Mobile",
-                                       "name": UIDevice.current.name,
-                                       "version": UIDevice.current.systemVersion,
-                                       "producer": "apple",
-                                       "os": UIDevice.current.systemName], completion: completion)
+                                                    "type": "Mobile",
+                                                    "name": UIDevice.current.name,
+                                                    "version": UIDevice.current.systemVersion,
+                                                    "producer": "apple",
+                                                    "os": UIDevice.current.systemName], completion: completion)
     }
     
     public func bind(cid: String ,completion: @escaping(Int, String?, NSDictionary?) -> Void) {
