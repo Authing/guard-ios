@@ -209,7 +209,7 @@ public class Config: NSObject {
     public func requestPublicConfig() {
         isGettingConfig = true
         
-        var url = "http://console." + Authing.getHost() + "/api/v2/applications/" + self.appId + "/public-config"
+        var url = "\(Authing.getSchema())://" + "console." + Authing.getHost() + "/api/v2/applications/" + self.appId + "/public-config"
         if Authing.getIsOnPremises() {
             url = "\(Authing.getSchema())://" + Authing.getHost() + "/api/v2/applications/" + self.appId + "/public-config"
         }
