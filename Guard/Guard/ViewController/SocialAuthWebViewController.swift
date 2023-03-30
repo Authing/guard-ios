@@ -59,6 +59,9 @@ open class SocialAuthWebViewController: AuthViewController, WKNavigationDelegate
     
     func buildAuthorizeUrl() -> URL? {
         var url = self.host + "/oauth/authorize?"
+        if self.host == "https://slack.com" {
+            url = self.host + "/openid/connect/authorize?"
+        }
         let clientId = "&client_id=" + self.appId
         if self.redirectURI == nil {
             self.redirectURI = Authing.getConfigObject()?.redirectUris?.first ?? ""
@@ -97,6 +100,9 @@ open class SocialAuthWebViewController: AuthViewController, WKNavigationDelegate
     }
 
     public func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        if (error as NSError).code == 102 {
+            return
+        }
         self.authResponse?(false, "", error)
     }
 

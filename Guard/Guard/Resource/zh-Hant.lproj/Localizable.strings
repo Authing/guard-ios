@@ -164,6 +164,7 @@
 "authing_social_xiaomi" = "     使用小米登錄";
 "authing_social_gitlab" = "     使用 GitLab 登錄";
 "authing_social_line" = "     使用 Line 登錄";
+"authing_social_slack" = "     使用 Slack 登錄";
 
 "authing_recovery_title" = "使用恢復代碼";
 "authing_recovery_tip" = "如果沒有恢復代碼，請聯繫管理員處理";

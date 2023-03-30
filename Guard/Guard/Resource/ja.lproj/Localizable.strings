@@ -165,6 +165,7 @@
 "authing_social_xiaomi" = "     Xiaomi でサインイン";
 "authing_social_gitlab" = "     GitLab でサインイン";
 "authing_social_line" = "     Line でサインイン";
+"authing_social_slack" = "     Slack でサインイン";
 
 "authing_recovery_title" = "使用回復コード";
 "authing_recovery_tip" = "回復コードがない場合は管理者に連絡して処理してください";

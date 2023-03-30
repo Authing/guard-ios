@@ -175,6 +175,7 @@
 "authing_social_xiaomi" = "       Sign in with Xiaomi ";
 "authing_social_gitlab" = "       Sign in with GitLab ";
 "authing_social_line" = "       Sign in with Line ";
+"authing_social_slack" = "       Sign in with Slack ";
 
 "authing_recovery_title" = "Use recovery code";
 "authing_recovery_tip" = "If no recovery code, please contact the administrator";

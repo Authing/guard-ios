@@ -173,6 +173,8 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                         srcs.setValue("gitlab", forKey: "18")
                     } else if ("line:mobile" == type) {
                         srcs.setValue("line", forKey: "19")
+                    } else if ("slack:mobile" == type) {
+                        srcs.setValue("slack", forKey: "20")
                     }
                 }
             }
@@ -393,6 +395,14 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                     let view = type.init()
                     if isVerticalLayout {
                         view.setTitle("authing_social_line".L, for: .normal)
+                    }
+                    container.addSubview(view)
+                }
+            } else if ("slack" == trimmed) {
+                if let type = Bundle(identifier: "cn.authing.Slack")?.classNamed("Slack.SlackLoginButton") as? SocialLoginButton.Type {
+                    let view = type.init()
+                    if isVerticalLayout {
+                        view.setTitle("authing_social_slack".L, for: .normal)
                     }
                     container.addSubview(view)
                 }
