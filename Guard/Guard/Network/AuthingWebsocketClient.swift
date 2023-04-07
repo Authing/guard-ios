@@ -14,12 +14,14 @@ public class AuthingWebsocketClient: NSObject {
     private var urlString: String = ""
     private var retryCount: Int = 3
     private var retryTimes: Int = 0
+    private var receiveCallBack: ((Int, String?) -> Void)?
 
     public func setRetryCount(_ count: Int) {
         retryCount = count
     }
     
-    public func initWebSocket(urlString: String, completion: @escaping (String?) -> Void) {
+    public func initWebSocket(urlString: String, completion: @escaping (Int, String?) -> Void) {
+        self.receiveCallBack = completion
         self.urlString = urlString
         guard let url = URL(string: urlString) else {
             ALog.e(AuthingWebsocketClient.self, "Error: can not create URL")
@@ -36,15 +38,16 @@ public class AuthingWebsocketClient: NSObject {
                 switch message {
                 case .string(let text):
                     ALog.d(AuthingWebsocketClient.self, text)
-                    completion(text)
+                    self.receiveCallBack?(200, text)
                 case .data(let data):
                     ALog.d(AuthingWebsocketClient.self, "\(data)")
+                    self.receiveCallBack?(200, "\(data)")
                 @unknown default:
                     fatalError()
                 }
             case .failure(let error):
                 ALog.e(AuthingWebsocketClient.self, error)
-                completion(error.localizedDescription)
+                self.receiveCallBack?((error as NSError).code, (error as NSError).debugDescription)
                 self.retryTimes += 1
                 self.reconnect(url: self.urlString, retryTimes: self.retryTimes)
             }
@@ -57,7 +60,7 @@ public class AuthingWebsocketClient: NSObject {
         }
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-            self.initWebSocket(urlString: url) { message in
+            self.initWebSocket(urlString: url) { code, message in
             }
         }
     }

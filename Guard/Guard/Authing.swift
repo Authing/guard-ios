@@ -34,7 +34,7 @@ public class Authing: NSObject {
     
     private static var sSchema = "https"
     private static var sHost = "authing.cn"
-    private static var sWebsocketHost = "wss://events.authing.com"
+    private static var sWebsocketHost = "wss://openevent.authing.cn"
     private static var pushClientId: String?
     private static var sAppId = ""
     private static var isOnPremises = false

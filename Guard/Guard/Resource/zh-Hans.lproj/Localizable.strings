@@ -184,6 +184,7 @@
 "authing_social_gitlab" = "     使用 GitLab 登录";
 "authing_social_line" = "     使用 Line 登录";
 "authing_social_slack" = "     使用 Slack 登录";
+"authing_social_amazon" = "     使用亚马逊登录";
 
 "authing_recovery_title" = "使用恢复代码";
 "authing_recovery_tip" = "如果没有恢复代码，请联系管理员处理";

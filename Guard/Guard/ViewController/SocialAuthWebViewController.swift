@@ -15,6 +15,7 @@ open class SocialAuthWebViewController: AuthViewController, WKNavigationDelegate
     private var redirectURI: String?
     private var scope: String!
     private var host: String!
+    public var isCustomHost: Bool = false
     private let loading = UIActivityIndicatorView()
     public var authResponse: ((_ success: Bool, _ authCode: String, _ error: Error?) -> Void)?
     
@@ -58,9 +59,12 @@ open class SocialAuthWebViewController: AuthViewController, WKNavigationDelegate
     }
     
     func buildAuthorizeUrl() -> URL? {
-        var url = self.host + "/oauth/authorize?"
-        if self.host == "https://slack.com" {
-            url = self.host + "/openid/connect/authorize?"
+        var url: String = self.host
+        if isCustomHost == false {
+            url = self.host + "/oauth/authorize?"
+            if self.host == "https://slack.com" {
+                url = self.host + "/openid/connect/authorize?"
+            }
         }
         let clientId = "&client_id=" + self.appId
         if self.redirectURI == nil {
