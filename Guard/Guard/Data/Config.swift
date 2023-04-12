@@ -193,6 +193,10 @@ public class Config: NSObject {
         get { return data?["appRobotVerify"] as? String }
     }
     
+    open var skipComplateFileds: Bool? {
+        get { return data?["skipComplateFileds"] as? Bool }
+    }
+    
     // MARK: Request
     open var appId: String!
     open var userAgent: String?

@@ -19,6 +19,10 @@ open class UserInfoCompleteSkipButton: Button {
     }
 
     private func setup() {
+        
+        Util.getConfig(self) { config in
+            self.isHidden = !(config?.skipComplateFileds ?? false)
+        }
         let text = "authing_complete_skip".L
         self.setTitle(text, for: .normal)
         self.addTarget(self, action:#selector(onClick(sender:)), for: .touchUpInside)

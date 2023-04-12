@@ -194,9 +194,12 @@ open class UserInfoCompleteButton: PrimaryButton {
         for form: UserInfoCompleteFieldForm in forms {
             let required: Bool = form.data?["required"] as! Bool
             let name: String? = form.data!["name"] as? String
-            let label: String? = form.data!["label"] as? String
+            var label: String? =  form.data?["label"] as? String
+            if label == nil {
+                let lang = Util.getLangHeader()
+                label = (((form.data?["i18n"] as? NSDictionary)?["label"] as? NSDictionary)?[lang] as? NSDictionary)?["value"] as? String
+            }
             let value = form.getValue()
-            
             if (required && Util.isNull(value)) {
                 Util.setError(self, "\(label ?? "")\("authing_is_required".L)")
                 completion(ErrorCode.jsonParse.rawValue, ErrorCode.jsonParse.errorMessage(), nil)
@@ -217,6 +220,8 @@ open class UserInfoCompleteButton: PrimaryButton {
                 completion(code, message, nil)
             }
         })
+        
+
     }
     
     private func cancel() {

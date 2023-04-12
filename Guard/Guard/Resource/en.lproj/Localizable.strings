@@ -135,7 +135,7 @@
 "authing_account_none" = "Username is missing";
 "authing_password_none" = "Password is missing";
 
-"authing_feedback_title" = "Need help?";
+"authing_feedback_title" = "Need help";
 "authing_feedback_contact" = "Contact information";
 "authing_feedback_related" = "Related isses";
 "authing_feedback_issuetip" = "If you cannot reset your password: \n 1. Check whether your phone is down/disconnected; \n 2. Check that your password is correct.";
