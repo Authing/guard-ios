@@ -168,6 +168,7 @@
 		A86AE1DC287FED6300BFD4A0 /* DeleteAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86AE1DB287FED6300BFD4A0 /* DeleteAccountView.swift */; };
 		A874BC7528780BBA002B4C9F /* DescribeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A874BC7428780BBA002B4C9F /* DescribeTextView.swift */; };
 		A879681E29ACB518007033E5 /* AuthingWebsocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879681D29ACB518007033E5 /* AuthingWebsocketClient.swift */; };
+		A88FF15929F7F97500281873 /* UIDevice+Authing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88FF15829F7F97500281873 /* UIDevice+Authing.swift */; };
 		A89705CB287EDD520080BEE5 /* AuthingDeleteAccount.xib in Resources */ = {isa = PBXBuildFile; fileRef = A89705CA287EDD520080BEE5 /* AuthingDeleteAccount.xib */; };
 		A89EDCD728D6F5E2001B7E99 /* SocialLoginListToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89EDCD628D6F5E2001B7E99 /* SocialLoginListToast.swift */; };
 		A8A4897B287578A600F3120F /* GoFeedBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A4897A287578A600F3120F /* GoFeedBackButton.swift */; };
@@ -352,6 +353,7 @@
 		A874BC7428780BBA002B4C9F /* DescribeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescribeTextView.swift; sourceTree = "<group>"; };
 		A879681D29ACB518007033E5 /* AuthingWebsocketClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthingWebsocketClient.swift; sourceTree = "<group>"; };
 		A879699A29AE0117007033E5 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
+		A88FF15829F7F97500281873 /* UIDevice+Authing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Authing.swift"; sourceTree = "<group>"; };
 		A89705CA287EDD520080BEE5 /* AuthingDeleteAccount.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingDeleteAccount.xib; sourceTree = "<group>"; };
 		A89EDCD628D6F5E2001B7E99 /* SocialLoginListToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginListToast.swift; sourceTree = "<group>"; };
 		A8A4897A287578A600F3120F /* GoFeedBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoFeedBackButton.swift; sourceTree = "<group>"; };
@@ -556,6 +558,7 @@
 			children = (
 				7E7566832766FD5D00C3872F /* UIApplication+Authing.swift */,
 				7E7566A12768801E00C3872F /* UIView+Authing.swift */,
+				A88FF15829F7F97500281873 /* UIDevice+Authing.swift */,
 				7E0FAFDE27ED5A37006258FC /* UIViewController+Authing.swift */,
 				A8BBEB362876DE330082DE59 /* String+Authing.swift */,
 				A830E50C28AB9737005332ED /* UIColor+Authing.swift */,
@@ -615,7 +618,6 @@
 				7E20000827E9A8250051F590 /* Core */,
 				7E96039027E08B17007C87EB /* Parser */,
 				7EF66C59277BEE5100FCBBEB /* Animation */,
-				7E75669227683E4700C3872F /* Resource */,
 				7E75667F2766FA0E00C3872F /* AuthFlow */,
 				7E7566762766F90200C3872F /* Component */,
 				7E75668527672C8100C3872F /* Data */,
@@ -641,6 +643,7 @@
 		7E96039027E08B17007C87EB /* Parser */ = {
 			isa = PBXGroup;
 			children = (
+				7E75669227683E4700C3872F /* Resource */,
 				7E96039127E08B2B007C87EB /* Parser.swift */,
 				7E96039827E0AF49007C87EB /* Layout.swift */,
 				7E96039C27E0C48C007C87EB /* RootView.swift */,
@@ -1023,6 +1026,7 @@
 				7EF66C6D277C1C6E00FCBBEB /* RegisterMethodTabItem.swift in Sources */,
 				A850622C283237FA00F97EBD /* CountdownTimerManager.swift in Sources */,
 				8D42262A2923FA14000FDCDE /* MFAOtherMethodButton.swift in Sources */,
+				A88FF15929F7F97500281873 /* UIDevice+Authing.swift in Sources */,
 				A8BBEB352876DA890082DE59 /* FeedBackIssuePicker.swift in Sources */,
 				7EF66C61277BFD0900FCBBEB /* GoRegisterButton.swift in Sources */,
 				A852CBFB28780046000BC6EF /* FeedBackButton.swift in Sources */,

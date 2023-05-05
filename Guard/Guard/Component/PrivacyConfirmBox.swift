@@ -287,7 +287,10 @@ open class PrivacyConfirmBox: UIView, UITextViewDelegate {
                             attributedString?.addAttributes([NSAttributedString.Key.paragraphStyle : para,
                                                              NSAttributedString.Key.font : UIFont.systemFont(ofSize: fontSize),
                                                              NSAttributedString.Key.foregroundColor : Const.Color_Text_Default_Gray], range: NSMakeRange(0, attributedString?.length ?? 0))
-
+                            self.label.linkTextAttributes = [
+                                NSAttributedString.Key.underlineColor: UIColor.clear,
+                                NSAttributedString.Key.foregroundColor: UIColor.dynamicColor(darkHex: "#F7F8FA", lightHex: "#1D2129")
+                            ]
                             self.label.attributedText = attributedString
                             shouldShow = true
                         }

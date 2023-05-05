@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -49,6 +50,7 @@
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0s7-XA-leK" customClass="PhoneNumberTextField" customModule="Guard" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="380" height="52"/>
+                            <color key="backgroundColor" name="TextField_Back"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="52" id="FoK-iP-7lI"/>
                             </constraints>
@@ -57,6 +59,7 @@
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jZa-yg-R9R" customClass="VerifyCodeTextField" customModule="Guard" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="68" width="236" height="52"/>
+                            <color key="backgroundColor" name="TextField_Back"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="52" id="1pR-Yc-Wyh"/>
                             </constraints>
@@ -100,6 +103,7 @@
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="oKO-HY-0iV" customClass="AccountTextField" customModule="Guard" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="380" height="52"/>
+                            <color key="backgroundColor" name="TextField_Back"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="52" id="E3x-zN-J7Y"/>
                             </constraints>
@@ -108,6 +112,7 @@
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gwQ-lK-Qlg" customClass="PasswordTextField" customModule="Guard" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="68" width="380" height="52"/>
+                            <color key="backgroundColor" name="TextField_Back"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="52" id="HRH-Cz-GI4"/>
                             </constraints>
@@ -123,6 +128,7 @@
                         </imageView>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2MU-9R-GgW" customClass="GraphValidateCodeTextField" customModule="Guard" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="136" width="236" height="52"/>
+                            <color key="backgroundColor" name="TextField_Back"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="52" id="qGi-Vf-0dr"/>
                             </constraints>
@@ -156,6 +162,7 @@
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="btZ-3o-eKL" customClass="EmailTextField" customModule="Guard" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="380" height="52"/>
+                            <color key="backgroundColor" name="TextField_Back"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="52" id="dTe-Pb-NXa"/>
                             </constraints>
@@ -164,6 +171,7 @@
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4p3-hb-Tfx" customClass="VerifyCodeTextField" customModule="Guard" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="68" width="236" height="52"/>
+                            <color key="backgroundColor" name="TextField_Back"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="52" id="SDl-4r-gtD"/>
                             </constraints>
@@ -406,9 +414,12 @@
         </view>
     </objects>
     <resources>
-        <image name="authing_back" width="8.6666669845581055" height="14"/>
+        <image name="authing_back" width="24" height="24"/>
         <image name="authing_feedback" width="16" height="16"/>
         <image name="authing_icon" width="149" height="16"/>
+        <namedColor name="TextField_Back">
+            <color red="0.96862745098039216" green="0.97254901960784312" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

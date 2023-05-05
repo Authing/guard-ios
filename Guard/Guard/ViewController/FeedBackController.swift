@@ -110,7 +110,7 @@ extension FeedBackController: UITableViewDelegate, UITableViewDataSource {
             cell.contentView.addSubview(label)
             if items[indexPath.row] == .phoneTitle {
                 
-                let attributedString1 = NSMutableAttributedString(string: items[indexPath.row].title() ?? "", attributes:[NSAttributedString.Key.foregroundColor : UIColor.black])
+                let attributedString1 = NSMutableAttributedString(string: items[indexPath.row].title() ?? "")
                 let attributedString2 = NSMutableAttributedString(string:" *", attributes: [NSAttributedString.Key.foregroundColor : UIColor(red: 232/255, green: 53/255, blue: 62/255, alpha: 1)])
                  
                 attributedString1.append(attributedString2)

@@ -178,12 +178,14 @@ public class OIDCClient: NSObject {
             }
         }
     }
-    
+   
     private func _request(userInfo: UserInfo?, config: Config?, urlString: String, method: String, body: String?, completion: @escaping (Int, String?, NSDictionary?) -> Void) {
         let url = URL(string: urlString)
         var request = URLRequest(url: url!)
         request.httpMethod = method
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.addValue(Util.getDeviceID(), forHTTPHeaderField: "x-authing-device-id")
+
         if body != nil {
             request.httpBody = body!.data(using: .utf8)
         }

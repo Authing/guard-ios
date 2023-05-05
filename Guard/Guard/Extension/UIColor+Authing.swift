@@ -46,4 +46,14 @@ extension UIColor {
         self.init(red: 0, green: 0, blue: 0, alpha: 0)
         return
     }
+    
+    public class func dynamicColor(darkHex: String, lightHex: String) -> UIColor {
+        if #available(iOS 13, *) {
+            return UIColor { (traitCollection: UITraitCollection) -> UIColor in
+                return traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark ?
+                UIColor.init(hex: darkHex) : UIColor.init(hex: lightHex)
+            }
+        }
+        return UIColor.init(hex: lightHex)
+    }
 }

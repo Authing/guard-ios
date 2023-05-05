@@ -21,9 +21,12 @@ public class Const: NSObject {
     public static let Color_Asterisk = UIColor(red: 0.514, green: 0.094, blue: 0.153, alpha: 1)
     public static let Color_BG_Gray = UIColor(red: 0.937, green: 0.937, blue: 0.937, alpha: 1)
     public static let Color_Border_Gray = UIColor(red: 0.828, green: 0.856, blue: 0.888, alpha: 1)
-    public static let Color_BG_Text_Box = UIColor.init(hex: "#F7F8FA")
+    public static let Color_BG_Text_Box = UIColor.dynamicColor(darkHex: "#1D2129", lightHex: "#F7F8FA")
     public static let Color_Text_Default_Gray = UIColor(red: 134.0/255.0, green: 144.0/255.0, blue: 156.0/255.0, alpha: 1.0)
     public static let ONEPX = 1 / UIScreen.main.scale
+    
+    public static let NO_DEVICE_PERMISSION_DISABLED = 1577;
+    public static let NO_DEVICE_PERMISSION_SUSPENDED = 1578;
     
     public static let EC_MFA_REQUIRED = 1636;
     public static let EC_FIRST_TIME_LOGIN = 1639;
@@ -31,7 +34,9 @@ public class Const: NSObject {
     public static let EC_BINDING_CREATE_ACCOUNT = 1641;
     public static let EC_ENTER_VERIFICATION_CODE = 2000;
     public static let EC_MULTIPLE_ACCOUNT = 2921;
+    
 
+    
     public static let SCREEN_WIDTH = UIScreen.main.bounds.width
     public static let SCREEN_HEIGHT = UIScreen.main.bounds.height
 

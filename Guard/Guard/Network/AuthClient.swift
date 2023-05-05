@@ -291,6 +291,7 @@ public class AuthClient: Client {
     public func logout(completion: @escaping(Int, String?) -> Void) {
         get("/api/v2/logout?app_id=\(Authing.getAppId())") { code, message, data in
             Authing.saveUser(nil)
+            
             HTTPCookieStorage.shared.cookies?.forEach(HTTPCookieStorage.shared.deleteCookie)
             HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
             DispatchQueue.main.async() {
@@ -1312,17 +1313,28 @@ public class AuthClient: Client {
     }
     
     public func createDevice(completion: @escaping(Int, String?, NSDictionary?) -> Void) {
-        
-        post("/api/v3/create-device", ["uniqueId" : Util.getDeviceID(),
+        post("/api/v3/create-device", ["deviceUniqueId" : Util.getDeviceID(),
                                                     "type": "Mobile",
                                                     "name": UIDevice.current.name,
+                                                    "mod": UIDevice.modelName,
                                                     "version": UIDevice.current.systemVersion,
                                                     "producer": "apple",
                                                     "os": UIDevice.current.systemName], completion: completion)
     }
     
+    public func deviceList(completion: @escaping(Int, String?, NSDictionary?) -> Void) {
+        get("/api/v3/mydevices/list", completion: completion)
+    }
+    
+    public func removeDevice(deviceId: String, completion: @escaping(Int, String?, NSDictionary?) -> Void) {
+        post("/api/v3/mydevices/unbind", ["deviceId": deviceId], completion: completion)
+    }
+    
+    public func logoutByDeviceId(deviceId: String, completion: @escaping(Int, String?, NSDictionary?) -> Void) {
+        post("/api/v3/mydevices/revoke-session", ["deviceId": deviceId], completion: completion)
+    }
+    
     public func bind(cid: String ,completion: @escaping(Int, String?, NSDictionary?) -> Void) {
-        
         post("/api/v3/user-bind-app", ["cid": cid], completion: completion)
     }
     
@@ -1513,6 +1525,8 @@ public class AuthClient: Client {
         request.addValue("Guard-iOS@\(Const.SDK_VERSION)", forHTTPHeaderField: "x-authing-request-from")
         request.addValue(Const.SDK_VERSION, forHTTPHeaderField: "x-authing-sdk-version")
         request.addValue(Util.getLangHeader(), forHTTPHeaderField: "x-authing-lang")
+        request.addValue(Util.getDeviceID(), forHTTPHeaderField: "x-authing-device-id")
+        
         request.httpShouldHandleCookies = true
         return request
     }
@@ -1522,6 +1536,7 @@ public class AuthClient: Client {
         if body?.object(forKey: "captchaCode") != nil, let url: URL = URL(string:urlString) {
             session.configuration.httpCookieStorage?.setCookies(Util.cookies, for: url, mainDocumentURL: url)
         }
+        
         session.dataTask(with: self.request(config: config, urlString: urlString, method: method, body: body)) { (data, response, error) in
             guard error == nil else {
                 ALog.d(AuthClient.self, "Guardian request network error:\(error!.localizedDescription)")

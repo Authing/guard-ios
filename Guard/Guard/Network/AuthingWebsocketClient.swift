@@ -64,6 +64,10 @@ public class AuthingWebsocketClient: NSObject {
             }
         }
     }
+    
+    public func cancel() {
+        self.webSocketTask.cancel()
+    }
 }
 
 @available(iOS 13.0, *)

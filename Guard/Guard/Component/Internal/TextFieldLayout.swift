@@ -23,12 +23,12 @@ open class TextFieldLayout: BaseInput, UITextFieldDelegate {
 
     private func setup() {
         self.delegate = self
-        
+        self.borderStyle = .none
+
         hintColor = Const.Color_Text_Default_Gray
         backgroundColor = Const.Color_BG_Text_Box
         layer.borderColor = Const.Color_BG_Text_Box.cgColor
-
-        layer.borderWidth = 1
+        layer.borderWidth = 0
         layer.cornerRadius = 4
         autocapitalizationType = .none
 //        addSubview(border)
@@ -79,21 +79,26 @@ open class TextFieldLayout: BaseInput, UITextFieldDelegate {
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         border.setHighlight(true)
         layer.borderColor = Const.Color_Authing_Main.cgColor
+        layer.borderWidth = 1
         return true
     }
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
         border.setHighlight(false)
         layer.borderColor = Const.Color_BG_Text_Box.cgColor
+        layer.borderWidth = 0
     }
     
     public func setError(_ text: String?) {
         if let t = text, !Util.isNull(t) {
             layer.borderColor = Const.Color_Error.cgColor
+            layer.borderWidth = 1
         } else if isFirstResponder {
             layer.borderColor = Const.Color_Authing_Main.cgColor
+            layer.borderWidth = 1
         } else {
             layer.borderColor = Const.Color_BG_Text_Box.cgColor
+            layer.borderWidth = 0
         }
     }
 }

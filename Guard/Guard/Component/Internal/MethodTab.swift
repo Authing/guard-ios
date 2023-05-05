@@ -34,7 +34,7 @@ open class MethodTab: UIScrollView {
                 
                 self.setItemFrame()
                 
-                self.underLine.backgroundColor = UIColor(white: 0.8, alpha: 1)
+                self.underLine.backgroundColor = UIColor.dynamicColor(darkHex: "#4E5969", lightHex: "#E5E6EB")
                 self.addSubview(self.underLine)
                 
                 self.highlight.backgroundColor = Const.Color_Authing_Main

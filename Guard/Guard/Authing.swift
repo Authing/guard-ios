@@ -168,5 +168,6 @@ public class Authing: NSObject {
         sCurrentUser = userInfo
         // TODO save to user defaults then Core Data
         UserManager.saveUser(sCurrentUser)
+        UserManager.removeUser()
     }
 }
