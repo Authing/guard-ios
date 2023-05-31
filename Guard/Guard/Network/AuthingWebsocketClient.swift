@@ -8,7 +8,6 @@
 import Foundation
 
 @available(iOS 13.0, *)
-
 public class AuthingWebsocketClient: NSObject {
     private var webSocketTask: URLSessionWebSocketTask!
     private var urlString: String = ""
@@ -52,6 +51,8 @@ public class AuthingWebsocketClient: NSObject {
                 self.reconnect(url: self.urlString, retryTimes: self.retryTimes)
             }
         }
+        
+        self.sendPing()
     }
     
     public func reconnect(url: String, retryTimes: Int) {
@@ -66,7 +67,19 @@ public class AuthingWebsocketClient: NSObject {
     }
     
     public func cancel() {
-        self.webSocketTask.cancel()
+        self.webSocketTask.cancel(with: .goingAway, reason: nil)
+    }
+    
+    func sendPing() {
+        self.webSocketTask.sendPing { (error) in
+            if let error = error {
+                ALog.w(AuthingWebsocketClient.self, "Sending PING failed: \(error)")
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                self.sendPing()
+            }
+        }
     }
 }
 

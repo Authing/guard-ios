@@ -1360,7 +1360,7 @@ public class AuthClient: Client {
                                                               "rawId": rawId,
                                                               "response":["attestationObject": attestationObject,
                                                                                               "clientDataJSON": clientDataJSON],
-                                                              "type": "public-key"],
+                                                              "type": "public-key"] as [String : Any],
                                   "authenticatorCode": authenticatorCode]
         
         post("/api/v3/webauthn/registration", body, completion: completion)
@@ -1386,7 +1386,7 @@ public class AuthClient: Client {
                                                                              "userHandle": userHandle,
                                                                              "clientDataJSON": clientDataJSON,
                                                                              "signature": signature],
-                                                                "type": "public-key"]]
+                                                                "type": "public-key"] as [String : Any]]
 
         post("/api/v3/webauthn/authentication", body, completion: completion)
     }
@@ -1404,16 +1404,18 @@ public class AuthClient: Client {
     }
     
     //MARK: ---------- subEvent ----------
-    public func subEvent(eventCode: String, completion: @escaping (Int, String?) -> Void) {
-        if let currentUser = Authing.getCurrentUser(),
-           let token = currentUser.accessToken {
-            let eventUri = "\(Authing.getWebsocketHost())/events/v1/authentication/sub?code=\(eventCode)&token=\(token)"
-            if #available(iOS 13.0, *) {
-                AuthingWebsocketClient().initWebSocket(urlString: eventUri, completion: completion)
-            }
+    @available(iOS 13.0, *)
+    public func subEvent(eventCode: String, _ accessToken: String? = nil, completion: @escaping (Int, String?) -> Void) {
+        var token = accessToken
+        if token == nil {
+            token = Authing.getCurrentUser()?.accessToken
+        }
+        if let tk = token {
+            let eventUri = "\(Authing.getWebsocketHost())/events/v1/authentication/sub?code=\(eventCode)&token=\(tk)"
+            AuthingWebsocketClient().initWebSocket(urlString: eventUri, completion: completion)
         }
     }
-    
+
     //MARK: ---------- pubEvent ----------
     public func pubEvent(eventType: String, eventData: NSDictionary, completion: @escaping(Int, String?, NSDictionary?) -> Void) {
         guard let data = try? JSONSerialization.data(withJSONObject: eventData, options: []) else {

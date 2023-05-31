@@ -28,7 +28,8 @@ public class Config: NSObject {
             
             if let verifyCodeTabConfig: NSDictionary = data?["verifyCodeTabConfig"] as? NSDictionary{
                 verifyCodeValidLoginMethods = verifyCodeTabConfig["validLoginMethods"] as? [String]
-                if loginMethods?.first == "password" {
+                if loginMethods?.first == "password" ||
+                    (loginMethods?.contains("phone-code") == true && verifyCodeValidLoginMethods?.contains("phone-code") == false) {
                     if let idx = loginMethods?.firstIndex (where: { (method) -> Bool in
                         return method == "phone-code"
                     }) {
@@ -43,11 +44,12 @@ public class Config: NSObject {
                         $0.element
                     }
                 }
+                                
                 verifyCodeValidRegisterMethods = verifyCodeTabConfig["validRegisterMethods"] as? [String]
             }
             if let passwordTabConfig: NSDictionary = data?["passwordTabConfig"] as? NSDictionary{
-                enabledLoginMethods = passwordTabConfig["validLoginMethods"] as? [String]
-                passwordValidLoginMethods = passwordTabConfig["validLoginMethods"] as? [String]
+                passwordValidLoginMethods = passwordTabConfig["validLoginMethods"] as? [String] ?? []
+
                 passwordValidRegisterMethods = passwordTabConfig["validRegisterMethods"] as? [String]
             }
             if let registerTabs: NSDictionary = data?["registerTabs"] as? NSDictionary{
@@ -130,10 +132,9 @@ public class Config: NSObject {
     }
     open var loginMethods: [String]?
     open var defaultLoginMethod: String?
-    open var enabledLoginMethods: [String]?
     open var passwordValidRegisterMethods: [String]?
     open var verifyCodeValidRegisterMethods: [String]?
-    open var passwordValidLoginMethods: [String]?
+    open var passwordValidLoginMethods: [String] = []
     open var verifyCodeValidLoginMethods: [String]?
 
     open var registerMethods: [String]?
@@ -195,6 +196,10 @@ public class Config: NSObject {
     
     open var skipComplateFileds: Bool? {
         get { return data?["skipComplateFileds"] as? Bool }
+    }
+    
+    open var eventSocket: String? {
+        get { return data?["eventSocket"] as? String }
     }
     
     // MARK: Request

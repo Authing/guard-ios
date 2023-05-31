@@ -92,6 +92,16 @@ open class UserInfo: NSObject {
             return raw?["access_token"] as? String
         }
     }
+    
+    @objc public var accessTokenId: String? {
+        get {
+            if let at = raw?["access_token"] as? String {
+                return self.getAccessTokenId(accessToken: at)
+            }
+            return nil
+        }
+    }
+    
     @objc public var refreshToken: String? {
         get {
             return raw?["refresh_token"] as? String
@@ -152,6 +162,7 @@ open class UserInfo: NSObject {
         token = raw?["token"] as? String
         identities = raw?["identities"] as? [NSDictionary]
         loginsCount = raw?["loginsCount"] as? Int ?? 0
+        
     }
 
     public func getUserName() -> String? {
@@ -180,6 +191,35 @@ open class UserInfo: NSObject {
         } else if let n = email {
             return n
         }
+        return nil
+    }
+    
+    public func getAccessTokenId(accessToken: String) -> String? {
+        let strArr = accessToken.components(separatedBy: ".")
+        var st = strArr[1]
+         .replacingOccurrences(of: "_", with: "/")
+         .replacingOccurrences(of: "-", with: "+")
+         let remainder = strArr[1].count % 4
+         if remainder > 0 {
+             st = strArr[1].padding(toLength: strArr[1].count + 4 - remainder,
+             withPad: "=",
+             startingAt: 0)
+         }
+         guard let d = Data(base64Encoded: st, options: .ignoreUnknownCharacters) else{
+             
+             return nil
+         }
+
+        let jsonString = String(data: d, encoding: .utf8)
+        if let data = jsonString?.data(using: .utf8) {
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? NSDictionary
+                return json?["jti"] as? String
+            } catch {
+                print("Something went wrong")
+            }
+        }
+        
         return nil
     }
 }

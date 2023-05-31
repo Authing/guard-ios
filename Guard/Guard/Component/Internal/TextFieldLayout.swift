@@ -52,7 +52,7 @@ open class TextFieldLayout: BaseInput, UITextFieldDelegate {
         super.layoutSubviews()
         border.frame = CGRect(x: -2, y: -2, width: frame.width + 4, height: frame.height + 4)
         let itemWidth: CGFloat = frame.height/3
-        paddingView.frame = CGRect(x: 0, y: 0, width: frame.height/3 + 12, height: frame.height)
+        paddingView.frame = CGRect(x: 0, y: 0, width: itemWidth + 20, height: frame.height)
         imageView.frame = CGRect(x: 12, y: (frame.height - itemWidth)/2, width: itemWidth, height: itemWidth)
         border.setNeedsDisplay()
         

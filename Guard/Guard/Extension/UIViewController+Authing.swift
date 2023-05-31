@@ -10,4 +10,5 @@ extension UIViewController {
         guard let segues = self.value(forKey: "storyboardSegueTemplates") as? [NSObject] else { return false }
         return segues.first { $0.value(forKey: "identifier") as? String == id } != nil
     }
+
 }

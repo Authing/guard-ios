@@ -41,7 +41,7 @@ open class AccountTextField: TextFieldLayout {
             methods = []
             for method in socialBindingMethods {
                 if method.contains("password") {
-                    methods?.append(method)
+                    methods.append(method)
                 }
             }
         }
@@ -56,23 +56,21 @@ open class AccountTextField: TextFieldLayout {
             
             var i: Int = 0
 
-            if (config.passwordValidLoginMethods != nil) {
-                for method in config.passwordValidLoginMethods ?? [] {
-                    hint += getMethodText(method, config)
-                    if (i < config.passwordValidLoginMethods!.count - 1) {
-                        hint += " / "
-                    }
-                    i += 1
+            for method in config.passwordValidLoginMethods {
+                hint += getMethodText(method, config)
+                if (i < config.passwordValidLoginMethods.count - 1) {
+                    hint += " / "
                 }
+                i += 1
             }
             
             setHint(hint)
         }
         
-        if (methods?.count == 1) {
-            if (methods?[0] == "email-password") {
+        if (methods.count == 1) {
+            if (methods[0] == "email-password") {
                 keyboardType = .emailAddress
-            } else if (methods?[0] == "phone-password") {
+            } else if (methods[0] == "phone-password") {
                 keyboardType = .phonePad
             }
         }

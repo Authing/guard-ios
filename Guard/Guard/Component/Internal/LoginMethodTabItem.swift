@@ -56,7 +56,7 @@ public class LoginMethodTabItem: MethodTabItem {
                     }
                 } else if self.type == 1 {
                     //password
-                    if config?.passwordValidRegisterMethods?.count != config?.passwordValidLoginMethods?.count {
+                    if config?.passwordValidRegisterMethods?.count != config?.passwordValidLoginMethods.count {
                         loginButton.setTitle(loginText, for: .normal)
                     } else {
                         loginButton.setTitle(self.getLoginButtonTitle(config: config), for: .normal)
