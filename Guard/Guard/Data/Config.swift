@@ -202,6 +202,10 @@ public class Config: NSObject {
         get { return data?["eventSocket"] as? String }
     }
     
+    open var deviceFuncEnabled: Bool? {
+        get { return data?["deviceFuncEnabled"] as? Bool }
+    }
+    
     // MARK: Request
     open var appId: String!
     open var userAgent: String?

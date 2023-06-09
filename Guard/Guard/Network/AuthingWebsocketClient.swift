@@ -22,6 +22,10 @@ public class AuthingWebsocketClient: NSObject {
     public func initWebSocket(urlString: String, completion: @escaping (Int, String?) -> Void) {
         self.receiveCallBack = completion
         self.urlString = urlString
+        self.webSocketConnect(urlString: urlString)
+    }
+    
+    private func webSocketConnect(urlString: String) {
         guard let url = URL(string: urlString) else {
             ALog.e(AuthingWebsocketClient.self, "Error: can not create URL")
             return
@@ -47,23 +51,10 @@ public class AuthingWebsocketClient: NSObject {
             case .failure(let error):
                 ALog.e(AuthingWebsocketClient.self, error)
                 self.receiveCallBack?((error as NSError).code, (error as NSError).debugDescription)
-                self.retryTimes += 1
-                self.reconnect(url: self.urlString, retryTimes: self.retryTimes)
             }
         }
         
         self.sendPing()
-    }
-    
-    public func reconnect(url: String, retryTimes: Int) {
-        if retryTimes == retryCount {
-            return
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-            self.initWebSocket(urlString: url) { code, message in
-            }
-        }
     }
     
     public func cancel() {
@@ -74,6 +65,8 @@ public class AuthingWebsocketClient: NSObject {
         self.webSocketTask.sendPing { (error) in
             if let error = error {
                 ALog.w(AuthingWebsocketClient.self, "Sending PING failed: \(error)")
+                self.webSocketTask = nil
+                self.webSocketConnect(urlString: self.urlString)
             }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
