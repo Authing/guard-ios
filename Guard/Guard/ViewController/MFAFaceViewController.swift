@@ -7,7 +7,7 @@
 
 import AVFoundation
 
-open class MFAFaceViewController: AuthViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+@objc open class MFAFaceViewController: AuthViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
 
     private var needBindingFace: Bool = !(Authing.getCurrentUser()?.faceMfaEnabled ?? false)
     private var faceImages: [UIImage] = []

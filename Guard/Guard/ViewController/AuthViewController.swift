@@ -5,7 +5,7 @@
 //  Created by Lance Mao on 2021/12/13.
 //
 
-open class AuthViewController: UIViewController {
+@objc open class AuthViewController: UIViewController {
     
 //    public var authFlow: AuthFlow? = AuthFlow()
     

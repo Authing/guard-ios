@@ -15,7 +15,7 @@ public enum BindSuccessType {
     case webauthn
 }
 
-open class MFABindSuccessViewController: AuthViewController {
+@objc open class MFABindSuccessViewController: AuthViewController {
     
     @IBOutlet weak var otpView: UIView!
     @IBOutlet weak var successView: UIView!

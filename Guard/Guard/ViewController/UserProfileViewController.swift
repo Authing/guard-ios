@@ -5,7 +5,7 @@
 //  Created by Lance Mao on 2021/12/30.
 //
 
-open class UserProfileViewController: AuthViewController {
+@objc open class UserProfileViewController: AuthViewController {
     open override func viewDidLoad() {
         super.viewDidLoad()
         

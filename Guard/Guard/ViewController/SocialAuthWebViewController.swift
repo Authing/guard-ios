@@ -8,7 +8,7 @@
 import Foundation
 import WebKit
 
-open class SocialAuthWebViewController: AuthViewController, WKNavigationDelegate {
+@objc open class SocialAuthWebViewController: AuthViewController, WKNavigationDelegate {
     
     var webView: WKWebView? = nil
     private var appId: String!
