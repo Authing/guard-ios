@@ -1039,6 +1039,26 @@ public class AuthClient: Client {
         }
     }
     
+    public func loginByTwitter(requestToken: String, tokenSecret: String, completion: @escaping(Int, String?, UserInfo?) -> Void) {
+        getConfig { config in
+            guard let conf = config else {
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
+                return
+            }
+            
+            guard let conId = conf.getConnectionId(type: "twitter:mobile") else {
+                completion(ErrorCode.config.rawValue, ErrorCode.config.errorMessage(), nil)
+                return
+            }
+            
+            let body: NSDictionary = ["connId" : conId, "requestToken": requestToken, "tokenSecret": tokenSecret]
+            self.post("/api/v2/ecConn/twitter/authByRequestToken", body) { code, message, data in
+                self.createUserInfo(code, message, data, completion: completion)
+            }
+        }
+    }
+    
+    
     // MARK: ---------- Scoial Identity Binding APIs ----------
     public func getDataByWechatlogin(authData: AuthRequest? = nil, code: String, _ context: String? = nil, completion: @escaping(Int, String?, UserInfo?) -> Void) {
         getConfig { config in

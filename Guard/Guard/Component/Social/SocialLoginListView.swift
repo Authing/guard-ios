@@ -177,6 +177,8 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                         srcs.setValue("slack", forKey: "20")
                     } else if ("amazon:mobile" == type) {
                         srcs.setValue("amazon", forKey: "21")
+                    } else if ("twitter:mobile" == type) {
+                        srcs.setValue("twitter", forKey: "22")
                     }
                 }
             }
@@ -413,6 +415,14 @@ open class SocialLoginListView: UIView, AttributedViewProtocol {
                     let view = type.init()
                     if isVerticalLayout {
                         view.setTitle("authing_social_amazon".L, for: .normal)
+                    }
+                    container.addSubview(view)
+                }
+            } else if ("twitter" == trimmed) {
+                if let type = Bundle(identifier: "cn.authing.TwitterSignIn")?.classNamed("TwitterSignIn.TwitterSignInButton") as? SocialLoginButton.Type {
+                    let view = type.init()
+                    if isVerticalLayout {
+                        view.setTitle("authing_social_twitter".L, for: .normal)
                     }
                     container.addSubview(view)
                 }

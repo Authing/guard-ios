@@ -166,6 +166,7 @@
 "authing_social_line" = "     使用 Line 登錄";
 "authing_social_slack" = "     使用 Slack 登錄";
 "authing_social_amazon" = "     使用亚马逊登錄";
+"authing_social_twitter" = "     使用 twitter 登錄";
 
 "authing_recovery_title" = "使用恢復代碼";
 "authing_recovery_tip" = "如果沒有恢復代碼，請聯繫管理員處理";

@@ -152,7 +152,6 @@
 		8D8B32BE2925F8A9005F3E6E /* MFARecoveryCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8B32BD2925F8A9005F3E6E /* MFARecoveryCodeButton.swift */; };
 		8D8B32C0292771D2005F3E6E /* MFATipsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8B32BF292771D1005F3E6E /* MFATipsLabel.swift */; };
 		8DBDC4DC2912470E00B7BE7F /* ExtendFieldTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBDC4DB2912470D00B7BE7F /* ExtendFieldTextField.swift */; };
-		A8093DA8295B82FF00372B90 /* AuthingBindingWebAuthn.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8093DA7295B82FF00372B90 /* AuthingBindingWebAuthn.xib */; };
 		A80B20B728D6289300933A26 /* SocialLoginListVerticalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80B20B628D6289300933A26 /* SocialLoginListVerticalView.swift */; };
 		A80B20B928D63CBF00933A26 /* SocialNoLoginMethodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80B20B828D63CBF00933A26 /* SocialNoLoginMethodsView.swift */; };
 		A80BD1A728D1B65F00F9DEDE /* AuthFlowUIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80BD1A628D1B65F00F9DEDE /* AuthFlowUIConfig.swift */; };
@@ -336,7 +335,6 @@
 		8D8B32BD2925F8A9005F3E6E /* MFARecoveryCodeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFARecoveryCodeButton.swift; sourceTree = "<group>"; };
 		8D8B32BF292771D1005F3E6E /* MFATipsLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFATipsLabel.swift; sourceTree = "<group>"; };
 		8DBDC4DB2912470D00B7BE7F /* ExtendFieldTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendFieldTextField.swift; sourceTree = "<group>"; };
-		A8093DA7295B82FF00372B90 /* AuthingBindingWebAuthn.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingBindingWebAuthn.xib; sourceTree = "<group>"; };
 		A80B20B628D6289300933A26 /* SocialLoginListVerticalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginListVerticalView.swift; sourceTree = "<group>"; };
 		A80B20B828D63CBF00933A26 /* SocialNoLoginMethodsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialNoLoginMethodsView.swift; sourceTree = "<group>"; };
 		A80BD1A628D1B65F00F9DEDE /* AuthFlowUIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlowUIConfig.swift; sourceTree = "<group>"; };
@@ -517,7 +515,6 @@
 				8D8B329D29251934005F3E6E /* AuthingMFAOTP1.xib */,
 				7E7D1F72278FC44F005AAD39 /* AuthingFirstTimeLogin.xib */,
 				8D254F6B293D0356001BEC9E /* AuthingBinding.xib */,
-				A8093DA7295B82FF00372B90 /* AuthingBindingWebAuthn.xib */,
 				8D254F63293CF0E2001BEC9E /* AuthingBindingMethod.xib */,
 				7E02F46C27950C99007FA048 /* AuthingUserInfoComplete.xib */,
 				A8D38D2027F2B02D00942707 /* AuthingCountryCode.xib */,
@@ -877,7 +874,6 @@
 				8D8B32A429254D02005F3E6E /* AuthingMFABindSuccess.xib in Resources */,
 				7E7D1F73278FC44F005AAD39 /* AuthingFirstTimeLogin.xib in Resources */,
 				7EB32810278D116F008639AA /* AuthingMFAEmail1.xib in Resources */,
-				A8093DA8295B82FF00372B90 /* AuthingBindingWebAuthn.xib in Resources */,
 				7E75667B2766F9C400C3872F /* AuthingLogin.xib in Resources */,
 				7E75669B27683F5300C3872F /* Localizable.strings in Resources */,
 				8D8B32BA2925F5CA005F3E6E /* AuthingRecoveryCode.xib in Resources */,

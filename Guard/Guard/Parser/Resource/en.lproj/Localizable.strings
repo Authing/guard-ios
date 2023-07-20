@@ -177,6 +177,7 @@
 "authing_social_line" = "       Sign in with Line ";
 "authing_social_slack" = "       Sign in with Slack ";
 "authing_social_amazon" = "       Sign in with Amazon ";
+"authing_social_twitter" = "       Sign in with Twitter ";
 
 "authing_recovery_title" = "Use recovery code";
 "authing_recovery_tip" = "If no recovery code, please contact the administrator";
