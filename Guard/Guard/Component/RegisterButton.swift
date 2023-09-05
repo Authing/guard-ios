@@ -229,8 +229,23 @@ open class RegisterButton: PrimaryButton {
             authCompletion?(code, message, userInfo)
         } else if (code == 200) {
             DispatchQueue.main.async() {
-                if let flow = self.authViewController?.authFlow {
-                    flow.complete(code, message, userInfo)
+                Util.getConfig(self) { config in
+                    let missingFields: Array<NSDictionary> = AuthFlow.missingField(config: config, userInfo: userInfo)
+                    if (config?.completeFieldsPlace != nil
+                        && config!.completeFieldsPlace!.contains("register")
+                        && missingFields.count > 0) {
+                        let vc: AuthViewController? = AuthViewController(nibName: "AuthingUserInfoComplete", bundle: Bundle(for: Self.self))
+                        vc?.hideNavigationBar = true
+                        if let flow = self.authViewController?.authFlow {
+                            vc?.authFlow = flow.copy() as? AuthFlow
+                        }
+                        vc?.authFlow?.data.setValue(missingFields, forKey: AuthFlow.KEY_EXTENDED_FIELDS)
+                        self.authViewController?.navigationController?.pushViewController(vc!, animated: true)
+                    } else {
+                        if let flow = self.authViewController?.authFlow {
+                            flow.complete(code, message, userInfo)
+                        }
+                    }
                 }
             }
         }

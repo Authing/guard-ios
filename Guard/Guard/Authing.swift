@@ -29,7 +29,6 @@ public class Authing: NSObject {
         case notify_lark_receive = "LarkReceiveNotificationName"
     }
     
-
     private static var debugMode: Bool = false
     
     private static var sSchema = "https"
@@ -116,6 +115,11 @@ public class Authing: NSObject {
     @objc public static func getConfigObject() -> Config? {
         return sConfig
     }
+    
+    @objc public static func setLanguage(language: String) {
+        Util.langHeader = language
+    }
+    
     
 //    @objc public static func setupAlipay(_ appid: String, customScheme: String) {
 //        Alipay.appid = appid

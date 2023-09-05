@@ -187,8 +187,8 @@
 		A8DBB7B5287D5B4100F75C97 /* AuthingResetSuccess.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DBB7B4287D5B4100F75C97 /* AuthingResetSuccess.xib */; };
 		A8DBB7B7287D5B8C00F75C97 /* ResetSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DBB7B6287D5B8C00F75C97 /* ResetSuccessViewController.swift */; };
 		A8DBB7B9287D635400F75C97 /* GoBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DBB7B8287D635400F75C97 /* GoBackButton.swift */; };
-		A8E1E1762898F6E100375EEA /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E1E1752898F6E100375EEA /* Language.swift */; };
 		A8E1F10A28350590004B1E76 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E1F10928350590004B1E76 /* LoadingView.swift */; };
+		A8F5C93B2AA72BEA00F63A6C /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F5C93A2AA72BEA00F63A6C /* Language.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -373,8 +373,8 @@
 		A8DBB7B4287D5B4100F75C97 /* AuthingResetSuccess.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthingResetSuccess.xib; sourceTree = "<group>"; };
 		A8DBB7B6287D5B8C00F75C97 /* ResetSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetSuccessViewController.swift; sourceTree = "<group>"; };
 		A8DBB7B8287D635400F75C97 /* GoBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoBackButton.swift; sourceTree = "<group>"; };
-		A8E1E1752898F6E100375EEA /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		A8E1F10928350590004B1E76 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		A8F5C93A2AA72BEA00F63A6C /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -578,11 +578,11 @@
 		7E75669227683E4700C3872F /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				A8E1E1752898F6E100375EEA /* Language.swift */,
 				7E75669D27683F5300C3872F /* Localizable.strings */,
 				7ED434E42779B28B00893EDD /* Images.xcassets */,
 				A8D62BA928B8D442001D0A40 /* country.plist */,
 				A8AE59A628C5FDB600097FF0 /* country_en.plist */,
+				A8F5C93A2AA72BEA00F63A6C /* Language.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -946,7 +946,6 @@
 				8D8B32BC2925F7BF005F3E6E /* MFARecoveryCodeTextField.swift in Sources */,
 				7EB32805278C17B3008639AA /* MFAPhoneButton.swift in Sources */,
 				7EB3280E278D10B7008639AA /* MFAEmailButton.swift in Sources */,
-				A8E1E1762898F6E100375EEA /* Language.swift in Sources */,
 				7E7566A027684A5E00C3872F /* AuthClient.swift in Sources */,
 				7E96039927E0AF49007C87EB /* Layout.swift in Sources */,
 				7E20000A27E9A8320051F590 /* ALog.swift in Sources */,
@@ -1018,6 +1017,7 @@
 				7E87A1C427CDBF2600E52D5A /* UserProfileField.swift in Sources */,
 				7EDFB6C327C3AABB00B77DEE /* UserInfoCompleteContentView.swift in Sources */,
 				7EF66C75277C37CE00FCBBEB /* BasePasswordTextField.swift in Sources */,
+				A8F5C93B2AA72BEA00F63A6C /* Language.swift in Sources */,
 				8D8B32BE2925F8A9005F3E6E /* MFARecoveryCodeButton.swift in Sources */,
 				7EF66C6D277C1C6E00FCBBEB /* RegisterMethodTabItem.swift in Sources */,
 				A850622C283237FA00F97EBD /* CountdownTimerManager.swift in Sources */,

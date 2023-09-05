@@ -61,6 +61,8 @@ public class Util {
     private static let SERVICE_UUID: String = "service_uuid"
     
     public static var cookies: [HTTPCookie] = []
+    
+    public static var langHeader: String?
 
     public static func getDeviceID() -> String {
         let savedUUID = load()
@@ -163,17 +165,31 @@ public class Util {
     
 
     public static func getLangHeader() -> String {
-        let language = Locale.current.identifier
-        switch language {
-        case "zh_CN", "zh-Hans_CN", "zh-Hans_US":
-            return "zh-CN"
-        case "zh-Hant_CN", "zh-Hant_US", "zh-Hant_TW", "zh-Hant_HK", "zh-Hant_MO":
+        var language = Locale.current.identifier
+
+        if langHeader != nil {
+            language = langHeader!
+        }
+        
+        if language.contains("Hant") {
             return "zh-TW"
-        case "ja_CN", "ja_US":
+        } else if language.contains("zh") {
+            return "zh-CN"
+        } else if language.contains("ja") {
             return "ja-JP"
-        default:
+        } else {
             return "en-US"
         }
+//        switch language {
+//        case "zh_CN", "zh-Hans_CN", "zh-Hans_US":
+//            return "zh-CN"
+//        case "zh-Hant_CN", "zh-Hant_US", "zh-Hant_TW", "zh-Hant_HK", "zh-Hant_MO":
+//            return "zh-TW"
+//        case "ja_CN", "ja_US":
+//            return "ja-JP"
+//        default:
+//            return "en-US"
+//        }
     }
     
     public static func getExtendFieldTitle(config: Config, field: String) -> String {
